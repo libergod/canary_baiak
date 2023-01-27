@@ -38,7 +38,8 @@ bool LuaScriptInterface::reInitState() {
 }
 
 /// Same as lua_pcall, but adds stack trace to error strings in called function.
-int32_t LuaScriptInterface::loadFile(const std::string& file, const std::string &scriptName) {
+
+int32_t LuaScriptInterface::loadFile(const std::string& file) {
 	//loads file as a chunk at stack top
 	int ret = luaL_loadfile(luaState, file.c_str());
 	if (ret != 0) {
@@ -52,7 +53,6 @@ int32_t LuaScriptInterface::loadFile(const std::string& file, const std::string 
 	}
 
 	loadingFile = file;
-	setLoadingScriptName(scriptName);
 
 	if (!reserveScriptEnv()) {
 		return -1;

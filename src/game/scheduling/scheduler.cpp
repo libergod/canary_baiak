@@ -19,9 +19,7 @@ void Scheduler::threadMain()
 
 		eventLockUnique.lock();
 		if (eventList.empty()) {
-			eventSignal.wait(eventLockUnique, [this] {
-				return eventList.empty();
-			});
+			eventSignal.wait(eventLockUnique);
 		} else {
 			ret = eventSignal.wait_until(eventLockUnique, eventList.top()->getCycle());
 		}

@@ -207,6 +207,15 @@ class PlayerFunctions final : LuaScriptInterface {
 			registerMethod(L, "Player", "addTibiaCoins", PlayerFunctions::luaPlayerAddTibiaCoins);
 			registerMethod(L, "Player", "removeTibiaCoins", PlayerFunctions::luaPlayerRemoveTibiaCoins);
 
+			//INICIO //GUSTAVO LIBER - 09/09/2022 - COIN TOURNAMENTS ADD
+			registerMethod(L, "Player", "getTournamentsCoins", PlayerFunctions::luaPlayerGetTournamentsCoins);
+			registerMethod(L, "Player", "addTournamentsCoins", PlayerFunctions::luaPlayerAddTournamentsCoins);
+			registerMethod(L, "Player", "removeTournamentsCoins", PlayerFunctions::luaPlayerRemoveTournamentsCoins);
+			//FIM //GUSTAVO LIBER - 09/09/2022 - COIN TOURNAMENTS ADD
+
+			registerMethod(L, "Player", "setFaction", PlayerFunctions::luaPlayerSetFaction);
+			registerMethod(L, "Player", "getFaction", PlayerFunctions::luaPlayerGetFaction);
+
 			registerMethod(L, "Player", "hasBlessing", PlayerFunctions::luaPlayerHasBlessing);
 			registerMethod(L, "Player", "addBlessing", PlayerFunctions::luaPlayerAddBlessing);
 			registerMethod(L, "Player", "removeBlessing", PlayerFunctions::luaPlayerRemoveBlessing);
@@ -282,9 +291,6 @@ class PlayerFunctions final : LuaScriptInterface {
 
 			registerMethod(L, "Player", "getForgeSlivers", PlayerFunctions::luaPlayerGetForgeSlivers);
 			registerMethod(L, "Player", "getForgeCores", PlayerFunctions::luaPlayerGetForgeCores);
-
-			registerMethod(L, "Player", "setFaction", PlayerFunctions::luaPlayerSetFaction);
-			registerMethod(L, "Player", "getFaction", PlayerFunctions::luaPlayerGetFaction);
 
 			GroupFunctions::init(L);
 			GuildFunctions::init(L);
@@ -481,6 +487,15 @@ class PlayerFunctions final : LuaScriptInterface {
 		static int luaPlayerAddTibiaCoins(lua_State* L);
 		static int luaPlayerRemoveTibiaCoins(lua_State* L);
 
+		//INICIO //GUSTAVO LIBER - 09/09/2022 - COIN TOURNAMENTS ADD
+		static int luaPlayerGetTournamentsCoins(lua_State* L);
+		static int luaPlayerAddTournamentsCoins(lua_State* L);
+		static int luaPlayerRemoveTournamentsCoins(lua_State* L);
+		//FIM //GUSTAVO LIBER - 09/09/2022 - COIN TOURNAMENTS ADD
+
+		static int luaPlayerSetFaction(lua_State* L);
+		static int luaPlayerGetFaction(lua_State* L);
+
 		static int luaPlayerHasBlessing(lua_State* L);
 		static int luaPlayerAddBlessing(lua_State* L);
 		static int luaPlayerRemoveBlessing(lua_State* L);
@@ -560,9 +575,6 @@ class PlayerFunctions final : LuaScriptInterface {
 
 		static int luaPlayerGetForgeSlivers(lua_State* L);
 		static int luaPlayerGetForgeCores(lua_State* L);
-
-		static int luaPlayerSetFaction(lua_State* L);
-		static int luaPlayerGetFaction(lua_State* L);
 
 		friend class CreatureFunctions;
 };

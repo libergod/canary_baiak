@@ -27,7 +27,6 @@ class GameFunctions final : LuaScriptInterface {
 
 				registerMethod(L, "Game", "getPlayers", GameFunctions::luaGameGetPlayers);
 				registerMethod(L, "Game", "loadMap", GameFunctions::luaGameLoadMap);
-				registerMethod(L, "Game", "loadMapChunk", GameFunctions::luaGameloadMapChunk);
 
 				registerMethod(L, "Game", "getMonsterCount", GameFunctions::luaGameGetMonsterCount);
 				registerMethod(L, "Game", "getPlayerCount", GameFunctions::luaGameGetPlayerCount);
@@ -73,6 +72,7 @@ class GameFunctions final : LuaScriptInterface {
 				registerMethod(L, "Game", "makeFiendishMonster", GameFunctions::luaGameMakeFiendishMonster);
 				registerMethod(L, "Game", "removeFiendishMonster", GameFunctions::luaGameRemoveFiendishMonster);
 				registerMethod(L, "Game", "getFiendishMonsters", GameFunctions::luaGameGetFiendishMonsters);
+
 			}
 
 	private:
@@ -86,7 +86,6 @@ class GameFunctions final : LuaScriptInterface {
 
 			static int luaGameGetPlayers(lua_State* L);
 			static int luaGameLoadMap(lua_State* L);
-			static int luaGameloadMapChunk(lua_State* L);
 
 			static int luaGameGetMonsterCount(lua_State* L);
 			static int luaGameGetPlayerCount(lua_State* L);
@@ -132,6 +131,7 @@ class GameFunctions final : LuaScriptInterface {
 			static int luaGameMakeFiendishMonster(lua_State *L);
 			static int luaGameRemoveFiendishMonster(lua_State *L);
 			static int luaGameGetFiendishMonsters(lua_State *L);
+
 };
 
 #endif  // SRC_LUA_FUNCTIONS_CORE_GAME_GAME_FUNCTIONS_HPP_

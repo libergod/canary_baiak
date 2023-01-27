@@ -18,6 +18,7 @@ int ActionFunctions::luaCreateAction(lua_State* L) {
 	// Action()
 	Action* action = new Action(getScriptEnv()->getScriptInterface());
 	if (action) {
+		action->fromLua = true;
 		pushUserdata<Action>(L, action);
 		setMetatable(L, -1, "Action");
 	} else {
@@ -35,7 +36,7 @@ int ActionFunctions::luaActionOnUse(lua_State* L) {
 			pushBoolean(L, false);
 			return 1;
 		}
-		action->setLoadedCallback(true);
+		action->scripted = true;
 		pushBoolean(L, true);
 	} else {
 		reportErrorFunc(getErrorDesc(LUA_ERROR_ACTION_NOT_FOUND));
@@ -48,7 +49,7 @@ int ActionFunctions::luaActionRegister(lua_State* L) {
 	// action:register()
 	Action* action = getUserdata<Action>(L, 1);
 	if (action) {
-		if (!action->isLoadedCallback()) {
+		if (!action->isScripted()) {
 			pushBoolean(L, false);
 			return 1;
 		}

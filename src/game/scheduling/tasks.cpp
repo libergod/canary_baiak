@@ -33,9 +33,7 @@ void Dispatcher::threadMain()
 
 		if (taskList.empty()) {
 			//if the list is empty wait for signal
-			taskSignal.wait(taskLockUnique, [this] {
-				return taskList.empty();
-			});
+			taskSignal.wait(taskLockUnique);
 		}
 
 		if (!taskList.empty()) {

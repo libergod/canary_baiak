@@ -116,14 +116,8 @@ class MatrixArea
 		// non-assignable
 		MatrixArea& operator=(const MatrixArea&) = delete;
 
-		void setValue(uint32_t row, uint32_t col, bool value) {
-			if (row < rows && col < cols)
-			{
-				data_[row][col] = value;
-			} else {
-				SPDLOG_ERROR("[{}] Access exceeds the upper limit of memory block");
-				throw std::out_of_range("Access exceeds the upper limit of memory block");
-			}
+		void setValue(uint32_t row, uint32_t col, bool value) const {
+			data_[row][col] = value;
 		}
 		bool getValue(uint32_t row, uint32_t col) const {
 			return data_[row][col];

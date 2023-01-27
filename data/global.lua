@@ -1,5 +1,4 @@
 math.randomseed(os.time())
-
 dofile(DATA_DIRECTORY .. "/lib/lib.lua")
 local startupFile=io.open(DATA_DIRECTORY.. "/startup/startup.lua", "r")
 if startupFile ~= nil then
@@ -31,6 +30,20 @@ NORTHEAST = DIRECTION_NORTHEAST
 STORAGEVALUE_PROMOTION = 30018
 
 SERVER_NAME = configManager.getString(configKeys.SERVER_NAME)
+
+-- AutoLoot config
+    AUTO_LOOT_MAX_ITEMS = 5
+
+    -- Reserved storage
+    AUTOLOOT_STORAGE_START = 10000
+    AUTOLOOT_STORAGE_END = AUTOLOOT_STORAGE_START + AUTO_LOOT_MAX_ITEMS
+-- AutoLoot config end
+
+-- Lottery config
+LOTTERY_STORAGE_MINUTE = 60001
+LOTTERY_STORAGE_FINISHED = 60002
+LOTTERY_STORAGE_FINISHEDHOUR = 60003
+-- Lottery config end
 
 -- Bestiary charm
 GLOBAL_CHARM_GUT = 0
@@ -221,3 +234,14 @@ function addStamina(playerId, ...)
 	end
 	return false
 end
+
+function hourToNumber(str)
+    local hour = (tonumber(str:sub(1,2))*3600) + (tonumber(str:sub(4,5)) * 60)
+    if #str > 5 then
+        hour = hour + tonumber(str:sub(7,8))
+    end
+    return hour
+end
+
+-- Exercise Training
+onExerciseTraining = {}

@@ -119,6 +119,7 @@ class Account {
    * @return error_t ERROR_NO(0) Success, otherwise Fail.
    */
   error_t GetCoins(uint32_t *coins);
+	error_t GetCoinsTournaments(uint32_t* coins);
 
   /**
    * @brief Add coins to the account and update database.
@@ -127,6 +128,7 @@ class Account {
    * @return error_t ERROR_NO(0) Success, otherwise Fail.
    */
   error_t AddCoins(uint32_t amount);
+	error_t AddCoinsTournaments(uint32_t amount);
 
   /**
    * @brief Removes coins from the account and update database.
@@ -135,6 +137,7 @@ class Account {
    * @return error_t ERROR_NO(0) Success, otherwise Fail.
    */
   error_t RemoveCoins(uint32_t amount);
+	error_t RemoveCoinsTournaments(uint32_t amount);
 
   /**
    * @brief Register account coins transactions in database.

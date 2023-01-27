@@ -2,6 +2,18 @@ local loginEvents = CreatureEvent("LoginEvents")
 function loginEvents.onLogin(player)
 
 	local events = {
+		--Custom BAIAK
+		"AnimationUp",
+		"DodgeCriticalSystem",
+		"DodgeManaSystem",
+		"MonsterHunt",
+		"AutoLoot",
+		"Exiva",
+		"Events",
+		"Tasks",
+		"SuperUP",
+		"GuildLevel",
+		
 		--Monster
 		"LowerRoshamuul",
 		--Others

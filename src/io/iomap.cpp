@@ -11,7 +11,6 @@
 
 #include "io/iomap.h"
 #include "game/movement/teleport.h"
-#include "game/game.h"
 
 /*
 	OTBM_ROOTV1
@@ -56,7 +55,7 @@ Tile* IOMap::createTile(Item*& ground, Item* item, uint16_t x, uint16_t y, uint8
 	return tile;
 }
 
-bool IOMap::loadMap(Map* map, const std::string& fileName, const Position& pos, bool unload)
+bool IOMap::loadMap(Map* map, const std::string& fileName)
 {
 	int64_t start = OTSYS_TIME();
 	OTB::Loader loader{fileName, OTB::Identifier{{'O', 'T', 'B', 'M'}}};
@@ -109,7 +108,7 @@ bool IOMap::loadMap(Map* map, const std::string& fileName, const Position& pos, 
 
 	for (auto& mapDataNode : mapNode.children) {
 		if (mapDataNode.type == OTBM_TILE_AREA) {
-			if (!parseTileArea(loader, mapDataNode, *map, pos, unload)) {
+			if (!parseTileArea(loader, mapDataNode, *map)) {
 				return false;
 			}
 		} else if (mapDataNode.type == OTBM_TOWNS) {
@@ -189,7 +188,7 @@ bool IOMap::parseMapDataAttributes(OTB::Loader& loader, const OTB::Node& mapNode
 	return true;
 }
 
-bool IOMap::parseTileArea(OTB::Loader& loader, const OTB::Node& tileAreaNode, Map& map, const Position& pos, bool unload)
+bool IOMap::parseTileArea(OTB::Loader& loader, const OTB::Node& tileAreaNode, Map& map)
 {
 	PropStream propStream;
 	if (!loader.getProps(tileAreaNode, propStream)) {
@@ -205,7 +204,7 @@ bool IOMap::parseTileArea(OTB::Loader& loader, const OTB::Node& tileAreaNode, Ma
 
 	uint16_t base_x = area_coord.x;
 	uint16_t base_y = area_coord.y;
-	uint16_t base_z = area_coord.z;
+	uint16_t z = area_coord.z;
 
 	static std::map<uint64_t, uint64_t> teleportMap;
 
@@ -226,31 +225,8 @@ bool IOMap::parseTileArea(OTB::Loader& loader, const OTB::Node& tileAreaNode, Ma
 			return false;
 		}
 
-		uint16_t x = base_x + tile_coord.x + pos.x;
-		uint16_t y = base_y + tile_coord.y + pos.y;
-		uint8_t z = static_cast<uint8_t>(base_z + pos.z);
-
-		if (unload) {
-			Tile* tile = map.getTile(Position(x, y, z));
-
-			if (const TileItemVector* items = tile->getItemList();
-				items) {
-				TileItemVector item_list = *items;
-				if (!item_list.size() == 0) {
-					for (Item* item : item_list) {
-						if (item) {
-							g_game().internalRemoveItem(item);
-						}
-					}
-				}
-			}
-
-			if (Item* ground = tile->getGround();
-				ground) {
-				g_game().internalRemoveItem(ground);
-			}
-			continue;
-		}
+		uint16_t x = base_x + tile_coord.x;
+		uint16_t y = base_y + tile_coord.y;
 
 		bool isHouseTile = false;
 		House* house = nullptr;
@@ -267,19 +243,17 @@ bool IOMap::parseTileArea(OTB::Loader& loader, const OTB::Node& tileAreaNode, Ma
 				return false;
 			}
 
-			if (!unload) {
-				house = map.houses.addHouse(houseId);
-				if (!house) {
-					std::ostringstream ss;
-					ss << "[x:" << x << ", y:" << y << ", z:" << z << "] Could not create house id: " << houseId;
-					setLastErrorString(ss.str());
-					return false;
-				}
-
-				tile = new HouseTile(x, y, z, house);
-				house->addTile(static_cast<HouseTile*>(tile));
-				isHouseTile = true;
+			house = map.houses.addHouse(houseId);
+			if (!house) {
+				std::ostringstream ss;
+				ss << "[x:" << x << ", y:" << y << ", z:" << z << "] Could not create house id: " << houseId;
+				setLastErrorString(ss.str());
+				return false;
 			}
+
+			tile = new HouseTile(x, y, z, house);
+			house->addTile(static_cast<HouseTile*>(tile));
+			isHouseTile = true;
 		}
 
 		uint8_t attribute;
@@ -287,28 +261,24 @@ bool IOMap::parseTileArea(OTB::Loader& loader, const OTB::Node& tileAreaNode, Ma
 		while (propStream.read<uint8_t>(attribute)) {
 			switch (attribute) {
 				case OTBM_ATTR_TILE_FLAGS: {
-					if (!unload) {
-						uint32_t flags;
-						if (!propStream.read<uint32_t>(flags)) {
-							std::ostringstream ss;
-							ss << "[x:" << x << ", y:" << y << ", z:" << z << "] Failed to read tile flags.";
-							setLastErrorString(ss.str());
-							return false;
-						}
+					uint32_t flags;
+					if (!propStream.read<uint32_t>(flags)) {
+						std::ostringstream ss;
+						ss << "[x:" << x << ", y:" << y << ", z:" << z << "] Failed to read tile flags.";
+						setLastErrorString(ss.str());
+						return false;
+					}
 
-						if ((flags & OTBM_TILEFLAG_PROTECTIONZONE) != 0) {
-							tileflags |= TILESTATE_PROTECTIONZONE;
-						}
-						else if ((flags & OTBM_TILEFLAG_NOPVPZONE) != 0) {
-							tileflags |= TILESTATE_NOPVPZONE;
-						}
-						else if ((flags & OTBM_TILEFLAG_PVPZONE) != 0) {
-							tileflags |= TILESTATE_PVPZONE;
-						}
+					if ((flags & OTBM_TILEFLAG_PROTECTIONZONE) != 0) {
+						tileflags |= TILESTATE_PROTECTIONZONE;
+					} else if ((flags & OTBM_TILEFLAG_NOPVPZONE) != 0) {
+						tileflags |= TILESTATE_NOPVPZONE;
+					} else if ((flags & OTBM_TILEFLAG_PVPZONE) != 0) {
+						tileflags |= TILESTATE_PVPZONE;
+					}
 
-						if ((flags & OTBM_TILEFLAG_NOLOGOUT) != 0) {
-							tileflags |= TILESTATE_NOLOGOUT;
-						}
+					if ((flags & OTBM_TILEFLAG_NOLOGOUT) != 0) {
+						tileflags |= TILESTATE_NOLOGOUT;
 					}
 					break;
 				}

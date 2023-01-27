@@ -19,6 +19,7 @@ int TalkActionFunctions::luaCreateTalkAction(lua_State* L) {
 		for (int i = 2; i <= lua_gettop(L); i++) {
 			talk->setWords(getString(L, i));
 		}
+		talk->fromLua = true;
 		pushUserdata<TalkAction>(L, talk);
 		setMetatable(L, -1, "TalkAction");
 	} else {
@@ -46,7 +47,7 @@ int TalkActionFunctions::luaTalkActionRegister(lua_State* L) {
 	// talkAction:register()
 	TalkAction* talk = getUserdata<TalkAction>(L, 1);
 	if (talk) {
-		if (!talk->isLoadedCallback()) {
+		if (!talk->isScripted()) {
 			pushBoolean(L, false);
 			return 1;
 		}

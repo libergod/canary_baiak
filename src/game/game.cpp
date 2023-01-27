@@ -322,9 +322,9 @@ bool Game::loadCustomMap(const std::string& filename)
 	return map.loadMapCustom(g_configManager().getString(DATA_DIRECTORY) + "/world/custom/" + filename + ".otbm", true, true, true);
 }
 
-void Game::loadMap(const std::string& path, const Position& pos, bool unload)
+void Game::loadMap(const std::string& path)
 {
-	map.loadMap(path, false, false, false, false, pos, unload);
+	map.loadMap(path);
 }
 
 Cylinder* Game::internalGetCylinder(Player* player, const Position& pos) const
@@ -1943,7 +1943,6 @@ void Game::addMoney(Cylinder* cylinder, uint64_t money, uint32_t flags /*= 0*/)
 
 		crystalCoins -= count;
 	}
-
 	uint16_t platinumCoins = money / 100;
 	if (platinumCoins != 0) {
 		Item* remaindItem = Item::CreateItem(ITEM_PLATINUM_COIN, platinumCoins);
@@ -5495,11 +5494,9 @@ bool Game::combatBlockHit(CombatDamage& damage, Creature* attacker, Creature* ta
 
 	// Skill dodge (ruse)
 	if (const Player* targetPlayer = target->getPlayer()) {
-		if (auto playerArmor = targetPlayer->getInventoryItem(CONST_SLOT_ARMOR);
-			playerArmor != nullptr && playerArmor->getTier()) {
-			double_t chance = playerArmor->getDodgeChance();
-			double_t randomChance = uniform_random(0, 10000) / 100;
-			if (chance > 0 && randomChance < chance) {
+		if (targetPlayer->getInventoryItem(CONST_SLOT_ARMOR) != nullptr) {
+			double_t chance = targetPlayer->getInventoryItem(CONST_SLOT_ARMOR)->getDodgeChance();
+			if (chance > 0 && uniform_random(1, 100) <= chance) {
 				sendBlockEffect(BLOCK_DODGE, damage.primary.type, target->getPosition());
 				targetPlayer->sendTextMessage(MESSAGE_ATTENTION, "You dodged an attack. (Ruse)");
 				return true;
@@ -6248,7 +6245,7 @@ bool Game::combatChangeMana(Creature* attacker, Creature* target, CombatDamage& 
 		realManaChange = target->getMana() - realManaChange;
 
 		if (realManaChange > 0 && !target->isInGhostMode()) {
-			std::string damageString = fmt::format("{} mana", realManaChange);
+			std::string damageString = std::to_string(realManaChange) + " mana.";
 
 			std::string spectatorMessage;
 			if (!attacker) {
@@ -6513,12 +6510,18 @@ void Game::checkImbuements()
 
 	std::vector<uint32_t> toErase;
 
-	for (const auto& [mapPlayerId, mapPlayer] : getPlayers()) {
-		if (!mapPlayer) {
+	for (const auto& [key, value] : playersActiveImbuements) {
+		Player* player = getPlayerByID(key);
+		if (!player) {
+			toErase.push_back(key);
 			continue;
 		}
 
-		mapPlayer->updateInventoryImbuement();
+		player->updateInventoryImbuement();
+	}
+
+	for (uint32_t playerId : toErase) {
+		setPlayerActiveImbuements(playerId, 0);
 	}
 
 }
@@ -6570,19 +6573,19 @@ void Game::checkLight()
 	LightInfo lightInfo = getWorldLightInfo();
 
 	if (lightChange) {
-		for ([[maybe_unused]] const auto& [mapPlayerId, mapPlayer] : getPlayers()) {
-			mapPlayer->sendWorldLight(lightInfo);
-			mapPlayer->sendTibiaTime(lightHour);
+		for (const auto& it : players) {
+			it.second->sendWorldLight(lightInfo);
+      it.second->sendTibiaTime(lightHour);
 		}
 	} else {
-		for ([[maybe_unused]] const auto& [mapPlayerId, mapPlayer] : getPlayers()) {
-			mapPlayer->sendTibiaTime(lightHour);
-		}
+		for (const auto& it : players) {
+			it.second->sendTibiaTime(lightHour);
+    }
 	}
-	if (currentLightState != lightState) {
+  if (currentLightState != lightState) {
 		currentLightState = lightState;
-		for (const auto& [eventName, globalEvent] : g_globalEvents().getEventMap(GLOBALEVENT_PERIODCHANGE)) {
-			globalEvent.executePeriodChange(lightState, lightInfo);
+		for (auto& [key, it] : g_globalEvents().getEventMap(GLOBALEVENT_PERIODCHANGE)) {
+			it.executePeriodChange(lightState, lightInfo);
 		}
 	}
 }
@@ -6632,7 +6635,6 @@ void Game::shutdown()
 	ConnectionManager::getInstance().closeAll();
 
 	SPDLOG_INFO("Done!");
-	exit(0);
 }
 
 void Game::cleanup()
@@ -6741,10 +6743,6 @@ void Game::updateCreatureType(Creature* creature)
 	if (creatureType == CREATURETYPE_SUMMON_OTHERS) {
 		for (Creature* spectator : spectators) {
 			Player* player = spectator->getPlayer();
-			if (!player) {
-				continue;
-			}
-
 			if (masterPlayer == player) {
 				player->sendCreatureType(creature, CREATURETYPE_SUMMON_PLAYER);
 			} else {
@@ -8010,7 +8008,7 @@ void Game::parsePlayerExtendedOpcode(uint32_t playerId, uint8_t opcode, const st
 		return;
 	}
 
-	for (const CreatureEvent* creatureEvent : player->getCreatureEvents(CREATURE_EVENT_EXTENDED_OPCODE)) {
+	for (CreatureEvent* creatureEvent : player->getCreatureEvents(CREATURE_EVENT_EXTENDED_OPCODE)) {
 		creatureEvent->executeExtendedOpcode(player, opcode, buffer);
 	}
 }
@@ -8065,7 +8063,7 @@ void Game::playerAnswerModalWindow(uint32_t playerId, uint32_t modalWindowId, ui
 
 		player->setBedItem(nullptr);
 	} else {
-		for (const auto creatureEvent : player->getCreatureEvents(CREATURE_EVENT_MODALWINDOW)) {
+		for (auto creatureEvent : player->getCreatureEvents(CREATURE_EVENT_MODALWINDOW)) {
 			creatureEvent->executeModalWindow(player, modalWindowId, button, choice);
 		}
 	}

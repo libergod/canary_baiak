@@ -10,14 +10,13 @@
 #ifndef SRC_LUA_GLOBAL_GLOBALEVENT_H_
 #define SRC_LUA_GLOBAL_GLOBALEVENT_H_
 
-#include "utils/utils_definitions.hpp"
-#include "lua/scripts/scripts.h"
+#include "lua/global/baseevents.h"
 
 class GlobalEvent;
 using GlobalEvent_ptr = std::unique_ptr<GlobalEvent>;
 using GlobalEventMap = std::map<std::string, GlobalEvent>;
 
-class GlobalEvents final : public Scripts {
+class GlobalEvents final : public BaseEvents {
 	public:
 		GlobalEvents();
 		~GlobalEvents();
@@ -40,22 +39,39 @@ class GlobalEvents final : public Scripts {
 		void execute(GlobalEvent_t type) const;
 
 		GlobalEventMap getEventMap(GlobalEvent_t type);
+		static void clearMap(GlobalEventMap& map, bool fromLua);
 
 		bool registerLuaEvent(GlobalEvent* event);
 		void clear();
+		// Old XML interface
+		void clear(bool fromLua) override final;
 
 	private:
+		std::string getScriptBaseName() const override {
+			return "globalevents";
+		}
+
+		Event_ptr getEvent(const std::string& nodeName) override;
+		bool registerEvent(Event_ptr event, const pugi::xml_node& node) override;
+
+		LuaScriptInterface& getScriptInterface() override {
+			return scriptInterface;
+		}
+		LuaScriptInterface scriptInterface;
+
 		GlobalEventMap thinkMap, serverMap, timerMap;
 		int32_t thinkEventId = 0, timerEventId = 0;
 };
 
 constexpr auto g_globalEvents = &GlobalEvents::getInstance;
 
-class GlobalEvent final : public Script {
+class GlobalEvent final : public Event {
 	public:
 		explicit GlobalEvent(LuaScriptInterface* interface);
 
-		bool executePeriodChange(LightState_t lightState, LightInfo lightInfo) const ;
+		bool configureEvent(const pugi::xml_node& node) override;
+
+		bool executePeriodChange(LightState_t lightState, LightInfo lightInfo);
 		bool executeRecord(uint32_t current, uint32_t old);
 		bool executeEvent() const;
 
@@ -72,6 +88,7 @@ class GlobalEvent final : public Script {
 		void setName(std::string eventName) {
 			name = eventName;
 		}
+
 		uint32_t getInterval() const {
 			return interval;
 		}
@@ -89,7 +106,7 @@ class GlobalEvent final : public Script {
 	private:
 		GlobalEvent_t eventType = GLOBALEVENT_NONE;
 
-		std::string getScriptTypeName() const override;
+		std::string getScriptEventName() const override;
 
 		std::string name;
 		int64_t nextExecution = 0;

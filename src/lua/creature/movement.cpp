@@ -11,6 +11,7 @@
 
 #include "game/game.h"
 #include "lua/creature/events.h"
+#include "utils/pugicast.h"
 #include "lua/creature/movement.h"
 
 void MoveEvents::clear() {
@@ -18,6 +19,10 @@ void MoveEvents::clear() {
 	actionIdMap.clear();
 	itemIdMap.clear();
 	positionsMap.clear();
+}
+
+Event_ptr MoveEvents::getEvent(const std::string& nodeName) {
+	return Event_ptr(new MoveEvent(&scriptInterface));
 }
 
 bool MoveEvents::registerLuaItemEvent(MoveEvent& moveEvent) {
@@ -112,18 +117,11 @@ bool MoveEvents::registerLuaEvent(MoveEvent& moveEvent) {
 	{
 		return true;
 	} else {
-		SPDLOG_WARN(
-			"[{}] missing id, aid, uid or position for script: {}",
-			__FUNCTION__,
-			moveEvent.getScriptInterface()->getLoadingScriptName()
-		);
+		SPDLOG_WARN("[MoveEvents::registerLuaEvent] - "
+				"Missing id, aid, uid or position");
 		return false;
 	}
-	SPDLOG_DEBUG(
-		"[{}] missing or incorrect event for script: {}",
-		__FUNCTION__,
-		moveEvent->getScriptInterface()->getLoadingScriptName()
-	);
+	SPDLOG_DEBUG("[MoveEvents::registerLuaEvent] - Missing or incorrect event for some script");
 	return false;
 }
 
@@ -138,12 +136,8 @@ bool MoveEvents::registerEvent(MoveEvent& moveEvent, int32_t id, std::map<int32_
 		std::list<MoveEvent>& moveEventList = it->second.moveEvent[moveEvent.getEventType()];
 		for (MoveEvent& existingMoveEvent : moveEventList) {
 			if (existingMoveEvent.getSlot() == moveEvent.getSlot()) {
-				SPDLOG_WARN(
-					"[{}] duplicate move event found: {}, for script: {}",
-					__FUNCTION__,
-					id,
-					moveEvent.getScriptInterface()->getLoadingScriptName()
-				);
+				SPDLOG_WARN("[MoveEvents::registerEvent] - "
+							"Duplicate move event found: {}", id);
 				return false;
 			}
 		}
@@ -234,12 +228,8 @@ bool MoveEvents::registerEvent(MoveEvent& moveEvent, const Position& position, s
 	} else {
 		std::list<MoveEvent>& moveEventList = it->second.moveEvent[moveEvent.getEventType()];
 		if (!moveEventList.empty()) {
-			SPDLOG_WARN(
-				"[{}] duplicate move event found: {}, for script {}",
-				__FUNCTION__,
-				position.toString(),
-				moveEvent.getScriptInterface()->getLoadingScriptName()
-			);
+			SPDLOG_WARN("[MoveEvents::registerEvent] - "
+						"Duplicate move event found: {}", position.toString());
 			return false;
 		}
 
@@ -265,7 +255,7 @@ uint32_t MoveEvents::onCreatureMove(Creature& creature, Tile& tile, MoveEvent_t 
 
 	uint32_t ret = 1;
 
-	MoveEvent *moveEvent = getEvent(tile, eventType);
+	MoveEvent* moveEvent = getEvent(tile, eventType);
 	if (moveEvent) {
 		ret &= moveEvent->fireStepEvent(creature, nullptr, pos);
 	}
@@ -290,7 +280,7 @@ uint32_t MoveEvents::onCreatureMove(Creature& creature, Tile& tile, MoveEvent_t 
 }
 
 uint32_t MoveEvents::onPlayerEquip(Player& player, Item& item, Slots_t slot, bool isCheck) {
-	MoveEvent *moveEvent = getEvent(item, MOVE_EVENT_EQUIP, slot);
+	MoveEvent* moveEvent = getEvent(item, MOVE_EVENT_EQUIP, slot);
 	if (!moveEvent) {
 		return 1;
 	}
@@ -298,7 +288,7 @@ uint32_t MoveEvents::onPlayerEquip(Player& player, Item& item, Slots_t slot, boo
 }
 
 uint32_t MoveEvents::onPlayerDeEquip(Player& player, Item& item, Slots_t slot) {
-	MoveEvent *moveEvent = getEvent(item, MOVE_EVENT_DEEQUIP, slot);
+	MoveEvent* moveEvent = getEvent(item, MOVE_EVENT_DEEQUIP, slot);
 	if (!moveEvent) {
 		return 1;
 	}
@@ -316,7 +306,7 @@ uint32_t MoveEvents::onItemMove(Item& item, Tile& tile, bool isAdd) {
 	}
 
 	uint32_t ret = 1;
-	MoveEvent *moveEvent = getEvent(tile, eventType1);
+	MoveEvent* moveEvent = getEvent(tile, eventType1);
 	if (moveEvent) {
 		// No tile item
 		ret &= moveEvent->fireAddRemItem(item, tile.getPosition());
@@ -343,42 +333,11 @@ uint32_t MoveEvents::onItemMove(Item& item, Tile& tile, bool isAdd) {
 		if (moveEvent) {
 			ret &= moveEvent->fireAddRemItem(item, *tileItem, tile.getPosition());
 		}
-
 	}
-
 	return ret;
 }
 
-/*
-================
- MoveEvent class
-================
-*/
-MoveEvent::MoveEvent(LuaScriptInterface* interface) : Script(interface) {}
-
-std::string MoveEvent::getScriptTypeName() const {
-	switch (eventType) {
-	case MOVE_EVENT_STEP_IN:
-		return "onStepIn";
-	case MOVE_EVENT_STEP_OUT:
-		return "onStepOut";
-	case MOVE_EVENT_EQUIP:
-		return "onEquip";
-	case MOVE_EVENT_DEEQUIP:
-		return "onDeEquip";
-	case MOVE_EVENT_ADD_ITEM:
-		return "onAddItem";
-	case MOVE_EVENT_REMOVE_ITEM:
-		return "onRemoveItem";
-	default:
-		SPDLOG_ERROR(
-			"[{}] invalid event type for script: {}",
-			__FUNCTION__,
-			getScriptInterface()->getLoadingScriptName()
-		);
-		return std::string();
-	}
-}
+MoveEvent::MoveEvent(LuaScriptInterface* interface) : Event(interface) {}
 
 uint32_t MoveEvent::StepInField(Creature* creature, Item* item, const Position&) {
 	if (creature == nullptr) {
@@ -439,7 +398,7 @@ uint32_t MoveEvent::RemoveItemField(Item*, Item*, const Position&) {
 	return 1;
 }
 
-uint32_t MoveEvent::EquipItem(MoveEvent *moveEvent, Player* player, Item* item, Slots_t slot, bool isCheck) {
+uint32_t MoveEvent::EquipItem(MoveEvent* moveEvent, Player* player, Item* item, Slots_t slot, bool isCheck) {
 	if (player == nullptr) {
 		SPDLOG_ERROR("[MoveEvent::EquipItem] - Player is nullptr");
 		return 0;
@@ -464,7 +423,7 @@ uint32_t MoveEvent::EquipItem(MoveEvent *moveEvent, Player* player, Item* item, 
 		}
 
 		const std::map<uint16_t, bool>& vocEquipMap = moveEvent->getVocEquipMap();
-		if (!vocEquipMap.empty() && !vocEquipMap.contains(player->getVocationId())) {
+		if (!vocEquipMap.empty() && vocEquipMap.find(player->getVocationId()) == vocEquipMap.end()) {
 			return 0;
 		}
 	}
@@ -487,6 +446,7 @@ uint32_t MoveEvent::EquipItem(MoveEvent *moveEvent, Player* player, Item* item, 
 		}
 
 		player->addItemImbuementStats(imbuementInfo.imbuement);
+		g_game().increasePlayerActiveImbuements(player->getID());
 	}
 
 	if (it.abilities) {
@@ -583,6 +543,7 @@ uint32_t MoveEvent::DeEquipItem(MoveEvent*, Player* player, Item* item, Slots_t 
 		}
 
 		player->removeItemImbuementStats(imbuementInfo.imbuement);
+		g_game().decreasePlayerActiveImbuements(player->getID());
 	}
 
 	if (it.abilities) {
@@ -638,18 +599,18 @@ void MoveEvent::setEventType(MoveEvent_t type) {
 	eventType = type;
 }
 
-uint32_t MoveEvent::fireStepEvent(Creature& creature, Item* item, const Position& pos) const {
-	if (isLoadedCallback()) {
+uint32_t MoveEvent::fireStepEvent(Creature& creature, Item* item, const Position& pos) {
+	if (isScripted()) {
 		return executeStep(creature, item, pos);
 	} else {
 		return stepFunction(&creature, item, pos);
 	}
 }
 
-bool MoveEvent::executeStep(Creature& creature, Item* item, const Position& pos) const {
+bool MoveEvent::executeStep(Creature& creature, Item* item, const Position& pos) {
 	//onStepIn(creature, item, pos, fromPosition)
 	//onStepOut(creature, item, pos, fromPosition)
-	if (!getScriptInterface()->reserveScriptEnv()) {
+	if (!scriptInterface->reserveScriptEnv()) {
 		if (item != nullptr) {
 			SPDLOG_ERROR("[MoveEvent::executeStep - Creature {} item {}, position {}] "
 				"Call stack overflow. Too many lua script calls being nested.",
@@ -664,23 +625,23 @@ bool MoveEvent::executeStep(Creature& creature, Item* item, const Position& pos)
 		return false;
 	}
 
-	ScriptEnvironment* env = getScriptInterface()->getScriptEnv();
-	env->setScriptId(getScriptId(), getScriptInterface());
+	ScriptEnvironment* env = scriptInterface->getScriptEnv();
+	env->setScriptId(scriptId, scriptInterface);
 
-	lua_State* L = getScriptInterface()->getLuaState();
+	lua_State* L = scriptInterface->getLuaState();
 
-	getScriptInterface()->pushFunction(getScriptId());
+	scriptInterface->pushFunction(scriptId);
 	LuaScriptInterface::pushUserdata<Creature>(L, &creature);
 	LuaScriptInterface::setCreatureMetatable(L, -1, &creature);
 	LuaScriptInterface::pushThing(L, item);
 	LuaScriptInterface::pushPosition(L, pos);
 	LuaScriptInterface::pushPosition(L, creature.getLastPosition());
 
-	return getScriptInterface()->callFunction(4);
+	return scriptInterface->callFunction(4);
 }
 
 uint32_t MoveEvent::fireEquip(Player& player, Item& item, Slots_t toSlot, bool isCheck) {
-	if (isLoadedCallback()) {
+	if (isScripted()) {
 		if (!equipFunction || equipFunction(this, &player, &item, toSlot, isCheck) == 1) {
 			if (executeEquip(player, item, toSlot, isCheck)) {
 				return 1;
@@ -692,43 +653,43 @@ uint32_t MoveEvent::fireEquip(Player& player, Item& item, Slots_t toSlot, bool i
 	}
 }
 
-bool MoveEvent::executeEquip(Player& player, Item& item, Slots_t onSlot, bool isCheck) const {
+bool MoveEvent::executeEquip(Player& player, Item& item, Slots_t onSlot, bool isCheck) {
 	//onEquip(player, item, slot, isCheck)
 	//onDeEquip(player, item, slot, isCheck)
-	if (!getScriptInterface()->reserveScriptEnv()) {
+	if (!scriptInterface->reserveScriptEnv()) {
 		SPDLOG_ERROR("[MoveEvent::executeEquip - Player {} item {}] "
                     "Call stack overflow. Too many lua script calls being nested.",
                     player.getName(), item.getName());
 		return false;
 	}
 
-	ScriptEnvironment* env = getScriptInterface()->getScriptEnv();
-	env->setScriptId(getScriptId(), getScriptInterface());
+	ScriptEnvironment* env = scriptInterface->getScriptEnv();
+	env->setScriptId(scriptId, scriptInterface);
 
-	lua_State* L = getScriptInterface()->getLuaState();
+	lua_State* L = scriptInterface->getLuaState();
 
-	getScriptInterface()->pushFunction(getScriptId());
+	scriptInterface->pushFunction(scriptId);
 	LuaScriptInterface::pushUserdata<Player>(L, &player);
 	LuaScriptInterface::setMetatable(L, -1, "Player");
 	LuaScriptInterface::pushThing(L, &item);
 	lua_pushnumber(L, onSlot);
 	LuaScriptInterface::pushBoolean(L, isCheck);
 
-	return getScriptInterface()->callFunction(4);
+	return scriptInterface->callFunction(4);
 }
 
-uint32_t MoveEvent::fireAddRemItem(Item& item, Item& fromTile, const Position& pos) const {
-	if (isLoadedCallback()) {
+uint32_t MoveEvent::fireAddRemItem(Item& item, Item& fromTile, const Position& pos) {
+	if (isScripted()) {
 		return executeAddRemItem(item, fromTile, pos);
 	} else {
 		return moveFunction(&item, &fromTile, pos);
 	}
 }
 
-bool MoveEvent::executeAddRemItem(Item& item, Item& fromTile, const Position& pos) const {
+bool MoveEvent::executeAddRemItem(Item& item, Item& fromTile, const Position& pos) {
 	//onAddItem(moveitem, tileitem, pos)
 	//onRemoveItem(moveitem, tileitem, pos)
-	if (!getScriptInterface()->reserveScriptEnv()) {
+	if (!scriptInterface->reserveScriptEnv()) {
 		SPDLOG_ERROR("[MoveEvent::executeAddRemItem - "
                     "Item {} item on tile x: {} y: {} z: {}] "
                     "Call stack overflow. Too many lua script calls being nested.",
@@ -737,31 +698,31 @@ bool MoveEvent::executeAddRemItem(Item& item, Item& fromTile, const Position& po
 		return false;
 	}
 
-	ScriptEnvironment* env = getScriptInterface()->getScriptEnv();
-	env->setScriptId(getScriptId(), getScriptInterface());
+	ScriptEnvironment* env = scriptInterface->getScriptEnv();
+	env->setScriptId(scriptId, scriptInterface);
 
-	lua_State* L = getScriptInterface()->getLuaState();
+	lua_State* L = scriptInterface->getLuaState();
 
-	getScriptInterface()->pushFunction(getScriptId());
+	scriptInterface->pushFunction(scriptId);
 	LuaScriptInterface::pushThing(L, &item);
 	LuaScriptInterface::pushThing(L, &fromTile);
 	LuaScriptInterface::pushPosition(L, pos);
 
-	return getScriptInterface()->callFunction(3);
+	return scriptInterface->callFunction(3);
 }
 
-uint32_t MoveEvent::fireAddRemItem(Item& item, const Position& pos) const {
-	if (isLoadedCallback()) {
+uint32_t MoveEvent::fireAddRemItem(Item& item, const Position& pos) {
+	if (isScripted()) {
 		return executeAddRemItem(item, pos);
 	} else {
 		return moveFunction(&item, nullptr, pos);
 	}
 }
 
-bool MoveEvent::executeAddRemItem(Item& item, const Position& pos) const {
+bool MoveEvent::executeAddRemItem(Item& item, const Position& pos) {
 	//onaddItem(moveitem, pos)
 	//onRemoveItem(moveitem, pos)
-	if (!getScriptInterface()->reserveScriptEnv()) {
+	if (!scriptInterface->reserveScriptEnv()) {
 		SPDLOG_ERROR("[MoveEvent::executeAddRemItem - "
                     "Item {} item on tile x: {} y: {} z: {}] "
                     "Call stack overflow. Too many lua script calls being nested.",
@@ -770,14 +731,14 @@ bool MoveEvent::executeAddRemItem(Item& item, const Position& pos) const {
 		return false;
 	}
 
-	ScriptEnvironment* env = getScriptInterface()->getScriptEnv();
-	env->setScriptId(getScriptId(), getScriptInterface());
+	ScriptEnvironment* env = scriptInterface->getScriptEnv();
+	env->setScriptId(scriptId, scriptInterface);
 
-	lua_State* L = getScriptInterface()->getLuaState();
+	lua_State* L = scriptInterface->getLuaState();
 
-	getScriptInterface()->pushFunction(getScriptId());
+	scriptInterface->pushFunction(scriptId);
 	LuaScriptInterface::pushThing(L, &item);
 	LuaScriptInterface::pushPosition(L, pos);
 
-	return getScriptInterface()->callFunction(2);
+	return scriptInterface->callFunction(2);
 }

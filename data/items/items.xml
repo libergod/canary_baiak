@@ -2675,7 +2675,7 @@
 	<item fromid="2002" toid="2003" article="a" name="campfire"/>
 	<item fromid="2004" toid="2011" article="a" name="large cauldron"/>
 	<item fromid="2012" toid="2017" article="a" name="sign">
-		<attribute key="allowDistRead" value="1"/>
+		<attribute key="allowDistRead" value="1" />
 	</item>
 	<item id="2018" article="a" name="dragon flag"/>
 	<item id="2019" article="a" name="castle flag"/>
@@ -3524,24 +3524,18 @@
 		<attribute key="weight" value="65"/>
 	</item>
 	<item id="2596" article="a" name="painting"/>
-	<item id="2597" article="a" name="blackboard">
-		<attribute key="allowDistRead" value="1"/>
-	</item>
+	<item id="2597" article="a" name="blackboard"/>
 	<item id="2598" article="a" name="blackboard">
-		<attribute key="allowDistRead" value="1"/>
 		<attribute key="writeable" value="1"/>
 		<attribute key="maxtextlen" value="1023"/>
 	</item>
 	<item fromid="2599" toid="2600" article="a" name="tapestry"/>
 	<item id="2601" article="a" name="painting"/>
-	<item id="2602" article="a" name="blackboard">
-		<attribute key="allowDistRead" value="1"/>
-	</item>
+	<item id="2602" article="a" name="blackboard"/>
 	<item fromid="2603" toid="2604" article="a" name="wall mirror">
 		<attribute key="description" value="You look fine today."/>
 	</item>
 	<item id="2605" article="a" name="blackboard">
-		<attribute key="allowDistRead" value="1"/>
 		<attribute key="writeable" value="1"/>
 		<attribute key="maxtextlen" value="1023"/>
 	</item>
@@ -12489,9 +12483,7 @@
 		<attribute key="description" value="It apparently belonged to someone called Dragha, the apprentice of a voodoomaster"/>
 		<attribute key="weight" value="5800"/>
 	</item>
-	<item fromid="6121" toid="6122" article="a" name="note pinned on the wall">
-		<attribute key="allowDistRead" value="1"/>
-	</item>
+	<item fromid="6121" toid="6122" article="a" name="note pinned on the wall"/>
 	<item id="6123" article="a" name="piano"/>
 	<item id="6124" article="a" name="damaged logbook">
 		<attribute key="description" value="It must be the one which the explorer society requested"/>
@@ -17109,8 +17101,9 @@
 	<item id="8777" article="a" name="Rerun's ring">
 		<attribute key="weight" value="90"/>
 	</item>
-	<item id="8778" article="a" name="jester doll">
+	<item id="8778" article="an" name="Addon doll">
 		<attribute key="weight" value="1200"/>
+		<attribute key="description" value="Utilize !addon NomeDoAddon." />
 	</item>
 	<item id="8779" article="the" name="head of a jester doll">
 		<attribute key="weight" value="400"/>
@@ -18097,8 +18090,8 @@
 		<attribute key="description" value="This is a box full of yalahari gear wheels."/>
 	</item>
 	<!-- Shadows of Yalahar Quest (mission 12)-->
-	<item id="9170" article="an" name="wonder glue">
-		<attribute key="weight" value="180"/>
+	<item id="9170" article="an" name="Stamina Refiller">
+		<attribute key="weight" value="500"/>
 	</item>
 	<!-- Shadows of Yalahar Quest (mission 12)-->
 	<item id="9171" article="a" name="parchment">
@@ -18116,9 +18109,8 @@
 	<item id="9174" article="a" name="sand"/>
 	<item id="9175" article="a" name="skull"/>
 	<item id="9176" article="a" name="hot cauldron"/>
-	<item id="9177" article="a" name="voodoo doll">
-		<!--Treasure Hunt Quest-->
-		<attribute key="description" value="You read the numbers 3613 on the back of the doll"/>
+	<item id="9177" article="a" name="basic addon doll">
+		<attribute key="description" value="Use this doll to receive basic Addons."/>
 		<attribute key="weight" value="650"/>
 	</item>
 	<item id="9178" article="a" name="voodoo doll">
@@ -22130,8 +22122,8 @@
 		<attribute key="description" value="A hermit near Carlin might be able to tell you more about it"/>
 		<attribute key="weight" value="200"/>
 	</item>
-	<item id="12305" article="a" name="tin key">
-		<attribute key="description" value="A hermit near Carlin might be able to tell you more about it"/>
+	<item id="12305" article="a" name="Super UP Key">
+		<attribute key="description" value="A key used to access Super UP."/>
 		<attribute key="weight" value="200"/>
 	</item>
 	<item id="12306" article="a" name="leather whip">
@@ -34349,11 +34341,11 @@
 	<item id="22722" article="a" name="copper token" plural="copper tokens">
 		<attribute key="weight" value="20"/>
 	</item>
-	<item id="22723" article="a" name="platinum token" plural="platinum tokens">
-		<attribute key="weight" value="20"/>
+	<item id="22723" article="a" name="dodge token" plural="dodge tokens">
+		<attribute key="weight" value="500"/>
 	</item>
-	<item id="22724" article="a" name="titanium token" plural="titanium tokens">
-		<attribute key="weight" value="20"/>
+	<item id="22724" article="a" name="critical token" plural="critical tokens">
+		<attribute key="weight" value="500"/>
 	</item>
 	<item id="22725" article="a" name="rift lamp">
 		<attribute key="weight" value="800"/>

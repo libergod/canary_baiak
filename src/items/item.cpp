@@ -83,16 +83,15 @@ bool Item::getImbuementInfo(uint8_t slot, ImbuementInfo *imbuementInfo)
 	return imbuementInfo->duration && imbuementInfo->imbuement;
 }
 
-void Item::setImbuement(uint8_t slot, uint16_t imbuementId, uint32_t duration)
+void Item::setImbuement(uint8_t slot, uint16_t imbuementId, int32_t duration)
 {
 	std::string key = std::to_string(IMBUEMENT_SLOT + slot);
 	ItemAttributes::CustomAttribute customAttribute;
-	auto convertSafeValue = std::clamp(static_cast<int64_t>(duration), (int64_t)0, std::numeric_limits<int64_t>::max());
-	customAttribute.setInt64(convertSafeValue > 0 ? (convertSafeValue << 8) | imbuementId : 0);
+	customAttribute.setInt64(duration > 0 ? (duration << 8) | imbuementId : 0);
 	setCustomAttribute(key, customAttribute);
 }
 
-void Item::addImbuement(uint8_t slot, uint16_t imbuementId, uint32_t duration)
+void Item::addImbuement(uint8_t slot, uint16_t imbuementId, int32_t duration)
 {
 	Player* player = getHoldingPlayer();
 	if (!player) {
@@ -1100,23 +1099,25 @@ std::vector<std::pair<std::string, std::string>>
 				}
 
 				ss.str("");
-				ss << fmt::format("{} {:+}%", getCombatName(indexToCombatType(i)), it.abilities->absorbPercent[i]);
+				ss << getCombatName(indexToCombatType(i)) << ' '
+                                            << std::showpos << it.abilities->absorbPercent[i] << std::noshowpos << '%';
 				descriptions.emplace_back("Protection", ss.str());
-		}
+        }
 			for (size_t i = 0; i < COMBAT_COUNT; ++i) {
 				if (it.abilities->fieldAbsorbPercent[i] == 0) {
 					continue;
 				}
 
 				ss.str("");
-				ss << fmt::format("{} {:+}%", getCombatName(indexToCombatType(i)), it.abilities->fieldAbsorbPercent[i]);
+				ss << getCombatName(indexToCombatType(i)) << ' '
+                                       << std::showpos << it.abilities->fieldAbsorbPercent[i] << std::noshowpos << '%';
 				descriptions.emplace_back("Field Protection", ss.str());
 			}
 		}
 
 		if (it.isKey()) {
 			ss.str("");
-			ss << fmt::format("{:04}", item->getActionId());
+			ss << std::setfill('0') << std::setw(4) << item->getActionId();
 			descriptions.emplace_back("Key", ss.str());
 		}
 
@@ -1352,7 +1353,8 @@ std::vector<std::pair<std::string, std::string>>
 				}
 
 				ss.str("");
-				ss << fmt::format("{} {:+}%", getCombatName(indexToCombatType(i)), it.abilities->absorbPercent[i]);
+				ss << getCombatName(indexToCombatType(i)) << ' '
+											<< std::showpos << it.abilities->absorbPercent[i] << std::noshowpos << '%';
 				descriptions.emplace_back("Protection", ss.str());
 			}
 
@@ -1362,14 +1364,15 @@ std::vector<std::pair<std::string, std::string>>
 				}
 
 				ss.str("");
-				ss << fmt::format("{} {:+}%", getCombatName(indexToCombatType(i)), it.abilities->fieldAbsorbPercent[i]);
+				ss << getCombatName(indexToCombatType(i)) << ' '
+									<< std::showpos << it.abilities->fieldAbsorbPercent[i] << std::noshowpos << '%';
 				descriptions.emplace_back("Field Protection", ss.str());
 			}
 		}
 
 		if (it.isKey()) {
 			ss.str("");
-			ss << fmt::format("{:04}", 0);
+			ss << std::setfill('0') << std::setw(4) << 0;
 			descriptions.emplace_back("Key", ss.str());
 		}
 
@@ -1494,9 +1497,12 @@ std::string Item::parseImbuementDescription(const Item* item)
 				continue;
 			}
 
-			auto minutes = imbuementInfo.duration / 60;
-			auto hours = minutes / 60;
-			s << fmt::format("{} {} {:02}:{:02}h", baseImbuement->name, imbuementInfo.imbuement->getName(), hours, minutes % 60);
+			int minutes = imbuementInfo.duration / 60;
+			int hours = minutes / 60;
+			s << baseImbuement->name << " "
+			  << imbuementInfo.imbuement->getName() << " "
+			  << std::setw(2) << std::setfill('0') << hours << ":"
+			  << std::setw(2) << std::setfill('0') << (minutes % 60) << "h";
 		}
 		s << ").";
 	}
@@ -1509,12 +1515,13 @@ std::string Item::parseClassificationDescription(const Item* item) {
 	if (item && item->getClassification() >= 1) {
 		string << std::endl << "Classification: " << std::to_string(item->getClassification()) << " Tier: " << std::to_string(item->getTier());
 		if (item->getTier() != 0) {
+			string << " (";
 			if (Item::items[item->getID()].weaponType != WEAPON_NONE) {
-				string << fmt::format(" ({}% Onslaught).", item->getFatalChance());
+				string << item->getFatalChance() << "% Onslaught).";
 			} else if (g_game().getObjectCategory(item) == OBJECTCATEGORY_HELMETS) {
-				string << fmt::format(" ({}% Momentum).", item->getMomentumChance());
+				string << item->getMomentumChance() << "% Momentum).";
 			} else if (g_game().getObjectCategory(item) == OBJECTCATEGORY_ARMORS) {
-				string << fmt::format(" ({:.2f}% Ruse).", item->getDodgeChance());
+				string << std::setprecision(2) << std::fixed << item->getDodgeChance() << "% Ruse).";
 			}
 		}
 	}
@@ -1615,7 +1622,8 @@ std::string Item::parseShowAttributesDescription(const Item *item, const uint16_
 					} else {
 						itemDescription << ", ";
 					}
-					itemDescription << fmt::format("{} {:+}%", getCombatName(indexToCombatType(i)), itemType.abilities->absorbPercent[i]);
+
+					itemDescription << getCombatName(indexToCombatType(i)) << ' ' << std::showpos << itemType.abilities->absorbPercent[i] << std::noshowpos << '%';
 				}
 			} else {
 				if (begin) {
@@ -1625,7 +1633,7 @@ std::string Item::parseShowAttributesDescription(const Item *item, const uint16_
 					itemDescription << ", ";
 				}
 
-				itemDescription << fmt::format("protection all {:+}%", show);
+				itemDescription << "protection all " << std::showpos << show << std::noshowpos << '%';
 			}
 
 			show = itemType.abilities->fieldAbsorbPercent[0];
@@ -1661,7 +1669,8 @@ std::string Item::parseShowAttributesDescription(const Item *item, const uint16_
 						itemDescription << ", ";
 					}
 
-					itemDescription << fmt::format("{} field {:+}%", getCombatName(indexToCombatType(i)), itemType.abilities->fieldAbsorbPercent[i]);				}
+					itemDescription << getCombatName(indexToCombatType(i)) << " field " << std::showpos << itemType.abilities->fieldAbsorbPercent[i] << std::noshowpos << '%';
+				}
 			} else {
 				if (begin) {
 					begin = false;
@@ -1670,7 +1679,7 @@ std::string Item::parseShowAttributesDescription(const Item *item, const uint16_
 					itemDescription << ", ";
 				}
 
-				itemDescription << fmt::format("protection all fields {:+}%", show);
+				itemDescription << "protection all fields " << std::showpos << show << std::noshowpos << '%';
 			}
 
 			if (itemType.abilities->speed) {
@@ -1681,7 +1690,8 @@ std::string Item::parseShowAttributesDescription(const Item *item, const uint16_
 					itemDescription << ", ";
 				}
 
-				itemDescription << fmt::format("speed {:+}", show);
+				
+				itemDescription << "speed " << std::showpos << (itemType.abilities->speed) << std::noshowpos;
 			}
 		}
 
@@ -1865,7 +1875,7 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 							s << ", ";
 						}
 
-						s << fmt::format("{} {:+}%", getCombatName(indexToCombatType(i)), it.abilities->absorbPercent[i]);
+						s << getCombatName(indexToCombatType(i)) << ' ' << std::showpos << it.abilities->absorbPercent[i] << std::noshowpos << '%';
 					}
 				} else {
 					if (begin) {
@@ -1875,7 +1885,7 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 						s << ", ";
 					}
 
-					s << fmt::format("protection all {:+}%", show);
+					s << "protection all " << std::showpos << show << std::noshowpos << '%';
 				}
 
 				show = it.abilities->fieldAbsorbPercent[0];
@@ -1911,7 +1921,7 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 							s << ", ";
 						}
 
-						s << fmt::format("{} field {:+}%", getCombatName(indexToCombatType(i)), it.abilities->fieldAbsorbPercent[i]);
+						s << getCombatName(indexToCombatType(i)) << " field " << std::showpos << it.abilities->fieldAbsorbPercent[i] << std::noshowpos << '%';
 					}
 				} else {
 					if (begin) {
@@ -1921,7 +1931,7 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 						s << ", ";
 					}
 
-					s << fmt::format("protection all fields {:+}%", show);
+					s << "protection all fields " << std::showpos << show << std::noshowpos << '%';
 				}
 
 				if (it.abilities->speed) {
@@ -1932,7 +1942,7 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 						s << ", ";
 					}
 
-					s << fmt::format("speed {:+}", it.abilities->speed);
+					s << "speed " << std::showpos << (it.abilities->speed) << std::noshowpos;
 				}
 			}
 
@@ -2059,7 +2069,7 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 							s << ", ";
 						}
 
-						s << fmt::format("{} {:+}%", getCombatName(indexToCombatType(i)), it.abilities->absorbPercent[i]);
+						s << getCombatName(indexToCombatType(i)) << ' ' << std::showpos << it.abilities->absorbPercent[i] << std::noshowpos << '%';
 					}
 				} else {
 					if (begin) {
@@ -2069,7 +2079,7 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 						s << ", ";
 					}
 
-					s << fmt::format("protection all {:+}%", show);
+					s << "protection all " << std::showpos << show << std::noshowpos << '%';
 				}
 
 				show = it.abilities->fieldAbsorbPercent[0];
@@ -2105,7 +2115,7 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 							s << ", ";
 						}
 
-						s << fmt::format("{} field {:+}%", getCombatName(indexToCombatType(i)), it.abilities->fieldAbsorbPercent[i]);
+						s << getCombatName(indexToCombatType(i)) << " field " << std::showpos << it.abilities->fieldAbsorbPercent[i] << std::noshowpos << '%';
 					}
 				} else {
 					if (begin) {
@@ -2115,7 +2125,7 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 						s << ", ";
 					}
 
-					s << fmt::format("protection all fields {:+}%", show);
+					s << "protection all fields " << std::showpos << show << std::noshowpos << '%';
 				}
 
 				if (it.abilities->speed) {
@@ -2126,7 +2136,7 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 						s << ", ";
 					}
 
-					s << fmt::format("speed {:+}", it.abilities->speed);
+					s << "speed " << std::showpos << (it.abilities->speed) << std::noshowpos;
 				}
 			}
 
@@ -2152,7 +2162,7 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 
 		if (it.abilities && it.slotPosition & SLOTP_RING) {
 			if (it.abilities->speed > 0) {
-				s << fmt::format(" (speed {:+})", it.abilities->speed);
+				s << " (speed " << std::showpos << (it.abilities->speed) << std::noshowpos << ')';
 			} else if (hasBitSet(CONDITION_DRUNK, it.abilities->conditionSuppressions)) {
 				s << " (hard drinking)";
 			} else if (it.abilities->invisible) {
@@ -2170,7 +2180,7 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 
 		if (!found) {
 			if (it.isKey()) {
-				s << fmt::format(" (Key:{:04})", item ? item->getActionId() : 0);
+				s << " (Key:" << std::setfill('0') << std::setw(4) << (item ? item->getActionId() : 0) << ')';
 			} else if (it.isFluidContainer()) {
 				if (subType > 0) {
 					const std::string& itemName = items[subType].name;
@@ -2476,6 +2486,9 @@ uint32_t Item::getWorth() const
 
 		case ITEM_CRYSTAL_COIN:
 			return count * 10000;
+
+		case ITEM_GOLD_INGOT:
+			return count * 100000;
 
 		default:
 			return 0;

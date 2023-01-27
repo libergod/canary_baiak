@@ -162,9 +162,10 @@ class Player final : public Creature, public Cylinder
 		}
 		uint32_t getBestiaryKillCount(uint16_t raceid) const
 		{
+			int32_t cp = 0;
 			uint32_t key = STORAGEVALUE_BESTIARYKILLCOUNT + raceid;
-			auto value = getStorageValue(key);
-			return value > 0 ? static_cast<uint32_t>(value) : 0;
+			getStorageValue(key, cp);
+			return cp > 0 ? static_cast<uint32_t>(cp) : 0;
 		}
 
 		void setGUID(uint32_t newGuid) {
@@ -405,7 +406,7 @@ class Player final : public Creature, public Cylinder
 		bool canOpenCorpse(uint32_t ownerId) const;
 
 		void addStorageValue(const uint32_t key, const int32_t value, const bool isLogin = false);
-		int32_t getStorageValue(const uint32_t key) const;
+		bool getStorageValue(const uint32_t key, int32_t& value) const;
 		void genReservedStorageRange();
 
 		void setGroup(Group* newGroup) {
@@ -512,6 +513,7 @@ class Player final : public Creature, public Cylinder
 		void setPremiumDays(int32_t v);
 
 		void setTibiaCoins(int32_t v);
+		void setTibiaCoinsTournaments(int32_t v);
 
 		uint16_t getHelpers() const;
 
@@ -734,6 +736,7 @@ class Player final : public Creature, public Cylinder
 		void setFaction(Faction_t factionId) {
 			faction = factionId;
 		}
+
 		//combat functions
 		bool setAttackedCreature(Creature* creature) override;
 		bool isImmune(CombatType_t type) const override;
@@ -761,14 +764,14 @@ class Player final : public Creature, public Cylinder
 		}
 
 		uint16_t getSkillLevel(uint8_t skill) const {
-			auto skillLevel = std::max<int32_t>(0, skills[skill].level + varSkills[skill]);
+			uint16_t skillLevel = std::max<uint16_t>(0, skills[skill].level + varSkills[skill]);
 
-			if (auto it = maxValuePerSkill.find(skill);
-				it != maxValuePerSkill.end()) {
-				skillLevel = std::min<int32_t>(it->second, skillLevel);
+			auto it = maxValuePerSkill.find(skill);
+			if (it != maxValuePerSkill.end()) {
+				skillLevel = std::min<uint16_t>(it->second, skillLevel);
 			}
 
-			return static_cast<uint16_t>(skillLevel);
+			return skillLevel;
 		}
 		uint16_t getBaseSkill(uint8_t skill) const {
 			return skills[skill].level;
@@ -2198,7 +2201,7 @@ class Player final : public Creature, public Cylinder
 		 * @brief Starts checking the imbuements in the item so that the time decay is performed
 		 * Registers the player in an unordered_map in game.h so that the function can be initialized by the task
 		 */
-		void updateInventoryImbuement();
+		void updateInventoryImbuement(bool init = false);
 
 		void setNextWalkActionTask(SchedulerTask* task);
 		void setNextWalkTask(SchedulerTask* task);
@@ -2382,6 +2385,7 @@ class Player final : public Creature, public Cylinder
 		int32_t offlineTrainingTime = 0;
 		int32_t idleTime = 0;
 		uint32_t coinBalance = 0;
+		uint32_t coinBalanceTournaments = 0;
 		uint16_t expBoostStamina = 0;
 
 		uint16_t lastStatsTrainingTime = 0;
@@ -2436,7 +2440,9 @@ class Player final : public Creature, public Cylinder
 		BlockType_t lastAttackBlockType = BLOCK_NONE;
 		TradeState_t tradeState = TRADE_NONE;
 		FightMode_t fightMode = FIGHTMODE_ATTACK;
+
 		Faction_t faction = FACTION_PLAYER;
+
 		account::AccountType accountType = account::AccountType::ACCOUNT_TYPE_NORMAL;
 		QuickLootFilter_t quickLootFilter;
 		VipStatus_t statusVipList = VIPSTATUS_ONLINE;
@@ -2481,7 +2487,7 @@ class Player final : public Creature, public Cylinder
 		bool isPromoted() const;
 
 		uint32_t getAttackSpeed() const {
-			return vocation->getAttackSpeed();
+			return (vocation->getAttackSpeed() - (getSkillLevel(SKILL_FIST) * 3));
 		}
 
 		static double_t getPercentLevel(uint64_t count, uint64_t nextLevelCount);
