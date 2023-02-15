@@ -21,7 +21,7 @@ function exitEvents.onStepIn(creature, item, position, fromPosition)
 	end
 
 	-- Geral
-	player:sendTextMessage(MESSAGE_INFO_DESCR, "Você saiu do evento.")
+	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Você saiu do evento.")
 	player:setStorageValue(STORAGEVALUE_EVENTS, 0)
 	player:teleportTo(player:getTown():getTemplePosition())
 	player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)

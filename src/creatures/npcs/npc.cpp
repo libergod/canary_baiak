@@ -69,10 +69,10 @@ bool Npc::canSee(const Position& pos) const
 	if (pos.z != getPosition().z) {
 		return false;
 	}
-	return Creature::canSee(getPosition(), pos, 4, 4);
+	return Creature::canSee(getPosition(), pos, 3, 3);
 }
 
-bool Npc::canSeeRange(const Position& pos, int32_t viewRangeX/* = 4*/, int32_t viewRangeY/* = 4*/) const
+bool Npc::canSeeRange(const Position& pos, int32_t viewRangeX/* = 3*/, int32_t viewRangeY/* = 3*/) const
 {
 	if (pos.z != getPosition().z) {
 		return false;

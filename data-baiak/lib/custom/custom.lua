@@ -37,11 +37,11 @@ DUNGEON_SYSTEM = {
 	
 	Modal = {
 		IDType = 2049,
-		TitleType = "Type dungeon",
+		TitleType = "Type Dungeon, by: Tataboy67",
 		MsgType = "Select this type:",
 	
 		ID = 2050,
-		Title = "Dungeon System",
+		Title = "Dungeon System, by: Tataboy67!",
 		Msg = "Select your Dungeon:",
 		
 		IDDetails = 2051,
@@ -50,7 +50,7 @@ DUNGEON_SYSTEM = {
 	
 	Messages = {
 		ToEntry = "Welcome to Dungeon",
-		ToFail = "You were unable to complete the dungeon\n\nPlease try again!",
+		ToFail = "Dungeon finished by the time. \n\nThank you for playing!",
 		
 		WaitFriendsCooldown = "Wait your friend: %s",
 		ToCooldown = "You're in cooldown to enter in a dungeon again. Cooldown: %s.",
@@ -80,11 +80,11 @@ DUNGEON_SYSTEM = {
 			Name = "Diabolic Hyper",
 			
 			-- Party
-			NeedParty = false,
+			NeedParty = true,
 			AmountParty = 2,
 			
 			-- Level
-			NeedLevel = true,
+			NeedLevel = false,
 			Level = 50,
 						
 			-- Dungeon
@@ -117,12 +117,12 @@ DUNGEON_SYSTEM = {
 			Level = 50,
 						
 			-- Dungeon
-			DungeonTime = 10, -- 5 min, 30 seconds
-			DungeonPos = Position(1165, 934, 7),
+			DungeonTime = 300, -- seconds
+			DungeonPos = Position(1930, 1615, 8),
 
 			-- Position Dungeon
-			FromPos = {x = 1161, y = 930, z = 7}, 	-- Position /\ < from the dungeon
-			ToPos = {x = 1226, y = 940, z = 7},		-- Position \/ > from the dungeon
+			FromPos = {x = 1828, y = 1506, z = 8}, 	-- Position /\ < from the dungeon
+			ToPos = {x = 1959, y = 1624, z = 8},		-- Position \/ > from the dungeon
 			
 			SpawnMonsters = true,
 			Monsters = {

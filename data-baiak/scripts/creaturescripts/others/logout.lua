@@ -6,6 +6,7 @@ function playerLogout.onLogout(player)
 		nextUseStaminaTime[playerId] = nil
 	end
 
+	Karin.EventCoin[player:getId()] = nil
 	player:saveSpecialStorage()
 	player:setStorageValue(Storage.ExerciseDummyExhaust, 0)
 

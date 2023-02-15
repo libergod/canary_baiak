@@ -53,14 +53,17 @@ function playerLogin.onLogin(player)
 		player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
 	end
 	
-	-- Change it to VIP Verification
-	--[[
-	if isPremium(player) then
-		player:setStorageValue(Storage.PremiumAccount, 1)
-		player:say("[ONLINE]", TALKTYPE_MONSTER_SAY)
-		player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
+	if player:isVip() then
+		player:say("[VIP]", TALKTYPE_MONSTER_SAY)
+		player:getPosition():sendMagicEffect(73)
 	end
-	]]--
+	
+	-- Create SHOP file for users
+	if not fileExist("data-baiak/npc/private_shop/ZSHOP - ".. player:getName() .. ".lua") then
+		local fili = io.open("data-baiak/npc/private_shop/ZSHOP - ".. player:getName() .. ".lua", "w+")
+		fili:close()
+	end
+	
 	-- Eventos
 	if player:getStorageValue(STORAGEVALUE_EVENTS) >= 1 then
 		player:teleportTo(player:getTown():getTemplePosition())
@@ -68,6 +71,9 @@ function playerLogin.onLogin(player)
 		player:setStorageValue(STORAGEVALUE_EVENTS, 0)
 	end
 
+	-- Tournaments Coin per Hour System
+	Karin.EventCoin[player:getId()] = 0
+	
 	-- Dodge/Critical System
 	if player:getDodgeLevel() == -1 then
 		player:setDodgeLevel(0)

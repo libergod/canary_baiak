@@ -4,7 +4,7 @@ local monster = {}
 monster.description = "a dark energy"
 monster.experience = 0
 monster.outfit = {
-	lookTypeEx = 12509,
+	lookTypeEx = 23991,
 	lookType = 0,
 	lookHead = 0,
 	lookBody = 0,
@@ -74,21 +74,18 @@ monster.light = {
 }
 
 monster.voices = {
-	interval = 5000,
-	chance = 10,
-	{text = "Come to the dark side of force", yell = false},
-	{text = "Looks weak! Hahaha!", yell = false},
-	{text = "You cant kill me!", yell = false}
+	interval = 0,
+	chance = 10
 }
 
 monster.loot = {
 }
 
 monster.attacks = {
-	{name ="melee", interval = 2000, chance = 100, minDamage = 0, maxDamage = -250},
-	{name ="combat", interval = 3000, chance = 35, type = COMBAT_DEATHDAMAGE, minDamage = -50, maxDamage = -310, range = 6, radius = 6, shootEffect = CONST_ANI_SUDDENDEATH, effect = CONST_ME_MORTAREA, target = true},
+	{name ="melee", interval = 2000, chance = 100, minDamage = 200, maxDamage = -850},
+	{name ="combat", interval = 3000, chance = 35, type = COMBAT_DEATHDAMAGE, minDamage = -250, maxDamage = -710, range = 6, radius = 6, shootEffect = CONST_ANI_SUDDENDEATH, effect = CONST_ME_MORTAREA, target = true},
 	{name ="speed", interval = 2000, chance = 15, speedChange = -400, range = 7, effect = CONST_ME_SOUND_RED, target = false, duration = 20000},
-	{name ="combat", interval = 2000, chance = 15, type = COMBAT_MANADRAIN, minDamage = -70, maxDamage = -220, radius = 3, effect = CONST_ME_HITAREA, target = true}
+	{name ="combat", interval = 2000, chance = 15, type = COMBAT_MANADRAIN, minDamage = -270, maxDamage = -520, radius = 3, effect = CONST_ME_HITAREA, target = true}
 }
 
 monster.defenses = {

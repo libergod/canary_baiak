@@ -41,8 +41,6 @@
     {position = Position(1655, 985, 7), text = "Entre para\nJogar!", effect = 49, say = true, color = math.random(1,255)},
     {position = Position(984, 1212, 7), text = "Rotworms", effect = 57, say = false, color = math.random(1,255)},
     {position = Position(1002, 1204, 7), text = "Reward Chest", effect = 40, say = true, color = math.random(1,255)},
-    {position = Position(981, 1204, 8), text = "Boosted Creature\n ", effect = 30, say = true, color = math.random(1,255)},
-    {position = Position(984, 1208, 7), text = "FastSpawn", effect = 37, say = false, color = math.random(1,255)},
     {position = Position(817, 1424, 7), text = "Snake", effect = 40, say = true, color = math.random(1,255)},
     {position = Position(819, 1424, 7), text = "Bomberman", effect = 40, say = true, color = math.random(1,255)},
     {position = Position(821, 1433, 7), text = "Templo", effect = 40, say = true, color = math.random(1,255)},

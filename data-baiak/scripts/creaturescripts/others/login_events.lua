@@ -8,12 +8,23 @@ function loginEvents.onLogin(player)
 		"DodgeManaSystem",
 		"MonsterHunt",
 		"monsterHuntKill",
+		"bossEventMonsterKill",
 		"AutoLoot",
 		"Exiva",
 		"Events",
 		"Tasks",
 		"SuperUP",
 		"GuildLevel",
+		--TASK SYSTEM
+		"TaskCreature",
+		--Dungeon System
+		"Dungeon Modal",
+		"Type Dungeon",
+		"DungeonSystemDetails_Modal",
+		--FLY SYSTEM
+		"Fly Modal",
+		--PRIVATE SHOP
+		"privateShopLogin",
 		
 		--Monster
 		"LowerRoshamuul",

@@ -53,7 +53,7 @@ function eventsShow.onThink(interval, lastExecution)
 						local item = tile:getItemById(1949)
 						if item then
 							if item:getActionId() == Bosses.actionIdTp then
-								spectators[i]:say("[BOSS] ".. Bosses:getBossName() .."!", TALKTYPE_MONSTER_SAY, false, spectators[i], position)
+								spectators[i]:say("[BOSS] ".. Bosses.storageMonsterName .."!", TALKTYPE_MONSTER_SAY, false, spectators[i], position)
 								position:sendMagicEffect(56)
 								position:sendMagicEffect(57)
 							else

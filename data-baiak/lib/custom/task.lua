@@ -1,113 +1,308 @@
-task_monsters = {
-   [1] = {name = "Demon", mons_list = {""},  storage = 30000, amount = 6666, exp = 50000, pointsTask = {20, 1}, items = {{id = 2157, count = 1}, {id = 2160, count = 3}}},
-   [2] = {name = "Rotworm", mons_list = {"Carrion Worm", "Rotworm Queen"}, storage = 30001, amount = 200, exp = 5000, pointsTask = {1, 1}, items = {{id = 10521, count = 1}, {id = 2160, count = 5}}},
-   [3] = {name = "monster3", mons_list = {"", ""}, storage = 30002, amount = 10, exp = 18000, pointsTask = {1, 1}, items = {{id = 2195, count = 1}, {id = 2160, count = 8}}},
-   [4] = {name = "monster4", mons_list = {"", ""}, storage = 30003, amount = 10, exp = 20000, pointsTask = {1, 1}, items = {{id = 2520, count = 1}, {id = 2160, count = 10}}}
+taskConfiguration = {
+{name = "Rotworm", color = 40, total = 250, type = "once", storage = 190006, storagecount = 190007, 
+rewards = {
+{3043, 10},
+{"exp", 100000},
+	},
+},
+
+{name = "Minotaur", color = 40, total = 5000, type = "once", storage = 190000, storagecount = 190001, 
+rewards = {
+{5804, 1},
+{"exp", 1000000},
+	},
+},
+
+{name = "Dragon", color = 40, total = 1000, type = "daily", storage = 190002, storagecount = 190003, 
+rewards = {
+{3043, 100},
+{5908, 1},
+{"exp", 1500000},
+	},
+},
+
+{name = "Dragon Lord", color = 40, total = 60000, type = "once", storage = 190004, storagecount = 190005, 
+rewards = {
+{5919, 1},
+{"exp", 1500000},
+	},
+},
+
+{name = "Amazon", color = 40, total = 500, type = "repeatable", storage = 190008, storagecount = 190009, 
+rewards = { 
+{"exp", 1500000},
+	},
+},
+
+{name = "Valkyrie", color = 40, total = 50000, type = "once", storage = 190010, storagecount = 190011, 
+rewards = { 
+{3437, 1},
+	},
+},
+
+{name = "Weakened Frazzlemaw", color = 40, total = 1000, type = "daily", storage = 190012, storagecount = 190013, 
+rewards = { 
+{22516, 1},
+	},
+},
+
+{name = "Enfeebled Silencer", color = 40, total = 1000, type = "daily", storage = 190014, storagecount = 190015, 
+rewards = { 
+{22721, 1},
+	},
+},
+
+{name = "Deepling Guard", color = 40, total = 1000, type = "daily", storage = 190016, storagecount = 190017, 
+rewards = { 
+{14142, 1},
+	},
+},
+
+{name = "Deepling Warrior", color = 40, total = 1000, type = "daily", storage = 190018, storagecount = 190019, 
+rewards = { 
+{"exp", 10000000},
+	},
+},
+
+{name = "Deepling Scout", color = 40, total = 1000, type = "daily", storage = 190020, storagecount = 190021, 
+rewards = { 
+{"exp", 10000000},
+	},
+},
+
+{name = "Guzzlemaw", color = 40, total = 5000, type = "once", storage = 190022, storagecount = 190023, 
+rewards = { 
+{20270, 1},
+	},
+},
+
+{name = "Frazzlemaw", color = 40, total = 5000, type = "once", storage = 190022, storagecount = 190023, 
+rewards = { 
+{20272, 1},
+	},
+},
+
+{name = "Silencer", color = 40, total = 5000, type = "once", storage = 190024, storagecount = 190025, 
+rewards = { 
+{20271, 1},
+	},
+},
+
+{name = "Medusa", color = 40, total = 25000, type = "once", storage = 190026, storagecount = 190027, 
+rewards = { 
+{3393, 1},
+	},
+},
+
+{name = "Demon", color = 40, total = 66000, type = "once", storage = 190028, storagecount = 190029, 
+rewards = { 
+{3365, 1},
+	},
+},
+
+{name = "Hero", color = 40, total = 50000, type = "once", storage = 190030, storagecount = 190031, 
+rewards = { 
+{3394, 1},
+	},
+},
+
+{name = "Cloak Of Terror", color = 40, total = 1000, type = "daily", storage = 190032, storagecount = 190033, 
+rewards = { 
+{"exp", 30000000},
+	},
+},
+
+{name = "Vibrant Phantom", color = 40, total = 1000, type = "daily", storage = 190034, storagecount = 190035, 
+rewards = { 
+{"exp", 30000000},
+	},
+},
+
+{name = "Courage Leech", color = 40, total = 1000, type = "daily", storage = 190036, storagecount = 190037, 
+rewards = { 
+{"exp", 30000000},
+	},
+},
+
+{name = "Brachiodemon", color = 40, total = 1000, type = "daily", storage = 190038, storagecount = 190039, 
+rewards = { 
+{"exp", 30000000},
+	},
+},
+
+{name = "Infernal Demon", color = 40, total = 50000, type = "once", storage = 190040, storagecount = 190041, 
+rewards = { 
+{34109, 2},
+	},
+},
+
+{name = "Infernal Phantom", color = 40, total = 1000, type = "daily", storage = 190042, storagecount = 190043, 
+rewards = { 
+{"exp", 30000000},
+	},
+},
+
+{name = "Juggernaut", color = 40, total = 50420, type = "once", storage = 190044, storagecount = 190045, 
+rewards = { 
+{3422, 1},
+	},
+},
+
+{name = "Dawnfire Asura", color = 40, total = 1000, type = "daily", storage = 190046, storagecount = 190047, 
+rewards = { 
+{"exp", 20000000},
+	},
+},
+
+{name = "Girtablilu Warrior", color = 40, total = 5000, type = "once", storage = 190052, storagecount = 190053, 
+rewards = {   
+{"exp", 100000000},
+	},
+},
+
+{name = "Dark Carnisylvan", color = 40, total = 25000, type = "once", storage = 190062, storagecount = 190063, 
+rewards = { 
+{"exp", 100000000},
+	},
+},
 }
 
-task_daily = {
-   [1] = {name = "monsterDay1", mons_list = {"monsterDay1_t2", "monsterDay1_t3"}, storage = 40000, amount = 10, exp = 5000, pointsTask = {1, 1}, items = {{id = 2157, count = 1}, {id = 2160, count = 3}}},
-   [2] = {name = "monsterDay2", mons_list = {"", ""}, storage = 40001, amount = 10, exp = 10000, pointsTask = {1, 1}, items = {{id = 10521, count = 1}, {id = 2160, count = 5}}},
-   [3] = {name = "monsterDay3", mons_list = {"", ""}, storage = 40002, amount = 10, exp = 18000, pointsTask = {1, 1}, items = {{id = 2195, count = 1}, {id = 2160, count = 8}}},
-   [4] = {name = "monsterDay4", mons_list = {"", ""}, storage = 40003, amount = 10, exp = 20000, pointsTask = {1, 1}, items = {{id = 2520, count = 1}, {id = 2160, count = 10}}}
-}
+squareWaitTime = 5000
+taskQuestLog = 65000 -- A storage so you get the quest log
+dailyTaskWaitTime = 20 * 60 * 60 
 
-task_storage = 20020 -- storage que verifica se está fazendo alguma task e ver qual task é - task normal
-task_points = 20021 -- storage que retorna a quantidade de pontos task que o player tem.
-task_sto_time = 20022 -- storage de delay para não poder fazer a task novamente caso ela for abandonada.
-task_time = 20 -- tempo em horas em que o player ficará sem fazer a task como punição
-task_rank = 20023 -- storage do rank task
-taskd_storage = 20024 -- storage que verifica se está fazendo alguma task e ver qual task é - task daily
-time_daySto = 20025 -- storage do tempo da task daily, no caso para verificar e add 24 horas para fazer novamente a task daily
-
-
-local ranks_task = {
-	[{1, 50}] = "Novato", 
-	[{51, 100}] = "Elite",
-	[{101, 150}] = "Master",
-	[{151, 200}] = "Destroyer",		
-	[{201, math.huge}] = "Juggernaut"
-}
-
-local RankSequence = {
-	["Novato"] = 1,
-	["Elite"] = 2,
-	["Master"] = 3,
-	["Destroyer"] = 4,
-	["Juggernaut"] = 5,
-}
-
-function rankIsEqualOrHigher(myRank, RankCheck)
-	local ret_1 = RankSequence[myRank]
-	local ret_2 = RankSequence[RankCheck]
-	return ret_1 >= ret_2
-end
-
-function getTaskInfos(player)
-	local player = Player(player)
-	return task_monsters[player:getStorageValue(task_storage)] or false
-end
-
-function getTaskDailyInfo(player)
-	local player = Player(player)
-	return task_daily[player:getStorageValue(taskd_storage)] or false
-end
-
-
-function taskPoints_get(player)
-	local player = Player(player)
-	if player:getStorageValue(task_points) == -1 then
-		return 0 
+function Player.getCustomActiveTasksName(self)
+local player = self
+	if not player then
+		return false
 	end
-	return player:getStorageValue(task_points)
-end
-
-function taskPoints_add(player, count)
-	local player = Player(player)
-	return player:setStorageValue(task_points, taskPoints_get(player) + count)
-end
-
-function taskPoints_remove(player, count)
-	local player = Player(player)
-	return player:setStorageValue(task_points, taskPoints_get(player) - count)
-end
-
-function taskRank_get(player)
-	local player = Player(player)
-	if player:getStorageValue(task_rank) == -1 then
-		return 1 
-	end
-	return player:getStorageValue(task_rank)
-end
-
-function taskRank_add(player, count)
-	local player = Player(player)
-	return player:setStorageValue(task_rank, taskRank_get(player) + count)
-end
-
-function getRankTask(player)
-	local pontos = taskRank_get(player)
-	local ret
-	for _, z in pairs(ranks_task) do
-		if pontos >= _[1] and pontos <= _[2] then
-			ret = z
+local tasks = {}
+	for i, data in pairs(taskConfiguration) do
+		if player:getStorageValue(data.storagecount) ~= -1 then
+		tasks[#tasks + 1] = data.name
 		end
 	end
-	return ret
+	return #tasks > 0 and tasks or false
 end
 
-function getItemsFromTable(itemtable)
-     local text = ""
-     for v = 1, #itemtable do
-         count, info = itemtable[v].count, ItemType(itemtable[v].id)
-         local ret = ", "
-         if v == 1 then
-             ret = ""
-         elseif v == #itemtable then
-             ret = " - "
-         end
-         text = text .. ret
-         text = text .. (count > 1 and count or info:getArticle()).." "..(count > 1 and info:getPluralName() or info:getName())
-     end
-     return text
+
+function getTaskByStorage(storage)
+	for i, data in pairs(taskConfiguration) do
+		if data.storage == tonumber(storage) then
+			return data
+		end
+	end
+	return false
+end
+
+function getTaskByMonsterName(name)
+	for i, data in pairs(taskConfiguration) do
+		if data.name:lower() == name:lower() then
+			return data
+		end
+	end
+	return false
+end
+
+function Player.startTask(self, storage)
+local player = self
+	if not player then
+		return false
+	end
+local data = getTaskByStorage(storage)
+	if data == false then
+		return false
+	end
+	if player:getStorageValue(taskQuestLog) == -1 then
+		player:setStorageValue(taskQuestLog, 1)
+	end
+	player:setStorageValue(storage, player:getStorageValue(storage) + 1)
+	player:setStorageValue(data.storagecount, 0)
+	return true
+end
+
+function Player.canStartCustomTask(self, storage)
+local player = self
+	if not player then
+		return false
+	end
+local data = getTaskByStorage(storage)
+	if data == false then
+		return false
+	end
+	if data.type == "daily" then
+		return os.time() >= player:getStorageValue(storage)
+	elseif data.type == "once" then
+		return player:getStorageValue(storage) == -1
+	elseif data.type[1] == "repeatable" and data.type[2] ~= -1 then
+		return player:getStorageValue(storage) < (data.type[2] - 1)
+	else
+		return true
+	end
+end
+
+function Player.endTask(self, storage, prematurely)
+local player = self
+	if not player then
+		return false
+	end
+local data = getTaskByStorage(storage)
+	if data == false then
+		return false
+end
+	if prematurely then
+		if data.type == "daily" then
+			player:setStorageValue(storage, -1)
+		else
+			player:setStorageValue(storage, player:getStorageValue(storage) - 1)
+	end
+	else
+		if data.type == "daily" then
+			player:setStorageValue(storage, os.time() + dailyTaskWaitTime)
+		end
+	end
+	player:setStorageValue(data.storagecount, -1)
+	return true
+end
+
+function Player.hasStartedTask(self, storage)
+local player = self
+	if not player then
+		return false
+	end
+local data = getTaskByStorage(storage)
+	if data == false then
+		return false
+	end
+	return player:getStorageValue(data.storagecount) ~= -1
+end
+
+
+function Player.getTaskKills(self, storage)
+local player = self
+	if not player then
+		return false
+	end
+	return player:getStorageValue(storage)
+end
+
+function Player.addTaskKill(self, storage, count)
+local player = self
+	if not player then
+		return false
+	end
+local data = getTaskByStorage(storage)
+	if data == false then
+		return false
+	end
+	local kills = player:getTaskKills(data.storagecount)
+	if kills >= data.total then
+		return false
+	end
+	if kills + count >= data.total then
+		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "[Task System] You finished this task! to take your rewards use !task")
+		return player:setStorageValue(data.storagecount, data.total)
+	end
+		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "[Task System] Total creatures defeated: [".. kills + count .. "/".. data.total .."] "..data.name ..".")
+		return player:setStorageValue(data.storagecount, kills + count)
 end

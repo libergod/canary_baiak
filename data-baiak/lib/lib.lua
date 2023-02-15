@@ -24,9 +24,6 @@ dofile(DATA_DIRECTORY.. '/lib/custom/dodgeCritical.lua')
 -- Info Storage
 dofile(DATA_DIRECTORY.. '/lib/custom/infoStorage.lua')
 
--- Online Time System
-dofile(DATA_DIRECTORY.. '/lib/custom/onlineTime.lua')
-
 -- Debug Lib
 dofile(DATA_DIRECTORY.. '/lib/custom/debug.lua')
 
@@ -57,8 +54,11 @@ dofile(DATA_DIRECTORY.. '/lib/custom/superup.lua')
 -- Monster Hunt
 dofile(DATA_DIRECTORY.. '/lib/custom/monsterHunt.lua')
 
+-- Castle 24h
+dofile(DATA_DIRECTORY.. '/lib/events/castle.lua')
+
 -- Castle 48h
---dofile(DATA_DIRECTORY.. '/lib/events/castle48.lua')
+dofile(DATA_DIRECTORY.. '/lib/events/castle48.lua')
 
 -- Boss Room
 dofile(DATA_DIRECTORY.. '/lib/custom/bossRoom.lua')
@@ -86,3 +86,10 @@ dofile(DATA_DIRECTORY.. '/lib/custom/vipAccount.lua')
 
 --Hireling
 dofile(DATA_DIRECTORY .. "/lib/hireling_lib.lua")
+
+-- Tournaments COIN p/ HORA System
+dofile(DATA_DIRECTORY.. '/lib/custom/karin.lua')
+
+-- SHOP PRIVATE System
+dofile(DATA_DIRECTORY.. '/lib/custom/lib_privateShop.lua')
+dofile(DATA_DIRECTORY.. '/lib/custom/config_privateShop.lua')

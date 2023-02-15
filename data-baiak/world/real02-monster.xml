@@ -10782,6 +10782,24 @@
 		<monster name="Orshabaal" x="-2" y="4" z="8" spawntime="60" />
 		<monster name="Sibang" x="1" y="4" z="8" spawntime="60" />
 	</monster>
+	<monster centerx="1328" centery="897" centerz="8" radius="1">
+		<monster name="The Bridge Guardian" x="0" y="0" z="8" spawntime="600" />
+	</monster>
+	<monster centerx="1245" centery="905" centerz="8" radius="1">
+		<monster name="The Bridge Guardian" x="0" y="0" z="8" spawntime="600" />
+	</monster>
+	<monster centerx="1299" centery="905" centerz="8" radius="1">
+		<monster name="The Bridge Guardian" x="0" y="0" z="8" spawntime="600" />
+	</monster>
+	<monster centerx="1275" centery="906" centerz="8" radius="1">
+		<monster name="The Bridge Guardian" x="0" y="0" z="8" spawntime="600" />
+	</monster>
+	<monster centerx="1318" centery="907" centerz="8" radius="1">
+		<monster name="The Bridge Guardian" x="0" y="0" z="8" spawntime="600" />
+	</monster>
+	<monster centerx="1256" centery="911" centerz="8" radius="1">
+		<monster name="The Bridge Guardian" x="0" y="0" z="8" spawntime="600" />
+	</monster>
 	<monster centerx="526" centery="959" centerz="8" radius="1">
 		<monster name="Dragon Lord" x="0" y="0" z="8" spawntime="60" />
 	</monster>
@@ -13562,11 +13580,168 @@
 	<monster centerx="1252" centery="1479" centerz="8" radius="1">
 		<monster name="Hellhound" x="0" y="0" z="8" spawntime="60" />
 	</monster>
+	<monster centerx="1857" centery="1521" centerz="8" radius="1">
+		<monster name="Grimeleech" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1859" centery="1521" centerz="8" radius="1">
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1851" centery="1525" centerz="8" radius="1">
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+		<monster name="Demon" x="1" y="0" z="8" spawntime="60" />
+		<monster name="Demon" x="1" y="1" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1866" centery="1527" centerz="8" radius="1">
+		<monster name="Demon" x="1" y="-1" z="8" spawntime="60" />
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+		<monster name="Demon" x="1" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1886" centery="1528" centerz="8" radius="1">
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+		<monster name="Demon" x="0" y="1" z="8" spawntime="60" />
+		<monster name="Demon" x="1" y="1" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1887" centery="1531" centerz="8" radius="1">
+		<monster name="Grimeleech" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1922" centery="1533" centerz="8" radius="1">
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+		<monster name="Demon" x="1" y="0" z="8" spawntime="60" />
+		<monster name="Demon" x="0" y="1" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1878" centery="1534" centerz="8" radius="1">
+		<monster name="Grimeleech" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1896" centery="1534" centerz="8" radius="1">
+		<monster name="Grimeleech" x="0" y="0" z="8" spawntime="60" />
+		<monster name="Grimeleech" x="1" y="1" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1898" centery="1534" centerz="8" radius="1">
+		<monster name="Demon" x="1" y="-1" z="8" spawntime="60" />
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1893" centery="1535" centerz="8" radius="1">
+		<monster name="Grimeleech" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1919" centery="1535" centerz="8" radius="1">
+		<monster name="Grimeleech" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1877" centery="1536" centerz="8" radius="1">
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+		<monster name="Demon" x="1" y="0" z="8" spawntime="60" />
+		<monster name="Demon" x="-1" y="1" z="8" spawntime="60" />
+		<monster name="Demon" x="1" y="1" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1916" centery="1538" centerz="8" radius="1">
+		<monster name="Grimeleech" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1908" centery="1539" centerz="8" radius="1">
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+		<monster name="Demon" x="-1" y="1" z="8" spawntime="60" />
+		<monster name="Demon" x="1" y="1" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1879" centery="1540" centerz="8" radius="1">
+		<monster name="Grimeleech" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1935" centery="1540" centerz="8" radius="1">
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+		<monster name="Demon" x="-1" y="1" z="8" spawntime="60" />
+		<monster name="Demon" x="1" y="1" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1838" centery="1541" centerz="8" radius="1">
+		<monster name="Orshabaal" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1937" centery="1541" centerz="8" radius="1">
+		<monster name="Grimeleech" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1841" centery="1542" centerz="8" radius="1">
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1901" centery="1542" centerz="8" radius="1">
+		<monster name="Grimeleech" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1939" centery="1542" centerz="8" radius="1">
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+		<monster name="Demon" x="0" y="1" z="8" spawntime="60" />
+		<monster name="Demon" x="1" y="1" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1843" centery="1543" centerz="8" radius="1">
+		<monster name="Demon" x="0" y="-1" z="8" spawntime="60" />
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1870" centery="1543" centerz="8" radius="1">
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+		<monster name="Demon" x="0" y="1" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1931" centery="1544" centerz="8" radius="1">
+		<monster name="Grimeleech" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1871" centery="1549" centerz="8" radius="1">
+		<monster name="Grimeleech" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1930" centery="1552" centerz="8" radius="1">
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+		<monster name="Demon" x="0" y="1" z="8" spawntime="60" />
+		<monster name="Demon" x="1" y="1" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1897" centery="1553" centerz="8" radius="1">
+		<monster name="Grimeleech" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1849" centery="1554" centerz="8" radius="1">
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+		<monster name="Demon" x="1" y="0" z="8" spawntime="60" />
+		<monster name="Demon" x="1" y="1" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1892" centery="1554" centerz="8" radius="1">
+		<monster name="Demon" x="1" y="-1" z="8" spawntime="60" />
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+		<monster name="Demon" x="-1" y="1" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1919" centery="1554" centerz="8" radius="1">
+		<monster name="Demon" x="1" y="-1" z="8" spawntime="60" />
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1865" centery="1555" centerz="8" radius="1">
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+		<monster name="Demon" x="1" y="0" z="8" spawntime="60" />
+		<monster name="Demon" x="0" y="1" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1861" centery="1557" centerz="8" radius="1">
+		<monster name="Grimeleech" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1884" centery="1559" centerz="8" radius="1">
+		<monster name="Orshabaal" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1927" centery="1561" centerz="8" radius="1">
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+		<monster name="Demon" x="0" y="1" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1859" centery="1562" centerz="8" radius="1">
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+		<monster name="Demon" x="1" y="0" z="8" spawntime="60" />
+		<monster name="Demon" x="1" y="1" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1930" centery="1563" centerz="8" radius="1">
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1934" centery="1564" centerz="8" radius="1">
+		<monster name="Grimeleech" x="0" y="0" z="8" spawntime="60" />
+		<monster name="Grimeleech" x="1" y="1" z="8" spawntime="60" />
+	</monster>
 	<monster centerx="1392" centery="1566" centerz="8" radius="1">
 		<monster name="Ice Witch" x="0" y="0" z="8" spawntime="60" />
 	</monster>
 	<monster centerx="1395" centery="1568" centerz="8" radius="1">
 		<monster name="Ice Golem" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1935" centery="1568" centerz="8" radius="1">
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1860" centery="1570" centerz="8" radius="1">
+		<monster name="Grimeleech" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1865" centery="1572" centerz="8" radius="1">
+		<monster name="Grimeleech" x="0" y="0" z="8" spawntime="60" />
 	</monster>
 	<monster centerx="1361" centery="1573" centerz="8" radius="1">
 		<monster name="Ice Witch" x="0" y="0" z="8" spawntime="60" />
@@ -13577,11 +13752,21 @@
 	<monster centerx="1414" centery="1577" centerz="8" radius="1">
 		<monster name="Ice Golem" x="0" y="0" z="8" spawntime="60" />
 	</monster>
+	<monster centerx="1866" centery="1577" centerz="8" radius="1">
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+	</monster>
 	<monster centerx="1390" centery="1578" centerz="8" radius="1">
 		<monster name="Ice Golem" x="0" y="0" z="8" spawntime="60" />
 	</monster>
 	<monster centerx="1411" centery="1579" centerz="8" radius="1">
 		<monster name="Ice Witch" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1923" centery="1579" centerz="8" radius="1">
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+		<monster name="Demon" x="0" y="1" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1921" centery="1580" centerz="8" radius="1">
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
 	</monster>
 	<monster centerx="1393" centery="1581" centerz="8" radius="1">
 		<monster name="Ice Golem" x="0" y="0" z="8" spawntime="60" />
@@ -13589,11 +13774,17 @@
 	<monster centerx="1389" centery="1582" centerz="8" radius="1">
 		<monster name="Ice Witch" x="0" y="0" z="8" spawntime="60" />
 	</monster>
+	<monster centerx="1857" centery="1582" centerz="8" radius="1">
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+	</monster>
 	<monster centerx="1367" centery="1583" centerz="8" radius="1">
 		<monster name="Ice Golem" x="0" y="0" z="8" spawntime="60" />
 	</monster>
 	<monster centerx="1418" centery="1584" centerz="8" radius="1">
 		<monster name="Ice Witch" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1871" centery="1585" centerz="8" radius="1">
+		<monster name="Grimeleech" x="0" y="0" z="8" spawntime="60" />
 	</monster>
 	<monster centerx="1422" centery="1586" centerz="8" radius="1">
 		<monster name="Ice Golem" x="0" y="0" z="8" spawntime="60" />
@@ -13604,17 +13795,51 @@
 	<monster centerx="1397" centery="1587" centerz="8" radius="1">
 		<monster name="Ice Golem" x="0" y="0" z="8" spawntime="60" />
 	</monster>
+	<monster centerx="1889" centery="1587" centerz="8" radius="1">
+		<monster name="Grimeleech" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1881" centery="1588" centerz="8" radius="1">
+		<monster name="Grimeleech" x="0" y="0" z="8" spawntime="60" />
+	</monster>
 	<monster centerx="1377" centery="1589" centerz="8" radius="1">
 		<monster name="Ice Golem" x="0" y="0" z="8" spawntime="60" />
 	</monster>
 	<monster centerx="1410" centery="1589" centerz="8" radius="1">
 		<monster name="Ice Golem" x="0" y="0" z="8" spawntime="60" />
 	</monster>
+	<monster centerx="1887" centery="1590" centerz="8" radius="1">
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1915" centery="1590" centerz="8" radius="1">
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+	</monster>
 	<monster centerx="1374" centery="1591" centerz="8" radius="1">
 		<monster name="Ice Witch" x="0" y="0" z="8" spawntime="60" />
 	</monster>
 	<monster centerx="1399" centery="1591" centerz="8" radius="1">
 		<monster name="Ice Witch" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1897" centery="1591" centerz="8" radius="1">
+		<monster name="Grimeleech" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1872" centery="1592" centerz="8" radius="1">
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1876" centery="1592" centerz="8" radius="1">
+		<monster name="Grimeleech" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1903" centery="1592" centerz="8" radius="1">
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1915" centery="1592" centerz="8" radius="1">
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+		<monster name="Demon" x="1" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1901" centery="1593" centerz="8" radius="1">
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1904" centery="1594" centerz="8" radius="1">
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
 	</monster>
 	<monster centerx="1410" centery="1595" centerz="8" radius="1">
 		<monster name="Ice Witch" x="0" y="0" z="8" spawntime="60" />
@@ -13631,6 +13856,9 @@
 	<monster centerx="1376" centery="1604" centerz="8" radius="1">
 		<monster name="Ice Witch" x="0" y="0" z="8" spawntime="60" />
 	</monster>
+	<monster centerx="1893" centery="1605" centerz="8" radius="1">
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+	</monster>
 	<monster centerx="1373" centery="1606" centerz="8" radius="1">
 		<monster name="Ice Golem" x="0" y="0" z="8" spawntime="60" />
 	</monster>
@@ -13640,6 +13868,13 @@
 	<monster centerx="1393" centery="1608" centerz="8" radius="1">
 		<monster name="Ice Witch" x="0" y="0" z="8" spawntime="60" />
 	</monster>
+	<monster centerx="1921" centery="1608" centerz="8" radius="1">
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1923" centery="1608" centerz="8" radius="1">
+		<monster name="Demon" x="1" y="-1" z="8" spawntime="60" />
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+	</monster>
 	<monster centerx="1358" centery="1610" centerz="8" radius="1">
 		<monster name="Ice Witch" x="0" y="0" z="8" spawntime="60" />
 	</monster>
@@ -13648,6 +13883,9 @@
 	</monster>
 	<monster centerx="1397" centery="1611" centerz="8" radius="1">
 		<monster name="Ice Witch" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1928" centery="1611" centerz="8" radius="1">
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
 	</monster>
 	<monster centerx="226" centery="1687" centerz="8" radius="10">
 		<monster name="Hydra" x="-1" y="0" z="8" spawntime="60" />
@@ -14214,6 +14452,24 @@
 	</monster>
 	<monster centerx="1051" centery="208" centerz="9" radius="1">
 		<monster name="Necromancer" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1267" centery="891" centerz="9" radius="1">
+		<monster name="Lord Noryb" x="0" y="0" z="9" spawntime="600" />
+	</monster>
+	<monster centerx="1279" centery="891" centerz="9" radius="1">
+		<monster name="The Bridge Guardian" x="0" y="0" z="9" spawntime="600" />
+	</monster>
+	<monster centerx="1283" centery="891" centerz="9" radius="1">
+		<monster name="The Bridge Guardian" x="0" y="0" z="9" spawntime="600" />
+	</monster>
+	<monster centerx="1287" centery="891" centerz="9" radius="1">
+		<monster name="The Bridge Guardian" x="0" y="0" z="9" spawntime="600" />
+	</monster>
+	<monster centerx="1291" centery="891" centerz="9" radius="1">
+		<monster name="The Bridge Guardian" x="0" y="0" z="9" spawntime="600" />
+	</monster>
+	<monster centerx="1304" centery="891" centerz="9" radius="1">
+		<monster name="The Bridge Guardian" x="0" y="0" z="9" spawntime="600" />
 	</monster>
 	<monster centerx="1174" centery="972" centerz="9" radius="1">
 		<monster name="Tarantula" x="0" y="0" z="9" spawntime="60" />

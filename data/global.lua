@@ -31,19 +31,6 @@ STORAGEVALUE_PROMOTION = 30018
 
 SERVER_NAME = configManager.getString(configKeys.SERVER_NAME)
 
--- AutoLoot config
-    AUTO_LOOT_MAX_ITEMS = 5
-
-    -- Reserved storage
-    AUTOLOOT_STORAGE_START = 10000
-    AUTOLOOT_STORAGE_END = AUTOLOOT_STORAGE_START + AUTO_LOOT_MAX_ITEMS
--- AutoLoot config end
-
--- Lottery config
-LOTTERY_STORAGE_MINUTE = 60001
-LOTTERY_STORAGE_FINISHED = 60002
-LOTTERY_STORAGE_FINISHEDHOUR = 60003
--- Lottery config end
 
 -- Bestiary charm
 GLOBAL_CHARM_GUT = 0

@@ -19,3 +19,12 @@ function CASTLE24H:getGuildIdFromCastle()
   end
   return guildId
 end
+
+function CASTLE24H:setGuildOwnerCastle(guild_id)
+
+local guild = Guild(guild_id)
+
+ db.query("UPDATE `castle` SET guild_id = "..guild_id.." WHERE id = 1;")
+ db.query("UPDATE `castle` SET name = '"..guild:getName().."' WHERE id = 1;")
+
+end
