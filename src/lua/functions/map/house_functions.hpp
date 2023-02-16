@@ -45,6 +45,8 @@ class HouseFunctions final : LuaScriptInterface {
 
 			registerMethod(L, "House", "kickPlayer", HouseFunctions::luaHouseKickPlayer);
 			registerMethod(L, "House", "isInvited", HouseFunctions::luaHouseIsInvited);
+
+			registerMethod(L, "House", "getRequiredRebirth", HouseFunctions::luaHouseGetRequiredRebirth);
 		}
 
 	private:
@@ -77,6 +79,8 @@ class HouseFunctions final : LuaScriptInterface {
 
 		static int luaHouseKickPlayer(lua_State* L);
 		static int luaHouseIsInvited(lua_State* L);
+
+		static int luaHouseGetRequiredRebirth(lua_State* L);
 };
 
 #endif  // SRC_LUA_FUNCTIONS_MAP_HOUSE_FUNCTIONS_HPP_

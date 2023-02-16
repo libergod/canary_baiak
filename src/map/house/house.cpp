@@ -124,6 +124,9 @@ void House::updateDoorDescription() const
 		if (housePrice != -1) {
 			ss << " It costs " << (houseTiles.size() * housePrice) << " gold coins.";
 		}
+
+		if (requiredRebirth > 0)
+			ss << " It requires " << requiredRebirth << " rebirths.";
 	}
 
 	for (const auto& it : doorList) {
@@ -670,6 +673,7 @@ bool Houses::loadHousesXML(const std::string& filename)
 
 		house->setRent(pugi::cast<uint32_t>(houseNode.attribute("rent").value()));
 		house->setTownId(pugi::cast<uint32_t>(houseNode.attribute("townid").value()));
+		house->setRequiredRebirth(pugi::cast<uint32_t>(houseNode.attribute("reqrebirth").value()));
 
 		house->setOwner(0, false);
 	}

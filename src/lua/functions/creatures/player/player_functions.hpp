@@ -88,6 +88,9 @@ class PlayerFunctions final : LuaScriptInterface {
 			registerMethod(L, "Player", "removeExperience", PlayerFunctions::luaPlayerRemoveExperience);
 			registerMethod(L, "Player", "getLevel", PlayerFunctions::luaPlayerGetLevel);
 
+			registerMethod(L, "Player", "getRebirth", PlayerFunctions::luaPlayerGetRebirth); // rebirth
+			registerMethod(L, "Player", "doRebirth", PlayerFunctions::luaPlayerDoRebirth); // rebirth
+
 			registerMethod(L, "Player", "getMagicLevel", PlayerFunctions::luaPlayerGetMagicLevel);
 			registerMethod(L, "Player", "getBaseMagicLevel", PlayerFunctions::luaPlayerGetBaseMagicLevel);
 			registerMethod(L, "Player", "getMana", PlayerFunctions::luaPlayerGetMana);
@@ -365,6 +368,9 @@ class PlayerFunctions final : LuaScriptInterface {
 		static int luaPlayerAddExperience(lua_State* L);
 		static int luaPlayerRemoveExperience(lua_State* L);
 		static int luaPlayerGetLevel(lua_State* L);
+
+		static int luaPlayerGetRebirth(lua_State* L); // rebirth
+		static int luaPlayerDoRebirth(lua_State* L); // rebirth
 
 		static int luaPlayerGetMagicLevel(lua_State* L);
 		static int luaPlayerGetBaseMagicLevel(lua_State* L);

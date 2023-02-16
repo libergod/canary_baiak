@@ -322,6 +322,7 @@ class Spell : public BaseSpell
 		uint32_t secondaryGroupCooldown = 0;
 		uint32_t level = 0;
 		uint32_t magLevel = 0;
+		uint32_t reqRebirth = 0;
 		int32_t range = -1;
 
 		uint8_t spellId = 0;

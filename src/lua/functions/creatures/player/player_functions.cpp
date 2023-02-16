@@ -822,6 +822,20 @@ int PlayerFunctions::luaPlayerAddExperience(lua_State* L) {
 	return 1;
 }
 
+int PlayerFunctions::luaPlayerDoRebirth(lua_State* L)
+{
+	// player:doRebirth()
+	Player* player = getUserdata<Player>(L, 1);
+	if (player) {
+		player->doReborn();
+		lua_pushnil(L);
+	}
+	else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+
 int PlayerFunctions::luaPlayerRemoveExperience(lua_State* L) {
 	// player:removeExperience(experience[, sendText = false])
 	Player* player = getUserdata<Player>(L, 1);
@@ -842,6 +856,19 @@ int PlayerFunctions::luaPlayerGetLevel(lua_State* L) {
 	if (player) {
 		lua_pushnumber(L, player->getLevel());
 	} else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+
+int PlayerFunctions::luaPlayerGetRebirth(lua_State* L) // rebirth
+{
+	// player:getRebirth()
+	Player* player = getUserdata<Player>(L, 1);
+	if (player) {
+		lua_pushnumber(L, player->getRebirth());
+	}
+	else {
 		lua_pushnil(L);
 	}
 	return 1;

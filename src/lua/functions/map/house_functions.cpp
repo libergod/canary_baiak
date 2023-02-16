@@ -101,6 +101,19 @@ int HouseFunctions::luaHouseGetOwnerGuid(lua_State* L) {
 	return 1;
 }
 
+int HouseFunctions::luaHouseGetRequiredRebirth(lua_State* L)
+{
+	// house:getRequiredRebirth()
+	House* house = getUserdata<House>(L, 1);
+	if (house) {
+		lua_pushnumber(L, house->getRequiredRebirth());
+	}
+	else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+
 int HouseFunctions::luaHouseSetOwnerGuid(lua_State* L) {
 	// house:setOwnerGuid(guid[, updateDatabase = true])
 	House* house = getUserdata<House>(L, 1);

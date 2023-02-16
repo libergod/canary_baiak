@@ -5811,8 +5811,20 @@ bool Game::combatChangeHealth(Creature* attacker, Creature* target, CombatDamage
 			return false;
 		}
 
-		damage.primary.value = std::abs(damage.primary.value);
-		damage.secondary.value = std::abs(damage.secondary.value);
+		double bonusRebirth = 0.0;
+		if (attackerPlayer != nullptr) {
+			bonusRebirth = attackerPlayer->rebirth * g_configManager().getNumber(REBORN_DMGBONUS);
+			bonusRebirth /= 10;
+			bonusRebirth /= 100;
+			bonusRebirth += 1;
+		}
+		else
+			bonusRebirth = 1.0;
+
+		std::cout << bonusRebirth << std::endl;
+
+		damage.primary.value = std::abs(damage.primary.value) * bonusRebirth;
+		damage.secondary.value = std::abs(damage.secondary.value) * bonusRebirth;
 
 		Monster* targetMonster;
 		if (target && target->getMonster()) {

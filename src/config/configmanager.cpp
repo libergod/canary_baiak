@@ -266,6 +266,10 @@ bool ConfigManager::load()
 	integer[FORGE_INFLUENCED_CREATURES_LIMIT] = getGlobalNumber(L, "forgeInfluencedLimit", 300);
 	integer[FORGE_FIENDISH_CREATURES_LIMIT] = getGlobalNumber(L, "forgeFiendishLimit", 3);
 
+	integer[REBORN_LEVEL] = getGlobalNumber(L, "rebornLevel", 1500);
+	integer[REBORN_STATBONUS] = getGlobalNumber(L, "rebornStats", 5);
+	integer[REBORN_DMGBONUS] = getGlobalNumber(L, "rebornDmg", 20);
+
 	floating[RATE_HEALTH_REGEN] = getGlobalFloat(L, "rateHealthRegen", 1.0);
 	floating[RATE_HEALTH_REGEN_SPEED] = getGlobalFloat(L, "rateHealthRegenSpeed", 1.0);
 	floating[RATE_MANA_REGEN] = getGlobalFloat(L, "rateManaRegen", 1.0);

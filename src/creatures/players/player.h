@@ -143,6 +143,8 @@ class Player final : public Creature, public Cylinder
 		bool hasMount(const Mount* mount) const;
 		void dismount();
 
+		void doReborn();// rebirth
+
 		void sendFYIBox(const std::string& message) {
 			if (client) {
 				client->sendFYIBox(message);
@@ -491,6 +493,11 @@ class Player final : public Creature, public Cylinder
 		uint32_t getLevel() const {
 			return level;
 		}
+
+		uint32_t getRebirth() const {// rebirth
+			return rebirth;
+		}
+
 		uint8_t getLevelPercent() const {
 			return levelPercent;
 		}
@@ -2360,6 +2367,7 @@ class Player final : public Creature, public Cylinder
 		uint32_t conditionImmunities = 0;
 		uint32_t conditionSuppressions = 0;
 		uint32_t level = 1;
+		uint32_t rebirth = 0;// rebirth
 		uint32_t magLevel = 0;
 		uint32_t actionTaskEvent = 0;
 		uint32_t actionTaskEventPush = 0;

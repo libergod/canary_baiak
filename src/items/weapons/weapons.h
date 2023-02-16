@@ -219,6 +219,7 @@ class Weapon : public Event
 		uint32_t health = 0;
 		uint32_t healthPercent = 0;
 		uint32_t soul = 0;
+		uint32_t rebirth = 0;
 		uint32_t wieldInfo = WIELDINFO_NONE;
 		uint8_t breakChance = 0;
 		bool enabled = true;

@@ -166,6 +166,10 @@ bool Weapon::configureEvent(const pugi::xml_node& node)
 		mana = pugi::cast<uint32_t>(attr.value());
 	}
 
+	if ((attr = node.attribute("rebirth"))) {
+		rebirth = pugi::cast<uint32_t>(attr.value());
+	}
+
 	if ((attr = node.attribute("manapercent"))) {
 		manaPercent = pugi::cast<uint32_t>(attr.value());
 	}
@@ -317,6 +321,10 @@ int32_t Weapon::playerWeaponCheck(Player* player, Creature* target, uint8_t shoo
 		}
 
 		if (player->getMagicLevel() < getReqMagLv()) {
+			damageModifier = (isWieldedUnproperly() ? damageModifier / 2 : 0);
+		}
+
+		if (player->getRebirth() < rebirth) {
 			damageModifier = (isWieldedUnproperly() ? damageModifier / 2 : 0);
 		}
 		return damageModifier;

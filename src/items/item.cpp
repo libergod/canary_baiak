@@ -1766,6 +1766,12 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 					s << " magic level " << it.runeMagLevel;
 				}
 
+				if (it.runeRebirth > 0) {
+					s << " and";
+
+					s << " rebirth " << it.runeRebirth;
+				}
+
 				s << " or higher";
 			}
 		}

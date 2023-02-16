@@ -514,6 +514,10 @@ bool Spell::configureSpell(const pugi::xml_node& node)
 		magLevel = pugi::cast<uint32_t>(attr.value());
 	}
 
+	if ((attr = node.attribute("rebirth"))) {
+		reqRebirth = pugi::cast<uint32_t>(attr.value());
+	}
+
 	if ((attr = node.attribute("mana"))) {
 		mana = pugi::cast<uint32_t>(attr.value());
 	}
@@ -659,6 +663,12 @@ bool Spell::playerSpellCheck(Player* player) const
 
 	if (player->getMagicLevel() < magLevel) {
 		player->sendCancelMessage(RETURNVALUE_NOTENOUGHMAGICLEVEL);
+		g_game().addMagicEffect(player->getPosition(), CONST_ME_POFF);
+		return false;
+	}
+
+	if (player->getRebirth() < reqRebirth) {
+		player->sendCancelMessage("You do not have enough rebirths.");
 		g_game().addMagicEffect(player->getPosition(), CONST_ME_POFF);
 		return false;
 	}
@@ -1179,10 +1189,11 @@ bool RuneSpell::configureEvent(const pugi::xml_node& node)
 	}
 
 	hasCharges = (charges > 0);
-	if (magLevel != 0 || level != 0) {
+	if (magLevel != 0 || level != 0 || reqRebirth != 0) {
 		//Change information in the ItemType to get accurate description
 		ItemType& iType = Item::items.getItemType(runeId);
 		iType.runeMagLevel = magLevel;
+		iType.runeRebirth = reqRebirth;
 		iType.runeLevel = level;
 		iType.charges = charges;
 	}
