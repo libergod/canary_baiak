@@ -93,3 +93,6 @@ dofile(DATA_DIRECTORY.. '/lib/custom/karin.lua')
 -- SHOP PRIVATE System
 dofile(DATA_DIRECTORY.. '/lib/custom/lib_privateShop.lua')
 dofile(DATA_DIRECTORY.. '/lib/custom/config_privateShop.lua')
+
+-- REBORN SYSTEM
+dofile(DATA_DIRECTORY.. '/lib/custom/reborn_system.lua')

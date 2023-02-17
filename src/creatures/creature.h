@@ -191,6 +191,7 @@ class Creature : virtual public Thing
 		uint32_t getMana() const {
 			return mana;
 		}
+
 		virtual uint32_t getMaxMana() const {
 			return mana;
 		}

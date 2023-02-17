@@ -182,6 +182,10 @@ function getPlayerSkill(cid, skillId) local p = Player(cid) return p and p:getSk
 function getPlayerMana(cid) local p = Player(cid) return p and p:getMana() or false end
 function getPlayerMaxMana(cid) local p = Player(cid) return p and p:getMaxMana() or false end
 function getPlayerLevel(cid) local p = Player(cid) return p and p:getLevel() or false end
+
+function getRebirth(cid) local p = Player(cid) return p and p:getRebirth() or false end
+function doRebirth(cid) local c = Player(cid) return c and c:doRebirth() or false end
+
 function getPlayerTown(cid) local p = Player(cid) return p and p:getTown():getId() or false end
 function getPlayerVocation(cid) local p = Player(cid) return p and p:getVocation():getId() or false end
 function getPlayerSoul(cid) local p = Player(cid) return p and p:getSoul() or false end

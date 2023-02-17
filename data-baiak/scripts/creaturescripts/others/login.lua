@@ -127,27 +127,59 @@ function playerLogin.onLogin(player)
 	-- Maintain users Health/mana according to his vocation/promotion
 	local vocation = player:getVocation()
 	local level = player:getLevel()
-	local debugact = false;
-	local supposedhealth = 185 + (vocation:getHealthGain() * (level-8))
-	local supposedmana = 90 + (vocation:getManaGain() * (level-8))
-	local supposedcap = 47000 + (vocation:getCapacityGain() * (level-8))
-	if supposedhealth ~= player:getMaxHealth() then
-	player:sendTextMessage(MESSAGE_STATUS_DEFAULT, "Server detected your max health was wrongly set at " .. player:getMaxHealth() .. " and we adjusted it to " .. supposedhealth .. " automatically.")
-	player:setMaxHealth(supposedhealth)
-	player:addHealth(supposedhealth)
-	end
-	if supposedmana ~= player:getMaxMana() then
-	player:sendTextMessage(MESSAGE_STATUS_DEFAULT, "Server detected your max mana was wrongly set at " .. player:getMaxMana() .. " and we adjusted it to " .. supposedmana .. " automatically.")
-	player:setMaxMana(supposedmana)
-	player:addMana(supposedmana)
-	end
-	if supposedcap ~= player:getCapacity() then
-	player:sendTextMessage(MESSAGE_STATUS_DEFAULT, "Server detected your max capacity was wrongly set at " .. (player:getCapacity() / 100) .. " and we adjusted it to " .. supposedcap/100 .. " automatically.")
-	player:setCapacity(supposedcap)
-	end
+	local debugact = false
 	
-	if debugact then
-		player:sendTextMessage(MESSAGE_STATUS_DEFAULT, "For level " .. player:getLevel() .. ", your max HP should be: " .. supposedhealth .. " max mana should be: " .. supposedmana .. " max cap should be: " .. supposedcap .. ".")
+	local bonusRebirth = 5
+	bonusRebirth = bonusRebirth / 100
+	
+	Spdlog.info("[REBORN NPC] - Bonus Rebirth: ".. bonusRebirth  .. "% Player Reborns: ".. player:getReborn())
+	local mana = 90 * bonusRebirth
+	local health = 185 * bonusRebirth
+	
+	if player:getReborn() > 0 then
+		local supposedhealth = 185 + (vocation:getHealthGain() * (level-8)) + (health * player:getReborn())
+		local supposedmana = 90 + (vocation:getManaGain() * (level-8)) + (mana * player:getReborn())
+		local supposedcap = 47000 + (vocation:getCapacityGain() * (level-8))
+		if supposedhealth ~= player:getMaxHealth() then
+			player:sendTextMessage(MESSAGE_STATUS_DEFAULT, "Server detected your max health was wrongly set at " .. player:getMaxHealth() .. " and we adjusted it to " .. supposedhealth .. " automatically.")
+			player:setMaxHealth(supposedhealth)
+			player:addHealth(supposedhealth)
+		end
+		if supposedmana ~= player:getMaxMana() then
+			player:sendTextMessage(MESSAGE_STATUS_DEFAULT, "Server detected your max mana was wrongly set at " .. player:getMaxMana() .. " and we adjusted it to " .. supposedmana .. " automatically.")
+			player:setMaxMana(supposedmana)
+			player:addMana(supposedmana)
+		end
+		if supposedcap ~= player:getCapacity() then
+			player:sendTextMessage(MESSAGE_STATUS_DEFAULT, "Server detected your max capacity was wrongly set at " .. (player:getCapacity() / 100) .. " and we adjusted it to " .. supposedcap/100 .. " automatically.")
+			player:setCapacity(supposedcap)
+		end
+		
+		if debugact then
+			player:sendTextMessage(MESSAGE_STATUS_DEFAULT, "For level " .. player:getLevel() .. ", your max HP should be: " .. supposedhealth .. " max mana should be: " .. supposedmana .. " max cap should be: " .. supposedcap .. ".")
+		end
+	else
+		local supposedhealth = 185 + (vocation:getHealthGain() * (level-8))
+		local supposedmana = 90 + (vocation:getManaGain() * (level-8))
+		local supposedcap = 47000 + (vocation:getCapacityGain() * (level-8))
+		if supposedhealth ~= player:getMaxHealth() then
+			player:sendTextMessage(MESSAGE_STATUS_DEFAULT, "Server detected your max health was wrongly set at " .. player:getMaxHealth() .. " and we adjusted it to " .. supposedhealth .. " automatically.")
+			player:setMaxHealth(supposedhealth)
+			player:addHealth(supposedhealth)
+		end
+		if supposedmana ~= player:getMaxMana() then
+			player:sendTextMessage(MESSAGE_STATUS_DEFAULT, "Server detected your max mana was wrongly set at " .. player:getMaxMana() .. " and we adjusted it to " .. supposedmana .. " automatically.")
+			player:setMaxMana(supposedmana)
+			player:addMana(supposedmana)
+		end
+		if supposedcap ~= player:getCapacity() then
+			player:sendTextMessage(MESSAGE_STATUS_DEFAULT, "Server detected your max capacity was wrongly set at " .. (player:getCapacity() / 100) .. " and we adjusted it to " .. supposedcap/100 .. " automatically.")
+			player:setCapacity(supposedcap)
+		end
+		
+		if debugact then
+			player:sendTextMessage(MESSAGE_STATUS_DEFAULT, "For level " .. player:getLevel() .. ", your max HP should be: " .. supposedhealth .. " max mana should be: " .. supposedmana .. " max cap should be: " .. supposedcap .. ".")
+		end
 	end
 	-- end maintain users health/mana according to his vocation/promotion
 	
