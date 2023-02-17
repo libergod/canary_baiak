@@ -175,6 +175,7 @@ bool IOLoginData::loadPlayer(Player* player, DBResult_ptr result)
   player->quickLootFallbackToMainContainer = result->getNumber<bool>("quickloot_fallback");
 
   player->setSex(static_cast<PlayerSex_t>(result->getNumber<uint16_t>("sex")));
+
   player->level = std::max<uint32_t>(1, result->getNumber<uint32_t>("level"));
 	player->rebirth = std::max<uint32_t>(0, result->getNumber<uint32_t>("rebirth"));// rebirth
 
