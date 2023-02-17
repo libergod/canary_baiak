@@ -117,7 +117,8 @@ void House::updateDoorDescription() const
 	std::ostringstream ss;
 	if (owner != 0) {
 		ss << "It belongs to house '" << houseName << "'. " << ownerName << " owns this house.";
-	} else {
+	}
+	else {
 		ss << "It belongs to house '" << houseName << "'. Nobody owns this house.";
 
 		const int32_t housePrice = g_configManager().getNumber(HOUSE_PRICE);
@@ -125,8 +126,9 @@ void House::updateDoorDescription() const
 			ss << " It costs " << (houseTiles.size() * housePrice) << " gold coins.";
 		}
 
-		if (requiredRebirth > 0)
+		if (requiredRebirth > 0) {
 			ss << " It requires " << requiredRebirth << " rebirths.";
+		}
 	}
 
 	for (const auto& it : doorList) {
