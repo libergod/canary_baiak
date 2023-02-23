@@ -715,6 +715,14 @@ function Player:onGainExperience(target, exp, rawExp)
 	if target:getName():lower() == (Game.getBoostedCreature()):lower() then
 		exp = exp * 2
 	end
+	
+	-- Exp DROPED Boost
+	local dropedExpBoost = 1
+	if self:getStorageValue(6000) - os.time() > 0 then
+		dropedExpBoost = 1.2 -- 20% More exp
+	else
+		dropedExpBoost = 1
+	end
 
 	-- Prey system
 	if configManager.getBoolean(configKeys.PREY_ENABLED) then
@@ -727,9 +735,9 @@ function Player:onGainExperience(target, exp, rawExp)
 	local baseRate = self:getFinalBaseRateExperience()
 	local finalExperience
 	if configManager.getBoolean(configKeys.RATE_USE_STAGES) then
-		finalExperience = (exp * baseRate + (exp * (storeXpBoostAmount/100))) * staminaBoost
+		finalExperience = ((exp * baseRate + (exp * (storeXpBoostAmount/100))) * staminaBoost) * dropedExpBoost
 	else
-		finalExperience = (exp + (exp * (storeXpBoostAmount/100))) * staminaBoost
+		finalExperience = ((exp + (exp * (storeXpBoostAmount/100))) * staminaBoost) * dropedExpBoost
 	end
 
 	return math.max(finalExperience)
