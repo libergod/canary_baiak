@@ -36,9 +36,9 @@ local config = {
 	
 }
 
-local bomberman = Action()
+local bombermanAct = Action()
 
-function bomberman.onUse(player, item, fromPosition, target, toPosition, isHotkey)
+function bombermanAct.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	if #BomberTeam1 > 0 or #BomberTeam2 > 0 then
 		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Existe uma partida em andamento.")
 		player:getPosition():sendMagicEffect(CONST_ME_POFF)
@@ -94,8 +94,8 @@ function bomberman.onUse(player, item, fromPosition, target, toPosition, isHotke
 	return true
 end
 
-bomberman:aid(19876)
-bomberman:register()
+bombermanAct:aid(19876)
+bombermanAct:register()
 
 function endGame()
 	exitPosition = Position(1721, 942, 7)

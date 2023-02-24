@@ -1,4 +1,6 @@
-function onAdvance(player, skill, oldLevel, newLevel)
+local addLevelUpAnimation = CreatureEvent("addLevelUpAnimation")
+
+function addLevelUpAnimation.onAdvance(player, skill, oldLevel, newLevel)
 
 	if skill ~= SKILL_LEVEL or newLevel <= oldLevel then
 		return true
@@ -30,3 +32,5 @@ function onAdvance(player, skill, oldLevel, newLevel)
 
 	return true
 end
+
+addLevelUpAnimation:register()

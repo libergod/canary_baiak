@@ -115,6 +115,13 @@ function playerLogin.onLogin(player)
 	-- End 'Premium Ends Teleport to Temple'
 
 
+
+
+	--Spdlog.info("[CRITICAL SYSTEM] - Critical Hit Chance: " ..player:getSkillLevel(SKILL_CRITICAL_HIT_CHANCE).." Critical Hit Damage: "..player:getSkillLevel(SKILL_CRITICAL_HIT_DAMAGE))
+
+
+
+
 	-- GUILD LEVEL SYSTEM
 	local guild = player:getGuild()
 	if guild then
@@ -132,7 +139,7 @@ function playerLogin.onLogin(player)
 	local bonusRebirth = 5
 	bonusRebirth = bonusRebirth / 100
 	
-	Spdlog.info("[REBORN NPC] - Bonus Rebirth: ".. (bonusRebirth*100) * player:getReborn()  .. "% Player Reborns: ".. player:getReborn() .. " Player Gain Mana: "..vocation:getManaGain().. " Player Health Gain: " ..vocation:getHealthGain().. " Player Get Cap: "..vocation:getCapacityGain())
+	--Spdlog.info("[REBORN NPC] - Bonus Rebirth: ".. (bonusRebirth*100) * player:getReborn()  .. "% Player Reborns: ".. player:getReborn() .. " Player Gain Mana: "..vocation:getManaGain().. " Player Health Gain: " ..vocation:getHealthGain().. " Player Get Cap: "..vocation:getCapacityGain())
 	local mana = math.floor(90 * bonusRebirth)
 	local health = math.floor(185 * bonusRebirth)
 	local capMore = math.floor(47000 * bonusRebirth)

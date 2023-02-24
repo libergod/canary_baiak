@@ -1,4 +1,6 @@
-function onSay(player, words, param)
+local bomberManEvent = TalkAction("!bomb")
+
+function bomberManEvent.onSay(player, words, param)
 	if not table.contains(BomberTeam1, player) and not table.contains(BomberTeam2, player) then
 		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Só é permitido soltar bombas dentro e durante a partida.")
 		player:getPosition():sendMagicEffect(CONST_ME_POFF)
@@ -12,6 +14,8 @@ function onSay(player, words, param)
 		addEvent(explosion, 2 * 1 * 1000, player:getPosition(), bombsize, player.uid)
 	end
 end
+bomberManEvent:register()
+
 
 function explosion(position, bombsize, player)
 	local player = Player(player)

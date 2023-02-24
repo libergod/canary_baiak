@@ -26,7 +26,6 @@ function Player.addToMonthTime(self)
     db.query(string.format("UPDATE `players` SET `online_time_month` = `online_time` + `online_time_month` WHERE `id` = %d", self:getGuid()))
 end
 
-
 DUNGEON_SYSTEM = {
 
 	Storages = {

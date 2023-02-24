@@ -194,7 +194,7 @@ function SNAKE:setPlayerPoints(guid, amount)
 	if SNAKE:getPlayerPoints(guid) >= 0 then
 		db.query(string.format("UPDATE `snake_game` SET `points` = %d WHERE `guid` = %d", amount, guid))
 	else
-		db.query(string.format("INSERT INTO `snake_game` (`id`, `guid`, `points`) VALUES ('', '%d', '%d')", guid, amount))
+		db.query(string.format("INSERT INTO `snake_game` (`guid`, `points`) VALUES ('%d', '%d')", guid, amount))
 	end
 end
 
