@@ -681,6 +681,16 @@ function Player:onGainExperience(target, exp, rawExp)
 	if not target or target:isPlayer() then
 		return exp
 	end
+	
+	local expOnlineBonus = {
+		[{2, 200}] = 5,
+		[{201, 300}] = 10,
+		[{301, 400}] = 15,
+		[{401, 500}] = 20,
+		[{501, 600}] = 25,
+		[{601}] = 30
+	}
+	table.sort(expOnlineBonus, function(a, b) return a > b end)
 
 	-- Soul regeneration
 	local vocation = self:getVocation()
@@ -724,6 +734,17 @@ function Player:onGainExperience(target, exp, rawExp)
 		dropedExpBoost = 1
 	end
 
+	-- EXP BONUS PER ONLINE PLAYER
+	local onlineExpBoost = 1
+	local players = #Game.getPlayers()
+    for range, bonus in pairs(expOnlineBonus) do
+        if players >= range[1] and (players <= (range[2] or math.huge)) then
+			onlineExpBoost = 1 + (bonus / 100)
+			Game.setStorageValue(90003, bonus)
+            break
+        end
+    end
+
 	-- Prey system
 	if configManager.getBoolean(configKeys.PREY_ENABLED) then
 		local monsterType = target:getType()
@@ -735,9 +756,9 @@ function Player:onGainExperience(target, exp, rawExp)
 	local baseRate = self:getFinalBaseRateExperience()
 	local finalExperience
 	if configManager.getBoolean(configKeys.RATE_USE_STAGES) then
-		finalExperience = ((exp * baseRate + (exp * (storeXpBoostAmount/100))) * staminaBoost) * dropedExpBoost
+		finalExperience = (((exp * baseRate + (exp * (storeXpBoostAmount/100))) * staminaBoost) * dropedExpBoost) * onlineExpBoost
 	else
-		finalExperience = ((exp + (exp * (storeXpBoostAmount/100))) * staminaBoost) * dropedExpBoost
+		finalExperience = (((exp + (exp * (storeXpBoostAmount/100))) * staminaBoost) * dropedExpBoost) * onlineExpBoost
 	end
 
 	return math.max(finalExperience)

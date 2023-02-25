@@ -20,6 +20,7 @@ function loginEvents.onLogin(player)
 		"dodgeCriticalOne",
 		"dodgeCriticalTwo",
 		"dodgeCriticalThree",
+		"playerDeathRestoreExp",
 		--TASK SYSTEM
 		"TaskCreature",
 		--Dungeon System

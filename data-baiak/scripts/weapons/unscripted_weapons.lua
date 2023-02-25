@@ -2137,7 +2137,7 @@ local weapons = {
 		type = WEAPON_DISTANCE,
 		level = 60,
 		unproperly = true,
-		breakchance = 2
+		breakchance = 0
 	},
 	{
 		-- umbral master crossbow
@@ -2473,7 +2473,7 @@ local weapons = {
 		-- mean paladin spear
 		itemid = 17110,
 		type = WEAPON_DISTANCE,
-		breakchance = 3,
+		breakchance = 0,
 		vocation = {
 			{"None", true}
 		}
@@ -4273,7 +4273,7 @@ local weapons = {
 		type = WEAPON_DISTANCE,
 		level = 25,
 		unproperly = true,
-		breakchance = 3
+		breakchance = 0
 	},
 	{
 		-- assassin star
@@ -4289,7 +4289,7 @@ local weapons = {
 		type = WEAPON_DISTANCE,
 		level = 42,
 		unproperly = true,
-		breakchance = 1
+		breakchance = 0
 	},
 	{
 		-- onyx arrow
@@ -4372,7 +4372,7 @@ local weapons = {
 		type = WEAPON_DISTANCE,
 		level = 20,
 		unproperly = true,
-		breakchance = 6
+		breakchance = 0
 	},
 	{
 		-- ripper lance
@@ -4883,7 +4883,7 @@ local weapons = {
 		-- spear
 		itemid = 3277,
 		type = WEAPON_DISTANCE,
-		breakchance = 3
+		breakchance = 0
 	},
 	{
 		-- hatchet

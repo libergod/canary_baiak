@@ -955,6 +955,10 @@ void Game::playerMoveCreature(Player* player, Creature* movingCreature, const Po
 		player->setNextActionPushTask(task);
 		return;
 	}
+	if (movingCreature->isMovementBlocked()) {
+		player->sendCancelMessage(RETURNVALUE_NOTMOVEABLE);
+		return;
+	}
 
 	player->setNextActionTask(nullptr);
 
@@ -2574,6 +2578,10 @@ void Game::playerMove(uint32_t playerId, Direction direction)
 {
 	Player* player = getPlayerByID(playerId);
 	if (!player) {
+		return;
+	}
+	if (player->isMovementBlocked()) {
+		player->sendCancelWalk();
 		return;
 	}
 

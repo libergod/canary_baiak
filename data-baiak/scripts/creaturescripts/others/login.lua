@@ -43,9 +43,25 @@ function playerLogin.onLogin(player)
 			player:openChannel(5) -- Advertsing main
 		end
 	else
-		player:sendTextMessage(MESSAGE_STATUS, "Welcome to " .. SERVER_NAME .. "!")
+		player:sendTextMessage(MESSAGE_LOGIN, "Welcome to " .. SERVER_NAME .. "!")
 		player:sendTextMessage(MESSAGE_LOGIN, string.format("Your last visit in ".. SERVER_NAME ..": %s.", os.date("%d. %b %Y %X", player:getLastLoginSaved())))
 	end
+	
+	-- RESTORE EXP SYSTEM
+	if player:getStorageValue(RestoreExp.canRestore) == 1 then
+		player:setStorageValue(RestoreExp.xpAfter, player:getExperience())
+	else
+		player:setStorageValue(RestoreExp.xpBefore, -1)
+		player:setStorageValue(RestoreExp.xpAfter, -1)
+	end
+
+
+	-- BONUS EXP PER PLAYER ONLINE
+	local expOnlineBoost = Game.getStorageValue(90003)
+	if not (expOnlineBoost <= 0) then
+		player:sendTextMessage(MESSAGE_LOGIN, "High number of players! Server is giving " ..Game.getStorageValue(90003).."% exp bonus, enjoy!")
+	end
+
 
 	if isPremium(player) then
 		player:setStorageValue(Storage.PremiumAccount, 1)

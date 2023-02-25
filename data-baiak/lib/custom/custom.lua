@@ -1,3 +1,9 @@
+RestoreExp = {
+	xpBefore = 90004,
+	xpAfter = 90005,
+	canRestore = 90006,
+}
+
 ENGLISH = 2
 SPANISH = 1
 PORTUGUES = 0

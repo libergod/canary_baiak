@@ -96,3 +96,6 @@ dofile(DATA_DIRECTORY.. '/lib/custom/config_privateShop.lua')
 
 -- REBORN SYSTEM
 dofile(DATA_DIRECTORY.. '/lib/custom/reborn_system.lua')
+
+-- EXAUSTION Lib
+dofile(DATA_DIRECTORY.. '/lib/custom/exaustion_lib.lua')
