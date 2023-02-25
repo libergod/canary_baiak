@@ -43,7 +43,7 @@ function playerDeathRestoreExp.onDeath(player, corpse, killer, mostDamageKiller,
 
 
 	if byPlayer ~= 1 then
-		Spdlog.info("Death %: " ..player:getDeathPenalty() )
+		--Spdlog.info("Death %: " ..player:getDeathPenalty() )
 		player:setStorageValue(RestoreExp.xpBefore, player:getExperience())
 		player:setStorageValue(RestoreExp.canRestore, 1)
 	else
