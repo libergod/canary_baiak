@@ -43,14 +43,25 @@ function playerDeathRestoreExp.onDeath(player, corpse, killer, mostDamageKiller,
 
 
 	if byPlayer ~= 1 then
-		--Spdlog.info("Death %: " ..player:getDeathPenalty() )
-		player:setStorageValue(RestoreExp.xpBefore, player:getExperience())
-		player:setStorageValue(RestoreExp.canRestore, 1)
+		
+		-- RESTORE EXP SYSTEM
+		local usrExist = db.storeQuery("SELECT `id` FROM `player_exp_restore` WHERE `id_player` = " .. player:getGuid() .. " LIMIT 1")
+		if usrExist ~= false then
+			local iduser = result.getDataInt(usrExist, 'id')
+			result.free(usrExist)
+			-- iduser (Id do user ja existente na tabela)
+			db.query('UPDATE `player_exp_restore` SET `expBefore` = '..player:getExperience()..' where `id`='..iduser)
+			db.query('UPDATE `player_exp_restore` SET `canRestore` = 1 where `id`='..iduser)
+		else
+			db.query(string.format("INSERT INTO `player_exp_restore`(`id_player`, `expBefore`, `expAfter`, `canRestore`) VALUES (%s, %s, %s, %s)", player:getGuid(), player:getExperience(), "-1", "1"))
+		end
+
+	
 	else
 		-- DIED FOR PLAYER, SO CANT RESTORE EXP
-		player:setStorageValue(RestoreExp.xpBefore, -1)
-		player:setStorageValue(RestoreExp.xpAfter, -1)
-		player:setStorageValue(RestoreExp.canRestore, -1)
+		db.query('UPDATE `player_exp_restore` SET `expAfter` = -1 where `id_player`='..player:getGuid())
+		db.query('UPDATE `player_exp_restore` SET `expBefore` = -1 where `id_player`='..player:getGuid())
+		db.query('UPDATE `player_exp_restore` SET `canRestore` = -1 where `id_player`='..player:getGuid())
 	end
 end
 playerDeathRestoreExp:register()

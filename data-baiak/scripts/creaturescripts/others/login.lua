@@ -48,12 +48,45 @@ function playerLogin.onLogin(player)
 	end
 	
 	-- RESTORE EXP SYSTEM
+	local usrExist = db.storeQuery("SELECT `id` FROM `player_exp_restore` WHERE `id_player` = " .. player:getGuid() .. " LIMIT 1")
+	if usrExist ~= false then
+		local iduser = result.getDataInt(usrExist, 'id')
+		result.free(usrExist)
+		-- iduser (Id do user ja existente na tabela)
+		local usrExpAtual = db.storeQuery("SELECT `experience` FROM `players` WHERE `id` = " .. player:getGuid() .. " LIMIT 1")
+		if usrExpAtual ~= false then
+			local usrExpAct = result.getDataInt(usrExpAtual, 'experience')
+			result.free(usrExpAtual)
+			-- usrExpAtual (exp do user atualmente)
+			local canRestoreTst = db.storeQuery("SELECT `canRestore` FROM `player_exp_restore` WHERE `id_player` = " .. player:getGuid() .. " LIMIT 1")
+			if canRestoreTst ~= false then
+				local canRestoreTsts = result.getDataInt(canRestoreTst, 'canRestore')
+				result.free(canRestoreTst)	
+				if canRestoreTsts ~= -1 then
+					db.query('UPDATE `player_exp_restore` SET `expAfter` = '..usrExpAct..' where `id_player`='..player:getGuid())
+				end
+			end
+		end
+	else	
+		db.query(string.format("INSERT INTO `player_exp_restore`(`id_player`, `expBefore`, `expAfter`, `canRestore`) VALUES (%s, %s, %s, %s)", player:getGuid(), "-1", "-1", "-1"))
+	end
+	
+	
+	--[[
 	if player:getStorageValue(RestoreExp.canRestore) == 1 then
-		player:setStorageValue(RestoreExp.xpAfter, player:getExperience())
+		local expAtual = db.storeQuery("SELECT `experience` FROM `players` WHERE `id` = " .. player:getGuid() .. " LIMIT 1")
+		if expAtual ~= false then
+			local expuser = result.getDataInt(expAtual, 'experience')
+			result.free(expAtual)
+			player:setStorageValue(RestoreExp.xpAfter, expuser)
+		end
+
+		--player:setStorageValue(RestoreExp.xpAfter, player:getExperience())
 	else
 		player:setStorageValue(RestoreExp.xpBefore, -1)
 		player:setStorageValue(RestoreExp.xpAfter, -1)
 	end
+	]]--
 
 
 	-- BONUS EXP PER PLAYER ONLINE

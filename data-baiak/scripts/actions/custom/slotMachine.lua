@@ -1,7 +1,7 @@
 if not slotMachineData then
 	slotMachineData = {
-		needItem = {id = 3043, count = 10},
-		items = vector(5909,5910, 5911, 5912, 5913, 5914),
+		needItem = {id = 3031, count = 100000},
+		items = vector(22723,22724, 21554, 9170),
 
 		positions = {
 			Position(951, 1208, 6),
@@ -103,14 +103,14 @@ function SlotMachineTools.onUse(player, item, fromPosition, target, toPosition, 
 		return true
 	else
 		local item = slotMachineData.needItem
-		if not player:removeItem(item.id, item.count) then
-			if not player:removeMoneyBank(item.count * 1000) then
-				if not player:removeMoney(item.count * 1000) then
-					player:sendCancelMessage(('Você não possui %dx %s.'):format(item.count, ItemType(item.id):getName()))
+		--if not player:removeItem(item.id, item.count) then
+			if not player:removeMoney(item.count) then
+				if not player:removeMoneyBank(item.count) then
+					player:sendCancelMessage(('Você não possui %dx gold coins.'):format(item.count * 1000))
 					return true
 				end
 			end
-		end
+		--end
 		slotMachineData.owner = name
 	end
 

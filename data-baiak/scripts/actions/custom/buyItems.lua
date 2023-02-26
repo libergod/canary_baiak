@@ -1,10 +1,10 @@
 local items = Action()
 local levers = {
-	[2655] = {id = 8778, count = 1, value = 45}, -- Addon Doll
-	[2656] = {id = 22723, count = 1, value = 50}, -- Dodge token
-	[2657] = {id = 22724, count = 1, value = 100}, --Critical Token
-	[2658] = {id = 12305, count = 1, value = 0}, -- SuperUP Key
-	[2659] = {id = 9170, count = 1, value = 190}, -- Stamina Refiller
+	[2655] = {id = 8778, count = 1, value = 500000}, -- Addon Doll
+	[2656] = {id = 22723, count = 1, value = 2000000}, -- Dodge token
+	[2657] = {id = 22724, count = 1, value = 1000000}, --Critical Token
+	[2658] = {id = 12305, count = 1, value = 1500000}, -- SuperUP Key
+	[2659] = {id = 9170, count = 1, value = 1000000}, -- Stamina Refiller
 }
 
 function items.onUse(player, item, fromPosition, target, toPosition, isHotkey)

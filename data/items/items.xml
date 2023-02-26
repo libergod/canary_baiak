@@ -32468,8 +32468,8 @@
 		<attribute key="weight" value="60"/>
 	</item>
 	<item fromid="21508" toid="21553" article="a" name="coral stone"/>
-	<item id="21554" article="a" name="small crystal bell">
-		<attribute key="description" value="It seems fragile and precious"/>
+	<item id="21554" article="a" name="exp restore potion">
+		<attribute key="description" value="It restores your lost exp after a death. Need to re-login before use."/>
 		<attribute key="weight" value="280"/>
 	</item>
 	<item fromid="21558" toid="21563" article="a" name="coral stone"/>
