@@ -3035,6 +3035,24 @@
 		<monster name="Demon" x="-11" y="29" z="7" spawntime="45" />
 		<monster name="Demon" x="29" y="29" z="7" spawntime="45" />
 	</monster>
+	<monster centerx="1188" centery="863" centerz="7" radius="1">
+		<monster name="Training Machine" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="1190" centery="863" centerz="7" radius="1">
+		<monster name="Training Machine" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="1192" centery="863" centerz="7" radius="1">
+		<monster name="Training Machine" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="1194" centery="863" centerz="7" radius="1">
+		<monster name="Training Machine" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="1196" centery="863" centerz="7" radius="1">
+		<monster name="Training Machine" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="1198" centery="863" centerz="7" radius="1">
+		<monster name="Training Machine" x="0" y="0" z="7" spawntime="60" />
+	</monster>
 	<monster centerx="308" centery="867" centerz="7" radius="30">
 		<monster name="Crystal Spider" x="21" y="-28" z="7" spawntime="60" />
 		<monster name="Frost Dragon Hatchling" x="19" y="-27" z="7" spawntime="60" />
@@ -3069,10 +3087,31 @@
 		<monster name="Frost Dragon Hatchling" x="27" y="26" z="7" spawntime="60" />
 		<monster name="Frost Dragon" x="27" y="29" z="7" spawntime="60" />
 	</monster>
+	<monster centerx="1183" centery="867" centerz="7" radius="1">
+		<monster name="Training Machine" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="1183" centery="869" centerz="7" radius="1">
+		<monster name="Training Machine" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="1183" centery="871" centerz="7" radius="1">
+		<monster name="Training Machine" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="1183" centery="873" centerz="7" radius="1">
+		<monster name="Training Machine" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="1183" centery="875" centerz="7" radius="1">
+		<monster name="Training Machine" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="1183" centery="877" centerz="7" radius="1">
+		<monster name="Training Machine" x="0" y="0" z="7" spawntime="60" />
+	</monster>
 	<monster centerx="270" centery="878" centerz="7" radius="10">
 		<monster name="Frost Dragon" x="-1" y="-8" z="7" spawntime="60" />
 		<monster name="Crystal Spider" x="3" y="2" z="7" spawntime="60" />
 		<monster name="Frost Dragon Hatchling" x="-3" y="6" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="1183" centery="879" centerz="7" radius="1">
+		<monster name="Training Machine" x="0" y="0" z="7" spawntime="60" />
 	</monster>
 	<monster centerx="104" centery="880" centerz="7" radius="20">
 		<monster name="Demon" x="13" y="-11" z="7" spawntime="60" />
@@ -3096,6 +3135,9 @@
 		<monster name="Fury" x="-9" y="17" z="7" spawntime="60" />
 		<monster name="Demon" x="-14" y="18" z="7" spawntime="60" />
 		<monster name="Fury" x="-18" y="19" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="1183" centery="881" centerz="7" radius="1">
+		<monster name="Training Machine" x="0" y="0" z="7" spawntime="60" />
 	</monster>
 	<monster centerx="375" centery="883" centerz="7" radius="10">
 		<monster name="Demon" x="-3" y="-6" z="7" spawntime="45" />

@@ -32,7 +32,8 @@ GameStore.OfferTypes = {
 	OFFER_TYPE_HIRELING_SEXCHANGE = 22,
 	OFFER_TYPE_HIRELING_SKILL = 23,
 	OFFER_TYPE_HIRELING_OUTFIT = 24,
-	OFFER_TYPE_HUNTINGSLOT = 25
+	OFFER_TYPE_HUNTINGSLOT = 25,
+	OFFER_TYPE_VIP = 26
 }
 
 GameStore.SubActions = {
@@ -408,6 +409,7 @@ function parseBuyStoreOffer(playerId, msg)
 		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_BLESSINGS      then GameStore.processSignleBlessingPurchase(player, offer.blessid, offer.count)
 		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_ALLBLESSINGS   then GameStore.processAllBlessingsPurchase(player, offer.count)
 		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_PREMIUM        then GameStore.processPremiumPurchase(player, offer.id)
+		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_VIP        	then GameStore.processVipPurchase(player, offer.id)
 		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_STACKABLE      then GameStore.processStackablePurchase(player, offer.itemtype, offer.count, offer.name)
 		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_HOUSE          then GameStore.processHouseRelatedPurchase(player, offer.itemtype, offer.count)
 		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_OUTFIT         then GameStore.processOutfitPurchase(player, offer.sexId, offer.addon)
@@ -1323,7 +1325,7 @@ function GameStore.processPremiumPurchase(player, offerId)
 end
 
 function GameStore.processVipPurchase(player, offerId)
-	player:addPremiumDays(offerId - 3000)
+	player:addVipDays(offerId - 3000)
 end
 
 function GameStore.processStackablePurchase(player, offerId, offerCount, offerName)
