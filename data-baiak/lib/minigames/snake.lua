@@ -1,12 +1,12 @@
 SNAKE = {
 	itemid=1860,
-	premio = 9020,
+	premio = 3043,
 	freeglobalstorage=28103,
-	itemFood=2674,
+	itemFood=3585,
 	controlpos= {x = 1656, y = 992, z = 6},
 	exitpos = {x = 1655, y = 983, z = 7},
 	centerpos= {x = 1655, y = 991, z = 7},
-	wallID = 1486,
+	wallID = 2115,
 	interval = 300,
 	timer =
 		function(player,n,pos_)
@@ -50,13 +50,13 @@ SNAKE = {
 					end
 
 					if #pos_-1 >= 20 and #pos_-1 < 30 then
-						player:addItem(SNAKE.premio, 1)
+						player:addItem(SNAKE.premio, 5)
 					elseif #pos_-1 >= 30 and #pos_-1 < 40 then
-						player:addItem(SNAKE.premio, 2)
+						player:addItem(SNAKE.premio, 10)
 					elseif #pos_-1 >= 40 and #pos_-1 < 50 then
-						player:addItem(SNAKE.premio, 3)
+						player:addItem(SNAKE.premio, 20)
 					elseif #pos_-1 >= 50 then
-						player:addItem(SNAKE.premio, 4)
+						player:addItem(SNAKE.premio, 30)
 					end 
 					SNAKE.clean()
 					Game.setStorageValue(SNAKE.freeglobalstorage,0)
