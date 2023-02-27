@@ -15295,4 +15295,97 @@
 	<monster centerx="1180" centery="1082" centerz="13" radius="1">
 		<monster name="Hero" x="0" y="0" z="13" spawntime="60" />
 	</monster>
+	<monster centerx="1228" centery="901" centerz="8" radius="1">
+		<monster name="Dark Energy" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1239" centery="895" centerz="8" radius="1">
+		<monster name="Dark Energy" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1242" centery="900" centerz="8" radius="1">
+		<monster name="Dark Energy" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1240" centery="909" centerz="8" radius="1">
+		<monster name="Dark Energy" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1250" centery="902" centerz="8" radius="1">
+		<monster name="Dark Energy" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1249" centery="912" centerz="8" radius="1">
+		<monster name="Dark Energy" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1260" centery="907" centerz="8" radius="1">
+		<monster name="Dark Energy" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1260" centery="915" centerz="8" radius="1">
+		<monster name="Dark Energy" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1273" centery="901" centerz="8" radius="1">
+		<monster name="Dark Energy" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1272" centery="909" centerz="8" radius="1">
+		<monster name="Dark Energy" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1278" centery="903" centerz="8" radius="1">
+		<monster name="Dark Energy" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1277" centery="911" centerz="8" radius="1">
+		<monster name="Dark Energy" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1289" centery="902" centerz="8" radius="1">
+		<monster name="Dark Energy" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1289" centery="912" centerz="8" radius="1">
+		<monster name="Dark Energy" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1297" centery="908" centerz="8" radius="1">
+		<monster name="Dark Energy" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1304" centery="902" centerz="8" radius="1">
+		<monster name="Dark Energy" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1302" centery="909" centerz="8" radius="1">
+		<monster name="Dark Energy" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1316" centery="904" centerz="8" radius="1">
+		<monster name="Dark Energy" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1317" centery="912" centerz="8" radius="1">
+		<monster name="Dark Energy" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1327" centery="908" centerz="8" radius="1">
+		<monster name="Dark Energy" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1324" centery="901" centerz="8" radius="1">
+		<monster name="Dark Energy" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1325" centery="895" centerz="8" radius="1">
+		<monster name="Dark Energy" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1330" centery="888" centerz="8" radius="1">
+		<monster name="Dark Energy" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1331" centery="895" centerz="8" radius="1">
+		<monster name="Dark Energy" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1326" centery="887" centerz="9" radius="1">
+		<monster name="Dark Energy" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1330" centery="894" centerz="9" radius="1">
+		<monster name="Dark Energy" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1320" centery="894" centerz="9" radius="1">
+		<monster name="Dark Energy" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1312" centery="889" centerz="9" radius="1">
+		<monster name="Dark Energy" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1301" centery="888" centerz="9" radius="1">
+		<monster name="Dark Energy" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1295" centery="894" centerz="9" radius="1">
+		<monster name="Dark Energy" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1274" centery="894" centerz="9" radius="1">
+		<monster name="Dark Energy" x="0" y="0" z="9" spawntime="60" />
+	</monster>
 </monsters>

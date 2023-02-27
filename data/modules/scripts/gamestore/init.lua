@@ -1288,7 +1288,12 @@ function GameStore.processChargesPurchase(player, itemtype, name, charges)
 
 	local inbox = player:getSlotItem(CONST_SLOT_STORE_INBOX)
 	if inbox and inbox:getEmptySlots() > 1 then
-		inbox:addItem(itemtype, charges)
+		local item = inbox:addItem(itemtype, charges)
+		if item then
+			item:setActionId(NOT_MOVEABLE_ACTION)
+		else
+			return error({ code = 0, message = "Please make sure you have free slots in your store inbox."})
+		end
 	else
 		return error({ code = 0, message = "Please make sure you have free slots in your store inbox."})
 	end
@@ -1372,6 +1377,8 @@ function GameStore.processStackablePurchase(player, offerId, offerCount, offerNa
 			local item = inbox:addItem(offerId, isKeg and 1 or offerCount)
 			if item and isKeg then
 				item:setAttribute(ITEM_ATTRIBUTE_CHARGES, offerCount)
+			else
+				item:setActionId(NOT_MOVEABLE_ACTION)
 			end
 		end
 	else
