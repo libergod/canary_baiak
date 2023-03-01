@@ -382,6 +382,29 @@
 	<monster centerx="1152" centery="1027" centerz="4" radius="1">
 		<monster name="Orc Warlord" x="0" y="0" z="4" spawntime="60" />
 	</monster>
+	<monster centerx="1422" centery="1092" centerz="4" radius="1">
+		<monster name="Crazed Summer Rearguard" x="0" y="-1" z="4" spawntime="60" />
+		<monster name="Crazed Summer Rearguard" x="0" y="0" z="4" spawntime="60" />
+		<monster name="Arachnophobica" x="1" y="1" z="4" spawntime="60" />
+	</monster>
+	<monster centerx="1406" centery="1093" centerz="4" radius="1">
+		<monster name="Crazed Summer Rearguard" x="0" y="-1" z="4" spawntime="60" />
+		<monster name="Crazed Summer Rearguard" x="0" y="0" z="4" spawntime="60" />
+	</monster>
+	<monster centerx="1402" centery="1098" centerz="4" radius="1">
+		<monster name="Crazed Summer Rearguard" x="0" y="-1" z="4" spawntime="60" />
+		<monster name="Crazed Summer Rearguard" x="1" y="-1" z="4" spawntime="60" />
+		<monster name="Crazed Summer Rearguard" x="0" y="0" z="4" spawntime="60" />
+		<monster name="Crazed Summer Rearguard" x="1" y="0" z="4" spawntime="60" />
+		<monster name="Thanatursus" x="1" y="1" z="4" spawntime="60" />
+	</monster>
+	<monster centerx="1419" centery="1098" centerz="4" radius="1">
+		<monster name="Crazed Summer Rearguard" x="0" y="-1" z="4" spawntime="60" />
+		<monster name="Crazed Summer Rearguard" x="1" y="-1" z="4" spawntime="60" />
+		<monster name="Crazed Summer Rearguard" x="0" y="0" z="4" spawntime="60" />
+		<monster name="Crazed Summer Rearguard" x="1" y="0" z="4" spawntime="60" />
+		<monster name="Thanatursus" x="0" y="1" z="4" spawntime="60" />
+	</monster>
 	<monster centerx="660" centery="1171" centerz="4" radius="1">
 		<monster name="Frost Dragon" x="0" y="0" z="4" spawntime="60" />
 	</monster>
@@ -799,6 +822,7 @@
 	</monster>
 	<monster centerx="1414" centery="1074" centerz="5" radius="3">
 		<monster name="Crazed Summer Rearguard" x="-3" y="1" z="5" spawntime="60" />
+		<monster name="Arachnophobica" x="-2" y="1" z="5" spawntime="60" />
 		<monster name="Crazed Summer Rearguard" x="2" y="3" z="5" spawntime="60" />
 	</monster>
 	<monster centerx="1408" centery="1077" centerz="5" radius="1">
@@ -815,26 +839,36 @@
 	</monster>
 	<monster centerx="1413" centery="1081" centerz="5" radius="3">
 		<monster name="Insane Siren" x="-1" y="-3" z="5" spawntime="60" />
+		<monster name="Crazed Summer Rearguard" x="-1" y="-1" z="5" spawntime="60" />
+		<monster name="Crazed Summer Rearguard" x="1" y="-1" z="5" spawntime="60" />
 		<monster name="Crazed Summer Rearguard" x="-2" y="3" z="5" spawntime="60" />
 	</monster>
 	<monster centerx="1421" centery="1081" centerz="5" radius="3">
+		<monster name="Arachnophobica" x="0" y="-3" z="5" spawntime="60" />
 		<monster name="Crazed Summer Rearguard" x="2" y="-3" z="5" spawntime="60" />
 		<monster name="Crazed Summer Rearguard" x="2" y="-2" z="5" spawntime="60" />
+		<monster name="Crazed Summer Rearguard" x="0" y="-1" z="5" spawntime="60" />
+		<monster name="Crazed Summer Rearguard" x="2" y="-1" z="5" spawntime="60" />
 	</monster>
 	<monster centerx="1400" centery="1088" centerz="5" radius="3">
+		<monster name="Arachnophobica" x="-2" y="-1" z="5" spawntime="60" />
 		<monster name="Crazed Summer Rearguard" x="1" y="-1" z="5" spawntime="60" />
 		<monster name="Crazed Summer Rearguard" x="-3" y="0" z="5" spawntime="60" />
 		<monster name="Crazed Summer Rearguard" x="-1" y="1" z="5" spawntime="60" />
 		<monster name="Crazed Summer Rearguard" x="-2" y="3" z="5" spawntime="60" />
 	</monster>
 	<monster centerx="1421" centery="1088" centerz="5" radius="3">
+		<monster name="Crazed Summer Rearguard" x="3" y="-1" z="5" spawntime="60" />
 		<monster name="Crazed Summer Rearguard" x="3" y="0" z="5" spawntime="60" />
 	</monster>
 	<monster centerx="1428" centery="1088" centerz="5" radius="3">
 		<monster name="Crazed Summer Rearguard" x="-3" y="-3" z="5" spawntime="60" />
+		<monster name="Crazed Summer Rearguard" x="-3" y="0" z="5" spawntime="60" />
 		<monster name="Arachnophobica" x="-3" y="3" z="5" spawntime="60" />
 	</monster>
 	<monster centerx="1424" centery="1094" centerz="5" radius="1">
+		<monster name="Crazed Summer Rearguard" x="-1" y="-1" z="5" spawntime="60" />
+		<monster name="Crazed Summer Rearguard" x="-1" y="0" z="5" spawntime="60" />
 		<monster name="Crazed Summer Rearguard" x="0" y="0" z="5" spawntime="60" />
 		<monster name="Crazed Summer Rearguard" x="-1" y="1" z="5" spawntime="60" />
 		<monster name="Crazed Summer Rearguard" x="0" y="1" z="5" spawntime="60" />
@@ -845,9 +879,13 @@
 	<monster centerx="1400" centery="1095" centerz="5" radius="3">
 		<monster name="Crazed Summer Rearguard" x="-1" y="-2" z="5" spawntime="60" />
 		<monster name="Crazed Summer Rearguard" x="3" y="-2" z="5" spawntime="60" />
+		<monster name="Crazed Summer Rearguard" x="-2" y="0" z="5" spawntime="60" />
+		<monster name="Crazed Summer Rearguard" x="-2" y="1" z="5" spawntime="60" />
 		<monster name="Crazed Summer Rearguard" x="3" y="1" z="5" spawntime="60" />
 	</monster>
 	<monster centerx="1407" centery="1095" centerz="5" radius="3">
+		<monster name="Crazed Summer Rearguard" x="-3" y="0" z="5" spawntime="60" />
+		<monster name="Crazed Summer Rearguard" x="-2" y="0" z="5" spawntime="-516700672" />
 		<monster name="Arachnophobica" x="-1" y="2" z="5" spawntime="60" />
 	</monster>
 	<monster centerx="1425" centery="1100" centerz="5" radius="1">
@@ -865,14 +903,17 @@
 	<monster centerx="1407" centery="1102" centerz="5" radius="3">
 		<monster name="Crazed Summer Rearguard" x="3" y="-2" z="5" spawntime="60" />
 		<monster name="Crazed Summer Rearguard" x="-3" y="-1" z="5" spawntime="60" />
+		<monster name="Crazed Summer Rearguard" x="-2" y="-1" z="5" spawntime="60" />
 	</monster>
 	<monster centerx="1414" centery="1102" centerz="5" radius="3">
 		<monster name="Crazed Summer Rearguard" x="3" y="-2" z="5" spawntime="60" />
+		<monster name="Crazed Summer Rearguard" x="-1" y="-1" z="5" spawntime="60" />
 		<monster name="Crazed Summer Rearguard" x="-2" y="2" z="5" spawntime="60" />
 		<monster name="Crazed Summer Rearguard" x="-1" y="2" z="5" spawntime="60" />
 	</monster>
 	<monster centerx="1421" centery="1102" centerz="5" radius="3">
 		<monster name="Arachnophobica" x="-3" y="-2" z="5" spawntime="60" />
+		<monster name="Crazed Summer Rearguard" x="-3" y="0" z="5" spawntime="60" />
 		<monster name="Crazed Summer Rearguard" x="3" y="0" z="5" spawntime="60" />
 		<monster name="Crazed Summer Rearguard" x="3" y="1" z="5" spawntime="60" />
 	</monster>
@@ -2418,6 +2459,7 @@
 	</monster>
 	<monster centerx="1407" centery="1074" centerz="6" radius="3">
 		<monster name="Crazed Summer Rearguard" x="0" y="1" z="6" spawntime="60" />
+		<monster name="Arachnophobica" x="1" y="3" z="6" spawntime="60" />
 	</monster>
 	<monster centerx="1414" centery="1074" centerz="6" radius="3">
 		<monster name="Insane Siren" x="-2" y="2" z="6" spawntime="60" />
@@ -2500,6 +2542,7 @@
 		<monster name="Crazed Summer Rearguard" x="3" y="-1" z="6" spawntime="60" />
 		<monster name="Crazed Summer Rearguard" x="2" y="0" z="6" spawntime="60" />
 		<monster name="Crazed Summer Rearguard" x="2" y="3" z="6" spawntime="60" />
+		<monster name="Arachnophobica" x="3" y="3" z="6" spawntime="60" />
 	</monster>
 	<monster centerx="1428" centery="1095" centerz="6" radius="3">
 		<monster name="Crazed Summer Rearguard" x="1" y="-2" z="6" spawntime="60" />
@@ -2569,6 +2612,7 @@
 	</monster>
 	<monster centerx="1398" centery="1107" centerz="6" radius="1">
 		<monster name="Crazed Summer Rearguard" x="0" y="0" z="6" spawntime="60" />
+		<monster name="Arachnophobica" x="1" y="0" z="6" spawntime="60" />
 	</monster>
 	<monster centerx="707" centery="1109" centerz="6" radius="1">
 		<monster name="Frost Dragon" x="0" y="0" z="6" spawntime="60" />
@@ -6274,6 +6318,7 @@
 	</monster>
 	<monster centerx="1419" centery="1087" centerz="7" radius="1">
 		<monster name="Crazed Summer Rearguard" x="0" y="0" z="7" spawntime="60" />
+		<monster name="Arachnophobica" x="1" y="1" z="7" spawntime="60" />
 	</monster>
 	<monster centerx="1407" centery="1088" centerz="7" radius="3">
 		<monster name="Crazed Summer Rearguard" x="-2" y="-2" z="7" spawntime="60" />
@@ -6326,6 +6371,7 @@
 	<monster centerx="1400" centery="1095" centerz="7" radius="3">
 		<monster name="Crazed Summer Rearguard" x="-2" y="-2" z="7" spawntime="60" />
 		<monster name="Crazed Summer Rearguard" x="-3" y="-1" z="7" spawntime="60" />
+		<monster name="Arachnophobica" x="3" y="-1" z="7" spawntime="60" />
 		<monster name="Crazed Summer Rearguard" x="-3" y="3" z="7" spawntime="60" />
 		<monster name="Crazed Summer Rearguard" x="3" y="3" z="7" spawntime="60" />
 	</monster>
@@ -6365,6 +6411,7 @@
 		<monster name="Crazed Summer Rearguard" x="0" y="-2" z="7" spawntime="60" />
 		<monster name="Crazed Summer Rearguard" x="0" y="0" z="7" spawntime="60" />
 		<monster name="Crazed Summer Rearguard" x="-1" y="2" z="7" spawntime="60" />
+		<monster name="Arachnophobica" x="0" y="3" z="7" spawntime="60" />
 	</monster>
 	<monster centerx="1434" centery="1102" centerz="7" radius="1">
 		<monster name="Crazed Summer Rearguard" x="0" y="0" z="7" spawntime="60" />
@@ -22627,6 +22674,10 @@
 		<monster name="Midnight Asura" x="0" y="-1" z="8" spawntime="60" />
 		<monster name="Dawnfire Asura" x="0" y="0" z="8" spawntime="60" />
 	</monster>
+	<monster centerx="1431" centery="1315" centerz="8" radius="1">
+		<monster name="Crazed Winter Rearguard" x="0" y="-1" z="8" spawntime="60" />
+		<monster name="Crazed Winter Vanguard" x="0" y="0" z="8" spawntime="60" />
+	</monster>
 	<monster centerx="57" centery="1316" centerz="8" radius="1">
 		<monster name="Hero" x="0" y="0" z="8" spawntime="60" />
 	</monster>
@@ -22696,6 +22747,10 @@
 	<monster centerx="1429" centery="1323" centerz="8" radius="1">
 		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
 		<monster name="Fury" x="0" y="1" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1431" centery="1323" centerz="8" radius="1">
+		<monster name="Crazed Summer Vanguard" x="0" y="0" z="8" spawntime="60" />
+		<monster name="Crazed Summer Rearguard" x="0" y="1" z="8" spawntime="60" />
 	</monster>
 	<monster centerx="1529" centery="1323" centerz="8" radius="1">
 		<monster name="Destroyer" x="0" y="0" z="8" spawntime="60" />
