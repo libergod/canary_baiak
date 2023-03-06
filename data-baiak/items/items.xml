@@ -13900,13 +13900,19 @@
 	<item fromid="7185" toid="7186" article="a" name="small crack in the ice">
 		<attribute key="description" value="This would be a good place to destroy the ice."/>
 	</item>
-	<item fromid="7187" toid="7188" article="a" name="raft"/>
+	<item fromid="7187" toid="7188" article="a" name="raft">
+		<attribute key="fluidsource" value="water"/>
+	</item>
 	<item id="7189" article="a" name="stone shelf">
 		<attribute key="containersize" value="6"/>
 	</item>
-	<item fromid="7190" toid="7199" article="a" name="raft"/>
+	<item fromid="7190" toid="7199" article="a" name="raft">
+			<attribute key="fluidsource" value="water"/>
+	</item>
 	<item id="7200" article="a" name="fragile ice"/>
-	<item fromid="7201" toid="7212" article="a" name="raft"/>
+	<item fromid="7201" toid="7212" article="a" name="raft">
+			<attribute key="fluidsource" value="water"/>
+	</item>
 	<item fromid="7213" toid="7218" article="a" name="raft rudder"/>
 	<item id="7219" article="a" name="ship rudder hole"/>
 	<item fromid="7220" toid="7227" article="a" name="ship rudder"/>
@@ -14000,7 +14006,9 @@
 	<item fromid="7262" toid="7263" article="a" name="figurehead"/>
 	<item fromid="7264" toid="7267" article="a" name="sled"/>
 	<item fromid="7268" toid="7271" article="a" name="husky"/>
-	<item id="7272" article="a" name="raft"/>
+	<item id="7272" article="a" name="raft">
+			<attribute key="fluidsource" value="water"/>
+	</item>
 	<item fromid="7273" toid="7276" article="a" name="stone table"/>
 	<item fromid="7277" toid="7280" article="a" name="stone throne"/>
 	<item id="7281" article="a" name="memory crystal">

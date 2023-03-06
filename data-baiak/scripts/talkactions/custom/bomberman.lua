@@ -2,7 +2,8 @@ local bomberManEvent = TalkAction("!bomb")
 
 function bomberManEvent.onSay(player, words, param)
 	if not table.contains(BomberTeam1, player) and not table.contains(BomberTeam2, player) then
-		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Só é permitido soltar bombas dentro e durante a partida.")
+		--player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Só é permitido soltar bombas dentro e durante a partida.")
+		player:sendCancelMessage("[BOMBERMAN] - Você só pode soltar bombas durante o evento.")
 		player:getPosition():sendMagicEffect(CONST_ME_POFF)
 		return false
 	end
@@ -129,7 +130,8 @@ function checktile(position)
 			creature:setStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_SIZE, 1)
 			creature:setStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_SPEED, 1)
 			doChangeSpeed(creature, getCreatureBaseSpeed(creature)-creature:getSpeed())
-			creature:sendTextMessage(MESSAGE_INFO_DESCR, "Você foi atingido, e perdeu suas habilidades.")
+			--creature:sendTextMessage(MESSAGE_INFO_DESCR, "Você foi atingido, e perdeu suas habilidades.")
+			creature:sendCancelMessage("[BOMBERMAN] - Você foi atingido e perdeu as habilidades.")
 		else
 			creature:setStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_SIZE, -1)
 			creature:setStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_MAXBOMB, -1)
@@ -137,7 +139,8 @@ function checktile(position)
 			doChangeSpeed(creature, getCreatureBaseSpeed(creature)-creature:getSpeed())
 			creature:teleportTo(Position(1721, 942, 7))
 			creature:getPosition():sendMagicEffect(CONST_ME_FIREAREA)
-			creature:sendTextMessage(MESSAGE_INFO_DESCR, "Você foi atingido, e morreu por estar sem habilidades.")
+			--creature:sendTextMessage(MESSAGE_INFO_DESCR, "Você foi atingido, e morreu por estar sem habilidades.")
+			creature:sendCancelMessage("[BOMBERMAN] - Você foi atingido novamente e morreu.")
 			creature:setOutfit(BombermanOutfit[creature:getGuid()])
 			if table.contains(BomberTeam1, creature) then
 				for i = 1, #BomberTeam1 do
