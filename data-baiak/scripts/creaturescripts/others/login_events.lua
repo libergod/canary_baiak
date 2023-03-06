@@ -15,6 +15,12 @@ function loginEvents.onLogin(player)
 		"Tasks",
 		"SuperUP",
 		"GuildLevel",
+		"advanceRewardLevel",
+		"addLevelUpAnimation",
+		"dodgeCriticalOne",
+		"dodgeCriticalTwo",
+		"dodgeCriticalThree",
+		"playerDeathRestoreExp",
 		--TASK SYSTEM
 		"TaskCreature",
 		--Dungeon System

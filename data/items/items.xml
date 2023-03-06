@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 <items>
 	<!--  Liquids -->
 	<!--  Fluid type 0 is same as water (id="1") -->
@@ -13900,13 +13900,19 @@
 	<item fromid="7185" toid="7186" article="a" name="small crack in the ice">
 		<attribute key="description" value="This would be a good place to destroy the ice."/>
 	</item>
-	<item fromid="7187" toid="7188" article="a" name="raft"/>
+	<item fromid="7187" toid="7188" article="a" name="raft">
+				<attribute key="fluidsource" value="water"/>
+	</item>
 	<item id="7189" article="a" name="stone shelf">
 		<attribute key="containersize" value="6"/>
 	</item>
-	<item fromid="7190" toid="7199" article="a" name="raft"/>
+	<item fromid="7190" toid="7199" article="a" name="raft">
+				<attribute key="fluidsource" value="water"/>
+	</item>
 	<item id="7200" article="a" name="fragile ice"/>
-	<item fromid="7201" toid="7212" article="a" name="raft"/>
+	<item fromid="7201" toid="7212" article="a" name="raft">
+				<attribute key="fluidsource" value="water"/>
+	</item>
 	<item fromid="7213" toid="7218" article="a" name="raft rudder"/>
 	<item id="7219" article="a" name="ship rudder hole"/>
 	<item fromid="7220" toid="7227" article="a" name="ship rudder"/>
@@ -14000,7 +14006,9 @@
 	<item fromid="7262" toid="7263" article="a" name="figurehead"/>
 	<item fromid="7264" toid="7267" article="a" name="sled"/>
 	<item fromid="7268" toid="7271" article="a" name="husky"/>
-	<item id="7272" article="a" name="raft"/>
+	<item id="7272" article="a" name="raft">
+				<attribute key="fluidsource" value="water"/>
+	</item>
 	<item fromid="7273" toid="7276" article="a" name="stone table"/>
 	<item fromid="7277" toid="7280" article="a" name="stone throne"/>
 	<item id="7281" article="a" name="memory crystal">
@@ -32468,8 +32476,8 @@
 		<attribute key="weight" value="60"/>
 	</item>
 	<item fromid="21508" toid="21553" article="a" name="coral stone"/>
-	<item id="21554" article="a" name="small crystal bell">
-		<attribute key="description" value="It seems fragile and precious"/>
+	<item id="21554" article="a" name="exp restore potion">
+		<attribute key="description" value="It restores your lost exp after a death. Need to re-login before use."/>
 		<attribute key="weight" value="280"/>
 	</item>
 	<item fromid="21558" toid="21563" article="a" name="coral stone"/>
@@ -36558,25 +36566,31 @@
 	<item id="25046" article="a" name="lush meadow"/>
 	<item fromid="25047" toid="25048" article="a" name="death portal">
 		<attribute key="type" value="teleport"/>
+		<attribute key="effect" value="teleport"/>
 		<attribute key="description" value="You can see the other side through it."/>
 	</item>
 	<item fromid="25049" toid="25050" article="an" name="earth portal">
 		<attribute key="type" value="teleport"/>
+		<attribute key="effect" value="teleport"/>
 		<attribute key="description" value="You can see the other side through it."/>
 	</item>
 	<item fromid="25051" toid="25052" article="an" name="energy portal">
+	<attribute key="effect" value="teleport"/>
 		<attribute key="type" value="teleport"/>
 		<attribute key="description" value="You can see the other side through it."/>
 	</item>
 	<item fromid="25053" toid="25054" article="a" name="fire portal">
+	<attribute key="effect" value="teleport"/>
 		<attribute key="type" value="teleport"/>
 		<attribute key="description" value="You can see the other side through it."/>
 	</item>
 	<item fromid="25055" toid="25056" article="a" name="holy portal">
+	<attribute key="effect" value="teleport"/>
 		<attribute key="type" value="teleport"/>
 		<attribute key="description" value="You can see the other side through it."/>
 	</item>
 	<item fromid="25057" toid="25058" article="a" name="ice portal">
+	<attribute key="effect" value="teleport"/>
 		<attribute key="type" value="teleport"/>
 		<attribute key="description" value="You can see the other side through it."/>
 	</item>
@@ -42622,9 +42636,11 @@
 	<!-- unknown item (unconfirmed name) -->
 	<item id="29979" article="a" name="portal">
 		<attribute key="type" value="teleport"/>
+		<attribute key="effect" value="teleport"/>
 	</item>
 	<item id="29980" article="a" name="portal">
 		<attribute key="type" value="teleport"/>
+		<attribute key="effect" value="teleport"/>
 	</item>
 	<item fromid="29981" toid="29986" article="an" name="old desk"/>
 	<!-- possible quest -->

@@ -1,7 +1,7 @@
 if not slotMachineData then
 	slotMachineData = {
-		needItem = {id = 9020, count = 5},
-		items = vector(12328, 11144, 9693, 12544, 5957, 11421),
+		needItem = {id = 3031, count = 100000},
+		items = vector(22723,22724, 21554, 9170),
 
 		positions = {
 			Position(951, 1208, 6),
@@ -31,6 +31,25 @@ local function drawEffects()
 				position:sendMagicEffect(math.random(CONST_ME_GIFT_WRAPS, CONST_ME_FIREWORK_BLUE))
 			end
 			addEvent(decrease, 850)
+			addEvent(function()
+				
+				-- clear items
+				for index, position in ipairs(positions) do
+					local tile = Tile(position)
+					if tile then
+						local item = tile:getTopDownItem()
+						if item then
+							item:remove()
+						end
+					end
+
+					addEvent(function()
+						position:sendMagicEffect(CONST_ME_MAGIC_GREEN)
+					end, index * 100)
+				end
+				
+				
+			end, 14000)
 		end
 	end
 	decrease()
@@ -47,7 +66,36 @@ local function checkEquals(itemVec)
 	return ret, itemVec:front()
 end
 
-function onUse(player, item, fromPosition, target, toPosition, isHotkey)
+local function showTextAnimated(toPosition, text)
+
+local spectators = Game.getSpectators(toPosition, false, true, 7, 7, 5, 5)
+			if #spectators > 0 then
+					for i = 1, #spectators do
+						spectators[i]:say(text, TALKTYPE_MONSTER_SAY, false, spectators[i], toPosition)
+					end
+			end
+end
+
+local function clearMachine(positions)
+	-- clear items
+	for index, position in ipairs(positions) do
+		local tile = Tile(position)
+		if tile then
+			local item = tile:getTopDownItem()
+			if item then
+				item:remove()
+			end
+		end
+
+		addEvent(function()
+			position:sendMagicEffect(CONST_ME_MAGIC_GREEN)
+		end, index * 100)
+	end
+end
+
+local SlotMachineTools = Action()
+
+function SlotMachineTools.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	local name = player:getName()
 
 	if slotMachineData.owner then
@@ -55,10 +103,14 @@ function onUse(player, item, fromPosition, target, toPosition, isHotkey)
 		return true
 	else
 		local item = slotMachineData.needItem
-		if not player:removeItem(item.id, item.count) then
-			player:sendCancelMessage(('Você não possui %dx %s.'):format(item.count, ItemType(item.id):getName()))
-			return true
-		end
+		--if not player:removeItem(item.id, item.count) then
+			if not player:removeMoney(item.count) then
+				if not player:removeMoneyBank(item.count) then
+					player:sendCancelMessage(('Você não possui %dx gold coins.'):format(item.count * 1000))
+					return true
+				end
+			end
+		--end
 		slotMachineData.owner = name
 	end
 
@@ -128,6 +180,8 @@ function onUse(player, item, fromPosition, target, toPosition, isHotkey)
 				local rewardName = reward:getName()
 				player:sendTextMessage(MESSAGE_INFO_DESCR, ('Parabéns, você ganhou 1x %s.%s'):format(rewardName, inbox and ' O item foi enviado para a sua caixa de entrada (inbox).' or ''))
 				Game.broadcastMessage(('[Slot Machine]: %s encontrou 1x %s, que sortudo(a).'):format(name, rewardName), MESSAGE_EVENT_ADVANCE)
+			else
+				clearMachine(positions)
 			end
 		end
 
@@ -137,13 +191,13 @@ function onUse(player, item, fromPosition, target, toPosition, isHotkey)
 
 		local centerPosition = positions[math.ceil(#positions/2)]
 		if win then
-			Game.sendAnimatedText('WIN!', centerPosition, 30)
+			showTextAnimated(centerPosition, "WIN!")
 			for _, position in ipairs(positions) do
 				position:sendMagicEffect(CONST_ME_ENERGYAREA)
 			end
 			drawEffects()
 		else
-			Game.sendAnimatedText('LOSE!', centerPosition, 180)
+			showTextAnimated(centerPosition, "LOSE!")
 			for _, position in ipairs(positions) do
 				position:sendMagicEffect(CONST_ME_POFF)
 			end
@@ -151,3 +205,6 @@ function onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	end, (#positions + 1) * 1000, name)
 	return true
 end
+
+SlotMachineTools:uid(48123)
+SlotMachineTools:register()

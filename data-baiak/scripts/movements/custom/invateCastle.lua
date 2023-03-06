@@ -8,6 +8,14 @@ function castle24h3.onStepIn(creature, item, position, fromPosition)
 	end
 		
 	local guild = creature:getGuild()
+	
+	if guild == nil then
+        creature:teleportTo(fromPosition, true)
+        creature:sendTextMessage(MESSAGE_EVENT_ADVANCE, "".. CASTLE24H.castleNome .." ".. CASTLE24H.mensagemPrecisaGuild .."")
+        creature:getPosition():sendMagicEffect(CONST_ME_POFF)
+        return false
+    end
+	
 	local Guild_ID = guild:getId()
 	
 		
@@ -33,6 +41,7 @@ function castle24h3.onStepIn(creature, item, position, fromPosition)
         creature:teleportTo(fromPosition, true)
         creature:sendTextMessage(MESSAGE_EVENT_ADVANCE, "".. CASTLE24H.castleNome .." ".. CASTLE24H.mensagemLevelMinimo .." (".. CASTLE24H.level .."+)")
         creature:getPosition():sendMagicEffect(CONST_ME_POFF)
+		return false
     end
 
     if creature:getStorageValue(STORAGEVALUE_CASTLE_SPAM) > os.time() and guild then

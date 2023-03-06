@@ -3,7 +3,7 @@
 -- Create a stage with minlevel 1 and no maxlevel to disable stages
 experienceStages = {
 	{
-		minlevel = 8,
+		minlevel = 1,
 		maxlevel = 200,
 		multiplier = 999
 	}, {
@@ -30,50 +30,34 @@ experienceStages = {
 
 skillsStages = {
 	{
-		minlevel = 10,
-		maxlevel = 60,
-		multiplier = 300
+		minlevel = 1,
+		maxlevel = 70,
+		multiplier = 599999
 	}, {
-		minlevel = 61,
-		maxlevel = 80,
-		multiplier = 200
+		minlevel = 71,
+		maxlevel = 100,
+		multiplier = 399999
 	}, {
-		minlevel = 81,
+		minlevel = 101,
 		maxlevel = 110,
-		multiplier = 100
+		multiplier = 199999
 	}, {
 		minlevel = 111,
-		maxlevel = 125,
-		multiplier = 50
-	}, {
-		minlevel = 126,
-		multiplier = 25
+		multiplier = 40000
 	}
 }
 
 magicLevelStages = {
 	{
-		minlevel = 0,
-		maxlevel = 60,
-		multiplier = 250
-	}, {
-		minlevel = 61,
-		maxlevel = 80,
-		multiplier = 200
-	}, {
-		minlevel = 81,
+		minlevel = 1,
 		maxlevel = 100,
-		multiplier = 150
+		multiplier = 599999
 	}, {
 		minlevel = 101,
 		maxlevel = 110,
-		multiplier = 80
+		multiplier = 89999
 	}, {
 		minlevel = 111,
-		maxlevel = 125,
-		multiplier = 40
-	}, {
-		minlevel = 126,
-		multiplier = 20
+		multiplier = 40000
 	}
 }

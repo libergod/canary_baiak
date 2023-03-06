@@ -1,4 +1,6 @@
-function onAdvance(player, skill, oldLevel, newLevel)
+local addLevelUpAnimation = CreatureEvent("addLevelUpAnimation")
+
+function addLevelUpAnimation.onAdvance(player, skill, oldLevel, newLevel)
 
 	if skill ~= SKILL_LEVEL or newLevel <= oldLevel then
 		return true
@@ -26,7 +28,26 @@ function onAdvance(player, skill, oldLevel, newLevel)
 		end
 		player:say("[LEVEL UP]", TALKTYPE_MONSTER_SAY)
 		position:sendMagicEffect(40)
+		
+		-- RESET RESTORE EXP TO PREVENT BUGS
+		
+		-- RESTORE EXP SYSTEM
+		local usrExist = db.storeQuery("SELECT `id` FROM `player_exp_restore` WHERE `id_player` = " .. player:getGuid() .. " LIMIT 1")
+		if usrExist ~= false then
+			local iduser = result.getDataInt(usrExist, 'id')
+			result.free(usrExist)
+			-- iduser (Id do user ja existente na tabela)
+			-- DIED FOR PLAYER, SO CANT RESTORE EXP
+			db.query('UPDATE `player_exp_restore` SET `expAfter` = -1 where `id_player`='..player:getGuid())
+			db.query('UPDATE `player_exp_restore` SET `expBefore` = -1 where `id_player`='..player:getGuid())
+			db.query('UPDATE `player_exp_restore` SET `canRestore` = -1 where `id_player`='..player:getGuid())
+		else	
+			db.query(string.format("INSERT INTO `player_exp_restore`(`id_player`, `expBefore`, `expAfter`, `canRestore`) VALUES (%s, %s, %s, %s)", player:getGuid(), "-1", "-1", "-1"))
+		end
+		
 	end
 
 	return true
 end
+
+addLevelUpAnimation:register()

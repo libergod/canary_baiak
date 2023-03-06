@@ -1,4 +1,6 @@
-function onSay(player, words, param)
+local bomberManEvent = TalkAction("!bomb")
+
+function bomberManEvent.onSay(player, words, param)
 	if not table.contains(BomberTeam1, player) and not table.contains(BomberTeam2, player) then
 		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Só é permitido soltar bombas dentro e durante a partida.")
 		player:getPosition():sendMagicEffect(CONST_ME_POFF)
@@ -7,15 +9,17 @@ function onSay(player, words, param)
 	
 	if player:getStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_ACTIVEBOMB) < player:getStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_MAXBOMB) then
 		local bombsize = player:getStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_SIZE)
-		local item = Game.createItem(9468, 1, player:getPosition())
+		local item = Game.createItem(30278, 1, player:getPosition())
 		player:setStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_ACTIVEBOMB, player:getStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_ACTIVEBOMB) + 1)
 		addEvent(explosion, 2 * 1 * 1000, player:getPosition(), bombsize, player.uid)
 	end
 end
+bomberManEvent:register()
+
 
 function explosion(position, bombsize, player)
 	local player = Player(player)
-	local BombItem = Tile(position):getItemById(9468)
+	local BombItem = Tile(position):getItemById(30278)
 	if BombItem then
 		local centerPosition = position
 		local limit1, limit2, limit3, limit4 = 0, 0, 0, 0
@@ -25,7 +29,7 @@ function explosion(position, bombsize, player)
 				if Tile(sqm):getItemById(10755) or Tile(sqm):getItemById(10756) or Tile(sqm):getItemById(10759) then
 					limit1 = 1
 				end
-				if Tile(sqm):getItemById(9421) and limit1 == 0 then
+				if Tile(sqm):getItemById(8505) and limit1 == 0 then
 					checktile(sqm, player.uid)
 					limit1 = 1
 				end
@@ -38,7 +42,7 @@ function explosion(position, bombsize, player)
 				if Tile(sqm):getItemById(10755) or Tile(sqm):getItemById(10756) or Tile(sqm):getItemById(10759) then
 					limit2 = 1
 				end
-				if Tile(sqm):getItemById(9421) and limit2 == 0 then
+				if Tile(sqm):getItemById(8505) and limit2 == 0 then
 					checktile(sqm, player.uid)
 					limit2 = 1
 				end
@@ -51,7 +55,7 @@ function explosion(position, bombsize, player)
 				if Tile(sqm):getItemById(10755) or Tile(sqm):getItemById(10756) or Tile(sqm):getItemById(10759) then
 					limit3 = 1
 				end
-				if Tile(sqm):getItemById(9421) and limit3 == 0 then
+				if Tile(sqm):getItemById(8505) and limit3 == 0 then
 					checktile(sqm, player.uid)
 					limit3 = 1
 				end
@@ -64,7 +68,7 @@ function explosion(position, bombsize, player)
 				if Tile(sqm):getItemById(10755) or Tile(sqm):getItemById(10756) or Tile(sqm):getItemById(10759) then
 					limit4 = 1
 				end
-				if Tile(sqm):getItemById(9421) and limit4 == 0 then
+				if Tile(sqm):getItemById(8505) and limit4 == 0 then
 					checktile(sqm, player.uid)
 					limit4 = 1
 				end
@@ -81,14 +85,14 @@ function explosion(position, bombsize, player)
 end
 
 function checktile(position)
-	local block = Tile(position):getItemById(9421)
+	local block = Tile(position):getItemById(8505)
 	if block then
 		block:remove()
 		local portalFinal
 		if (#BlockListBomberman >= (471*0.9) and BombermanPortal == 0) or (#BomberTeam1 == 0 or #BomberTeam2 == 0) and BombermanPortal == 0 then
 			if math.random(1, 10) > 7 or #BlockListBomberman == 471 then 
 				BombermanPortal = 2
-				portalFinal = Game.createItem(1387, 1, position)
+				portalFinal = Game.createItem(6557, 1, position)
 				portalFinal:setActionId(19004)
 			end
 		end
@@ -105,11 +109,11 @@ function checktile(position)
 				local premio = math.random(1, 10)
 				local dropaction, drop, a, b
 				if premio >= 1 and premio < 6 then
-					a, b = 2684, 19001
+					a, b = 32115, 19001
 				elseif premio >= 6 and premio < 9 then
-					a, b = 4852, 19002
+					a, b = 32116, 19002
 				elseif premio >= 9 and premio <= 10 then
-					a, b = 2642, 19003
+					a, b = 32117, 19003
 				end
 				drop = Game.createItem(a, 1, position)
 				drop:setActionId(b)

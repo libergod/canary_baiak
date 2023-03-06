@@ -35,6 +35,9 @@ monster.speed = 0
 monster.manaCost = 0
 monster.maxSummons = 0
 
+monster.faction = FACTION_WOE_OWNER --4
+monster.enemyFactions = {FACTION_PLAYER, FACTION_WOE_ENEMY} --1 and 5
+
 monster.changeTarget = {
 	interval = 2000,
 	chance = 50
@@ -113,5 +116,9 @@ monster.immunities = {
 	{type = "bleed", condition = false}
 }
 
+monster.events = {
+"castle_Dmg",
+"castler_Dmg"
+}
 
 mType:register(monster)

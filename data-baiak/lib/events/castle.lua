@@ -1,5 +1,5 @@
 CASTLE24H = {
-	castleNome = "[Castle 24H]", -- Prefixo que irá aparecer nas mensagens
+	castleNome = "[Castle 24H] - ", -- Prefixo que irá aparecer nas mensagens
 	mensagemPrecisaGuild = "You are not in a guild.", -- Mensagem que irá aparecer caso o player não tenha guild
 	mensagemGuildDominante = "Your guild already own The Castle.", -- Mensagem caso o player tente dominar o castelo mesmo sendo da sua guild
 	mensagemGuildNaoDominante = "Your guild dont own The Castle.", -- Caso o castelo não seja da guild do player

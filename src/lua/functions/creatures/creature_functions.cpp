@@ -123,6 +123,33 @@ int CreatureFunctions::luaCreatureIsHealthHidden(lua_State* L) {
 	return 1;
 }
 
+int CreatureFunctions::luaCreatureIsMovementBlocked(lua_State* L)
+{
+	// creature:isMovementBlocked()
+	const Creature* creature = getUserdata<const Creature>(L, 1);
+	if (creature) {
+		pushBoolean(L, creature->isMovementBlocked());
+	}
+	else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+
+int CreatureFunctions::luaCreatureSetMovementBlocked(lua_State* L)
+{
+	// creature:setMovementBlocked(state)
+	Creature* creature = getUserdata<Creature>(L, 1);
+	if (creature) {
+		creature->setMovementBlocked(getBoolean(L, 2));
+		pushBoolean(L, true);
+	}
+	else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+
 int CreatureFunctions::luaCreatureCanSee(lua_State* L) {
 	// creature:canSee(position)
 	const Creature* creature = getUserdata<const Creature>(L, 1);

@@ -191,6 +191,7 @@ class Creature : virtual public Thing
 		uint32_t getMana() const {
 			return mana;
 		}
+
 		virtual uint32_t getMaxMana() const {
 			return mana;
 		}
@@ -444,6 +445,14 @@ class Creature : virtual public Thing
 			canUseDefense = useDefense;
 		}
 
+		void setMovementBlocked(bool state) {
+			movementBlocked = state;
+			cancelNextWalk = true;
+		}
+		bool isMovementBlocked() const {
+			return movementBlocked;
+		}
+
 		//creature script events
 		bool registerCreatureEvent(const std::string& name);
 		bool unregisterCreatureEvent(const std::string& name);
@@ -579,6 +588,7 @@ class Creature : virtual public Thing
 		bool floorChange = false;
 		bool canUseDefense = true;
 		bool moveLocked = false;
+		bool movementBlocked = false;
 
 		//creature script events
 		bool hasEventRegistered(CreatureEventType_t event) const {

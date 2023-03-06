@@ -1,13 +1,16 @@
 local table = {
-	[50] = {type = "bank", id = {5000, 0}, msg = "Foi depositado em seu bank 5000 gold coins por alcançar o level 50!"},
-	[100] = {type = "bank", id = {20000, 0}, msg = "Foi depositado em seu bank 20000 gold coins por alcançar o level 100!"},
-	[200] = {type = "item", id = {9693, 1}, msg = "Você ganhou um addon doll por alcançar o level 200!"},
-	[400] = {type = "addon", id = {154, 158}, msg = "Você ganhou p addon Shaman Full por alcançar o level 400!"},
+	[50] = {type = "bank", id = {100000, 0}, msg = "Foi depositado em seu bank 100k de gold coins por alcançar o level 50!"},
+	[300] = {type = "bank", id = {1000000, 0}, msg = "Foi depositado em seu bank 1kk de gold coins por alcançar o level 300!"},
+	[600] = {type = "item", id = {9170, 1}, msg = "Você ganhou uma Stamina Refiller por alcançar o level 600!"},
+	[800] = {type = "addon", id = {619, 620}, msg = "Você ganhou o addon Jersey por alcançar o level 800!"},
+	[1000] = {type = "addon", id = {324, 325}, msg = "Você ganhou o addon Yalaharian full por alcançar o level 1000!"},
 }
 
 local storage = 15000
 
-function onAdvance(player, skill, oldLevel, newLevel)
+local advanceRewardLevel = CreatureEvent("advanceRewardLevel")
+
+function advanceRewardLevel.onAdvance(player, skill, oldLevel, newLevel)
 
 	if skill ~= SKILL_LEVEL or newLevel <= oldLevel then
 		return true
@@ -35,3 +38,5 @@ function onAdvance(player, skill, oldLevel, newLevel)
 
 	return true
 end
+
+advanceRewardLevel:register()

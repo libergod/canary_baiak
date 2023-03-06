@@ -2494,7 +2494,7 @@ uint32_t Item::getWorth() const
 			return count * 10000;
 
 		case ITEM_GOLD_INGOT:
-			return count * 100000;
+			return count * 1000000;
 
 		default:
 			return 0;

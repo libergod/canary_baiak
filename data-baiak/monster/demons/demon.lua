@@ -49,7 +49,8 @@ monster.strategiesTarget = {
 }
 
 monster.events = {
-	"autoLoot"
+	"autoLoot",
+	"dodgeCriticalThree"
 	--"expHit"
 }
 

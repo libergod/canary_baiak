@@ -36,70 +36,9 @@ local config = {
 	
 }
 
-local bomberman = Action()
-
-function bomberman.onUse(player, item, fromPosition, target, toPosition, isHotkey)
-	if #BomberTeam1 > 0 or #BomberTeam2 > 0 then
-		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Existe uma partida em andamento.")
-		player:getPosition():sendMagicEffect(CONST_ME_POFF)
-		return true
-	end
-	
-	
-	local players = {}
-	
-	for pos = 1, 2 do
-		local creature = Tile(config.fromPositions[pos]):getTopCreature()
-		if creature and creature:isPlayer() then
-			table.insert(players, creature)
-			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "É necessário 2 jogadores para iniciar o bomberman.")
-			player:getPosition():sendMagicEffect(CONST_ME_POFF)
-		end
-	end
-	
-	if #players == 2 then
-		for i = 1, 2 do
-		if players[i]:isPlayer() then
-			BombermanOutfit[players[i]:getGuid()] = players[i]:getOutfit()
-	    end
-			players[i]:teleportTo(config.toPositions[i])
-			if isPlayer(players[i]) then
-				getPlayerPosition(players[i]):sendMagicEffect(CONST_ME_TELEPORT)
-				if i <= 5 then
-					players[i]:setOutfit({lookBody = 88, lookAddons = 0, lookType = 128, lookHead = 114, lookMount = 0, lookLegs = 114, lookFeet = 114})	
-				else
-					players[i]:setOutfit({lookBody = 94, lookAddons = 0, lookType = 128, lookHead = 114, lookMount = 0, lookLegs = 114, lookFeet = 114})
-				end
-				elseif isMonster(players[i]) then
-				getCreaturePosition(players[i]):sendMagicEffect(CONST_ME_TELEPORT)
-			end		
-			if i <= 5 then
-				table.insert(BomberTeam1, players[i])
-				else
-				table.insert(BomberTeam2, players[i])
-			end
-			if isPlayer(players[i]) then
-				players[i]:setStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_SIZE, 1)
-				players[i]:setStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_MAXBOMB, 1)
-				players[i]:setStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_SPEED, 1)
-			end
-		end
-		
-		bombermanEnd = addEvent(endGame, 60 * 10 * 1000)
-		broadcastMessage("A partida de Bomberman acaba em 10 minutos.", MESSAGE_EVENT_ADVANCE)
-	end
-	
-	item:transform(config.levers[item.itemid])
-	item:decay()
-	return true
-end
-
-bomberman:aid(19876)
-bomberman:register()
-
-function endGame()
+local function endGame()
 	exitPosition = Position(1721, 942, 7)
-	broadcastMessage("A partida de bomberman acabou. Nenhum time venceu.", MESSAGE_EVENT_ADVANCE)
+	Game.broadcastMessage("[BOMBERMAN] - A partida acabou sem vencedores.", MESSAGE_GAME_HIGHLIGHT) 
 	for i = 1, #BomberTeam1 do
 		if isPlayer(BomberTeam1[i]) then
 			resetplayerbomberman(BomberTeam1[i])
@@ -116,26 +55,90 @@ function endGame()
 	end
 	
 	for i = 1, #BlockListBomberman do	
-			local powerItens = {2684, 4852, 2642}
+			local powerItens = {32115, 32116, 32117}
 			for pointer = 1, 3 do
 				if Tile(BlockListBomberman[i]):getItemById(powerItens[pointer]) then
 					remover = Tile(BlockListBomberman[i]):getItemById(powerItens[pointer])
 					remover:remove()
 				end
 			end
-			if not Tile(BlockListBomberman[i]):getItemById(9421) then
-				Game.createItem(9421, 1, BlockListBomberman[i])
+			
+			if not Tile(BlockListBomberman[i]):getItemById(8505) then
+				Game.createItem(8505, 1, BlockListBomberman[i])
 			end
+			
 		end
 	BomberTeam1, BomberTeam2 = {}, {}
 	BlockListBomberman = {}
 	BombermanPortal = 0
 end
 
-function resetplayerbomberman(player)
+local function resetplayerbomberman(player)
 	local player = Player(player)
 	player:setStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_ACTIVEBOMB, -1)
 	player:setStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_MAXBOMB, -1)
 	player:setStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_SPEED, -1)
 	doChangeSpeed(player, getCreatureBaseSpeed(player)-player:getSpeed())
 end
+
+
+local bombermanAct = Action()
+
+function bombermanAct.onUse(player, item, fromPosition, target, toPosition, isHotkey)
+	if #BomberTeam1 > 0 or #BomberTeam2 > 0 then
+		player:sendCancelMessage("Existe uma partida em andamento.")
+		player:getPosition():sendMagicEffect(CONST_ME_POFF)
+		return true
+	end
+	
+	
+	local players = {}
+	
+	for pos = 1, 10 do
+		local creature = Tile(config.fromPositions[pos]):getTopCreature()
+		if creature and creature:isPlayer() then
+			table.insert(players, creature)
+			player:sendCancelMessage("É necessário 10 jogadores para iniciar o bomberman.")
+			player:getPosition():sendMagicEffect(CONST_ME_POFF)
+		end
+	end
+	
+	if #players >= 1 then -- minimo 1
+		for i = 1, 10 do -- de 1 a 10 jogadores
+		if players[i]:isPlayer() then
+			BombermanOutfit[players[i]:getGuid()] = players[i]:getOutfit()
+	    end
+			players[i]:teleportTo(config.toPositions[i])
+			if isPlayer(players[i]) then
+				getPlayerPosition(players[i]):sendMagicEffect(CONST_ME_TELEPORT)
+				if i <= 1 then -- 5
+					players[i]:setOutfit({lookBody = 88, lookAddons = 0, lookType = 128, lookHead = 114, lookMount = 0, lookLegs = 114, lookFeet = 114})	
+				else
+					players[i]:setOutfit({lookBody = 94, lookAddons = 0, lookType = 128, lookHead = 114, lookMount = 0, lookLegs = 114, lookFeet = 114})
+				end
+				elseif isMonster(players[i]) then
+				getCreaturePosition(players[i]):sendMagicEffect(CONST_ME_TELEPORT)
+			end		
+			if i <= 1 then -- 5
+				table.insert(BomberTeam1, players[i])
+				else
+				table.insert(BomberTeam2, players[i])
+			end
+			if isPlayer(players[i]) then
+				players[i]:setStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_SIZE, 1)
+				players[i]:setStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_MAXBOMB, 1)
+				players[i]:setStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_SPEED, 1)
+			end
+		end
+		
+		bombermanEnd = addEvent(endGame, 60 * 10 * 1000)
+		Game.broadcastMessage("[BOMBERMAN] - A partida acabará em 10 minutos.", MESSAGE_GAME_HIGHLIGHT) 
+	end
+	
+	item:transform(config.levers[item.itemid])
+	item:decay()
+	return true
+end
+
+bombermanAct:aid(19876)
+bombermanAct:register()

@@ -43,9 +43,58 @@ function playerLogin.onLogin(player)
 			player:openChannel(5) -- Advertsing main
 		end
 	else
-		player:sendTextMessage(MESSAGE_STATUS, "Welcome to " .. SERVER_NAME .. "!")
+		player:sendTextMessage(MESSAGE_LOGIN, "Welcome to " .. SERVER_NAME .. "!")
 		player:sendTextMessage(MESSAGE_LOGIN, string.format("Your last visit in ".. SERVER_NAME ..": %s.", os.date("%d. %b %Y %X", player:getLastLoginSaved())))
 	end
+	
+	-- RESTORE EXP SYSTEM
+	local usrExist = db.storeQuery("SELECT `id` FROM `player_exp_restore` WHERE `id_player` = " .. player:getGuid() .. " LIMIT 1")
+	if usrExist ~= false then
+		local iduser = result.getDataInt(usrExist, 'id')
+		result.free(usrExist)
+		-- iduser (Id do user ja existente na tabela)
+		local usrExpAtual = db.storeQuery("SELECT `experience` FROM `players` WHERE `id` = " .. player:getGuid() .. " LIMIT 1")
+		if usrExpAtual ~= false then
+			local usrExpAct = result.getDataInt(usrExpAtual, 'experience')
+			result.free(usrExpAtual)
+			-- usrExpAtual (exp do user atualmente)
+			local canRestoreTst = db.storeQuery("SELECT `canRestore` FROM `player_exp_restore` WHERE `id_player` = " .. player:getGuid() .. " LIMIT 1")
+			if canRestoreTst ~= false then
+				local canRestoreTsts = result.getDataInt(canRestoreTst, 'canRestore')
+				result.free(canRestoreTst)	
+				if canRestoreTsts ~= -1 then
+					db.query('UPDATE `player_exp_restore` SET `expAfter` = '..usrExpAct..' where `id_player`='..player:getGuid())
+				end
+			end
+		end
+	else	
+		db.query(string.format("INSERT INTO `player_exp_restore`(`id_player`, `expBefore`, `expAfter`, `canRestore`) VALUES (%s, %s, %s, %s)", player:getGuid(), "-1", "-1", "-1"))
+	end
+	
+	
+	--[[
+	if player:getStorageValue(RestoreExp.canRestore) == 1 then
+		local expAtual = db.storeQuery("SELECT `experience` FROM `players` WHERE `id` = " .. player:getGuid() .. " LIMIT 1")
+		if expAtual ~= false then
+			local expuser = result.getDataInt(expAtual, 'experience')
+			result.free(expAtual)
+			player:setStorageValue(RestoreExp.xpAfter, expuser)
+		end
+
+		--player:setStorageValue(RestoreExp.xpAfter, player:getExperience())
+	else
+		player:setStorageValue(RestoreExp.xpBefore, -1)
+		player:setStorageValue(RestoreExp.xpAfter, -1)
+	end
+	]]--
+
+
+	-- BONUS EXP PER PLAYER ONLINE
+	local expOnlineBoost = Game.getStorageValue(90003)
+	if not (expOnlineBoost <= 0) then
+		player:sendTextMessage(MESSAGE_LOGIN, "High number of players! Server is giving " ..Game.getStorageValue(90003).."% exp bonus, enjoy!")
+	end
+
 
 	if isPremium(player) then
 		player:setStorageValue(Storage.PremiumAccount, 1)
@@ -115,6 +164,13 @@ function playerLogin.onLogin(player)
 	-- End 'Premium Ends Teleport to Temple'
 
 
+
+
+	--Spdlog.info("[CRITICAL SYSTEM] - Critical Hit Chance: " ..player:getSkillLevel(SKILL_CRITICAL_HIT_CHANCE).." Critical Hit Damage: "..player:getSkillLevel(SKILL_CRITICAL_HIT_DAMAGE))
+
+
+
+
 	-- GUILD LEVEL SYSTEM
 	local guild = player:getGuild()
 	if guild then
@@ -127,27 +183,60 @@ function playerLogin.onLogin(player)
 	-- Maintain users Health/mana according to his vocation/promotion
 	local vocation = player:getVocation()
 	local level = player:getLevel()
-	local debugact = false;
-	local supposedhealth = 185 + (vocation:getHealthGain() * (level-8))
-	local supposedmana = 90 + (vocation:getManaGain() * (level-8))
-	local supposedcap = 47000 + (vocation:getCapacityGain() * (level-8))
-	if supposedhealth ~= player:getMaxHealth() then
-	player:sendTextMessage(MESSAGE_STATUS_DEFAULT, "Server detected your max health was wrongly set at " .. player:getMaxHealth() .. " and we adjusted it to " .. supposedhealth .. " automatically.")
-	player:setMaxHealth(supposedhealth)
-	player:addHealth(supposedhealth)
-	end
-	if supposedmana ~= player:getMaxMana() then
-	player:sendTextMessage(MESSAGE_STATUS_DEFAULT, "Server detected your max mana was wrongly set at " .. player:getMaxMana() .. " and we adjusted it to " .. supposedmana .. " automatically.")
-	player:setMaxMana(supposedmana)
-	player:addMana(supposedmana)
-	end
-	if supposedcap ~= player:getCapacity() then
-	player:sendTextMessage(MESSAGE_STATUS_DEFAULT, "Server detected your max capacity was wrongly set at " .. (player:getCapacity() / 100) .. " and we adjusted it to " .. supposedcap/100 .. " automatically.")
-	player:setCapacity(supposedcap)
-	end
+	local debugact = false
 	
-	if debugact then
-		player:sendTextMessage(MESSAGE_STATUS_DEFAULT, "For level " .. player:getLevel() .. ", your max HP should be: " .. supposedhealth .. " max mana should be: " .. supposedmana .. " max cap should be: " .. supposedcap .. ".")
+	local bonusRebirth = 5
+	bonusRebirth = bonusRebirth / 100
+	
+	--Spdlog.info("[REBORN NPC] - Bonus Rebirth: ".. (bonusRebirth*100) * player:getReborn()  .. "% Player Reborns: ".. player:getReborn() .. " Player Gain Mana: "..vocation:getManaGain().. " Player Health Gain: " ..vocation:getHealthGain().. " Player Get Cap: "..vocation:getCapacityGain())
+	local mana = math.floor(90 * bonusRebirth)
+	local health = math.floor(185 * bonusRebirth)
+	local capMore = math.floor(47000 * bonusRebirth)
+	
+	if player:getReborn() > 0 then
+		local supposedhealth = math.floor(185 + (vocation:getHealthGain() * (level-8)) + (health * player:getReborn()))
+		local supposedmana = math.floor(90 + (vocation:getManaGain() * (level-8)) + (mana * player:getReborn()))
+		local supposedcap = math.floor(47000 + (vocation:getCapacityGain() * (level-8)) + (capMore * player:getReborn()))
+		if supposedhealth ~= math.floor(player:getMaxHealth()) then
+			player:sendTextMessage(MESSAGE_STATUS_DEFAULT, "Server detected your max health was wrongly set at " .. math.floor(player:getMaxHealth()) .. " and we adjusted it to " .. math.floor(supposedhealth) .. " automatically.")
+			player:setMaxHealth(supposedhealth)
+			player:addHealth(supposedhealth)
+		end
+		if supposedmana ~= math.floor(player:getMaxMana()) then
+			player:sendTextMessage(MESSAGE_STATUS_DEFAULT, "Server detected your max mana was wrongly set at " .. math.floor(player:getMaxMana()) .. " and we adjusted it to " .. math.floor(supposedmana) .. " automatically.")
+			player:setMaxMana(supposedmana)
+			player:addMana(supposedmana)
+		end
+		if supposedcap ~= math.floor(player:getCapacity()) then
+			player:sendTextMessage(MESSAGE_STATUS_DEFAULT, "Server detected your max capacity was wrongly set at " .. math.floor(player:getCapacity() / 100) .. " and we adjusted it to " .. math.floor(supposedcap/100) .. " automatically.")
+			player:setCapacity(supposedcap)
+		end
+		
+		if debugact then
+			player:sendTextMessage(MESSAGE_STATUS_DEFAULT, "For level " .. player:getLevel() .. ", your max HP should be: " .. supposedhealth .. " max mana should be: " .. supposedmana .. " max cap should be: " .. supposedcap .. ".")
+		end
+	else
+		local supposedhealth = math.floor(185 + (vocation:getHealthGain() * (level-8)))
+		local supposedmana = math.floor(90 + (vocation:getManaGain() * (level-8)))
+		local supposedcap = math.floor(47000 + (vocation:getCapacityGain() * (level-8)))
+		if supposedhealth ~= math.floor(player:getMaxHealth()) then
+			player:sendTextMessage(MESSAGE_STATUS_DEFAULT, "Server detected your max health was wrongly set at " .. math.floor(player:getMaxHealth()) .. " and we adjusted it to " .. supposedhealth .. " automatically.")
+			player:setMaxHealth(supposedhealth)
+			player:addHealth(supposedhealth)
+		end
+		if supposedmana ~= math.floor(player:getMaxMana()) then
+			player:sendTextMessage(MESSAGE_STATUS_DEFAULT, "Server detected your max mana was wrongly set at " .. math.floor(player:getMaxMana()) .. " and we adjusted it to " .. supposedmana .. " automatically.")
+			player:setMaxMana(supposedmana)
+			player:addMana(supposedmana)
+		end
+		if supposedcap ~= math.floor(player:getCapacity()) then
+			player:sendTextMessage(MESSAGE_STATUS_DEFAULT, "Server detected your max capacity was wrongly set at " .. math.floor(player:getCapacity() / 100) .. " and we adjusted it to " .. supposedcap/100 .. " automatically.")
+			player:setCapacity(supposedcap)
+		end
+		
+		if debugact then
+			player:sendTextMessage(MESSAGE_STATUS_DEFAULT, "For level " .. player:getLevel() .. ", your max HP should be: " .. supposedhealth .. " max mana should be: " .. supposedmana .. " max cap should be: " .. supposedcap .. ".")
+		end
 	end
 	-- end maintain users health/mana according to his vocation/promotion
 	

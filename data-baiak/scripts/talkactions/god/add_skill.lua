@@ -11,6 +11,8 @@ local function getSkillId(skillName)
 		return SKILL_SHIELD
 	elseif skillName:sub(1, 4) == "fish" then
 		return SKILL_FISHING
+	elseif skillName:sub(1, 5) == "magic" then
+		return SKILL_MAGLEVEL
 	else
 		return SKILL_FIST
 	end

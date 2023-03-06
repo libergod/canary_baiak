@@ -63,6 +63,12 @@ function serverstartup.onStartup()
 	BomberTeam1 = {}
 	BomberTeam2 = {}
 	BombermanOutfit = {}
+	
+	db.query("UPDATE `players` SET `online_time` = 0")
+	db.query("UPDATE `players` SET `onlinetime` = 0")
+	
+	Game.setStorageValue(STORAGEVALUE_CASTLE_DOMINADO, CASTLE24H:getGuildIdFromCastle())
+	Game.setStorageValue(STORAGEVALUE_CASTLE48_WINNER, Castle48H:checkGuildWinner())
 
 	-- Auction System
 	local days = 7
