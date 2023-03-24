@@ -107,26 +107,26 @@ end
 
 --CLEAN RAFTS POSITION
 local Positions = {
-	[1] = {frompos = Position(1163, 633, 9), topos = Position(1169, 638, 9)}, -- OK
-	[2] = {frompos = Position(1163, 659, 9), topos = Position(1169, 664, 9)}, -- OK
-	[3] = {frompos = Position(1137, 672, 9), topos = Position(1145, 677, 9)}, -- OK
-	[4] = {frompos = Position(1180, 672, 9), topos = Position(1187, 677, 9)}, -- OK
-	[5] = {frompos = Position(1176, 703, 9), topos = Position(1183, 710, 9)}, --
-	[6] = {frompos = Position(1140, 716, 9), topos = Position(1147, 721, 9)}, --
-	[7] = {frompos = Position(1157, 726, 9), topos = Position(1161, 731, 9)}, --
-	[8] = {frompos = Position(1178, 721, 9), topos = Position(1184, 727, 9)} --
+	[1] = {frompos = Position(1163, 633, 9), topos = Position(1169, 638, 9)},
+	[2] = {frompos = Position(1163, 659, 9), topos = Position(1169, 664, 9)},
+	[3] = {frompos = Position(1137, 672, 9), topos = Position(1145, 677, 9)},
+	[4] = {frompos = Position(1180, 672, 9), topos = Position(1187, 677, 9)},
+	[5] = {frompos = Position(1177, 704, 9), topos = Position(1184, 711, 9)},
+	[6] = {frompos = Position(1140, 716, 9), topos = Position(1148, 721, 9)},
+	[7] = {frompos = Position(1157, 726, 9), topos = Position(1161, 732, 9)},
+	[8] = {frompos = Position(1178, 722, 9), topos = Position(1185, 728, 9)} 
 }
 
 local RaftsGoingUp = {
 	pos = { -- CENTRO DO GOING UP RAFT, DIREÇÕES X E Y
-		[1] = {frompos = Position(1164, 634, 9), topos = Position(1168, 637, 9)}, -- OK
-		[2] = {frompos = Position(1164, 660, 9), topos = Position(1168, 663, 9)}, -- OK
-		[3] = {frompos = Position(1138, 673, 9), topos = Position(1143, 676, 9)}, -- OK
-		[4] = {frompos = Position(1181, 673, 9), topos = Position(1186, 676, 9)}, -- OK
-		[5] = {frompos = Position(1177, 704, 9), topos = Position(1182, 709, 9)}, -- 
-		[6] = {frompos = Position(1141, 717, 9), topos = Position(1146, 720, 9)}, -- 
-		[7] = {frompos = Position(1158, 727, 9), topos = Position(1160, 730, 9)}, -- 
-		[8] = {frompos = Position(1179, 723, 9), topos = Position(1183, 726, 9)} -- 
+		[1] = {frompos = Position(1164, 634, 9), topos = Position(1168, 637, 9)},
+		[2] = {frompos = Position(1164, 660, 9), topos = Position(1168, 663, 9)},
+		[3] = {frompos = Position(1138, 673, 9), topos = Position(1143, 676, 9)},
+		[4] = {frompos = Position(1181, 673, 9), topos = Position(1186, 676, 9)},
+		[5] = {frompos = Position(1178, 705, 9), topos = Position(1183, 710, 9)},
+		[6] = {frompos = Position(1141, 717, 9), topos = Position(1147, 720, 9)},
+		[7] = {frompos = Position(1158, 727, 9), topos = Position(1160, 731, 9)},
+		[8] = {frompos = Position(1179, 723, 9), topos = Position(1184, 727, 9)}
 	}
 }
 
