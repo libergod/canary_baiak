@@ -22118,7 +22118,6 @@
 	<monster centerx="1209" centery="1145" centerz="8" radius="1">
 		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
 	</monster>
-	<monster centerx="1418" centery="1146" centerz="8" radius="1" />
 	<monster centerx="1127" centery="1147" centerz="8" radius="1">
 		<monster name="Cyclops Smith" x="0" y="0" z="8" spawntime="60" />
 	</monster>

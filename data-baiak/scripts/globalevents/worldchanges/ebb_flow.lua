@@ -151,24 +151,20 @@ function changeEbbFlow.onTime(interval)
 	-- 1 = empty
 	-- 2 = inundate
 	
-	--local actualFase = getGlobalStorageValue(STORAGEVALUE_EBB_FLOW)
 	local actualFase = Game.getStorageValue(STORAGEVALUE_EBB_FLOW)
 	
 	if actualFase ~= 1 and actualFase ~= 2 then
 		--FAZER LOAD DO EMPTY
 		cleanMMap(Position(1123, 623, 8), Position(1203, 751, 8))
 		cleanMMapWater(Position(1123, 623, 8), Position(1203, 751, 8))
-		--cleanMMapRaft(Position(1123, 623, 8), Position(1203, 751, 9))
 		Game.loadMap(DATA_DIRECTORY.. '/world/quests/soul_war/ebb_and_flow/empty.otbm')
-		Spdlog.info("[changeEbbFlow] - Map Changed to Empty")
+		--Spdlog.info("[changeEbbFlow] - Map Changed to Empty")
 		Game.setStorageValue(STORAGEVALUE_EBB_FLOW, 1)
 		return true
 	elseif actualFase == 1 then
 		--FAZER LOAD DO inundate
 		cleanMMap(Position(1123, 623, 8), Position(1203, 751, 8))
 		cleanMMapWater(Position(1123, 623, 8), Position(1203, 751, 8))
-		--cleanMMap(Position(1163, 632, 9), Position(1169, 637, 9))
-		--for _, position in pairs(Positions) do
 		for i = 1, #Positions do
 			--Call Function to move Player up	
 			local squareRaftsUp = RaftsGoingUp.pos[i]
@@ -180,7 +176,7 @@ function changeEbbFlow.onTime(interval)
 		end
 		
 		Game.loadMap(DATA_DIRECTORY.. '/world/quests/soul_war/ebb_and_flow/inundate.otbm')
-		Spdlog.info("[changeEbbFlow] - Map Changed to Inundate")
+		--Spdlog.info("[changeEbbFlow] - Map Changed to Inundate")
 		Game.setStorageValue(STORAGEVALUE_EBB_FLOW, 2)
 		return true
 	elseif actualFase == 2 then
@@ -193,7 +189,7 @@ function changeEbbFlow.onTime(interval)
 		cleanMMapWater(Position(1123, 623, 8), Position(1203, 751, 8))
 		--FAZER LOAD DO EMPTY
 		Game.loadMap(DATA_DIRECTORY.. '/world/quests/soul_war/ebb_and_flow/empty.otbm')
-		Spdlog.info("[changeEbbFlow] - Map Changed to Empty")
+		--Spdlog.info("[changeEbbFlow] - Map Changed to Empty")
 		Game.setStorageValue(STORAGEVALUE_EBB_FLOW, 1)
 		return true
 	end
@@ -201,6 +197,6 @@ function changeEbbFlow.onTime(interval)
 end
 
 
---changeEbbFlow:interval(1000*60*2) -- 2 minutos
-changeEbbFlow:interval(1000*60) 
+changeEbbFlow:interval(1000*60*2) -- 2 minutos
+--changeEbbFlow:interval(1000*30) -- 30 sec
 changeEbbFlow:register()
