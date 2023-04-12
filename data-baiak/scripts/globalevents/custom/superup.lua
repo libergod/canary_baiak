@@ -1,4 +1,6 @@
-function onThink(interval)
+local superUpGlobal = GlobalEvent("superUpGlobal")
+
+function superUpGlobal.onThink(interval)
 
     local superXpCave = SUPERUP:freeCave()
 
@@ -9,3 +11,6 @@ function onThink(interval)
     end
     return true
 end
+
+superUpGlobal:interval(1000*60) -- Once per minute
+superUpGlobal:register()

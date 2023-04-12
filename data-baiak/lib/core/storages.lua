@@ -120,7 +120,8 @@ LOTTERY_STORAGE_FINISHEDHOUR = 60003
 Storage = {
 	-- CUSTOM STORAGES BAIAK
 	Quest = {
-		DemonHelmet = 47000
+		DemonHelmet = 47000,
+		PitsOfInferno = 47001
 	},
 	
 	bomberman = {

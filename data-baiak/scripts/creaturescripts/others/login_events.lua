@@ -3,6 +3,7 @@ function loginEvents.onLogin(player)
 
 	local events = {
 		--Custom BAIAK
+		"superUpCreature",
 		"AnimationUp",
 		"DodgeCriticalSystem",
 		"DodgeManaSystem",

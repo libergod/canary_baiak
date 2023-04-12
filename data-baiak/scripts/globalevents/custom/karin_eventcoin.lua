@@ -14,10 +14,17 @@ function EventTournamentPerHour.onThink(interval)
             addEvent(function()
                 local pp = Player(playerId)
                 if pp then
-                    pp:addTournamentsCoins(10)
-                    pp:sendTextMessage(MESSAGE_EVENT_ADVANCE, 'You received 10 tournament coins for being online 1 Hour.')
-					db.query(string.format("INSERT INTO `store_history`(`account_id`, `mode`, `description`, `coin_type`, `coin_amount`, `time`) VALUES (%s, %s, %s, %s, %s, %s)", pp:getAccountId(), "0", db.escapeString("[Online Time] Tournament Coins"), "2", "10", os.time()))
-                    Karin.EventCoin[pp:getId()] = 0
+					if pp:isVip() then
+						pp:addTournamentsCoins(20)
+						pp:sendTextMessage(MESSAGE_EVENT_ADVANCE, '[VIP] - You received 20 tournament coins for being online 1 Hour.')
+						db.query(string.format("INSERT INTO `store_history`(`account_id`, `mode`, `description`, `coin_type`, `coin_amount`, `time`) VALUES (%s, %s, %s, %s, %s, %s)", pp:getAccountId(), "0", db.escapeString("[Online Time] Tournament Coins"), "2", "20", os.time()))
+						Karin.EventCoin[pp:getId()] = 0
+					else
+						pp:addTournamentsCoins(10)
+						pp:sendTextMessage(MESSAGE_EVENT_ADVANCE, 'You received 10 tournament coins for being online 1 Hour.')
+						db.query(string.format("INSERT INTO `store_history`(`account_id`, `mode`, `description`, `coin_type`, `coin_amount`, `time`) VALUES (%s, %s, %s, %s, %s, %s)", pp:getAccountId(), "0", db.escapeString("[Online Time] Tournament Coins"), "2", "10", os.time()))
+						Karin.EventCoin[pp:getId()] = 0
+					end
                 end
             end, _ * 10)
         elseif player then

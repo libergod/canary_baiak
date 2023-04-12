@@ -42,7 +42,7 @@ function superup.onStepIn(creature, item, position, fromPosition)
 				player:setStorageValue(STORAGEVALUE_SUPERUP_TEMPO, (os.time() + tempo))
 				player:setStorageValue(STORAGEVALUE_SUPERUP_INDEX, item.actionid)
 				local guid = player:getGuid()
-				db.query(string.format("UPDATE exclusive_hunts SET `hunt_id` = %d, `guid_player` = %d, `time` = %s, `to_time` = %s", item.actionid, guid, os.time(), (os.time() + tempo)))
+				db.query(string.format("UPDATE exclusive_hunts SET `guid_player` = %d, `time` = %s, `to_time` = %s WHERE `hunt_id` = %d", guid, os.time(), (os.time() + tempo), item.actionid))
 			else
 				player:sendCancelMessage(string.format(SUPERUP.msg.naoItem, ItemType(SUPERUP.itemID):getName()))
 				player:teleportTo(fromPosition, true)
