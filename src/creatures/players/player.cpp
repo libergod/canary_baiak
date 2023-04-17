@@ -824,7 +824,7 @@ int32_t Player::getStorageValue(const uint32_t key) const {
 	}
 
 	value = it->second;
-	return true;
+	return value;
 }
 
 bool Player::canSee(const Position &pos) const {
