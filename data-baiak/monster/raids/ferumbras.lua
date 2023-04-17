@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Ferumbras")
-local monster = { }
+local monster = {}
 
 monster.description = "Ferumbras"
 monster.experience = 12000
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 5000,
 	chance = 8
+}
+
+monster.bosstiary = {
+	bossRaceId = 231,
+	bossRace = RARITY_NEMESIS
 }
 
 monster.strategiesTarget = {

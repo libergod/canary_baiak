@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Furious Orc Berserker")
-local monster = { }
+local monster = {}
 
 monster.description = "a furious orc berserker"
 monster.experience = 0
@@ -60,7 +60,7 @@ monster.voices = {
 	{text = "KRAK ORRRRRRK!", yell = false}
 }
 
-monster.loot = { }
+monster.loot = {}
 
 monster.attacks = {
 	{name ="melee", interval = 2000, chance = 100, minDamage = 0, maxDamage = 0}

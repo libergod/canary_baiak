@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Deep Terror")
-local monster = { }
+local monster = {}
 
 monster.description = "Deep Terror"
 monster.experience = 35000
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 5000,
 	chance = 8
+}
+
+monster.bosstiary = {
+	bossRaceId = 1087,
+	bossRace = RARITY_BANE
 }
 
 monster.strategiesTarget = {

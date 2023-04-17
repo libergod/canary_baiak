@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Foreman Kneebiter")
-local monster = { }
+local monster = {}
 
 monster.description = "Foreman Kneebiter"
 monster.experience = 445
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 5000,
 	chance = 8
+}
+
+monster.bosstiary = {
+	bossRaceId = 424,
+	bossRace = RARITY_NEMESIS
 }
 
 monster.strategiesTarget = {

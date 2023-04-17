@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Zorvorax")
-local monster = { }
+local monster = {}
 
 monster.description = "zorvorax"
 monster.experience = 9000
@@ -23,6 +23,12 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 2000,
 	chance = 5
+}
+
+monster.bosstiary = {
+	bossRaceId = 1375,
+	bossRace = RARITY_ARCHFOE,
+	storageCooldown = Storage.FirstDragon.ZorvoraxTimer
 }
 
 monster.strategiesTarget = {

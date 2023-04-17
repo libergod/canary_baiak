@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Arachir The Ancient One")
-local monster = { }
+local monster = {}
 
 monster.description = "Arachir The Ancient One"
 monster.experience = 1800
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 5000,
 	chance = 10
+}
+
+monster.bosstiary = {
+	bossRaceId = 478,
+	bossRace = RARITY_NEMESIS
 }
 
 monster.strategiesTarget = {

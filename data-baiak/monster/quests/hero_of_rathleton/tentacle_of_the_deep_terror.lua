@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Tentacle of the Deep Terror")
-local monster = { }
+local monster = {}
 
 monster.description = "a tentacle of the deep terror"
 monster.experience = 5850

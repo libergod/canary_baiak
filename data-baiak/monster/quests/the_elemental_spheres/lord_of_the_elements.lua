@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Lord of the Elements")
-local monster = { }
+local monster = {}
 
 monster.description = "Lord of the Elements"
 monster.experience = 8000
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 5000,
 	chance = 10
+}
+
+monster.bosstiary = {
+	bossRaceId = 454,
+	bossRace = RARITY_ARCHFOE
 }
 
 monster.strategiesTarget = {

@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("The Last Lore Keeper")
-local monster = { }
+local monster = {}
 
 monster.description = "the last lore keeper"
 monster.experience = 45000
@@ -23,6 +23,12 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 2000,
 	chance = 8
+}
+
+monster.bosstiary = {
+	bossRaceId = 1304,
+	bossRace = RARITY_NEMESIS,
+	storageCooldown = Storage.ForgottenKnowledge.LastLoreTimer
 }
 
 monster.strategiesTarget = {

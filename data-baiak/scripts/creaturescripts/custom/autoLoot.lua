@@ -10,7 +10,7 @@ function autoloot.onDeath(creature, corpse, killer, mostDamageKiller, unjustifie
 	
 	local killerId = killer:getId()
 	
-	if corpse:getType():isCorpse() and corpse:getAttribute(ItemAttribute_t::CORPSEOWNER) == killerId then
+	if corpse:getType():isCorpse() and corpse:getAttribute(ITEM_ATTRIBUTE_CORPSEOWNER) == killerId then
         for i = corpse:getSize() - 1, 0, -1 do
             local containerItem = corpse:getItem(i)
             if containerItem then

@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("The Lord of the Lice")
-local monster = { }
+local monster = {}
 
 monster.description = "the lord of the lice"
 monster.experience = 600
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 5000,
 	chance = 8
+}
+
+monster.bosstiary = {
+	bossRaceId = 1179,
+	bossRace = RARITY_BANE
 }
 
 monster.strategiesTarget = {

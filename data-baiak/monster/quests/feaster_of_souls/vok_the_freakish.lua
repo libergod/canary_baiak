@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Vok The Freakish")
-local monster = { }
+local monster = {}
 
 monster.description = "Vok The Freakish"
 monster.experience = 26700
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 5000,
 	chance = 8
+}
+
+monster.bosstiary = {
+	bossRaceId = 1892,
+	bossRace = RARITY_ARCHFOE
 }
 
 monster.strategiesTarget = {

@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Golden Servant Replica")
-local monster = { }
+local monster = {}
 
 monster.description = "a golden servant replica"
 monster.experience = 450

@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("The Voice of Ruin")
-local monster = { }
+local monster = {}
 
 monster.description = "a the voice of ruin"
 monster.experience = 3500
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 4000,
 	chance = 40
+}
+
+monster.bosstiary = {
+	bossRaceId = 636,
+	bossRace = RARITY_NEMESIS
 }
 
 monster.strategiesTarget = {

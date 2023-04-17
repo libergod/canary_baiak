@@ -1,6 +1,9 @@
 -- Load core functions
 dofile(CORE_DIRECTORY .. "/libs/functions/load.lua")
 
+-- Core/data Global Storage System
+dofile(CORE_DIRECTORY .. "/libs/core/global_storage.lua")
+
 -- Daily reward library
 dofile(CORE_DIRECTORY .. "/libs/daily_reward/daily_reward.lua")
 dofile(CORE_DIRECTORY .. "/libs/daily_reward/player.lua")
@@ -23,6 +26,3 @@ dofile(CORE_DIRECTORY .. "/libs/modal_window_lib.lua")
 dofile(CORE_DIRECTORY .. "/libs/vocation.lua")
 dofile(CORE_DIRECTORY .. "/libs/window.lua")
 dofile(CORE_DIRECTORY .. "/libs/forge_lib.lua")
-
--- Core/data Global Storage System
-dofile(CORE_DIRECTORY .. "/libs/core/global_storage.lua")

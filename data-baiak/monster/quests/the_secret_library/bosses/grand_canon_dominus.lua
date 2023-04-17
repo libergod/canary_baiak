@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Grand Canon Dominus")
-local monster = { }
+local monster = {}
 
 monster.description = "Grand Canon Dominus"
 monster.experience = 11000
@@ -27,6 +27,11 @@ monster.events = {
 monster.changeTarget = {
 	interval = 4000,
 	chance = 10
+}
+
+monster.bosstiary = {
+	bossRaceId = 1584,
+	bossRace = RARITY_BANE
 }
 
 monster.strategiesTarget = {

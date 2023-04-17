@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Deepsea Blood Crab")
-local monster = { }
+local monster = {}
 
 monster.description = "a deepsea blood crab"
 monster.experience = 180
@@ -37,11 +37,6 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 4000,
 	chance = 10
-}
-
-monster.bosstiary = {
-	bossRaceId = 900,
-	bossRace = RARITY_ARCHFOE
 }
 
 monster.strategiesTarget = {

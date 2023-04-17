@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Priestess of the Wild Sun")
-local monster = { }
+local monster = {}
 
 monster.description = "a priestess of the wild sun"
 monster.experience = 6400
@@ -32,6 +32,9 @@ monster.race = "blood"
 monster.corpse = 31419
 monster.speed = 160
 monster.manaCost = 0
+
+monster.faction = FACTION_FAFNAR
+monster.enemyFactions = {FACTION_ANUMA, FACTION_PLAYER}
 
 monster.changeTarget = {
 	interval = 4000,

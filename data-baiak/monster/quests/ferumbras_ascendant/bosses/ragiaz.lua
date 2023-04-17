@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Ragiaz")
-local monster = { }
+local monster = {}
 
 monster.description = "ragiaz"
 monster.experience = 100000
@@ -23,6 +23,12 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 5000,
 	chance = 8
+}
+
+monster.bosstiary = {
+	bossRaceId = 1180,
+	bossRace = RARITY_ARCHFOE,
+	storageCooldown = Storage.FerumbrasAscension.RagiazTimer
 }
 
 monster.strategiesTarget = {

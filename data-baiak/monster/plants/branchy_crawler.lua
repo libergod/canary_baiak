@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Branchy Crawler")
-local monster = { }
+local monster = {}
 
 monster.description = "a branchy crawler"
 monster.experience = 23400

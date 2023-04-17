@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Sight of Surrender")
-local monster = { }
+local monster = {}
 
 monster.description = "a sight of surrender"
 monster.experience = 17000

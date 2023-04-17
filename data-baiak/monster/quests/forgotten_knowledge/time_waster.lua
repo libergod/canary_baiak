@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Time Waster")
-local monster = { }
+local monster = {}
 
 monster.description = "a time waster"
 monster.experience = 0

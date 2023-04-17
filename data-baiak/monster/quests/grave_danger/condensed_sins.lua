@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Condensed Sins")
-local monster = { }
+local monster = {}
 
 monster.description = "a condensed sins"
 monster.experience = 0

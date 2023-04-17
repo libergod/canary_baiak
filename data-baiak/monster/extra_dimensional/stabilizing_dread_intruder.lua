@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Stabilizing Dread Intruder")
-local monster = { }
+local monster = {}
 
 monster.description = "a stabilizing dread intruder"
 monster.experience = 1900

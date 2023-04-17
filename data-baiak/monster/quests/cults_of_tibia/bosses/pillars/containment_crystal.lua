@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Containment Crystal")
-local monster = { }
+local monster = {}
 
 monster.description = "a containment crystal"
 monster.experience = 0

@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Tazhadur")
-local monster = { }
+local monster = {}
 
 monster.description = "tazhadur"
 monster.experience = 9000
@@ -23,6 +23,12 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 5000,
 	chance = 0
+}
+
+monster.bosstiary = {
+	bossRaceId = 1390,
+	bossRace = RARITY_ARCHFOE,
+	storageCooldown = Storage.FirstDragon.TazhadurTimer
 }
 
 monster.strategiesTarget = {

@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("A Shielded Astral Glyph")
-local monster = { }
+local monster = {}
 
 monster.description = "a shielded astral glyph"
 monster.experience = 0

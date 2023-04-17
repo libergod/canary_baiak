@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Evil Mastermind")
-local monster = { }
+local monster = {}
 
 monster.description = "Evil Mastermind"
 monster.experience = 675
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 5000,
 	chance = 8
+}
+
+monster.bosstiary = {
+	bossRaceId = 569,
+	bossRace = RARITY_BANE
 }
 
 monster.strategiesTarget = {

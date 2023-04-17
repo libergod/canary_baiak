@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Tarbaz")
-local monster = { }
+local monster = {}
 
 monster.description = "tarbaz"
 monster.experience = 50000
@@ -23,6 +23,12 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 5000,
 	chance = 8
+}
+
+monster.bosstiary = {
+	bossRaceId = 1188,
+	bossRace = RARITY_ARCHFOE,
+	storageCooldown = Storage.FerumbrasAscension.TarbazTimer
 }
 
 monster.strategiesTarget = {

@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("The Duke Of The Depths")
-local monster = { }
+local monster = {}
 
 monster.description = "The Duke Of The Depths"
 monster.experience = 40000
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 5000,
 	chance = 50
+}
+
+monster.bosstiary = {
+	bossRaceId = 1520,
+	bossRace = RARITY_BANE
 }
 
 monster.strategiesTarget = {

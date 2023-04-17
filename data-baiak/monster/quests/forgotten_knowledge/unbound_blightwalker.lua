@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Unbound Blightwalker")
-local monster = { }
+local monster = {}
 
 monster.description = "an unbound blightwalker"
 monster.experience = 5850

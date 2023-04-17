@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Plagueroot")
-local monster = { }
+local monster = {}
 
 monster.description = "a Plagueroot"
 monster.experience = 55000
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 4000,
 	chance = 10
+}
+
+monster.bosstiary = {
+	bossRaceId = 1695,
+	bossRace = RARITY_NEMESIS
 }
 
 monster.strategiesTarget = {

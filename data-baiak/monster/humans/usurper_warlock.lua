@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Usurper Warlock")
-local monster = { }
+local monster = {}
 
 monster.description = "a usurper warlock"
 monster.experience = 7000

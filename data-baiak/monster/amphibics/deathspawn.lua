@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Deathspawn")
-local monster = { }
+local monster = {}
 
 monster.description = "a deathspawn"
 monster.experience = 20

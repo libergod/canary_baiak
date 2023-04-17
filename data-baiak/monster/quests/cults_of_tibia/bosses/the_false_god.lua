@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("The False God")
-local monster = { }
+local monster = {}
 
 monster.description = "The False God"
 monster.experience = 75000
@@ -23,6 +23,12 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 5000,
 	chance = 30
+}
+
+monster.bosstiary = {
+	bossRaceId = 1409,
+	bossRace = RARITY_ARCHFOE,
+	storageCooldown = Storage.CultsOfTibia.Minotaurs.BossTimer
 }
 
 monster.strategiesTarget = {

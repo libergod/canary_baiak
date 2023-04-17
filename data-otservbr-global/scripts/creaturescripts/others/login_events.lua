@@ -7,7 +7,7 @@ function loginEvents.onLogin(player)
 		"DodgeCriticalSystem",
 		"DodgeManaSystem",
 		"MonsterHunt",
-		"AutoLoot",
+		"autoLoot",
 		"Exiva",
 		"Events",
 		"Tasks",

@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Deepling Guard")
-local monster = { }
+local monster = {}
 
 monster.description = "a deepling guard"
 monster.experience = 2100
@@ -34,13 +34,13 @@ monster.corpse = 13750
 monster.speed = 135
 monster.manaCost = 0
 
-monster.faction = FACTION_DEEPLING
-monster.enemyFactions = {FACTION_DEATHLING, FACTION_PLAYER}
-
 monster.changeTarget = {
 	interval = 4000,
 	chance = 10
 }
+
+monster.faction = FACTION_DEEPLING
+monster.enemyFactions = {FACTION_DEATHLING, FACTION_PLAYER}
 
 monster.strategiesTarget = {
 	nearest = 70,

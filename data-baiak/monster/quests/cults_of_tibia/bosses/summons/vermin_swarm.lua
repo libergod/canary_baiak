@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Vermin Swarm")
-local monster = { }
+local monster = {}
 
 monster.description = "a vermin swarm"
 monster.experience = 0

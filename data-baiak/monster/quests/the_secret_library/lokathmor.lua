@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Lokathmor")
-local monster = { }
+local monster = {}
 
 monster.description = "Lokathmor"
 monster.experience = 100000
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 2000,
 	chance = 4
+}
+
+monster.bosstiary = {
+	bossRaceId = 1574,
+	bossRace = RARITY_ARCHFOE
 }
 
 monster.strategiesTarget = {

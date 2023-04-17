@@ -1,7 +1,7 @@
 dofile(DATA_DIRECTORY .. "/monster/quests/the_secret_library/bosses/grand_master_oberon_functions.lua")
 
 local mType = Game.createMonsterType("Grand Master Oberon")
-local monster = { }
+local monster = {}
 
 monster.description = "Grand Master Oberon"
 monster.experience = 20000
@@ -25,6 +25,12 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 4000,
 	chance = 10
+}
+
+monster.bosstiary = {
+	bossRaceId = 1576,
+	bossRace = RARITY_ARCHFOE,
+	storageCooldown = Storage.TheSecretLibrary.TheOrderOfTheFalcon.OberonTimer
 }
 
 monster.strategiesTarget = {
@@ -147,7 +153,10 @@ mType.onSay = function(monster, creature, type, message)
 			if message == v.msg:lower() then
 				local asking_storage = monster:getStorageValue(GrandMasterOberonConfig.Storage.Asking)
 				if GrandMasterOberonAsking[i].msg:lower() == GrandMasterOberonAsking[asking_storage].msg:lower() then
+					monster:say("GRRRAAANNGH!", TALKTYPE_MONSTER_SAY)
 					monster:unregisterEvent('OberonImmunity')
+				else
+					monster:say("HAHAHAHA!", TALKTYPE_MONSTER_SAY)
 				end
 			end
 		end

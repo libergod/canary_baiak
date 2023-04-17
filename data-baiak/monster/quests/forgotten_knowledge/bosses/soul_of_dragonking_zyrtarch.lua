@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Soul of Dragonking Zyrtarch")
-local monster = { }
+local monster = {}
 
 monster.description = "soul of dragonking zyrtarch"
 monster.experience = 70700
@@ -23,6 +23,12 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 5000,
 	chance = 0
+}
+
+monster.bosstiary = {
+	bossRaceId = 1289,
+	bossRace = RARITY_ARCHFOE,
+	storageCooldown = Storage.ForgottenKnowledge.DragonkingTimer
 }
 
 monster.strategiesTarget = {

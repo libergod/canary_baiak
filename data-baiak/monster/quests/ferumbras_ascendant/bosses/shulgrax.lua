@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Shulgrax")
-local monster = { }
+local monster = {}
 
 monster.description = "Shulgrax"
 monster.experience = 58000
@@ -23,6 +23,12 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 5000,
 	chance = 8
+}
+
+monster.bosstiary = {
+	bossRaceId = 1191,
+	bossRace = RARITY_ARCHFOE,
+	storageCooldown = Storage.FerumbrasAscension.ShulgraxTimer
 }
 
 monster.strategiesTarget = {

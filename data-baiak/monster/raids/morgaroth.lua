@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Morgaroth")
-local monster = { }
+local monster = {}
 
 monster.description = "Morgaroth"
 monster.experience = 15000
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 10000,
 	chance = 20
+}
+
+monster.bosstiary = {
+	bossRaceId = 229,
+	bossRace = RARITY_NEMESIS
 }
 
 monster.strategiesTarget = {

@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("The Sinister Hermit Dirty")
-local monster = { }
+local monster = {}
 
 monster.name = "The Sinister Hermit"
 monster.description = "The Sinister Hermit"

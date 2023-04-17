@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Zarcorix Of Yalahar")
-local monster = { }
+local monster = {}
 
 monster.description = "Zarcorix Of Yalahar"
 monster.experience = 0

@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Urmahlullu the Weakened")
-local monster = { }
+local monster = {}
 
 monster.description = "urmahlullu the weakened"
 monster.experience = 85000
@@ -23,6 +23,12 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 4000,
 	chance = 10
+}
+
+monster.bosstiary = {
+	bossRaceId = 1811,
+	bossRace = RARITY_ARCHFOE,
+	storageCooldown = Storage.Kilmaresh.UrmahlulluTimer
 }
 
 monster.strategiesTarget = {

@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("The Baron From Below")
-local monster = { }
+local monster = {}
 
 monster.description = "The Baron From Below"
 monster.experience = 40000
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 4000,
 	chance = 10
+}
+
+monster.bosstiary = {
+	bossRaceId = 1518,
+	bossRace = RARITY_BANE
 }
 
 monster.strategiesTarget = {

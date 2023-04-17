@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Ancient Spawn of Morgathla")
-local monster = { }
+local monster = {}
 
 monster.description = "an ancient spawn of morgathla"
 monster.experience = 2400
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 2000,
 	chance = 4
+}
+
+monster.bosstiary = {
+	bossRaceId = 1551, -- or 1554 need test
+	bossRace = RARITY_ARCHFOE
 }
 
 monster.strategiesTarget = {

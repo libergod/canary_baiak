@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Battlemaster Zunzu")
-local monster = { }
+local monster = {}
 
 monster.description = "Battlemaster Zunzu"
 monster.experience = 2500
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 5000,
 	chance = 8
+}
+
+monster.bosstiary = {
+	bossRaceId = 635,
+	bossRace = RARITY_NEMESIS
 }
 
 monster.strategiesTarget = {

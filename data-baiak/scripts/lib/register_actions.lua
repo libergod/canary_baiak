@@ -258,7 +258,7 @@ function onDestroyItem(player, item, fromPosition, target, toPosition, isHotkey)
 		return false
 	end
 
-	if target:hasAttribute(ItemAttribute_t::UNIQUEID) or target:hasAttribute(ItemAttribute_t::ACTIONID) then
+	if target:hasAttribute(ITEM_ATTRIBUTE_UNIQUEID) or target:hasAttribute(ITEM_ATTRIBUTE_ACTIONID) then
 		return false
 	end
 

@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("The Unarmored Voidborn")
-local monster = { }
+local monster = {}
 
 monster.description = "The Unarmored Voidborn"
 monster.experience = 15000
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 5000,
 	chance = 50
+}
+
+monster.bosstiary = {
+	bossRaceId = 1406,
+	bossRace = RARITY_ARCHFOE
 }
 
 monster.strategiesTarget = {

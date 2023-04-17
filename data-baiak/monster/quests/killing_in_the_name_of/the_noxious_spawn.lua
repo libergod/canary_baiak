@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("The Noxious Spawn")
-local monster = { }
+local monster = {}
 
 monster.description = "The Noxious Spawn"
 monster.experience = 6000

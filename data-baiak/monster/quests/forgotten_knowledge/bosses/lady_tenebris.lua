@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Lady Tenebris")
-local monster = { }
+local monster = {}
 
 monster.description = "Lady Tenebris"
 monster.experience = 50000
@@ -23,6 +23,12 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 2000,
 	chance = 20
+}
+
+monster.bosstiary = {
+	bossRaceId = 1315,
+	bossRace = RARITY_ARCHFOE,
+	storageCooldown = Storage.ForgottenKnowledge.LadyTenebrisTimer
 }
 
 monster.strategiesTarget = {

@@ -34,7 +34,7 @@ local function copyContainerItem(originalContainer, newContainer)
 		local originalItem = originalContainer:getItem(i)
 		local newItem = Game.createItem(originalItem.itemid, originalItem.type)
 		newItem:setActionId(originalItem:getActionId())
-		newItem:setAttribute(ItemAttribute_t::DESCRIPTION, originalItem:getAttribute(ItemAttribute_t::DESCRIPTION))
+		newItem:setAttribute(ITEM_ATTRIBUTE_DESCRIPTION, originalItem:getAttribute(ITEM_ATTRIBUTE_DESCRIPTION))
 
 		if originalItem:isContainer() then
 			copyContainerItem(Container(originalItem.uid), Container(newItem.uid))
@@ -78,9 +78,9 @@ function questSystem1.onUse(player, item, fromPosition, target, toPosition, isHo
 		if itemActionId then
 			reward:setActionId(itemActionId)
 		end
-		local itemDescription = item:getAttribute(ItemAttribute_t::DESCRIPTION)
+		local itemDescription = item:getAttribute(ITEM_ATTRIBUTE_DESCRIPTION)
 		if itemDescription then
-			reward:setAttribute(ItemAttribute_t::DESCRIPTION, itemDescription)
+			reward:setAttribute(ITEM_ATTRIBUTE_DESCRIPTION, itemDescription)
 		end
 	else
 		local container = Container(item.uid)
@@ -95,9 +95,9 @@ function questSystem1.onUse(player, item, fromPosition, target, toPosition, isHo
 			if newActionId then
 				newItem:setActionId(newActionId)
 			end
-			local newDescription = item:getAttribute(ItemAttribute_t::DESCRIPTION)
+			local newDescription = item:getAttribute(ITEM_ATTRIBUTE_DESCRIPTION)
 			if newDescription then
-				newItem:setAttribute(ItemAttribute_t::DESCRIPTION, newDescription)
+				newItem:setAttribute(ITEM_ATTRIBUTE_DESCRIPTION, newDescription)
 			end
 
 			if originalItem:isContainer() then

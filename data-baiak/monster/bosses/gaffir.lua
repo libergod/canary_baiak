@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Gaffir")
-local monster = { }
+local monster = {}
 
 monster.description = "a gaffir"
 monster.experience = 25000
@@ -99,7 +99,10 @@ monster.loot = {
 	{name = "terra hood", chance = 1600},
 	{name = "amulet of loss", chance = 3400},
 	{name = "wand of everblazing", chance = 2900},
-	{name = "cobra wand", chance = 400}
+	{name = "cobra wand", chance = 400},
+	{name = "cobra axe", chance = 400},
+	{name = "cobra rod", chance = 400},
+	{name = "cobra crest", chance = 400}
 }
 
 monster.attacks = {

@@ -30,7 +30,7 @@ Global = {
 		StoreExaust = 30051,
 		FamiliarSummonEvent10 = 30054,
 		FamiliarSummonEvent60 = 30055
-    }
+    },
 }
 
 -- Values extraction function
@@ -44,7 +44,7 @@ local function extractValues(tab, ret)
 	end
 end
 
-local extraction = { }
+local extraction = {}
 extractValues(Storage, extraction) -- Call function
 table.sort(extraction) -- Sort the table
 -- The choice of sorting is due to the fact that sorting is very cheap O (n log2 (n))
@@ -54,8 +54,7 @@ table.sort(extraction) -- Sort the table
 if #extraction > 1 then
 	for i = 1, #extraction - 1 do
 		if extraction[i] == extraction[i+1] then
-			Spdlog.warn(string.format("Duplicate global storage value found: %d",
-				extraction[i]))
+			Spdlog.warn(string.format("Duplicate global storage value found: %d", extraction[i]))
 		end
 	end
 end

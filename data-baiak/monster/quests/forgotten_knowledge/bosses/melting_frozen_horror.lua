@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Melting Frozen Horror")
-local monster = { }
+local monster = {}
 
 monster.description = "a melting frozen horror"
 monster.experience = 0
@@ -23,6 +23,12 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 2000,
 	chance = 5
+}
+
+monster.bosstiary = {
+	bossRaceId = 1336,
+	bossRace = RARITY_ARCHFOE,
+	storageCooldown = Storage.ForgottenKnowledge.HorrorTimer
 }
 
 monster.strategiesTarget = {

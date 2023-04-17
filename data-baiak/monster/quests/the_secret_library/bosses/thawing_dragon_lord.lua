@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Thawing Dragon Lord")
-local monster = { }
+local monster = {}
 
 monster.description = "a thawing dragon lord"
 monster.experience = 2100
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 4000,
 	chance = 0
+}
+
+monster.bosstiary = {
+	bossRaceId = 1585,
+	bossRace = RARITY_BANE
 }
 
 monster.strategiesTarget = {

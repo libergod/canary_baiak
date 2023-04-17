@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Instable Breach Brood")
-local monster = { }
+local monster = {}
 
 monster.description = "an instable breach brood"
 monster.experience = 1100

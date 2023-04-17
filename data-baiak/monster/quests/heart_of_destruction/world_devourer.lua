@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("World Devourer")
-local monster = { }
+local monster = {}
 
 monster.description = "World Devourer"
 monster.experience = 77700
@@ -23,6 +23,12 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 2000,
 	chance = 25
+}
+
+monster.bosstiary = {
+	bossRaceId = 1228,
+	bossRace = RARITY_NEMESIS,
+	storageCooldown = 14333
 }
 
 monster.strategiesTarget = {

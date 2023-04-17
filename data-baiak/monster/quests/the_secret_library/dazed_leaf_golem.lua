@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Dazed Leaf Golem")
-local monster = { }
+local monster = {}
 
 monster.description = "a dazed leaf golem"
 monster.experience = 8000
@@ -27,6 +27,11 @@ monster.events = {
 monster.changeTarget = {
 	interval = 0,
 	chance = 0
+}
+
+monster.bosstiary = {
+	bossRaceId = 1578,
+	bossRace = RARITY_BANE
 }
 
 monster.strategiesTarget = {

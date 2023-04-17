@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("The Armored Voidborn")
-local monster = { }
+local monster = {}
 
 monster.description = "The Armored Voidborn"
 monster.experience = 0
@@ -23,6 +23,12 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 5000,
 	chance = 50
+}
+
+monster.bosstiary = {
+	bossRaceId = 1406,
+	bossRace = RARITY_ARCHFOE,
+	storageCooldown = Storage.CultsOfTibia.Orcs.BossTimer
 }
 
 monster.strategiesTarget = {

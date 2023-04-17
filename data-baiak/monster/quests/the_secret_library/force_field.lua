@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Force Field")
-local monster = { }
+local monster = {}
 
 monster.description = "a force field"
 monster.experience = 0

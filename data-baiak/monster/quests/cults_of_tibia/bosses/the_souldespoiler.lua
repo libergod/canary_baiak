@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("The Souldespoiler")
-local monster = { }
+local monster = {}
 
 monster.description = "The Souldespoiler"
 monster.experience = 0
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 6000,
 	chance = 30
+}
+
+monster.bosstiary = {
+	bossRaceId = 1422,
+	bossRace = RARITY_ARCHFOE
 }
 
 monster.strategiesTarget = {

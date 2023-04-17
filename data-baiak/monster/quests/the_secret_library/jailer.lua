@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Jailer")
-local monster = { }
+local monster = {}
 
 monster.description = "Jailer"
 monster.experience = 45
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 5000,
 	chance = 8
+}
+
+monster.bosstiary = {
+	bossRaceId = 1577,
+	bossRace = RARITY_BANE
 }
 
 monster.strategiesTarget = {

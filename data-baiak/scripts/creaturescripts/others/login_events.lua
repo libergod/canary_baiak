@@ -10,7 +10,7 @@ function loginEvents.onLogin(player)
 		"MonsterHunt",
 		"monsterHuntKill",
 		"bossEventMonsterKill",
-		"AutoLoot",
+		"autoLoot",
 		"Exiva",
 		"Events",
 		"Tasks",

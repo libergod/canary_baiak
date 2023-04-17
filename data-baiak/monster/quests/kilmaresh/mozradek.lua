@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Mozradek")
-local monster = { }
+local monster = {}
 
 monster.description = "Mozradek"
 monster.experience = 21000
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 4000,
 	chance = 10
+}
+
+monster.bosstiary = {
+	bossRaceId = 1829,
+	bossRace = RARITY_BANE
 }
 
 monster.strategiesTarget = {

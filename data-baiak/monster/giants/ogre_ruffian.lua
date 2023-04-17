@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Ogre Ruffian")
-local monster = { }
+local monster = {}
 
 monster.description = "an ogre ruffian"
 monster.experience = 5000
@@ -33,13 +33,13 @@ monster.corpse = 31527
 monster.speed = 215
 monster.manaCost = 0
 
+monster.faction = FACTION_ANUMA
+monster.enemyFactions = {FACTION_FAFNAR, FACTION_PLAYER}
+
 monster.changeTarget = {
 	interval = 4000,
 	chance = 10
 }
-
-monster.faction = FACTION_ANUMA
-monster.enemyFactions = {FACTION_FAFNAR, FACTION_PLAYER}
 
 monster.strategiesTarget = {
 	nearest = 70,

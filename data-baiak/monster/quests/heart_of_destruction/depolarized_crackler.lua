@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Depolarized Crackler")
-local monster = { }
+local monster = {}
 
 monster.description = "a depolarized crackler"
 monster.experience = 0

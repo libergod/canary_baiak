@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Rift Fragment")
-local monster = { }
+local monster = {}
 
 monster.description = "a rift fragment"
 monster.experience = 0

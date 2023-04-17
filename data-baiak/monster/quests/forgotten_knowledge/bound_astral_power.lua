@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Bound Astral Power")
-local monster = { }
+local monster = {}
 
 monster.description = "a bound astral power"
 monster.experience = 0

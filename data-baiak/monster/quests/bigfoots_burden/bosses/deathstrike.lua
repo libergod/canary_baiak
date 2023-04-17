@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Deathstrike")
-local monster = { }
+local monster = {}
 
 monster.description = "Deathstrike"
 monster.experience = 40000
@@ -23,6 +23,12 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 5000,
 	chance = 8
+}
+
+monster.bosstiary = {
+	bossRaceId = 892,
+	bossRace = RARITY_ARCHFOE,
+	storageCooldown = Storage.BigfootBurden.BossWarzone1
 }
 
 monster.strategiesTarget = {

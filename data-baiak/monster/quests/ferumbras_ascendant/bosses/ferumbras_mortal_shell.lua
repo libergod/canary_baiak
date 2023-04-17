@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Ferumbras Mortal Shell")
-local monster = { }
+local monster = {}
 
 monster.description = "ferumbras mortal shell"
 monster.experience = 42000
@@ -23,6 +23,12 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 5000,
 	chance = 8
+}
+
+monster.bosstiary = {
+	bossRaceId = 1206,
+	bossRace = RARITY_NEMESIS,
+	storageCooldown = Storage.FerumbrasAscension.FerumbrasTimer
 }
 
 monster.strategiesTarget = {

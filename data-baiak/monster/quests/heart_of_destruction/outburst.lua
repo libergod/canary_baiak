@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Outburst")
-local monster = { }
+local monster = {}
 
 monster.description = "Outburst"
 monster.experience = 50000
@@ -23,6 +23,12 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 2000,
 	chance = 25
+}
+
+monster.bosstiary = {
+	bossRaceId = 1227,
+	bossRace = RARITY_ARCHFOE,
+	storageCooldown = 14331
 }
 
 monster.strategiesTarget = {

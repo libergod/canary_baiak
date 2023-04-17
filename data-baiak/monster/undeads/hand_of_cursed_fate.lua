@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Hand of Cursed Fate")
-local monster = { }
+local monster = {}
 
 monster.description = "a hand of cursed fate"
 monster.experience = 5000

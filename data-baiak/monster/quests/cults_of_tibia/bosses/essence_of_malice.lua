@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Essence Of Malice")
-local monster = { }
+local monster = {}
 
 monster.description = "Essence Of Malice"
 monster.experience = 4600
@@ -23,6 +23,12 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 4000,
 	chance = 5
+}
+
+monster.bosstiary = {
+	bossRaceId = 1487,
+	bossRace = RARITY_ARCHFOE,
+	storageCooldown = Storage.CultsOfTibia.Humans.BossTimer
 }
 
 monster.strategiesTarget = {

@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Organic Matter")
-local monster = { }
+local monster = {}
 
 monster.description = "an organic matter"
 monster.experience = 0

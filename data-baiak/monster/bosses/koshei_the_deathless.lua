@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Koshei The Deathless")
-local monster = { }
+local monster = {}
 
 monster.description = "Koshei the Deathless"
 monster.experience = 0

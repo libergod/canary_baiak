@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Shadowpelt")
-local monster = { }
+local monster = {}
 
 monster.description = "a shadowpelt"
 monster.experience = 4000
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 2000,
 	chance = 11
+}
+
+monster.bosstiary = {
+	bossRaceId = 1561,
+	bossRace = RARITY_ARCHFOE
 }
 
 monster.strategiesTarget = {

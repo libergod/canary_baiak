@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Scarlett Etzel")
-local monster = { }
+local monster = {}
 
 monster.description = "a scarlett etzel"
 monster.experience = 20000
@@ -23,6 +23,12 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 4000,
 	chance = 10
+}
+
+monster.bosstiary = {
+	bossRaceId = 1801, -- or 1804 need test
+	bossRace = RARITY_ARCHFOE,
+	storageCooldown = Storage.GraveDanger.CobraBastion.ScarlettTimer
 }
 
 monster.strategiesTarget = {

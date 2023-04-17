@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Deepling Worker")
-local monster = { }
+local monster = {}
 
 monster.description = "a deepling worker"
 monster.experience = 130

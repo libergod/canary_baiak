@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Izcandar the Banished")
-local monster = { }
+local monster = {}
 
 monster.description = "Izcandar the Banished"
 monster.experience = 6900
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 4000,
 	chance = 10
+}
+
+monster.bosstiary = {
+	bossRaceId = 1699,
+	bossRace = RARITY_NEMESIS
 }
 
 monster.strategiesTarget = {

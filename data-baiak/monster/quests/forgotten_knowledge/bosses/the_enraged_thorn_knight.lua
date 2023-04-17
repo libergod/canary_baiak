@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("The Enraged Thorn Knight")
-local monster = { }
+local monster = {}
 
 monster.description = "the enraged thorn knight"
 monster.experience = 30000
@@ -23,6 +23,12 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 5000,
 	chance = 0
+}
+
+monster.bosstiary = {
+	bossRaceId = 1297,
+	bossRace = RARITY_ARCHFOE,
+	storageCooldown = Storage.ForgottenKnowledge.ThornKnightTimer
 }
 
 monster.strategiesTarget = {

@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Chizzoron The Distorter")
-local monster = { }
+local monster = {}
 
 monster.description = "Chizzoron The Distorter"
 monster.experience = 4000
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 2000,
 	chance = 10
+}
+
+monster.bosstiary = {
+	bossRaceId = 629,
+	bossRace = RARITY_NEMESIS
 }
 
 monster.strategiesTarget = {

@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Crypt Warden")
-local monster = { }
+local monster = {}
 
 monster.description = "a crypt warden"
 monster.experience = 8400
@@ -24,7 +24,7 @@ monster.Bestiary = {
 	Stars = 4,
 	Occurrence = 0,
 	Locations = "Kilmaresh Catacombs."
-	}
+}
 
 monster.health = 8300
 monster.maxHealth = 8300
@@ -32,6 +32,9 @@ monster.race = "blood"
 monster.corpse = 31650
 monster.speed = 145
 monster.manaCost = 0
+
+monster.faction = FACTION_ANUMA
+monster.enemyFactions = {FACTION_FAFNAR, FACTION_PLAYER}
 
 monster.changeTarget = {
 	interval = 4000,

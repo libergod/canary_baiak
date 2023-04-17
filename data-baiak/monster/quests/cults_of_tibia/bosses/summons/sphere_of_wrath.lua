@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Sphere Of Wrath")
-local monster = { }
+local monster = {}
 
 monster.description = "a sphere of wrath"
 monster.experience = 0

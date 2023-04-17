@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("The Heat Of Summer")
-local monster = { }
+local monster = {}
 
 monster.description = "the heat of summer"
 monster.experience = 220

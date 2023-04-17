@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Demon")
-local monster = { }
+local monster = {}
 
 monster.description = "a demon"
 monster.experience = 6000
@@ -29,6 +29,12 @@ monster.Bestiary = {
 		Alchemist Quarter, Magician Quarter, Chyllfroest, Oramond Dungeon, Abandoned Sewers."
 	}
 
+monster.events = {
+	"autoLoot",
+	"dodgeCriticalThree"
+	--"expHit"
+}
+
 monster.health = 8200
 monster.maxHealth = 8200
 monster.race = "fire"
@@ -46,12 +52,6 @@ monster.strategiesTarget = {
 	health = 10,
 	damage = 10,
 	random = 10,
-}
-
-monster.events = {
-	"autoLoot",
-	"dodgeCriticalThree"
-	--"expHit"
 }
 
 monster.flags = {

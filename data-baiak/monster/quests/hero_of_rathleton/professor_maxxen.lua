@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Professor Maxxen")
-local monster = { }
+local monster = {}
 
 monster.description = "Professor Maxxen"
 monster.experience = 15500
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 2000,
 	chance = 5
+}
+
+monster.bosstiary = {
+	bossRaceId = 1093,
+	bossRace = RARITY_BANE
 }
 
 monster.strategiesTarget = {

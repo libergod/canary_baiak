@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Ghulosh' Deathgaze")
-local monster = { }
+local monster = {}
 
 monster.description = "Ghulosh' Deathgaze"
 monster.experience = 0

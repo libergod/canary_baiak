@@ -32,7 +32,7 @@ function bossDeath.onDeath(creature, corpse, killer, mostDamageKiller, lastHitUn
 	-- Make sure it is a boss
 	if monsterType and monsterType:isRewardBoss() then
 		local bossId = creature:getId()
-		local rewardId = corpse:getAttribute(ItemAttribute_t::DATE)
+		local rewardId = corpse:getAttribute(ITEM_ATTRIBUTE_DATE)
 
 		ResetAndSetTargetList(creature)
 

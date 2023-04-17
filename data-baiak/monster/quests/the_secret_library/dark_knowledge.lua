@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Dark Knowledge")
-local monster = { }
+local monster = {}
 
 monster.description = "a dark knowledge"
 monster.experience = 0

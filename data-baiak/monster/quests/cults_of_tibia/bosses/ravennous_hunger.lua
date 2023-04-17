@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Ravenous Hunger")
-local monster = { }
+local monster = {}
 
 monster.description = "Ravenous Hunger"
 monster.experience = 0
@@ -23,6 +23,12 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 4000,
 	chance = 20
+}
+
+monster.bosstiary = {
+	bossRaceId = 1427,
+	bossRace = RARITY_ARCHFOE,
+	storageCooldown = Storage.CultsOfTibia.Barkless.BossTimer
 }
 
 monster.strategiesTarget = {

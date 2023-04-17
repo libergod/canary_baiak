@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Cave Chimera")
-local monster = { }
+local monster = {}
 
 monster.description = "a cave chimera"
 monster.experience = 6800

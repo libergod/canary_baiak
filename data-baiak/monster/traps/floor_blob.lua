@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Floor Blob")
-local monster = { }
+local monster = {}
 
 monster.description = "a floor blob"
 monster.experience = 0

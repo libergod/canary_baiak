@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("The Diamond Blossom")
-local monster = { }
+local monster = {}
 
 monster.description = "the diamond blossom"
 monster.experience = 10000
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 5000,
 	chance = 8
+}
+
+monster.bosstiary = {
+	bossRaceId = 1598,
+	bossRace = RARITY_ARCHFOE
 }
 
 monster.strategiesTarget = {

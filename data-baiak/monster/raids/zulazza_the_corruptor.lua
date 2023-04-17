@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Zulazza The Corruptor")
-local monster = { }
+local monster = {}
 
 monster.description = "Zulazza The Corruptor"
 monster.experience = 10000
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 2000,
 	chance = 10
+}
+
+monster.bosstiary = {
+	bossRaceId = 628,
+	bossRace = RARITY_NEMESIS
 }
 
 monster.strategiesTarget = {

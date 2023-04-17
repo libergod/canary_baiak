@@ -65,9 +65,8 @@ local function creatureSayCallback(npc, creature, type, message)
 		npcHandler:say('There you have', npc, creature)
 		player:addItem(3043, npcConfig.amountMoney)
 	end
-end
 
-if MsgContains(message, "exp") or MsgContains(message, "experience") then
+	if MsgContains(message, "exp") or MsgContains(message, "experience") then
 		if player:getLevel() > npcConfig.maxLevel then
 			npcHandler:say('You can not take it anymore', npc, creature)
 		else

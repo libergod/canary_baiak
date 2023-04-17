@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Blemished Spawn")
-local monster = { }
+local monster = {}
 
 monster.description = "a blemished spawn"
 monster.experience = 5300

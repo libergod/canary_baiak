@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Betrayed Wraith")
-local monster = { }
+local monster = {}
 
 monster.description = "a betrayed wraith"
 monster.experience = 3500

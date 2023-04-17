@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Lost Berserker")
-local monster = { }
+local monster = {}
 
 monster.description = "a lost berserker"
 monster.experience = 4400

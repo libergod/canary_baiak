@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Gnomevil")
-local monster = { }
+local monster = {}
 
 monster.description = "Gnomevil"
 monster.experience = 45000
@@ -23,6 +23,12 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 5000,
 	chance = 8
+}
+
+monster.bosstiary = {
+	bossRaceId = 893,
+	bossRace = RARITY_ARCHFOE,
+	storageCooldown = Storage.BigfootBurden.BossWarzone2
 }
 
 monster.strategiesTarget = {

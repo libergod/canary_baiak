@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("The Shatterer")
-local monster = { }
+local monster = {}
 
 monster.description = "The Shatterer"
 monster.experience = 58000
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 5000,
 	chance = 8
+}
+
+monster.bosstiary = {
+	bossRaceId = 1165,
+	bossRace = RARITY_BANE
 }
 
 monster.strategiesTarget = {

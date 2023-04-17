@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Old Beholder")
-local monster = { }
+local monster = {}
 
 monster.name = "Beholder"
 monster.description = "a beholder"

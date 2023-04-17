@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Mirror Image")
-local monster = { }
+local monster = {}
 
 monster.description = "a mirror image"
 monster.experience = 0

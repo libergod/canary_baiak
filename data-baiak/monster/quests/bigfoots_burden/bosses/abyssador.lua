@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Abyssador")
-local monster = { }
+local monster = {}
 
 monster.description = "Abyssador"
 monster.experience = 50000
@@ -23,6 +23,12 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 5000,
 	chance = 10
+}
+
+monster.bosstiary = {
+	bossRaceId = 887,
+	bossRace = RARITY_ARCHFOE,
+	storageCooldown = Storage.BigfootBurden.BossWarzone3
 }
 
 monster.strategiesTarget = {

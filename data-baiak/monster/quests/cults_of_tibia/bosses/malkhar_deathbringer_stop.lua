@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Malkhar Deathbringer Stop")
-local monster = { }
+local monster = {}
 
 monster.name = "Malkhar Deathbringer"
 monster.description = "Malkhar Deathbringer"

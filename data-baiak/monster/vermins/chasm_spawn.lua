@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Chasm Spawn")
-local monster = { }
+local monster = {}
 
 monster.description = "a chasm spawn"
 monster.experience = 3500

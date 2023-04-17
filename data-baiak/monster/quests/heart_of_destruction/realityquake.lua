@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Realityquake")
-local monster = { }
+local monster = {}
 
 monster.description = "Realityquake"
 monster.experience = 80000
@@ -17,6 +17,12 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 3000,
 	chance = 20
+}
+
+monster.bosstiary = {
+	bossRaceId = 1218,
+	bossRace = RARITY_ARCHFOE,
+	storageCooldown = 14325
 }
 
 monster.strategiesTarget = {

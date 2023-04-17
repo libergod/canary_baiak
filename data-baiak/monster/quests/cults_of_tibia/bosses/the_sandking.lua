@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("The Sandking")
-local monster = { }
+local monster = {}
 
 monster.description = "The Sandking"
 monster.experience = 0
@@ -23,6 +23,12 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 5000,
 	chance = 30
+}
+
+monster.bosstiary = {
+	bossRaceId = 1444,
+	bossRace = RARITY_ARCHFOE,
+	storageCooldown = Storage.CultsOfTibia.Life.BossTimer
 }
 
 monster.strategiesTarget = {

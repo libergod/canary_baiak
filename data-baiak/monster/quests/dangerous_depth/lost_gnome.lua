@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Lost Gnome")
-local monster = { }
+local monster = {}
 
 monster.description = "a lost gnome"
 monster.experience = 0

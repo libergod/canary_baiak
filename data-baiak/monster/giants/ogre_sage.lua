@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Ogre Sage")
-local monster = { }
+local monster = {}
 
 monster.description = "an ogre sage"
 monster.experience = 5500
@@ -33,13 +33,13 @@ monster.corpse = 31535
 monster.speed = 230
 monster.manaCost = 0
 
+monster.faction = FACTION_ANUMA
+monster.enemyFactions = {FACTION_FAFNAR, FACTION_PLAYER}
+
 monster.changeTarget = {
 	interval = 4000,
 	chance = 10
 }
-
-monster.faction = FACTION_ANUMA
-monster.enemyFactions = {FACTION_FAFNAR, FACTION_PLAYER}
 
 monster.strategiesTarget = {
 	nearest = 70,

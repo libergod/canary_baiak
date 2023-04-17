@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("The Welter")
-local monster = { }
+local monster = {}
 
 monster.description = "The Welter"
 monster.experience = 11000
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 2000,
 	chance = 5
+}
+
+monster.bosstiary = {
+	bossRaceId = 964,
+	bossRace = RARITY_NEMESIS
 }
 
 monster.strategiesTarget = {

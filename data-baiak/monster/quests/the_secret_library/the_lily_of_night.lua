@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("The Lily of Night")
-local monster = { }
+local monster = {}
 
 monster.description = "a the lily of night"
 monster.experience = 0
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 5000,
 	chance = 8
+}
+
+monster.bosstiary = {
+	bossRaceId = 1602,
+	bossRace = RARITY_ARCHFOE
 }
 
 monster.strategiesTarget = {

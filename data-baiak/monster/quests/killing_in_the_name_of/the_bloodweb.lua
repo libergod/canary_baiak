@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("The Bloodweb")
-local monster = { }
+local monster = {}
 
 monster.description = "the Bloodweb"
 monster.experience = 1450

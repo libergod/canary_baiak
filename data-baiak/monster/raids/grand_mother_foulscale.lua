@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Grand Mother Foulscale")
-local monster = { }
+local monster = {}
 
 monster.description = "Grand Mother Foulscale"
 monster.experience = 1400
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 5000,
 	chance = 8
+}
+
+monster.bosstiary = {
+	bossRaceId = 642,
+	bossRace = RARITY_NEMESIS
 }
 
 monster.strategiesTarget = {

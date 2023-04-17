@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Hive Overseer")
-local monster = { }
+local monster = {}
 
 monster.description = "a hive overseer"
 monster.experience = 5500
