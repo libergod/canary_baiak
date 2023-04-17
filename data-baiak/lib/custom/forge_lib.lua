@@ -1,6 +1,6 @@
 if not ForgeMonster then
 	ForgeMonster = {
-		timeLeftToChangeMonsters = {},
+		timeLeftToChangeMonsters = { },
 		names = {
 			[FORGE_NORMAL_MONSTER] = 'normal',
 			[FORGE_INFLUENCED_MONSTER] = 'influenced',
@@ -57,7 +57,7 @@ function ForgeMonster:onDeath(creature, corpse, killer, mostDamageKiller, unjust
 		end
 
 		if party and party:isSharedExperienceEnabled() then
-			local killers = {}
+			local killers = { }
 			local partyMembers = party:getMembers()
 
 			for pid, _ in pairs(creature:getDamageMap()) do
@@ -186,7 +186,7 @@ function ForgeMonster:pickClosestFiendish(creature)
 		return 0
 	end
 
-	local creatures = {}
+	local creatures = { }
 
 	local playerPosition = player:getPosition()
 	for _, cid in pairs(Game.getFiendishMonsters()) do

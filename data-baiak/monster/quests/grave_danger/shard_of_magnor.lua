@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Shard Of Magnor")
-local monster = {}
+local monster = { }
 
 monster.description = "a shard of magnor"
 monster.experience = 0

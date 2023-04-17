@@ -2,7 +2,7 @@ dofile(DATA_DIRECTORY .. "/npc/alesar_functions.lua")
 
 local internalNpcName = "Alesar"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = {}
+local npcConfig = { }
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName

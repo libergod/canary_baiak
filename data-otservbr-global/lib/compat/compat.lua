@@ -136,7 +136,7 @@ function getCreatureSummons(cid)
 		return false
 	end
 
-	local result = {}
+	local result = { }
 	for _, summon in ipairs(c:getSummons()) do
 		result[#result + 1] = summon:getId()
 	end
@@ -284,7 +284,7 @@ function getPvpBlessingCost(level) return Blessings.getPvpBlessingCost(level) en
 function getPlayersByIPAddress(ip, mask)
 	if mask == nil then mask = 0xFFFFFFFF end
 	local masked = bit.band(ip, mask)
-	local result = {}
+	local result = { }
 	for _, player in ipairs(Game.getPlayers()) do
 		if bit.band(player:getIp(), mask) == masked then
 			result[#result + 1] = player:getId()
@@ -293,14 +293,14 @@ function getPlayersByIPAddress(ip, mask)
 	return result
 end
 function getOnlinePlayers()
-	local result = {}
+	local result = { }
 	for _, player in ipairs(Game.getPlayers()) do
 		result[#result + 1] = player:getName()
 	end
 	return result
 end
 function getPlayersByAccountNumber(accountNumber)
-	local result = {}
+	local result = { }
 	for _, player in ipairs(Game.getPlayers()) do
 		if player:getAccountId() == accountNumber then
 			result[#result + 1] = player:getId()
@@ -453,7 +453,7 @@ function getMonsterTargetList(cid)
 		return false
 	end
 
-	local result = {}
+	local result = { }
 	for _, creature in ipairs(monster:getTargetList()) do
 		if monster:isTarget(creature) then
 			result[#result + 1] = creature:getId()
@@ -469,7 +469,7 @@ function getMonsterFriendList(cid)
 
 	local z = monster:getPosition().z
 
-	local result = {}
+	local result = { }
 	for _, creature in ipairs(monster:getFriendList()) do
 		if not creature:isRemoved() and creature:getPosition().z == z then
 			result[#result + 1] = creature:getId()
@@ -673,9 +673,9 @@ function doSetItemText(uid, text)
 	end
 
 	if text ~= "" then
-		item:setAttribute(ITEM_ATTRIBUTE_TEXT, text)
+		item:setAttribute(ItemAttribute_t::TEXT, text)
 	else
-		item:removeAttribute(ITEM_ATTRIBUTE_TEXT)
+		item:removeAttribute(ItemAttribute_t::TEXT)
 	end
 	return true
 end
@@ -686,9 +686,9 @@ function doSetItemSpecialDescription(uid, desc)
 	end
 
 	if desc ~= "" then
-		item:setAttribute(ITEM_ATTRIBUTE_DESCRIPTION, desc)
+		item:setAttribute(ItemAttribute_t::DESCRIPTION, desc)
 	else
-		item:removeAttribute(ITEM_ATTRIBUTE_DESCRIPTION)
+		item:removeAttribute(ItemAttribute_t::DESCRIPTION)
 	end
 	return true
 end

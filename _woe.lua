@@ -6,9 +6,9 @@ local config = woe_config
 fileStore = false
 
 infoFile = 'tmp.woe'
-infoLua = {}
+infoLua = { }
 
-Woe = {}
+Woe = { }
 Woe.__index = Woe
 
 function Woe.setup()
@@ -109,7 +109,7 @@ end
 
 function Woe.timeToEnd()
 	Woe.getInfo()
-	local myTable = {}
+	local myTable = { }
 	for k, i in ipairs({"%M", "%S"}) do
 		myTable[k] = os.date(i, os.difftime(os.time(), infoLua[1]))
 	end
@@ -123,7 +123,7 @@ function Woe.moveBack(cid, fromPosition, text)
 end
 
 function Woe.getGuildMembers(id)
-	local members = {}
+	local members = { }
 	local players = Game.getPlayers()
 	
 	if #players == 0 then

@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #ifndef SRC_CREATURES_PLAYERS_ACCOUNT_ACCOUNT_HPP_
@@ -208,14 +208,14 @@ class Account {
   error_t SetAccountType(AccountType  account_type);
   error_t GetAccountType(AccountType *account_type);
 
-  error_t GetAccountPlayer(Player *player, std::string& characterName);
+  error_t GetAccountPlayer(Player *player, std::string &characterName);
   error_t GetAccountPlayers(std::vector<Player> *players);
 
  private:
   error_t SetID(uint32_t id);
   error_t LoadAccountDB(std::ostringstream &query);
   error_t LoadAccountPlayersDB(std::vector<Player> *players);
-  error_t LoadAccountPlayerDB(Player *player, std::string& characterName);
+  error_t LoadAccountPlayerDB(Player *player, std::string &characterName);
 
   Database *db_;
   DatabaseTasks *db_tasks_;
@@ -230,4 +230,4 @@ class Account {
 
 }  // namespace account
 
-#endif  // SRC_CREATURES_PLAYERS_ACCOUNT_ACCOUNT_HPP_
+#endif // SRC_CREATURES_PLAYERS_ACCOUNT_ACCOUNT_HPP_

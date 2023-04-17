@@ -1,6 +1,6 @@
 local internalNpcName = "A Wrinkled Bonelord"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = {}
+local npcConfig = { }
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName

@@ -53,7 +53,7 @@ local function spawnDarkSoul(area, t_time)
 			end
 			esperandoPlayer = true
 		else
-			local monster = {}
+			local monster = { }
 			for _x= sA1.x, sA2.x, 1 do
 				for _y= sA1.y, sA2.y, 1 do
 					local tileMonster = Tile(Position(_x, _y, sA1.z)):getTopCreature()
@@ -89,7 +89,7 @@ local function transformMonster(itid, action, monster, frompos, topos, _temp)
 					if tile:getItemCountById(itid) < 1 then
 						Game.createItem(itid, 1, Position(_x, frompos.y, frompos.z))
 					end
-					addEvent(transformMonster, tempo * 15000, itid, 2, monster, Position(_x, frompos.y, frompos.z), {}, _temp + 1)
+					addEvent(transformMonster, tempo * 15000, itid, 2, monster, Position(_x, frompos.y, frompos.z), { }, _temp + 1)
 				end
 			end
 		end
@@ -105,7 +105,7 @@ local function transformMonster(itid, action, monster, frompos, topos, _temp)
 		Game.createMonster(monster, {x = math.random(pos.x, pos2.x), y = math.random(pos.y, pos2.y), z = pos2.z})
 		if _temp < itid then
 			_temp = _temp + 1
-			addEvent(transformMonster, 15000, itid, 3, "Sphere Of Wrath", {}, {}, _temp)
+			addEvent(transformMonster, 15000, itid, 3, "Sphere Of Wrath", { }, { }, _temp)
 		end
 	end
 end
@@ -142,10 +142,10 @@ end
 
 local cultsOfTibiaLevers = Action()
 function cultsOfTibiaLevers.onUse(player, item, fromPosition, itemEx, toPosition)
-	local players = {}
-	local ittable = {}
+	local players = { }
+	local ittable = { }
 	local blockmonsters = {"Leiden", "Wine Cask", "Liquor Spirit", "Ravenous Hunger"}
-	local convertTable = {}
+	local convertTable = { }
 	item:transform(transformid[item:getId()])
 
 	if item:getActionId() == 5501 and item:getId() == 8912 then -- Leiden
@@ -235,7 +235,7 @@ function cultsOfTibiaLevers.onUse(player, item, fromPosition, itemEx, toPosition
 			end
 			transformMonster(25300, 1, "minotaur idol", Position(33157, 31910, 15), Position(33168, 31910, 15), 0)
 			transformMonster(25300, 1, "minotaur idol", Position(33158, 31921, 15), Position(33168, 31921, 15), 6)
-			addEvent(transformMonster, 13*15000, 3, 3, "Sphere Of Wrath", {}, {}, 0)
+			addEvent(transformMonster, 13*15000, 3, 3, "Sphere Of Wrath", { }, { }, 0)
 		Game.createMonster("The False God", Position(33159, 31914, 15))
 		-- funçao
 		kickerPlayerRoomAfferMin(convertTable, frompos, topos, Position(33181, 31894, 15), "You were kicked for exceeding the time limit within the boss room.", '', 60, true, ittable, blockmonsters)
@@ -489,7 +489,7 @@ function cultsOfTibiaLevers.onUse(player, item, fromPosition, itemEx, toPosition
 	-- final boss
 	if item:getActionId() == 5506 then
 		if player:getPosition() == Position(33074, 31884, 15) and item:getId() == 8912 then
-			local convertTable = {}
+			local convertTable = { }
 			convertTable[#convertTable + 1] = player:getId()
 
 			local frompos = Position(33023, 31904, 14) -- Checagem

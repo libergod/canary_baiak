@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("The Voice of Ruin")
-local monster = {}
+local monster = { }
 
 monster.description = "a the voice of ruin"
 monster.experience = 3500

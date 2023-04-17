@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Animated Ogre Brute")
-local monster = {}
+local monster = { }
 
 monster.description = "an animated ogre brute"
 monster.experience = 800

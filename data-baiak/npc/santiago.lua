@@ -1,6 +1,6 @@
 local internalNpcName = "Santiago"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = {}
+local npcConfig = { }
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName
@@ -60,7 +60,7 @@ npcType.onCloseChannel = function(npc, creature)
 end
 
 
-local storeTalkCid = {}
+local storeTalkCid = { }
 local function greetCallback(npc, creature)
 	local player = Player(creature)
 	local playerId = player:getId()

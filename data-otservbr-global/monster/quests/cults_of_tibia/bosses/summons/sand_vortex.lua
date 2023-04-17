@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Sand Vortex")
-local monster = {}
+local monster = { }
 
 monster.description = "a sand vortex"
 monster.experience = 0

@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #include "pch.hpp"
@@ -42,10 +42,10 @@ void ServiceManager::stop()
 
 	running = false;
 
-	for (auto& servicePortIt : acceptors) {
+	for (auto &servicePortIt : acceptors) {
 		try {
 			io_service.post(std::bind_front(&ServicePort::onStopServer, servicePortIt.second));
-		} catch (const std::system_error& e) {
+		} catch (const std::system_error &e) {
 			SPDLOG_WARN("[ServiceManager::stop] - Network error: {}", e.what());
 		}
 	}
@@ -91,7 +91,7 @@ void ServicePort::accept()
 	acceptor->async_accept(connection->getSocket(), std::bind(&ServicePort::onAccept, shared_from_this(), connection, std::placeholders::_1));
 }
 
-void ServicePort::onAccept(Connection_ptr connection, const std::error_code& error)
+void ServicePort::onAccept(Connection_ptr connection, const std::error_code &error)
 {
 	if (!error) {
 		if (services.empty()) {
@@ -115,18 +115,16 @@ void ServicePort::onAccept(Connection_ptr connection, const std::error_code& err
 		if (!pendingStart) {
 			close();
 			pendingStart = true;
-			g_scheduler().addEvent(createSchedulerTask(15000,
-                                std::bind_front(&ServicePort::openAcceptor,
-                                std::weak_ptr<ServicePort>(shared_from_this()),
+			g_scheduler().addEvent(createSchedulerTask(15000, std::bind_front(&ServicePort::openAcceptor, std::weak_ptr<ServicePort>(shared_from_this()),
                                 serverPort)));
 		}
 	}
 }
 
-Protocol_ptr ServicePort::make_protocol(bool checksummed, NetworkMessage& msg, const Connection_ptr& connection) const
+Protocol_ptr ServicePort::make_protocol(bool checksummed, NetworkMessage &msg, const Connection_ptr &connection) const
 {
 	uint8_t protocolID = msg.getByte();
-	for (auto& service : services) {
+	for (auto &service : services) {
 		if (protocolID != service->get_protocol_identifier()) {
 			continue;
 		}
@@ -175,7 +173,7 @@ void ServicePort::open(uint16_t port)
 
 		accept();
 	}
-	catch (const std::system_error& e) {
+	catch (const std::system_error &e) {
 		SPDLOG_WARN("[ServicePort::open] - Error code: {}", e.what());
 
 		pendingStart = true;

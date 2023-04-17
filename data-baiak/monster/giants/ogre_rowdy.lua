@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Ogre Rowdy")
-local monster = {}
+local monster = { }
 
 monster.description = "an ogre rowdy"
 monster.experience = 4200
@@ -24,7 +24,7 @@ monster.Bestiary = {
 	Stars = 4,
 	Occurrence = 0,
 	Locations = "Kilmaresh Central Steppe, Kilmaresh Southern Steppe, Green Belt, Kilmaresh Mountains (underground)."
-	}
+}
 
 monster.health = 4500
 monster.maxHealth = 4500
@@ -37,6 +37,9 @@ monster.changeTarget = {
 	interval = 4000,
 	chance = 10
 }
+
+monster.faction = FACTION_ANUMA
+monster.enemyFactions = {FACTION_FAFNAR, FACTION_PLAYER}
 
 monster.strategiesTarget = {
 	nearest = 70,

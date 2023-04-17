@@ -45,7 +45,7 @@ function snowballStart.onThink(interval, lastExecution)
 	if table.find(SNOWBALL.days, tostring(os.date("%A-%H:%M"))) then
 		Spdlog.info("[SNOWBALL EVENT] - Started Snowball Event at "..tostring(os.date("%A-%H:%M")))
 		Game.setStorageValue(SNOWBALL.storages.started, 1)
-		CACHE_GAMEPLAYERS = {}
+		CACHE_GAMEPLAYERS = { }
 		Game.broadcastMessage(SNOWBALL.prefixo .. SNOWBALL.mensagemEventoAberto)
 		local EventTeleport = Game.createItem(1949, 1, SNOWBALL.posTpEntrarEvento)
 		EventTeleport:setActionId(10101)

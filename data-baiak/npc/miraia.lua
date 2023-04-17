@@ -1,6 +1,6 @@
 local internalNpcName = "Miraia"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = {}
+local npcConfig = { }
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName
@@ -50,7 +50,7 @@ npcType.onCloseChannel = function(npc, creature)
 	npcHandler:onCloseChannel(npc, creature)
 end
 
-local topic = {}
+local topic = { }
 
 local config = {
 	['ape fur'] = {

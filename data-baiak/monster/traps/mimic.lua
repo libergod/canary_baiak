@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Mimic")
-local monster = {}
+local monster = { }
 
 monster.description = "a mimic"
 monster.experience = 0

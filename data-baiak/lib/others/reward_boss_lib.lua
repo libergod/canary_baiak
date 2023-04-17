@@ -1,5 +1,5 @@
 if not globalBosses then
-	globalBosses = {}
+	globalBosses = { }
 end
 
 function Monster.setReward(self, enable)
@@ -8,7 +8,7 @@ function Monster.setReward(self, enable)
 			error("Rewards can only be enabled to rewards bosses.")
 			return false
 		end
-		globalBosses[self:getId()] = {}
+		globalBosses[self:getId()] = { }
 		self:registerEvent("BossDeath")
 		self:registerEvent("BossThink")
 	else
@@ -50,7 +50,7 @@ function Player.inBossFight(self)
 end
 
 function MonsterType.createLootItem(self, lootBlock, chance, lootTable)
-	local lootTable, itemCount = lootTable or {}, 0
+	local lootTable, itemCount = lootTable or { }, 0
 	local randvalue = math.random(0, 100000) / (getConfigInfo("rateLoot") * chance)
 	if randvalue < lootBlock.chance then
 		if (ItemType(lootBlock.itemId):isStackable()) then
@@ -91,9 +91,9 @@ function MonsterType.createLootItem(self, lootBlock, chance, lootTable)
 end
 
 function MonsterType.getBossReward(self, lootFactor, topScore)
-	local result = {}
+	local result = { }
 	if getConfigInfo("rateLoot") > 0 then
-		local loot = self:getLoot() or {}
+		local loot = self:getLoot() or { }
 		for i = #loot, 0, -1 do
 			local lootBlock = loot[i]
 			if lootBlock then

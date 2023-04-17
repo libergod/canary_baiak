@@ -16,14 +16,14 @@ local holes = {468, 481, 483, 7932, 23712} -- holes opened by shovel
 local sandIds = {231, 9059} -- desert sand
 local fruits = {2673, 2674, 2675, 2676, 2677, 2678, 2679, 2680, 2681, 2682, 2684, 2685, 5097, 8839, 8840, 8841} -- fruits to make decorated cake with knife
 
-ActionsLib = {}
+ActionsLib = { }
 
 ActionsLib.destroyItem = function(player, target, toPosition)
 	if type(target) ~= "userdata" or not target:isItem() then
 		return false
 	end
 
-	if target:hasAttribute(ITEM_ATTRIBUTE_UNIQUEID) or target:hasAttribute(ITEM_ATTRIBUTE_ACTIONID) then
+	if target:hasAttribute(ItemAttribute_t::UNIQUEID) or target:hasAttribute(ItemAttribute_t::ACTIONID) then
 		return false
 	end
 
@@ -108,7 +108,7 @@ ActionsLib.usePick = function(player, item, fromPosition, target, toPosition, is
 		return false
 	end
 
-	if table.contains(groundIds, ground.itemid) and (ground:hasAttribute(ITEM_ATTRIBUTE_UNIQUEID) or ground:hasAttribute(ITEM_ATTRIBUTE_ACTIONID)) then
+	if table.contains(groundIds, ground.itemid) and (ground:hasAttribute(ItemAttribute_t::UNIQUEID) or ground:hasAttribute(ItemAttribute_t::ACTIONID)) then
 		ground:transform(392)
 		ground:decay()
 

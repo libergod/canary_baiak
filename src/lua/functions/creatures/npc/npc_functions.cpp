@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #include "pch.hpp"
@@ -59,7 +59,7 @@ int NpcFunctions::luaNpcSetMasterPos(lua_State* L) {
 		return 1;
 	}
 
-	const Position& pos = getPosition(L, 2);
+	const Position &pos = getPosition(L, 2);
 	npc->setMasterPos(pos);
 	pushBoolean(L, true);
 	return 1;
@@ -130,7 +130,7 @@ int NpcFunctions::luaNpcGetName(lua_State* L) {
 int NpcFunctions::luaNpcSetName(lua_State* L) {
 	// npc:setName(name)
 	Npc* npc = getUserdata<Npc>(L, 1);
-	const std::string& name = getString(L, 2);
+	const std::string &name = getString(L, 2);
 	if (!npc) {
 		reportErrorFunc(getErrorDesc(LUA_ERROR_NPC_NOT_FOUND));
 		lua_pushnil(L);
@@ -149,7 +149,7 @@ int NpcFunctions::luaNpcPlace(lua_State* L) {
 		return 1;
 	}
 
-	const Position& position = getPosition(L, 2);
+	const Position &position = getPosition(L, 2);
 	bool extended = getBoolean(L, 3, false);
 	bool force = getBoolean(L, 4, true);
 	if (g_game().placeCreature(npc, position, extended, force)) {
@@ -183,7 +183,7 @@ int NpcFunctions::luaNpcSay(lua_State* L) {
 	bool ghost = getBoolean(L, 4, false);
 
 	SpeakClasses type = getNumber<SpeakClasses>(L, 3, TALKTYPE_PRIVATE_NP);
-	const std::string& text = getString(L, 2);
+	const std::string &text = getString(L, 2);
 	Npc* npc = getUserdata<Npc>(L, 1);
 	if (!npc) {
 		lua_pushnil(L);
@@ -273,7 +273,7 @@ int NpcFunctions::luaNpcRemovePlayerInteraction(lua_State* L) {
 		return 1;
 	}
 
-	npc->removePlayerInteraction(creature->getID());
+	npc->removePlayerInteraction(creature->getPlayer());
 	pushBoolean(L, true);
 	return 1;
 }
@@ -324,7 +324,7 @@ int NpcFunctions::luaNpcIsPlayerInteractingOnTopic(lua_State* L) {
 int NpcFunctions::luaNpcIsInTalkRange(lua_State* L) {
 	// npc:isInTalkRange()
 	Npc* npc = getUserdata<Npc>(L, 1);
-	const Position& position = getPosition(L, 2);
+	const Position &position = getPosition(L, 2);
 
 	if (!npc) {
 		reportErrorFunc(getErrorDesc(LUA_ERROR_NPC_NOT_FOUND));
@@ -332,7 +332,7 @@ int NpcFunctions::luaNpcIsInTalkRange(lua_State* L) {
 		return 1;
 	}
 
-	pushBoolean(L, npc && npc->canSee(position));
+	pushBoolean(L, npc && npc->canInteract(position));
 	return 1;
 }
 
@@ -496,7 +496,7 @@ int NpcFunctions::luaNpcSellItem(lua_State* L)
 	bool ignoreCap = getBoolean(L, 7, false);
 	bool inBackpacks = getBoolean(L, 8, false);
 
-	const ItemType& it = Item::items[itemId];
+	const ItemType &it = Item::items[itemId];
 	if (it.id == 0) {
 		pushBoolean(L, false);
 		return 1;
@@ -548,7 +548,7 @@ int NpcFunctions::luaNpcSellItem(lua_State* L)
 			uint8_t internalAmount = (remainingAmount > internalCount) ? internalCount : static_cast<uint8_t>(remainingAmount);
 			Item* item = Item::CreateItem(itemId, it.stackable ? internalAmount : subType);
 			if (actionId != 0) {
-				item->setActionId(actionId);
+				item->setAttribute(ItemAttribute_t::ACTIONID, actionId);
 			}
 
 			while (remainingAmount > 0) {
@@ -567,7 +567,7 @@ int NpcFunctions::luaNpcSellItem(lua_State* L)
 		uint8_t internalAmount = (remainingAmount > internalCount) ? internalCount : static_cast<uint8_t>(remainingAmount);
 		Item* item = Item::CreateItem(itemId, it.stackable ? internalAmount : subType);
 		if (actionId != 0) {
-			item->setActionId(actionId);
+			item->setAttribute(ItemAttribute_t::ACTIONID, actionId);
 		}
 
 		while (remainingAmount > 0) {
@@ -662,8 +662,8 @@ int NpcFunctions::luaNpcGetDistanceTo(lua_State* L)
 		return 1;
 	}
 
-	const Position& thingPos = thing->getPosition();
-	const Position& npcPos = npc->getPosition();
+	const Position &thingPos = thing->getPosition();
+	const Position &npcPos = npc->getPosition();
 	if (npcPos.z != thingPos.z) {
 		lua_pushnumber(L, -1);
 	} else {

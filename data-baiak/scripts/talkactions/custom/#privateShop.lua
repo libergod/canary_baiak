@@ -3,7 +3,7 @@ local privateShopTalk = TalkAction("!privateshop")
 local funcs = {"on", "off", "add", "remove", "list", "help", "list"}
 
 local function checkSidesNpcs(fromPos,toPos, name)
-	local uids = {}
+	local uids = { }
 	for Px = fromPos.x, toPos.x do
 			for Py = fromPos.y, toPos.y do
 				local creature = getThingfromPos({x=Px, y=Py, z=7, stackpos=253})

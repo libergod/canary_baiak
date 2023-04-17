@@ -5,7 +5,7 @@ function onCastSpell(creature, var)
     local healerPos = creature:getPosition()
     local healerId = creature:getId()
     local party = creature:getParty()
-    local membersList = {}
+    local membersList = { }
 
 
     if party then
@@ -21,7 +21,7 @@ function onCastSpell(creature, var)
         return false
     end
 
-    local affectedList = {}
+    local affectedList = { }
     for _, partyMember in ipairs(membersList) do
         local partyMemberId = partyMember:getId()
         if partyMemberId ~= creature:getId() then

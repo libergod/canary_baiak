@@ -3,7 +3,7 @@ local maxPlayersPerMessage = 10
 function onSay(player, words, param)
 	local hasAccess = player:getGroup():getAccess()
 	local players = Game.getPlayers()
-	local onlineList = {}
+	local onlineList = { }
 
 	for _, targetPlayer in ipairs(players) do
 		if hasAccess or not targetPlayer:isInGhostMode() then

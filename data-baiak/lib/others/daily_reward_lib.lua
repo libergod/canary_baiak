@@ -1,7 +1,7 @@
 -- Global virtual tables
 Daily_Bonus = {
-	stamina = {},
-	soul = {}
+	stamina = { },
+	soul = { }
 }
 
 function string.diff(self)
@@ -12,7 +12,7 @@ function string.diff(self)
 		{'second', self % 60}
 	}
 
-	local out = {}
+	local out = { }
 	for k, t in ipairs(format) do
 		local v = math.floor(t[2])
 		if(v > 0) then

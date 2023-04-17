@@ -25,7 +25,7 @@ function Monster.setStorageValue(self, key, value)
 		return false
 	end
 	if not monsterStorage[self:getId()] then
-		monsterStorage[self:getId()] = {}
+		monsterStorage[self:getId()] = { }
 	end
 	if not monsterStorage[self:getId()][key] then
 		monsterStorage[self:getId()][key] = value
@@ -44,7 +44,7 @@ function Monster.setStorage(self, key, value)
 end
 
 if not hpCompartilhada then
-	hpCompartilhada = {[0] = {hp = 0, monsters = {}}}
+	hpCompartilhada = {[0] = {hp = 0, monsters = { }}}
 end
 
 function Monster.beginSharedLife(self, hpid)
@@ -52,7 +52,7 @@ function Monster.beginSharedLife(self, hpid)
 		return false
 	end
 	if not hpCompartilhada[hpid] then
-		hpCompartilhada[hpid] = {hp = self:getMaxHealth(), monsters = {}}
+		hpCompartilhada[hpid] = {hp = self:getMaxHealth(), monsters = { }}
 	end
 	table.insert(hpCompartilhada[hpid].monsters, self:getId())
 	self:setStorageValue("shared_storage", hpid)

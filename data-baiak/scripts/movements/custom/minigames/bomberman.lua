@@ -65,7 +65,7 @@ function bomberman.onStepIn(creature, item, position, fromPosition)
 					BomberTeam2[i]:teleportTo(Position(exitPosition))
 				end
 			end
-			BomberTeam1, BomberTeam2 = {}, {} 
+			BomberTeam1, BomberTeam2 = { }, { } 
 			for i = 1, #BlockListBomberman do
 				local powerItens = {32115, 32116, 32117}
 				for pointer = 1, 3 do
@@ -78,7 +78,7 @@ function bomberman.onStepIn(creature, item, position, fromPosition)
 				Game.createItem(8505, 1, BlockListBomberman[i])
 				end 
 			end
-		BlockListBomberman = {}
+		BlockListBomberman = { }
 		BombermanPortal = 0
 		item:remove()
 		else

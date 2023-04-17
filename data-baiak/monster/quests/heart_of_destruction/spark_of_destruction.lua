@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Spark of Destruction")
-local monster = {}
+local monster = { }
 
 monster.description = "a spark of destruction"
 monster.experience = 0

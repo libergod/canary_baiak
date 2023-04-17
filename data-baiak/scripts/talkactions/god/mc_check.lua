@@ -6,7 +6,7 @@ function mcCheck.onSay(player, words, param)
 	end
 
 	player:sendTextMessage(MESSAGE_ADMINISTRADOR, "Multiclient Check List:")
-	local ipList = {}
+	local ipList = { }
 	local players = Game.getPlayers()
 	for i = 1, #players do
 		local tmpPlayer = players[i]
@@ -14,7 +14,7 @@ function mcCheck.onSay(player, words, param)
 		if ip ~= 0 then
 			local list = ipList[ip]
 			if not list then
-				ipList[ip] = {}
+				ipList[ip] = { }
 				list = ipList[ip]
 			end
 			list[#list + 1] = tmpPlayer

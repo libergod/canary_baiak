@@ -4,7 +4,7 @@ function Monster.setReward(self, enable)
 			error("Rewards can only be enabled to rewards bosses.")
 			return false
 		end
-		GlobalBosses[self:getId()] = {}
+		GlobalBosses[self:getId()] = { }
 		self:registerEvent("BossDeath")
 		self:registerEvent("BossThink")
 	else
@@ -32,7 +32,7 @@ end
 
 function MonsterType.createLootItem(self, lootBlock, chance, lootTable)
 	if lootTable == nil then
-		lootTable = {}
+		lootTable = { }
 	end
 	local itemCount = 0
 	local randvalue = math.random(0, 100000) / (configManager.getNumber(configKeys.RATE_LOOT) * chance)
@@ -75,9 +75,9 @@ function MonsterType.createLootItem(self, lootBlock, chance, lootTable)
 end
 
 function MonsterType.getBossReward(self, lootFactor, topScore)
-	local result = {}
+	local result = { }
 	if configManager.getNumber(configKeys.RATE_LOOT) > 0 then
-		local loot = self:getLoot() or {}
+		local loot = self:getLoot() or { }
 		for i = #loot, 0, -1 do
 			local lootBlock = loot[i]
 			if lootBlock then

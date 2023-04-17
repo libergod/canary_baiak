@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #ifndef SRC_LUA_LUA_DEFINITIONS_HPP_
@@ -79,7 +79,8 @@ enum GlobalEvent_t {
 	GLOBALEVENT_STARTUP,
 	GLOBALEVENT_SHUTDOWN,
 	GLOBALEVENT_RECORD,
-	GLOBALEVENT_PERIODCHANGE
+	GLOBALEVENT_PERIODCHANGE,
+	GLOBALEVENT_ON_THINK
 };
 
 enum ModuleType_t {
@@ -200,7 +201,7 @@ struct LuaTimerEventDesc {
 	uint32_t eventId = 0;
 
 	LuaTimerEventDesc() = default;
-	LuaTimerEventDesc(LuaTimerEventDesc&& other) = default;
+	LuaTimerEventDesc(LuaTimerEventDesc &&other) = default;
 };
 
-#endif  // SRC_LUA_LUA_DEFINITIONS_HPP_
+#endif // SRC_LUA_LUA_DEFINITIONS_HPP_

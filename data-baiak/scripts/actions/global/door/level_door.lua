@@ -1,4 +1,4 @@
-local doorIds = {}
+local doorIds = { }
 for index, value in ipairs(LevelDoorTable) do
 	if not table.contains(doorIds, value.openDoor) then
 		table.insert(doorIds, value.openDoor)

@@ -1,6 +1,6 @@
 local internalNpcName = "Andrew Lyze"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = {}
+local npcConfig = { }
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName

@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #ifndef SRC_LUA_FUNCTIONS_CREATURES_PLAYER_GUILD_FUNCTIONS_HPP_
@@ -51,4 +51,4 @@ class GuildFunctions final : LuaScriptInterface {
 		static int luaGuildSetMotd(lua_State* L);
 };
 
-#endif  // SRC_LUA_FUNCTIONS_CREATURES_PLAYER_GUILD_FUNCTIONS_HPP_
+#endif // SRC_LUA_FUNCTIONS_CREATURES_PLAYER_GUILD_FUNCTIONS_HPP_

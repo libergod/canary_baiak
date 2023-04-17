@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #include "pch.hpp"
@@ -12,7 +12,7 @@
 #include "items/thing.h"
 #include "items/tile.h"
 
-const Position& Thing::getPosition() const
+const Position &Thing::getPosition() const
 {
 	const Tile* tile = getTile();
 	if (!tile) {

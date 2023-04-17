@@ -8,7 +8,7 @@ ANTIBOT = {
 		{question = "Qual seu level atual?", answer = "level"},
 		{question = "Qual o dia de hoje?", answer = "day"},
 	},
-	playerQuestion = {},
+	playerQuestion = { },
 	messages = {
 		time = "Você possui %s para responder a pergunta.",
 		chat = "Esse chat só pode ser usado durante a verificação.",
@@ -22,13 +22,13 @@ ANTIBOT = {
 			max = 3,
 			reason = "Quantidade excessiva de tentativas.",
 			timePunishment = 1, -- In days
-			players = {},
+			players = { },
 		},
 		time = {
 			maxTime = 180, -- In seconds
 			reason = "Não respondeu a pergunta dentro do tempo estipulado.",
 			timePunishment = 2, -- In days
-			players = {},
+			players = { },
 		},
 	},
 	notUseOnTrainers = true, -- True = training players will not be checked

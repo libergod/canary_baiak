@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #ifndef SRC_SERVER_NETWORK_MESSAGE_OUTPUTMESSAGE_H_
@@ -22,8 +22,8 @@ class OutputMessage : public NetworkMessage
 		OutputMessage() = default;
 
 		// non-copyable
-		OutputMessage(const OutputMessage&) = delete;
-		OutputMessage& operator=(const OutputMessage&) = delete;
+		OutputMessage(const OutputMessage &) = delete;
+		OutputMessage &operator=(const OutputMessage &) = delete;
 
 		uint8_t* getOutputBuffer() {
 			return buffer + outputBufferStart;
@@ -41,7 +41,7 @@ class OutputMessage : public NetworkMessage
 			writeMessageLength();
 		}
 
-		void append(const NetworkMessage& msg) {
+		void append(const NetworkMessage &msg) {
 			auto msgLen = msg.getLength();
 			memcpy(buffer + info.position, msg.getBuffer() + INITIAL_BUFFER_POSITION, msgLen);
 			info.length += msgLen;
@@ -72,10 +72,10 @@ class OutputMessagePool
 {
 	public:
 		// non-copyable
-		OutputMessagePool(const OutputMessagePool&) = delete;
-		OutputMessagePool& operator=(const OutputMessagePool&) = delete;
+		OutputMessagePool(const OutputMessagePool &) = delete;
+		OutputMessagePool &operator=(const OutputMessagePool &) = delete;
 
-		static OutputMessagePool& getInstance() {
+		static OutputMessagePool &getInstance() {
 			static OutputMessagePool instance;
 			return instance;
 		}
@@ -86,7 +86,7 @@ class OutputMessagePool
 		static OutputMessage_ptr getOutputMessage();
 
 		void addProtocolToAutosend(Protocol_ptr protocol);
-		void removeProtocolFromAutosend(const Protocol_ptr& protocol);
+		void removeProtocolFromAutosend(const Protocol_ptr &protocol);
 	private:
 		OutputMessagePool() = default;
 		//NOTE: A vector is used here because this container is mostly read
@@ -95,4 +95,4 @@ class OutputMessagePool
 };
 
 
-#endif  // SRC_SERVER_NETWORK_MESSAGE_OUTPUTMESSAGE_H_
+#endif // SRC_SERVER_NETWORK_MESSAGE_OUTPUTMESSAGE_H_

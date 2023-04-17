@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #include "pch.hpp"
@@ -33,7 +33,7 @@ Container::Container(Tile* tile) : Container(ITEM_BROWSEFIELD, 30, false, true)
 	TileItemVector* itemVector = tile->getItemList();
 	if (itemVector) {
 		for (Item* item : *itemVector) {
-			if (((item->getContainer() || item->hasProperty(CONST_PROP_MOVEABLE)) || (item->isWrapable() && !item->hasProperty(CONST_PROP_MOVEABLE) && !item->hasProperty(CONST_PROP_BLOCKPATH))) && !item->hasAttribute(ITEM_ATTRIBUTE_UNIQUEID)) {
+			if (((item->getContainer() || item->hasProperty(CONST_PROP_MOVEABLE)) || (item->isWrapable() && !item->hasProperty(CONST_PROP_MOVEABLE) && !item->hasProperty(CONST_PROP_BLOCKPATH))) && !item->hasAttribute(ItemAttribute_t::UNIQUEID)) {
 				itemlist.push_front(item);
 				item->setParent(this);
 			}
@@ -127,7 +127,7 @@ StashContainerList Container::getStowableItems() const
 	return toReturnList;
 }
 
-Attr_ReadValue Container::readAttr(AttrTypes_t attr, PropStream& propStream)
+Attr_ReadValue Container::readAttr(AttrTypes_t attr, PropStream &propStream)
 {
 	if (attr == ATTR_CONTAINER_ITEMS) {
 		if (!propStream.read<uint32_t>(serializationCount)) {
@@ -138,14 +138,13 @@ Attr_ReadValue Container::readAttr(AttrTypes_t attr, PropStream& propStream)
 	return Item::readAttr(attr, propStream);
 }
 
-bool Container::unserializeItemNode(OTB::Loader& loader, const OTB::Node& node, PropStream& propStream)
-{
-	bool ret = Item::unserializeItemNode(loader, node, propStream);
+bool Container::unserializeItemNode(OTB::Loader &loader, const OTB::Node &node, PropStream &propStream, Position &itemPosition) {
+	bool ret = Item::unserializeItemNode(loader, node, propStream, itemPosition);
 	if (!ret) {
 		return false;
 	}
 
-	for (auto& itemNode : node.children) {
+	for (auto &itemNode : node.children) {
 		//load container items
 		if (itemNode.type != OTBM_ITEM) {
 			// unknown type
@@ -157,13 +156,18 @@ bool Container::unserializeItemNode(OTB::Loader& loader, const OTB::Node& node, 
 			return false;
 		}
 
-		Item* item = Item::CreateItem(itemPropStream);
-		if (!item) {
+		uint16_t id;
+		if (!itemPropStream.read<uint16_t>(id)) {
 			return false;
 		}
 
-		if (!item->unserializeItemNode(loader, itemNode, itemPropStream)) {
-			return false;
+		Item* item = Item::CreateItem(id, itemPosition);
+		if (!item) {
+			continue;
+		}
+
+		if (!item->unserializeItemNode(loader, itemNode, itemPropStream, itemPosition)) {
+			continue;
 		}
 
 		addItem(item);
@@ -205,7 +209,7 @@ std::string Container::getContentDescription() const
 	return getContentDescription(os).str();
 }
 
-std::ostringstream& Container::getContentDescription(std::ostringstream& os) const
+std::ostringstream& Container::getContentDescription(std::ostringstream &os) const
 {
 	bool firstitem = true;
 	for (ContainerIterator it = iterator(); it.hasNext(); it.advance()) {
@@ -269,8 +273,40 @@ bool Container::isHoldingItem(const Item* item) const
 	return false;
 }
 
-void Container::onAddContainerItem(Item* item)
-{
+bool Container::isHoldingItemWithId(const uint16_t id) const {
+	for (ContainerIterator it = iterator(); it.hasNext(); it.advance()) {
+		const Item* item = *it;
+		if (item->getID() == id) {
+			return true;
+		}
+	}
+	return false;
+}
+
+bool Container::isInsideContainerWithId(const uint16_t id) const {
+	auto nextParent = parent;
+	while (nextParent != nullptr && nextParent->getContainer()) {
+		if (nextParent->getContainer()->getID() == id) {
+			return true;
+		}
+		nextParent = nextParent->getRealParent();
+	}
+	return false;
+}
+
+bool Container::isAnyKindOfRewardChest() const {
+	return getID() == ITEM_REWARD_CHEST || getID() == ITEM_REWARD_CONTAINER && parent && parent->getContainer() && parent->getContainer()->getID() == ITEM_REWARD_CHEST || isBrowseFieldAndHoldsRewardChest();
+}
+
+bool Container::isAnyKindOfRewardContainer() const {
+	return getID() == ITEM_REWARD_CHEST || getID() == ITEM_REWARD_CONTAINER || isHoldingItemWithId(ITEM_REWARD_CONTAINER) || isInsideContainerWithId(ITEM_REWARD_CONTAINER);
+}
+
+bool Container::isBrowseFieldAndHoldsRewardChest() const {
+	return getID() == ITEM_BROWSEFIELD && isHoldingItemWithId(ITEM_REWARD_CHEST);
+}
+
+void Container::onAddContainerItem(Item* item) {
 	SpectatorHashSet spectators;
 	g_game().map.getSpectators(spectators, getPosition(), false, true, 2, 2, 2, 2);
 
@@ -317,9 +353,7 @@ void Container::onRemoveContainerItem(uint32_t index, Item* item)
 	}
 }
 
-ReturnValue Container::queryAdd(int32_t addIndex, const Thing& addThing, uint32_t addCount,
-		uint32_t flags, Creature* actor/* = nullptr*/) const
-{
+ReturnValue Container::queryAdd(int32_t addIndex, const Thing &addThing, uint32_t addCount, uint32_t flags, Creature* actor /* = nullptr*/) const {
 	bool childIsOwner = hasBitSet(FLAG_CHILDISOWNER, flags);
 	if (childIsOwner) {
 		//a child container is querying, since we are the top container (not carried by a player)
@@ -403,9 +437,7 @@ ReturnValue Container::queryAdd(int32_t addIndex, const Thing& addThing, uint32_
 	}
 }
 
-ReturnValue Container::queryMaxCount(int32_t index, const Thing& thing, uint32_t count,
-		uint32_t& maxQueryCount, uint32_t flags) const
-{
+ReturnValue Container::queryMaxCount(int32_t index, const Thing &thing, uint32_t count, uint32_t &maxQueryCount, uint32_t flags) const {
 	const Item* item = thing.getItem();
 	if (item == nullptr) {
 		maxQueryCount = 0;
@@ -454,9 +486,7 @@ ReturnValue Container::queryMaxCount(int32_t index, const Thing& thing, uint32_t
 	return RETURNVALUE_NOERROR;
 }
 
-ReturnValue Container::queryRemove(const Thing& thing, uint32_t count, uint32_t flags,
-                                   Creature* actor /*= nullptr */) const
-{
+ReturnValue Container::queryRemove(const Thing &thing, uint32_t count, uint32_t flags, Creature* actor /*= nullptr */) const {
 	int32_t index = getThingIndex(&thing);
 	if (index == -1) {
 		SPDLOG_DEBUG("{} - Failed to get thing index", __FUNCTION__);
@@ -485,9 +515,7 @@ ReturnValue Container::queryRemove(const Thing& thing, uint32_t count, uint32_t 
 	return RETURNVALUE_NOERROR;
 }
 
-Cylinder* Container::queryDestination(int32_t& index, const Thing &thing, Item** destItem,
-		uint32_t& flags)
-{
+Cylinder* Container::queryDestination(int32_t &index, const Thing &thing, Item** destItem, uint32_t &flags) {
 	if (!unlocked) {
 		*destItem = nullptr;
 		return this;
@@ -710,8 +738,7 @@ uint32_t Container::getItemTypeCount(uint16_t itemId, int32_t subType/* = -1*/) 
 	return count;
 }
 
-std::map<uint32_t, uint32_t>& Container::getAllItemTypeCount(std::map<uint32_t, uint32_t>& countMap) const
-{
+std::map<uint32_t, uint32_t> &Container::getAllItemTypeCount(std::map<uint32_t, uint32_t> &countMap) const {
 	for (Item* item : itemlist) {
 		countMap[item->getID()] += item->getItemCount();
 	}

@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #include "pch.hpp"
@@ -17,7 +17,7 @@ Inbox::Inbox(uint16_t type) : Container(type, 30, false, true)
 	maxInboxItems = std::numeric_limits<uint16_t>::max();
 }
 
-ReturnValue Inbox::queryAdd(int32_t, const Thing& thing, uint32_t,
+ReturnValue Inbox::queryAdd(int32_t, const Thing &thing, uint32_t,
 		uint32_t flags, Creature*) const
 {
 	int32_t addCount = 0;

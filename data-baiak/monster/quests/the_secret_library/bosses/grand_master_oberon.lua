@@ -1,7 +1,7 @@
 dofile(DATA_DIRECTORY .. "/monster/quests/the_secret_library/bosses/grand_master_oberon_functions.lua")
 
 local mType = Game.createMonsterType("Grand Master Oberon")
-local monster = {}
+local monster = { }
 
 monster.description = "Grand Master Oberon"
 monster.experience = 20000

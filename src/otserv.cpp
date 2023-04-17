@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #include "pch.hpp"
@@ -32,6 +32,7 @@
 #include "server/network/webhook/webhook.h"
 #include "server/server.h"
 #include "io/ioprey.h"
+#include "io/io_bosstiary.hpp"
 
 #if __has_include("gitmetadata.h")
 	#include "gitmetadata.h"
@@ -73,8 +74,17 @@ std::string getCompiler() {
 
 void startupErrorMessage() {
 	SPDLOG_ERROR("The program will close after pressing the enter key...");
-	getchar();
+		if (isatty(STDIN_FILENO)) {
+			getchar();
+		}
 	g_loaderSignal.notify_all();
+
+	#ifdef _WIN32
+	exit(-1);
+#else
+	g_scheduler().shutdown();
+	exit(-1);
+#endif
 }
 
 void mainLoader(int argc, char* argv[], ServiceManager* servicer);
@@ -83,8 +93,17 @@ void badAllocationHandler() {
 	// Use functions that only use stack allocation
 	SPDLOG_ERROR("Allocation failed, server out of memory, "
                  "decrease the size of your map or compile in 64 bits mode");
-	getchar();
+	if (isatty(STDIN_FILENO)) {
+			getchar();
+	}
+
+	#ifdef _WIN32
 	exit(-1);
+#else
+	g_scheduler().shutdown();
+	exit(-1);
+#endif
+
 }
 
 void modulesLoadHelper(bool loaded, std::string moduleName) {
@@ -118,7 +137,7 @@ void loadModules() {
 			SPDLOG_ERROR("File key.pem not found or have problem on loading... Setting standard rsa key\n");
 			g_RSA().setKey(p, q);
 		}
-	} catch (std::system_error const& e) {
+	}	catch (const std::system_error &e) {
 		SPDLOG_ERROR("Loading RSA Key from key.pem failed with error: {}\n", e.what());
 		SPDLOG_ERROR("Switching to a default key...");
 		g_RSA().setKey(p, q);
@@ -157,10 +176,8 @@ void loadModules() {
 
 	auto datapackFolder = g_configManager().getString(DATA_DIRECTORY);
 	SPDLOG_INFO("Loading core scripts on folder: {}/", coreFolder);
-	modulesLoadHelper((g_luaEnvironment.loadFile(coreFolder + "/core.lua") == 0),
-		"core.lua");
-	modulesLoadHelper((g_luaEnvironment.loadFile(coreFolder + "/scripts/talkactions.lua") == 0),
-		"scripts/talkactions.lua");
+	modulesLoadHelper((g_luaEnvironment.loadFile(coreFolder + "/core.lua", "core.lua") == 0), "core.lua");
+	modulesLoadHelper((g_luaEnvironment.loadFile(coreFolder + "/scripts/talkactions.lua", "talkactions.lua") == 0), "scripts/talkactions.lua");
 	modulesLoadHelper(g_vocations().loadFromXml(),
 		"XML/vocations.xml");
 	modulesLoadHelper(g_eventsScheduler().loadScheduleEventFromXml(),
@@ -192,6 +209,7 @@ void loadModules() {
 		"npc");
 
 	g_game().loadBoostedCreature();
+	g_ioBosstiary().loadBoostedBoss();
 	g_ioprey().InitializeTaskHuntOptions();
 }
 
@@ -274,7 +292,7 @@ void mainLoader(int, char*[], ServiceManager* services) {
 
 	SPDLOG_INFO("A server developed by: {}", STATUS_SERVER_DEVELOPERS);
 	SPDLOG_INFO("Visit our website for updates, support, and resources: "
-		"https://docs.opentibiabr.org/");
+		"https://docs.opentibiabr.com/");
 
 	std::string configName = "config.lua";
 	// Check if config or config.dist exist
@@ -298,7 +316,7 @@ void mainLoader(int, char*[], ServiceManager* services) {
 	loadModules();
 
 #ifdef _WIN32
-	const std::string& defaultPriority = g_configManager().getString(DEFAULT_PRIORITY);
+	const std::string &defaultPriority = g_configManager().getString(DEFAULT_PRIORITY);
 	if (strcasecmp(defaultPriority.c_str(), "high") == 0) {
 		SetPriorityClass(GetCurrentProcess(), HIGH_PRIORITY_CLASS);
 	} else if (strcasecmp(defaultPriority.c_str(), "above-normal") == 0) {

@@ -51,7 +51,7 @@ end
 
 function getReward(cid)
 	local player = Player(cid)
-	local rewardTable = {}
+	local rewardTable = { }
 	if player then
 		local g = player:getGuild()
 		if g then
@@ -108,7 +108,7 @@ end
 
 function sendKillingPoints(cid, type)
 	local creature = Creature(cid)
-	local p_block = {}
+	local p_block = { }
 	for _, k in pairs(CONFIG_GUILD_MONSTERS.type) do
 		if _ == type then
 			for creatureid, damage in pairs(creature:getDamageMap()) do

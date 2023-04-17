@@ -24,7 +24,7 @@ local config = {
 		[8] = Position(945, 1429, 8),
 	},
 	monsterName = "Serpent Spawn",
-	players = {},
+	players = { },
 	tempoCooldown = 4, -- Em horas
 	storageTempo = 86475,
 }

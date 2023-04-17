@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Cart Packed with Gold")
-local monster = {}
+local monster = { }
 
 monster.description = "a cart packed with gold"
 monster.experience = 0

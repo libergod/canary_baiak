@@ -1,5 +1,5 @@
 function Combat:getPositions(creature, variant)
-	local positions = {}
+	local positions = { }
 	function onTargetTile(creature, position)
 		positions[#positions + 1] = position
 	end
@@ -10,7 +10,7 @@ function Combat:getPositions(creature, variant)
 end
 
 function Combat:getTargets(creature, variant)
-	local targets = {}
+	local targets = { }
 	function onTargetCreature(creature, target)
 		targets[#targets + 1] = target
 	end

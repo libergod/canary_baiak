@@ -1,6 +1,6 @@
 function onSay(player, words, param)
-    local text = {}
-    local spells = {}
+    local text = { }
+    local spells = { }
     for _, spell in ipairs(player:getInstantSpells()) do
         if spell.level ~= 0 then
             if spell.manapercent > 0 then

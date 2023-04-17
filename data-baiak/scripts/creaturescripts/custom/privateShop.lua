@@ -35,7 +35,7 @@ function privateShopLogin.onLogin(player)
 	--deleteNPCFile(player:getName())
 	
 	
-	--setPlayerShopLucro(playerguid, "{}")
+	--setPlayerShopLucro(playerguid, "{ }")
 	--player:setStorageValue(75431, -1)
 	--player:sendCancelMessage("Private Shop disabled.")
 

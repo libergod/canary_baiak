@@ -1,6 +1,6 @@
 local internalNpcName = "Trisha"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = {}
+local npcConfig = { }
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName
@@ -97,7 +97,7 @@ local config = {
 	}
 }
 
-local topic = {}
+local topic = { }
 
 local function greetCallback(npc, creature)
 	local playerId = creature:getId()

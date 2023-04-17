@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #ifndef SRC_LUA_CALLBACKS_CREATURECALLBACK_H_
@@ -23,13 +23,13 @@ class CreatureCallback {
 
 		bool startScriptInterface(int32_t scriptId);
 
-		void pushSpecificCreature(Creature *creature);
+		void pushSpecificCreature(Creature* creature);
 
 		bool persistLuaState() {
 			return params > 0 && scriptInterface->callFunction(params);
 		}
 
-		void pushCreature(Creature *creature) {
+		void pushCreature(Creature* creature) {
 			params++;
 			LuaScriptInterface::pushUserdata<Creature>(L, creature);
 			LuaScriptInterface::setCreatureMetatable(L, -1, creature);
@@ -45,7 +45,7 @@ class CreatureCallback {
 			lua_pushnumber(L, number);
 		}
 
-		void pushString(const std::string& str) {
+		void pushString(const std::string &str) {
 			params++;
 			LuaScriptInterface::pushString(L, str);
 		}
@@ -56,7 +56,7 @@ class CreatureCallback {
 		}
 
 	protected:
-		static std::string getCreatureClass(Creature *creature);
+		static std::string getCreatureClass(Creature* creature);
 
 	private:
 		LuaScriptInterface* scriptInterface;
@@ -65,4 +65,4 @@ class CreatureCallback {
 		lua_State* L;
 };
 
-#endif  // SRC_LUA_CALLBACKS_CREATURECALLBACK_H_
+#endif // SRC_LUA_CALLBACKS_CREATURECALLBACK_H_

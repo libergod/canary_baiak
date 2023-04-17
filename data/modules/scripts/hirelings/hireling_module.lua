@@ -1,4 +1,4 @@
-HirelingModule = {}
+HirelingModule = { }
 
 HirelingModule.Credits = {
 	Developer = 'Leonardo "Leu" Pereira (jlcvp)',
@@ -14,7 +14,7 @@ local function getOutfit(msg)
 	local outfitType = 0
 	outfitType = msg:getByte()
 
-	local outfit = {}
+	local outfit = { }
 	outfit.lookType = msg:getU16()
 	outfit.lookHead = msg:getByte()
 	outfit.lookBody = msg:getByte()

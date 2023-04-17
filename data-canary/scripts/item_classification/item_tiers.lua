@@ -34,10 +34,10 @@ local itemTierClassifications = {
 
 for classificationId, classificationTable in ipairs(itemTierClassifications) do
 	local itemClassification = Game.createItemClassification(classificationId)
-	local classification = {}
+	local classification = { }
 
 	-- Registers table for register_item_tier.lua interface
-	classification.Upgrades = {}
+	classification.Upgrades = { }
 	for tierId, tierTable in ipairs(classificationTable) do
 		if tierId and tierTable.price then
 			table.insert(classification.Upgrades, {TierId = tierId - 1, Price = tierTable.price})

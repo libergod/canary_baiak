@@ -5,8 +5,8 @@ CREATE TABLE `castle_48` (
 --]]
 
 Castle48H = {
-	players = {},
-	guilds ={},
+	players = { },
+	guilds ={ },
 	msg = {
 		prefix = "[Castle48H] ",
 		start = "O evento começou, boa sorte a todos as guilds!",
@@ -110,7 +110,7 @@ end
 
 Castle48H.insertPlayer = function(playerId)
 	if not Castle48H.players[playerId] then
-		Castle48H.players[playerId] = {}
+		Castle48H.players[playerId] = { }
 	end
 end
 

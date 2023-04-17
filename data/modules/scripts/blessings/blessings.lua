@@ -1,4 +1,4 @@
-Blessings = {}
+Blessings = { }
 
 Blessings.Credits = {
 	Developer = "Charles (Cjaker), DudZ",
@@ -273,7 +273,7 @@ Blessings.DropLoot = function(player, corpse, chance, skulled)
 	end
 	if skulled and Blessings.Config.SkulledDeathLoseStoreItem then
 		local inbox = player:getSlotItem(CONST_SLOT_STORE_INBOX)
-		local toBeDeleted = {}
+		local toBeDeleted = { }
 		if inbox and inbox:getSize() > 0 then
 			for i = 0, inbox:getSize() do
 				local item = inbox:getItem(i)
@@ -370,7 +370,7 @@ Blessings.PlayerDeath = function(player, corpse, killer)
 end
 
 function Player.getBlessings(self, filter, hasblessingFilter)
-	local blessings = {}
+	local blessings = { }
 	if filter == nil then
 		filter = function(b) return b.losscount end
 	end

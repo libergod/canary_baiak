@@ -1,4 +1,4 @@
-local shop = {}
+local shop = { }
 local modalWindow = ModalWindow(99999, "~ Shop Item List ~", "example: !shop mana potion .")
 modalWindow:addButton(1, "Buy")
 modalWindow:addButton(2, "Close")

@@ -15,7 +15,7 @@ function onlinePointsEvent.onThink(interval)
         return true
     end
 
-    local checkIp = {}
+    local checkIp = { }
     for _, player in pairs(players) do
         local ip = player:getIp()
         if ip ~= 0 and (not config.checkDuplicateIps or not checkIp[ip]) then

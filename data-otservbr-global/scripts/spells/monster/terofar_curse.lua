@@ -1,4 +1,4 @@
-local combat = {}
+local combat = { }
 local condition2 = Condition(CONDITION_REGENERATION, CONDITIONID_DEFAULT)
 condition2:setParameter(CONDITION_PARAM_SUBID, 88888)
 condition2:setParameter(CONDITION_PARAM_TICKS, 15 * 60 * 1000)

@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Dark Energy")
-local monster = {}
+local monster = { }
 
 monster.description = "a dark energy"
 monster.experience = 0

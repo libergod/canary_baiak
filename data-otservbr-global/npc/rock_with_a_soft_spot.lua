@@ -1,6 +1,6 @@
 local internalNpcName = "Rock in a Hard Place"
 local npcType = Game.createNpcType("Rock With A Soft Spot")
-local npcConfig = {}
+local npcConfig = { }
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName

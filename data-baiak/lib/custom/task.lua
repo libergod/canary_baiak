@@ -176,7 +176,7 @@ local player = self
 	if not player then
 		return false
 	end
-local tasks = {}
+local tasks = { }
 	for i, data in pairs(taskConfiguration) do
 		if player:getStorageValue(data.storagecount) ~= -1 then
 		tasks[#tasks + 1] = data.name

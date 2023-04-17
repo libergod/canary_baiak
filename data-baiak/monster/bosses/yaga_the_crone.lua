@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Yaga The Crone")
-local monster = {}
+local monster = { }
 
 monster.description = "Yaga The Crone"
 monster.experience = 375
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 5000,
 	chance = 8
+}
+
+monster.bosstiary = {
+	bossRaceId = 427,
+	bossRace = RARITY_NEMESIS
 }
 
 monster.strategiesTarget = {

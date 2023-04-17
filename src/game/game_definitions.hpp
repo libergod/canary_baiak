@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #ifndef SRC_GAME_GAME_DEFINITIONS_HPP_
@@ -70,7 +70,13 @@ enum Faction_t {
 	FACTION_WOE_ENEMY = 5,
 	FACTION_CASTLE_OWNER = 6,
 	FACTION_CASTLE_ENEMY = 7,
-	FACTION_LAST = FACTION_CASTLE_ENEMY,
+	FACTION_MARID = 8,
+	FACTION_EFREET = 9,
+	FACTION_DEEPLING = 10,
+	FACTION_DEATHLING = 11,
+	FACTION_ANUMA = 12,
+	FACTION_FAFNAR = 13,
+	FACTION_LAST = FACTION_FAFNAR,
 };
 
 enum LightState_t {
@@ -143,4 +149,4 @@ struct ModalWindow {
 					priority(false) {}
 };
 
-#endif  // SRC_GAME_GAME_DEFINITIONS_HPP_
+#endif // SRC_GAME_GAME_DEFINITIONS_HPP_

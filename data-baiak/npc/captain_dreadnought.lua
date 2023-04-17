@@ -1,6 +1,6 @@
 local internalNpcName = "Captain Dreadnought"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = {}
+local npcConfig = { }
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName
@@ -26,12 +26,14 @@ npcConfig.flags = {
 npcConfig.voices = {
 	interval = 15000,
 	chance = 50,
-	{text = "No smuggling aboard this ship! Only 20 pieces of any creature product allowed!"},
-	{text = "No fear! The Sea Cat will ship you safely to the mainland!"},
-	{text = "All aboard! Prepare to sail!"},
-	{text = "Come hell or high water, we'll reach any port I sail you to!"},
-	{text = "This island is too small. I need sea water around me."}
+	{ text = "No smuggling aboard this ship! Only 20 pieces of any creature product allowed!" },
+	{ text = "No fear! The Sea Cat will ship you safely to the mainland!" },
+	{ text = "All aboard! Prepare to sail!" },
+	{ text = "Come hell or high water, we'll reach any port I sail you to!" },
+	{ text = "This island is too small. I need sea water around me." }
 }
+
+npcConfig.moneyToNeedDonation = 500 --value in gold coins (ex: 500 = 500gp, 10000 = 10k)
 
 local keywordHandler = KeywordHandler:new()
 local npcHandler = NpcHandler:new(keywordHandler)
@@ -149,7 +151,7 @@ local townNames = {all = "", free = "", premium = ""}
 
 -- Function to build town names strings and adds additional data to sailable/premium towns about
 local function buildStrings()
-	local townsList = {all = {}, free = {}, premium = {}}
+	local townsList = { all = { }, free = { }, premium = { } }
 	for id, town in pairs(towns) do
 		if town.canBeSailed then
 			if town.isPremium then
@@ -177,15 +179,16 @@ end
 buildStrings()
 
 -- Function to handle donations and its messages
-local function donationHandler(npc, creature, message, keywords, parameters, node)	local player = Player(creature)
+local function donationHandler(npc, creature, message, keywords, parameters, node)
+	local player = Player(creature)
 	local playerId = player:getId()
 
 	if (parameters.confirm ~= true) and (parameters.decline ~= true) then
-		npcHandler:say("So you want to donate " .. (player:getMoney() - 500) .. " gold coins? \z
+		npcHandler:say("So you want to donate " .. (player:getMoney() - npcConfig.moneyToNeedDonation) .. " gold coins? \z
 			The little kiddies are going to appreciate it.", npc, creature)
 	elseif (parameters.confirm == true) then
-		if player:getMoney() > 500 then
-			player:removeMoney((player:getMoney() - 500))
+		if player:getMoney() > npcConfig.moneyToNeedDonation then
+			player:removeMoney((player:getMoney() - npcConfig.moneyToNeedDonation))
 			npcHandler:say(
 				"Well, that's really generous of you. That'll feed a lot of hungry mouths for a while. \z
 				Right, now which {city} did you say you wanted to go to?", npc, creature)
@@ -194,10 +197,10 @@ local function donationHandler(npc, creature, message, keywords, parameters, nod
 			npcHandler:say("Well, har har. Very funny. Come on, pick up the gold you just dropped.", npc, creature)
 		end
 	elseif (parameters.decline == true) then
-		if player:getMoney() > 500 then
+		if player:getMoney() > npcConfig.moneyToNeedDonation then
 			npcHandler:say(
 				"By tempest! What's all this gold weighing us down? Don't you think that's a little risky with all \z
-				these pirates around? You can take 500 with you, but that's it. Drop the rest or {donate} it to the \z
+				these pirates around? You can take " .. npcConfig.moneyToNeedDonation .. " with you, but that's it. Drop the rest or {donate} it to the \z
 				Adventurers' Orphans Fund, really.", npc, creature)
 		end
 	end
@@ -205,7 +208,8 @@ local function donationHandler(npc, creature, message, keywords, parameters, nod
 end
 
 -- Function to handle town travel and its messages
-local function townTravelHandler(npc, creature, message, keywords, parameters, node)	local player = Player(creature)
+local function townTravelHandler(npc, creature, message, keywords, parameters, node)
+	local player = Player(creature)
 	local playerId = player:getId()
 
 	if (parameters.confirm ~= true) and (parameters.decline ~= true) and parameters.townId then
@@ -225,10 +229,10 @@ local function townTravelHandler(npc, creature, message, keywords, parameters, n
 		end
 	elseif (parameters.confirm == true) then
 		-- Handle money excess at confirm or it may be dropped and picked up in previous steps
-		if player:getMoney() > 500 then
+		if player:getMoney() > npcConfig.moneyToNeedDonation then
 			npcHandler:say(
 				"By tempest! What's all this gold weighing us down? Don't you think that's a little risky with all \z
-				these pirates around? You can take 500 with you, but that's it. Drop the rest or {donate} it to the \z
+				these pirates around? You can take " .. npcConfig.moneyToNeedDonation .. " with you, but that's it. Drop the rest or {donate} it to the \z
 				Adventurers' Orphans Fund, really.", npc, creature)
 			return true
 		end
@@ -383,7 +387,7 @@ end
 keywordHandler:addAliasKeyword({"passage"})
 keywordHandler:addAliasKeyword({"travel"})
 -- Donate topic nodes
-local donateNode = keywordHandler:addKeyword({"donate"}, donationHandler, {}, 
+local donateNode = keywordHandler:addKeyword({"donate"}, donationHandler, { }, 
 function(player) return player:getMoney() > 500 end
 )
 donateNode:addChildKeywordNode(KeywordNode:new({"yes"}, donationHandler, {confirm = true}))

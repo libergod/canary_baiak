@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #ifndef SRC_CREATURES_NPCS_NPCS_H_
@@ -17,14 +17,13 @@ class Shop {
 		Shop() = default;
 
 		// non-copyable
-		Shop(const Shop&) = delete;
-		Shop& operator=(const Shop&) = delete;
+		Shop(const Shop &) = delete;
+		Shop &operator=(const Shop &) = delete;
 
 		ShopBlock shopBlock;
 };
 
-class NpcType
-{
+class NpcType {
 	struct NpcInfo {
 		LuaScriptInterface* scriptInterface;
 
@@ -71,11 +70,12 @@ class NpcType
 
 	public:
 		NpcType() = default;
-		explicit NpcType(const std::string &initName) : name(initName), typeName(initName), nameDescription(initName) {};
+		explicit NpcType(const std::string &initName) :
+			name(initName), typeName(initName), nameDescription(initName) {};
 
 		// non-copyable
-		NpcType(const NpcType&) = delete;
-		NpcType& operator=(const NpcType&) = delete;
+		NpcType(const NpcType &) = delete;
+		NpcType &operator=(const NpcType &) = delete;
 
 		std::string name;
 		std::string typeName;
@@ -85,7 +85,7 @@ class NpcType
 		void loadShop(NpcType* npcType, ShopBlock shopBlock);
 
 		bool loadCallback(LuaScriptInterface* scriptInterface);
-		bool canSpawn(const Position& pos);
+		bool canSpawn(const Position &pos);
 };
 
 class Npcs
@@ -93,17 +93,17 @@ class Npcs
 	public:
 		Npcs() = default;
 		// non-copyable
-		Npcs(const Npcs&) = delete;
-		Npcs& operator=(const Npcs&) = delete;
+		Npcs(const Npcs &) = delete;
+		Npcs &operator=(const Npcs &) = delete;
 
-		static Npcs& getInstance() {
+		static Npcs &getInstance() {
 			// Guaranteed to be destroyed
 			static Npcs instance;
 			// Instantiated on first use
 			return instance;
 		}
 
-		NpcType* getNpcType(const std::string& name, bool create = false);
+		NpcType* getNpcType(const std::string &name, bool create = false);
 
 		// Reset npcs informations on reload
 		bool load(bool loadLibs = true, bool loadNpcs = true, bool reloading = false) const;
@@ -116,4 +116,4 @@ class Npcs
 
 constexpr auto g_npcs = &Npcs::getInstance;
 
-#endif  // SRC_CREATURES_NPCS_NPCS_H_
+#endif // SRC_CREATURES_NPCS_NPCS_H_

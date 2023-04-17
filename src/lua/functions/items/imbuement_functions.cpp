@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #include "pch.hpp"
@@ -58,10 +58,10 @@ int ImbuementFunctions::luaImbuementGetItems(lua_State* L) {
 		return 1;
 	}
 
-	const auto& items = imbuement->getItems();
+	const auto &items = imbuement->getItems();
 
 	lua_createtable(L, items.size(), 0);
-	for (const auto& itm : items) {
+	for (const auto &itm : items) {
 		lua_createtable(L, 0, 2);
 		setField(L, "itemid", itm.first);
 		setField(L, "count", itm.second);

@@ -4,22 +4,21 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
-*/
+ * Website: https://docs.opentibiabr.com/
+ */
 
 #ifndef SRC_CONFIG_CONFIGMANAGER_H_
 #define SRC_CONFIG_CONFIGMANAGER_H_
 
 #include "declarations.hpp"
 
-class ConfigManager
-{
+class ConfigManager {
 	public:
 		ConfigManager() = default;
 
 		// Singleton - ensures we don't accidentally copy it
-		ConfigManager(ConfigManager const&) = delete;
-		void operator=(ConfigManager const&) = delete;
+		ConfigManager(const ConfigManager &) = delete;
+		void operator=(const ConfigManager &) = delete;
 
 		static ConfigManager& getInstance() {
 			// Guaranteed to be destroyed
@@ -37,11 +36,11 @@ class ConfigManager
 		bool getBoolean(booleanConfig_t what) const;
 		float getFloat(floatingConfig_t what) const;
 
-		std::string const& setConfigFileLua(const std::string& what) {
+		const std::string& setConfigFileLua(const std::string& what) {
 			configFileLua = { what };
 			return configFileLua;
 		};
-		std::string const& getConfigFileLua() const {
+		const std::string& getConfigFileLua() const {
 			return configFileLua;
 		};
 
@@ -58,4 +57,4 @@ class ConfigManager
 
 constexpr auto g_configManager = &ConfigManager::getInstance;
 
-#endif  // SRC_CONFIG_CONFIGMANAGER_H_
+#endif // SRC_CONFIG_CONFIGMANAGER_H_

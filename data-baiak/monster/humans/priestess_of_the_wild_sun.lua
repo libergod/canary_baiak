@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Priestess of the Wild Sun")
-local monster = {}
+local monster = { }
 
 monster.description = "a priestess of the wild sun"
 monster.experience = 6400
@@ -24,7 +24,7 @@ monster.Bestiary = {
 	Stars = 4,
 	Occurrence = 0,
 	Locations = "Issavi Sewers, Kilmaresh Mountains, Kilmaresh Catacombs."
-	}
+}
 
 monster.health = 8500
 monster.maxHealth = 8500

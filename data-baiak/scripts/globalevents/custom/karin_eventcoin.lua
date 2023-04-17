@@ -1,4 +1,4 @@
-Karin.EventCoin = {}
+Karin.EventCoin = { }
 
 local EventTournamentPerHour = GlobalEvent('EventTournamentPerHour')
 

@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #include "pch.hpp"
@@ -33,7 +33,7 @@ void ScriptEnvironment::resetEnv() {
 	auto pair = tempItems.equal_range(this);
 	auto it = pair.first;
 	while (it != pair.second) {
-		Item * item = it -> second;
+		Item* item = it -> second;
 		if (item -> getParent() == VirtualCylinder::virtualCylinder) {
 			g_game().ReleaseItem(item);
 		}
@@ -41,7 +41,7 @@ void ScriptEnvironment::resetEnv() {
 	}
 }
 
-bool ScriptEnvironment::setCallbackId(int32_t newCallbackId, LuaScriptInterface * scriptInterface) {
+bool ScriptEnvironment::setCallbackId(int32_t newCallbackId, LuaScriptInterface* scriptInterface) {
 	if (this -> callbackId != 0) {
 		// nested callbacks are not allowed
 		if (interface) {
@@ -55,7 +55,7 @@ bool ScriptEnvironment::setCallbackId(int32_t newCallbackId, LuaScriptInterface 
 	return true;
 }
 
-void ScriptEnvironment::getEventInfo(int32_t & retScriptId, LuaScriptInterface * & retScriptInterface, int32_t & retCallbackId, bool & retTimerEvent) const {
+void ScriptEnvironment::getEventInfo(int32_t &retScriptId, LuaScriptInterface*&retScriptInterface, int32_t &retCallbackId, bool &retTimerEvent) const {
 	retScriptId = this -> scriptId;
 	retScriptInterface = interface;
 	retCallbackId = this -> callbackId;
@@ -72,12 +72,12 @@ uint32_t ScriptEnvironment::addThing(Thing * thing) {
 		return creature -> getID();
 	}
 
-	Item * item = thing -> getItem();
-	if (item && item -> hasAttribute(ITEM_ATTRIBUTE_UNIQUEID)) {
-		return item -> getUniqueId();
+	Item* item = thing -> getItem();
+	if (item && item -> hasAttribute(ItemAttribute_t::UNIQUEID)) {
+		return item->getAttribute<uint32_t>(ItemAttribute_t::UNIQUEID);
 	}
 
-	for (const auto & it: localMap) {
+	for (const auto &it: localMap) {
 		if (it.second == item) {
 			return it.first;
 		}
@@ -87,7 +87,7 @@ uint32_t ScriptEnvironment::addThing(Thing * thing) {
 	return lastUID;
 }
 
-void ScriptEnvironment::insertItem(uint32_t uid, Item * item) {
+void ScriptEnvironment::insertItem(uint32_t uid, Item* item) {
 	auto result = localMap.emplace(uid, item);
 	if (!result.second) {
 		SPDLOG_ERROR("Thing uid already taken: {}", uid);
@@ -100,7 +100,7 @@ Thing * ScriptEnvironment::getThingByUID(uint32_t uid) {
 	}
 
 	if (uid <= std::numeric_limits < uint16_t > ::max()) {
-		Item * item = g_game().getUniqueItem(static_cast<uint16_t>(uid));
+		Item* item = g_game().getUniqueItem(static_cast<uint16_t>(uid));
 		if (item && !item -> isRemoved()) {
 			return item;
 		}
@@ -109,7 +109,7 @@ Thing * ScriptEnvironment::getThingByUID(uint32_t uid) {
 
 	auto it = localMap.find(uid);
 	if (it != localMap.end()) {
-		Item * item = it -> second;
+		Item* item = it -> second;
 		if (!item -> isRemoved()) {
 			return item;
 		}
@@ -126,7 +126,7 @@ Item * ScriptEnvironment::getItemByUID(uint32_t uid) {
 }
 
 Container * ScriptEnvironment::getContainerByUID(uint32_t uid) {
-	Item * item = getItemByUID(uid);
+	Item* item = getItemByUID(uid);
 	if (!item) {
 		return nullptr;
 	}
@@ -145,11 +145,11 @@ void ScriptEnvironment::removeItemByUID(uint32_t uid) {
 	}
 }
 
-void ScriptEnvironment::addTempItem(Item * item) {
+void ScriptEnvironment::addTempItem(Item* item) {
 	tempItems.emplace(this, item);
 }
 
-void ScriptEnvironment::removeTempItem(Item * item) {
+void ScriptEnvironment::removeTempItem(Item* item) {
 	for (auto it = tempItems.begin(), end = tempItems.end(); it != end; ++it) {
 		if (it -> second == item) {
 			tempItems.erase(it);

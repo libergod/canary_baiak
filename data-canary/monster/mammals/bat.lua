@@ -1,6 +1,6 @@
 --# Monster converted using Devm monster converter #--
 local mType = Game.createMonsterType("Bat")
-local monster = {}
+local monster = { }
 
 monster.description = "a bat"
 monster.experience = 10

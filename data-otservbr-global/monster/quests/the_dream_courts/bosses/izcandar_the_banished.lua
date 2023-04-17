@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Izcandar the Banished")
-local monster = {}
+local monster = { }
 
 monster.description = "Izcandar the Banished"
 monster.experience = 6900

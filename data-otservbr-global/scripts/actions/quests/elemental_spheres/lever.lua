@@ -42,7 +42,7 @@ function elementalSpheresLever.onUse(player, item, fromPosition, target, toPosit
 		return true
 	end
 
-	local players = {}
+	local players = { }
 	for i = 1, #config do
 		local creature = Tile(config[i].position):getTopCreature()
 		if not creature or not creature:isPlayer() then

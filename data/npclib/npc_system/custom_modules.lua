@@ -47,7 +47,7 @@ function StdModule.kick(npc, player, message, keywords, parameters, node)
 	return true
 end
 
-local GreetModule = {}
+local GreetModule = { }
 function GreetModule.greet(npc, player, message, keywords, parameters)
 	if not parameters.npcHandler:isInRange(npc, player) then
 		return true
@@ -203,7 +203,7 @@ function StdModule.rookgaardHints(npc, player, message, keywords, parameters, no
 		error("StdModule.say called without any npcHandler instance.")
 	end
 
-	if not npcHandler:checkInteraction(npc, player) then
+	if not npcHandler:checkInteraction(npc, player) or not IsRunningGlobalDatapack() then
 		return false
 	end
 

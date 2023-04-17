@@ -12,7 +12,7 @@ SAFEZONE = {
 	minPlayers = 3,
 	maxPlayers = 50,
 	reward = {9058, 2},
-	players = {},
+	players = { },
 	days = {--Day-Hour
 				"Tuesday-16:40",
 				"Tuesday-20:40",

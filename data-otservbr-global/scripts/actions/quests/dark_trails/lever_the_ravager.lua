@@ -29,7 +29,7 @@ function leverTheRavager.onUse(player, item, fromPosition, target, toPosition, i
 			return true
 		end
 
-		local storePlayers, playerTile = {}
+		local storePlayers, playerTile = { }
 		for i = 1, #setting.playerPositions do
 			local creature = Tile(setting.playerPositions[i]):getTopCreature()
 			if not creature or not creature:isPlayer() then

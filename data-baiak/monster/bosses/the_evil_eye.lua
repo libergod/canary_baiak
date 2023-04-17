@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("The Evil Eye")
-local monster = {}
+local monster = { }
 
 monster.description = "the Evil Eye"
 monster.experience = 750
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 5000,
 	chance = 8
+}
+
+monster.bosstiary = {
+	bossRaceId = 210,
+	bossRace = RARITY_NEMESIS
 }
 
 monster.strategiesTarget = {

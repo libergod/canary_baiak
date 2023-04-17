@@ -7,8 +7,8 @@ MonsterStorage = {
 		monster_spawn_object = 550001,
 	}
 }
-Spawn = {}
-SpawnMetatables = {}
+Spawn = { }
+SpawnMetatables = { }
 setmetatable(Spawn, {
 	__call = function(self)
 		local spawn_data = {
@@ -16,8 +16,8 @@ setmetatable(Spawn, {
 				info = MonsterStorage.Spawn.info,
 				object = MonsterStorage.Spawn.monster_spawn_object,
 			},
-			monsters = {},
-			positions = {},
+			monsters = { },
+			positions = { },
 			functions = {
 				["onSpawn"] = {
 					["MonsterDeath"] = function(s, monster)

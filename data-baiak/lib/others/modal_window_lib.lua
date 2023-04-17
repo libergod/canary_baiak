@@ -3,11 +3,11 @@ if not modalWindows then
 		modalWindowConstructor = ModalWindow,
 		nextFreeId = 500,
 
-		windows = {}
+		windows = { }
 	}
 end
 
-local MT = {}
+local MT = { }
 MT.__index = MT
 
 function ModalWindow(...)
@@ -16,9 +16,9 @@ function ModalWindow(...)
 		local self = setmetatable(args[1], MT)
 		local id = modalWindows.nextFreeId
 		self.id = id
-		self.buttons = {}
-		self.choices = {}
-		self.players = {}
+		self.buttons = { }
+		self.choices = { }
+		self.players = { }
 		self.created = false
 
 		modalWindows.nextFreeId = id + 1

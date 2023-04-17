@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #include "pch.hpp"
@@ -42,8 +42,7 @@ void Signals::asyncWait()
 {
 	set.async_wait([this] (std::error_code err, int signal) {
 		if (err) {
-			SPDLOG_ERROR("[Signals::asyncWait] - "
-                         "Signal handling error: {}", err.message());
+			SPDLOG_ERROR("[Signals::asyncWait] - Signal handling error: {}", err.message());
 			return;
 		}
 		dispatchSignalHandler(signal);
@@ -129,7 +128,7 @@ void Signals::sighupHandler()
 	g_chat().load();
 	SPDLOG_INFO("Reloaded chatchannels");
 
-	g_luaEnvironment.loadFile(g_configManager().getString(CORE_DIRECTORY) + "/core.lua");
+	g_luaEnvironment.loadFile(g_configManager().getString(CORE_DIRECTORY) + "/core.lua", "core.lua");
 	SPDLOG_INFO("Reloaded core.lua");
 
 	lua_gc(g_luaEnvironment.getLuaState(), LUA_GCCOLLECT, 0);

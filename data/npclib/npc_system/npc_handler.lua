@@ -100,17 +100,17 @@ if NpcHandler == nil then
 
 	-- Creates a new NpcHandler with an empty callbackFunction stack.
 	function NpcHandler:new(keywordHandler)
-		local obj = {}
-		obj.callbackFunctions = {}
-		obj.modules = {}
+		local obj = { }
+		obj.callbackFunctions = { }
+		obj.modules = { }
 		obj.npcName = ""
 		obj.focus = 0
-		obj.eventSay = {}
-		obj.eventDelayedSay = {}
-		obj.topic = {}
-		obj.talkStart = {}
+		obj.eventSay = { }
+		obj.eventDelayedSay = { }
+		obj.topic = { }
+		obj.talkStart = { }
 		obj.keywordHandler = keywordHandler
-		obj.messages = {}
+		obj.messages = { }
 
 		setmetatable(obj.messages, self.messages)
 		self.messages.__index = self.messages
@@ -605,10 +605,10 @@ if NpcHandler == nil then
 			return Spdlog.error("[NpcHandler:doNPCTalkALot] - npcUniqueId is wrong or unsafe.")
 		end
 
-		self.eventDelayedSay[playerId] = {}
-		local ret = {}
+		self.eventDelayedSay[playerId] = { }
+		local ret = { }
 		for messagesTable, messageString in pairs(msgs) do
-			self.eventDelayedSay[playerId][messagesTable] = {}
+			self.eventDelayedSay[playerId][messagesTable] = { }
 			if delay ~= nil and delay > 1 then
 				self.talkDelay = delay
 			end

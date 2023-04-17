@@ -3,7 +3,7 @@ local config = {
 }
 local spawnDay = 13
 local currentDay = os.date("%d")
-local monsters = {}
+local monsters = { }
 
 function Game.createRandom(position)
 	local tile = Tile(position)

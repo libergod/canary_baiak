@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #include "pch.hpp"
@@ -44,7 +44,7 @@ WildcardTreeNode* WildcardTreeNode::addChild(char ch, bool breakp)
 	return child;
 }
 
-void WildcardTreeNode::insert(const std::string& str)
+void WildcardTreeNode::insert(const std::string &str)
 {
 	WildcardTreeNode* cur = this;
 
@@ -56,7 +56,7 @@ void WildcardTreeNode::insert(const std::string& str)
 	cur->addChild(str[length], true);
 }
 
-void WildcardTreeNode::remove(const std::string& str)
+void WildcardTreeNode::remove(const std::string &str)
 {
 	WildcardTreeNode* cur = this;
 

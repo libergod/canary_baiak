@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Diseased Bill")
-local monster = {}
+local monster = { }
 
 monster.description = "a diseased Bill"
 monster.experience = 300
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 60000,
 	chance = 0
+}
+
+monster.bosstiary = {
+	bossRaceId = 485,
+	bossRace = RARITY_BANE
 }
 
 monster.strategiesTarget = {

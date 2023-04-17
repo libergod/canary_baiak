@@ -37,7 +37,7 @@ MONSTER_HUNT = {
 		player = 891642,
 		started = 891643,
 	},
-	players = {},
+	players = { },
 }
 
 function MONSTER_HUNT:initEvent()

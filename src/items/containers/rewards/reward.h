@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #ifndef SRC_ITEMS_CONTAINERS_REWARDS_REWARD_H_
@@ -25,8 +25,7 @@ class Reward : public Container
 		}
 
 		//cylinder implementations
-		ReturnValue queryAdd(int32_t index, const Thing& thing, uint32_t count,
-			uint32_t flags, Creature* actor = nullptr) const final;
+		ReturnValue queryAdd(int32_t index, const Thing &thing, uint32_t count, uint32_t flags, Creature* actor = nullptr) const final;
 
 		void postAddNotification(Thing* thing, const Cylinder* oldParent, int32_t index, CylinderLink_t link = LINK_OWNER) final;
 		void postRemoveNotification(Thing* thing, const Cylinder* newParent, int32_t index, CylinderLink_t link = LINK_OWNER) final;
@@ -42,4 +41,4 @@ class Reward : public Container
 		}
 };
 
-#endif  // SRC_ITEMS_CONTAINERS_REWARDS_REWARD_H_
+#endif // SRC_ITEMS_CONTAINERS_REWARDS_REWARD_H_

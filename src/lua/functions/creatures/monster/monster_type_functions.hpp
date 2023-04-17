@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #ifndef SRC_LUA_FUNCTIONS_CREATURES_MONSTER_MONSTER_TYPE_FUNCTIONS_HPP_
@@ -117,28 +117,25 @@ public:
 		registerMethod(L, "MonsterType", "changeTargetChance", MonsterTypeFunctions::luaMonsterTypeChangeTargetChance);
 		registerMethod(L, "MonsterType", "changeTargetSpeed", MonsterTypeFunctions::luaMonsterTypeChangeTargetSpeed);
 
-		registerMethod(L, "MonsterType", "canWalkOnEnergy",
-				  MonsterTypeFunctions::luaMonsterTypeCanWalkOnEnergy);
-		registerMethod(L, "MonsterType", "canWalkOnFire",
-				  MonsterTypeFunctions::luaMonsterTypeCanWalkOnFire);
-		registerMethod(L, "MonsterType", "canWalkOnPoison",
-				  MonsterTypeFunctions::luaMonsterTypeCanWalkOnPoison);
+		registerMethod(L, "MonsterType", "canWalkOnEnergy", MonsterTypeFunctions::luaMonsterTypeCanWalkOnEnergy);
+		registerMethod(L, "MonsterType", "canWalkOnFire", MonsterTypeFunctions::luaMonsterTypeCanWalkOnFire);
+		registerMethod(L, "MonsterType", "canWalkOnPoison", MonsterTypeFunctions::luaMonsterTypeCanWalkOnPoison);
 
-		registerMethod(L, "MonsterType", "strategiesTargetNearest",
-				  MonsterTypeFunctions::luaMonsterTypeStrategiesTargetNearest);
-		registerMethod(L, "MonsterType", "strategiesTargetHealth",
-				  MonsterTypeFunctions::luaMonsterTypeStrategiesTargetHealth);
-		registerMethod(L, "MonsterType", "strategiesTargetDamage",
-				  MonsterTypeFunctions::luaMonsterTypeStrategiesTargetDamage);
-		registerMethod(L, "MonsterType", "strategiesTargetRandom",
-				  MonsterTypeFunctions::luaMonsterTypeStrategiesTargetRandom);
+		registerMethod(L, "MonsterType", "strategiesTargetNearest",MonsterTypeFunctions::luaMonsterTypeStrategiesTargetNearest);
+		registerMethod(L, "MonsterType", "strategiesTargetHealth", MonsterTypeFunctions::luaMonsterTypeStrategiesTargetHealth);
+		registerMethod(L, "MonsterType", "strategiesTargetDamage", MonsterTypeFunctions::luaMonsterTypeStrategiesTargetDamage);
+		registerMethod(L, "MonsterType", "strategiesTargetRandom", MonsterTypeFunctions::luaMonsterTypeStrategiesTargetRandom);
 
 		registerMethod(L, "MonsterType", "respawnTypePeriod", MonsterTypeFunctions::luaMonsterTypeRespawnTypePeriod);
 		registerMethod(L, "MonsterType", "respawnTypeIsUnderground", MonsterTypeFunctions::luaMonsterTypeRespawnTypeIsUnderground);
+
+		registerMethod(L, "MonsterType", "bossRace", MonsterTypeFunctions::luaMonsterTypeBossRace);
+		registerMethod(L, "MonsterType", "bossRaceId", MonsterTypeFunctions::luaMonsterTypeBossRaceId);
+		registerMethod(L, "MonsterType", "bossStorageCooldown", MonsterTypeFunctions::luaMonsterTypeBossStorageCooldown);
 	}
 
 private:
-	static void createMonsterTypeLootLuaTable(lua_State* L, const std::vector<LootBlock>& lootList);
+	static void createMonsterTypeLootLuaTable(lua_State* L, const std::vector<LootBlock> &lootList);
 
 	static int luaMonsterTypeCreate(lua_State* L);
 
@@ -247,6 +244,10 @@ private:
 
 	static int luaMonsterTypeRespawnTypePeriod(lua_State* L);
 	static int luaMonsterTypeRespawnTypeIsUnderground(lua_State* L);
+
+	static int luaMonsterTypeBossRace(lua_State* L);
+	static int luaMonsterTypeBossRaceId(lua_State* L);
+	static int luaMonsterTypeBossStorageCooldown(lua_State* L);
 };
 
-#endif  // SRC_LUA_FUNCTIONS_CREATURES_MONSTER_MONSTER_TYPE_FUNCTIONS_HPP_
+#endif // SRC_LUA_FUNCTIONS_CREATURES_MONSTER_MONSTER_TYPE_FUNCTIONS_HPP_

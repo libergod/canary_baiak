@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Dwarf")
-local monster = {}
+local monster = { }
 
 monster.description = "a dwarf"
 monster.experience = 45
@@ -82,7 +82,7 @@ monster.loot = {
 	{name = "studded armor", chance = 8000},
 	{name = "copper shield", chance = 10000},
 	{id = 3456, chance = 10000}, -- pick
-	{name = "letter", chance = 8000},
+	{id = 3505, chance = 8000}, -- letter
 	{name = "leather legs", chance = 10000},
 	{name = "white mushroom", chance = 50000},
 	{name = "iron ore", chance = 700}

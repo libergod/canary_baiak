@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #ifndef SRC_IO_IOBESTIARY_H_
@@ -16,9 +16,8 @@
 
 class Game;
 
-class Charm
-{
- public:
+class Charm {
+public:
 	Charm() = default;
 	Charm(std::string initname, charmRune_t initcharmRune_t, std::string initdescription, charm_t inittype, uint16_t initpoints, int32_t initbinary) :
 		name(initname), id(initcharmRune_t), description(initdescription), type(inittype), points(initpoints), binary(initbinary) {}
@@ -41,16 +40,15 @@ class Charm
 
 };
 
-class IOBestiary
-{
+class IOBestiary {
 	public:
 		IOBestiary() = default;
 
 		// non-copyable
-		IOBestiary(IOBestiary const&) = delete;
-		void operator=(IOBestiary const&) = delete;
+		IOBestiary(const IOBestiary &) = delete;
+		void operator=(const IOBestiary &) = delete;
 
-		static IOBestiary& getInstance() {
+		static IOBestiary &getInstance() {
 			// Guaranteed to be destroyed
 			static IOBestiary instance;
 			// Instantiated on first use
@@ -87,4 +85,4 @@ class IOBestiary
 
 constexpr auto g_iobestiary = &IOBestiary::getInstance;
 
-#endif  // SRC_IO_IOBESTIARY_H_
+#endif // SRC_IO_IOBESTIARY_H_

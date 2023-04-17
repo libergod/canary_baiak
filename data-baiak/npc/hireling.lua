@@ -1,6 +1,13 @@
 function createHirelingType(HirelingName)
 	local npcType = Game.createNpcType(HirelingName)
-	local npcConfig = {}
+	
+	-- If it's a Hireling with a name like an npc, example "Hireling Canary", we'll remove the name "Hireling" and keep only the npc name for the look description
+	if string.match(HirelingName, "^Hireling%s%w+") then
+		HirelingName = string.sub(HirelingName, 10)
+	end
+	
+	
+	local npcConfig = { }
 
 	npcConfig.name = HirelingName
 	npcConfig.description = HirelingName
@@ -306,8 +313,8 @@ function createHirelingType(HirelingName)
 	local keywordHandler = KeywordHandler:new()
 	local npcHandler = NpcHandler:new(keywordHandler)
 	local hireling = nil
-	local count = {} -- for banking
-	local transfer = {} -- for banking
+	local count = { } -- for banking
+	local transfer = { } -- for banking
 
 	npcType.onAppear = function(npc, creature)
 		npcHandler:onAppear(npc, creature)
@@ -356,7 +363,7 @@ function createHirelingType(HirelingName)
 	}
 
 	local function getHirelingSkills()
-		local skills = {}
+		local skills = { }
 		if hireling:hasSkill(HIRELING_SKILLS.BANKER) then
 			table.insert(skills, HIRELING_SKILLS.BANKER)
 		end
@@ -435,7 +442,7 @@ function createHirelingType(HirelingName)
 	local function GetReceipt(info)
 		local receipt = Game.createItem(info.success and 21932 or 21933)
 		receipt:setAttribute(
-			ITEM_ATTRIBUTE_TEXT,
+			ItemAttribute_t::TEXT,
 			receiptFormat:format(
 				os.date("%d. %b %Y - %H:%M:%S"),
 				info.type,

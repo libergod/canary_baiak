@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Canopic Jar")
-local monster = {}
+local monster = { }
 
 monster.description = "a canopic jar"
 monster.experience = 0

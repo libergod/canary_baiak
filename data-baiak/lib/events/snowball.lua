@@ -77,8 +77,8 @@ SNOWBALL = {
 	}
 }
 
-CACHE_GAMEPLAYERS = {}
-CACHE_GAMEAREAPOSITIONS = {}
+CACHE_GAMEPLAYERS = { }
+CACHE_GAMEAREAPOSITIONS = { }
 
 function carregarEvento()
 	for newX = SNOWBALL.posArena[1].x, SNOWBALL.posArena[2].x do

@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #include "pch.hpp"
@@ -19,7 +19,7 @@
 std::map<uint32_t, int64_t> ProtocolStatus::ipConnectMap;
 const uint64_t ProtocolStatus::start = OTSYS_TIME();
 
-void ProtocolStatus::onRecvFirstMessage(NetworkMessage& msg)
+void ProtocolStatus::onRecvFirstMessage(NetworkMessage &msg)
 {
 	uint32_t ip = getIP();
 	if (ip != 0x0100007F) {
@@ -140,7 +140,7 @@ void ProtocolStatus::sendStatusString()
 	map.append_attribute("height") = std::to_string(mapHeight).c_str();
 
 	pugi::xml_node motd = tsqp.append_child("motd");
-	motd.text() = g_configManager().getString(MOTD).c_str();
+	motd.text() = g_configManager().getString(SERVER_MOTD).c_str();
 
 	std::ostringstream ss;
 	doc.save(ss, "", pugi::format_raw);
@@ -151,7 +151,7 @@ void ProtocolStatus::sendStatusString()
 	disconnect();
 }
 
-void ProtocolStatus::sendInfo(uint16_t requestedInfo, const std::string& characterName)
+void ProtocolStatus::sendInfo(uint16_t requestedInfo, const std::string &characterName)
 {
 	auto output = OutputMessagePool::getOutputMessage();
 
@@ -170,7 +170,7 @@ void ProtocolStatus::sendInfo(uint16_t requestedInfo, const std::string& charact
 
 	if (requestedInfo & REQUEST_MISC_SERVER_INFO) {
 		output->addByte(0x12);
-		output->addString(g_configManager().getString(MOTD));
+		output->addString(g_configManager().getString(SERVER_MOTD));
 		output->addString(g_configManager().getString(LOCATION));
 		output->addString(g_configManager().getString(URL));
 		output->add<uint64_t>((OTSYS_TIME() - ProtocolStatus::start) / 1000);
@@ -196,9 +196,9 @@ void ProtocolStatus::sendInfo(uint16_t requestedInfo, const std::string& charact
 	if (requestedInfo & REQUEST_EXT_PLAYERS_INFO) {
 		output->addByte(0x21); // players info - online players list
 
-		const auto& players = g_game().getPlayers();
+		const auto &players = g_game().getPlayers();
 		output->add<uint32_t>(players.size());
-		for (const auto& it : players) {
+		for (const auto &it : players) {
 			output->addString(it.second->getName());
 			output->add<uint32_t>(it.second->getLevel());
 		}

@@ -324,7 +324,7 @@ AUTOLINK_SUPPORT       = YES
 # to include (a tag file for) the STL sources as input, then you should set this
 # tag to YES in order to let doxygen match functions declarations and
 # definitions whose arguments contain STL classes (e.g. func(std::string);
-# versus func(std::string) {}). This also make the inheritance and collaboration
+# versus func(std::string) { }). This also make the inheritance and collaboration
 # diagrams that involve STL classes more complete and accurate.
 # The default value is: NO.
 
@@ -401,7 +401,7 @@ INLINE_SIMPLE_STRUCTS  = NO
 
 # When TYPEDEF_HIDES_STRUCT tag is enabled, a typedef of a struct, union, or
 # enum is documented as struct, union, or enum with the name of the typedef. So
-# typedef struct TypeS {} TypeT, will appear in the documentation as a struct
+# typedef struct TypeS { } TypeT, will appear in the documentation as a struct
 # with name TypeT. When disabled the typedef will appear as a member of a file,
 # namespace, or class. And the struct will be named TypeS. This can typically be
 # useful for C code in case the coding convention dictates that all compound

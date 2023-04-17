@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Jesse The Wicked")
-local monster = {}
+local monster = { }
 
 monster.description = "Jesse The Wicked"
 monster.experience = 180
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 4000,
 	chance = 5
+}
+
+monster.bosstiary = {
+	bossRaceId = 763,
+	bossRace = RARITY_NEMESIS
 }
 
 monster.strategiesTarget = {

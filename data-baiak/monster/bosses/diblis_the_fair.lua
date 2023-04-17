@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Diblis The Fair")
-local monster = {}
+local monster = { }
 
 monster.description = "Diblis The Fair"
 monster.experience = 1800
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 5000,
 	chance = 10
+}
+
+monster.bosstiary = {
+	bossRaceId = 477,
+	bossRace = RARITY_NEMESIS
 }
 
 monster.strategiesTarget = {

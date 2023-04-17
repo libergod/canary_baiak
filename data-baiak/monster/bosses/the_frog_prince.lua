@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("The Frog Prince")
-local monster = {}
+local monster = { }
 
 monster.description = "the Frog Prince"
 monster.experience = 1
@@ -23,6 +23,11 @@ monster.manaCost = 250
 monster.changeTarget = {
 	interval = 5000,
 	chance = 20
+}
+
+monster.bosstiary = {
+	bossRaceId = 420,
+	bossRace = RARITY_NEMESIS
 }
 
 monster.strategiesTarget = {

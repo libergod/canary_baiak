@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Zushuka")
-local monster = {}
+local monster = { }
 
 monster.description = "zushuka" -- (immortal) // (mortal): lookType = 149, lookHead = 86, lookBody = 10, lookLegs = 11, lookFeet = 4, lookAddons = 0, lookMount = 0
 monster.experience = 9000
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 4000,
 	chance = 10
+}
+
+monster.bosstiary = {
+	bossRaceId = 969, -- or 990 (mortal)
+	bossRace = RARITY_NEMESIS
 }
 
 monster.strategiesTarget = {

@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Glitterscale")
-local monster = {}
+local monster = { }
 
 monster.description = "Glitterscale"
 monster.experience = 700
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 2000,
 	chance = 10
+}
+
+monster.bosstiary = {
+	bossRaceId = 670,
+	bossRace = RARITY_BANE
 }
 
 monster.strategiesTarget = {

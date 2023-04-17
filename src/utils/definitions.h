@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #ifndef SRC_UTILS_DEFINITIONS_H_
@@ -64,4 +64,4 @@
 
 typedef int error_t;
 
-#endif  // SRC_UTILS_DEFINITIONS_H_
+#endif // SRC_UTILS_DEFINITIONS_H_

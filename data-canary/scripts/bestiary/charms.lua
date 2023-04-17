@@ -215,7 +215,7 @@ local charms = {
 
 for charmId, chamsTable in ipairs(charms) do
 	local charm = Game.createBestiaryCharm(charmId - 1)
-	local charmConfig = {}
+	local charmConfig = { }
 
 	if chamsTable.name then
 		charmConfig.name = chamsTable.name

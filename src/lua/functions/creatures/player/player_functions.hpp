@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #ifndef SRC_LUA_FUNCTIONS_CREATURES_PLAYER_PLAYER_FUNCTIONS_HPP_
@@ -38,7 +38,7 @@ class PlayerFunctions final : LuaScriptInterface {
 			registerMethod(L, "Player", "setAccountType", PlayerFunctions::luaPlayerSetAccountType);
 
 			registerMethod(L, "Player", "isMonsterBestiaryUnlocked", PlayerFunctions::luaPlayerIsMonsterBestiaryUnlocked);
-			registerMethod(L, "Player", "addBestiaryKill", PlayerFunctions::luaPlayeraddBestiaryKill);
+			registerMethod(L, "Player", "addBestiaryKill", PlayerFunctions::luaPlayerAddBestiaryKill);
 			registerMethod(L, "Player", "charmExpansion", PlayerFunctions::luaPlayercharmExpansion);
 			registerMethod(L, "Player", "getCharmMonsterType", PlayerFunctions::luaPlayergetCharmMonsterType);
 
@@ -282,6 +282,8 @@ class PlayerFunctions final : LuaScriptInterface {
 			// Forge Functions
 			registerMethod(L, "Player", "openForge", PlayerFunctions::luaPlayerOpenForge);
 			registerMethod(L, "Player", "closeForge", PlayerFunctions::luaPlayerCloseForge);
+			registerMethod(L, "Player", "isUIExhausted", PlayerFunctions::luaPlayerIsUIExhausted);
+			registerMethod(L, "Player", "updateUIExhausted", PlayerFunctions::luaPlayerUpdateUIExhausted);
 
 			registerMethod(L, "Player", "addForgeDusts", PlayerFunctions::luaPlayerAddForgeDusts);
 			registerMethod(L, "Player", "removeForgeDusts", PlayerFunctions::luaPlayerRemoveForgeDusts);
@@ -294,6 +296,14 @@ class PlayerFunctions final : LuaScriptInterface {
 
 			registerMethod(L, "Player", "getForgeSlivers", PlayerFunctions::luaPlayerGetForgeSlivers);
 			registerMethod(L, "Player", "getForgeCores", PlayerFunctions::luaPlayerGetForgeCores);
+
+			// Bosstiary Functions
+			registerMethod(L, "Player", "addBosstiaryKill", PlayerFunctions::luaPlayerAddBosstiaryKill);
+			registerMethod(L, "Player", "setBossPoints", PlayerFunctions::luaPlayerSetBossPoints);
+			registerMethod(L, "Player", "setRemoveBossTime", PlayerFunctions::luaPlayerSetRemoveBossTime);
+			registerMethod(L, "Player", "getSlotBossId", PlayerFunctions::luaPlayerGetSlotBossId);
+			registerMethod(L, "Player", "getBossBonus", PlayerFunctions::luaPlayerGetBossBonus);
+			registerMethod(L, "Player", "sendBosstiaryCooldownTimer", PlayerFunctions::luaPlayerBosstiaryCooldownTimer);
 
 			GroupFunctions::init(L);
 			GuildFunctions::init(L);
@@ -318,7 +328,7 @@ class PlayerFunctions final : LuaScriptInterface {
 		static int luaPlayerGetAccountType(lua_State* L);
 		static int luaPlayerSetAccountType(lua_State* L);
 
-		static int luaPlayeraddBestiaryKill(lua_State* L);
+		static int luaPlayerAddBestiaryKill(lua_State* L);
 		static int luaPlayerIsMonsterBestiaryUnlocked(lua_State* L);
 		static int luaPlayercharmExpansion(lua_State* L);
 		static int luaPlayergetCharmMonsterType(lua_State* L);
@@ -506,7 +516,7 @@ class PlayerFunctions final : LuaScriptInterface {
 		static int luaPlayerAddBlessing(lua_State* L);
 		static int luaPlayerRemoveBlessing(lua_State* L);
 
-		static int luaPlayerGetBlessingCount(lua_State * L);
+		static int luaPlayerGetBlessingCount(lua_State* L);
 
 		static int luaPlayerCanLearnSpell(lua_State* L);
 		static int luaPlayerLearnSpell(lua_State* L);
@@ -548,16 +558,16 @@ class PlayerFunctions final : LuaScriptInterface {
 		static int luaPlayerHasSecureMode(lua_State* L);
 		static int luaPlayerGetFightMode(lua_State* L);
 
-		static int luaPlayerGetBaseXpGain(lua_State *L);
-		static int luaPlayerSetBaseXpGain(lua_State *L);
-		static int luaPlayerGetVoucherXpBoost(lua_State *L);
-		static int luaPlayerSetVoucherXpBoost(lua_State *L);
-		static int luaPlayerGetGrindingXpBoost(lua_State *L);
-		static int luaPlayerSetGrindingXpBoost(lua_State *L);
-		static int luaPlayerGetStoreXpBoost(lua_State *L);
-		static int luaPlayerSetStoreXpBoost(lua_State *L);
-		static int luaPlayerGetStaminaXpBoost(lua_State *L);
-		static int luaPlayerSetStaminaXpBoost(lua_State *L);
+		static int luaPlayerGetBaseXpGain(lua_State* L);
+		static int luaPlayerSetBaseXpGain(lua_State* L);
+		static int luaPlayerGetVoucherXpBoost(lua_State* L);
+		static int luaPlayerSetVoucherXpBoost(lua_State* L);
+		static int luaPlayerGetGrindingXpBoost(lua_State* L);
+		static int luaPlayerSetGrindingXpBoost(lua_State* L);
+		static int luaPlayerGetStoreXpBoost(lua_State* L);
+		static int luaPlayerSetStoreXpBoost(lua_State* L);
+		static int luaPlayerGetStaminaXpBoost(lua_State* L);
+		static int luaPlayerSetStaminaXpBoost(lua_State* L);
 		static int luaPlayerGetExpBoostStamina(lua_State* L);
 		static int luaPlayerSetExpBoostStamina(lua_State* L);
 
@@ -573,16 +583,25 @@ class PlayerFunctions final : LuaScriptInterface {
 		static int luaPlayerAddForgeDusts(lua_State* L);
 		static int luaPlayerRemoveForgeDusts(lua_State* L);
 		static int luaPlayerGetForgeDusts(lua_State* L);
-		static int luaPlayerSetForgeDusts(lua_State *L);
+		static int luaPlayerSetForgeDusts(lua_State* L);
 
-		static int luaPlayerAddForgeDustLevel(lua_State *L);
-		static int luaPlayerRemoveForgeDustLevel(lua_State *L);
-		static int luaPlayerGetForgeDustLevel(lua_State *L);
+		static int luaPlayerAddForgeDustLevel(lua_State* L);
+		static int luaPlayerRemoveForgeDustLevel(lua_State* L);
+		static int luaPlayerGetForgeDustLevel(lua_State* L);
 
 		static int luaPlayerGetForgeSlivers(lua_State* L);
 		static int luaPlayerGetForgeCores(lua_State* L);
+		static int luaPlayerIsUIExhausted(lua_State* L);
+		static int luaPlayerUpdateUIExhausted(lua_State* L);
+
+		static int luaPlayerAddBosstiaryKill(lua_State* L);
+		static int luaPlayerSetBossPoints(lua_State* L);
+		static int luaPlayerSetRemoveBossTime(lua_State* L);
+		static int luaPlayerGetSlotBossId(lua_State* L);
+		static int luaPlayerGetBossBonus(lua_State* L);
+		static int luaPlayerBosstiaryCooldownTimer(lua_State* L);
 
 		friend class CreatureFunctions;
 };
 
-#endif  // SRC_LUA_FUNCTIONS_CREATURES_PLAYER_PLAYER_FUNCTIONS_HPP_
+#endif // SRC_LUA_FUNCTIONS_CREATURES_PLAYER_PLAYER_FUNCTIONS_HPP_

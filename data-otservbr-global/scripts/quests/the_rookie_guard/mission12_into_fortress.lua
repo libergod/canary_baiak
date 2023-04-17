@@ -250,7 +250,7 @@ local monstersList = {
 	{name = "Running Elite Orc Guard", amount = 1},
 	{name = "Wild Dog", amount = 8}
 }
-local monsters = {}
+local monsters = { }
 
 local function eliteOrcGuardRecovery(position)
 	local spectators = Game.getSpectators(position, false, true, 2, 2, 2, 2)
@@ -282,7 +282,7 @@ function fleshyBone.onUse(player, item, frompos, itemEx, topos)
 		local position = itemEx:getPosition()
 		local spawnPosition = Position(position.x, position.y + 1, position.z)
 		itemEx:remove()
-		monsters = {}
+		monsters = { }
 		for i = 1, #monstersList do
 			if i == 2 then
 				spawnPosition.y = spawnPosition.y + 2
@@ -463,7 +463,7 @@ local function energyBarrierRestore(barrierUID)
 	local energyBarrier = Tile(energyBarriers[barrierUID].position):getItemById(12796)
 	if not energyBarrier then
 		energyBarrier = Game.createItem(12796, 1, energyBarriers[barrierUID].position)
-		energyBarrier:setAttribute(ITEM_ATTRIBUTE_UNIQUEID, barrierUID)
+		energyBarrier:setAttribute(ItemAttribute_t::UNIQUEID, barrierUID)
 	end
 end
 

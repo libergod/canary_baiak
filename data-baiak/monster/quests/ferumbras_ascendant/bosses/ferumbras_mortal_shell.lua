@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Ferumbras Mortal Shell")
-local monster = {}
+local monster = { }
 
 monster.description = "ferumbras mortal shell"
 monster.experience = 42000

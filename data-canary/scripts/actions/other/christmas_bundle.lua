@@ -45,7 +45,7 @@ function christmasBundle.onUse(player, item, fromPosition, target, toPosition, i
 		return true
 	end
 
-	local rewards = {}
+	local rewards = { }
 	while #rewards < 7 do
 		local count = 1
 		local rand = math.random(#targetItem)

@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #ifndef SRC_ITEMS_CONTAINERS_INBOX_INBOX_H_
@@ -22,8 +22,7 @@ class Inbox final : public Container
 		}
 
 		//cylinder implementations
-		ReturnValue queryAdd(int32_t index, const Thing& thing, uint32_t count,
-				uint32_t flags, Creature* actor = nullptr) const override;
+		ReturnValue queryAdd(int32_t index, const Thing &thing, uint32_t count, uint32_t flags, Creature* actor = nullptr) const override;
 
 		void postAddNotification(Thing* thing, const Cylinder* oldParent, int32_t index, CylinderLink_t link = LINK_OWNER) override;
 		void postRemoveNotification(Thing* thing, const Cylinder* newParent, int32_t index, CylinderLink_t link = LINK_OWNER) override;
@@ -48,5 +47,5 @@ class Inbox final : public Container
 		uint32_t maxInboxItems;
 };
 
-#endif  // SRC_ITEMS_CONTAINERS_INBOX_INBOX_H_
+#endif // SRC_ITEMS_CONTAINERS_INBOX_INBOX_H_
 

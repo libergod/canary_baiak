@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Zamulosh")
-local monster = {}
+local monster = { }
 
 monster.description = "a zamulosh"
 monster.experience = 50000
@@ -23,6 +23,11 @@ monster.manaCost = 200
 monster.changeTarget = {
 	interval = 2000,
 	chance = 10
+}
+
+monster.bosstiary = {
+	bossRaceId = 1181,
+	bossRace = RARITY_ARCHFOE
 }
 
 monster.strategiesTarget = {

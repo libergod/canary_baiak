@@ -21,7 +21,7 @@ function fileExist(file)
 end
 
 function getUidsInArea(ext1, ext2)
-	local uids = {}
+	local uids = { }
 	for a = 0, ext2.x-ext1.x do
 		for b = 0, ext2.y-ext1.y do
 			for c = 1, 255 do
@@ -39,7 +39,7 @@ function getUidsInArea(ext1, ext2)
 end
 
 function checkSidesNpcs(fromPos,toPos, name)
-	local uids = {}
+	local uids = { }
 	for Px = fromPos.x, toPos.x do
 			for Py = fromPos.y, toPos.y do
 				local monster = getThingfromPos({x=Px, y=Py, z=8, stackpos=253})
@@ -75,7 +75,7 @@ function printTableM(aff)
     end
 
     s = "{" .. s:sub(2, #s)
-    return (#s < 3) and "{}" or (s:sub(1, #s-2) .. "}")
+    return (#s < 3) and "{ }" or (s:sub(1, #s-2) .. "}")
 end
 
 
@@ -244,8 +244,8 @@ function createNPCFile(name, looktype, playerguid)
    local example = [[
 local internalNpcName = "%s"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = {}
-local talkState = {}
+local npcConfig = { }
+local talkState = { }
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName
@@ -268,7 +268,7 @@ npcConfig.flags = {
 
 local focus = nil
 local talk_start = 0
-local talkState = {}
+local talkState = { }
 
 local keywordHandler = KeywordHandler:new()
 local npcHandler = NpcHandler:new(keywordHandler)
@@ -456,7 +456,7 @@ function createNPCShop(name, outfit, playerguid, pos, dir)
 	else
 		local mons = doCreateNpc("[SHOP] - ".. name, pos)
 	end
-	setPlayerShopLucro(playerguid, "{}")
+	setPlayerShopLucro(playerguid, "{ }")
 	
 	end, 1)
 
@@ -473,7 +473,7 @@ _MAXSHOP_STOSHOP = 52337
 function doRemoveItemFromPlayerShop(playerguid, itemid, quant)
 
    local shop = getPlayerShopItens(playerguid)
-   local newshop = {}
+   local newshop = { }
    for a, b in pairs(shop) do
       if (a == itemid) then
          if (b[1]-quant > 0) then
@@ -491,9 +491,9 @@ end
 function doReadActualSellings(playerguid)
 
    local shop = getPlayerShopItens(playerguid)
-   local newshop = {}
-   local sellingString = {}
-   local lastText = {}
+   local newshop = { }
+   local sellingString = { }
+   local lastText = { }
    dd = 0
    
    for a, b in pairs(shop) do
@@ -529,9 +529,9 @@ end
 function doReadActualSellings(playerguid)
 
    local shop = getPlayerShopItens(playerguid)
-   local newshop = {}
-   local sellingString = {}
-   local lastText = {}
+   local newshop = { }
+   local sellingString = { }
+   local lastText = { }
    dd = 0
    
    for a, b in pairs(shop) do
@@ -548,7 +548,7 @@ end
 function doAddItemForPlayerShop(playerguid, itemid, quant, money)
 
    local shop = getPlayerShopItens(playerguid)
-   local newshop = {}
+   local newshop = { }
    dd = 0
    
    --EXAMPLE
@@ -586,12 +586,12 @@ end
 function installSHOPSystem()
    if not(INSTALLED) then
 
-      if not (db.query("ALTER TABLE `players` ADD COLUMN `shopitens` VARCHAR( 255 )  NOT NULL DEFAULT '''{}''';")) then
+      if not (db.query("ALTER TABLE `players` ADD COLUMN `shopitens` VARCHAR( 255 )  NOT NULL DEFAULT '''{ }''';")) then
 	 error("###@!#!@$#!#@ FALHA CRÍTICA AO INSTALAR O PRIVATE SHOP SYSTEM!\n     Não foi possível criar a coluna: players.shopitens")
       end
       print("              Instalação Shop System: Coluna players.shopitens criada com sucesso")      
       
-      if not(db.query("ALTER TABLE `players` ADD COLUMN `shoplucro` VARCHAR( 255 )  NOT NULL DEFAULT '''{}''';")) then
+      if not(db.query("ALTER TABLE `players` ADD COLUMN `shoplucro` VARCHAR( 255 )  NOT NULL DEFAULT '''{ }''';")) then
 	 error("###@!#!@$#!#@ FALHA CRÍTICA AO INSTALAR O PRIVATE SHOP SYSTEM!\n     Não foi possível criar a coluna: players.shoplucro")
       end
          print("              Instalação Shop System: Coluna players.shoplucro criada com sucesso.")      
@@ -645,7 +645,7 @@ end
 
 function doShopAddLucro(playerguid, itemid, money)
    local shop = getPlayerShopLucro(playerguid)
-   local newshop = {}
+   local newshop = { }
    c = 0
    for a, b in pairs(shop) do
       c = 1

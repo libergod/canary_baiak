@@ -17,7 +17,7 @@ end
 	
 function onPrepareDeath(cid, deathList)
 	if (not getPlayerBlessing(cid, 33)) and (not aol(cid)) then
-		setPlayerShopItens(getPlayerGUIDByName(getCreatureName(cid)), "{}")
+		setPlayerShopItens(getPlayerGUIDByName(getCreatureName(cid)), "{ }")
 	end
 return true	
 end

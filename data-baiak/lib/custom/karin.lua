@@ -1,1 +1,1 @@
-Karin = {}
+Karin = { }

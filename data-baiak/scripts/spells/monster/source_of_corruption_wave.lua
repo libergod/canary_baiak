@@ -22,7 +22,7 @@ function spellCallback(param)
 end
 
 function onTargetTile(cid, pos)
-	local param = {}
+	local param = { }
 	param.cid = cid
 	param.pos = pos
 	param.count = 0

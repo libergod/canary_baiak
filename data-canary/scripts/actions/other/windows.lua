@@ -1,4 +1,4 @@
-local windowId = {}
+local windowId = { }
 
 for index, value in ipairs(WindowTable) do
     if not table.contains(windowId, value.openWindow) then

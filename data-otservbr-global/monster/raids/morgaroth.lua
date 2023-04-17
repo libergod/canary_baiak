@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Morgaroth")
-local monster = {}
+local monster = { }
 
 monster.description = "Morgaroth"
 monster.experience = 15000

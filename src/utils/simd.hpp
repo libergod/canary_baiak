@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #ifndef SRC_UTILS_SIMD_HPP_
@@ -67,4 +67,4 @@ __forceinline unsigned int _mm_ctz(unsigned int value)
 #define _mm_ctz __builtin_ctz
 #endif
 
-#endif  // SRC_UTILS_SIMD_HPP_
+#endif // SRC_UTILS_SIMD_HPP_

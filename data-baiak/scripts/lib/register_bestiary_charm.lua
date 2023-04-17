@@ -1,4 +1,4 @@
-registerCharm = {}
+registerCharm = { }
 setmetatable(registerCharm,
 {
 	__call =

@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Priestess of the Wild Sun")
-local monster = {}
+local monster = { }
 
 monster.description = "a priestess of the wild sun"
 monster.experience = 6400

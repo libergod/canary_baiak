@@ -1,6 +1,6 @@
 local internalNpcName = "Seymour"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = {}
+local npcConfig = { }
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName
@@ -34,7 +34,7 @@ npcConfig.voices = {
 
 local keywordHandler = KeywordHandler:new()
 local npcHandler = NpcHandler:new(keywordHandler)
-npcHandler.rats = {}
+npcHandler.rats = { }
 
 npcType.onAppear = function(npc, creature)
 	npcHandler:onAppear(npc, creature)

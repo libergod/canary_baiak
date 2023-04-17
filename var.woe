@@ -1,4 +1,4 @@
-Castle, woe_config, stor = {}, {}, {}
+Castle, woe_config, stor = { }, { }, { }
 	
 --castle name (?)
 Castle.name = 'Ruthenburg'
@@ -19,7 +19,7 @@ Castle.banderas = 3133
 Castle.bases = 3134
 
 --uids in case you have decorations with info.
-Castle.decoraciones = {}
+Castle.decoraciones = { }
 
 --where you teleported from temple.
 Castle.pos = {x = 1338, y = 1195, z = 7}

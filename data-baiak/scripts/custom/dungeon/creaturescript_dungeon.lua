@@ -12,7 +12,7 @@ function dungeonModal.onModalWindow(player, modalWindowId, buttonId, choiceId)
 		
 		if buttonId == 200 then
 			
-			local players = {}
+			local players = { }
 			for x = dg[choiceId].FromPos.x, dg[choiceId].ToPos.x do
 				for y = dg[choiceId].FromPos.y, dg[choiceId].ToPos.y do
 					for z = dg[choiceId].FromPos.z, dg[choiceId].ToPos.z do
@@ -40,7 +40,7 @@ function dungeonModal.onModalWindow(player, modalWindowId, buttonId, choiceId)
 			local pt = player:getParty()
 			local partyMembers
 			
-			local party = {}
+			local party = { }
 			party = partyMembers
 			
 			local fromPosPlayer = player:getPosition()
@@ -71,8 +71,8 @@ function dungeonModal.onModalWindow(player, modalWindowId, buttonId, choiceId)
 							return false
 						end
 						
-						local names = {}
-						local posOfPlayer = {}
+						local names = { }
+						local posOfPlayer = { }
 						
 						for i = 1, party do
 						
@@ -148,7 +148,7 @@ function dungeonModal.onModalWindow(player, modalWindowId, buttonId, choiceId)
 							player:popupFYI(msg.ToFail)
 							
 							-- Remove All monsters
-							local monsterPos = {}
+							local monsterPos = { }
 							for x = dg[choiceId].FromPos.x, dg[choiceId].ToPos.x do
 								for y = dg[choiceId].FromPos.y, dg[choiceId].ToPos.y do
 									for z = dg[choiceId].FromPos.z, dg[choiceId].ToPos.z do
@@ -223,7 +223,7 @@ function dungeonModal.onModalWindow(player, modalWindowId, buttonId, choiceId)
 					player:popupFYI(msg.ToFail)
 					
 					-- Remove All monsters
-					local monsterPos = {}
+					local monsterPos = { }
 					for x = dg[choiceId].FromPos.x, dg[choiceId].ToPos.x do
 						for y = dg[choiceId].FromPos.y, dg[choiceId].ToPos.y do
 							for z = dg[choiceId].FromPos.z, dg[choiceId].ToPos.z do

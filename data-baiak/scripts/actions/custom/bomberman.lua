@@ -68,8 +68,8 @@ local function endGame()
 			end
 
 		end
-	BomberTeam1, BomberTeam2 = {}, {}
-	BlockListBomberman = {}
+	BomberTeam1, BomberTeam2 = { }, { }
+	BlockListBomberman = { }
 	BombermanPortal = 0
 end
 
@@ -92,7 +92,7 @@ function bombermanAct.onUse(player, item, fromPosition, target, toPosition, isHo
 	end
 
 
-	local players = {}
+	local players = { }
 
 	for pos = 1, 10 do
 		local creature = Tile(config.fromPositions[pos]):getTopCreature()

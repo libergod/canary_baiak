@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #ifndef SRC_LUA_SCRIPTS_SCRIPT_ENVIRONMENT_HPP_
@@ -30,15 +30,15 @@ class ScriptEnvironment {
 
 		// non-copyable
 		ScriptEnvironment(const ScriptEnvironment &) = delete;
-		ScriptEnvironment & operator = (const ScriptEnvironment &) = delete;
+		ScriptEnvironment &operator = (const ScriptEnvironment &) = delete;
 
 		void resetEnv();
 
-		void setScriptId(int32_t newScriptId, LuaScriptInterface * newScriptInterface) {
+		void setScriptId(int32_t newScriptId, LuaScriptInterface* newScriptInterface) {
 				this -> scriptId = newScriptId;
 				this -> interface = newScriptInterface;
 		}
-		bool setCallbackId(int32_t callbackId, LuaScriptInterface * scriptInterface);
+		bool setCallbackId(int32_t callbackId, LuaScriptInterface* scriptInterface);
 
 		int32_t getScriptId() const {
 				return scriptId;
@@ -51,12 +51,12 @@ class ScriptEnvironment {
 				timerEvent = true;
 		}
 
-		void getEventInfo(int32_t & scriptId, LuaScriptInterface * & scriptInterface, int32_t & callbackId, bool & timerEvent) const;
+		void getEventInfo(int32_t &scriptId, LuaScriptInterface*&scriptInterface, int32_t &callbackId, bool &timerEvent) const;
 
-		void addTempItem(Item * item);
-		static void removeTempItem(Item * item);
+		void addTempItem(Item* item);
+		static void removeTempItem(Item* item);
 		uint32_t addThing(Thing * thing);
-		void insertItem(uint32_t uid, Item * item);
+		void insertItem(uint32_t uid, Item* item);
 
 		static DBResult_ptr getResultByID(uint32_t id);
 		static uint32_t addResult(DBResult_ptr res);
@@ -69,9 +69,9 @@ class ScriptEnvironment {
 				return curNpc;
 		}
 
-		Thing * getThingByUID(uint32_t uid);
-		Item * getItemByUID(uint32_t uid);
-		Container * getContainerByUID(uint32_t uid);
+		Thing* getThingByUID(uint32_t uid);
+		Item* getItemByUID(uint32_t uid);
+		Container* getContainerByUID(uint32_t uid);
 		void removeItemByUID(uint32_t uid);
 
 	private:
@@ -79,7 +79,7 @@ class ScriptEnvironment {
 		using StorageMap = std::map < uint32_t, int32_t >;
 		using DBResultMap = std::map < uint32_t, DBResult_ptr>;
 
-		LuaScriptInterface * interface;
+		LuaScriptInterface* interface;
 
 		// for npc scripts
 		Npc * curNpc = nullptr;
@@ -101,4 +101,4 @@ class ScriptEnvironment {
 		static DBResultMap tempResults;
 };
 
-#endif  // SRC_LUA_SCRIPTS_SCRIPT_ENVIRONMENT_HPP_
+#endif // SRC_LUA_SCRIPTS_SCRIPT_ENVIRONMENT_HPP_

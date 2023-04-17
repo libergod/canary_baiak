@@ -139,7 +139,7 @@ def action():
                 'gamingyoutubeviewer': 0
         })
     if(data['type'] == 'news'):
-        return jsonify({})
+        return jsonify({ })
 
     # The client has a cache of the events on it so it will ask for the events only when it see that last sync was made some time X ago
     if(data['type'] == 'eventschedule'):

@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #ifndef SRC_GAME_FUNCTIONS_GAME_RELOAD_HPP_
@@ -36,15 +36,14 @@ enum class Reload_t : uint8_t {
 	RELOAD_TYPE_LAST
 };
 
-class GameReload : public Game
-{
+class GameReload : public Game {
 public:
 	GameReload();
 	~GameReload();
 
 	// non-copyable
-	GameReload(const GameReload&) = delete;
-	GameReload &operator = (const GameReload&) = delete;
+	GameReload(const GameReload &) = delete;
+	GameReload &operator = (const GameReload &) = delete;
 
 	bool init(Reload_t reloadType) const;
 	uint8_t getReloadNumber(Reload_t reloadTypes) const;
@@ -69,4 +68,4 @@ private:
 
 const inline GameReload g_gameReload;
 
-#endif  // SRC_GAME_FUNCTIONS_GAME_RELOAD_HPP_
+#endif // SRC_GAME_FUNCTIONS_GAME_RELOAD_HPP_

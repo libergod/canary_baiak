@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Deepling Warrior")
-local monster = {}
+local monster = { }
 
 monster.description = "a deepling warrior"
 monster.experience = 1500
@@ -24,7 +24,7 @@ monster.Bestiary = {
 	Stars = 3,
 	Occurrence = 0,
 	Locations = "Fiehonja."
-	}
+}
 
 monster.health = 1600
 monster.maxHealth = 1600
@@ -32,6 +32,9 @@ monster.race = "blood"
 monster.corpse = 13712
 monster.speed = 145
 monster.manaCost = 0
+
+monster.faction = FACTION_DEEPLING
+monster.enemyFactions = {FACTION_DEATHLING, FACTION_PLAYER}
 
 monster.changeTarget = {
 	interval = 4000,

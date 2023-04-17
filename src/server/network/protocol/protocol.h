@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #ifndef SRC_SERVER_NETWORK_PROTOCOL_PROTOCOL_H_
@@ -20,15 +20,15 @@ class Protocol : public std::enable_shared_from_this<Protocol>
 		virtual ~Protocol();
 
 		// non-copyable
-		Protocol(const Protocol&) = delete;
-		Protocol& operator=(const Protocol&) = delete;
+		Protocol(const Protocol &) = delete;
+		Protocol &operator=(const Protocol &) = delete;
 
-		virtual void parsePacket(NetworkMessage&) {}
+		virtual void parsePacket(NetworkMessage &) {}
 
-		virtual void onSendMessage(const OutputMessage_ptr& msg);
-		bool onRecvMessage(NetworkMessage& msg);
-		bool sendRecvMessageCallback(NetworkMessage& msg);
-		virtual void onRecvFirstMessage(NetworkMessage& msg) = 0;
+		virtual void onSendMessage(const OutputMessage_ptr &msg);
+		bool onRecvMessage(NetworkMessage &msg);
+		bool sendRecvMessageCallback(NetworkMessage &msg);
+		virtual void onRecvFirstMessage(NetworkMessage &msg) = 0;
 		virtual void onConnect() {}
 
 		bool isConnectionExpired() const {
@@ -73,7 +73,7 @@ class Protocol : public std::enable_shared_from_this<Protocol>
 		}
 		void enableCompression();
 
-		static bool RSA_decrypt(NetworkMessage& msg);
+		static bool RSA_decrypt(NetworkMessage &msg);
 
 		void setRawMessages(bool value) {
 			rawMessages = value;
@@ -82,9 +82,9 @@ class Protocol : public std::enable_shared_from_this<Protocol>
 		virtual void release() {}
 
 	private:
-		void XTEA_encrypt(OutputMessage& msg) const;
-		bool XTEA_decrypt(NetworkMessage& msg) const;
-		bool compression(OutputMessage& msg) const;
+		void XTEA_encrypt(OutputMessage &msg) const;
+		bool XTEA_decrypt(NetworkMessage &msg) const;
+		bool compression(OutputMessage &msg) const;
 
 
 		OutputMessage_ptr outputBuffer;
@@ -102,4 +102,4 @@ class Protocol : public std::enable_shared_from_this<Protocol>
 		friend class Connection;
 };
 
-#endif  // SRC_SERVER_NETWORK_PROTOCOL_PROTOCOL_H_
+#endif // SRC_SERVER_NETWORK_PROTOCOL_PROTOCOL_H_

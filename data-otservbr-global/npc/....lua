@@ -1,5 +1,5 @@
 local npcType = Game.createNpcType("...")
-local npcConfig = {}
+local npcConfig = { }
 
 npcConfig.description = "..."
 

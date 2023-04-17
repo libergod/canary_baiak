@@ -1,6 +1,6 @@
 -- Level and quests closing door (onStepIn).
 -- This prevents a player who has not yet done the quest, from crossing the player who has already done so, skipping the entire quest and going straight to the final reward.
-local doorIds = {}
+local doorIds = { }
 
 local closingDoor = MoveEvent()
 closingDoor:type("stepin")
@@ -56,7 +56,7 @@ closingDoor:register()
 -- Level and quests closing door (onStepOut).
 -- This closes the door after the player passes through it.
 
-local doorIds = {}
+local doorIds = { }
 
 local closingDoor = MoveEvent()
 closingDoor:type("stepout")

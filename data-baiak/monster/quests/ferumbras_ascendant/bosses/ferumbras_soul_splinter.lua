@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Ferumbras Soul Splinter")
-local monster = {}
+local monster = { }
 
 monster.description = "Ferumbras Soul Splinter"
 monster.experience = 12000

@@ -51,7 +51,7 @@ function questSystem1.onUse(player, item, fromPosition, target, toPosition, isHo
 		return true
 	end
 
-	local items, reward = {}
+	local items, reward = { }
 	local size = item:isContainer() and item:getSize() or 0
 	if size == 0 then
 		reward = item:clone()

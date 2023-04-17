@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #ifndef SRC_ITEMS_ITEMS_H_
@@ -93,11 +93,11 @@ class ItemType
 		ItemType() = default;
 
 		//non-copyable
-		ItemType(const ItemType& other) = delete;
-		ItemType& operator=(const ItemType& other) = delete;
+		ItemType(const ItemType &other) = delete;
+		ItemType &operator=(const ItemType &other) = delete;
 
 		ItemType(ItemType&& other) = default;
-		ItemType& operator=(ItemType&& other) = default;
+		ItemType &operator=(ItemType&& other) = default;
 
 		bool isGroundTile() const {
 			return group == ITEM_GROUP_GROUND;
@@ -168,8 +168,14 @@ class ItemType
 		{
 			return slotPosition & SLOTP_HEAD;
 		}
+		bool isRanged() const {
+			return weaponType == WEAPON_DISTANCE && weaponType != WEAPON_NONE;
+		}
+		bool isMissile() const {
+			return weaponType == WEAPON_MISSILE && weaponType != WEAPON_NONE;
+		}
 
-		Abilities& getAbilities() {
+		Abilities &getAbilities() {
 			if (!abilities) {
 				abilities.reset(new Abilities());
 			}
@@ -234,7 +240,7 @@ class ItemType
 
 		CombatType_t combatType = COMBAT_NONE;
 
-		uint16_t transformToOnUse[2] = {0, 0};
+		uint16_t transformToOnUse[2] = { 0, 0 };
 		uint16_t transformToFree = 0;
 		uint16_t destroyTo = 0;
 		uint16_t maxTextLen = 0;
@@ -311,19 +317,19 @@ class Items
 		Items();
 
 		// non-copyable
-		Items(const Items&) = delete;
-		Items& operator=(const Items&) = delete;
+		Items(const Items &) = delete;
+		Items &operator=(const Items &) = delete;
 
 		bool reload();
 		void clear();
 
 		void loadFromProtobuf();
 
-		const ItemType& operator[](size_t id) const {
+		const ItemType &operator[](size_t id) const {
 			return getItemType(id);
 		}
-		const ItemType& getItemType(size_t id) const;
-		ItemType& getItemType(size_t id);
+		const ItemType &getItemType(size_t id) const;
+		ItemType &getItemType(size_t id);
 
 		/**
 		 * @brief Check if the itemid "hasId" is stored on "items", if not, return false
@@ -334,15 +340,15 @@ class Items
 		 */
 		bool hasItemType(size_t hasId) const;
 
-		uint16_t getItemIdByName(const std::string& name);
+		uint16_t getItemIdByName(const std::string &name);
 
-		ItemTypes_t getLootType(const std::string& strValue);
+		ItemTypes_t getLootType(const std::string &strValue);
 
 		bool loadFromXml();
-		void parseItemNode(const pugi::xml_node& itemNode, uint16_t id);
+		void parseItemNode(const pugi::xml_node & itemNode, uint16_t id);
 
 		void buildInventoryList();
-		const InventoryVector& getInventory() const {
+		const InventoryVector &getInventory() const {
 			return inventory;
 		}
 
@@ -358,4 +364,4 @@ class Items
 		InventoryVector inventory;
 };
 
-#endif  // SRC_ITEMS_ITEMS_H_
+#endif // SRC_ITEMS_ITEMS_H_

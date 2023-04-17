@@ -215,7 +215,7 @@ DailyReward.retrieveHistoryEntries = function(playerId)
 		return false
 	end
 
-	local entries = {}
+	local entries = { }
 	local resultId = db.storeQuery("SELECT * FROM `daily_reward_history` WHERE `player_id` = \z
 		" .. player:getGuid() .. " ORDER BY `timestamp` DESC LIMIT 15;")
 	if resultId ~= false then
@@ -286,7 +286,7 @@ function Player.iterateTest(self)
 	local reward = DailyRewardItems[self:getVocation():getBaseId()]
 
 	if not(reward) then
-		reward = {}
+		reward = { }
 	end
 
 	for i = 1, #reward.things do
@@ -423,20 +423,27 @@ function Player.selectDailyReward(self, msg)
 	-- Items as reward
 	if (dailyTable.type == DAILY_REWARD_TYPE_ITEM) then
 
-		local items = {}
+		local items = { }
+		local possibleItems = DailyRewardItems[self:getVocation():getBaseId()];
+		if dailyTable.items then
+			possibleItems = dailyTable.items;
+		end
 
 		-- Creating items table
 		local columnsPicked = msg:getByte() -- Columns picked
+		local orderedCounter = 0
+		local totalCounter = 0
 		for i = 1, columnsPicked do
 			local itemId = msg:getU16()
 			local count = msg:getByte()
-			items[i] = {itemId = itemId, count = count}
-		end
-
-		-- Verifying if items if player is picking the correct amount
-		local counter = 0
-		for k, v in ipairs(items) do
-			counter = counter + v.count
+			orderedCounter = orderedCounter + count;
+			for index, val in ipairs(possibleItems) do
+				if val == itemId then
+					items[i] = {itemId = itemId, count = count}
+					totalCounter = totalCounter + count;
+					break;
+				end
+			end
 		end
 
 		if self:isPremium() then
@@ -445,8 +452,12 @@ function Player.selectDailyReward(self, msg)
 			count = dailyTable.freeAccount
 		end
 
-		if counter > count then
+		if totalCounter > count then
 			self:sendError("Something went wrong here, please restart this dialog.")
+			return false
+		end
+		if totalCounter ~= orderedCounter then
+			Spdlog.error(string.format("Player with name %s is trying to get wrong daily reward", self:getName()))
 			return false
 		end
 
@@ -579,7 +590,7 @@ function Player.readDailyReward(self, msg, currentDay, state)
 			end
 
 			if not(rewards) then
-				rewards = {}
+				rewards = { }
 			end
 		else
 			if (state == DAILY_REWARD_STATUS_FREE) then

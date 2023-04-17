@@ -49,7 +49,7 @@ function secretBrokul.onUse(player, item, fromPosition, target, toPosition, isHo
         end
  
         local errorMsg
-        local rPlayers = {}
+        local rPlayers = { }
         for index, ipos in pairs(bossConfig.playerPositions) do
             local playerTile = Tile(ipos):getTopCreature()
             if playerTile then

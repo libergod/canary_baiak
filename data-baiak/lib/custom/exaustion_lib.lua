@@ -16,4 +16,4 @@ function Player:hasExhaustion(value)
 end
 
 
-FREEZE_myEvents = {}
+FREEZE_myEvents = { }

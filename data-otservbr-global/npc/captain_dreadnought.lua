@@ -1,6 +1,6 @@
 local internalNpcName = "Captain Dreadnought"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = {}
+local npcConfig = { }
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName
@@ -191,7 +191,7 @@ local townNames = {all = "", free = "", premium = ""}
 
 -- Function to build town names strings and adds additional data to sailable/premium towns about
 local function buildStrings()
-	local townsList = {all = {}, free = {}, premium = {}}
+	local townsList = {all = { }, free = { }, premium = { }}
 	for id, town in pairs(towns) do
 		if town.canBeSailed then
 			if town.isPremium then
@@ -425,7 +425,7 @@ end
 keywordHandler:addAliasKeyword({"passage"})
 keywordHandler:addAliasKeyword({"travel"})
 -- Donate topic nodes
-local donateNode = keywordHandler:addKeyword({"donate"}, donationHandler, {}, 
+local donateNode = keywordHandler:addKeyword({"donate"}, donationHandler, { }, 
 function(player) return player:getMoney() > 500 end
 )
 donateNode:addChildKeywordNode(KeywordNode:new({"yes"}, donationHandler, {confirm = true}))

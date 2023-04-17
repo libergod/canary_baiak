@@ -1,6 +1,6 @@
 local internalNpcName = "Messenger of Heaven"
 local npcType = Game.createNpcType("Lesser Messenger of Heaven")
-local npcConfig = {}
+local npcConfig = { }
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName

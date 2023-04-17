@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #ifndef SRC_LUA_FUNCTIONS_CORE_GAME_GAME_FUNCTIONS_HPP_
@@ -72,7 +72,7 @@ class GameFunctions final : LuaScriptInterface {
 				registerMethod(L, "Game", "makeFiendishMonster", GameFunctions::luaGameMakeFiendishMonster);
 				registerMethod(L, "Game", "removeFiendishMonster", GameFunctions::luaGameRemoveFiendishMonster);
 				registerMethod(L, "Game", "getFiendishMonsters", GameFunctions::luaGameGetFiendishMonsters);
-
+				registerMethod(L, "Game", "getBoostedBoss", GameFunctions::luaGameGetBoostedBoss);
 			}
 
 	private:
@@ -125,13 +125,14 @@ class GameFunctions final : LuaScriptInterface {
 			static int luaGameHasEffect(lua_State* L);
 			static int luaGameHasDistanceEffect(lua_State* L);
 
-			static int luaGameAddInfluencedMonster(lua_State *L);
-			static int luaGameRemoveInfluencedMonster(lua_State *L);
-			static int luaGameGetInfluencedMonsters(lua_State *L);
-			static int luaGameMakeFiendishMonster(lua_State *L);
-			static int luaGameRemoveFiendishMonster(lua_State *L);
-			static int luaGameGetFiendishMonsters(lua_State *L);
+			static int luaGameAddInfluencedMonster(lua_State* L);
+			static int luaGameRemoveInfluencedMonster(lua_State* L);
+			static int luaGameGetInfluencedMonsters(lua_State* L);
+			static int luaGameMakeFiendishMonster(lua_State* L);
+			static int luaGameRemoveFiendishMonster(lua_State* L);
+			static int luaGameGetFiendishMonsters(lua_State* L);
 
+			static int luaGameGetBoostedBoss(lua_State* L);
 };
 
-#endif  // SRC_LUA_FUNCTIONS_CORE_GAME_GAME_FUNCTIONS_HPP_
+#endif // SRC_LUA_FUNCTIONS_CORE_GAME_GAME_FUNCTIONS_HPP_

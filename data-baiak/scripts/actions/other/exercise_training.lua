@@ -49,7 +49,7 @@ function exerciseTraining.onUse(player, item, fromPosition, target, toPosition, 
 			return true
 		end
 
-		onExerciseTraining[playerId] = {}
+		onExerciseTraining[playerId] = { }
 		if not onExerciseTraining[playerId].event then
 			onExerciseTraining[playerId].event = addEvent(ExerciseEvent, 0, playerId, targetPos, item.itemid, targetId)
 			onExerciseTraining[playerId].dummyPos = targetPos

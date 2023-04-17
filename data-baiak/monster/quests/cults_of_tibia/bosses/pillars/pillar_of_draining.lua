@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Pillar Of Draining")
-local monster = {}
+local monster = { }
 
 monster.description = "a pillar of draining"
 monster.experience = 0

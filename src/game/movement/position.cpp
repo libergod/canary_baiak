@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #include "pch.hpp"
@@ -25,7 +25,7 @@ Direction Position::getRandomDirection()
 	return dirList.front();
 }
 
-std::ostream& operator<<(std::ostream& os, const Position& pos)
+std::ostream& operator<<(std::ostream &os, const Position &pos)
 {
 	os << "( " << std::setw(5) << std::setfill('0') << pos.x;
 	os << " / " << std::setw(5) << std::setfill('0') << pos.y;
@@ -34,7 +34,7 @@ std::ostream& operator<<(std::ostream& os, const Position& pos)
 	return os;
 }
 
-std::ostream& operator<<(std::ostream& os, const Direction& dir)
+std::ostream& operator<<(std::ostream &os, const Direction &dir)
 {
 	switch (dir) {
 		case DIRECTION_NORTH:

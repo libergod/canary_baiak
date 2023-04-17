@@ -1,4 +1,4 @@
-local combat = {}
+local combat = { }
 
 for i = 10, 30 do
 	combat[i] = Combat()

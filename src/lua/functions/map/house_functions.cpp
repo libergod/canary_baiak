@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #include "pch.hpp"
@@ -182,7 +182,7 @@ int HouseFunctions::luaHouseGetBeds(lua_State* L) {
 		return 1;
 	}
 
-	const auto& beds = house->getBeds();
+	const auto &beds = house->getBeds();
 	lua_createtable(L, beds.size(), 0);
 
 	int index = 0;
@@ -213,7 +213,7 @@ int HouseFunctions::luaHouseGetDoors(lua_State* L) {
 		return 1;
 	}
 
-	const auto& doors = house->getDoors();
+	const auto &doors = house->getDoors();
 	lua_createtable(L, doors.size(), 0);
 
 	int index = 0;
@@ -261,7 +261,7 @@ int HouseFunctions::luaHouseGetTiles(lua_State* L) {
 		return 1;
 	}
 
-	const auto& tiles = house->getTiles();
+	const auto &tiles = house->getTiles();
 	lua_newtable(L);
 
 	int index = 0;
@@ -281,7 +281,7 @@ int HouseFunctions::luaHouseGetItems(lua_State* L) {
 		return 1;
 	}
 
-	const auto& tiles = house->getTiles();
+	const auto &tiles = house->getTiles();
 	lua_newtable(L);
 
 	int index = 0;
@@ -352,7 +352,7 @@ int HouseFunctions::luaHouseSetAccessList(lua_State* L) {
 	}
 
 	uint32_t listId = getNumber<uint32_t>(L, 2);
-	const std::string& list = getString(L, 3);
+	const std::string &list = getString(L, 3);
 	house->setAccessList(listId, list);
 	pushBoolean(L, true);
 	return 1;

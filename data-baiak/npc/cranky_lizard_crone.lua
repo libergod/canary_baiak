@@ -1,6 +1,6 @@
 local internalNpcName = "Cranky Lizard Crone"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = {}
+local npcConfig = { }
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName
@@ -100,11 +100,11 @@ keywordHandler:addKeyword({'mission'}, StdModule.say, {npcHandler = npcHandler, 
 keywordHandler:addKeyword({'help'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = "llected all the required pieces, say 'yes' and voila - you got yourself an addon!"})
 
 	local node1 = keywordHandler:addKeyword({'first addon'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'To achieve the first storage addon you need to give me the Old Cape. Do you have them with you?'})
-	node1:addChildKeyword({'yes'}, WayfarerFirst, {})
+	node1:addChildKeyword({'yes'}, WayfarerFirst, { })
 	node1:addChildKeyword({'no'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'Alright then. Come back when you got all neccessary items.', reset = true})
 
 	local node2 = keywordHandler:addKeyword({'second addon'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'To achieve the second storage addon you need to give me the Sedge Hat. Do you have them with you?'})
-	node2:addChildKeyword({'yes'}, WayfarerSecond, {})
+	node2:addChildKeyword({'yes'}, WayfarerSecond, { })
 	node2:addChildKeyword({'no'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'Alright then. Come back when you got all neccessary items.', reset = true})
  npcHandler:addModule(FocusModule:new(), npcConfig.name, true, true, true)
 

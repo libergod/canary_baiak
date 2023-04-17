@@ -1,6 +1,6 @@
 --# Monster converted using Devm monster converter #--
 local mType = Game.createMonsterType("Hellspawn")
-local monster = {}
+local monster = { }
 
 monster.description = "a hellspawn"
 monster.experience = 2550

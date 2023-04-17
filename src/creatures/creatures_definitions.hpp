@@ -4,13 +4,13 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
-*/
+ * Website: https://docs.opentibiabr.com/
+ */
 
 #ifndef SRC_CREATURES_CREATURES_DEFINITIONS_HPP_
 #define SRC_CREATURES_CREATURES_DEFINITIONS_HPP_
 
-// Enum
+ // Enum
 
 enum SkillsId_t {
 	SKILLVALUE_LEVEL = 0,
@@ -58,7 +58,7 @@ enum ConditionAttr_t {
 	CONDITIONATTR_SUBID,
 	CONDITIONATTR_MANASHIELD,
 
-	//reserved for serialization
+	// reserved for serialization
 	CONDITIONATTR_END = 254,
 };
 
@@ -99,7 +99,7 @@ enum ConditionType_t {
 enum ConditionParam_t {
 	CONDITION_PARAM_OWNER = 1,
 	CONDITION_PARAM_TICKS = 2,
-	//CONDITION_PARAM_OUTFIT = 3,
+	// CONDITION_PARAM_OUTFIT = 3,
 	CONDITION_PARAM_HEALTHGAIN = 4,
 	CONDITION_PARAM_HEALTHTICKS = 5,
 	CONDITION_PARAM_MANAGAIN = 6,
@@ -223,6 +223,7 @@ enum SpeechBubble_t {
 	SPEECHBUBBLE_TRADE = 2,
 	SPEECHBUBBLE_QUEST = 3,
 	SPEECHBUBBLE_QUESTTRADER = 4,
+	SPEECHBUBBLE_HIRELING = 7,
 };
 
 enum MarketAction_t {
@@ -590,13 +591,12 @@ enum PartyAnalyzer_t : uint8_t {
 struct Position;
 
 struct VIPEntry {
-	VIPEntry(uint32_t initGuid, std::string initName, std::string initDescription,
-             uint32_t initIcon, bool initNotify) :
-                guid(initGuid),
-                name(std::move(initName)),
-                description(std::move(initDescription)),
-                icon(initIcon),
-                notify(initNotify) {}
+	VIPEntry(uint32_t initGuid, std::string initName, std::string initDescription, uint32_t initIcon, bool initNotify) :
+		guid(initGuid),
+		name(std::move(initName)),
+		description(std::move(initDescription)),
+		icon(initIcon),
+		notify(initNotify) {}
 
 	uint32_t guid;
 	std::string name;
@@ -607,14 +607,15 @@ struct VIPEntry {
 
 struct OutfitEntry {
 	constexpr OutfitEntry(uint16_t initLookType, uint8_t initAddons) :
-                         lookType(initLookType), addons(initAddons) {}
+		lookType(initLookType), addons(initAddons) {}
 
 	uint16_t lookType;
 	uint8_t addons;
 };
 
 struct FamiliarEntry {
-	constexpr explicit FamiliarEntry(uint16_t initLookType) : lookType(initLookType) {}
+	constexpr explicit FamiliarEntry(uint16_t initLookType) :
+		lookType(initLookType) {}
 	uint16_t lookType;
 };
 
@@ -630,7 +631,7 @@ struct Kill {
 	bool unavenged;
 
 	Kill(uint32_t _target, time_t _time, bool _unavenged) :
-        target(_target), time(_time), unavenged(_unavenged) {}
+		target(_target), time(_time), unavenged(_unavenged) {}
 };
 
 struct IntervalInfo {
@@ -651,8 +652,8 @@ struct FindPathParams {
 
 struct RecentDeathEntry {
 	RecentDeathEntry(std::string cause, uint32_t timestamp) :
-        cause(std::move(cause)),
-        timestamp(timestamp) {}
+		cause(std::move(cause)),
+		timestamp(timestamp) {}
 
 	std::string cause;
 	uint32_t timestamp;
@@ -660,9 +661,9 @@ struct RecentDeathEntry {
 
 struct RecentPvPKillEntry {
 	RecentPvPKillEntry(std::string description, uint32_t timestamp, uint8_t status) :
-        description(std::move(description)),
-        timestamp(timestamp),
-        status(status) {}
+		description(std::move(description)),
+		timestamp(timestamp),
+		status(status) {}
 
 	std::string description;
 	uint32_t timestamp;
@@ -682,16 +683,16 @@ struct MarketOffer {
 struct MarketOfferEx {
 	MarketOfferEx() = default;
 	MarketOfferEx(MarketOfferEx&& other) :
-        id(other.id),
-        playerId(other.playerId),
-        timestamp(other.timestamp),
-        price(other.price),
-        amount(other.amount),
-        counter(other.counter),
-        itemId(other.itemId),
-        type(other.type),
-        tier(other.tier),
-        playerName(std::move(other.playerName)) {}
+		id(other.id),
+		playerId(other.playerId),
+		timestamp(other.timestamp),
+		price(other.price),
+		amount(other.amount),
+		counter(other.counter),
+		itemId(other.itemId),
+		type(other.type),
+		tier(other.tier),
+		playerName(std::move(other.playerName)) {}
 
 	uint32_t id;
 	uint32_t playerId;
@@ -729,11 +730,10 @@ using ItemsTierCountList = std::map<uint16_t, std::map<uint8_t, uint32_t>>;
 */
 
 struct Familiar {
-	Familiar(std::string initName, uint16_t initLookType,
-             bool initPremium, bool initUnlocked, std::string initType) :
-                name(initName), lookType(initLookType),
-                premium(initPremium), unlocked(initUnlocked),
-                type(initType) {}
+	Familiar(std::string initName, uint16_t initLookType, bool initPremium, bool initUnlocked, std::string initType) :
+		name(initName), lookType(initLookType),
+		premium(initPremium), unlocked(initUnlocked),
+		type(initType) {}
 
 	std::string name;
 	uint16_t lookType;
@@ -746,15 +746,16 @@ struct ProtocolFamiliars {
 	ProtocolFamiliars(const std::string& initName, uint16_t initLookType) :
 		name(initName), lookType(initLookType) {}
 
-	const std::string& name;
+	const std::string &name;
 	uint16_t lookType;
 };
 
 struct LightInfo {
 	uint8_t level = 0;
-	uint8_t color = 0;
+	uint8_t color = 215;
 	constexpr LightInfo() = default;
-	constexpr LightInfo(uint8_t newLevel, uint8_t newColor) : level(newLevel), color(newColor) {}
+	constexpr LightInfo(uint8_t newLevel, uint8_t newColor) :
+		level(newLevel), color(newColor) {}
 };
 
 struct CombatDamage {
@@ -795,7 +796,7 @@ struct LootBlock {
 	uint32_t countmin;
 	uint32_t chance;
 
-	//optional
+	// optional
 	int32_t subType;
 	int32_t actionId;
 	std::string text;
@@ -848,8 +849,12 @@ struct ShopBlock {
 		itemStorageValue = 0;
 	}
 
-	explicit ShopBlock(uint16_t newItemId, int32_t newSubType = 0, uint32_t newBuyPrice = 0, uint32_t newSellPrice = 0, int32_t newStorageKey = 0, int32_t newStorageValue = 0, std::string newName = "")
-		: itemId(newItemId), itemSubType(newSubType), itemBuyPrice(newBuyPrice), itemSellPrice(newSellPrice), itemStorageKey(newStorageKey), itemStorageValue(newStorageValue), itemName(std::move(newName)) {}
+	explicit ShopBlock(uint16_t newItemId, int32_t newSubType = 0, uint32_t newBuyPrice = 0, uint32_t newSellPrice = 0, int32_t newStorageKey = 0, int32_t newStorageValue = 0, std::string newName = "") :
+		itemId(newItemId), itemSubType(newSubType), itemBuyPrice(newBuyPrice), itemSellPrice(newSellPrice), itemStorageKey(newStorageKey), itemStorageValue(newStorageValue), itemName(std::move(newName)) {}
+
+	bool operator==(const ShopBlock& other) const {
+		return itemId == other.itemId && itemName == other.itemName && itemSubType == other.itemSubType && itemBuyPrice == other.itemBuyPrice && itemSellPrice == other.itemSellPrice && itemStorageKey == other.itemStorageKey && itemStorageValue == other.itemStorageValue && childShop == other.childShop;
+	}
 };
 
 struct summonBlock_t {
@@ -883,8 +888,8 @@ struct voiceBlock_t {
 
 struct PartyAnalyzer {
 	PartyAnalyzer(uint32_t playerId, std::string playerName) :
-                id(playerId),
-                name(std::move(playerName)) {}
+		id(playerId),
+		name(std::move(playerName)) {}
 
 	uint32_t id;
 
@@ -899,4 +904,4 @@ struct PartyAnalyzer {
 	std::map<uint16_t, uint64_t> supplyMap; // [itemID] = amount
 };
 
-#endif  // SRC_CREATURES_CREATURES_DEFINITIONS_HPP_
+#endif // SRC_CREATURES_CREATURES_DEFINITIONS_HPP_

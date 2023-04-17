@@ -109,7 +109,7 @@ local window = ModalWindow {
 	title = "Task System",
 	message = "Choose a task and use the buttons below:",
 	}
-local temptasks = {}
+local temptasks = { }
 	for _, data in pairs (taskConfiguration) do
 		temptasks[#temptasks+1] = data.storage
 	if player:hasStartedTask(data.storage) then

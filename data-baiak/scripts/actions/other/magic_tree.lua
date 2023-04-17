@@ -9,7 +9,7 @@ local itemInfos = {
 	[26190] = {26194, 29426}
 }
 
-local storageValues = {}
+local storageValues = { }
 local exhaustDelaySeconds = 1
 
 local magicTree = Action()

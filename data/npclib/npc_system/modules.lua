@@ -11,7 +11,7 @@ if Modules == nil then
 	SHOP_YESWORD = {"yes"}
 	SHOP_NOWORD = {"no"}
 
-	StdModule = {}
+	StdModule = { }
 
 	--[[
 	--NOTE: These callback function must be called with parameters.npcHandler = npcHandler
@@ -46,7 +46,7 @@ if Modules == nil then
 			return false
 		end
 
-		local cost, costMessage = parameters.cost, '%d gold'
+		local cost, costMessage = (configManager.getBoolean(configKeys.TOGGLE_TRAVELS_FREE) and 0) or parameters.cost, '%d gold'
 		if cost and cost > 0 then
 			if parameters.discount then
 				cost = cost - StdModule.travelDiscount(npc, player, parameters.discount)
@@ -194,7 +194,7 @@ if Modules == nil then
 			return false
 		end
 
-		local cost = parameters.cost
+		local cost = (configManager.getBoolean(configKeys.TOGGLE_TRAVELS_FREE) and 0) or parameters.cost
 		if cost and cost > 0 then
 			if parameters.discount then
 				cost = cost - StdModule.travelDiscount(npc, player, parameters.discount)
@@ -217,21 +217,17 @@ if Modules == nil then
 			npcHandler:say("First get rid of those blood stains! You are not going to ruin my vehicle!", npc, player)
 		elseif not player:removeMoneyBank(cost) then
 			npcHandler:say("You don't have enough money.", npc, player)
-		elseif os.time() < player:getStorageValue(Storage.NpcExhaust) then
+		elseif os.time() < player:getStorageValue(Global.Storage.NpcExhaust) then
 			npcHandler:say('Sorry, but you need to wait three seconds before travel again.', player)
 			playerPosition:sendMagicEffect(CONST_ME_POFF)
 		else
 			npcHandler:removeInteraction(npc, player)
 			npcHandler:say(parameters.text or "Set the sails!", npc, player)
-			playerPosition:sendMagicEffect(CONST_ME_TELEPORT)
 
 			local destination = parameters.destination
 			if type(destination) == 'function' then
 				destination = destination(player)
 			end
-
-			player:teleportTo(destination)
-			playerPosition:sendMagicEffect(CONST_ME_TELEPORT)
 
 			player:setStorageValue(NpcExhaust, 3 + os.time())
 			player:teleportTo(destination)
@@ -262,7 +258,7 @@ if Modules == nil then
 
 	-- Creates a new instance of FocusModule without an associated NpcHandler.
 	function FocusModule:new()
-		local obj = {}
+		local obj = { }
 		setmetatable(obj, self)
 		self.__index = self
 		return obj
@@ -276,7 +272,7 @@ if Modules == nil then
 			return false
 		end
 		for i, word in pairs(FOCUS_GREETWORDS) do
-			local obj = {}
+			local obj = { }
 			obj[#obj + 1] = word
 			obj.callback = FOCUS_GREETWORDS.callback or FocusModule.messageMatcher
 			handler.keywordHandler:addKeyword(obj, FocusModule.onGreet, {module = self})
@@ -286,7 +282,7 @@ if Modules == nil then
 			return false
 		end
 		for i, word in pairs(FOCUS_FAREWELLWORDS) do
-			local obj = {}
+			local obj = { }
 			obj[#obj + 1] = word
 			obj.callback = FOCUS_FAREWELLWORDS.callback or FocusModule.messageMatcher
 			handler.keywordHandler:addKeyword(obj, FocusModule.onFarewell, {module = self})
@@ -296,7 +292,7 @@ if Modules == nil then
 			return false
 		end
 		for i, word in pairs(FOCUS_TRADE_MESSAGE) do
-			local obj = {}
+			local obj = { }
 			obj[#obj + 1] = word
 			obj.callback = FOCUS_TRADE_MESSAGE.callback or FocusModule.messageMatcher
 			handler.keywordHandler:addKeyword(obj, FocusModule.onTradeRequest, {module = self})
@@ -307,7 +303,7 @@ if Modules == nil then
 	-- Set custom greeting messages
 	function FocusModule:addGreetMessage(message)
 		if not self.greetWords then
-			self.greetWords = {}
+			self.greetWords = { }
 		end
 
 
@@ -323,7 +319,7 @@ if Modules == nil then
 	-- Set custom farewell messages
 	function FocusModule:addFarewellMessage(message)
 		if not self.farewellWords then
-			self.farewellWords = {}
+			self.farewellWords = { }
 		end
 
 		if type(message) == 'string' then
@@ -387,7 +383,7 @@ if Modules == nil then
 	}
 
 	function KeywordModule:new()
-		local obj = {}
+		local obj = { }
 		setmetatable(obj, self)
 		self.__index = self
 		return obj
@@ -402,7 +398,7 @@ if Modules == nil then
 		for keys in string.gmatch(data, "[^;]+") do
 			local i = 1
 
-			local keywords = {}
+			local keywords = { }
 			for temp in string.gmatch(keys, "[^,]+") do
 				keywords[#keywords + 1] = temp
 				i = i + 1
@@ -430,7 +426,7 @@ if Modules == nil then
 	}
 
 	function TravelModule:new()
-		local obj = {}
+		local obj = { }
 		setmetatable(obj, self)
 		self.__index = self
 		return obj
@@ -440,7 +436,7 @@ if Modules == nil then
 		self.npcHandler = handler
 		self.yesNode = KeywordNode:new(SHOP_YESWORD, TravelModule.onConfirm, {module = self})
 		self.noNode = KeywordNode:new(SHOP_NOWORD, TravelModule.onDecline, {module = self})
-		self.destinations = {}
+		self.destinations = { }
 		return true
 	end
 
@@ -494,10 +490,10 @@ if Modules == nil then
 			premium = premium,
 			module = self
 		}
-		local keywords = {}
+		local keywords = { }
 		keywords[#keywords + 1] = name
 
-		local keywords2 = {}
+		local keywords2 = { }
 		keywords2[#keywords2 + 1] = "bring me to " .. name
 		local node = self.npcHandler.keywordHandler:addKeyword(keywords, TravelModule.travel, parameters)
 		self.npcHandler.keywordHandler:addKeyword(keywords2, TravelModule.bringMeTo, parameters)
@@ -515,7 +511,7 @@ if Modules == nil then
 			return false
 		end
 
-		local cost = parameters.cost
+		local cost = (configManager.getBoolean(configKeys.TOGGLE_TRAVELS_FREE) and 0) or parameters.cost
 
 		module.npcHandler:say(string.format("Do you want to travel to '%s' for '%d' gold coins?",
                               keywords[1], cost), npc, player)
@@ -530,7 +526,7 @@ if Modules == nil then
 
 		local npcHandler = module.npcHandler
 
-		local cost = parameters.cost
+		local cost = (configManager.getBoolean(configKeys.TOGGLE_TRAVELS_FREE) and 0) or parameters.cost
 		local destination = parameters.destination
 		local premium = parameters.premium
 

@@ -1,5 +1,5 @@
 local function shuffleTable(t)
-	local newTable = {}
+	local newTable = { }
 	for i = 1, #t do
 		randomId = math.random(1, #t)
 		newTable[#newTable + 1] = t[randomId]
@@ -11,7 +11,7 @@ end
 local arenaPosition = Position(32818, 32334, 9)
 
 local function doResetPillows()
-	local storePillows = {}
+	local storePillows = { }
 	for i = 0, 3 do
 		local pillowId = 2394 + i
 		for i = 1, 9 do

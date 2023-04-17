@@ -1,6 +1,6 @@
 local internalNpcName = "Grizzly Adams"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = {}
+local npcConfig = { }
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName
@@ -146,8 +146,8 @@ local function greetCallback(npc, creature)
 	end
 	return true
 end
-local choose = {}
-local cancel = {}
+local choose = { }
+local cancel = { }
 local KillCounter = Storage.Quest.U8_5.KillingInTheNameOf.MonsterKillCount.KillCount
 local messageYes = {
 	[1] = "Happy hunting, friend! When you have finished hunting, return here.",

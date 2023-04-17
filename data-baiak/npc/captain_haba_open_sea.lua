@@ -1,6 +1,6 @@
 local internalNpcName = "Captain Haba"
 local npcType = Game.createNpcType("Captain Haba (Open Sea)")
-local npcConfig = {}
+local npcConfig = { }
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName

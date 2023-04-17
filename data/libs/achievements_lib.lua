@@ -582,7 +582,7 @@ ACHIEVEMENT_LAST = #achievements
 function getAchievementInfoById(id)
 	for k, v in pairs(achievements) do
 		if k == id then
-			local t = {}
+			local t = { }
 			t.id = k
 			t.actionStorage = ACHIEVEMENTS_ACTION_BASE + k
 			for inf, it in pairs(v) do
@@ -597,7 +597,7 @@ end
 function getAchievementInfoByName(name)
 	for k, v in pairs(achievements) do
 		if v.name:lower() == name:lower() then
-			local t = {}
+			local t = { }
 			t.id = k
 			t.actionStorage = ACHIEVEMENTS_ACTION_BASE + k
 			for inf, it in pairs(v) do
@@ -610,7 +610,7 @@ function getAchievementInfoByName(name)
 end
 
 function getSecretAchievements()
-	local t = {}
+	local t = { }
 	for k, v in pairs(achievements) do
 		if v.secret then
 			t[#t + 1] = k
@@ -620,7 +620,7 @@ function getSecretAchievements()
 end
 
 function getPublicAchievements()
-	local t = {}
+	local t = { }
 	for k, v in pairs(achivements) do
 		if not v.secret then
 			t[#t + 1] = k
@@ -663,7 +663,7 @@ function Player.hasAchievement(self, ach)
 end
 
 function Player.getAchievements(self)
-	local t = {}
+	local t = { }
 	for k = 1, #achievements do
 		if self:hasAchievement(k) then
 			t[#t + 1] = k
@@ -726,7 +726,7 @@ function Player.removeAllAchievements(self)
 end
 
 function Player.getSecretAchievements(self)
-	local t = {}
+	local t = { }
 	for k, v in pairs(achievements) do
 		if self:hasAchievement(k) and v.secret then
 			t[#t + 1] = k
@@ -736,7 +736,7 @@ function Player.getSecretAchievements(self)
 end
 
 function Player.getPublicAchievements(self)
-	local t = {}
+	local t = { }
 	for k, v in pairs(achievements) do
 		if self:hasAchievement(k) and not v.secret then
 			t[#t + 1] = k

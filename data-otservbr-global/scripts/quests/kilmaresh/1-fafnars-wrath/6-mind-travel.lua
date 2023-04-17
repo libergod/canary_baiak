@@ -128,7 +128,7 @@ function energyField.onStepIn(creature, item, position, fromPosition)
         return true
     end
 
-    local playerShardIds = {}
+    local playerShardIds = { }
 
     -- Get player owned shards
     for i = 1, #shardIds do

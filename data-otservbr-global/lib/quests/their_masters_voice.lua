@@ -48,12 +48,12 @@ local servants = {
 	{100, "iron servant"}
 }
 
-slime_exhaust = slime_exhaust or {}
-slimes_removed = slimes_removed or {}
-current_servants = current_servants or {}
+slime_exhaust = slime_exhaust or { }
+slimes_removed = slimes_removed or { }
+current_servants = current_servants or { }
 current_mage = current_mage or 0
 current_wave = current_wave or 0
-valid_participants = valid_participants or {}
+valid_participants = valid_participants or { }
 
 function startServantWave()
 	current_wave = current_wave + 1
@@ -65,7 +65,7 @@ function startServantWave()
 		return
 	end
 
-	current_servants = {}
+	current_servants = { }
 	for pos_key = 1, #servant_positions do
 		local random = math.random(100)
 		for servant_key = 1, #servants do
@@ -88,7 +88,7 @@ function revertQuest()
 			servant:remove()
 		end
 	end
-	current_servants = {}
+	current_servants = { }
 
 	local mage = Creature(current_mage)
 	if mage then
@@ -102,7 +102,7 @@ function revertQuest()
 			ground:transform(slimes_removed[i].id)
 		end
 	end
-	slimes_removed = {}
+	slimes_removed = { }
 	current_wave = 0
 end
 

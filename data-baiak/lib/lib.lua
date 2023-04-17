@@ -85,7 +85,7 @@ dofile(DATA_DIRECTORY.. '/lib/custom/tournamentsCoin.lua')
 dofile(DATA_DIRECTORY.. '/lib/custom/vipAccount.lua')
 
 --Hireling
-dofile(DATA_DIRECTORY .. "/lib/hireling_lib.lua")
+dofile(DATA_DIRECTORY.. "/lib/hireling_lib.lua")
 
 -- Tournaments COIN p/ HORA System
 dofile(DATA_DIRECTORY.. '/lib/custom/karin.lua')

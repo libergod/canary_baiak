@@ -1,5 +1,5 @@
 string.split = function(str, sep)
-	local res = {}
+	local res = { }
 	for v in str:gmatch("([^" .. sep .. "]+)") do
 		res[#res + 1] = v
 	end
@@ -26,7 +26,7 @@ string.diff = function(diff)
         {'second', diff % 60}
     }
 
-    local out = {}
+    local out = { }
     for k, t in ipairs(format) do
         local v = math.floor(t[2])
         if(v > 0) then

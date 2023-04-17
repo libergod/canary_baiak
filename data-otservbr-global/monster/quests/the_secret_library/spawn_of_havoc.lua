@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Spawn of Havoc")
-local monster = {}
+local monster = { }
 
 monster.description = "a spawn of havoc"
 monster.experience = 0

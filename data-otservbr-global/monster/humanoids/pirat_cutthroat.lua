@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Pirat Cutthroat")
-local monster = {}
+local monster = { }
 
 monster.description = "a pirat cutthroat"
 monster.experience = 1800

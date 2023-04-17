@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #include "pch.hpp"
@@ -14,83 +14,83 @@
 
 namespace account {
 
-Account::Account() {
-  id_ = 0;
-  email_.clear();
-  password_.clear();
-  premium_remaining_days_ = 0;
-  premium_last_day_ = 0;
-  account_type_ = ACCOUNT_TYPE_NORMAL;
-  db_ = &Database::getInstance();
-  db_tasks_ = &g_databaseTasks();
-}
+	Account::Account() {
+		id_ = 0;
+		email_.clear();
+		password_.clear();
+		premium_remaining_days_ = 0;
+		premium_last_day_ = 0;
+		account_type_ = ACCOUNT_TYPE_NORMAL;
+		db_ = &Database::getInstance();
+		db_tasks_ = &g_databaseTasks();
+	}
 
-Account::Account(uint32_t id) {
-  id_ = id;
-  email_.clear();
-  password_.clear();
-  premium_remaining_days_ = 0;
-  premium_last_day_ = 0;
-  account_type_ = ACCOUNT_TYPE_NORMAL;
-  db_ = &Database::getInstance();
-  db_tasks_ = &g_databaseTasks();
-}
+	Account::Account(uint32_t id) {
+		id_ = id;
+		email_.clear();
+		password_.clear();
+		premium_remaining_days_ = 0;
+		premium_last_day_ = 0;
+		account_type_ = ACCOUNT_TYPE_NORMAL;
+		db_ = &Database::getInstance();
+		db_tasks_ = &g_databaseTasks();
+	}
 
-Account::Account(const std::string &email) : email_(email) {
-  id_ = 0;
-  password_.clear();
-  premium_remaining_days_ = 0;
-  premium_last_day_ = 0;
-  account_type_ = ACCOUNT_TYPE_NORMAL;
-  db_ = &Database::getInstance();
-  db_tasks_ = &g_databaseTasks();
-}
+	Account::Account(const std::string &email) :
+		email_(email) {
+		id_ = 0;
+		password_.clear();
+		premium_remaining_days_ = 0;
+		premium_last_day_ = 0;
+		account_type_ = ACCOUNT_TYPE_NORMAL;
+		db_ = &Database::getInstance();
+		db_tasks_ = &g_databaseTasks();
+	}
 
+	/*******************************************************************************
+	 * Interfaces
+	 ******************************************************************************/
 
-/*******************************************************************************
- * Interfaces
- ******************************************************************************/
+	error_t Account::SetDatabaseInterface(Database* database) {
+		if (database == nullptr) {
+			return ERROR_NULLPTR;
+		}
 
-error_t Account::SetDatabaseInterface(Database *database) {
-  if (database == nullptr) {
-    return ERROR_NULLPTR;
-  }
+		db_ = database;
+		return ERROR_NO;
+	}
 
-  db_ = database;
-  return ERROR_NO;
-}
+	error_t Account::SetDatabaseTasksInterface(DatabaseTasks* database_tasks) {
+		if (database_tasks == nullptr) {
+			return ERROR_NULLPTR;
+		}
 
-error_t Account::SetDatabaseTasksInterface(DatabaseTasks *database_tasks) {
-  if (database_tasks == nullptr) {
-    return ERROR_NULLPTR;
-  }
-
-  db_tasks_ = database_tasks;
-  return ERROR_NO;
-}
+		db_tasks_ = database_tasks;
+		return ERROR_NO;
+	}
 
 
 /*******************************************************************************
  * Coins Methods
  ******************************************************************************/
 
-error_t Account::GetCoins(uint32_t *coins) {
+	error_t Account::GetCoins(uint32_t* coins) {
 
-  if (db_ == nullptr || coins == nullptr || id_ == 0) {
-      return ERROR_NOT_INITIALIZED;
-  }
+		if (db_ == nullptr || coins == nullptr || id_ == 0) {
+			return ERROR_NOT_INITIALIZED;
+		}
 
-  std::ostringstream query;
-  query << "SELECT `coins` FROM `accounts` WHERE `id` = " << id_;
+		std::ostringstream query;
+		query << "SELECT `coins` FROM `accounts` WHERE `id` = " << id_;
 
-  DBResult_ptr result = db_->storeQuery(query.str());
-  if (!result) {
-      return ERROR_DB;
-  }
+		DBResult_ptr result = db_->storeQuery(query.str());
+		if (!result) {
+			return ERROR_DB;
+		}
 
-  *coins = result->getNumber<uint32_t>("coins");
-  return ERROR_NO;
-}
+		*coins = result->getNumber<uint32_t>("coins");
+		return ERROR_NO;
+	}
 
 // INICIO - GUSTAVO LIBER - 09/09/2022 - COIN TOURNAMENTS ADD
 error_t Account::GetCoinsTournaments(uint32_t* coins) {
@@ -114,12 +114,12 @@ error_t Account::GetCoinsTournaments(uint32_t* coins) {
 
 error_t Account::AddCoins(uint32_t amount) {
 
-  if (db_tasks_ == nullptr) {
-      return ERROR_NULLPTR;
-  }
-  if (amount == 0)  {
-    return ERROR_NO;
-  }
+	if (db_tasks_ == nullptr) {
+		return ERROR_NULLPTR;
+	}
+	if (amount == 0) {
+		return ERROR_NO;
+	}
 
   uint32_t current_coins = 0;
   this->GetCoins(&current_coins);
@@ -162,9 +162,9 @@ error_t Account::AddCoinsTournaments(uint32_t amount) {
 
 error_t Account::RemoveCoins(uint32_t amount) {
 
-  if (db_tasks_ == nullptr) {
-      return ERROR_NULLPTR;
-  }
+	if (db_tasks_ == nullptr) {
+		return ERROR_NULLPTR;
+	}
 
   if (amount == 0)  {
     return ERROR_NO;
@@ -214,9 +214,7 @@ error_t Account::RemoveCoinsTournaments(uint32_t amount) {
 }
 //FIM //GUSTAVO LIBER - 09/09/2022 - COIN TOURNAMENTS ADD
 
-error_t Account::RegisterCoinsTransaction(CoinTransactionType type,
-                                          uint32_t coins,
-                                          const std::string& description) {
+error_t Account::RegisterCoinsTransaction(CoinTransactionType type, uint32_t coins, const std::string &description) {
 
   if (db_ == nullptr) {
       return ERROR_NULLPTR;

@@ -1,6 +1,6 @@
 local internalNpcName = "Captain Max"
 local npcType = Game.createNpcType("Captain Max (Calassa)")
-local npcConfig = {}
+local npcConfig = { }
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName

@@ -1,4 +1,4 @@
-local combat = {}
+local combat = { }
 
 for i = 40, 170 do
 	for j = 1, 3 do

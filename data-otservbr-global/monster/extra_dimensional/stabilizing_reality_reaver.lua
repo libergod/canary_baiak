@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Stabilizing Reality Reaver")
-local monster = {}
+local monster = { }
 
 monster.description = "a stabilizing reality reaver"
 monster.experience = 1950

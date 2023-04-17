@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #ifndef SRC_CREATURES_PLAYERS_GROUPING_GROUPS_H_
@@ -14,7 +14,7 @@
 
 struct Group {
 	std::string name;
-	std::array<bool, magic_enum::enum_integer(PlayerFlags_t::FlagLast)> flags{false};
+	std::array<bool, magic_enum::enum_integer(PlayerFlags_t::FlagLast)> flags { false };
 	uint32_t maxDepotItems;
 	uint32_t maxVipEntries;
 	uint16_t id;
@@ -28,7 +28,7 @@ class Groups {
 		bool reload() const;
 		bool load();
 		Group* getGroup(uint16_t id);
-		std::vector<Group>& getGroups() {
+		std::vector<Group> &getGroups() {
 			return groups_vector;
 		}
 
@@ -36,4 +36,4 @@ class Groups {
 		std::vector<Group> groups_vector;
 };
 
-#endif  // SRC_CREATURES_PLAYERS_GROUPING_GROUPS_H_
+#endif // SRC_CREATURES_PLAYERS_GROUPING_GROUPS_H_

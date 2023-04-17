@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Deepling Guard")
-local monster = {}
+local monster = { }
 
 monster.description = "a deepling guard"
 monster.experience = 2100
@@ -25,7 +25,7 @@ monster.Bestiary = {
 	Occurrence = 0,
 	Locations = "Fiehonja. During Deeplings stage 1 around 10 spawns exist. \z
 		Also may spawn during the gemcutting mission. Many more spawns in almost all areas of Deepling stage 2 and 3."
-	}
+}
 
 monster.health = 1900
 monster.maxHealth = 1900
@@ -33,6 +33,9 @@ monster.race = "blood"
 monster.corpse = 13750
 monster.speed = 135
 monster.manaCost = 0
+
+monster.faction = FACTION_DEEPLING
+monster.enemyFactions = {FACTION_DEATHLING, FACTION_PLAYER}
 
 monster.changeTarget = {
 	interval = 4000,

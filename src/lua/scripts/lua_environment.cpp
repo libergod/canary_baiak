@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #include "pch.hpp"
@@ -42,15 +42,15 @@ bool LuaEnvironment::closeState() {
 		return false;
 	}
 
-	for (const auto & combatEntry: combatIdMap) {
+	for (const auto &combatEntry: combatIdMap) {
 		clearCombatObjects(combatEntry.first);
 	}
 
-	for (const auto & areaEntry: areaIdMap) {
+	for (const auto &areaEntry: areaIdMap) {
 		clearAreaObjects(areaEntry.first);
 	}
 
-	for (auto & timerEntry: timerEvents) {
+	for (auto &timerEntry: timerEvents) {
 		LuaTimerEventDesc timerEventDesc = std::move(timerEntry.second);
 		for (int32_t parameter: timerEventDesc.parameters) {
 			luaL_unref(luaState, LUA_REGISTRYINDEX, parameter);
@@ -76,7 +76,7 @@ LuaScriptInterface * LuaEnvironment::getTestInterface() {
 	return testInterface;
 }
 
-Combat * LuaEnvironment::getCombatObject(uint32_t id) const {
+std::shared_ptr<Combat> LuaEnvironment::getCombatObject(uint32_t id) const {
 	auto it = combatMap.find(id);
 	if (it == combatMap.end()) {
 		return nullptr;
@@ -84,30 +84,24 @@ Combat * LuaEnvironment::getCombatObject(uint32_t id) const {
 	return it -> second;
 }
 
-Combat * LuaEnvironment::createCombatObject(LuaScriptInterface * interface) {
-	Combat * combat = new Combat;
+std::shared_ptr<Combat> LuaEnvironment::createCombatObject(LuaScriptInterface* interface) {
+	auto combat = std::make_shared<Combat>();
 	combatMap[++lastCombatId] = combat;
 	combatIdMap[interface].push_back(lastCombatId);
 	return combat;
 }
 
-void LuaEnvironment::clearCombatObjects(LuaScriptInterface * interface) {
+void LuaEnvironment::clearCombatObjects(LuaScriptInterface* interface) {
 	auto it = combatIdMap.find(interface);
 	if (it == combatIdMap.end()) {
 		return;
 	}
 
-	for (uint32_t id: it -> second) {
-		auto itt = combatMap.find(id);
-		if (itt != combatMap.end()) {
-			delete itt -> second;
-			combatMap.erase(itt);
-		}
-	}
-	it -> second.clear();
+	it->second.clear();
+	combatMap.clear();
 }
 
-AreaCombat * LuaEnvironment::getAreaObject(uint32_t id) const {
+AreaCombat* LuaEnvironment::getAreaObject(uint32_t id) const {
 	auto it = areaMap.find(id);
 	if (it == areaMap.end()) {
 		return nullptr;
@@ -115,13 +109,13 @@ AreaCombat * LuaEnvironment::getAreaObject(uint32_t id) const {
 	return it -> second;
 }
 
-uint32_t LuaEnvironment::createAreaObject(LuaScriptInterface * interface) {
+uint32_t LuaEnvironment::createAreaObject(LuaScriptInterface* interface) {
 	areaMap[++lastAreaId] = new AreaCombat;
 	areaIdMap[interface].push_back(lastAreaId);
 	return lastAreaId;
 }
 
-void LuaEnvironment::clearAreaObjects(LuaScriptInterface * interface) {
+void LuaEnvironment::clearAreaObjects(LuaScriptInterface* interface) {
 	auto it = areaIdMap.find(interface);
 	if (it == areaIdMap.end()) {
 		return;
@@ -156,7 +150,7 @@ void LuaEnvironment::executeTimerEvent(uint32_t eventIndex) {
 
 	// call the function
 	if (reserveScriptEnv()) {
-		ScriptEnvironment * env = getScriptEnv();
+		ScriptEnvironment* env = getScriptEnv();
 		env -> setTimerEvent();
 		env -> setScriptId(timerEventDesc.scriptId, this);
 		callFunction(timerEventDesc.parameters.size());

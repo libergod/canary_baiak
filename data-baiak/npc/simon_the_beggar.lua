@@ -1,6 +1,6 @@
 local internalNpcName = "Simon The Beggar"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = {}
+local npcConfig = { }
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName
@@ -213,7 +213,7 @@ local node1 = keywordHandler:addKeyword({"addon"}, StdModule.say,
 					Just bring me 100 pieces of ape fur, which are necessary to create this potion. ... Do we have a deal?"
 	}
 )
-node1:addChildKeyword({"yes"}, BeggarSecond, {})
+node1:addChildKeyword({"yes"}, BeggarSecond, { })
 node1:addChildKeyword({"no"}, StdModule.say,
 	{
 		npcHandler = npcHandler,
@@ -230,7 +230,7 @@ local node2 = keywordHandler:addKeyword({"dress"}, StdModule.say,
 					Just bring me 100 pieces of ape fur, which are necessary to create this potion. ...Do we have a deal?"
 	}
 )
-node2:addChildKeyword({"yes"}, BeggarFirst, {})
+node2:addChildKeyword({"yes"}, BeggarFirst, { })
 node2:addChildKeyword({"no"}, StdModule.say,
 	{
 		npcHandler = npcHandler,
@@ -246,7 +246,7 @@ local node3 = keywordHandler:addKeyword({"staff"}, StdModule.say,
 		text = "To get beggar staff you need to give me simon the beggar's staff. Do you have it with you?"
 	}
 )
-node3:addChildKeyword({"yes"}, BeggarSecond, {})
+node3:addChildKeyword({"yes"}, BeggarSecond, { })
 node3:addChildKeyword({"no"}, StdModule.say,
 	{
 		npcHandler = npcHandler,
@@ -263,7 +263,7 @@ local node4 = keywordHandler:addKeyword({"outfit"}, StdModule.say,
 					Just bring me 100 pieces of ape fur, which are necessary to create this potion. ...Do we have a deal?"
 	}
 )
-node4:addChildKeyword({"yes"}, BeggarFirst, {})
+node4:addChildKeyword({"yes"}, BeggarFirst, { })
 node4:addChildKeyword({"no"}, StdModule.say,
 	{
 		npcHandler = npcHandler,

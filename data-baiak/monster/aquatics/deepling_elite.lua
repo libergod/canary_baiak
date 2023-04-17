@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Deepling Elite")
-local monster = {}
+local monster = { }
 
 monster.description = "a deepling elite"
 monster.experience = 3000
@@ -24,7 +24,7 @@ monster.Bestiary = {
 	Stars = 3,
 	Occurrence = 1,
 	Locations = "Fiehonja (Tanjis lair)."
-	}
+}
 
 monster.health = 3200
 monster.maxHealth = 3200
@@ -32,6 +32,9 @@ monster.race = "blood"
 monster.corpse = 13713
 monster.speed = 165
 monster.manaCost = 0
+
+monster.faction = FACTION_DEEPLING
+monster.enemyFactions = {FACTION_DEATHLING, FACTION_PLAYER}
 
 monster.changeTarget = {
 	interval = 4000,

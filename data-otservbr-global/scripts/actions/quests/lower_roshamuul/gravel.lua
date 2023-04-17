@@ -1,4 +1,4 @@
-local data = {}
+local data = { }
 
 local lowerRoshamuulGravel = Action()
 function lowerRoshamuulGravel.onUse(player, item, fromPosition, target, toPosition, isHotkey)

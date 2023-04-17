@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #include "pch.hpp"
@@ -15,18 +15,10 @@
 #include "utils/tools.h"
 
 int GlobalEventFunctions::luaCreateGlobalEvent(lua_State* L) {
-	// GlobalEvent(eventName)
-	if (getScriptEnv()->getScriptInterface() != &g_scripts().getScriptInterface()) {
-		reportErrorFunc("GlobalEvents can only be registered in the Scripts interface.");
-		lua_pushnil(L);
-		return 1;
-	}
-
 	GlobalEvent* global = new GlobalEvent(getScriptEnv()->getScriptInterface());
 	if (global) {
 		global->setName(getString(L, 2));
 		global->setEventType(GLOBALEVENT_NONE);
-		global->fromLua = true;
 		pushUserdata<GlobalEvent>(L, global);
 		setMetatable(L, -1, "GlobalEvent");
 	} else {
@@ -65,7 +57,7 @@ int GlobalEventFunctions::luaGlobalEventRegister(lua_State* L) {
 	// globalevent:register()
 	GlobalEvent* globalevent = getUserdata<GlobalEvent>(L, 1);
 	if (globalevent) {
-		if (!globalevent->isScripted()) {
+		if (!globalevent->isLoadedCallback()) {
 			pushBoolean(L, false);
 			return 1;
 		}

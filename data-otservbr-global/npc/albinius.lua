@@ -1,6 +1,6 @@
 local internalNpcName = "Albinius"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = {}
+local npcConfig = { }
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName
@@ -41,7 +41,7 @@ end
 local keywordHandler = KeywordHandler:new()
 local npcHandler = NpcHandler:new(keywordHandler)
 
-local talkState = {}
+local talkState = { }
 npcType.onAppear = function(npc, creature)
 	npcHandler:onAppear(npc, creature)
 end

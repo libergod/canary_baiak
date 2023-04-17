@@ -46,7 +46,7 @@ local spawnRaids = GlobalEvent("spawn raids")
 function spawnRaids.onThink(interval, lastExecution, thinkInterval)
 	local day, date = os.date('%A'), getRealDate()
 
-	local raidDays = {}
+	local raidDays = { }
 	if raids[day] then
 		raidDays[#raidDays + 1] = raids[day]
 	end

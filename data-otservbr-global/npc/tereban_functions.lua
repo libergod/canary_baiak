@@ -1,4 +1,4 @@
-local topic = {}
+local topic = { }
 
 local storages = {
 	Storage.FathersBurden.Sinew, Storage.FathersBurden.Wood,

@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("The Fear Feaster")
-local monster = {}
+local monster = { }
 
 monster.description = "The Fear Feaster"
 monster.experience = 13090

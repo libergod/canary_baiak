@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Robby The Reckless")
-local monster = {}
+local monster = { }
 
 monster.description = "Robby The Reckless"
 monster.experience = 110
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 4000,
 	chance = 5
+}
+
+monster.bosstiary = {
+	bossRaceId = 764,
+	bossRace = RARITY_NEMESIS
 }
 
 monster.strategiesTarget = {

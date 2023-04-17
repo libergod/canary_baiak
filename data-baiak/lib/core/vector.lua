@@ -1,4 +1,4 @@
-vector = {}
+vector = { }
 
 setmetatable(vector, {
 	__call = function(self, ...)

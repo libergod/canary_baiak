@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #ifndef SRC_ITEMS_CONTAINERS_DEPOT_DEPOTCHEST_H_
@@ -23,7 +23,7 @@ class DepotChest final : public Container
 		}
 
 		//cylinder implementations
-		ReturnValue queryAdd(int32_t index, const Thing& thing, uint32_t count,
+		ReturnValue queryAdd(int32_t index, const Thing &thing, uint32_t count,
 				uint32_t flags, Creature* actor = nullptr) const override;
 
 		void postAddNotification(Thing* thing, const Cylinder* oldParent, int32_t index, CylinderLink_t link = LINK_OWNER) override;
@@ -50,5 +50,5 @@ class DepotChest final : public Container
 		uint32_t maxDepotItems;
 };
 
-#endif  // SRC_ITEMS_CONTAINERS_DEPOT_DEPOTCHEST_H_
+#endif // SRC_ITEMS_CONTAINERS_DEPOT_DEPOTCHEST_H_
 

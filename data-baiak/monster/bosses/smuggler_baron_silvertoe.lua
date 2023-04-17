@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Smuggler Baron Silvertoe")
-local monster = {}
+local monster = { }
 
 monster.description = "Smuggler Baron Silvertoe"
 monster.experience = 170
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 4000,
 	chance = 10
+}
+
+monster.bosstiary = {
+	bossRaceId = 436,
+	bossRace = RARITY_NEMESIS
 }
 
 monster.strategiesTarget = {

@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #ifndef SRC_LUA_GLOBAL_BASEEVENTS_H_
@@ -31,7 +31,7 @@ class Event {
 		explicit Event(LuaScriptInterface* interface);
 		virtual ~Event() = default;
 
-		virtual bool configureEvent(const pugi::xml_node& node) = 0;
+		virtual bool configureEvent(const pugi::xml_node &node) = 0;
 
 		/**
         * @brief Test if script can be found and loaded.
@@ -48,8 +48,7 @@ class Event {
         * @return true Success, script can be loaded.
         * @return false Fail, script not found or couldn't be loaded.
         */
-		bool checkScript(const std::string& basePath, const std::string&
-							scriptsName, const std::string& scriptFile) const;
+		bool checkScript(const std::string &basePath, const std::string &scriptsName, const std::string &scriptFile) const;
 
 		/**
         * @brief Load the script file.
@@ -58,7 +57,7 @@ class Event {
         * @return true Success
         * @return false Fail
         */
-		bool loadScript(const std::string& scriptFile);
+		bool loadScript(const std::string &scriptFile, const std::string &scriptName);
 
 		/**
         * @brief Load script ID using the lua script interface
@@ -146,13 +145,13 @@ class BaseEvents {
         *
         * @param fromLua
         */
-		void reInitState(bool fromLua);
+		void reInitState();
 
 	private:
-		virtual LuaScriptInterface& getScriptInterface() = 0;
+		virtual LuaScriptInterface &getScriptInterface() = 0;
 		virtual std::string getScriptBaseName() const = 0;
-		virtual Event_ptr getEvent(const std::string& nodeName) = 0;
-		virtual bool registerEvent(Event_ptr event, const pugi::xml_node&
+		virtual Event_ptr getEvent(const std::string &nodeName) = 0;
+		virtual bool registerEvent(Event_ptr event, const pugi::xml_node &
 																	node) = 0;
 		virtual void clear(bool) = 0;
 
@@ -188,4 +187,4 @@ class CallBack {
 		bool loaded = false;
 };
 
-#endif  // SRC_BASEEVENTS_H_
+#endif // SRC_BASEEVENTS_H_

@@ -1,6 +1,6 @@
 local internalNpcName = "Cassino"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = {}
+local npcConfig = { }
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName
@@ -82,7 +82,7 @@ local function getBetValue()
 			return 0
 		end
 		
-		local tempMoney = {}
+		local tempMoney = { }
 		for _, item in pairs(items) do
 			if table.contains({3043, 3035, 3031}, item:getId()) then
 				value = value + getCoinValue(item:getId()) * item:getCount()
@@ -101,7 +101,7 @@ local function getBetValue()
 end
 
 local function createMoney(money)
-	local table = {}
+	local table = { }
 	local currentMoney = money
 	local crystals = math.floor(currentMoney / 10000)
 	currentMoney = currentMoney - crystals * 10000

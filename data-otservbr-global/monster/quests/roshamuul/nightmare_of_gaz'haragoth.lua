@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Nightmare of Gaz'haragoth")
-local monster = {}
+local monster = { }
 
 monster.description = "a nightmare of Gaz'haragoth"
 monster.experience = 0

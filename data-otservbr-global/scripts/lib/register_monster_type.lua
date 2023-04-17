@@ -1,4 +1,4 @@
-registerMonsterType = {}
+registerMonsterType = { }
 setmetatable(registerMonsterType,
 {
 	__call =

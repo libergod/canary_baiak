@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #include "lua/callbacks/creaturecallback.h"
@@ -34,7 +34,7 @@ bool CreatureCallback::startScriptInterface(int32_t scriptId) {
 	return true;
 }
 
-void CreatureCallback::pushSpecificCreature(Creature *creature) {
+void CreatureCallback::pushSpecificCreature(Creature* creature) {
 	if (Npc* npc = creature->getNpc()) {
 		LuaScriptInterface::pushUserdata<Npc>(L, npc);
 	}else if (Monster* monster = creature->getMonster()) {
@@ -49,7 +49,7 @@ void CreatureCallback::pushSpecificCreature(Creature *creature) {
 	LuaScriptInterface::setMetatable(L, -1, getCreatureClass(creature));
 }
 
-std::string CreatureCallback::getCreatureClass(Creature *creature) {
+std::string CreatureCallback::getCreatureClass(Creature* creature) {
 	if (creature->getNpc()) {
 		return "Npc";
 	}

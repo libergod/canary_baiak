@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Crazed Summer Rearguard")
-local monster = {}
+local monster = { }
 
 monster.description = "a Crazed Summer Rearguard"
 monster.experience = 4700

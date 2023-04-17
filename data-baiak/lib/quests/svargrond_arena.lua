@@ -11,9 +11,9 @@ SvargrondArena = {
 	rewardPosition = Position({x = 32222, y = 31080, z = 6}),
 
 	-- used to store event ids
-	kickEvents = {},
-	timerEvents = {},
-	effectPositionCache = {},
+	kickEvents = { },
+	timerEvents = { },
+	effectPositionCache = { },
 
 	-- item ids used by the script
 	itemTimer = 21464,
@@ -192,10 +192,10 @@ ARENA_TROPHY = {
 
 function SvargrondArena.getPitCreatures(pitId)
 	if not PITS[pitId] then
-		return {}
+		return { }
 	end
 
-	local ret = {}
+	local ret = { }
 	local specs = Game.getSpectators(PITS[pitId].center, false, false, 5, 5, 5, 5)
 	for i = 1, #specs do
 		ret[#ret+1] = specs[i]

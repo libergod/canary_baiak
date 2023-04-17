@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Hardened Usurper Archer")
-local monster = {}
+local monster = { }
 
 monster.description = "a hardened usurper archer"
 monster.experience = 0

@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("The Lily of Night")
-local monster = {}
+local monster = { }
 
 monster.description = "a the lily of night"
 monster.experience = 0

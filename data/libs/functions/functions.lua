@@ -41,6 +41,10 @@ end, "l")
 
 -- OTServBr-Global functions
 function getJackLastMissionState(player)
+	if not IsRunningGlobalDatapack() then
+		return true
+	end
+	
 	if player:getStorageValue(Storage.TibiaTales.JackFutureQuest.LastMissionState) == 1 then
 		return "You told Jack the truth about his personality. You also explained that you and Spectulus \z
 		made a mistake by assuming him as the real Jack."
@@ -431,7 +435,7 @@ function placeSpawnRandom(fromPositon, toPosition, monsterName, ammount, hasCall
 end
 
 function getMonstersInArea(fromPos, toPos, monsterName, ignoreMonsterId)
-	local monsters = {}
+	local monsters = { }
 	for _x = fromPos.x, toPos.x do
 		for _y = fromPos.y, toPos.y do
 			for _z = fromPos.z, toPos.z do
@@ -473,10 +477,10 @@ end
 
 function cleanAreaQuest(frompos, topos, itemtable, blockmonsters)
 	if not itemtable then
-		itemtable = {}
+		itemtable = { }
 	end
 	if not blockmonsters then
-		blockmonsters = {}
+		blockmonsters = { }
 	end
 	for _x = frompos.x, topos.x do
 		for _y = frompos.y, topos.y do
@@ -529,7 +533,7 @@ function kickerPlayerRoomAfferMin(playername, fromPosition, toPosition, teleport
 	if not players then
 		player = Player(playername)
 	end
-	local monster = {}
+	local monster = { }
 	if monsterName ~= "" then
 		monster = getMonstersInArea(fromPosition, toPosition, monsterName)
 	end
@@ -548,10 +552,10 @@ function kickerPlayerRoomAfferMin(playername, fromPosition, toPosition, teleport
 				end
 			else
 				if not itemtable then
-					itemtable = {}
+					itemtable = { }
 				end
 				if not blockmonsters then
-					blockmonsters = {}
+					blockmonsters = { }
 				end
 				cleanAreaQuest(fromPosition, toPosition, itemtable, blockmonsters)
 			end
@@ -571,10 +575,10 @@ function kickerPlayerRoomAfferMin(playername, fromPosition, toPosition, teleport
 				end
 			else
 				if not itemtable then
-					itemtable = {}
+					itemtable = { }
 				end
 				if not blockmonsters then
-					blockmonsters = {}
+					blockmonsters = { }
 				end
 				cleanAreaQuest(fromPosition, toPosition, itemtable, blockmonsters)
 			end
@@ -637,7 +641,7 @@ if not bosssPlayers then
 			local player = Player(cid)
 			if not player then return false end
 			if not self.players then
-				self.players = {}
+				self.players = { }
 			end
 			self.players[player:getId()] = 1
 		end,
@@ -674,7 +678,7 @@ end
 local logFormat = "[%s] %s %s"
 
 function logCommand(player, words, param)
-	local file = io.open(DATA_DIRECTORY .. "/logs/" .. player:getName() .. " commands.log", "a")
+	local file = io.open(CORE_DIRECTORY .. "/logs/" .. player:getName() .. " commands.log", "a")
 	if not file then
 		return
 	end
@@ -727,7 +731,7 @@ function indexToStr(i, v, buffer)
 end
 
 function serializeTable(t, buffer)
-	local buffer = buffer or {}
+	local buffer = buffer or { }
 	table.insert(buffer, "{")
 	for i, x in pairs(t) do
 		indexToStr(i, x, buffer)
@@ -737,14 +741,14 @@ function serializeTable(t, buffer)
 end
 
 function table.copy(t, out)
-	out = out or {}
+	out = out or { }
 	if type(t) ~= "table" then
 		return false
 	end
 
 	for i, x in pairs(t) do
 		if type(x) == "table" then
-			out[i] = {}
+			out[i] = { }
 			table.copy(t[i], out[i])
 		else
 			out[i] = x
@@ -764,19 +768,6 @@ function unserializeTable(str, out)
 	return table.copy(tmp, out)
 end
 
-local function setTableIndexes(t, i, v, ...)
-	if i and v then
-		t[i] = v
-		return setTableIndexes(t, ...)
-	end
-end
-
-local function getTableIndexes(t, i, ...)
-	if i then
-		return t[i], getTableIndexes(t, ...)
-	end
-end
-
 function unpack2(tab, i)
 	local i, v = next(tab, i)
 	if next(tab, i) then
@@ -794,39 +785,8 @@ function pack(t, ...)
 	return t
 end
 
-function Item:setSpecialAttribute(...)
-	local tmp
-	if self:hasAttribute(ITEM_ATTRIBUTE_SPECIAL) then
-		tmp = self:getAttribute(ITEM_ATTRIBUTE_SPECIAL)
-	else
-		tmp = "{}"
-	end
-
-	local tab = unserializeTable(tmp)
-	if tab then
-		setTableIndexes(tab, ...)
-		tmp = serializeTable(tab)
-		self:setAttribute(ITEM_ATTRIBUTE_SPECIAL, tmp)
-		return true
-	end
-end
-
-function Item:getSpecialAttribute(...)
-	local tmp
-	if self:hasAttribute(ITEM_ATTRIBUTE_SPECIAL) then
-		tmp = self:getAttribute(ITEM_ATTRIBUTE_SPECIAL)
-	else
-		tmp = "{}"
-	end
-
-	local tab = unserializeTable(tmp)
-	if tab then
-		return getTableIndexes(tab, ...)
-	end
-end
-
 if not PLAYER_STORAGE then
-	PLAYER_STORAGE = {}
+	PLAYER_STORAGE = { }
 end
 
 function Player:setSpecialStorage(storage, value)
@@ -847,13 +807,13 @@ end
 
 function Player:loadSpecialStorage()
 	if not PLAYER_STORAGE then
-		PLAYER_STORAGE = {}
+		PLAYER_STORAGE = { }
 	end
 
-	PLAYER_STORAGE[self:getGuid()] = {}
+	PLAYER_STORAGE[self:getGuid()] = { }
 	local resultId = db.storeQuery("SELECT * FROM `player_misc` WHERE `player_id` = " .. self:getGuid())
 	if resultId then
-		local info = Result.getStream(resultId , "info") or "{}"
+		local info = Result.getStream(resultId , "info") or "{ }"
 		unserializeTable(info, PLAYER_STORAGE[self:getGuid()])
 	end
 end

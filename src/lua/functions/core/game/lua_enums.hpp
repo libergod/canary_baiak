@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #ifndef SRC_LUA_FUNCTIONS_CORE_GAME_LUA_ENUMS_HPP_
@@ -19,6 +19,7 @@
 class LuaEnums final : LuaScriptInterface {
 public:
 	static void init(lua_State* L);
+
 private:
 	static void initOthersEnums(lua_State* L);
 	static void initAccountEnums(lua_State* L);
@@ -62,6 +63,7 @@ private:
 	static void initCreaturesEventEnums(lua_State* L);
 	static void initForgeEnums(lua_State* L);
 	static void initWebhookEnums(lua_State* L);
+	static void initBosstiaryEnums(lua_State* L);
 };
 
-#endif  // SRC_LUA_FUNCTIONS_CORE_GAME_LUA_ENUMS_HPP_
+#endif // SRC_LUA_FUNCTIONS_CORE_GAME_LUA_ENUMS_HPP_

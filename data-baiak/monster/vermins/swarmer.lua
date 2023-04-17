@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Swarmer")
-local monster = {}
+local monster = { }
 
 monster.description = "a swarmer"
 monster.experience = 350

@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #ifndef SRC_LUA_FUNCTIONS_CREATURES_NPC_NPC_FUNCTIONS_HPP_
@@ -47,7 +47,7 @@ class NpcFunctions final : LuaScriptInterface {
 				registerMethod(L, "Npc", "sellItem", NpcFunctions::luaNpcSellItem);
 
 				registerMethod(L, "Npc", "getDistanceTo", NpcFunctions::luaNpcGetDistanceTo);
-				
+
 				ShopFunctions::init(L);
 				NpcTypeFunctions::init(L);
 			}
@@ -77,7 +77,6 @@ class NpcFunctions final : LuaScriptInterface {
 			static int luaNpcCloseShopWindow(lua_State* L);
 			static int luaNpcGetShopItem(lua_State* L);
 			static int luaNpcIsMerchant(lua_State* L);
-
 			static int luaNpcMove(lua_State* L);
 			static int luaNpcTurn(lua_State* L);
 			static int luaNpcFollow(lua_State* L);
@@ -88,4 +87,4 @@ class NpcFunctions final : LuaScriptInterface {
 			friend class CreatureFunctions;
 };
 
-#endif  // SRC_LUA_FUNCTIONS_CREATURES_NPC_NPC_FUNCTIONS_HPP_
+#endif // SRC_LUA_FUNCTIONS_CREATURES_NPC_NPC_FUNCTIONS_HPP_

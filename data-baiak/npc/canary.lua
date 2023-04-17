@@ -1,7 +1,7 @@
 local npcName = "Canary"
 
 local npcType = Game.createNpcType(npcName)
-local npcConfig = {}
+local npcConfig = { }
 
 npcConfig.name = npcName
 npcConfig.description = npcName
@@ -59,7 +59,7 @@ npcType.onThink = function(npc, interval)
 	npcHandler:onThink(npc, interval)
 end
 
--- onAppear 
+-- onAppear
 npcType.onAppear = function(npc, creature)
 	npcHandler:onAppear(npc, creature)
 end

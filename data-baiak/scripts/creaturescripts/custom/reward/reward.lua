@@ -24,7 +24,7 @@ local function insertItems(buffer, info, parent, items)
 			if item:isContainer() then
 				local size = item:getSize()
 				if size > 0 then
-					local subItems = {}
+					local subItems = { }
 					for i = 1, size do
 						table.insert(subItems, item:getItem(i - 1))
 					end
@@ -63,7 +63,7 @@ local function insertRewardItems(playerGuid, timestamp, itemList)
 			}
 
 			local bag = Game.createItem(ITEM_REWARD_CONTAINER)
-			bag:setAttribute(ITEM_ATTRIBUTE_DATE, timestamp)
+			bag:setAttribute(ItemAttribute_t::DATE, timestamp)
 			if itemList then
 				for _, p in ipairs(itemList) do
 					bag:addItem(p[1], p[2])
@@ -115,7 +115,7 @@ function onDeath(creature, corpse, killer, mostDamageKiller, lastHitUnjustified,
 
 		local totalDamageOut, totalDamageIn, totalHealing = 0.1, 0.1, 0.1 -- avoid dividing by zero
 
-		local scores = {}
+		local scores = { }
 		local info = globalBosses[bossId]
 		local damageMap = creature:getDamageMap()
 

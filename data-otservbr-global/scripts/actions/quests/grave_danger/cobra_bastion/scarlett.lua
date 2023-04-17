@@ -29,7 +29,7 @@ end
 
 local graveScarlettUid = Action()
 function graveScarlettUid.onUse(player, item, fromPosition, target, toPosition, isHotkey)
-	local playersTable = {}
+	local playersTable = { }
 	if item:getUniqueId() == 40028 then
 		if player:doCheckBossRoom(info.bossName, info.fromPos, info.toPos) then
 			for x = info.middle.x - 1, info.middle.x + 1 do

@@ -40,7 +40,7 @@ function indexToStr(i, v, buffer)
 end
 
 function serializeTable(t, buffer)
-	local buffer = buffer or {}
+	local buffer = buffer or { }
 	table.insert(buffer, "{")
 	for i, x in pairs(t) do
 		indexToStr(i, x, buffer)
@@ -50,14 +50,14 @@ function serializeTable(t, buffer)
 end
 
 function table.copy(t, out)
-	out = out or {}
+	out = out or { }
 	if type(t) ~= "table" then
 		return false
 	end
 
 	for i, x in pairs(t) do
 		if type(x) == "table" then
-			out[i] = {}
+			out[i] = { }
 			table.copy(t[i], out[i])
 		else
 			out[i] = x
@@ -112,7 +112,7 @@ function Item:setSpecialAttribute(...)
 	if self:hasAttribute(ITEM_ATTRIBUTE_SPECIAL) then
 		tmp = self:getAttribute(ITEM_ATTRIBUTE_SPECIAL)
 	else
-		tmp = "{}"
+		tmp = "{ }"
 	end
 
 	local tab = unserializeTable(tmp)
@@ -129,7 +129,7 @@ function Item:getSpecialAttribute(...)
 	if self:hasAttribute(ITEM_ATTRIBUTE_SPECIAL) then
 		tmp = self:getAttribute(ITEM_ATTRIBUTE_SPECIAL)
 	else
-		tmp = "{}"
+		tmp = "{ }"
 	end
 
 	local tab = unserializeTable(tmp)
@@ -139,7 +139,7 @@ function Item:getSpecialAttribute(...)
 end
 
 if not PLAYER_STORAGE then
-	PLAYER_STORAGE = {}
+	PLAYER_STORAGE = { }
 end
 
 function Player:setSpecialStorage(storage, value)
@@ -160,13 +160,13 @@ end
 
 function Player:loadSpecialStorage()
 	if not PLAYER_STORAGE then
-		PLAYER_STORAGE = {}
+		PLAYER_STORAGE = { }
 	end
 
-	PLAYER_STORAGE[self:getGuid()] = {}
+	PLAYER_STORAGE[self:getGuid()] = { }
 	local resultId = db.storeQuery("SELECT * FROM `player_misc` WHERE `player_id` = " .. self:getGuid())
 	if resultId then
-		local info = result.getStream(resultId , "info") or "{}"
+		local info = result.getStream(resultId , "info") or "{ }"
 		unserializeTable(info, PLAYER_STORAGE[self:getGuid()])
 	end
 end

@@ -27,7 +27,7 @@ local combat = Combat()
 combat:setArea(createArea)
 
 function onTargetTile(creature, pos)
-	local creatureTable = {}
+	local creatureTable = { }
 	local n, i = Tile({x=pos.x, y=pos.y, z=pos.z}).creatures, 1
 	if n ~= 0 then
 		local v = getThingfromPos({x=pos.x, y=pos.y, z=pos.z, stackpos=i}).uid

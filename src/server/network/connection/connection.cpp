@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #include "pch.hpp"
@@ -16,7 +16,7 @@
 #include "game/scheduling/scheduler.h"
 #include "server/server.h"
 
-Connection_ptr ConnectionManager::createConnection(asio::io_service& io_service, ConstServicePort_ptr servicePort)
+Connection_ptr ConnectionManager::createConnection(asio::io_service &io_service, ConstServicePort_ptr servicePort)
 {
 	std::lock_guard<std::mutex> lockClass(connectionManagerLock);
 
@@ -25,7 +25,7 @@ Connection_ptr ConnectionManager::createConnection(asio::io_service& io_service,
 	return connection;
 }
 
-void ConnectionManager::releaseConnection(const Connection_ptr& connection)
+void ConnectionManager::releaseConnection(const Connection_ptr &connection)
 {
 	std::lock_guard<std::mutex> lockClass(connectionManagerLock);
 
@@ -40,7 +40,7 @@ void ConnectionManager::closeAll()
 		try {
 			std::error_code error;
 			connection->socket.shutdown(asio::ip::tcp::socket::shutdown_both, error);
-		} catch (const std::system_error& systemError) {
+		} catch (const std::system_error &systemError) {
 			SPDLOG_ERROR("[ConnectionManager::closeAll] - Failed to close connection, system error code {}", systemError.what());
 		}
 	}
@@ -49,7 +49,7 @@ void ConnectionManager::closeAll()
 
 // Connection
 // Constructor
-Connection::Connection(asio::io_service& initIoService, ConstServicePort_ptr initservicePort) :
+Connection::Connection(asio::io_service &initIoService, ConstServicePort_ptr initservicePort) :
 	readTimer(initIoService),
 	writeTimer(initIoService),
 	service_port(std::move(initservicePort)),
@@ -91,7 +91,7 @@ void Connection::closeSocket()
 			std::error_code error;
 			socket.shutdown(asio::ip::tcp::socket::shutdown_both, error);
 			socket.close(error);
-		} catch (const std::system_error& e) {
+		} catch (const std::system_error &e) {
 			SPDLOG_ERROR("[Connection::closeSocket] - error: {}", e.what());
 		}
 	}
@@ -125,13 +125,13 @@ void Connection::accept(bool toggleParseHeader /* = true */)
 									asio::buffer(msg.getBuffer(), HEADER_LENGTH),
 									std::bind(&Connection::parseProxyIdentification, shared_from_this(), std::placeholders::_1));
 		}
-	} catch (const std::system_error& e) {
+	} catch (const std::system_error &e) {
 		SPDLOG_ERROR("[Connection::accept] - error: {}", e.what());
 		close(FORCE_CLOSE);
 	}
 }
 
-void Connection::parseProxyIdentification(const std::error_code& error)
+void Connection::parseProxyIdentification(const std::error_code &error)
 {
 	std::lock_guard<std::recursive_mutex> lockClass(connectionLock);
 	readTimer.cancel();
@@ -165,7 +165,7 @@ void Connection::parseProxyIdentification(const std::error_code& error)
 											asio::buffer(msg.getBuffer(), remainder),
 											std::bind(&Connection::parseProxyIdentification, shared_from_this(), std::placeholders::_1));
 				}
-				catch (const std::system_error& e) {
+				catch (const std::system_error &e) {
 					SPDLOG_ERROR("Connection::parseProxyIdentification] - error: {}", e.what());
 					close(FORCE_CLOSE);
 				}
@@ -188,7 +188,7 @@ void Connection::parseProxyIdentification(const std::error_code& error)
 	accept(true);
 }
 
-void Connection::parseHeader(const std::error_code& error)
+void Connection::parseHeader(const std::error_code &error)
 {
 	std::lock_guard<std::recursive_mutex> lockClass(connectionLock);
 	readTimer.cancel();
@@ -227,13 +227,13 @@ void Connection::parseHeader(const std::error_code& error)
 		asio::async_read(socket,
 								asio::buffer(msg.getBodyBuffer(), size),
 		                        std::bind(&Connection::parsePacket, shared_from_this(), std::placeholders::_1));
-	} catch (const std::system_error& e) {
+	} catch (const std::system_error &e) {
 		SPDLOG_ERROR("[Connection::parseHeader] - error: {}", e.what());
 		close(FORCE_CLOSE);
 	}
 }
 
-void Connection::parsePacket(const std::error_code& error)
+void Connection::parsePacket(const std::error_code &error)
 {
 	std::lock_guard<std::recursive_mutex> lockClass(connectionLock);
 	readTimer.cancel();
@@ -295,7 +295,7 @@ void Connection::parsePacket(const std::error_code& error)
 			// Wait to the next packet
 			asio::async_read(socket, asio::buffer(msg.getBuffer(), HEADER_LENGTH), std::bind(&Connection::parseHeader, shared_from_this(), std::placeholders::_1));
 		}
-	} catch (const std::system_error& e) {
+	} catch (const std::system_error &e) {
 		SPDLOG_ERROR("[Connection::parsePacket] - error: {}", e.what());
 		close(FORCE_CLOSE);
 	}
@@ -308,13 +308,13 @@ void Connection::resumeWork()
 	try {
 		// Wait to the next packet
 		asio::async_read(socket, asio::buffer(msg.getBuffer(), HEADER_LENGTH), std::bind(&Connection::parseHeader, shared_from_this(), std::placeholders::_1));
-	} catch (const std::system_error& e) {
+	} catch (const std::system_error &e) {
 		SPDLOG_ERROR("[Connection::resumeWork] - error: {}", e.what());
 		close(FORCE_CLOSE);
 	}
 }
 
-void Connection::send(const OutputMessage_ptr& outputMessage)
+void Connection::send(const OutputMessage_ptr &outputMessage)
 {
 	std::lock_guard<std::recursive_mutex> lockClass(connectionLock);
 	if (connectionState == CONNECTION_STATE_CLOSED) {
@@ -327,7 +327,7 @@ void Connection::send(const OutputMessage_ptr& outputMessage)
 		// Make asio thread handle xtea encryption instead of dispatcher
 		try {
 			asio::post(socket.get_executor(), std::bind(&Connection::internalWorker, shared_from_this()));
-		} catch (const std::system_error& e) {
+		} catch (const std::system_error &e) {
 			SPDLOG_ERROR("[Connection::send] - error: {}", e.what());
 			messageQueue.clear();
 			close(FORCE_CLOSE);
@@ -339,7 +339,7 @@ void Connection::internalWorker()
 {
 	std::unique_lock<std::recursive_mutex> lockClass(connectionLock);
 	if (!messageQueue.empty()) {
-		const OutputMessage_ptr& outputMessage = messageQueue.front();
+		const OutputMessage_ptr &outputMessage = messageQueue.front();
 		lockClass.unlock();
 		protocol->onSendMessage(outputMessage);
 		lockClass.lock();
@@ -363,7 +363,7 @@ uint32_t Connection::getIP()
 	return htonl(endpoint.address().to_v4().to_ulong());
 }
 
-void Connection::internalSend(const OutputMessage_ptr& outputMessage)
+void Connection::internalSend(const OutputMessage_ptr &outputMessage)
 {
 	try {
 		writeTimer.expires_from_now(std::chrono::seconds(CONNECTION_WRITE_TIMEOUT));
@@ -372,12 +372,12 @@ void Connection::internalSend(const OutputMessage_ptr& outputMessage)
 		asio::async_write(socket,
 		                         asio::buffer(outputMessage->getOutputBuffer(), outputMessage->getLength()),
 		                         std::bind(&Connection::onWriteOperation, shared_from_this(), std::placeholders::_1));
-	} catch (const std::system_error& e) {
+	} catch (const std::system_error &e) {
 		SPDLOG_ERROR("[Connection::internalSend] - error: {}", e.what());
 	}
 }
 
-void Connection::onWriteOperation(const std::error_code& error)
+void Connection::onWriteOperation(const std::error_code &error)
 {
 	std::unique_lock<std::recursive_mutex> lockClass(connectionLock);
 	writeTimer.cancel();
@@ -390,7 +390,7 @@ void Connection::onWriteOperation(const std::error_code& error)
 	}
 
 	if (!messageQueue.empty()) {
-		const OutputMessage_ptr& outputMessage = messageQueue.front();
+		const OutputMessage_ptr &outputMessage = messageQueue.front();
 		lockClass.unlock();
 		protocol->onSendMessage(outputMessage);
 		lockClass.lock();
@@ -400,7 +400,7 @@ void Connection::onWriteOperation(const std::error_code& error)
 	}
 }
 
-void Connection::handleTimeout(ConnectionWeak_ptr connectionWeak, const std::error_code& error)
+void Connection::handleTimeout(ConnectionWeak_ptr connectionWeak, const std::error_code &error)
 {
 	if (error == asio::error::operation_aborted) {
 		//The timer has been manually cancelled

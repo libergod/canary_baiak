@@ -1,5 +1,5 @@
 
-local windowId = {}
+local windowId = { }
 for index, value in ipairs(windowTable) do
 	if not table.contains(windowId, value.openWindow) then
 		table.insert(windowId, value.openWindow)

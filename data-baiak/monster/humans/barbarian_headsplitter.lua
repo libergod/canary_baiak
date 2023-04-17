@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Barbarian Headsplitter")
-local monster = {}
+local monster = { }
 
 monster.description = "a barbarian headsplitter"
 monster.experience = 85

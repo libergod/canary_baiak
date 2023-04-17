@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("True Dawnfire Asura")
-local monster = {}
+local monster = { }
 
 monster.description = "a true dawnfire asura"
 monster.experience = 7475

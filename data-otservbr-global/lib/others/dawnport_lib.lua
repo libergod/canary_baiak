@@ -2,7 +2,7 @@ dofile(CORE_DIRECTORY .. "/libs/vocation.lua")
 
 Dawnport = {
 	skillsLimit = {
-		[VOCATION.ID.NONE] = {},
+		[VOCATION.ID.NONE] = { },
 		[VOCATION.ID.SORCERER] = {
 			[SKILL_MAGLEVEL] = 20
 		},

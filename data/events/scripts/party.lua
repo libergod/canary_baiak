@@ -12,7 +12,7 @@ end
 
 function Party:onShareExperience(exp)
 	local sharedExperienceMultiplier = 1.20 --20%
-	local vocationsIds = {}
+	local vocationsIds = { }
 
 	local vocationId = self:getLeader():getVocation():getBase():getId()
 	if vocationId ~= VOCATION_NONE then

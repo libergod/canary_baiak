@@ -2,7 +2,7 @@
 -- This prevents a player who has not yet done the quest, from crossing the player who has already done so, skipping the entire quest and going straight to the final reward.
 local closingDoor = MoveEvent()
 
-local doorIds = {}
+local doorIds = { }
 for index, value in ipairs(QuestDoorTable) do
     if not table.contains(doorIds, value.openDoor) then
         table.insert(doorIds, value.openDoor)
@@ -55,7 +55,7 @@ closingDoor:register()
 -- This closes the door after the player passes through it.
 local closingDoor = MoveEvent()
 
-local doorIds = {}
+local doorIds = { }
 for index, value in ipairs(QuestDoorTable) do
     if not table.contains(doorIds, value.openDoor) then
         table.insert(doorIds, value.openDoor)

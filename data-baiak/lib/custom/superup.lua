@@ -46,7 +46,7 @@ function SUPERUP:getCave(id)
 end
 
 function SUPERUP:freeCave()
-	freeCaves = {}
+	freeCaves = { }
 	local db = db.storeQuery("SELECT `hunt_id`, `to_time`, `guid_player` FROM exclusive_hunts")
 	if not db then
 		return

@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #ifndef SRC_SERVER_SERVER_DEFINITIONS_HPP_
@@ -134,4 +134,4 @@ struct HighscoreCharacter {
 	uint8_t vocation;
 };
 
-#endif  // SRC_SERVER_SERVER_DEFINITIONS_HPP_
+#endif // SRC_SERVER_SERVER_DEFINITIONS_HPP_

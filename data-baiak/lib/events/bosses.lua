@@ -137,7 +137,7 @@ function Bosses:removeMonstersInArea(fromPos,toPos)
 	if #spectators > 0 then
 		return false
 	else
-        --local monsters = {} 
+        --local monsters = { } 
         for Px = fromPos.x, toPos.x do
                 for Py = fromPos.y, toPos.y do
                     --local monster = Monster(getThingFromPos(Position(x,y,8)))

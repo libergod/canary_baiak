@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #ifndef SRC_IO_IO_DEFINITIONS_HPP_
@@ -90,4 +90,4 @@ struct MarketStatistics {
 	uint64_t lowestPrice;
 };
 
-#endif  // SRC_IO_IO_DEFINITIONS_HPP_
+#endif // SRC_IO_IO_DEFINITIONS_HPP_

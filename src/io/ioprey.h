@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #ifndef SRC_IO_IOPREY_H_
@@ -87,16 +87,16 @@ enum PreyTaskDifficult_t : uint8_t {
 
 class NetworkMessage;
 
-class PreySlot
-{
- public:
+class PreySlot {
+public:
 	PreySlot() = default;
 	explicit PreySlot(PreySlot_t id);
 	virtual ~PreySlot() = default;
 
 	bool isOccupied() const {
 		return selectedRaceId != 0 && bonusTimeLeft > 0;
-	}
+		}
+	
 
 	bool canSelect() const {
 		return (state == PreyDataState_Selection || state == PreyDataState_SelectionChangeMonster || state == PreyDataState_ListSelection || state == PreyDataState_Inactive);
@@ -138,8 +138,7 @@ class PreySlot
 	int64_t freeRerollTimeStamp = 0;
 };
 
-class TaskHuntingSlot
-{
+class TaskHuntingSlot {
  public:
 	TaskHuntingSlot() = default;
 	explicit TaskHuntingSlot(PreySlot_t id);
@@ -192,8 +191,7 @@ class TaskHuntingSlot
 	std::vector<uint16_t> raceIdList;
 };
 
-class TaskHuntingOption
-{
+class TaskHuntingOption {
  public:
 	TaskHuntingOption() = default;
 	virtual ~TaskHuntingOption() = default;
@@ -208,16 +206,15 @@ class TaskHuntingOption
 	uint16_t secondReward = 0;
 };
 
-class IOPrey
-{
+class IOPrey {
 public:
 	IOPrey() = default;
 
 	// non-copyable
-	IOPrey(IOPrey const&) = delete;
-	void operator=(IOPrey const&) = delete;
+	IOPrey(const IOPrey &) = delete;
+	void operator=(const IOPrey &) = delete;
 
-	static IOPrey& getInstance() {
+	static IOPrey &getInstance() {
 		// Guaranteed to be destroyed
 		static IOPrey instance;
 		// Instantiated on first use
@@ -246,4 +243,4 @@ public:
 
 constexpr auto g_ioprey = &IOPrey::getInstance;
 
-#endif  // SRC_IO_IOPREY_H_
+#endif // SRC_IO_IOPREY_H_

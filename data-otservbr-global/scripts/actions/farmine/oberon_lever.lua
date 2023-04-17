@@ -29,7 +29,7 @@ function oberonLever.onUse(creature, item, fromPosition, target, toPosition, isH
 		Game.createMonster("Oberon's Hate", Position({x = setting.Pillar1pos.x + 6, y = setting.Pillar1pos.y, z = setting.Pillar1pos.z}), false, true)
 		Game.createMonster("Oberon's Spite", Position({x = setting.Pillar1pos.x, y = setting.Pillar1pos.y + 4, z = setting.Pillar1pos.z}), false, true)
 		Game.createMonster("Oberon's Ire", Position({x = setting.Pillar1pos.x + 6, y = setting.Pillar1pos.y + 4, z = setting.Pillar1pos.z}), false, true)
-		local players = {}
+		local players = { }
 		for i = 0, 4 do
 			local player1 = Tile({x = (Position(item:getPosition()).x - 2) + i, y = Position(item:getPosition()).y + 1, z = Position(item:getPosition()).z}):getTopCreature()
 			players[#players+1] = player1

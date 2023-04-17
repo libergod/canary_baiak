@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #include "pch.hpp"
@@ -74,7 +74,7 @@ int LuaFunctionsLoader::protectedCall(lua_State* L, int nargs, int nresults) {
 	return ret;
 }
 
-void LuaFunctionsLoader::reportError(const char* function, const std::string& error_desc, bool stack_trace/* = false*/) {
+void LuaFunctionsLoader::reportError(const char* function, const std::string &error_desc, bool stack_trace/* = false*/) {
 	int32_t scriptId;
 	int32_t callbackId;
 	bool timerEvent;
@@ -82,26 +82,19 @@ void LuaFunctionsLoader::reportError(const char* function, const std::string& er
 	getScriptEnv()->getEventInfo(scriptId, scriptInterface, callbackId, timerEvent);
 
 	SPDLOG_ERROR("Lua script error: \nscriptInterface: [{}]\nscriptId: [{}]"
-                              "\ntimerEvent: [{}]\n callbackId:[{}]\nfunction: [{}]\nerror [{}]",
-                              scriptInterface ? scriptInterface->getInterfaceName() : "",
-                              scriptId 				? scriptInterface->getFileById(scriptId) : "",
-                              timerEvent 			? "in a timer event called from:" : "",
-                              callbackId 			? scriptInterface->getFileById(callbackId) : "",
-                              function 				? scriptInterface->getInterfaceName() : "",
-                              (stack_trace && scriptInterface) ?
-                              scriptInterface->getStackTrace(error_desc) : error_desc
-	);
+		"\ntimerEvent: [{}]\n callbackId:[{}]\nfunction: [{}]\nerror [{}]",
+		scriptInterface ? scriptInterface->getInterfaceName() : "", scriptId ? scriptInterface->getFileById(scriptId) : "", timerEvent ? "in a timer event called from:" : "", callbackId ? scriptInterface->getFileById(callbackId) : "", function ? scriptInterface->getInterfaceName() : "", (stack_trace && scriptInterface) ? scriptInterface->getStackTrace(error_desc) : error_desc);
 }
 
 int LuaFunctionsLoader::luaErrorHandler(lua_State* L) {
-	const std::string& errorMessage = popString(L);
+	const std::string &errorMessage = popString(L);
 	auto interface = getScriptEnv()->getScriptInterface();
 	assert(interface); //This fires if the ScriptEnvironment hasn't been setup
 	pushString(L, interface->getStackTrace(errorMessage));
 	return 1;
 }
 
-void LuaFunctionsLoader::pushVariant(lua_State* L, const LuaVariant& var) {
+void LuaFunctionsLoader::pushVariant(lua_State* L, const LuaVariant &var) {
 	lua_createtable(L, 0, 2);
 	setField(L, "type", var.type);
 	switch (var.type) {
@@ -161,7 +154,7 @@ void LuaFunctionsLoader::pushCylinder(lua_State* L, Cylinder* cylinder) {
 	}
 }
 
-void LuaFunctionsLoader::pushString(lua_State* L, const std::string& value) {
+void LuaFunctionsLoader::pushString(lua_State* L, const std::string &value) {
 	lua_pushlstring(L, value.c_str(), value.length());
 }
 
@@ -184,12 +177,12 @@ int32_t LuaFunctionsLoader::popCallback(lua_State* L) {
 }
 
 // Metatables
-void LuaFunctionsLoader::setMetatable(lua_State* L, int32_t index, const std::string& name) {
+void LuaFunctionsLoader::setMetatable(lua_State* L, int32_t index, const std::string &name) {
 	luaL_getmetatable(L, name.c_str());
 	lua_setmetatable(L, index - 1);
 }
 
-void LuaFunctionsLoader::setWeakMetatable(lua_State* L, int32_t index, const std::string& name) {
+void LuaFunctionsLoader::setWeakMetatable(lua_State* L, int32_t index, const std::string &name) {
 	static std::set<std::string> weakObjectTypes;
 	const std::string& weakName = name + "_weak";
 
@@ -266,7 +259,7 @@ std::string LuaFunctionsLoader::getString(lua_State* L, int32_t arg) {
 	return std::string(c_str, len);
 }
 
-Position LuaFunctionsLoader::getPosition(lua_State* L, int32_t arg, int32_t& stackpos) {
+Position LuaFunctionsLoader::getPosition(lua_State* L, int32_t arg, int32_t &stackpos) {
 	Position position;
 	position.x = getField<uint16_t>(L, arg, "x");
 	position.y = getField<uint16_t>(L, arg, "y");
@@ -395,7 +388,7 @@ Player* LuaFunctionsLoader::getPlayer(lua_State* L, int32_t arg) {
 	return g_game().getPlayerByID(getNumber<uint32_t>(L, arg));
 }
 
-std::string LuaFunctionsLoader::getFieldString(lua_State* L, int32_t arg, const std::string& key) {
+std::string LuaFunctionsLoader::getFieldString(lua_State* L, int32_t arg, const std::string &key) {
 	lua_getfield(L, arg, key.c_str());
 	return getString(L, -1);
 }
@@ -417,7 +410,7 @@ void LuaFunctionsLoader::pushBoolean(lua_State* L, bool value) {
 	lua_pushboolean(L, value ? 1 : 0);
 }
 
-void LuaFunctionsLoader::pushCombatDamage(lua_State* L, const CombatDamage& damage) {
+void LuaFunctionsLoader::pushCombatDamage(lua_State* L, const CombatDamage &damage) {
 	lua_pushnumber(L, damage.primary.value);
 	lua_pushnumber(L, damage.primary.type);
 	lua_pushnumber(L, damage.secondary.value);
@@ -425,7 +418,7 @@ void LuaFunctionsLoader::pushCombatDamage(lua_State* L, const CombatDamage& dama
 	lua_pushnumber(L, damage.origin);
 }
 
-void LuaFunctionsLoader::pushInstantSpell(lua_State* L, const InstantSpell& spell) {
+void LuaFunctionsLoader::pushInstantSpell(lua_State* L, const InstantSpell &spell) {
 	lua_createtable(L, 0, 6);
 
 	setField(L, "name", spell.getName());
@@ -438,7 +431,7 @@ void LuaFunctionsLoader::pushInstantSpell(lua_State* L, const InstantSpell& spel
 	setMetatable(L, -1, "Spell");
 }
 
-void LuaFunctionsLoader::pushPosition(lua_State* L, const Position& position, int32_t stackpos/* = 0*/) {
+void LuaFunctionsLoader::pushPosition(lua_State* L, const Position &position, int32_t stackpos/* = 0*/) {
 	lua_createtable(L, 0, 4);
 
 	setField(L, "x", position.x);
@@ -449,7 +442,7 @@ void LuaFunctionsLoader::pushPosition(lua_State* L, const Position& position, in
 	setMetatable(L, -1, "Position");
 }
 
-void LuaFunctionsLoader::pushOutfit(lua_State* L, const Outfit_t& outfit) {
+void LuaFunctionsLoader::pushOutfit(lua_State* L, const Outfit_t &outfit) {
 	lua_createtable(L, 0, 13);
 	setField(L, "lookType", outfit.lookType);
 	setField(L, "lookTypeEx", outfit.lookTypeEx);
@@ -466,7 +459,7 @@ void LuaFunctionsLoader::pushOutfit(lua_State* L, const Outfit_t& outfit) {
 	setField(L, "lookFamiliarsType", outfit.lookFamiliarsType);
 }
 
-void LuaFunctionsLoader::registerClass(lua_State* L, const std::string& className, const std::string& baseClass, lua_CFunction newFunction/* = nullptr*/) {
+void LuaFunctionsLoader::registerClass(lua_State* L, const std::string &className, const std::string &baseClass, lua_CFunction newFunction/* = nullptr*/) {
 	// className = {}
 	lua_newtable(L);
 	lua_pushvalue(L, -1);
@@ -539,7 +532,7 @@ void LuaFunctionsLoader::registerClass(lua_State* L, const std::string& classNam
 	lua_pop(L, 2);
 }
 
-void LuaFunctionsLoader::registerMethod(lua_State* L, const std::string& globalName, const std::string& methodName, lua_CFunction func) {
+void LuaFunctionsLoader::registerMethod(lua_State* L, const std::string &globalName, const std::string &methodName, lua_CFunction func) {
 	// globalName.methodName = func
 	lua_getglobal(L, globalName.c_str());
 	lua_pushcfunction(L, func);
@@ -549,13 +542,13 @@ void LuaFunctionsLoader::registerMethod(lua_State* L, const std::string& globalN
 	lua_pop(L, 1);
 }
 
-void LuaFunctionsLoader::registerTable(lua_State* L, const std::string& tableName) {
+void LuaFunctionsLoader::registerTable(lua_State* L, const std::string &tableName) {
 	// _G[tableName] = {}
 	lua_newtable(L);
 	lua_setglobal(L, tableName.c_str());
 }
 
-void LuaFunctionsLoader::registerMetaMethod(lua_State* L, const std::string& className, const std::string& methodName, lua_CFunction func) {
+void LuaFunctionsLoader::registerMetaMethod(lua_State* L, const std::string &className, const std::string &methodName, lua_CFunction func) {
 	// className.metatable.methodName = func
 	luaL_getmetatable(L, className.c_str());
 	lua_pushcfunction(L, func);
@@ -565,7 +558,7 @@ void LuaFunctionsLoader::registerMetaMethod(lua_State* L, const std::string& cla
 	lua_pop(L, 1);
 }
 
-void LuaFunctionsLoader::registerVariable(lua_State* L, const std::string& tableName, const std::string& name, lua_Number value) {
+void LuaFunctionsLoader::registerVariable(lua_State* L, const std::string &tableName, const std::string &name, lua_Number value) {
 	// tableName.name = value
 	lua_getglobal(L, tableName.c_str());
 	setField(L, name.c_str(), value);
@@ -574,31 +567,31 @@ void LuaFunctionsLoader::registerVariable(lua_State* L, const std::string& table
 	lua_pop(L, 1);
 }
 
-void LuaFunctionsLoader::registerGlobalBoolean(lua_State* L, const std::string& name, bool value) {
+void LuaFunctionsLoader::registerGlobalBoolean(lua_State* L, const std::string &name, bool value) {
 	// _G[name] = value
 	pushBoolean(L, value);
 	lua_setglobal(L, name.c_str());
 }
 
-void LuaFunctionsLoader::registerGlobalMethod(lua_State* L, const std::string& functionName, lua_CFunction func) {
+void LuaFunctionsLoader::registerGlobalMethod(lua_State* L, const std::string &functionName, lua_CFunction func) {
 	// _G[functionName] = func
 	lua_pushcfunction(L, func);
 	lua_setglobal(L, functionName.c_str());
 }
 
-void LuaFunctionsLoader::registerGlobalVariable(lua_State* L, const std::string& name, lua_Number value) {
+void LuaFunctionsLoader::registerGlobalVariable(lua_State* L, const std::string &name, lua_Number value) {
 	// _G[name] = value
 	lua_pushnumber(L, value);
 	lua_setglobal(L, name.c_str());
 }
 
-void LuaFunctionsLoader::registerGlobalString(lua_State* L, const std::string& variable, const std::string &name) {
+void LuaFunctionsLoader::registerGlobalString(lua_State* L, const std::string &variable, const std::string &name) {
 	// Example: registerGlobalString(L, "VARIABLE_NAME", "variable string");
 	pushString(L, name);
 	lua_setglobal(L, variable.c_str());
 }
 
-std::string LuaFunctionsLoader::escapeString(const std::string& string) {
+std::string LuaFunctionsLoader::escapeString(const std::string &string) {
 	std::string s = string;
 	replaceString(s, "\\", "\\\\");
 	replaceString(s, "\"", "\\\"");

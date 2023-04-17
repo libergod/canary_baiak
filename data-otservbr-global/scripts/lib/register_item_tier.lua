@@ -1,4 +1,4 @@
-registerItemClassification = {}
+registerItemClassification = { }
 setmetatable(registerItemClassification,
 {
 	__call =

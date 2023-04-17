@@ -1,6 +1,6 @@
 local internalNpcName = "Strange Pipe"
 local npcType = Game.createNpcType("Strange Pipe (3)")
-local npcConfig = {}
+local npcConfig = { }
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName

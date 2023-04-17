@@ -472,7 +472,7 @@ function parseRequestTransactionHistory(playerId, msg)
 end
 
 local function getCategoriesRook()
-	local tmpTable, count = {}, 0
+	local tmpTable, count = { }, 0
 	for i, v in pairs(GameStore.Categories) do
 		if (v.rookgaard) then
 			tmpTable[#tmpTable + 1] = v
@@ -711,14 +711,14 @@ function sendShowStoreOffers(playerId, category, redirectId)
 		return
 	end
 
-	local offers = {}
+	local offers = { }
 	local count = 0
 	for k, offer in ipairs(category.offers) do
 		local name = offer.name or "Something Special"
 		if not offers[name] then
-			offers[name] = {}
+			offers[name] = { }
 			count = count + 1
-			offers[name].offers = {}
+			offers[name].offers = { }
 			offers[name].state = offer.state
 			offers[name].id = offer.id
 			offers[name].type = offer.type
@@ -1040,7 +1040,7 @@ end
 
 -- Using for multi offer
 function GameStore.getOffersByName(name)
-	local offers = {}
+	local offers = { }
 	for Cat_k, category in ipairs(GameStore.Categories) do
 		if category.offers then
 			for Off_k, offer in ipairs(category.offers) do
@@ -1092,7 +1092,7 @@ GameStore.retrieveHistoryTotalPages = function (accountId)
 end
 
 GameStore.retrieveHistoryEntries = function(accountId, currentPage, entriesPerPage)
-	local entries = {}
+	local entries = { }
 	local offset = currentPage > 1 and entriesPerPage * (currentPage - 1) or 0
 
 	local resultId = db.storeQuery("SELECT * FROM `store_history` WHERE `account_id` = " .. accountId .. " ORDER BY `time` DESC LIMIT " .. offset .. ", " .. entriesPerPage .. ";")
@@ -1245,7 +1245,7 @@ GameStore.canChangeToName = function(name)
 		return result
 	end
 
-	local letters = "{}|_*+-=<>0123456789@#%^&()/*'\\.,:;~!\"$"
+	local letters = "{ }|_*+-=<>0123456789@#%^&()/*'\\.,:;~!\"$"
 	for i = 1, letters:len() do
 		local c = letters:sub(i, i)
 		for i = 1, name:len() do
@@ -1349,7 +1349,7 @@ function GameStore.processStackablePurchase(player, offerId, offerCount, offerNa
 		if (isKeg and offerCount > 500) or offerCount > 100 then
 			local parcel = inbox:addItem(PARCEL_ID, 1)
 			if parcel then
-				parcel:setAttribute(ITEM_ATTRIBUTE_NAME, '' .. offerCount .. 'x ' .. offerName .. ' package.')
+				parcel:setAttribute(ItemAttribute_t::NAME, '' .. offerCount .. 'x ' .. offerName .. ' package.')
 				local pendingCount = offerCount
 				local limit = isKeg and 500 or 100
 				while (pendingCount > 0) do
@@ -1361,7 +1361,7 @@ function GameStore.processStackablePurchase(player, offerId, offerCount, offerNa
 					end
 					if isKeg then
 						local kegItem = parcel:addItem(offerId, 1)
-						kegItem:setAttribute(ITEM_ATTRIBUTE_CHARGES, pack)
+						kegItem:setAttribute(ItemAttribute_t::CHARGES, pack)
 					else
 						parcel:addItem(offerId, pack)
 					end
@@ -1371,7 +1371,7 @@ function GameStore.processStackablePurchase(player, offerId, offerCount, offerNa
 		else
 			local item = inbox:addItem(offerId, isKeg and 1 or offerCount)
 			if item and isKeg then
-				item:setAttribute(ITEM_ATTRIBUTE_CHARGES, offerCount)
+				item:setAttribute(ItemAttribute_t::CHARGES, offerCount)
 			end
 		end
 	else
@@ -1390,10 +1390,10 @@ function GameStore.processHouseRelatedPurchase(player, offerId, offerCount)
 	if inbox and inbox:getEmptySlots() > 0 then
 		local decoKit = inbox:addItem(23398, 1)
 		if decoKit then
-			decoKit:setAttribute(ITEM_ATTRIBUTE_DESCRIPTION, "You bought this item in the Store.\nUnwrap it in your own house to create a <" .. ItemType(offerId):getName() .. ">.")
+			decoKit:setAttribute(ItemAttribute_t::DESCRIPTION, "You bought this item in the Store.\nUnwrap it in your own house to create a <" .. ItemType(offerId):getName() .. ">.")
 			decoKit:setCustomAttribute("unWrapId", offerId)
 			if isCaskItem(offerId) then
-				decoKit:setAttribute(ITEM_ATTRIBUTE_DATE, offerCount)
+				decoKit:setAttribute(ItemAttribute_t::DATE, offerCount)
 			end
 		end
 	else
@@ -1772,11 +1772,11 @@ end
 
 local function getHomeOffers(playerId)
 	local player = Player(playerId)
-	if not player then return {} end
+	if not player then return { } end
 
 	local GameStoreCategories = GameStore.Categories
 
-	local offers = {}
+	local offers = { }
 	if (GameStoreCategories) then
 		for k, category in ipairs(GameStoreCategories) do
 			if category.offers then
@@ -1915,7 +1915,7 @@ function HandleHirelingNameChange(playerId, offer, newHirelingName)
 		
 		local lamp = player:findHirelingLamp(hireling:getId())
 		if lamp then
-			lamp:setAttribute(ITEM_ATTRIBUTE_DESCRIPTION, "This mysterious lamp summons your very own personal hireling.\nThis item cannot be traded.\nThis magic lamp is the home of " .. hireling:getName() .. ".")
+			lamp:setAttribute(ItemAttribute_t::DESCRIPTION, "This mysterious lamp summons your very own personal hireling.\nThis item cannot be traded.\nThis magic lamp is the home of " .. hireling:getName() .. ".")
 		end
 		
 		Spdlog.debug(string.format('%s has been renamed to %s', oldName, newHirelingName))

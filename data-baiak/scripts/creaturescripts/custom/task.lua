@@ -4,7 +4,7 @@ function onKill(player, target)
 		{x = playerPos.x - 7, y = playerPos.y - 5, playerPos.z},
 		{x = playerPos.x + 7, y = playerPos.y + 5, playerPos.z},
 	}
-	local partyList = {}
+	local partyList = { }
 	if target:isPlayer()  or target:getMaster() then
 		return true
 	end

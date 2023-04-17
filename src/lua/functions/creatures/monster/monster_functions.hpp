@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #ifndef SRC_LUA_FUNCTIONS_CREATURES_MONSTER_MONSTER_FUNCTIONS_HPP_
@@ -96,17 +96,17 @@ class MonsterFunctions final : LuaScriptInterface {
 		static int luaMonsterSetSpawnPosition(lua_State* L);
 		static int luaMonsterGetRespawnType(lua_State* L);
 
-		static int luaMonsterGetTimeToChangeFiendish(lua_State *L);
-		static int luaMonsterSetTimeToChangeFiendish(lua_State *L);
-		static int luaMonsterGetMonsterForgeClassification(lua_State *L);
-		static int luaMonsterSetMonsterForgeClassification(lua_State *L);
-		static int luaMonsterGetForgeStack(lua_State *L);
-		static int luaMonsterSetForgeStack(lua_State *L);
-		static int luaMonsterConfigureForgeSystem(lua_State *L);
-		static int luaMonsterClearFiendishStatus(lua_State *L);
-		static int luaMonsterIsForgeable(lua_State *L);
+		static int luaMonsterGetTimeToChangeFiendish(lua_State* L);
+		static int luaMonsterSetTimeToChangeFiendish(lua_State* L);
+		static int luaMonsterGetMonsterForgeClassification(lua_State* L);
+		static int luaMonsterSetMonsterForgeClassification(lua_State* L);
+		static int luaMonsterGetForgeStack(lua_State* L);
+		static int luaMonsterSetForgeStack(lua_State* L);
+		static int luaMonsterConfigureForgeSystem(lua_State* L);
+		static int luaMonsterClearFiendishStatus(lua_State* L);
+		static int luaMonsterIsForgeable(lua_State* L);
 
 		friend class CreatureFunctions;
 };
 
-#endif  // SRC_LUA_FUNCTIONS_CREATURES_MONSTER_MONSTER_FUNCTIONS_HPP_
+#endif // SRC_LUA_FUNCTIONS_CREATURES_MONSTER_MONSTER_FUNCTIONS_HPP_

@@ -1,5 +1,5 @@
-local count = {}
-local transfer = {}
+local count = { }
+local transfer = { }
 local receiptFormat = "Date: %s\nType: %s\nGold Amount: %d\nReceipt Owner: %s\nRecipient: %s\n\n%s"
 
 function Npc:parseBankMessages(message, npc, creature, npcHandler)
@@ -621,7 +621,7 @@ end
 
 function GetReceipt(info)
 	local receipt = Game.createItem(info.success and 19598 or 19599)
-	receipt:setAttribute(ITEM_ATTRIBUTE_TEXT, receiptFormat:format(os.date("%d. %b %Y - %H:%M:%S"),
+	receipt:setAttribute(ItemAttribute_t::TEXT, receiptFormat:format(os.date("%d. %b %Y - %H:%M:%S"),
                          info.type, info.amount, info.owner, info.recipient, info.message))
 
 	return receipt

@@ -1,5 +1,5 @@
 if not FERTILIZED_MUSHROOMS then
-	FERTILIZED_MUSHROOMS = {}
+	FERTILIZED_MUSHROOMS = { }
 end
 
 local spikeTasksFertilizer = Action()
@@ -13,7 +13,7 @@ function spikeTasksFertilizer.onUse(player, item, fromPosition, target, toPositi
 	end
 
 	if not FERTILIZED_MUSHROOMS[player:getGuid()] then
-		FERTILIZED_MUSHROOMS[player:getGuid()] = {}
+		FERTILIZED_MUSHROOMS[player:getGuid()] = { }
 	end
 
 	local mushPos = Position(toPosition.x, toPosition.y, toPosition.z)

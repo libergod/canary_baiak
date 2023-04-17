@@ -42,12 +42,12 @@ BATTLEFIELD = {
 	["red"] = {
 		base = Position(1537, 1080, 6),
 		outfit = {lookType = 143, lookHead = 94, lookBody = 94, lookLegs = 94, lookFeet = 94},
-		players = {},
+		players = { },
 	},
 	["blue"] = {
 		base = Position(1553, 1080, 6),
 		outfit = {lookType = 134, lookHead = 88, lookBody = 88, lookLegs = 88, lookFeet = 88},
-		players = {},
+		players = { },
 	},
 	idWalls = 3516,
 	actionID = 6489,
@@ -94,11 +94,11 @@ function BATTLEFIELD:insertPlayer(playerId)
 	local player = Player(playerId)
 
 	if BATTLEFIELD:redPlayers() > BATTLEFIELD:bluePlayers() then
-		BATTLEFIELD["blue"].players[player:getId()] = {}
+		BATTLEFIELD["blue"].players[player:getId()] = { }
 		player:sendCancelMessage(BATTLEFIELD.messages.prefix .."Você entrou para o time azul.")
 		player:setOutfit(BATTLEFIELD["blue"].outfit)
 	else
-		BATTLEFIELD["red"].players[player:getId()] = {}
+		BATTLEFIELD["red"].players[player:getId()] = { }
 		player:sendCancelMessage(BATTLEFIELD.messages.prefix .."Você entrou para o time vermelho.")
 		player:setOutfit(BATTLEFIELD["red"].outfit)
 	end

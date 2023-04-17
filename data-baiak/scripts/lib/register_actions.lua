@@ -7,9 +7,8 @@ local Itemsgrinder = {
 	[16122] = {item_id = 21507, effect = CONST_ME_GREENSMOKE} -- Pinch of crystal dust
 	}
 
-local holes = {
-	593, 606, 608, 867, 21341
-}
+
+local holes = {593, 606, 608, 867, 21341} -- holes opened by shovel
 
 local JUNGLE_GRASS = {
 	3696, 3702, 17153
@@ -259,7 +258,7 @@ function onDestroyItem(player, item, fromPosition, target, toPosition, isHotkey)
 		return false
 	end
 
-	if target:hasAttribute(ITEM_ATTRIBUTE_UNIQUEID) or target:hasAttribute(ITEM_ATTRIBUTE_ACTIONID) then
+	if target:hasAttribute(ItemAttribute_t::UNIQUEID) or target:hasAttribute(ItemAttribute_t::ACTIONID) then
 		return false
 	end
 
@@ -387,6 +386,13 @@ function onUseShovel(player, item, fromPosition, target, toPosition, isHotkey)
 	if table.contains(holes, target.itemid) then
 		target:transform(target.itemid + 1)
 		target:decay()
+		toPosition:moveDownstairs()
+		toPosition.y = toPosition.y - 1
+		if Tile(toPosition):hasFlag(TILESTATE_PROTECTIONZONE) and player:isPzLocked() then
+			player:sendCancelMessage(RETURNVALUE_PLAYERISPZLOCKED)
+			return true
+		end
+		player:teleportTo(toPosition, false)
 	elseif target.itemid == 1822 and target:getPosition() == Position(33222, 31100, 7) then
 		player:teleportTo(Position(33223, 31100, 8))
 	elseif table.contains({231, 231}, target.itemid) then

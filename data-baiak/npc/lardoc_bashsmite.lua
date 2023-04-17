@@ -1,6 +1,6 @@
 local internalNpcName = "Lardoc Bashsmite"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = {}
+local npcConfig = { }
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName
@@ -50,7 +50,7 @@ npcType.onCloseChannel = function(npc, creature)
 	npcHandler:onCloseChannel(npc, creature)
 end
 
-local quantidade = {}
+local quantidade = { }
 
 local function greetCallback(npc, creature)
 	local player = Player(creature)
@@ -79,8 +79,6 @@ local function creatureSayCallback(npc, creature, type, message)
 	if not npcHandler:checkInteraction(npc, creature) then
 		return false
 	end
-
-	npc = Npc(creature)
 
 	local tempo = 20*60*60
 

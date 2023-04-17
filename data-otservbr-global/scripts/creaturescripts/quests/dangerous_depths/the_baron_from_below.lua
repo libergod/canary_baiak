@@ -1,4 +1,4 @@
-local timers = {}
+local timers = { }
 
 local function summonHungry(creature)
 	local monster = Monster(creature)

@@ -4,8 +4,8 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
-*/
+ * Website: https://docs.opentibiabr.com/
+ */
 
 #include "pch.hpp"
 
@@ -14,8 +14,7 @@
 #include "database/databasetasks.h"
 #include "utils/tools.h"
 
-bool Ban::acceptConnection(uint32_t clientIP)
-{
+bool Ban::acceptConnection(uint32_t clientIP) {
 	std::lock_guard<std::recursive_mutex> lockClass(lock);
 
 	uint64_t currentTime = OTSYS_TIME();
@@ -42,15 +41,15 @@ bool Ban::acceptConnection(uint32_t clientIP)
 				return false;
 			}
 		}
-	} else {
+	}
+	else {
 		connectBlock.count = 1;
 	}
 	return true;
 }
 
-bool IOBan::isAccountBanned(uint32_t accountId, BanInfo& banInfo)
-{
-	Database& db = Database::getInstance();
+bool IOBan::isAccountBanned(uint32_t accountId, BanInfo& banInfo) {
+	Database &db = Database::getInstance();
 
 	std::ostringstream query;
 	query << "SELECT `reason`, `expires_at`, `banned_at`, `banned_by`, (SELECT `name` FROM `players` WHERE `id` = `banned_by`) AS `name` FROM `account_bans` WHERE `account_id` = " << accountId;
@@ -79,13 +78,12 @@ bool IOBan::isAccountBanned(uint32_t accountId, BanInfo& banInfo)
 	return true;
 }
 
-bool IOBan::isIpBanned(uint32_t clientIP, BanInfo& banInfo)
-{
+bool IOBan::isIpBanned(uint32_t clientIP, BanInfo& banInfo) {
 	if (clientIP == 0) {
 		return false;
 	}
 
-	Database& db = Database::getInstance();
+	Database &db = Database::getInstance();
 
 	std::ostringstream query;
 	query << "SELECT `reason`, `expires_at`, (SELECT `name` FROM `players` WHERE `id` = `banned_by`) AS `name` FROM `ip_bans` WHERE `ip` = " << clientIP;
@@ -109,8 +107,7 @@ bool IOBan::isIpBanned(uint32_t clientIP, BanInfo& banInfo)
 	return true;
 }
 
-bool IOBan::isPlayerNamelocked(uint32_t playerId)
-{
+bool IOBan::isPlayerNamelocked(uint32_t playerId) {
 	std::ostringstream query;
 	query << "SELECT 1 FROM `player_namelocks` WHERE `player_id` = " << playerId;
 	return Database::getInstance().storeQuery(query.str()).get() != nullptr;

@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Laravel")
-local monster = {}
+local monster = { }
 
 monster.description = "an Laravel"
 monster.experience = 9999

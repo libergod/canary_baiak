@@ -28,7 +28,7 @@ function woeConfig.onSay(player, words, param)
 
 	Woe.getInfo()
 	
-	local myTable = {}
+	local myTable = { }
 	
 	for _, i in ipairs({"%d", "%B", "%Y", "%X"}) do
 		table.insert(myTable, os.date(i, infoLua[4]))

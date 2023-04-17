@@ -1,7 +1,7 @@
 local internalNpcName = "[SHOP] - Administrator"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = {}
-local talkState = {}
+local npcConfig = { }
+local talkState = { }
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName
@@ -24,7 +24,7 @@ npcConfig.flags = {
 
 local focus = nil
 local talk_start = 0
-local talkState = {}
+local talkState = { }
 
 local keywordHandler = KeywordHandler:new()
 local npcHandler = NpcHandler:new(keywordHandler)

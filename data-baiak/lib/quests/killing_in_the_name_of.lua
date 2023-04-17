@@ -934,8 +934,8 @@ function getTaskByName(name, table)
 end
 
 function Player.getTasks(self)
-	local canmake = {}
-	local able = {}
+	local canmake = { }
+	local able = { }
 	for k, v in pairs(tasks.GrizzlyAdams) do
 		if self:getStorageValue(QUESTSTORAGE_BASE + k) < 1 and self:getStorageValue(REPEATSTORAGE_BASE + k) < repeatTimes then
 			able[k] = true
@@ -1021,7 +1021,7 @@ function Player.canStartTask(self, name, table)
 end
 
 function Player.getStartedTasks(self)
-	local tmp = {}
+	local tmp = { }
 	for k, v in ipairs(tasks.GrizzlyAdams) do
 		if self:getStorageValue(QUESTSTORAGE_BASE + k) > 0 and self:getStorageValue(QUESTSTORAGE_BASE + k) < 2 then
 			tmp[#tmp + 1] = k

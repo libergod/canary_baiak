@@ -19,11 +19,11 @@ if not Quests then
 end
 
 if not LastQuestlogUpdate then
-	LastQuestlogUpdate = {}
+	LastQuestlogUpdate = { }
 end
 
 if not PlayerTrackedMissionsData then
-	PlayerTrackedMissionsData = {}
+	PlayerTrackedMissionsData = { }
 end
 
 -- Text functions
@@ -70,7 +70,7 @@ end
 
 function Player.resetTrackedMissions(self, missions)
 	local maxAllowed = self:getAllowedTrackedQuestCount()
-	PlayerTrackedMissionsData[self:getId()] = {}
+	PlayerTrackedMissionsData[self:getId()] = { }
 	for i = 1, #missions do
 		local missionId = missions[i]
 		local questName, questId, missionIndex = self:getQuestDataByMissionId(missionId)
@@ -130,7 +130,7 @@ function Game.getMission(questId, missionId)
 end
 
 function Player.getMissionsData(self, storage)
-	local missions = {}
+	local missions = { }
 	for questId = 1, #Quests do
 		local quest = Game.getQuest(questId)
 		if quest and quest.missions then

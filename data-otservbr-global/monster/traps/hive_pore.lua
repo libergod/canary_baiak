@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Hive Pore")
-local monster = {}
+local monster = { }
 
 monster.description = "a hive pore"
 monster.experience = 0

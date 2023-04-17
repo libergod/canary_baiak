@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Overcharge")
-local monster = {}
+local monster = { }
 
 monster.description = "an overcharge"
 monster.experience = 0

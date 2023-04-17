@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Charged Anomaly")
-local monster = {}
+local monster = { }
 
 monster.description = "a charged anomaly"
 monster.experience = 0

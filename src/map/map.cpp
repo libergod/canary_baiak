@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #include "pch.hpp"
@@ -16,7 +16,7 @@
 #include "game/game.h"
 #include "creatures/monsters/monster.h"
 
-bool Map::load(const std::string& identifier) {
+bool Map::load(const std::string &identifier, const Position& pos, bool unload) {
 	try {
 		IOMap loader;
 		if (!loader.loadMap(this, identifier)) {
@@ -31,10 +31,7 @@ bool Map::load(const std::string& identifier) {
 	return true;
 }
 
-bool Map::loadMap(const std::string& identifier,
-	bool mainMap /*= false*/,bool loadHouses /*= false*/,
-	bool loadMonsters /*= false*/, bool loadNpcs /*= false*/)
-{
+bool Map::loadMap(const std::string &identifier, bool mainMap /*= false*/, bool loadHouses /*= false*/, bool loadMonsters /*= false*/, bool loadNpcs /*= false*/, const Position &pos /*= Position()*/, bool unload /*= false*/) {
 	// Only download map if is loading the main map and it is not already downloaded
 	if (mainMap && g_configManager().getBoolean(TOGGLE_DOWNLOAD_MAP) && !std::filesystem::exists(identifier)) {
 		const auto mapDownloadUrl = g_configManager().getString(MAP_DOWNLOAD_URL);
@@ -42,9 +39,9 @@ bool Map::loadMap(const std::string& identifier,
 			SPDLOG_WARN("Map download URL in config.lua is empty, download disabled");
 		}
 
-		if (CURL *curl = curl_easy_init(); curl && !mapDownloadUrl.empty()) {
+		if (CURL* curl = curl_easy_init(); curl && !mapDownloadUrl.empty()) {
 			SPDLOG_INFO("Downloading " + g_configManager().getString(MAP_NAME) + ".otbm to world folder");
-			FILE *otbm = fopen(identifier.c_str(), "wb");
+			FILE* otbm = fopen(identifier.c_str(), "wb");
 			curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
 			curl_easy_setopt(curl, CURLOPT_URL, mapDownloadUrl.c_str());
 			curl_easy_setopt(curl, CURLOPT_WRITEDATA, otbm);
@@ -103,9 +100,10 @@ bool Map::loadMap(const std::string& identifier,
 	return true;
 }
 
-bool Map::loadMapCustom(const std::string& identifier, bool loadHouses, bool loadMonsters, bool loadNpcs)
+bool Map::loadMapCustom(const std::string &identifier, bool loadHouses, bool loadMonsters, bool loadNpcs)
 {
 	// Load the map
+	this->load(identifier, Position(0, 0, 0), true);
 	this->load(identifier);
 
 	if (loadMonsters) {
@@ -204,7 +202,7 @@ void Map::setTile(uint16_t x, uint16_t y, uint8_t z, Tile* newTile)
 	uint32_t offsetX = x & FLOOR_MASK;
 	uint32_t offsetY = y & FLOOR_MASK;
 
-	Tile*& tile = floor->tiles[offsetX][offsetY];
+	Tile*&tile = floor->tiles[offsetX][offsetY];
 	if (tile) {
 		TileItemVector* items = newTile->getItemList();
 		if (items) {
@@ -225,7 +223,7 @@ void Map::setTile(uint16_t x, uint16_t y, uint8_t z, Tile* newTile)
 	}
 }
 
-bool Map::placeCreature(const Position& centerPos, Creature* creature, bool extendedPos/* = false*/, bool forceLogin/* = false*/)
+bool Map::placeCreature(const Position &centerPos, Creature* creature, bool extendedPos/* = false*/, bool forceLogin/* = false*/)
 {
 	Monster* monster = creature->getMonster();
 	if (monster) {
@@ -263,7 +261,7 @@ bool Map::placeCreature(const Position& centerPos, Creature* creature, bool exte
             {-1,  1}, {0,  1}, {1,  1}
 		};
 
-		std::vector<std::pair<int32_t, int32_t>>& relList = (extendedPos ? extendedRelList : normalRelList);
+		std::vector<std::pair<int32_t, int32_t>> &relList = (extendedPos ? extendedRelList : normalRelList);
 
 		if (extendedPos) {
 			std::shuffle(relList.begin(), relList.begin() + 4, getRandomGenerator());
@@ -272,7 +270,7 @@ bool Map::placeCreature(const Position& centerPos, Creature* creature, bool exte
 			std::shuffle(relList.begin(), relList.end(), getRandomGenerator());
 		}
 
-		for (const auto& it : relList) {
+		for (const auto &it : relList) {
 			Position tryPos(centerPos.x + it.first, centerPos.y + it.second, centerPos.z);
 
 			tile = getTile(tryPos.x, tryPos.y, tryPos.z);
@@ -308,14 +306,14 @@ bool Map::placeCreature(const Position& centerPos, Creature* creature, bool exte
 	Cylinder* toCylinder = tile->queryDestination(index, *creature, &toItem, flags);
 	toCylinder->internalAddThing(creature);
 
-	const Position& dest = toCylinder->getPosition();
+	const Position &dest = toCylinder->getPosition();
 	getQTNode(dest.x, dest.y)->addCreature(creature);
 	return true;
 }
 
-void Map::moveCreature(Creature& creature, Tile& newTile, bool forceTeleport/* = false*/)
+void Map::moveCreature(Creature &creature, Tile &newTile, bool forceTeleport/* = false*/)
 {
-	Tile& oldTile = *creature.getTile();
+	Tile &oldTile = *creature.getTile();
 
 	Position oldPos = oldTile.getPosition();
 	Position newPos = newTile.getPosition();
@@ -387,8 +385,7 @@ void Map::moveCreature(Creature& creature, Tile& newTile, bool forceTeleport/* =
 	newTile.postAddNotification(&creature, &oldTile, 0);
 }
 
-void Map::getSpectatorsInternal(SpectatorHashSet& spectators, const Position& centerPos, int32_t minRangeX, int32_t maxRangeX, int32_t minRangeY, int32_t maxRangeY, int32_t minRangeZ, int32_t maxRangeZ, bool onlyPlayers) const
-{
+void Map::getSpectatorsInternal(SpectatorHashSet &spectators, const Position &centerPos, int32_t minRangeX, int32_t maxRangeX, int32_t minRangeY, int32_t maxRangeY, int32_t minRangeZ, int32_t maxRangeZ, bool onlyPlayers) const {
 	int_fast32_t min_y = centerPos.y + minRangeY;
 	int_fast32_t min_x = centerPos.x + minRangeX;
 	int_fast32_t max_y = centerPos.y + maxRangeY;
@@ -415,9 +412,9 @@ void Map::getSpectatorsInternal(SpectatorHashSet& spectators, const Position& ce
 		leafE = leafS;
 		for (int_fast32_t nx = startx1; nx <= endx2; nx += FLOOR_SIZE) {
 			if (leafE) {
-				const CreatureVector& node_list = (onlyPlayers ? leafE->player_list : leafE->creature_list);
+				const CreatureVector &node_list = (onlyPlayers ? leafE->player_list : leafE->creature_list);
 				for (Creature* creature : node_list) {
-					const Position& cpos = creature->getPosition();
+					const Position &cpos = creature->getPosition();
 					if (minRangeZ > cpos.z || maxRangeZ < cpos.z) {
 						continue;
 					}
@@ -443,7 +440,7 @@ void Map::getSpectatorsInternal(SpectatorHashSet& spectators, const Position& ce
 	}
 }
 
-void Map::getSpectators(SpectatorHashSet& spectators, const Position& centerPos, bool multifloor /*= false*/, bool onlyPlayers /*= false*/, int32_t minRangeX /*= 0*/, int32_t maxRangeX /*= 0*/, int32_t minRangeY /*= 0*/, int32_t maxRangeY /*= 0*/)
+void Map::getSpectators(SpectatorHashSet &spectators, const Position &centerPos, bool multifloor /*= false*/, bool onlyPlayers /*= false*/, int32_t minRangeX /*= 0*/, int32_t maxRangeX /*= 0*/, int32_t minRangeY /*= 0*/, int32_t maxRangeY /*= 0*/)
 {
 	if (centerPos.z >= MAP_MAX_LAYERS) {
 		return;
@@ -462,7 +459,7 @@ void Map::getSpectators(SpectatorHashSet& spectators, const Position& centerPos,
 			auto it = playersSpectatorCache.find(centerPos);
 			if (it != playersSpectatorCache.end()) {
 				if (!spectators.empty()) {
-					const SpectatorHashSet& cachedSpectators = it->second;
+					const SpectatorHashSet &cachedSpectators = it->second;
 					spectators.insert(cachedSpectators.begin(), cachedSpectators.end());
 				} else {
 					spectators = it->second;
@@ -477,13 +474,13 @@ void Map::getSpectators(SpectatorHashSet& spectators, const Position& centerPos,
 			if (it != spectatorCache.end()) {
 				if (!onlyPlayers) {
 					if (!spectators.empty()) {
-						const SpectatorHashSet& cachedSpectators = it->second;
+						const SpectatorHashSet &cachedSpectators = it->second;
 						spectators.insert(cachedSpectators.begin(), cachedSpectators.end());
 					} else {
 						spectators = it->second;
 					}
 				} else {
-					const SpectatorHashSet& cachedSpectators = it->second;
+					const SpectatorHashSet &cachedSpectators = it->second;
 					for (Creature* spectator : cachedSpectators) {
 						if (spectator->getPlayer()) {
 							spectators.insert(spectator);
@@ -542,12 +539,10 @@ void Map::clearSpectatorCache()
 	playersSpectatorCache.clear();
 }
 
-bool Map::canThrowObjectTo(const Position& fromPos, const Position& toPos, bool checkLineOfSight /*= true*/,
-                           int32_t rangex /*= Map::maxClientViewportX*/, int32_t rangey /*= Map::maxClientViewportY*/) const
-{
-	//z checks
-	//underground 8->15
-	//ground level and above 7->0
+bool Map::canThrowObjectTo(const Position &fromPos, const Position &toPos, bool checkLineOfSight /*= true*/, int32_t rangex /*= Map::maxClientViewportX*/, int32_t rangey /*= Map::maxClientViewportY*/) const {
+	// z checks
+	// underground 8->15
+	// ground level and above 7->0
 	if ((fromPos.z >= 8 && toPos.z <= MAP_INIT_SURFACE_LAYER) || (toPos.z >= MAP_INIT_SURFACE_LAYER + 1 && fromPos.z <= MAP_INIT_SURFACE_LAYER)) {
 		return false;
 	}
@@ -572,7 +567,7 @@ bool Map::canThrowObjectTo(const Position& fromPos, const Position& toPos, bool 
 	return isSightClear(fromPos, toPos, false);
 }
 
-bool Map::checkSightLine(const Position& fromPos, const Position& toPos) const
+bool Map::checkSightLine(const Position &fromPos, const Position &toPos) const
 {
 	if (fromPos == toPos) {
 		return true;
@@ -620,7 +615,7 @@ bool Map::checkSightLine(const Position& fromPos, const Position& toPos) const
 	return true;
 }
 
-bool Map::isSightClear(const Position& fromPos, const Position& toPos, bool floorCheck) const
+bool Map::isSightClear(const Position &fromPos, const Position &toPos, bool floorCheck) const
 {
 	if (floorCheck && fromPos.z != toPos.z) {
 		return false;
@@ -630,7 +625,7 @@ bool Map::isSightClear(const Position& fromPos, const Position& toPos, bool floo
 	return checkSightLine(fromPos, toPos) || checkSightLine(toPos, fromPos);
 }
 
-const Tile* Map::canWalkTo(const Creature& creature, const Position& pos) const
+const Tile* Map::canWalkTo(const Creature &creature, const Position &pos) const
 {
 	int32_t walkCache = creature.getWalkCache(pos);
 	if (walkCache == 0) {
@@ -649,7 +644,7 @@ const Tile* Map::canWalkTo(const Creature& creature, const Position& pos) const
 	return tile;
 }
 
-bool Map::getPathMatching(const Creature& creature, std::forward_list<Direction>& dirList, const FrozenPathingConditionCall& pathCondition, const FindPathParams& fpp) const
+bool Map::getPathMatching(const Creature &creature, std::forward_list<Direction> &dirList, const FrozenPathingConditionCall &pathCondition, const FindPathParams &fpp) const
 {
 	Position pos = creature.getPosition();
 	Position endPos;
@@ -824,7 +819,7 @@ bool Map::getPathMatching(const Creature& creature, std::forward_list<Direction>
 	return true;
 }
 
-bool Map::getPathMatching(const Position& start, std::forward_list<Direction>& dirList, const FrozenPathingConditionCall& pathCondition, const FindPathParams& fpp) const
+bool Map::getPathMatching(const Position &start, std::forward_list<Direction> &dirList, const FrozenPathingConditionCall &pathCondition, const FindPathParams &fpp) const
 {
 	Position pos = start;
 	Position endPos;
@@ -1025,7 +1020,7 @@ AStarNodes::AStarNodes(uint32_t x, uint32_t y)
 	closedNodes = 0;
 	openNodes[0] = true;
 
-	AStarNode& startNode = nodes[0];
+	AStarNode &startNode = nodes[0];
 	startNode.parent = nullptr;
 	startNode.x = x;
 	startNode.y = y;
@@ -1104,7 +1099,7 @@ AStarNode* AStarNodes::getNodeByPosition(uint32_t x, uint32_t y)
 	return it->second;
 }
 
-int_fast32_t AStarNodes::getMapWalkCost(AStarNode* node, const Position& neighborPos, bool preferDiagonal)
+int_fast32_t AStarNodes::getMapWalkCost(AStarNode* node, const Position &neighborPos, bool preferDiagonal)
 {
 	if (std::abs(node->x - neighborPos.x) == std::abs(node->y - neighborPos.y)) {
 		//diagonal movement extra cost
@@ -1116,7 +1111,7 @@ int_fast32_t AStarNodes::getMapWalkCost(AStarNode* node, const Position& neighbo
 	return MAP_NORMALWALKCOST;
 }
 
-int_fast32_t AStarNodes::getTileWalkCost(const Creature& creature, const Tile* tile)
+int_fast32_t AStarNodes::getTileWalkCost(const Creature &creature, const Tile* tile)
 {
 	int_fast32_t cost = 0;
 	if (tile->getTopVisibleCreature(&creature) != nullptr) {

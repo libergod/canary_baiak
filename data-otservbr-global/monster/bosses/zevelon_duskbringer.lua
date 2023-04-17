@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Zevelon Duskbringer")
-local monster = {}
+local monster = { }
 
 monster.description = "Zevelon Duskbringer"
 monster.experience = 1800

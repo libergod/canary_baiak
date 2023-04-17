@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #include "pch.hpp"
@@ -22,7 +22,7 @@ int ItemTypeFunctions::luaItemTypeCreate(lua_State* L) {
 		id = Item::items.getItemIdByName(getString(L, 2));
 	}
 
-	const ItemType& itemType = Item::items[id];
+	const ItemType &itemType = Item::items[id];
 	pushUserdata<const ItemType>(L, &itemType);
 	setMetatable(L, -1, "ItemType");
 	return 1;
@@ -270,7 +270,7 @@ int ItemTypeFunctions::luaItemTypeGetDescription(lua_State* L) {
 	return 1;
 }
 
-int ItemTypeFunctions::luaItemTypeGetSlotPosition(lua_State *L) {
+int ItemTypeFunctions::luaItemTypeGetSlotPosition(lua_State* L) {
 	// itemType:getSlotPosition()
 	const ItemType* itemType = getUserdata<const ItemType>(L, 1);
 	if (itemType) {

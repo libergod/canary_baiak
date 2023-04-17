@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Stolen Knowledge of Healing")
-local monster = {}
+local monster = { }
 
 monster.description = "stolen knowledge of healing"
 monster.experience = 0

@@ -1,4 +1,4 @@
-registerNpcType = {}
+registerNpcType = { }
 setmetatable(registerNpcType,
 {
 	__call =

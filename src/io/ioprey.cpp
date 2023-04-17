@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #include "pch.hpp"
@@ -18,15 +18,14 @@
 
 // Prey class
 PreySlot::PreySlot(PreySlot_t id) :
-									id(id) {
+		id(id) {
 		eraseBonus();
 		reloadBonusValue();
 		reloadBonusType();
 		freeRerollTimeStamp = OTSYS_TIME() + g_configManager().getNumber(PREY_FREE_REROLL_TIME) * 1000;
 }
 
-void PreySlot::reloadBonusType()
-{
+void PreySlot::reloadBonusType() {
 	if (bonusRarity == 10) {
 		PreyBonus_t bonus_tmp = bonus;
 		while (bonus_tmp == bonus) {
@@ -38,8 +37,7 @@ void PreySlot::reloadBonusType()
 	bonus = static_cast<PreyBonus_t>(uniform_random(PreyBonus_First, PreyBonus_Last));
 }
 
-void PreySlot::reloadBonusValue()
-{
+void PreySlot::reloadBonusValue() {
 	if (bonusRarity >= 9) {
 		bonusRarity = 10;
 	} else {
@@ -55,8 +53,7 @@ void PreySlot::reloadBonusValue()
 	}
 }
 
-void PreySlot::reloadMonsterGrid(std::vector<uint16_t> blackList, uint32_t level)
-{
+void PreySlot::reloadMonsterGrid(std::vector<uint16_t> blackList, uint32_t level) {
 	raceIdList.clear();
 
 	if (!g_configManager().getBoolean(PREY_ENABLED)) {
@@ -295,13 +292,7 @@ void IOPrey::CheckPlayerPreys(Player* player, uint8_t amount) const
 	}
 }
 
-void IOPrey::ParsePreyAction(Player* player, 
-							PreySlot_t slotId, 
-							PreyAction_t action, 
-							PreyOption_t option, 
-							int8_t index, 
-							uint16_t raceId) const
-{
+void IOPrey::ParsePreyAction(Player* player, PreySlot_t slotId, PreyAction_t action, PreyOption_t option, int8_t index, uint16_t raceId) const {
 	PreySlot* slot = player->getPreySlotById(slotId);
 	if (!slot || slot->state == PreyDataState_Locked) {
 		player->sendMessageDialog("To unlock this prey slot first you must buy it on store.");
@@ -401,12 +392,7 @@ void IOPrey::ParsePreyAction(Player* player,
 	player->reloadPreySlot(slotId);
 }
 
-void IOPrey::ParseTaskHuntingAction(Player* player, 
-									PreySlot_t slotId, 
-									PreyTaskAction_t action, 
-									bool upgrade, 
-									uint16_t raceId) const
-{
+void IOPrey::ParseTaskHuntingAction(Player* player, PreySlot_t slotId, PreyTaskAction_t action, bool upgrade, uint16_t raceId) const {
 	TaskHuntingSlot* slot = player->getTaskHuntingSlotById(slotId);
 	if (!slot || slot->state == PreyTaskDataState_Locked) {
 		player->sendMessageDialog("To unlock this task hunting slot first you must buy it on store.");
@@ -539,8 +525,7 @@ void IOPrey::ParseTaskHuntingAction(Player* player,
 	player->reloadTaskSlot(slotId);
 }
 
-void IOPrey::InitializeTaskHuntOptions()
-{
+void IOPrey::InitializeTaskHuntOptions() {
 	if (!g_configManager().getBoolean(TASK_HUNTING_ENABLED)) {
 		return;
 	}
@@ -609,8 +594,7 @@ void IOPrey::InitializeTaskHuntOptions()
 	baseDataMessage = msg;
 }
 
-TaskHuntingOption* IOPrey::GetTaskRewardOption(const TaskHuntingSlot* slot) const
-{
+TaskHuntingOption* IOPrey::GetTaskRewardOption(const TaskHuntingSlot* slot) const {
 	if (!slot) {
 		return nullptr;
 	}
@@ -631,7 +615,8 @@ TaskHuntingOption* IOPrey::GetTaskRewardOption(const TaskHuntingSlot* slot) cons
 
 	if (auto it = std::find_if(taskOption.begin(), taskOption.end(), [difficult, slot](const TaskHuntingOption* optionIt) {
 			return optionIt->difficult == difficult && optionIt->rarity == slot->rarity;
-		}); it != taskOption.end()) {
+		});
+		it != taskOption.end()) {
 		return *it;
 	}
 

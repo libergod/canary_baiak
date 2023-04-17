@@ -20,7 +20,7 @@ function craftHelmet.onAddItem(moveitem, tileitem, position)
 		return true
 	end
 
-	local tile, helmetItems = Tile(position), {}
+	local tile, helmetItems = Tile(position), { }
 	local helmetItem
 	for i = 1, #helmetIds do
 		helmetItem = tile:getItemById(helmetIds[i])

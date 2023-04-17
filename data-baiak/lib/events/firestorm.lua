@@ -4,13 +4,13 @@ local SHOW_COPYRIGHT = false
 
 if RELOAD_LIB_ON or not FSE then
 ---@Fire Storm Event
-FSE = {}
+FSE = { }
 
-FSE.storages = {}
+FSE.storages = { }
 FSE.storages.started = 13336
 
 ---@Room Properties
-FSE.room = {}
+FSE.room = { }
 FSE.room.from = Position(1817, 858, 7)
 FSE.room.rangeX = 62
 FSE.room.rangeY = 49
@@ -24,30 +24,30 @@ FSE.attackEffect = CONST_ME_FIREAREA
 FSE.attackDistEffect = CONST_ANI_FIRE
 
 ---@Player Counts
-FSE.players = {}
+FSE.players = { }
 FSE.players.min = 5
 FSE.players.max = 50
 FSE.players.win = 1 -- always less than FSE.players.min
 FSE.players.levelMin = 200
 
 ---@Timers in seconds
-FSE.timer = {}
+FSE.timer = { }
 FSE.timer.removeTp = 5 -- em minutos
 FSE.timer.checking = 2
-FSE.timer.signal = {}
+FSE.timer.signal = { }
 FSE.timer.signal.min = 0.1
 FSE.timer.signal.max = 0.5
-FSE.timer.events = {}
+FSE.timer.events = { }
 
 ---@Game Dificulty
-FSE.dificulty = {}
+FSE.dificulty = { }
 FSE.dificulty.attacks = 40
 FSE.dificulty.increment = 1
 FSE.dificulty.D_attacks = FSE.dificulty.attacks
 FSE.dificulty.D_increment = FSE.dificulty.increment
 
 ---@Teleport Properties
-FSE.teleport = {}
+FSE.teleport = { }
 FSE.teleport.itemid = 1949
 FSE.teleport.position = Position(1003, 1217, 7)
 FSE.teleport.destination = Position(1849, 881, 7)
@@ -116,7 +116,7 @@ function FSE:Stoped(players, causeMessage, forceStoped)
 	for index, eventID in pairs(FSE.timer.events) do
 		stopEvent(eventID)
 	end
-	FSE.timer.events = {}
+	FSE.timer.events = { }
 	for index, player in pairs(players) do
 		player:teleportTo(FSE.getTemplePosition, false)
 		player:setStorageValue(STORAGEVALUE_EVENTS, 0)
@@ -200,7 +200,7 @@ end
 
 function FSE:GetPlayers()
 	local spectators = Game.getSpectators(FSE.room.from, false, true, 1, FSE.room.rangeX, 1, FSE.room.rangeY)
-	local players = {}
+	local players = { }
 	if spectators and #spectators > 0 then
 		for index, player in pairs(spectators) do
 			if not player:getGroup():getAccess() then

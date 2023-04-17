@@ -1,4 +1,4 @@
-registerNpcType = {}
+registerNpcType = { }
 setmetatable(registerNpcType,
 {
 	__call =
@@ -22,19 +22,6 @@ end
 registerNpcType.description = function(npcType, mask)
 	if mask.description then
 		npcType:nameDescription(mask.description)
-	end
-end
-
-registerNpcType.speechBubble = function(npcType, mask)
-	local speechBubble = npcType:speechBubble()
-	if mask.speechBubble then
-		npcType:speechBubble(mask.speechBubble)
-	elseif speechBubble == 3 then
-		npcType:speechBubble(4)
-	elseif speechBubble < 1 then
-		npcType:speechBubble(1)
-	else
-		npcType:speechBubble(2)
 	end
 end
 

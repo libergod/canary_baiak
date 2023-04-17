@@ -425,7 +425,7 @@ function Player:addPartyCondition(combat, variant, condition, baseMana)
 	members[#members + 1] = party:getLeader()
 
 	local position = self:getPosition()
-	local affectedMembers = {}
+	local affectedMembers = { }
 	for _, member in ipairs(members) do
 		if member:getPosition():getDistance(position) <= 36 then
 			affectedMembers[#affectedMembers + 1] = member
@@ -486,7 +486,7 @@ function Player:conjureItem(reagentId, conjureId, conjureCount, effect)
 		return false
 	end
 
-	if item:hasAttribute(ITEM_ATTRIBUTE_DURATION) then
+	if item:hasAttribute(ItemAttribute_t::DURATION) then
 		item:decay()
 	end
 

@@ -12,7 +12,7 @@ function secondSealPearl.onStepIn(creature, item, position, fromPosition)
 		return true
 	end
 
-	local pearlItems = {}
+	local pearlItems = { }
 	for i = 1, #secondSealTable.positions do
 		local pearlItem = Tile(secondSealTable.positions[i].position):getItemById(secondSealTable.positions[i].pearlId)
 		if not pearlItem then

@@ -1,5 +1,5 @@
 local animationDelay = 200
-local combat = {}
+local combat = { }
 
 local area = {
     {

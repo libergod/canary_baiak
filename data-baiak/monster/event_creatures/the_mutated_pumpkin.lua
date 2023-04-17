@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("The Mutated Pumpkin")
-local monster = {}
+local monster = { }
 
 monster.description = "The Mutated Pumpkin"
 monster.experience = 30000
@@ -23,6 +23,11 @@ monster.manaCost = 0
 monster.changeTarget = {
 	interval = 5000,
 	chance = 8
+}
+
+monster.bosstiary = {
+	bossRaceId = 466,
+	bossRace = RARITY_NEMESIS
 }
 
 monster.strategiesTarget = {

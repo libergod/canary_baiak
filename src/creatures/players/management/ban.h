@@ -4,8 +4,8 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
-*/
+ * Website: https://docs.opentibiabr.com/
+ */
 
 #ifndef SRC_CREATURES_PLAYERS_MANAGEMENT_BAN_H_
 #define SRC_CREATURES_PLAYERS_MANAGEMENT_BAN_H_
@@ -27,22 +27,20 @@ struct ConnectBlock {
 
 using IpConnectMap = std::map<uint32_t, ConnectBlock>;
 
-class Ban
-{
-	public:
-		bool acceptConnection(uint32_t clientIP);
+class Ban {
+public:
+	bool acceptConnection(uint32_t clientIP);
 
-	private:
-		IpConnectMap ipConnectMap;
-		std::recursive_mutex lock;
+private:
+	IpConnectMap ipConnectMap;
+	std::recursive_mutex lock;
 };
 
-class IOBan
-{
-	public:
-		static bool isAccountBanned(uint32_t accountId, BanInfo& banInfo);
-		static bool isIpBanned(uint32_t clientIP, BanInfo& banInfo);
-		static bool isPlayerNamelocked(uint32_t playerId);
+class IOBan {
+public:
+	static bool isAccountBanned(uint32_t accountId, BanInfo& banInfo);
+	static bool isIpBanned(uint32_t clientIP, BanInfo& banInfo);
+	static bool isPlayerNamelocked(uint32_t playerId);
 };
 
-#endif  // SRC_CREATURES_PLAYERS_MANAGEMENT_BAN_H_
+#endif // SRC_CREATURES_PLAYERS_MANAGEMENT_BAN_H_

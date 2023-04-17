@@ -13,7 +13,7 @@ local config = {
 
 local hotCuisineCook1 = Action()
 function hotCuisineCook1.onUse(player, item, fromPosition, target, toPosition, isHotkey)
-	local text = {}
+	local text = { }
 	for i = 1, 10 do
 		text[#text + 1] = config[i]
 	end

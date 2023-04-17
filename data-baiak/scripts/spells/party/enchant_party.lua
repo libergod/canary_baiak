@@ -31,7 +31,7 @@ function spell.onCastSpell(creature, var, isHotkey)
 		return false
 	end
 
-	local affectedList = {}
+	local affectedList = { }
 	for _, targetPlayer in ipairs(membersList) do
 		if targetPlayer:getPosition():getDistance(position) <= 36 then
 			affectedList[#affectedList + 1] = targetPlayer

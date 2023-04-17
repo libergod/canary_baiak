@@ -21,7 +21,7 @@ function count_monsters.onSay(player, words, param)
 
 	open_file:close()
 
-	local monsters = {}
+	local monsters = { }
 
 	for str_match in file_read:gmatch('<monster name="(.-)"') do
 	local ret_table = monsters[str_match]

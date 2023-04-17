@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Fire Devil")
-local monster = {}
+local monster = { }
 
 monster.description = "a fire devil"
 monster.experience = 145
@@ -25,7 +25,7 @@ monster.Bestiary = {
 	Occurrence = 0,
 	Locations = "Desert Dungeon, Ancient Temple, Magician Tower, Shadow Tomb, Ghostlands, Goroma, \z
 		Plains of Havoc at Ornamented Shield Quest, Spike Sword Quest."
-	}
+}
 
 monster.health = 200
 monster.maxHealth = 200
@@ -113,9 +113,9 @@ monster.elements = {
 }
 
 monster.immunities = {
-	{type = "paralyze", condition = false},
+	{type = "paralyze", condition = true},
 	{type = "outfit", condition = false},
-	{type = "invisible", condition = false},
+	{type = "invisible", condition = true},
 	{type = "bleed", condition = false}
 }
 

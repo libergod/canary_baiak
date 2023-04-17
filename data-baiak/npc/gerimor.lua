@@ -1,6 +1,6 @@
 local internalNpcName = "Gerimor"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = {}
+local npcConfig = { }
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName
@@ -457,9 +457,9 @@ local config = {
 	}
 }
 
-local storage = {}
-local value = {}
-local rewardExperience = {}
+local storage = { }
+local value = { }
+local rewardExperience = { }
 
 local function creatureSayCallback(npc, creature, type, message)
 	local player = Player(creature)

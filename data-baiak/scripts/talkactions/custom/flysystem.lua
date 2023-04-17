@@ -60,7 +60,7 @@ TP_MODAL_SYSTEM = {
         -- para adicionar mais, copie a partir do [3] até a linha de cima deste comentario, em seguida, adicione modifique para [4] e assim por diante
     },
     
-    locais_wp = {}, -- não mexa
+    locais_wp = { }, -- não mexa
     storage = 44958, -- Storage que irá controlar o tempo para utilizar o sistema novamente
 }
 
@@ -76,7 +76,7 @@ local function create_modal(id, title, message, tb, p)
     if (TP_MODAL_SYSTEM.houses_modal) then 
         local p_house = p:getHouse()
         if (p_house) then 
-            tb.locais_wp[p:getGuid()] = {}
+            tb.locais_wp[p:getGuid()] = { }
             table.insert(tb.locais_wp[p:getGuid()], {
                 nome = "House",
                 pago = tb.house_pago,

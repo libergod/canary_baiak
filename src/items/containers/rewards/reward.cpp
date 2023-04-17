@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
 */
 
 #include "pch.hpp"
@@ -19,7 +19,7 @@ Reward::Reward() :
 	pagination = true;
 }
 
-ReturnValue Reward::queryAdd(int32_t, const Thing& thing, uint32_t,
+ReturnValue Reward::queryAdd(int32_t, const Thing &thing, uint32_t,
 	uint32_t, Creature* actor/* = nullptr*/) const
 {
 	if (actor) {

@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Unbound Defiler")
-local monster = {}
+local monster = { }
 
 monster.description = "an unbound defiler"
 monster.experience = 3700

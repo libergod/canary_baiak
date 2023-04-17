@@ -44,7 +44,7 @@ function removeMonstersInArea(fromPos,toPos)
 	if #spectators > 0 then
 		return false
 	else
-        --local monsters = {} 
+        --local monsters = { } 
         for Px = fromPos.x, toPos.x do
                 for Py = fromPos.y, toPos.y do
                     --local monster = Monster(getThingFromPos(Position(x,y,8)))
@@ -62,7 +62,7 @@ end
 
 local demonHelmetEntrance = Action()
 function demonHelmetEntrance.onUse(player, item, fromPosition, target, toPosition, isHotkey)
-	local playersTable = {}
+	local playersTable = { }
 	if item:getActionId() == 47000 then
 		if player:doCheckBossRoom(info.bossName, info.fromPos, info.toPos) then
 			for x = info.firstPlayer.x, info.firstPlayer.x + 3 do

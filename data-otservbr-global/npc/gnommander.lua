@@ -1,6 +1,6 @@
 local internalNpcName = "Gnommander"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = {}
+local npcConfig = { }
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName
@@ -26,7 +26,7 @@ npcConfig.flags = {
 local keywordHandler = KeywordHandler:new()
 local npcHandler = NpcHandler:new(keywordHandler)
 
-local talkState = {}
+local talkState = { }
 local speech = {
 	"I'm the operating commander of the Spike, the latest great accomplishment of the gnomish race.",
 	"The Spike is a crystal structure, created by our greatest crystal experts. It has grown from a crystal the size of my fist to the structure you see here and now.",

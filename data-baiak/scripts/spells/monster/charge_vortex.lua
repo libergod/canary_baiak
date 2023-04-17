@@ -1,6 +1,6 @@
 local mathCount = 0
 
-local positions = {}
+local positions = { }
 
 local function createVortex()
 	local storedPositions = {

@@ -58,7 +58,7 @@ function drumeAction.onUse(player, item, fromPosition, target, toPosition, isHot
 		return true
 	end
 	local tempPos, tempTile, tempCreature
-	local players = {}
+	local players = { }
 	for x = config.firstPlayerPosition.x, config.firstPlayerPosition.x + 4 do
 		tempPos = Position(x, config.firstPlayerPosition.y, config.firstPlayerPosition.z)
 		tempTile = Tile(tempPos)

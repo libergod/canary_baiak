@@ -35,14 +35,14 @@ end
 table.countElements = table.count
 
 table.getCombinations = function (table, num)
-	local a, number, select, newlist = {}, #table, num, {}
+	local a, number, select, newlist = { }, #table, num, { }
 	for i = 1, select do
 		a[#a + 1] = i
 	end
 
-	local newthing = {}
+	local newthing = { }
 	while(true) do
-		local newrow = {}
+		local newrow = { }
 		for i = 1, select do
 			newrow[#newrow + 1] = table[a[i]]
 		end
@@ -68,7 +68,7 @@ end
 
 function table.serialize(x, recur)
 	local t = type(x)
-	recur = recur or {}
+	recur = recur or { }
 
 	if(t == nil) then
 		return "nil"
@@ -103,7 +103,7 @@ function table.unserialize(str)
 end
 
 function pairsByKeys(t, f)
-	local a = {}
+	local a = { }
 	for n in pairs(t) do table.insert(a, n) end
 	table.sort(a, f)
 	local i = 0      -- iterator variable

@@ -4,27 +4,26 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
-*/
+ * Website: https://docs.opentibiabr.com/
+ */
 
 #ifndef SRC_CREATURES_PLAYERS_MANAGEMENT_WAITLIST_H_
 #define SRC_CREATURES_PLAYERS_MANAGEMENT_WAITLIST_H_
 
 struct WaitListInfo;
 
-class WaitingList
-{
-	public:
-		static WaitingList& getInstance();
+class WaitingList {
+public:
+	static WaitingList& getInstance();
 
-		bool clientLogin(const Player* player);
-		std::size_t getClientSlot(const Player* player);
-		static std::size_t getTime(std::size_t slot);
+	bool clientLogin(const Player* player);
+	std::size_t getClientSlot(const Player* player);
+	static std::size_t getTime(std::size_t slot);
 
-	private:
-		WaitingList();
+private:
+	WaitingList();
 
-		std::unique_ptr<WaitListInfo> info;
+	std::unique_ptr<WaitListInfo> info;
 };
 
-#endif  // SRC_CREATURES_PLAYERS_MANAGEMENT_WAITLIST_H_
+#endif // SRC_CREATURES_PLAYERS_MANAGEMENT_WAITLIST_H_
