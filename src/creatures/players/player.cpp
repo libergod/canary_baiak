@@ -1168,12 +1168,6 @@ void Player::updateImpactTracker(int64_t type, int64_t amount) const {
 	}
 }
 
-void Player::updateInputAnalyzer(int64_t type, int64_t amount, const std::string &target) const {
-	if (client) {
-		client->sendUpdateInputAnalyzer(static_cast<CombatType_t>(type), toSafeNumber<uint32_t>(__FUNCTION__, amount), target);
-	}
-}
-
 void Player::sendPing() {
 	int64_t timeNow = OTSYS_TIME();
 
