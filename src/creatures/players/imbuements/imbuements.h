@@ -122,13 +122,14 @@ public:
 		return icon + (baseid - 1);
 	}
 
-	uint16_t icon = 1;
-	int32_t stats[STAT_LAST + 1] = {};
-	int32_t skills[SKILL_LAST + 1] = {};
-	int32_t speed = 0;
-	uint32_t capacity = 0;
-	int16_t absorbPercent[COMBAT_COUNT] = {};
-	int16_t elementDamage = 0;
+		uint16_t icon = 1;
+		int32_t stats[STAT_LAST + 1] = {};
+		int32_t skills[SKILL_LAST + 1] = {};
+		int32_t speed = 0;
+		uint32_t capacity = 0;
+		int16_t absorbPercent[COMBAT_COUNT] = {};
+		int16_t elementDamage = 0;
+		SoundEffect_t soundEffect = SoundEffect_t::SILENCE;
 
 	CombatType_t combatType = COMBAT_NONE;
 

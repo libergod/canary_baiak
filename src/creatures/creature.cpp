@@ -198,7 +198,7 @@ void Creature::onCreatureWalk() {
 
 void Creature::onWalk(Direction &dir) {
 	if (hasCondition(CONDITION_DRUNK)) {
-		uint32_t r = uniform_random(0, 20);
+		int64_t r = uniform_random(0, 20);
 		if (r <= DIRECTION_DIAGONAL_MASK) {
 			if (r < DIRECTION_DIAGONAL_MASK) {
 				dir = static_cast<Direction>(r);
@@ -624,7 +624,7 @@ void Creature::onDeath() {
 
 	const int64_t timeNow = OTSYS_TIME();
 	const uint32_t inFightTicks = g_configManager().getNumber(PZ_LOCKED);
-	int32_t mostDamage = 0;
+	int64_t mostDamage = 0;
 	std::map<Creature*, uint64_t> experienceMap;
 	for (const auto &it : damageMap) {
 		if (Creature* attacker = g_game().getCreatureByID(it.first)) {
@@ -779,14 +779,13 @@ Item* Creature::getCorpse(Creature*, Creature*) {
 	return Item::CreateItem(getLookCorpse());
 }
 
-void Creature::changeHealth(int32_t healthChange, bool sendHealthChange /* = true*/) {
-	int32_t oldHealth = health;
+void Creature::changeHealth(int64_t healthChange, bool sendHealthChange /* = true*/) {
+	int64_t oldHealth = health;
 
 	if (healthChange > 0) {
-		health += std::min<int32_t>(healthChange, getMaxHealth() - health);
-	}
-	else {
-		health = std::max<int32_t>(0, health + healthChange);
+		health += std::min<int64_t>(healthChange, getMaxHealth() - health);
+	} else {
+		health = std::max<int64_t>(0, health + healthChange);
 	}
 
 	if (sendHealthChange && oldHealth != health) {
@@ -797,23 +796,22 @@ void Creature::changeHealth(int32_t healthChange, bool sendHealthChange /* = tru
 	}
 }
 
-void Creature::changeMana(int32_t manaChange) {
+void Creature::changeMana(int64_t manaChange) {
 	if (manaChange > 0) {
-		mana += std::min<int32_t>(manaChange, getMaxMana() - mana);
-	}
-	else {
-		mana = std::max<int32_t>(0, mana + manaChange);
+		mana += std::min<int64_t>(manaChange, getMaxMana() - mana);
+	} else {
+		mana = toSafeNumber<uint32_t>(__FUNCTION__, mana + manaChange);
 	}
 }
 
-void Creature::gainHealth(Creature* healer, int32_t healthGain) {
+void Creature::gainHealth(Creature* healer, int64_t healthGain) {
 	changeHealth(healthGain);
 	if (healer) {
 		healer->onTargetCreatureGainHealth(this, healthGain);
 	}
 }
 
-void Creature::drainHealth(Creature* attacker, int32_t damage) {
+void Creature::drainHealth(Creature* attacker, int64_t damage) {
 	changeHealth(-damage, false);
 
 	if (attacker) {
@@ -821,7 +819,7 @@ void Creature::drainHealth(Creature* attacker, int32_t damage) {
 	}
 }
 
-void Creature::drainMana(Creature* attacker, int32_t manaLoss) {
+void Creature::drainMana(Creature* attacker, int64_t manaLoss) {
 	onAttacked();
 	changeMana(-manaLoss);
 
@@ -830,7 +828,7 @@ void Creature::drainMana(Creature* attacker, int32_t manaLoss) {
 	}
 }
 
-BlockType_t Creature::blockHit(Creature* attacker, CombatType_t combatType, int32_t &damage, bool checkDefense /* = false */, bool checkArmor /* = false */, bool /* field  = false */) {
+BlockType_t Creature::blockHit(Creature* attacker, CombatType_t combatType, int64_t &damage, bool checkDefense /* = false */, bool checkArmor /* = false */, bool /* field  = false */) {
 	BlockType_t blockType = BLOCK_NONE;
 
 	if (isImmune(combatType)) {
@@ -846,7 +844,7 @@ BlockType_t Creature::blockHit(Creature* attacker, CombatType_t combatType, int3
 		}
 
 		if (checkDefense && hasDefense && canUseDefense) {
-			int32_t defense = getDefense();
+			auto defense = static_cast<int64_t>(getDefense());
 			damage -= uniform_random(defense / 2, defense);
 			if (damage <= 0) {
 				damage = 0;
@@ -856,7 +854,7 @@ BlockType_t Creature::blockHit(Creature* attacker, CombatType_t combatType, int3
 		}
 
 		if (checkArmor) {
-			int32_t armor = getArmor();
+			auto armor = static_cast<int64_t>(getArmor());
 			if (armor > 3) {
 				damage -= uniform_random(armor / 2, armor - (armor % 2 + 1));
 			}
@@ -1029,7 +1027,7 @@ uint64_t Creature::getGainedExperience(Creature* attacker) const {
 	return std::floor(getDamageRatio(attacker) * getLostExperience());
 }
 
-void Creature::addDamagePoints(Creature* attacker, int32_t damagePoints) {
+void Creature::addDamagePoints(Creature* attacker, int64_t damagePoints) {
 	if (damagePoints <= 0) {
 		return;
 	}
@@ -1112,7 +1110,7 @@ void Creature::onAttacked() {
 	//
 }
 
-void Creature::onAttackedCreatureDrainHealth(Creature* target, int32_t points) {
+void Creature::onAttackedCreatureDrainHealth(Creature* target, int64_t points) {
 	target->addDamagePoints(this, points);
 }
 
@@ -1158,7 +1156,7 @@ void Creature::onGainExperience(uint64_t gainExp, Creature* target) {
 		TextMessage message(MESSAGE_EXPERIENCE_OTHERS, fmt::format("{} gained {} experience point{}.", ucfirst(getNameDescription()), gainExp, (gainExp != 1 ? "s" : "")));
 		message.position = position;
 		message.primary.color = TEXTCOLOR_WHITE_EXP;
-		message.primary.value = gainExp;
+		message.primary.value = static_cast<int64_t>(std::min<uint64_t>(gainExp, std::numeric_limits<int64_t>::max()));
 
 		for (Creature* spectator : spectators) {
 			spectator->getPlayer()->sendTextMessage(message);

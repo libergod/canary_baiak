@@ -142,8 +142,8 @@ class Monster final : public Creature {
 		void onCreatureMove(Creature* creature, const Tile* newTile, const Position &newPos, const Tile* oldTile, const Position &oldPos, bool teleport) override;
 		void onCreatureSay(Creature* creature, SpeakClasses type, const std::string &text) override;
 
-		void drainHealth(Creature* attacker, int32_t damage) override;
-		void changeHealth(int32_t healthChange, bool sendHealthChange = true) override;
+		void drainHealth(Creature* attacker, int64_t damage) override;
+		void changeHealth(int64_t healthChange, bool sendHealthChange = true) override;
 		bool getNextStep(Direction &direction, uint32_t &flags) override;
 		void onFollowCreatureComplete(const Creature* creature) override;
 
@@ -216,7 +216,7 @@ class Monster final : public Creature {
 	void setMonsterIcon(uint16_t iconcount, uint16_t iconnumber);
 
 		void setNormalCreatureLight() override;
-		bool getCombatValues(int32_t &min, int32_t &max) override;
+		bool getCombatValues(int64_t &min, int64_t &max) override;
 
 	void doAttacking(uint32_t interval) override;
 	bool hasExtraSwing() override {
@@ -262,7 +262,7 @@ class Monster final : public Creature {
 	void clearTargetList();
 	void clearFriendList();
 
-		BlockType_t blockHit(Creature* attacker, CombatType_t combatType, int32_t &damage, bool checkDefense = false, bool checkArmor = false, bool field = false) override;
+		BlockType_t blockHit(Creature* attacker, CombatType_t combatType, int64_t &damage, bool checkDefense = false, bool checkArmor = false, bool field = false) override;
 
 	static uint32_t monsterAutoID;
 
@@ -327,19 +327,20 @@ private:
 
 	int64_t lastMeleeAttack = 0;
 
-	uint32_t attackTicks = 0;
-	uint32_t targetTicks = 0;
-	uint32_t targetChangeTicks = 0;
-	uint32_t defenseTicks = 0;
-	uint32_t yellTicks = 0;
-	int32_t minCombatValue = 0;
-	int32_t maxCombatValue = 0;
-	int32_t targetChangeCooldown = 0;
-	int32_t challengeFocusDuration = 0;
-	int32_t stepDuration = 0;
-	int32_t targetDistance = 1;
-	int32_t challengeMeleeDuration = 0;
-	uint16_t totalPlayersOnScreen = 0;
+		uint32_t attackTicks = 0;
+		uint32_t targetTicks = 0;
+		uint32_t targetChangeTicks = 0;
+		uint32_t defenseTicks = 0;
+		uint32_t yellTicks = 0;
+		uint32_t soundTicks = 0;
+		int32_t minCombatValue = 0;
+		int32_t maxCombatValue = 0;
+		int32_t targetChangeCooldown = 0;
+		int32_t challengeFocusDuration = 0;
+		int32_t stepDuration = 0;
+		int32_t targetDistance = 1;
+		int32_t challengeMeleeDuration = 0;
+		uint16_t totalPlayersOnScreen = 0;
 
 	Position masterPos;
 
@@ -383,9 +384,10 @@ private:
 		static bool pushCreature(Creature* creature);
 		static void pushCreatures(Tile* tile);
 
-	void onThinkTarget(uint32_t interval);
-	void onThinkYell(uint32_t interval);
-	void onThinkDefense(uint32_t interval);
+		void onThinkTarget(uint32_t interval);
+		void onThinkYell(uint32_t interval);
+		void onThinkSound(uint32_t interval);
+		void onThinkDefense(uint32_t interval);
 
 	bool isFriend(const Creature* creature) const;
 	bool isOpponent(const Creature* creature) const;
