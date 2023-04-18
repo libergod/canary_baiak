@@ -32,7 +32,6 @@ Global = {
 		FamiliarSummonEvent60 = 30055
     },
 }
-}
 
 -- Values extraction function
 local function extractValues(tab, ret)
