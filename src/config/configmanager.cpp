@@ -266,6 +266,11 @@ bool ConfigManager::load() {
 	integer[FORGE_FIENDISH_CREATURES_LIMIT] = getGlobalNumber(L, "forgeFiendishLimit", 3);
 
 	floating[BESTIARY_RATE_CHARM_SHOP_PRICE] = getGlobalFloat(L, "bestiaryRateCharmShopPrice", 1.0);
+
+	integer[REBORN_LEVEL] = getGlobalNumber(L, "rebornLevel", 1500);
+	integer[REBORN_STATBONUS] = getGlobalNumber(L, "rebornStats", 5);
+	integer[REBORN_DMGBONUS] = getGlobalNumber(L, "rebornDmg", 20);
+
 	floating[RATE_HEALTH_REGEN] = getGlobalFloat(L, "rateHealthRegen", 1.0);
 	floating[RATE_HEALTH_REGEN_SPEED] = getGlobalFloat(L, "rateHealthRegenSpeed", 1.0);
 	floating[RATE_MANA_REGEN] = getGlobalFloat(L, "rateManaRegen", 1.0);

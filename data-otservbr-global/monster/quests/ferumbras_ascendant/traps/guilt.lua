@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Guilt")
-local monster = {}
+local monster = { }
 
 monster.description = "Guilt from Tarbaz"
 monster.experience = 320

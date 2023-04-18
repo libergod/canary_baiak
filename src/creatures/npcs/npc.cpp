@@ -64,7 +64,7 @@ bool Npc::canInteract(const Position &pos) const {
 	if (pos.z != getPosition().z) {
 		return false;
 	}
-	return Creature::canSee(getPosition(), pos, 4, 4);
+	return Creature::canSee(getPosition(), pos, 3, 3);
 }
 
 void Npc::onCreatureAppear(Creature* creature, bool isLogin) {

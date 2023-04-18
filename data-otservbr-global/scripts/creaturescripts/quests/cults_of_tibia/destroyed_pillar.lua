@@ -24,7 +24,7 @@ function destroyedPillar.onKill(creature, target)
 	for i = 1, #pillar do
 		local position = target:getPosition()
 		local pilar = ""
-		local newpos = {}
+		local newpos = { }
 		pilar = pillar[i]
 		if monsterName == pilar:lower() then
 			if monsterName:find(summoning) then

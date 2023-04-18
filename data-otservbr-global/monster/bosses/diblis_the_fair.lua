@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Diblis The Fair")
-local monster = {}
+local monster = { }
 
 monster.description = "Diblis The Fair"
 monster.experience = 1800

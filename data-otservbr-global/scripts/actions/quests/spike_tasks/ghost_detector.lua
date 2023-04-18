@@ -1,5 +1,5 @@
 if not GHOST_DETECTOR_MAP then
-	GHOST_DETECTOR_MAP = {}
+	GHOST_DETECTOR_MAP = { }
 end
 
 ghost_detector_area = {

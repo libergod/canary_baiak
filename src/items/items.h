@@ -233,6 +233,7 @@ class ItemType {
 		int32_t runeMagLevel = 0;
 		int32_t runeLevel = 0;
 		int32_t wrapableTo = 0;
+		int32_t runeRebirth = 0;
 
 		CombatType_t combatType = COMBAT_NONE;
 

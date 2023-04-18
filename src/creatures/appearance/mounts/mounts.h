@@ -10,10 +10,11 @@
 #ifndef SRC_CREATURES_APPEARANCE_MOUNTS_MOUNTS_H_
 #define SRC_CREATURES_APPEARANCE_MOUNTS_MOUNTS_H_
 
+
 struct Mount {
-		Mount(uint8_t initId, uint16_t initClientId, std::string initName, int32_t initSpeed, bool initPremium, std::string initType) :
-			name(initName), speed(initSpeed), clientId(initClientId), id(initId), premium(initPremium),
-			type(initType) { }
+	Mount(uint8_t initId, uint16_t initClientId, std::string initName, int32_t initSpeed, bool initPremium, std::string initType) :
+		name(initName), speed(initSpeed), clientId(initClientId), id(initId), premium(initPremium),
+		type(initType) {}
 
 		std::string name;
 		int32_t speed;

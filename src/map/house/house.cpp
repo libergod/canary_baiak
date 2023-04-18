@@ -115,12 +115,17 @@ void House::updateDoorDescription() const {
 	std::ostringstream ss;
 	if (owner != 0) {
 		ss << "It belongs to house '" << houseName << "'. " << ownerName << " owns this house.";
-	} else {
+	}
+	else {
 		ss << "It belongs to house '" << houseName << "'. Nobody owns this house.";
 
 		const int32_t housePrice = g_configManager().getNumber(HOUSE_PRICE);
 		if (housePrice != -1) {
 			ss << " It costs " << (houseTiles.size() * housePrice) << " gold coins.";
+		}
+
+		if (requiredRebirth > 0) {
+			ss << " It requires " << requiredRebirth << " rebirths.";
 		}
 	}
 
@@ -618,6 +623,7 @@ bool Houses::loadHousesXML(const std::string &filename) {
 
 		house->setRent(pugi::cast<uint32_t>(houseNode.attribute("rent").value()));
 		house->setTownId(pugi::cast<uint32_t>(houseNode.attribute("townid").value()));
+		house->setRequiredRebirth(pugi::cast<uint32_t>(houseNode.attribute("reqrebirth").value()));
 
 		house->setOwner(0, false);
 	}

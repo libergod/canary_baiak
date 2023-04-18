@@ -1,8 +1,8 @@
 local spellbook = Action()
 
 function spellbook.onUse(player, item, fromPosition, target, toPosition, isHotkey)
-	local text = {}
-	local spells = {}
+	local text = { }
+	local spells = { }
 	for _, spell in ipairs(player:getInstantSpells()) do
 		if spell.level ~= 0 then
 			if spell.manapercent > 0 then

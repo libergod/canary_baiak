@@ -45,9 +45,9 @@ class MoveEvents final : public Scripts {
 		uint32_t onPlayerDeEquip(Player &player, Item &item, Slots_t slot);
 		uint32_t onItemMove(Item &item, Tile &tile, bool isAdd);
 
-		std::map<Position, MoveEventList> getPositionsMap() const {
-			return positionsMap;
-		}
+	std::map<Position, MoveEventList> getPositionsMap() const {
+		return positionsMap;
+	}
 
 		bool hasPosition(Position position) const {
 			if (auto it = positionsMap.find(position);
@@ -57,13 +57,13 @@ class MoveEvents final : public Scripts {
 			return false;
 		}
 
-		void setPosition(Position position, MoveEventList moveEventList) {
-			positionsMap.try_emplace(position, moveEventList);
-		}
+	void setPosition(Position position, MoveEventList moveEventList) {
+		positionsMap.try_emplace(position, moveEventList);
+	}
 
-		std::map<int32_t, MoveEventList> getItemIdMap() const {
-			return itemIdMap;
-		}
+	std::map<int32_t, MoveEventList> getItemIdMap() const {
+		return itemIdMap;
+	}
 
 		bool hasItemId(int32_t itemId) const {
 			if (auto it = itemIdMap.find(itemId);
@@ -73,29 +73,29 @@ class MoveEvents final : public Scripts {
 			return false;
 		}
 
-		void setItemId(int32_t itemId, MoveEventList moveEventList) {
-			itemIdMap.try_emplace(itemId, moveEventList);
-		}
+	void setItemId(int32_t itemId, MoveEventList moveEventList) {
+		itemIdMap.try_emplace(itemId, moveEventList);
+	}
 
-		std::map<int32_t, MoveEventList> getUniqueIdMap() const {
-			return uniqueIdMap;
-		}
+	std::map<int32_t, MoveEventList> getUniqueIdMap() const {
+		return uniqueIdMap;
+	}
 
-		bool hasUniqueId(int32_t uniqueId) const {
-			if (auto it = uniqueIdMap.find(uniqueId);
-				it != uniqueIdMap.end()) {
-				return true;
-			}
-			return false;
+	bool hasUniqueId(int32_t uniqueId) const {
+		if (auto it = uniqueIdMap.find(uniqueId);
+			it != uniqueIdMap.end()) {
+			return true;
 		}
+		return false;
+	}
 
-		void setUniqueId(int32_t uniqueId, MoveEventList moveEventList) {
-			uniqueIdMap.try_emplace(uniqueId, moveEventList);
-		}
+	void setUniqueId(int32_t uniqueId, MoveEventList moveEventList) {
+		uniqueIdMap.try_emplace(uniqueId, moveEventList);
+	}
 
-		std::map<int32_t, MoveEventList> getActionIdMap() const {
-			return actionIdMap;
-		}
+	std::map<int32_t, MoveEventList> getActionIdMap() const {
+		return actionIdMap;
+	}
 
 		bool hasActionId(int32_t actionId) const {
 			if (auto it = actionIdMap.find(actionId);
@@ -105,9 +105,9 @@ class MoveEvents final : public Scripts {
 			return false;
 		}
 
-		void setActionId(int32_t actionId, MoveEventList moveEventList) {
-			actionIdMap.try_emplace(actionId, moveEventList);
-		}
+	void setActionId(int32_t actionId, MoveEventList moveEventList) {
+		actionIdMap.try_emplace(actionId, moveEventList);
+	}
 
 		MoveEvent* getEvent(Item &item, MoveEvent_t eventType);
 
@@ -128,29 +128,29 @@ class MoveEvents final : public Scripts {
 
 		MoveEvent* getEvent(Item &item, MoveEvent_t eventType, Slots_t slot);
 
-		std::map<int32_t, MoveEventList> uniqueIdMap;
-		std::map<int32_t, MoveEventList> actionIdMap;
-		std::map<int32_t, MoveEventList> itemIdMap;
-		std::map<Position, MoveEventList> positionsMap;
+	std::map<int32_t, MoveEventList> uniqueIdMap;
+	std::map<int32_t, MoveEventList> actionIdMap;
+	std::map<int32_t, MoveEventList> itemIdMap;
+	std::map<Position, MoveEventList> positionsMap;
 };
 
 constexpr auto g_moveEvents = &MoveEvents::getInstance;
 
 class MoveEvent final : public Script {
-	public:
-		explicit MoveEvent(LuaScriptInterface* interface);
+public:
+	explicit MoveEvent(LuaScriptInterface* interface);
 
-		MoveEvent_t getEventType() const;
-		void setEventType(MoveEvent_t type);
+	MoveEvent_t getEventType() const;
+	void setEventType(MoveEvent_t type);
 
 		uint32_t fireStepEvent(Creature &creature, Item* item, const Position &pos) const;
 		uint32_t fireAddRemItem(Item &item, Item &tileItem, const Position &pos) const;
 		uint32_t fireAddRemItem(Item &item, const Position &pos) const;
 		uint32_t fireEquip(Player &player, Item &item, Slots_t slot, bool isCheck);
 
-		uint32_t getSlot() const {
-			return slot;
-		}
+	uint32_t getSlot() const {
+		return slot;
+	}
 
 		// Scripting to lua interface
 		bool executeStep(Creature &creature, Item* item, const Position &pos) const;
@@ -252,13 +252,13 @@ class MoveEvent final : public Script {
 		static uint32_t AddItemField(Item* item, Item* tileItem, const Position &pos);
 		static uint32_t RemoveItemField(Item* item, Item* tileItem, const Position &pos);
 
-		static uint32_t EquipItem(MoveEvent* moveEvent, Player* player, Item* item, Slots_t slot, bool boolean);
-		static uint32_t DeEquipItem(MoveEvent* moveEvent, Player* player, Item* item, Slots_t slot, bool boolean);
+	static uint32_t EquipItem(MoveEvent* moveEvent, Player* player, Item* item, Slots_t slot, bool boolean);
+	static uint32_t DeEquipItem(MoveEvent* moveEvent, Player* player, Item* item, Slots_t slot, bool boolean);
 
-	private:
-		std::string getScriptTypeName() const override;
+private:
+	std::string getScriptTypeName() const override;
 
-		uint32_t slot = SLOTP_WHEREEVER;
+	uint32_t slot = SLOTP_WHEREEVER;
 
 		MoveEvent_t eventType = MOVE_EVENT_NONE;
 		/// Step function
@@ -294,12 +294,12 @@ class MoveEvent final : public Script {
 		std::map<uint16_t, bool> vocEquipMap;
 		bool tileItem = false;
 
-		std::vector<uint32_t> itemIdVector;
-		std::vector<uint32_t> actionIdVector;
-		std::vector<uint32_t> uniqueIdVector;
-		std::vector<Position> positionVector;
+	std::vector<uint32_t> itemIdVector;
+	std::vector<uint32_t> actionIdVector;
+	std::vector<uint32_t> uniqueIdVector;
+	std::vector<Position> positionVector;
 
-		friend class MoveEventFunctions;
+	friend class MoveEventFunctions;
 };
 
 #endif // SRC_LUA_CREATURE_MOVEMENT_H_

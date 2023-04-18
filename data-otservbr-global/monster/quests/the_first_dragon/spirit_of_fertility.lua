@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Spirit of Fertility")
-local monster = {}
+local monster = { }
 
 monster.description = "a spirit of fertility"
 monster.experience = 1100

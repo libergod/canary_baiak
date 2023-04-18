@@ -116,44 +116,44 @@ bool CustomAttribute::unserialize(PropStream &propStream, const std::string &fun
 	}
 
 	switch (type) {
-		case 1: {
-			std::string readString;
-			if (!propStream.readString(readString)) {
-				SPDLOG_ERROR("[{}] failed to read string, call function: {}", __FUNCTION__, function);
-				return false;
-			}
-			setValue(readString);
-			break;
-		}
-		case 2: {
-			int64_t readInt;
-			if (!propStream.read<int64_t>(readInt)) {
-				SPDLOG_ERROR("[{}] failed to read int64, call function: {}", __FUNCTION__, function);
-				return false;
-			}
-			setValue(readInt);
-			break;
-		}
-		case 3: {
-			double readDouble;
-			if (!propStream.read<double>(readDouble)) {
-				SPDLOG_ERROR("[{}] failed to read double, call function: {}", __FUNCTION__, function);
-				return false;
-			}
-			setValue(readDouble);
-			break;
-		}
-		case 4: {
-			bool readBoolean;
-			if (!propStream.read<bool>(readBoolean)) {
-				SPDLOG_ERROR("[{}] failed to read boolean, call function: {}", __FUNCTION__, function);
-				return false;
-			}
-			setValue(readBoolean);
-			break;
-		}
-		default:
+	case 1: {
+		std::string readString;
+		if (!propStream.readString(readString)) {
+			SPDLOG_ERROR("[{}] failed to read string, call function: {}", __FUNCTION__, function);
 			return false;
+		}
+		setValue(readString);
+		break;
+	}
+	case 2: {
+		int64_t readInt;
+		if (!propStream.read<int64_t>(readInt)) {
+			SPDLOG_ERROR("[{}] failed to read int64, call function: {}", __FUNCTION__, function);
+			return false;
+		}
+		setValue(readInt);
+		break;
+	}
+	case 3: {
+		double readDouble;
+		if (!propStream.read<double>(readDouble)) {
+			SPDLOG_ERROR("[{}] failed to read double, call function: {}", __FUNCTION__, function);
+			return false;
+		}
+		setValue(readDouble);
+		break;
+	}
+	case 4: {
+		bool readBoolean;
+		if (!propStream.read<bool>(readBoolean)) {
+			SPDLOG_ERROR("[{}] failed to read boolean, call function: {}", __FUNCTION__, function);
+			return false;
+		}
+		setValue(readBoolean);
+		break;
+	}
+	default:
+		return false;
 	}
 	return true;
 }

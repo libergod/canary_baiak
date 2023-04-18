@@ -20,13 +20,13 @@ using UsersMap = std::map<uint32_t, Player*>;
 using InvitedMap = std::map<uint32_t, const Player*>;
 
 class ChatChannel {
-	public:
-		ChatChannel() = default;
-		ChatChannel(uint16_t channelId, std::string channelName) :
-			name(std::move(channelName)),
-			id(channelId) { }
+public:
+	ChatChannel() = default;
+	ChatChannel(uint16_t channelId, std::string channelName) :
+		name(std::move(channelName)),
+		id(channelId) {}
 
-		virtual ~ChatChannel() = default;
+	virtual ~ChatChannel() = default;
 
 		bool addUser(Player &player);
 		bool removeUser(const Player &player);
@@ -48,9 +48,9 @@ class ChatChannel {
 			return nullptr;
 		}
 
-		virtual uint32_t getOwner() const {
-			return 0;
-		}
+	virtual uint32_t getOwner() const {
+		return 0;
+	}
 
 		bool isPublicChannel() const {
 			return publicChannel;
@@ -61,50 +61,50 @@ class ChatChannel {
 		bool executeOnLeaveEvent(const Player &player);
 		bool executeOnSpeakEvent(const Player &player, SpeakClasses &type, const std::string &message);
 
-	protected:
-		UsersMap users;
+protected:
+	UsersMap users;
 
-		std::string name;
+	std::string name;
 
-		int32_t canJoinEvent = -1;
-		int32_t onJoinEvent = -1;
-		int32_t onLeaveEvent = -1;
-		int32_t onSpeakEvent = -1;
+	int32_t canJoinEvent = -1;
+	int32_t onJoinEvent = -1;
+	int32_t onLeaveEvent = -1;
+	int32_t onSpeakEvent = -1;
 
-		uint16_t id;
-		bool publicChannel = false;
+	uint16_t id;
+	bool publicChannel = false;
 
 		friend class Chat;
 };
 
 class PrivateChatChannel final : public ChatChannel {
-	public:
-		PrivateChatChannel(uint16_t channelId, std::string channelName) :
-			ChatChannel(channelId, channelName) { }
+public:
+	PrivateChatChannel(uint16_t channelId, std::string channelName) :
+		ChatChannel(channelId, channelName) {}
 
-		uint32_t getOwner() const override {
-			return owner;
-		}
-		void setOwner(uint32_t newOwner) {
-			this->owner = newOwner;
-		}
+	uint32_t getOwner() const override {
+		return owner;
+	}
+	void setOwner(uint32_t newOwner) {
+		this->owner = newOwner;
+	}
 
-		bool isInvited(uint32_t guid) const;
+	bool isInvited(uint32_t guid) const;
 
 		void invitePlayer(const Player &player, Player &invitePlayer);
 		void excludePlayer(const Player &player, Player &excludePlayer);
 
-		bool removeInvite(uint32_t guid);
+	bool removeInvite(uint32_t guid);
 
-		void closeChannel() const;
+	void closeChannel() const;
 
-		const InvitedMap* getInvitedUsers() const override {
-			return &invites;
-		}
+	const InvitedMap* getInvitedUsers() const override {
+		return &invites;
+	}
 
-	private:
-		InvitedMap invites;
-		uint32_t owner = 0;
+private:
+	InvitedMap invites;
+	uint32_t owner = 0;
 };
 
 using ChannelList = std::list<ChatChannel*>;
@@ -124,7 +124,7 @@ class Chat {
 			return instance;
 		}
 
-		bool load();
+	bool load();
 
 		ChatChannel* createChannel(const Player &player, uint16_t channelId);
 		bool deleteChannel(const Player &player, uint16_t channelId);
@@ -142,19 +142,19 @@ class Chat {
 		ChatChannel* getGuildChannelById(uint32_t guildId);
 		PrivateChatChannel* getPrivateChannel(const Player &player);
 
-		LuaScriptInterface* getScriptInterface() {
-			return &scriptInterface;
-		}
+	LuaScriptInterface* getScriptInterface() {
+		return &scriptInterface;
+	}
 
-	private:
-		std::map<uint16_t, ChatChannel> normalChannels;
-		std::map<uint16_t, PrivateChatChannel> privateChannels;
-		std::map<Party*, ChatChannel> partyChannels;
-		std::map<uint32_t, ChatChannel> guildChannels;
+private:
+	std::map<uint16_t, ChatChannel> normalChannels;
+	std::map<uint16_t, PrivateChatChannel> privateChannels;
+	std::map<Party*, ChatChannel> partyChannels;
+	std::map<uint32_t, ChatChannel> guildChannels;
 
-		LuaScriptInterface scriptInterface;
+	LuaScriptInterface scriptInterface;
 
-		PrivateChatChannel dummyPrivate;
+	PrivateChatChannel dummyPrivate;
 };
 
 constexpr auto g_chat = &Chat::getInstance;

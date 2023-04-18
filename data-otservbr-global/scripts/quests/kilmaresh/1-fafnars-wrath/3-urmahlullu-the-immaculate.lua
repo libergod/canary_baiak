@@ -25,7 +25,7 @@ function leverboss.onUse(player, item, fromPosition, target, toPosition, isHotke
 			return true
 		end
 		
-		local team, participant = {}
+		local team, participant = { }
 
 		for i = 1, #config.playerPositions do
 			participant = Tile(config.playerPositions[i]):getTopCreature()

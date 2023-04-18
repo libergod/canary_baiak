@@ -88,6 +88,9 @@ class PlayerFunctions final : LuaScriptInterface {
 			registerMethod(L, "Player", "removeExperience", PlayerFunctions::luaPlayerRemoveExperience);
 			registerMethod(L, "Player", "getLevel", PlayerFunctions::luaPlayerGetLevel);
 
+			registerMethod(L, "Player", "getRebirth", PlayerFunctions::luaPlayerGetRebirth); // rebirth
+			registerMethod(L, "Player", "doRebirth", PlayerFunctions::luaPlayerDoRebirth); // rebirth
+
 			registerMethod(L, "Player", "getMagicLevel", PlayerFunctions::luaPlayerGetMagicLevel);
 			registerMethod(L, "Player", "getBaseMagicLevel", PlayerFunctions::luaPlayerGetBaseMagicLevel);
 			registerMethod(L, "Player", "getMana", PlayerFunctions::luaPlayerGetMana);
@@ -207,6 +210,15 @@ class PlayerFunctions final : LuaScriptInterface {
 			registerMethod(L, "Player", "addTibiaCoins", PlayerFunctions::luaPlayerAddTibiaCoins);
 			registerMethod(L, "Player", "removeTibiaCoins", PlayerFunctions::luaPlayerRemoveTibiaCoins);
 
+			//INICIO //GUSTAVO LIBER - 09/09/2022 - COIN TOURNAMENTS ADD
+			registerMethod(L, "Player", "getTournamentsCoins", PlayerFunctions::luaPlayerGetTournamentsCoins);
+			registerMethod(L, "Player", "addTournamentsCoins", PlayerFunctions::luaPlayerAddTournamentsCoins);
+			registerMethod(L, "Player", "removeTournamentsCoins", PlayerFunctions::luaPlayerRemoveTournamentsCoins);
+			//FIM //GUSTAVO LIBER - 09/09/2022 - COIN TOURNAMENTS ADD
+
+			registerMethod(L, "Player", "setFaction", PlayerFunctions::luaPlayerSetFaction);
+			registerMethod(L, "Player", "getFaction", PlayerFunctions::luaPlayerGetFaction);
+
 			registerMethod(L, "Player", "hasBlessing", PlayerFunctions::luaPlayerHasBlessing);
 			registerMethod(L, "Player", "addBlessing", PlayerFunctions::luaPlayerAddBlessing);
 			registerMethod(L, "Player", "removeBlessing", PlayerFunctions::luaPlayerRemoveBlessing);
@@ -270,6 +282,8 @@ class PlayerFunctions final : LuaScriptInterface {
 			// Forge Functions
 			registerMethod(L, "Player", "openForge", PlayerFunctions::luaPlayerOpenForge);
 			registerMethod(L, "Player", "closeForge", PlayerFunctions::luaPlayerCloseForge);
+			registerMethod(L, "Player", "isUIExhausted", PlayerFunctions::luaPlayerIsUIExhausted);
+			registerMethod(L, "Player", "updateUIExhausted", PlayerFunctions::luaPlayerUpdateUIExhausted);
 
 			registerMethod(L, "Player", "addForgeDusts", PlayerFunctions::luaPlayerAddForgeDusts);
 			registerMethod(L, "Player", "removeForgeDusts", PlayerFunctions::luaPlayerRemoveForgeDusts);
@@ -282,8 +296,6 @@ class PlayerFunctions final : LuaScriptInterface {
 
 			registerMethod(L, "Player", "getForgeSlivers", PlayerFunctions::luaPlayerGetForgeSlivers);
 			registerMethod(L, "Player", "getForgeCores", PlayerFunctions::luaPlayerGetForgeCores);
-			registerMethod(L, "Player", "isUIExhausted", PlayerFunctions::luaPlayerIsUIExhausted);
-			registerMethod(L, "Player", "updateUIExhausted", PlayerFunctions::luaPlayerUpdateUIExhausted);
 
 			registerMethod(L, "Player", "setFaction", PlayerFunctions::luaPlayerSetFaction);
 			registerMethod(L, "Player", "getFaction", PlayerFunctions::luaPlayerGetFaction);
@@ -369,6 +381,9 @@ class PlayerFunctions final : LuaScriptInterface {
 		static int luaPlayerAddExperience(lua_State* L);
 		static int luaPlayerRemoveExperience(lua_State* L);
 		static int luaPlayerGetLevel(lua_State* L);
+
+		static int luaPlayerGetRebirth(lua_State* L); // rebirth
+		static int luaPlayerDoRebirth(lua_State* L); // rebirth
 
 		static int luaPlayerGetMagicLevel(lua_State* L);
 		static int luaPlayerGetBaseMagicLevel(lua_State* L);
@@ -490,6 +505,15 @@ class PlayerFunctions final : LuaScriptInterface {
 		static int luaPlayerGetTibiaCoins(lua_State* L);
 		static int luaPlayerAddTibiaCoins(lua_State* L);
 		static int luaPlayerRemoveTibiaCoins(lua_State* L);
+
+		//INICIO //GUSTAVO LIBER - 09/09/2022 - COIN TOURNAMENTS ADD
+		static int luaPlayerGetTournamentsCoins(lua_State* L);
+		static int luaPlayerAddTournamentsCoins(lua_State* L);
+		static int luaPlayerRemoveTournamentsCoins(lua_State* L);
+		//FIM //GUSTAVO LIBER - 09/09/2022 - COIN TOURNAMENTS ADD
+
+		static int luaPlayerSetFaction(lua_State* L);
+		static int luaPlayerGetFaction(lua_State* L);
 
 		static int luaPlayerHasBlessing(lua_State* L);
 		static int luaPlayerAddBlessing(lua_State* L);

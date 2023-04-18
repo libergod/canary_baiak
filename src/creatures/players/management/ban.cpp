@@ -41,7 +41,8 @@ bool Ban::acceptConnection(uint32_t clientIP) {
 				return false;
 			}
 		}
-	} else {
+	}
+	else {
 		connectBlock.count = 1;
 	}
 	return true;

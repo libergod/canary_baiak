@@ -215,7 +215,7 @@ DailyReward.retrieveHistoryEntries = function(playerId)
 		return false
 	end
 
-	local entries = {}
+	local entries = { }
 	local resultId = db.storeQuery("SELECT * FROM `daily_reward_history` WHERE `player_id` = \z
 		" .. player:getGuid() .. " ORDER BY `timestamp` DESC LIMIT 15;")
 	if resultId ~= false then
@@ -286,7 +286,7 @@ function Player.iterateTest(self)
 	local reward = DailyRewardItems[self:getVocation():getBaseId()]
 
 	if not(reward) then
-		reward = {}
+		reward = { }
 	end
 
 	for i = 1, #reward.things do

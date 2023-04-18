@@ -141,6 +141,8 @@ class Player final : public Creature, public Cylinder {
 		uint8_t getRandomMountId() const;
 		void dismount();
 
+		void doReborn();// rebirth
+
 		uint8_t isRandomMounted() const {
 			return randomMount;
 		}
@@ -493,6 +495,11 @@ class Player final : public Creature, public Cylinder {
 		uint32_t getLevel() const {
 			return level;
 		}
+
+		uint32_t getRebirth() const {// rebirth
+			return rebirth;
+		}
+
 		uint8_t getLevelPercent() const {
 			return levelPercent;
 		}
@@ -515,6 +522,7 @@ class Player final : public Creature, public Cylinder {
 		void setPremiumDays(int32_t v);
 
 		void setTibiaCoins(int32_t v);
+		void setTibiaCoinsTournaments(int32_t v);
 
 		uint16_t getHelpers() const;
 
@@ -765,9 +773,9 @@ class Player final : public Creature, public Cylinder {
 		uint16_t getSkillLevel(uint8_t skill) const {
 			auto skillLevel = std::max<int32_t>(0, skills[skill].level + varSkills[skill]);
 
-			if (auto it = maxValuePerSkill.find(skill);
-				it != maxValuePerSkill.end()) {
-				skillLevel = std::min<int32_t>(it->second, skillLevel);
+			auto it = maxValuePerSkill.find(skill);
+			if (it != maxValuePerSkill.end()) {
+				skillLevel = std::min<uint16_t>(it->second, skillLevel);
 			}
 
 			return static_cast<uint16_t>(skillLevel);
@@ -1359,6 +1367,8 @@ class Player final : public Creature, public Cylinder {
 		}
 		void closeImbuementWindow() const {
 			if (client) {
+		void closeImbuementWindow() const {
+			if(client) {
 				client->closeImbuementWindow();
 			}
 		}
@@ -2308,7 +2318,7 @@ class Player final : public Creature, public Cylinder {
 		ReturnValue queryRemove(const Thing &thing, uint32_t count, uint32_t flags, Creature* actor = nullptr) const override;
 		Cylinder* queryDestination(int32_t &index, const Thing &thing, Item** destItem, uint32_t &flags) override;
 
-		void addThing(Thing*) override { }
+		void addThing(Thing*) override {}
 		void addThing(int32_t index, Thing* thing) override;
 
 		void updateThing(Thing* thing, uint16_t itemId, uint32_t count) override;
@@ -2444,6 +2454,7 @@ class Player final : public Creature, public Cylinder {
 		uint32_t conditionImmunities = 0;
 		uint32_t conditionSuppressions = 0;
 		uint32_t level = 1;
+		uint32_t rebirth = 0;// rebirth
 		uint32_t magLevel = 0;
 		uint32_t actionTaskEvent = 0;
 		uint32_t actionTaskEventPush = 0;
@@ -2469,6 +2480,7 @@ class Player final : public Creature, public Cylinder {
 		int32_t offlineTrainingTime = 0;
 		int32_t idleTime = 0;
 		uint32_t coinBalance = 0;
+		uint32_t coinBalanceTournaments = 0;
 		uint16_t expBoostStamina = 0;
 		uint8_t randomMount = 0;
 
@@ -2524,7 +2536,9 @@ class Player final : public Creature, public Cylinder {
 		BlockType_t lastAttackBlockType = BLOCK_NONE;
 		TradeState_t tradeState = TRADE_NONE;
 		FightMode_t fightMode = FIGHTMODE_ATTACK;
+
 		Faction_t faction = FACTION_PLAYER;
+
 		account::AccountType accountType = account::AccountType::ACCOUNT_TYPE_NORMAL;
 		QuickLootFilter_t quickLootFilter;
 		VipStatus_t statusVipList = VIPSTATUS_ONLINE;
@@ -2567,7 +2581,7 @@ class Player final : public Creature, public Cylinder {
 		bool isPromoted() const;
 
 		uint32_t getAttackSpeed() const {
-			return vocation->getAttackSpeed();
+			return (vocation->getAttackSpeed() - (getSkillLevel(SKILL_FIST) * 3));
 		}
 
 		static double_t getPercentLevel(uint64_t count, uint64_t nextLevelCount);

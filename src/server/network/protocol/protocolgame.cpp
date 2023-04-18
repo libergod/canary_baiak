@@ -3699,8 +3699,14 @@ void ProtocolGame::sendResourceBalance(Resource_t resourceType, uint64_t value) 
 void ProtocolGame::sendSaleItemList(const std::vector<ShopBlock> &shopVector, const std::map<uint16_t, uint16_t> &inventoryMap) {
 	// Since we already have full inventory map we shouldn't call getMoney here - it is simply wasting cpu power
 	uint64_t playerMoney = 0;
-	auto it = inventoryMap.find(ITEM_CRYSTAL_COIN);
-	if (it != inventoryMap.end()) {
+	auto it = inventoryMap.find(ITEM_GOLD_INGOT);
+	if (it != inventoryMap.end())
+	{
+		playerMoney += static_cast<uint64_t>(it->second) * 1000000;
+	}
+	it = inventoryMap.find(ITEM_CRYSTAL_COIN);
+	if (it != inventoryMap.end())
+	{
 		playerMoney += static_cast<uint64_t>(it->second) * 10000;
 	}
 	it = inventoryMap.find(ITEM_PLATINUM_COIN);
@@ -3815,7 +3821,7 @@ void ProtocolGame::sendCoinBalance() {
 	msg.add<uint32_t>(player->coinBalance); // Normal Coins
 	msg.add<uint32_t>(player->coinBalance); // Transferable Coins
 	msg.add<uint32_t>(player->coinBalance); // Reserved Auction Coins
-	msg.add<uint32_t>(0); // Tournament Coins
+	msg.add<uint32_t>(player->coinBalanceTournaments);// Tournament Coins
 
 	writeToOutputBuffer(msg);
 }
@@ -3832,8 +3838,13 @@ void ProtocolGame::updateCoinBalance() {
 				account::Account account;
 				account.LoadAccountDB(threadPlayer->getAccount());
 				uint32_t coins;
+				uint32_t coinstournaments;
 				account.GetCoins(&coins);
+				account.GetCoinsTournaments(&coinstournaments);
 				threadPlayer->coinBalance = coins;
+				//INICIO //GUSTAVO LIBER - 09/09/2022 - COIN TOURNAMENTS ADD
+				threadPlayer->coinBalanceTournaments = coinstournaments;
+				//FIM //GUSTAVO LIBER - 09/09/2022 - COIN TOURNAMENTS ADD
 				threadPlayer->sendCoinBalance();
 			}
 		},
@@ -4393,7 +4404,7 @@ void ProtocolGame::sendMarketDetail(uint16_t itemId, uint8_t tier) {
 				separator = true;
 			}
 
-			ss << fmt::format("{} {:+}%", getCombatName(indexToCombatType(i)), it.abilities->absorbPercent[i]);
+			ss << getCombatName(indexToCombatType(i)) << ' ' << std::showpos << it.abilities->absorbPercent[i] << std::noshowpos << '%';
 		}
 
 		msg.addString(ss.str());
@@ -4414,6 +4425,7 @@ void ProtocolGame::sendMarketDetail(uint16_t itemId, uint8_t tier) {
 	}
 
 	msg.addString(it.vocationString);
+
 	msg.addString(it.runeSpellName);
 
 	if (it.abilities) {
@@ -4431,7 +4443,7 @@ void ProtocolGame::sendMarketDetail(uint16_t itemId, uint8_t tier) {
 				separator = true;
 			}
 
-			ss << fmt::format("{} {:+}", getSkillName(i), it.abilities->skills[i]);
+			ss << getSkillName(i) << ' ' << std::showpos << it.abilities->skills[i] << std::noshowpos;
 		}
 
 		for (uint8_t i = SKILL_CRITICAL_HIT_CHANCE; i <= SKILL_LAST; i++) {
@@ -4471,7 +4483,7 @@ void ProtocolGame::sendMarketDetail(uint16_t itemId, uint8_t tier) {
 				ss << ", ";
 			}
 
-			ss << fmt::format("speed {:+}", (it.abilities->speed >> 1));
+			ss << "speed " << std::showpos << (it.abilities->speed >> 1) << std::noshowpos;
 		}
 
 		msg.addString(ss.str());
@@ -4534,16 +4546,19 @@ void ProtocolGame::sendMarketDetail(uint16_t itemId, uint8_t tier) {
 		msg.addString(std::to_string(it.upgradeClassification));
 		std::ostringstream ss;
 
+		ss << static_cast<uint16_t>(tier) << " (";
 		double chance;
 		if (it.isWeapon()) {
 			chance = 0.5 * tier + 0.05 * ((tier - 1) * (tier - 1));
-			ss << fmt::format("{} ({:.2f}% Onslaught)", static_cast<uint16_t>(tier), chance);
-		} else if (it.isHelmet()) {
+			ss << std::setprecision(2) << std::fixed << chance << "% Onslaught)";
+		}
+		else if (it.isHelmet()) {
 			chance = 2 * tier + 0.05 * ((tier - 1) * (tier - 1));
-			ss << fmt::format("{} ({:.2f}% Momentum)", static_cast<uint16_t>(tier), chance);
-		} else if (it.isArmor()) {
+			ss << std::setprecision(2) << std::fixed << chance << "% Momentum)";
+		}
+		else if (it.isArmor()) {
 			chance = (0.0307576 * tier * tier) + (0.440697 * tier) + 0.026;
-			ss << fmt::format("{} ({:.2f}% Ruse)", static_cast<uint16_t>(tier), chance);
+			ss << std::setprecision(2) << std::fixed << chance << "% Ruse)";
 		}
 		msg.addString(ss.str());
 	} else if (it.upgradeClassification > 0 && tier == 0) {
@@ -6026,13 +6041,13 @@ void ProtocolGame::AddPlayerSkills(NetworkMessage &msg) {
 
 	msg.add<uint16_t>(player->getMagicLevel());
 	msg.add<uint16_t>(player->getBaseMagicLevel());
-	msg.add<uint16_t>(player->getBaseMagicLevel()); // Loyalty Bonus
+	msg.add<uint16_t>(player->getBaseMagicLevel());
 	msg.add<uint16_t>(player->getMagicLevelPercent() * 100);
 
 	for (uint8_t i = SKILL_FIRST; i <= SKILL_FISHING; ++i) {
 		msg.add<uint16_t>(std::min<int32_t>(player->getSkillLevel(i), std::numeric_limits<uint16_t>::max()));
 		msg.add<uint16_t>(player->getBaseSkill(i));
-		msg.add<uint16_t>(player->getBaseSkill(i)); // Loyalty Bonus
+		msg.add<uint16_t>(player->getBaseSkill(i));
 		msg.add<uint16_t>(player->getSkillPercent(i) * 100);
 	}
 

@@ -2,8 +2,8 @@ local teleports = {
 	[TCC_MEDUSACRYSTAL_ENTRY_MAP] = {position = TCC_MEDUSACRYSTAL_ENTRY}, -- medusa entry
 	[TCC_MEDUSACRYSTAL_EXIT_MAP] = {position = TCC_MEDUSACRYSTAL_EXIT}, -- medusa exit
 	[TCC_VORTEX_POSITION] = {position = TCC_VORTEX_TELEPORTED}, -- Vortex
-	[TCC_MEDUSAMSG_ONEMAP] = {}, -- medusa crystal message
-	[TCC_MEDUSAMSG_TWOMAP] = {}, -- medusa crystal message
+	[TCC_MEDUSAMSG_ONEMAP] = { }, -- medusa crystal message
+	[TCC_MEDUSAMSG_TWOMAP] = { }, -- medusa crystal message
 	[TCC_AFTERVORTEX_EXIT_ONE_MAP] = {position = TCC_AFTERVORTEX_EXIT_ONE}, -- Vortex exit 1
 	[TCC_AFTERVORTEX_EXIT_TWO_MAP] = {position = TCC_AFTERVORTEX_EXIT_TWO} -- Vortex  exit 2
 }

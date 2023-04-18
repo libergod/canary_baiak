@@ -361,9 +361,9 @@ function heartDestructionFinal.onUse(player, item, fromPosition, itemEx, toPosit
 		if item.itemid == 8911 then
 			if player:getPosition().x == pushPos.x and player:getPosition().y == pushPos.y and player:getPosition().z == pushPos.z then
 
-				local storeHunger, hungerTile = {}
-				local storeDestruction, destructionTile = {}
-				local storeRage, rageTile = {}
+				local storeHunger, hungerTile = { }
+				local storeDestruction, destructionTile = { }
+				local storeRage, rageTile = { }
 
 				for i = 1, #config.hungerPositions do
 					hungerTile = Tile(config.hungerPositions[i]):getTopCreature()

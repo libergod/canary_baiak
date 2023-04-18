@@ -24,8 +24,8 @@ struct Outfit {
 };
 
 struct ProtocolOutfit {
-		ProtocolOutfit(const std::string &initName, uint16_t initLookType, uint8_t initAddons) :
-			name(initName), lookType(initLookType), addons(initAddons) { }
+	ProtocolOutfit(const std::string &initName, uint16_t initLookType, uint8_t initAddons) :
+		name(initName), lookType(initLookType), addons(initAddons) {}
 
 		const std::string &name;
 		uint16_t lookType;

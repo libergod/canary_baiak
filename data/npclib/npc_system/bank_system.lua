@@ -1,5 +1,5 @@
-local count = {}
-local transfer = {}
+local count = { }
+local transfer = { }
 local receiptFormat = "Date: %s\nType: %s\nGold Amount: %d\nReceipt Owner: %s\nRecipient: %s\n\n%s"
 
 function Npc:parseBankMessages(message, npc, creature, npcHandler)

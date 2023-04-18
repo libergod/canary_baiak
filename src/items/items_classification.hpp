@@ -12,11 +12,11 @@
 
 // Classification class for forging system and market.
 class ItemClassification {
-	public:
-		ItemClassification() = default;
-		explicit ItemClassification(uint8_t id) :
-			id(id) { }
-		virtual ~ItemClassification() = default;
+public:
+	ItemClassification() = default;
+	explicit ItemClassification(uint8_t id) :
+		id(id) {}
+	virtual ~ItemClassification() = default;
 
 		void addTier(uint8_t tierId, uint64_t tierPrice) {
 			for (auto [tier, price] : tiers) {

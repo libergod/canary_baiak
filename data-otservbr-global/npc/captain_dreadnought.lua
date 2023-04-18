@@ -1,6 +1,6 @@
 local internalNpcName = "Captain Dreadnought"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = {}
+local npcConfig = { }
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName
@@ -429,7 +429,7 @@ end
 keywordHandler:addAliasKeyword({"passage"})
 keywordHandler:addAliasKeyword({"travel"})
 -- Donate topic nodes
-local donateNode = keywordHandler:addKeyword({"donate"}, donationHandler, {}, 
+local donateNode = keywordHandler:addKeyword({"donate"}, donationHandler, { }, 
 function(player) return player:getMoney() > 500 end
 )
 donateNode:addChildKeywordNode(KeywordNode:new({"yes"}, donationHandler, {confirm = true}))

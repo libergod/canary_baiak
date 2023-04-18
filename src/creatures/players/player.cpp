@@ -79,6 +79,38 @@ Player::~Player() {
 	logged = false;
 }
 
+void Player::doReborn() // rebirth
+{
+	int rebs = rebirth + 1;
+	std::ostringstream ss;
+	ss << "You advanced from Rebirth Level " << rebirth << " to " << rebs << '.';
+	sendTextMessage(MESSAGE_EVENT_ADVANCE, ss.str());
+
+
+	rebirth++;
+	double bonusRebirth = rebirth * g_configManager().getNumber(REBORN_STATBONUS);
+	bonusRebirth /= 100;
+	//bonusRebirth += 1;
+
+	mana = floor(90 +  (90 * bonusRebirth));
+	manaMax = mana;
+	//manaMax = 90 + (mana * rebirth);
+
+	health = floor(185 + (185 * bonusRebirth));
+	healthMax = health;
+	//healthMax = 185 + (health * rebirth);
+
+	//double vocGainHp = vocation->getHPGain();
+	//double vocGainMana = vocation->getManaGain();
+
+	//47000 + (vocation:getCapacityGain() * (level-8)) + (capMore * player:getReborn())
+	capacity = floor(47000 * bonusRebirth);
+	experience = 4200;
+	level = 8;
+	levelPercent = 0;
+	sendStats();
+}
+
 bool Player::setVocation(uint16_t vocId) {
 	Vocation* voc = g_vocations().getVocation(vocId);
 	if (!voc) {
@@ -150,6 +182,8 @@ std::string Player::getDescription(int32_t lookDistance) const {
 			s << " has no vocation.";
 		}
 	}
+
+	s << " Rebirths: " << rebirth << ".";
 
 	if (party) {
 		if (lookDistance == -1) {
@@ -498,7 +532,6 @@ void Player::updateInventoryImbuement() {
 				// If no imbuement is found, continue to the next slot
 				break;
 			}
-
 			// Imbuement from imbuementInfo, this variable reduces code complexity
 			auto imbuement = imbuementInfo.imbuement;
 			// Get the category of the imbuement
@@ -909,7 +942,8 @@ Container* Player::setLootContainer(ObjectCategory_t category, Container* contai
 			container->setAttribute(ItemAttribute_t::QUICKLOOTCONTAINER, sendAttribute);
 		}
 		return previousContainer;
-	} else {
+	}
+	else {
 		if (auto it = quickLootContainers.find(category);
 			it != quickLootContainers.end() && !loading) {
 			previousContainer = (*it).second;
@@ -917,15 +951,14 @@ Container* Player::setLootContainer(ObjectCategory_t category, Container* contai
 			flags &= ~(1 << category);
 			if (flags == 0) {
 				previousContainer->removeAttribute(ItemAttribute_t::QUICKLOOTCONTAINER);
-			} else {
+			}
+			else {
 				previousContainer->setAttribute(ItemAttribute_t::QUICKLOOTCONTAINER, flags);
 			}
-
 			previousContainer->decrementReferenceCounter();
 			quickLootContainers.erase(it);
 		}
 	}
-
 	return nullptr;
 }
 
@@ -1279,12 +1312,12 @@ void Player::onApplyImbuement(Imbuement* imbuement, Item* item, uint8_t slot, bo
 		return;
 	}
 
+	item->addImbuement(slot, imbuement->getID(), baseImbuement->duration);
+
 	// Update imbuement stats item if the item is equipped
 	if (item->getParent() == this) {
 		addItemImbuementStats(imbuement);
 	}
-
-	item->addImbuement(slot, imbuement->getID(), baseImbuement->duration);
 	openImbuementWindow(item);
 }
 
@@ -2075,7 +2108,7 @@ void Player::addExperience(Creature* target, uint64_t exp, bool sendText /* = fa
 	experience += exp;
 
 	if (sendText) {
-		std::string expString = fmt::format("{} experience point{}.", exp, (exp != 1 ? "s" : ""));
+		std::string expString = std::to_string(exp) + (exp != 1 ? " experience points." : " experience point.");
 
 		TextMessage message(MESSAGE_EXPERIENCE, "You gained " + expString);
 		message.position = position;
@@ -2097,6 +2130,10 @@ void Player::addExperience(Creature* target, uint64_t exp, bool sendText /* = fa
 
 	uint32_t prevLevel = level;
 	while (experience >= nextLevelExp) {
+		double bonusRebirth = rebirth * g_configManager().getNumber(REBORN_STATBONUS);
+		bonusRebirth /= 100;
+		bonusRebirth += 1;
+
 		++level;
 		// Player stats gain for vocations level <= 8
 		if (vocation->getId() != VOCATION_NONE && level <= 8) {
@@ -2107,11 +2144,11 @@ void Player::addExperience(Creature* target, uint64_t exp, bool sendText /* = fa
 			mana += noneVocation->getManaGain();
 			capacity += noneVocation->getCapGain();
 		} else {
-			healthMax += vocation->getHPGain();
-			health += vocation->getHPGain();
-			manaMax += vocation->getManaGain();
-			mana += vocation->getManaGain();
-			capacity += vocation->getCapGain();
+			healthMax += floor(vocation->getHPGain() * bonusRebirth) - 0.2;
+			health += floor(vocation->getHPGain() * bonusRebirth) - 0.2;
+			manaMax += floor(vocation->getManaGain() * bonusRebirth) - 0.2;
+			mana += floor(vocation->getManaGain() * bonusRebirth) - 0.2;
+			capacity += floor(vocation->getCapGain() * bonusRebirth) - 0.2;
 		}
 
 		currLevelExp = nextLevelExp;
@@ -4855,6 +4892,10 @@ void Player::setTibiaCoins(int32_t v) {
 	coinBalance = v;
 }
 
+void Player::setTibiaCoinsTournaments(int32_t v) {
+	coinBalanceTournaments = v;
+}
+
 PartyShields_t Player::getPartyShield(const Player* player) const {
 	if (!player) {
 		return SHIELD_NONE;
@@ -5606,6 +5647,8 @@ void Player::addItemImbuementStats(const Imbuement* imbuement) {
 		sendStats();
 		sendSkills();
 	}
+
+	return;
 }
 
 void Player::removeItemImbuementStats(const Imbuement* imbuement) {
@@ -5641,6 +5684,8 @@ void Player::removeItemImbuementStats(const Imbuement* imbuement) {
 		sendStats();
 		sendSkills();
 	}
+
+	return;
 }
 
 bool Player::addItemFromStash(uint16_t itemId, uint32_t itemCount) {
@@ -5859,8 +5904,7 @@ void Player::triggerMomentum() {
 	}
 
 	double_t chance = item->getMomentumChance();
-	double_t randomChance = uniform_random(0, 10000) / 100;
-	if (getZone() != ZONE_PROTECTION && hasCondition(CONDITION_INFIGHT) && ((OTSYS_TIME() / 1000) % 2) == 0 && chance > 0 && randomChance < chance) {
+	if (getZone() != ZONE_PROTECTION && hasCondition(CONDITION_INFIGHT) && ((OTSYS_TIME() / 1000) % 2) == 0 && chance > 0 && uniform_random(1, 100) <= chance) {
 		bool triggered = false;
 		auto it = conditions.begin();
 		while (it != conditions.end()) {

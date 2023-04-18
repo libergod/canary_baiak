@@ -54,7 +54,7 @@ local function extractValues(tab, ret)
 	end
 end
 
-local extraction = {}
+local extraction = { }
 extractValues(Storage, extraction) -- Call function
 table.sort(extraction) -- Sort the table
 -- The choice of sorting is due to the fact that sorting is very cheap O (n log2 (n))

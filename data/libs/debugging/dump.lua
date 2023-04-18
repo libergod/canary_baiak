@@ -8,7 +8,7 @@ function dumpLevel(input, level)
 
 	if type(input) == 'table' then
 		local str = '{ \n'
-		local lines = {}
+		local lines = { }
 
 		for k, v in pairs(input) do
 			if type(k) ~= 'number' then

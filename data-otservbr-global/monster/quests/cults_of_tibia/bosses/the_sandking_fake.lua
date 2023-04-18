@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("The Sandking Fake")
-local monster = {}
+local monster = { }
 
 monster.name = "The Sandking"
 monster.description = "The Sandking"

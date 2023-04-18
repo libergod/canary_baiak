@@ -1872,7 +1872,6 @@ void Game::addMoney(Cylinder* cylinder, uint64_t money, uint32_t flags /*= 0*/) 
 
 		crystalCoins -= count;
 	}
-
 	uint16_t platinumCoins = money / 100;
 	if (platinumCoins != 0) {
 		Item* remaindItem = Item::CreateItem(ITEM_PLATINUM_COIN, platinumCoins);
@@ -3078,7 +3077,7 @@ void Game::playerRotateItem(uint32_t playerId, const Position &pos, uint8_t stac
 		return;
 	}
 
-	Thing* thing = internalGetThing(player, pos, stackPos, itemId, STACKPOS_TOPDOWN_ITEM);
+	Thing* thing = internalGetThing(player, pos, stackPos, itemId, STACKPOS_FIND_THING);
 	if (!thing) {
 		return;
 	}
@@ -3114,7 +3113,7 @@ void Game::playerConfigureShowOffSocket(uint32_t playerId, const Position &pos, 
 		return;
 	}
 
-	Thing* thing = internalGetThing(player, pos, stackPos, itemId, STACKPOS_TOPDOWN_ITEM);
+	Thing* thing = internalGetThing(player, pos, stackPos, itemId, STACKPOS_FIND_THING);
 	if (!thing) {
 		return;
 	}
@@ -3155,7 +3154,7 @@ void Game::playerSetShowOffSocket(uint32_t playerId, Outfit_t &outfit, const Pos
 		return;
 	}
 
-	Thing* thing = internalGetThing(player, pos, stackPos, itemId, STACKPOS_TOPDOWN_ITEM);
+	Thing* thing = internalGetThing(player, pos, stackPos, itemId, STACKPOS_FIND_THING);
 	if (!thing) {
 		return;
 	}
@@ -3227,6 +3226,10 @@ void Game::playerSetShowOffSocket(uint32_t playerId, Outfit_t &outfit, const Pos
 		item->removeCustomAttribute("PastLookMount");
 	}
 
+	}
+	else {
+		item->removeAttribute(ItemAttribute_t::NAME);
+	}
 	item->setCustomAttribute("PodiumVisible", static_cast<int64_t>(podiumVisible));
 	item->setCustomAttribute("LookDirection", static_cast<int64_t>(direction));
 
@@ -3510,7 +3513,7 @@ void Game::playerStowItem(uint32_t playerId, const Position &pos, uint16_t itemI
 		return;
 	}
 
-	Thing* thing = internalGetThing(player, pos, stackpos, itemId, STACKPOS_TOPDOWN_ITEM);
+	Thing* thing = internalGetThing(player, pos, stackpos, itemId, STACKPOS_FIND_THING);
 	if (!thing)
 		return;
 
@@ -3667,7 +3670,7 @@ void Game::playerRequestTrade(uint32_t playerId, const Position &pos, uint8_t st
 		return;
 	}
 
-	Thing* tradeThing = internalGetThing(player, pos, stackPos, itemId, STACKPOS_TOPDOWN_ITEM);
+	Thing* tradeThing = internalGetThing(player, pos, stackPos, itemId, STACKPOS_FIND_THING);
 	if (!tradeThing) {
 		player->sendCancelMessage(RETURNVALUE_NOTPOSSIBLE);
 		return;
@@ -4800,6 +4803,15 @@ void Game::playerChangeOutfit(uint32_t playerId, Outfit_t outfit, uint8_t isMoun
 			outfit.lookMount = 0;
 		}
 
+		const Tile* playerTile = player->getTile();
+		if (!playerTile) {
+			return;
+		}
+
+		if (playerTile->hasFlag(TILESTATE_PROTECTIONZONE)) {
+			outfit.lookMount = 0;
+		}
+
 		auto deltaSpeedChange = mount->speed;
 		if (player->isMounted()) {
 			Mount* prevMount = mounts.getMountByID(player->getCurrentMount());
@@ -5323,11 +5335,9 @@ bool Game::combatBlockHit(CombatDamage &damage, Creature* attacker, Creature* ta
 
 	// Skill dodge (ruse)
 	if (const Player* targetPlayer = target->getPlayer()) {
-		if (auto playerArmor = targetPlayer->getInventoryItem(CONST_SLOT_ARMOR);
-			playerArmor != nullptr && playerArmor->getTier()) {
-			double_t chance = playerArmor->getDodgeChance();
-			double_t randomChance = uniform_random(0, 10000) / 100;
-			if (chance > 0 && randomChance < chance) {
+		if (targetPlayer->getInventoryItem(CONST_SLOT_ARMOR) != nullptr) {
+			double_t chance = targetPlayer->getInventoryItem(CONST_SLOT_ARMOR)->getDodgeChance();
+			if (chance > 0 && uniform_random(1, 100) <= chance) {
 				sendBlockEffect(BLOCK_DODGE, damage.primary.type, target->getPosition());
 				targetPlayer->sendTextMessage(MESSAGE_ATTENTION, "You dodged an attack. (Ruse)");
 				return true;
@@ -5620,7 +5630,8 @@ bool Game::combatChangeHealth(Creature* attacker, Creature* target, CombatDamage
 				tmpPlayer->sendTextMessage(message);
 			}
 		}
-	} else {
+	}
+	else {
 		if (!target->isAttackable()) {
 			if (!target->isInGhostMode()) {
 				addMagicEffect(targetPos, CONST_ME_POFF);
@@ -5631,7 +5642,8 @@ bool Game::combatChangeHealth(Creature* attacker, Creature* target, CombatDamage
 		Player* attackerPlayer;
 		if (attacker) {
 			attackerPlayer = attacker->getPlayer();
-		} else {
+		}
+		else {
 			attackerPlayer = nullptr;
 		}
 
@@ -5640,20 +5652,33 @@ bool Game::combatChangeHealth(Creature* attacker, Creature* target, CombatDamage
 			return false;
 		}
 
-		damage.primary.value = std::abs(damage.primary.value);
-		damage.secondary.value = std::abs(damage.secondary.value);
+		double bonusRebirth = 0.0;
+		if (attackerPlayer != nullptr) {
+			bonusRebirth = attackerPlayer->rebirth * g_configManager().getNumber(REBORN_DMGBONUS);
+			bonusRebirth /= 10;
+			bonusRebirth /= 100;
+			bonusRebirth += 1;
+		}
+		else {
+			bonusRebirth = 1.0;
+		}
+
+		damage.primary.value = std::abs(damage.primary.value * bonusRebirth);
+		damage.secondary.value = std::abs(damage.secondary.value * bonusRebirth);
 
 		Monster* targetMonster;
 		if (target && target->getMonster()) {
 			targetMonster = target->getMonster();
-		} else {
+		}
+		else {
 			targetMonster = nullptr;
 		}
 
 		const Monster* attackerMonster;
 		if (attacker && attacker->getMonster()) {
 			attackerMonster = attacker->getMonster();
-		} else {
+		}
+		else {
 			attackerMonster = nullptr;
 		}
 
@@ -5681,7 +5706,8 @@ bool Game::combatChangeHealth(Creature* attacker, Creature* target, CombatDamage
 
 		if (damage.fatal) {
 			addMagicEffect(spectators, targetPos, CONST_ME_FATAL);
-		} else if (damage.critical) {
+		}
+		else if (damage.critical) {
 			addMagicEffect(spectators, targetPos, CONST_ME_CRITICAL_DAMAGE);
 		}
 
@@ -5703,7 +5729,8 @@ bool Game::combatChangeHealth(Creature* attacker, Creature* target, CombatDamage
 				if (manaShield > manaDamage) {
 					target->setManaShield(manaShield - manaDamage);
 					manaShield = manaShield - manaDamage;
-				} else {
+				}
+				else {
 					manaDamage = manaShield;
 					target->removeCondition(CONDITION_MANASHIELD);
 					manaShield = 0;
@@ -5760,19 +5787,23 @@ bool Game::combatChangeHealth(Creature* attacker, Creature* target, CombatDamage
 						ss << ucfirst(target->getNameDescription()) << " loses " << damageString + " mana due to your attack.";
 						message.type = MESSAGE_DAMAGE_DEALT;
 						message.text = ss.str();
-					} else if (tmpPlayer == targetPlayer) {
+					}
+					else if (tmpPlayer == targetPlayer) {
 						ss.str({});
 						ss << "You lose " << damageString << " mana";
 						if (!attacker) {
 							ss << '.';
-						} else if (targetPlayer == attackerPlayer) {
+						}
+						else if (targetPlayer == attackerPlayer) {
 							ss << " due to your own attack.";
-						} else {
+						}
+						else {
 							ss << " due to an attack by " << attacker->getNameDescription() << '.';
 						}
 						message.type = MESSAGE_DAMAGE_RECEIVED;
 						message.text = ss.str();
-					} else {
+					}
+					else {
 						if (spectatorMessage.empty()) {
 							ss.str({});
 							ss << ucfirst(target->getNameDescription()) << " loses " << damageString + " mana";
@@ -5780,7 +5811,8 @@ bool Game::combatChangeHealth(Creature* attacker, Creature* target, CombatDamage
 								ss << " due to ";
 								if (attacker == target) {
 									ss << (targetPlayer ? (targetPlayer->getSex() == PLAYERSEX_FEMALE ? "her own attack" : "his own attack") : "its own attack");
-								} else {
+								}
+								else {
 									ss << "an attack by " << attacker->getNameDescription();
 								}
 							}
@@ -5821,14 +5853,16 @@ bool Game::combatChangeHealth(Creature* attacker, Creature* target, CombatDamage
 		if (damage.primary.value >= targetHealth) {
 			damage.primary.value = targetHealth;
 			damage.secondary.value = 0;
-		} else if (damage.secondary.value) {
+		}
+		else if (damage.secondary.value) {
 			damage.secondary.value = std::min<int32_t>(damage.secondary.value, targetHealth - damage.primary.value);
 		}
 
 		realDamage = damage.primary.value + damage.secondary.value;
 		if (realDamage == 0) {
 			return true;
-		} else if (realDamage >= targetHealth) {
+		}
+		else if (realDamage >= targetHealth) {
 			for (CreatureEvent* creatureEvent : target->getCreatureEvents(CREATURE_EVENT_PREPAREDEATH)) {
 				if (!creatureEvent->executeOnPrepareDeath(target, attacker)) {
 					return false;
@@ -6156,7 +6190,7 @@ bool Game::combatChangeMana(Creature* attacker, Creature* target, CombatDamage &
 		realManaChange = target->getMana() - realManaChange;
 
 		if (realManaChange > 0 && !target->isInGhostMode()) {
-			std::string damageString = fmt::format("{} mana", realManaChange);
+			std::string damageString = std::to_string(realManaChange) + " mana.";
 
 			std::string spectatorMessage;
 			if (!attacker) {
@@ -6474,7 +6508,7 @@ void Game::checkLight() {
 			mapPlayer->sendTibiaTime(lightHour);
 		}
 	}
-	if (currentLightState != lightState) {
+  if (currentLightState != lightState) {
 		currentLightState = lightState;
 		for (const auto &[eventName, globalEvent] : g_globalEvents().getEventMap(GLOBALEVENT_PERIODCHANGE)) {
 			globalEvent.executePeriodChange(lightState, lightInfo);
@@ -6625,10 +6659,6 @@ void Game::updateCreatureType(Creature* creature) {
 	if (creatureType == CREATURETYPE_SUMMON_OTHERS) {
 		for (Creature* spectator : spectators) {
 			Player* player = spectator->getPlayer();
-			if (!player) {
-				continue;
-			}
-
 			if (masterPlayer == player) {
 				player->sendCreatureType(creature, CREATURETYPE_SUMMON_PLAYER);
 			} else {
@@ -7909,7 +7939,7 @@ void Game::parsePlayerExtendedOpcode(uint32_t playerId, uint8_t opcode, const st
 		return;
 	}
 
-	for (const CreatureEvent* creatureEvent : player->getCreatureEvents(CREATURE_EVENT_EXTENDED_OPCODE)) {
+	for (CreatureEvent* creatureEvent : player->getCreatureEvents(CREATURE_EVENT_EXTENDED_OPCODE)) {
 		creatureEvent->executeExtendedOpcode(player, opcode, buffer);
 	}
 }
@@ -7961,7 +7991,7 @@ void Game::playerAnswerModalWindow(uint32_t playerId, uint32_t modalWindowId, ui
 
 		player->setBedItem(nullptr);
 	} else {
-		for (const auto creatureEvent : player->getCreatureEvents(CREATURE_EVENT_MODALWINDOW)) {
+		for (auto creatureEvent : player->getCreatureEvents(CREATURE_EVENT_MODALWINDOW)) {
 			creatureEvent->executeModalWindow(player, modalWindowId, button, choice);
 		}
 	}

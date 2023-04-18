@@ -63,7 +63,6 @@ class LuaEnvironment : public LuaScriptInterface {
 			if (it == weaponIdMap.end()) {
 				return;
 			}
-
 			it->second.clear();
 			weaponMap.clear();
 		}
@@ -77,15 +76,12 @@ class LuaEnvironment : public LuaScriptInterface {
 
 		phmap::flat_hash_map<uint32_t, LuaTimerEventDesc> timerEvents;
 		uint32_t lastEventTimerId = 1;
-
 		phmap::flat_hash_map<uint32_t, AreaCombat*> areaMap;
 		phmap::flat_hash_map<LuaScriptInterface*, std::vector<uint32_t>> areaIdMap;
 		uint32_t lastAreaId = 0;
-
 		phmap::flat_hash_map<uint32_t, std::shared_ptr<Combat>> combatMap;
 		phmap::flat_hash_map<LuaScriptInterface*, std::vector<uint32_t>> combatIdMap;
 		uint32_t lastCombatId = 0;
-
 		phmap::flat_hash_map<uint32_t, std::shared_ptr<Weapon>> weaponMap;
 		phmap::flat_hash_map<LuaScriptInterface*, std::vector<uint32_t>> weaponIdMap;
 		uint32_t lastWeaponId = 0;

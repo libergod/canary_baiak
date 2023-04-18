@@ -779,7 +779,7 @@ int ItemFunctions::luaItemGetImbuement(lua_State* L) {
 		lua_createtable(L, 0, 3);
 		setField(L, "id", imbuement->getID());
 		setField(L, "name", imbuement->getName());
-		setField(L, "duration", static_cast<lua_Number>(imbuementInfo.duration));
+		setField(L, "duration", imbuementInfo.duration);
 	}
 	return 1;
 }

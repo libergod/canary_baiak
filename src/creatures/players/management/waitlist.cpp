@@ -133,4 +133,4 @@ std::size_t WaitingList::getClientSlot(const Player* player) {
 }
 
 WaitingList::WaitingList() :
-	info(new WaitListInfo) { }
+	info(new WaitListInfo) {}

@@ -820,6 +820,20 @@ int PlayerFunctions::luaPlayerAddExperience(lua_State* L) {
 	return 1;
 }
 
+int PlayerFunctions::luaPlayerDoRebirth(lua_State* L)
+{
+	// player:doRebirth()
+	Player* player = getUserdata<Player>(L, 1);
+	if (player) {
+		player->doReborn();
+		lua_pushnil(L);
+	}
+	else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+
 int PlayerFunctions::luaPlayerRemoveExperience(lua_State* L) {
 	// player:removeExperience(experience[, sendText = false])
 	Player* player = getUserdata<Player>(L, 1);
@@ -840,6 +854,19 @@ int PlayerFunctions::luaPlayerGetLevel(lua_State* L) {
 	if (player) {
 		lua_pushnumber(L, player->getLevel());
 	} else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+
+int PlayerFunctions::luaPlayerGetRebirth(lua_State* L) // rebirth
+{
+	// player:getRebirth()
+	Player* player = getUserdata<Player>(L, 1);
+	if (player) {
+		lua_pushnumber(L, player->getRebirth());
+	}
+	else {
 		lua_pushnil(L);
 	}
 	return 1;
@@ -2315,6 +2342,24 @@ int PlayerFunctions::luaPlayerGetTibiaCoins(lua_State* L) {
 	return 1;
 }
 
+//INICIO //GUSTAVO LIBER - 09/09/2022 - COIN TOURNAMENTS ADD
+int PlayerFunctions::luaPlayerGetTournamentsCoins(lua_State* L) {
+	// player:getTournamentsCoins()
+	Player* player = getUserdata<Player>(L, 1);
+	if (player) {
+		account::Account account(player->getAccount());
+		account.LoadAccountDB();
+		uint32_t coins;
+		account.GetCoinsTournaments(&coins);
+		lua_pushnumber(L, coins);
+	}
+	else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+//FIM //GUSTAVO LIBER - 09/09/2022 - COIN TOURNAMENTS ADD
+
 int PlayerFunctions::luaPlayerAddTibiaCoins(lua_State* L) {
 	// player:addTibiaCoins(coins)
 	Player* player = getUserdata<Player>(L, 1);
@@ -2337,6 +2382,31 @@ int PlayerFunctions::luaPlayerAddTibiaCoins(lua_State* L) {
 	return 1;
 }
 
+//INICIO //GUSTAVO LIBER - 09/09/2022 - COIN TOURNAMENTS ADD
+int PlayerFunctions::luaPlayerAddTournamentsCoins(lua_State* L) {
+	// player:AddTournamentCoins(coins)
+	Player* player = getUserdata<Player>(L, 1);
+	if (!player) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	uint32_t coins = getNumber<uint32_t>(L, 2);
+
+	account::Account account(player->getAccount());
+	account.LoadAccountDB();
+	if (account.AddCoinsTournaments(coins)) {
+		account.GetCoinsTournaments(&(player->coinBalanceTournaments));
+		pushBoolean(L, true);
+	}
+	else {
+		lua_pushnil(L);
+	}
+
+	return 1;
+}
+//FIM //GUSTAVO LIBER - 09/09/2022 - COIN TOURNAMENTS ADD
+
 int PlayerFunctions::luaPlayerRemoveTibiaCoins(lua_State* L) {
 	// player:removeTibiaCoins(coins)
 	Player* player = getUserdata<Player>(L, 1);
@@ -2358,6 +2428,32 @@ int PlayerFunctions::luaPlayerRemoveTibiaCoins(lua_State* L) {
 
 	return 1;
 }
+
+//INICIO //GUSTAVO LIBER - 09/09/2022 - COIN TOURNAMENTS ADD
+int PlayerFunctions::luaPlayerRemoveTournamentsCoins(lua_State* L) {
+	// player:removeTournamentsCoins(coins)
+	Player* player = getUserdata<Player>(L, 1);
+	if (!player) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	uint32_t coins = getNumber<uint32_t>(L, 2);
+
+	account::Account account(player->getAccount());
+	account.LoadAccountDB();
+	if (account.RemoveCoinsTournaments(coins)) {
+		account.GetCoinsTournaments(&(player->coinBalanceTournaments));
+		pushBoolean(L, true);
+	}
+	else {
+		lua_pushnil(L);
+	}
+
+	return 1;
+}
+
+//FIM //GUSTAVO LIBER - 09/09/2022 - COIN TOURNAMENTS ADD
 
 int PlayerFunctions::luaPlayerHasBlessing(lua_State* L) {
 	// player:hasBlessing(blessing)
@@ -3186,10 +3282,9 @@ int PlayerFunctions::luaPlayerGetForgeCores(lua_State* L) {
 int PlayerFunctions::luaPlayerSetFaction(lua_State* L) {
 	// player:setFaction(factionId)
 	Player* player = getUserdata<Player>(L, 1);
-	if (player == nullptr) {
-		reportErrorFunc(getErrorDesc(LUA_ERROR_PLAYER_NOT_FOUND));
-		pushBoolean(L, false);
-		return 0;
+	if (!player) {
+		lua_pushnil(L);
+		return 1;
 	}
 	Faction_t factionId = getNumber<Faction_t>(L, 2);
 	player->setFaction(factionId);
@@ -3199,14 +3294,14 @@ int PlayerFunctions::luaPlayerSetFaction(lua_State* L) {
 
 int PlayerFunctions::luaPlayerGetFaction(lua_State* L) {
 	// player:getFaction()
-	const Player* player = getUserdata<Player>(L, 1);
-	if (player == nullptr) {
-		reportErrorFunc(getErrorDesc(LUA_ERROR_PLAYER_NOT_FOUND));
-		pushBoolean(L, false);
-		return 0;
-	}
+	Player* player = getUserdata<Player>(L, 1);
 
-	lua_pushnumber(L, player->getFaction());
+	if (player) {
+		lua_pushnumber(L, player->getFaction());
+	}
+	else {
+		lua_pushnil(L);
+	}
 	return 1;
 }
 
@@ -3261,10 +3356,12 @@ int PlayerFunctions::luaPlayerAddBosstiaryKill(lua_State* L) {
 		if (mtype) {
 			g_ioBosstiary().addBosstiaryKill(player, mtype, getNumber<uint32_t>(L, 3, 1));
 			pushBoolean(L, true);
-		} else {
+		}
+		else {
 			lua_pushnil(L);
 		}
-	} else {
+	}
+	else {
 		lua_pushnil(L);
 	}
 	return 1;

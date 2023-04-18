@@ -1,7 +1,7 @@
 -- Create functions revscriptsys
 function createFunctions(class)
 	local exclude = {[2] = {"is"}, [3] = {"get", "set", "add", "can"}, [4] = {"need"}}
-	local temp = {}
+	local temp = { }
 	for name, func in pairs(class) do
 		local add = true
 		for strLen, strTable in pairs(exclude) do

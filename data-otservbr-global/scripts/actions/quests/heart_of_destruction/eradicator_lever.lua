@@ -74,7 +74,7 @@ function heartDestructionEradicator.onUse(player, item, fromPosition, itemEx, to
 		if item.itemid == 8911 then
 			if player:getPosition().x == pushPos.x and player:getPosition().y == pushPos.y and player:getPosition().z == pushPos.z then
 
-				local storePlayers, playerTile = {}
+				local storePlayers, playerTile = { }
 				for i = 1, #config.playerPositions do
 					playerTile = Tile(config.playerPositions[i]):getTopCreature()
 					if isPlayer(playerTile) then

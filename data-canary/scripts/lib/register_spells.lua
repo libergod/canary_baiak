@@ -396,7 +396,7 @@ function Player:addPartyCondition(combat, variant, condition, baseMana)
 	members[#members + 1] = party:getLeader()
 
 	local position = self:getPosition()
-	local affectedMembers = {}
+	local affectedMembers = { }
 	for _, member in ipairs(members) do
 		if member:getPosition():getDistance(position) <= 36 then
 			affectedMembers[#affectedMembers + 1] = member

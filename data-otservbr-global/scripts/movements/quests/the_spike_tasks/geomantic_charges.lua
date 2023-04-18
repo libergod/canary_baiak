@@ -10,7 +10,7 @@ function geomanticCharges.onStepIn(creature, item, position, fromPosition)
 		return true
 	end
 
-	local tasksLoaded = {}
+	local tasksLoaded = { }
 	if not isInArray({-1, 8}, player:getStorageValue(SPIKE_MIDDLE_NEST_MAIN)) then
 		tasksLoaded["NEST"] = true
 	end

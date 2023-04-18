@@ -26,24 +26,24 @@ class ValueCallback final : public CallBack {
 			type(initType) { }
 		void getMinMaxValues(Player* player, CombatDamage &damage, bool useCharges) const;
 
-	private:
-		formulaType_t type;
+private:
+	formulaType_t type;
 };
 
 class TileCallback final : public CallBack {
 	public:
 		void onTileCombat(Creature* creature, Tile* tile) const;
 
-	protected:
-		formulaType_t type;
+protected:
+	formulaType_t type;
 };
 
 class TargetCallback final : public CallBack {
 	public:
 		void onTargetCombat(Creature* creature, Creature* target) const;
 
-	protected:
-		formulaType_t type;
+protected:
+	formulaType_t type;
 };
 
 struct CombatParams {
@@ -77,14 +77,14 @@ class MatrixArea {
 			centerX(0), centerY(0), rows(initRows), cols(initCols) {
 			data_ = new bool*[rows];
 
-			for (uint32_t row = 0; row < rows; ++row) {
-				data_[row] = new bool[cols];
+		for (uint32_t row = 0; row < rows; ++row) {
+			data_[row] = new bool[cols];
 
-				for (uint32_t col = 0; col < cols; ++col) {
-					data_[row][col] = 0;
-				}
+			for (uint32_t col = 0; col < cols; ++col) {
+				data_[row][col] = 0;
 			}
 		}
+	}
 
 		MatrixArea(const MatrixArea &rhs) {
 			centerX = rhs.centerX;
@@ -92,24 +92,24 @@ class MatrixArea {
 			rows = rhs.rows;
 			cols = rhs.cols;
 
-			data_ = new bool*[rows];
+		data_ = new bool* [rows];
 
-			for (uint32_t row = 0; row < rows; ++row) {
-				data_[row] = new bool[cols];
+		for (uint32_t row = 0; row < rows; ++row) {
+			data_[row] = new bool[cols];
 
-				for (uint32_t col = 0; col < cols; ++col) {
-					data_[row][col] = rhs.data_[row][col];
-				}
+			for (uint32_t col = 0; col < cols; ++col) {
+				data_[row][col] = rhs.data_[row][col];
 			}
 		}
+	}
 
-		~MatrixArea() {
-			for (uint32_t row = 0; row < rows; ++row) {
-				delete[] data_[row];
-			}
-
-			delete[] data_;
+	~MatrixArea() {
+		for (uint32_t row = 0; row < rows; ++row) {
+			delete[] data_[row];
 		}
+
+		delete[] data_;
+	}
 
 		// non-assignable
 		MatrixArea &operator=(const MatrixArea &) = delete;
@@ -135,27 +135,27 @@ class MatrixArea {
 			y = centerY;
 		}
 
-		uint32_t getRows() const {
-			return rows;
-		}
-		uint32_t getCols() const {
-			return cols;
-		}
+	uint32_t getRows() const {
+		return rows;
+	}
+	uint32_t getCols() const {
+		return cols;
+	}
 
-		const bool* operator[](uint32_t i) const {
-			return data_[i];
-		}
-		bool* operator[](uint32_t i) {
-			return data_[i];
-		}
+	const bool* operator[](uint32_t i) const {
+		return data_[i];
+	}
+	bool* operator[](uint32_t i) {
+		return data_[i];
+	}
 
-	private:
-		uint32_t centerX;
-		uint32_t centerY;
+private:
+	uint32_t centerX;
+	uint32_t centerY;
 
-		uint32_t rows;
-		uint32_t cols;
-		bool** data_;
+	uint32_t rows;
+	uint32_t cols;
+	bool** data_;
 };
 
 class AreaCombat {
@@ -186,38 +186,44 @@ class AreaCombat {
 			int32_t dx = Position::getOffsetX(targetPos, centerPos);
 			int32_t dy = Position::getOffsetY(targetPos, centerPos);
 
-			Direction dir;
-			if (dx < 0) {
-				dir = DIRECTION_WEST;
-			} else if (dx > 0) {
-				dir = DIRECTION_EAST;
-			} else if (dy < 0) {
-				dir = DIRECTION_NORTH;
-			} else {
-				dir = DIRECTION_SOUTH;
-			}
-
-			if (hasExtArea) {
-				if (dx < 0 && dy < 0) {
-					dir = DIRECTION_NORTHWEST;
-				} else if (dx > 0 && dy < 0) {
-					dir = DIRECTION_NORTHEAST;
-				} else if (dx < 0 && dy > 0) {
-					dir = DIRECTION_SOUTHWEST;
-				} else if (dx > 0 && dy > 0) {
-					dir = DIRECTION_SOUTHEAST;
-				}
-			}
-
-			auto it = areas.find(dir);
-			if (it == areas.end()) {
-				return nullptr;
-			}
-			return it->second;
+		Direction dir;
+		if (dx < 0) {
+			dir = DIRECTION_WEST;
+		}
+		else if (dx > 0) {
+			dir = DIRECTION_EAST;
+		}
+		else if (dy < 0) {
+			dir = DIRECTION_NORTH;
+		}
+		else {
+			dir = DIRECTION_SOUTH;
 		}
 
-		std::map<Direction, MatrixArea*> areas;
-		bool hasExtArea = false;
+		if (hasExtArea) {
+			if (dx < 0 && dy < 0) {
+				dir = DIRECTION_NORTHWEST;
+			}
+			else if (dx > 0 && dy < 0) {
+				dir = DIRECTION_NORTHEAST;
+			}
+			else if (dx < 0 && dy > 0) {
+				dir = DIRECTION_SOUTHWEST;
+			}
+			else if (dx > 0 && dy > 0) {
+				dir = DIRECTION_SOUTHEAST;
+			}
+		}
+
+		auto it = areas.find(dir);
+		if (it == areas.end()) {
+			return nullptr;
+		}
+		return it->second;
+	}
+
+	std::map<Direction, MatrixArea*> areas;
+	bool hasExtArea = false;
 };
 
 class Combat {
@@ -257,8 +263,8 @@ class Combat {
 		void doCombat(Creature* caster, Creature* target) const;
 		void doCombat(Creature* caster, const Position &pos) const;
 
-		bool setCallback(CallBackParam_t key);
-		CallBack* getCallback(CallBackParam_t key);
+	bool setCallback(CallBackParam_t key);
+	CallBack* getCallback(CallBackParam_t key);
 
 		bool setParam(CombatParam_t param, uint32_t value);
 		void setArea(AreaCombat* newArea) {
@@ -275,9 +281,9 @@ class Combat {
 			postCombatEffects(caster, pos, params);
 		}
 
-		void setOrigin(CombatOrigin origin) {
-			params.origin = origin;
-		}
+	void setOrigin(CombatOrigin origin) {
+		params.origin = origin;
+	}
 
 	private:
 		static void doCombatDefault(Creature* caster, Creature* target, const CombatParams &params);
@@ -304,7 +310,7 @@ class Combat {
 		double maxa = 0.0;
 		double maxb = 0.0;
 
-		std::unique_ptr<AreaCombat> area;
+	std::unique_ptr<AreaCombat> area;
 };
 
 class MagicField final : public Item {
@@ -312,12 +318,12 @@ class MagicField final : public Item {
 		explicit MagicField(uint16_t type) :
 			Item(type), createTime(OTSYS_TIME()) { }
 
-		MagicField* getMagicField() override {
-			return this;
-		}
-		const MagicField* getMagicField() const override {
-			return this;
-		}
+	MagicField* getMagicField() override {
+		return this;
+	}
+	const MagicField* getMagicField() const override {
+		return this;
+	}
 
 		bool isReplaceable() const {
 			return Item::items[getID()].replaceable;
@@ -335,8 +341,8 @@ class MagicField final : public Item {
 		}
 		void onStepInField(Creature &creature);
 
-	private:
-		int64_t createTime;
+private:
+	int64_t createTime;
 };
 
 #endif // SRC_CREATURES_COMBAT_COMBAT_H_

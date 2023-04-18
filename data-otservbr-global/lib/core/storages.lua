@@ -2839,7 +2839,7 @@ Storage = {
 			TooHotToHandle = {}
 		},
 		U12_80 = { -- update 12.80 - Reserved Storages 47801 - 47850
-			RoyalCostumeOutfits = {}
+			RoyalCostumeOutfits = { }
 		},
 	},
 	-- Reserved storage from 63951 - 63999

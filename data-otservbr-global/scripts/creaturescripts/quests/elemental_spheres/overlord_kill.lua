@@ -3,7 +3,7 @@ local overlords = {
 	['fire overlord'] = {storage = Storage.ElementalSphere.BossStorage, globalStorage = GlobalStorage.ElementalSphere.SorcererBoss},
 	['ice overlord'] = {storage = Storage.ElementalSphere.BossStorage, globalStorage = GlobalStorage.ElementalSphere.PaladinBoss},
 	['earth overlord'] = {storage = Storage.ElementalSphere.BossStorage, globalStorage = GlobalStorage.ElementalSphere.DruidBoss},
-	['lord of the elements'] = {}
+	['lord of the elements'] = { }
 }
 
 local elementalSpheresOver = CreatureEvent("OverlordKill")

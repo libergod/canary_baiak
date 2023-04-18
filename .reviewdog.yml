@@ -17,13 +17,13 @@ runner:
     level: warning
 
   luac:
-    cmd: find data/ -name '*.lua' -exec luac -p {} \;
+    cmd: find data/ -name '*.lua' -exec luac -p { } \;
     errorformat:
       - "%r: %f:%l: %m"
     level: warning
 
   xmllint:
-    cmd: find data/ -name '*.xml' -exec xmllint --noout {} \;
+    cmd: find data/ -name '*.xml' -exec xmllint --noout { } \;
     errorformat:
       - "%f:%l: %m"
     level: warning

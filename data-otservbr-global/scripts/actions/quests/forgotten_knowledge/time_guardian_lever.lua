@@ -85,7 +85,7 @@ function forgottenKnowledgeGuardianLever.onUse(player, item, fromPosition, targe
 			spec:clearCreaturesCache()
 			spec:setOnlyPlayer(true)
 			spec:check()
-			local player_remove = {}
+			local player_remove = { }
 			for i, v in pairs(spec:getCreatureDetect()) do
 				for _, v_old in pairs(old_players) do
 					if v_old.creature == nil or v_old.creature:isMonster() then

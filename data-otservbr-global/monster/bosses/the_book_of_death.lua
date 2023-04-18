@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("The Book of Death")
-local monster = {}
+local monster = { }
 
 monster.description = "The Book of Death"
 monster.experience = 0

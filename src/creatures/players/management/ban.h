@@ -31,9 +31,9 @@ class Ban {
 	public:
 		bool acceptConnection(uint32_t clientIP);
 
-	private:
-		IpConnectMap ipConnectMap;
-		std::recursive_mutex lock;
+private:
+	IpConnectMap ipConnectMap;
+	std::recursive_mutex lock;
 };
 
 class IOBan {

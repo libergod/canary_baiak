@@ -1,5 +1,4 @@
 math.randomseed(os.time())
-
 dofile(DATA_DIRECTORY .. "/lib/lib.lua")
 local startupFile=io.open(DATA_DIRECTORY.. "/startup/startup.lua", "r")
 if startupFile ~= nil then
@@ -22,6 +21,14 @@ end
 PARTY_PROTECTION = (IsRetroPVP() and 0) or 1
 ADVANCED_SECURE_MODE = (IsRetroPVP() and 0) or 1
 
+
+function IsRetroPVP()
+	return configManager.getBoolean(configKeys.TOGGLE_SERVER_IS_RETRO)
+end
+-- NOTE: 0 is disabled.
+PARTY_PROTECTION = (IsRetroPVP() and 0) or 1
+ADVANCED_SECURE_MODE = (IsRetroPVP() and 0) or 1
+
 NORTH = DIRECTION_NORTH
 EAST = DIRECTION_EAST
 SOUTH = DIRECTION_SOUTH
@@ -35,6 +42,7 @@ STORAGEVALUE_PROMOTION = 30018
 
 SERVER_NAME = configManager.getString(configKeys.SERVER_NAME)
 SERVER_MOTD = configManager.getString(configKeys.SERVER_MOTD)
+
 
 -- Bestiary charm
 GLOBAL_CHARM_GUT = 0
@@ -225,3 +233,14 @@ function addStamina(playerId, ...)
 	end
 	return false
 end
+
+function hourToNumber(str)
+    local hour = (tonumber(str:sub(1,2))*3600) + (tonumber(str:sub(4,5)) * 60)
+    if #str > 5 then
+        hour = hour + tonumber(str:sub(7,8))
+    end
+    return hour
+end
+
+-- Exercise Training
+onExerciseTraining = { }

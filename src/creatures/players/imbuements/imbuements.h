@@ -42,11 +42,11 @@ struct CategoryImbuement {
 };
 
 class Imbuements {
-	public:
-		Imbuements() = default;
+public:
+	Imbuements() = default;
 
-		bool loadFromXml(bool reloading = false);
-		bool reload();
+	bool loadFromXml(bool reloading = false);
+	bool reload();
 
 		// non-copyable
 		Imbuements(const Imbuements &) = delete;
@@ -59,91 +59,92 @@ class Imbuements {
 			return instance;
 		}
 
-		Imbuement* getImbuement(uint16_t id);
+	Imbuement* getImbuement(uint16_t id);
 
-		BaseImbuement* getBaseByID(uint16_t id);
-		CategoryImbuement* getCategoryByID(uint16_t id);
-		std::vector<Imbuement*> getImbuements(const Player* player, Item* item);
+	BaseImbuement* getBaseByID(uint16_t id);
+	CategoryImbuement* getCategoryByID(uint16_t id);
+	std::vector<Imbuement*> getImbuements(const Player* player, Item* item);
 
-	protected:
-		friend class Imbuement;
-		bool loaded = false;
+protected:
+	friend class Imbuement;
+	bool loaded = false;
 
-	private:
-		std::map<uint32_t, Imbuement> imbuementMap;
+private:
+	std::map<uint32_t, Imbuement> imbuementMap;
 
-		std::vector<BaseImbuement> basesImbuement;
-		std::vector<CategoryImbuement> categoriesImbuement;
+	std::vector<BaseImbuement> basesImbuement;
+	std::vector<CategoryImbuement> categoriesImbuement;
 
-		uint32_t runningid = 0;
+	uint32_t runningid = 0;
 };
 
 constexpr auto g_imbuements = &Imbuements::getInstance;
 
 class Imbuement {
-	public:
-		Imbuement(uint16_t initId, uint16_t initBaseId) :
-			id(initId), baseid(initBaseId) { }
+public:
+	Imbuement(uint16_t initId, uint16_t initBaseId) :
+		id(initId), baseid(initBaseId) {}
+				id(initId), baseid(initBaseId) {}
 
-		uint16_t getID() const {
-			return id;
-		}
+	uint16_t getID() const {
+		return id;
+	}
 
-		uint16_t getBaseID() const {
-			return baseid;
-		}
-
+	uint16_t getBaseID() const {
+		return baseid;
+	}
 		uint32_t getStorage() const {
 			return storage;
 		}
-
-		bool isPremium() {
-			return premium;
-		}
-		std::string getName() const {
-			return name;
-		}
-		std::string getDescription() const {
-			return description;
 		}
 
-		std::string getSubGroup() const {
-			return subgroup;
-		}
+	bool isPremium() {
+		return premium;
+	}
+	std::string getName() const {
+		return name;
+	}
+	std::string getDescription() const {
+		return description;
+	}
 
-		uint16_t getCategory() const {
-			return category;
-		}
+	std::string getSubGroup() const {
+		return subgroup;
+	}
 
+	uint16_t getCategory() const {
+		return category;
+	}
 		const std::vector<std::pair<uint16_t, uint16_t>> &getItems() const {
 			return items;
 		}
-
-		uint16_t getIconID() {
-			return icon + (baseid - 1);
 		}
 
-		uint16_t icon = 1;
-		int32_t stats[STAT_LAST + 1] = {};
-		int32_t skills[SKILL_LAST + 1] = {};
-		int32_t speed = 0;
-		uint32_t capacity = 0;
-		int16_t absorbPercent[COMBAT_COUNT] = {};
-		int16_t elementDamage = 0;
+	uint16_t getIconID() {
+		return icon + (baseid - 1);
+	}
 
-		CombatType_t combatType = COMBAT_NONE;
+	uint16_t icon = 1;
+	int32_t stats[STAT_LAST + 1] = {};
+	int32_t skills[SKILL_LAST + 1] = {};
+	int32_t speed = 0;
+	uint32_t capacity = 0;
+	int16_t absorbPercent[COMBAT_COUNT] = {};
+	int16_t elementDamage = 0;
 
-	protected:
-		friend class Imbuements;
-		friend class Item;
+	CombatType_t combatType = COMBAT_NONE;
 
-	private:
-		bool premium = false;
-		uint32_t storage = 0;
-		uint16_t id, baseid, category = 0;
-		std::string name, description, subgroup = "";
+protected:
+	friend class Imbuements;
+	friend class Item;
 
-		std::vector<std::pair<uint16_t, uint16_t>> items;
+private:
+	bool premium = false;
+	uint32_t storage = 0;
+	uint16_t id, baseid, category = 0;
+	std::string name, description, subgroup = "";
+
+	std::vector<std::pair<uint16_t, uint16_t>> items;
 };
 
 #endif // SRC_CREATURES_PLAYERS_IMBUEMENTS_IMBUEMENTS_H_

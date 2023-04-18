@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Unstable Spark")
-local monster = {}
+local monster = { }
 
 monster.description = "an unstable spark"
 monster.experience = 1500

@@ -27,7 +27,7 @@ struct spawnBlock_t {
 class SpawnMonster {
 	public:
 		SpawnMonster(Position initPos, int32_t initRadius) :
-			centerPos(std::move(initPos)), radius(initRadius) { }
+			centerPos(std::move(initPos)), radius(initRadius) {}
 		~SpawnMonster();
 
 		// non-copyable

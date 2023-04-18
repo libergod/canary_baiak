@@ -6,10 +6,10 @@ HIRELING_CREDITS = {
 
 local DEBUG = true -- print debug to console
 
-HIRELING_CACHE_STORAGE = {}
-HIRELINGS = {}
-PLAYER_HIRELINGS = {}
-HIRELING_OUTFIT_CHANGING = {}
+HIRELING_CACHE_STORAGE = { }
+HIRELINGS = { }
+PLAYER_HIRELINGS = { }
+HIRELING_OUTFIT_CHANGING = { }
 
 function DebugPrint(str)
 	if DEBUG == true then

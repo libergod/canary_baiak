@@ -40,12 +40,14 @@ bool GlobalEvents::registerLuaEvent(GlobalEvent* event) {
 			}
 			return true;
 		}
-	} else if (globalEvent->getEventType() != GLOBALEVENT_NONE) {
+	}
+	else if (globalEvent->getEventType() != GLOBALEVENT_NONE) {
 		auto result = serverMap.emplace(globalEvent->getName(), std::move(*globalEvent));
 		if (result.second) {
 			return true;
 		}
-	} else { // think event
+	}
+	else { // think event
 		auto result = thinkMap.emplace(globalEvent->getName(), std::move(*globalEvent));
 		if (result.second) {
 			if (thinkEventId == 0) {
@@ -171,7 +173,7 @@ GlobalEventMap GlobalEvents::getEventMap(GlobalEvent_t type) {
 }
 
 GlobalEvent::GlobalEvent(LuaScriptInterface* interface) :
-	Script(interface) { }
+	Script(interface) {}
 
 std::string GlobalEvent::getScriptTypeName() const {
 	switch (eventType) {

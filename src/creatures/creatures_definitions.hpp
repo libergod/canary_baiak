@@ -10,7 +10,7 @@
 #ifndef SRC_CREATURES_CREATURES_DEFINITIONS_HPP_
 #define SRC_CREATURES_CREATURES_DEFINITIONS_HPP_
 
-// Enum
+ // Enum
 
 enum SkillsId_t {
 	SKILLVALUE_LEVEL = 0,
@@ -606,17 +606,17 @@ struct VIPEntry {
 };
 
 struct OutfitEntry {
-		constexpr OutfitEntry(uint16_t initLookType, uint8_t initAddons) :
-			lookType(initLookType), addons(initAddons) { }
+	constexpr OutfitEntry(uint16_t initLookType, uint8_t initAddons) :
+		lookType(initLookType), addons(initAddons) {}
 
 		uint16_t lookType;
 		uint8_t addons;
 };
 
 struct FamiliarEntry {
-		constexpr explicit FamiliarEntry(uint16_t initLookType) :
-			lookType(initLookType) { }
-		uint16_t lookType;
+	constexpr explicit FamiliarEntry(uint16_t initLookType) :
+		lookType(initLookType) {}
+	uint16_t lookType;
 };
 
 struct Skill {
@@ -630,8 +630,8 @@ struct Kill {
 		time_t time;
 		bool unavenged;
 
-		Kill(uint32_t _target, time_t _time, bool _unavenged) :
-			target(_target), time(_time), unavenged(_unavenged) { }
+	Kill(uint32_t _target, time_t _time, bool _unavenged) :
+		target(_target), time(_time), unavenged(_unavenged) {}
 };
 
 struct IntervalInfo {
@@ -651,19 +651,19 @@ struct FindPathParams {
 };
 
 struct RecentDeathEntry {
-		RecentDeathEntry(std::string cause, uint32_t timestamp) :
-			cause(std::move(cause)),
-			timestamp(timestamp) { }
+	RecentDeathEntry(std::string cause, uint32_t timestamp) :
+		cause(std::move(cause)),
+		timestamp(timestamp) {}
 
 		std::string cause;
 		uint32_t timestamp;
 };
 
 struct RecentPvPKillEntry {
-		RecentPvPKillEntry(std::string description, uint32_t timestamp, uint8_t status) :
-			description(std::move(description)),
-			timestamp(timestamp),
-			status(status) { }
+	RecentPvPKillEntry(std::string description, uint32_t timestamp, uint8_t status) :
+		description(std::move(description)),
+		timestamp(timestamp),
+		status(status) {}
 
 		std::string description;
 		uint32_t timestamp;
@@ -730,10 +730,10 @@ using ItemsTierCountList = std::map<uint16_t, std::map<uint8_t, uint32_t>>;
 */
 
 struct Familiar {
-		Familiar(std::string initName, uint16_t initLookType, bool initPremium, bool initUnlocked, std::string initType) :
-			name(initName), lookType(initLookType),
-			premium(initPremium), unlocked(initUnlocked),
-			type(initType) { }
+	Familiar(std::string initName, uint16_t initLookType, bool initPremium, bool initUnlocked, std::string initType) :
+		name(initName), lookType(initLookType),
+		premium(initPremium), unlocked(initUnlocked),
+		type(initType) {}
 
 		std::string name;
 		uint16_t lookType;
@@ -751,11 +751,11 @@ struct ProtocolFamiliars {
 };
 
 struct LightInfo {
-		uint8_t level = 0;
-		uint8_t color = 215;
-		constexpr LightInfo() = default;
-		constexpr LightInfo(uint8_t newLevel, uint8_t newColor) :
-			level(newLevel), color(newColor) { }
+	uint8_t level = 0;
+	uint8_t color = 215;
+	constexpr LightInfo() = default;
+	constexpr LightInfo(uint8_t newLevel, uint8_t newColor) :
+		level(newLevel), color(newColor) {}
 };
 
 struct CombatDamage {
@@ -887,9 +887,9 @@ struct voiceBlock_t {
 };
 
 struct PartyAnalyzer {
-		PartyAnalyzer(uint32_t playerId, std::string playerName) :
-			id(playerId),
-			name(std::move(playerName)) { }
+	PartyAnalyzer(uint32_t playerId, std::string playerName) :
+		id(playerId),
+		name(std::move(playerName)) {}
 
 		uint32_t id;
 

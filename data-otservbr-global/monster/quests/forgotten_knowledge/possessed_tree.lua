@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Possessed Tree")
-local monster = {}
+local monster = { }
 
 monster.description = "a possessed tree"
 monster.experience = 1300

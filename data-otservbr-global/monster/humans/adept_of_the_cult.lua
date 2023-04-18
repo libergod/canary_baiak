@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Adept of the Cult")
-local monster = {}
+local monster = { }
 
 monster.description = "an adept of the cult"
 monster.experience = 400

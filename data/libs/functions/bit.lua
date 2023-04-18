@@ -1,5 +1,5 @@
 -- objeto a ser criado
-local BIT ={}
+local BIT ={ }
 
 -- criando a metatable
 function BIT:new(number)

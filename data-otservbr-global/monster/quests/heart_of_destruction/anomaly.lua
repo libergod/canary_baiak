@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Anomaly")
-local monster = {}
+local monster = { }
 
 monster.description = "Anomaly"
 monster.experience = 50000

@@ -152,6 +152,7 @@ bool IOLoginData::loadPlayer(Player* player, DBResult_ptr result) {
 	}
 
 	acc.GetCoins(&(player->coinBalance));
+	acc.GetCoinsTournaments(&(player->coinBalanceTournaments));
 
 	Group* group = g_game().groups.getGroup(result->getNumber<uint16_t>("group_id"));
 	if (!group) {
@@ -166,6 +167,9 @@ bool IOLoginData::loadPlayer(Player* player, DBResult_ptr result) {
 
 	player->setSex(static_cast<PlayerSex_t>(result->getNumber<uint16_t>("sex")));
 	player->level = std::max<uint32_t>(1, result->getNumber<uint32_t>("level"));
+	//INIT GUSTAVO LIBER - REBIRTH SYSTEM
+	player->rebirth = std::max<uint32_t>(0, result->getNumber<uint32_t>("rebirth"));// rebirth
+	//END GUSTAVO LIBER - REBIRTH SYSTEM
 
 	uint64_t experience = result->getNumber<uint64_t>("experience");
 
@@ -797,6 +801,9 @@ bool IOLoginData::savePlayer(Player* player) {
 	query.str(std::string());
 	query << "UPDATE `players` SET ";
 	query << "`level` = " << player->level << ',';
+	//INIT GUSTAVO LIBER - REBIRTH SYSTEM
+	query << "`rebirth` = " << player->rebirth << ',';// rebirth
+	//END GUSTAVO LIBER - REBIRTH SYSTEM
 	query << "`group_id` = " << player->group->id << ',';
 	query << "`vocation` = " << player->getVocationId() << ',';
 	query << "`health` = " << player->health << ',';

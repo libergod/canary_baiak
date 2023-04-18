@@ -23,13 +23,13 @@ class Protocol : public std::enable_shared_from_this<Protocol> {
 		Protocol(const Protocol &) = delete;
 		Protocol &operator=(const Protocol &) = delete;
 
-		virtual void parsePacket(NetworkMessage &) { }
+		virtual void parsePacket(NetworkMessage &) {}
 
 		virtual void onSendMessage(const OutputMessage_ptr &msg);
 		bool onRecvMessage(NetworkMessage &msg);
 		bool sendRecvMessageCallback(NetworkMessage &msg);
 		virtual void onRecvFirstMessage(NetworkMessage &msg) = 0;
-		virtual void onConnect() { }
+		virtual void onConnect() {}
 
 		bool isConnectionExpired() const {
 			return connectionPtr.expired();
@@ -79,7 +79,7 @@ class Protocol : public std::enable_shared_from_this<Protocol> {
 			rawMessages = value;
 		}
 
-		virtual void release() { }
+		virtual void release() {}
 
 	private:
 		void XTEA_encrypt(OutputMessage &msg) const;

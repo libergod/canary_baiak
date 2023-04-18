@@ -11,7 +11,7 @@ if Modules == nil then
 	SHOP_YESWORD = {"yes"}
 	SHOP_NOWORD = {"no"}
 
-	StdModule = {}
+	StdModule = { }
 
 	--[[
 	--NOTE: These callback function must be called with parameters.npcHandler = npcHandler
@@ -258,7 +258,7 @@ if Modules == nil then
 
 	-- Creates a new instance of FocusModule without an associated NpcHandler.
 	function FocusModule:new()
-		local obj = {}
+		local obj = { }
 		setmetatable(obj, self)
 		self.__index = self
 		return obj
@@ -272,7 +272,7 @@ if Modules == nil then
 			return false
 		end
 		for i, word in pairs(FOCUS_GREETWORDS) do
-			local obj = {}
+			local obj = { }
 			obj[#obj + 1] = word
 			obj.callback = FOCUS_GREETWORDS.callback or FocusModule.messageMatcher
 			handler.keywordHandler:addKeyword(obj, FocusModule.onGreet, {module = self})
@@ -282,7 +282,7 @@ if Modules == nil then
 			return false
 		end
 		for i, word in pairs(FOCUS_FAREWELLWORDS) do
-			local obj = {}
+			local obj = { }
 			obj[#obj + 1] = word
 			obj.callback = FOCUS_FAREWELLWORDS.callback or FocusModule.messageMatcher
 			handler.keywordHandler:addKeyword(obj, FocusModule.onFarewell, {module = self})
@@ -292,7 +292,7 @@ if Modules == nil then
 			return false
 		end
 		for i, word in pairs(FOCUS_TRADE_MESSAGE) do
-			local obj = {}
+			local obj = { }
 			obj[#obj + 1] = word
 			obj.callback = FOCUS_TRADE_MESSAGE.callback or FocusModule.messageMatcher
 			handler.keywordHandler:addKeyword(obj, FocusModule.onTradeRequest, {module = self})
@@ -303,7 +303,7 @@ if Modules == nil then
 	-- Set custom greeting messages
 	function FocusModule:addGreetMessage(message)
 		if not self.greetWords then
-			self.greetWords = {}
+			self.greetWords = { }
 		end
 
 
@@ -319,7 +319,7 @@ if Modules == nil then
 	-- Set custom farewell messages
 	function FocusModule:addFarewellMessage(message)
 		if not self.farewellWords then
-			self.farewellWords = {}
+			self.farewellWords = { }
 		end
 
 		if type(message) == 'string' then
@@ -383,7 +383,7 @@ if Modules == nil then
 	}
 
 	function KeywordModule:new()
-		local obj = {}
+		local obj = { }
 		setmetatable(obj, self)
 		self.__index = self
 		return obj
@@ -398,7 +398,7 @@ if Modules == nil then
 		for keys in string.gmatch(data, "[^;]+") do
 			local i = 1
 
-			local keywords = {}
+			local keywords = { }
 			for temp in string.gmatch(keys, "[^,]+") do
 				keywords[#keywords + 1] = temp
 				i = i + 1
@@ -426,7 +426,7 @@ if Modules == nil then
 	}
 
 	function TravelModule:new()
-		local obj = {}
+		local obj = { }
 		setmetatable(obj, self)
 		self.__index = self
 		return obj
@@ -436,7 +436,7 @@ if Modules == nil then
 		self.npcHandler = handler
 		self.yesNode = KeywordNode:new(SHOP_YESWORD, TravelModule.onConfirm, {module = self})
 		self.noNode = KeywordNode:new(SHOP_NOWORD, TravelModule.onDecline, {module = self})
-		self.destinations = {}
+		self.destinations = { }
 		return true
 	end
 
@@ -490,10 +490,10 @@ if Modules == nil then
 			premium = premium,
 			module = self
 		}
-		local keywords = {}
+		local keywords = { }
 		keywords[#keywords + 1] = name
 
-		local keywords2 = {}
+		local keywords2 = { }
 		keywords2[#keywords2 + 1] = "bring me to " .. name
 		local node = self.npcHandler.keywordHandler:addKeyword(keywords, TravelModule.travel, parameters)
 		self.npcHandler.keywordHandler:addKeyword(keywords2, TravelModule.bringMeTo, parameters)

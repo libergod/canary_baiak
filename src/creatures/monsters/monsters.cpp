@@ -31,7 +31,8 @@ void MonsterType::loadLoot(MonsterType* monsterType, LootBlock lootBlock) {
 			}
 		}
 		monsterType->info.lootItems.push_back(lootBlock);
-	} else {
+	}
+	else {
 		monsterType->info.lootItems.push_back(lootBlock);
 	}
 }
@@ -267,13 +268,17 @@ bool MonsterType::loadCallback(LuaScriptInterface* scriptInterface) {
 	info.scriptInterface = scriptInterface;
 	if (info.eventType == MONSTERS_EVENT_THINK) {
 		info.thinkEvent = id;
-	} else if (info.eventType == MONSTERS_EVENT_APPEAR) {
+	}
+	else if (info.eventType == MONSTERS_EVENT_APPEAR) {
 		info.creatureAppearEvent = id;
-	} else if (info.eventType == MONSTERS_EVENT_DISAPPEAR) {
+	}
+	else if (info.eventType == MONSTERS_EVENT_DISAPPEAR) {
 		info.creatureDisappearEvent = id;
-	} else if (info.eventType == MONSTERS_EVENT_MOVE) {
+	}
+	else if (info.eventType == MONSTERS_EVENT_MOVE) {
 		info.creatureMoveEvent = id;
-	} else if (info.eventType == MONSTERS_EVENT_SAY) {
+	}
+	else if (info.eventType == MONSTERS_EVENT_SAY) {
 		info.creatureSayEvent = id;
 	}
 	return true;

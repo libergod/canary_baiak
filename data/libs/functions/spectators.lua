@@ -1,14 +1,14 @@
 ---@author @Glatharth
 ---@version 1.2
 ---@since 1.0
-Spectators = {}
+Spectators = { }
 setmetatable(Spectators, {
 	__call = function(self)
 		local spectators_data = {
             only_player = true,
             multi_floor = false,
-            blacklist_pos = {},
-            creature_detect = {}
+            blacklist_pos = { },
+            creature_detect = { }
 		}
 		return setmetatable(spectators_data, {__index = Spectators})
 	end
@@ -40,7 +40,7 @@ function Spectators.getCreatureDetect(self)
 end
 
 function Spectators.removeCreatureDetect(self)
-    self.creature_detect = {}
+    self.creature_detect = { }
 end
 
 function Spectators.setRemoveDestination(self, destination)

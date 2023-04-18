@@ -10,7 +10,7 @@ end
 local function chain(player)
 	local creatures = Game.getSpectators(player:getPosition(), false, false, 6, 6, 6, 6)
 	local totalChain = 0
-	local monsters = {}
+	local monsters = { }
 	for _, creature in pairs(creatures) do
 		if creature:isMonster() then
 			if creature:getType():isRewardBoss() then

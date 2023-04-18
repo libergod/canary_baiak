@@ -110,7 +110,8 @@ bool MoveEvents::registerLuaEvent(MoveEvent &moveEvent) {
 		|| registerLuaActionEvent(moveEvent)
 		|| registerLuaPositionEvent(moveEvent)) {
 		return true;
-	} else {
+	}
+	else {
 		SPDLOG_WARN(
 			"[{}] missing id, aid, uid or position for script: {}",
 			__FUNCTION__,
@@ -337,7 +338,8 @@ uint32_t MoveEvents::onItemMove(Item &item, Tile &tile, bool isAdd) {
 	if (isAdd) {
 		eventType1 = MOVE_EVENT_ADD_ITEM;
 		eventType2 = MOVE_EVENT_ADD_ITEM_ITEMTILE;
-	} else {
+	}
+	else {
 		eventType1 = MOVE_EVENT_REMOVE_ITEM;
 		eventType2 = MOVE_EVENT_REMOVE_ITEM_ITEMTILE;
 	}
@@ -385,7 +387,7 @@ uint32_t MoveEvents::onItemMove(Item &item, Tile &tile, bool isAdd) {
 ================
 */
 MoveEvent::MoveEvent(LuaScriptInterface* interface) :
-	Script(interface) { }
+	Script(interface) {}
 
 std::string MoveEvent::getScriptTypeName() const {
 	switch (eventType) {
@@ -506,7 +508,8 @@ uint32_t MoveEvent::EquipItem(MoveEvent* moveEvent, Player* player, Item* item, 
 	const ItemType &it = Item::items[item->getID()];
 	if (it.transformEquipTo != 0) {
 		g_game().transformItem(item, it.transformEquipTo);
-	} else {
+	}
+	else {
 		player->setItemAbility(slot, true);
 	}
 
@@ -671,7 +674,8 @@ void MoveEvent::setEventType(MoveEvent_t type) {
 uint32_t MoveEvent::fireStepEvent(Creature &creature, Item* item, const Position &pos) const {
 	if (isLoadedCallback()) {
 		return executeStep(creature, item, pos);
-	} else {
+	}
+	else {
 		return stepFunction(&creature, item, pos);
 	}
 }
@@ -697,12 +701,13 @@ bool MoveEvent::executeStep(Creature &creature, Item* item, const Position &pos)
 	if (!getScriptInterface()->reserveScriptEnv()) {
 		if (item != nullptr) {
 			SPDLOG_ERROR("[MoveEvent::executeStep - Creature {} item {}, position {}] "
-						 "Call stack overflow. Too many lua script calls being nested.",
-						 creature.getName(), item->getName(), pos.toString());
-		} else {
+				"Call stack overflow. Too many lua script calls being nested.",
+				creature.getName(), item->getName(), pos.toString());
+		}
+		else {
 			SPDLOG_ERROR("[MoveEvent::executeStep - Creature {}, position {}] "
-						 "Call stack overflow. Too many lua script calls being nested.",
-						 creature.getName(), pos.toString());
+				"Call stack overflow. Too many lua script calls being nested.",
+				creature.getName(), pos.toString());
 		}
 		return false;
 	}
@@ -730,7 +735,8 @@ uint32_t MoveEvent::fireEquip(Player &player, Item &item, Slots_t toSlot, bool i
 			}
 		}
 		return 0;
-	} else {
+	}
+	else {
 		return equipFunction(this, &player, &item, toSlot, isCheck);
 	}
 }
@@ -763,7 +769,8 @@ bool MoveEvent::executeEquip(Player &player, Item &item, Slots_t onSlot, bool is
 uint32_t MoveEvent::fireAddRemItem(Item &item, Item &fromTile, const Position &pos) const {
 	if (isLoadedCallback()) {
 		return executeAddRemItem(item, fromTile, pos);
-	} else {
+	}
+	else {
 		return moveFunction(&item, &fromTile, pos);
 	}
 }
@@ -795,7 +802,8 @@ bool MoveEvent::executeAddRemItem(Item &item, Item &fromTile, const Position &po
 uint32_t MoveEvent::fireAddRemItem(Item &item, const Position &pos) const {
 	if (isLoadedCallback()) {
 		return executeAddRemItem(item, pos);
-	} else {
+	}
+	else {
 		return moveFunction(&item, nullptr, pos);
 	}
 }

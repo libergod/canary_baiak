@@ -32,7 +32,8 @@ GameStore.OfferTypes = {
 	OFFER_TYPE_HIRELING_SEXCHANGE = 22,
 	OFFER_TYPE_HIRELING_SKILL = 23,
 	OFFER_TYPE_HIRELING_OUTFIT = 24,
-	OFFER_TYPE_HUNTINGSLOT = 25
+	OFFER_TYPE_HUNTINGSLOT = 25,
+	OFFER_TYPE_VIP = 26
 }
 
 GameStore.SubActions = {
@@ -176,11 +177,11 @@ GameStore.RecivedPackets = {
 }
 
 GameStore.ExpBoostValues = {
-	[1] = 30,
-	[2] = 45,
-	[3] = 90,
-	[4] = 180,
-	[5] = 360
+	[1] = 15,
+	[2] = 30,
+	[3] = 45,
+	[4] = 80,
+	[5] = 90
 }
 
 GameStore.DefaultValues = {
@@ -255,6 +256,12 @@ function parseTransferCoins(playerId, msg)
 	if not player then
 		return false
 	end
+	
+	if player:isUIExhausted(2000) then
+		return addPlayerEvent(sendStoreError, 250, playerId, GameStore.StoreErrors.STORE_ERROR_TRANSFER, "You are exhausted.")
+	end
+
+	player:updateUIExhausted()
 
 	if player:isUIExhausted(2000) then
 		return addPlayerEvent(sendStoreError, 250, playerId, GameStore.StoreErrors.STORE_ERROR_TRANSFER, "You are exhausted.")
@@ -277,7 +284,7 @@ function parseTransferCoins(playerId, msg)
 		return addPlayerEvent(sendStoreError, 350, playerId, GameStore.StoreErrors.STORE_ERROR_TRANSFER, "We couldn't find that player.")
 	end
 
-	local accountId = Result.getNumber(resultId, "account_id")
+	local accountId = result.getNumber(resultId, "account_id")
 	if accountId == player:getAccountId() then
 		return addPlayerEvent(sendStoreError, 350, playerId, GameStore.StoreErrors.STORE_ERROR_TRANSFER, "You cannot transfer coin to a character in the same account.")
 	end
@@ -307,6 +314,7 @@ function parseRequestStoreOffers(playerId, msg)
 	end
 
 	local actionType = msg:getByte()
+
 	if actionType == GameStore.ActionType.OPEN_CATEGORY then
 		local categoryName = msg:getString()
 		local category = GameStore.getCategoryByName(categoryName)
@@ -334,19 +342,23 @@ function parseRequestStoreOffers(playerId, msg)
 	elseif actionType == GameStore.ActionType.OPEN_USEFUL_THINGS then
 		local subAction = msg:getByte()
 		local offerId = subAction
+				
 		local category = nil
 		if subAction >= GameStore.SubActions.BLESSING_TWIST and subAction <= GameStore.SubActions.BLESSING_ALL_PVP then
 			category = GameStore.getCategoryByName("Blessings")
 		else
-			category = GameStore.getCategoryByName("Useful Things")
+			category = GameStore.getCategoryByName("Useful Things")	
 		end
-
+		
+		
 		if subAction == GameStore.SubActions.PREY_THIRDSLOT_REAL then
 			offerId = GameStore.SubActions.PREY_THIRDSLOT_REDIRECT
 		end
+		
 		if category then
 			addPlayerEvent(sendShowStoreOffers, 50, playerId, category, offerId)
 		end
+
 	elseif actionType == GameStore.ActionType.OPEN_OFFER then
 		local offerId = msg:getU32()
 		local category = GameStore.getCategoryByOffer(offerId)
@@ -387,11 +399,15 @@ function parseBuyStoreOffer(playerId, msg)
 
 	-- At this point the purchase is assumed to be formatted correctly
 	local offerPrice = offer.type == GameStore.OfferTypes.OFFER_TYPE_EXPBOOST and GameStore.ExpBoostValues[player:getStorageValue(GameStore.Storages.expBoostCount)] or offer.price
+
+	-- INICIO - GUSTAVO LIBER - 09/09/2022 - COIN TOURNAMENTS ADD
 	local offerCoinType = offer.coinType
 	-- Check if offer can be honored
 	if not player:canPayForOffer(offerPrice, offerCoinType) then
 		return queueSendStoreAlertToUser("You don't have enough coins. Your purchase has been cancelled.", 250, playerId)
 	end
+	-- FIM - GUSTAVO LIBER - 09/09/2022 - COIN TOURNAMENTS ADD
+
 
 	-- Use pcall to catch unhandled errors and send an alert to the user because the client expects it at all times; (OTClient will unlock UI)
 	-- Handled errors are thrown to indicate that the purchase has failed;
@@ -404,6 +420,7 @@ function parseBuyStoreOffer(playerId, msg)
 		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_BLESSINGS      then GameStore.processSignleBlessingPurchase(player, offer.blessid, offer.count)
 		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_ALLBLESSINGS   then GameStore.processAllBlessingsPurchase(player, offer.count)
 		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_PREMIUM        then GameStore.processPremiumPurchase(player, offer.id)
+		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_VIP        	then GameStore.processVipPurchase(player, offer.id)
 		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_STACKABLE      then GameStore.processStackablePurchase(player, offer.itemtype, offer.count, offer.name)
 		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_HOUSE          then GameStore.processHouseRelatedPurchase(player, offer.itemtype, offer.count)
 		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_OUTFIT         then GameStore.processOutfitPurchase(player, offer.sexId, offer.addon)
@@ -439,15 +456,17 @@ function parseBuyStoreOffer(playerId, msg)
 		return queueSendStoreAlertToUser(alertMessage, 500, playerId)
 	end
 
+	-- INICIO - GUSTAVO LIBER - 09/09/2022 - COIN TOURNAMENTS ADD
 	local configure = useOfferConfigure(offer.type)
 	if configure ~= GameStore.ConfigureOffers.SHOW_CONFIGURE then
-
+		
 		player:makeCoinTransaction(offer)
 
 		local message = string.format("You have purchased %s for %d coins.", offer.name, offerPrice)
 		sendUpdatedStoreBalances(playerId)
 		return addPlayerEvent(sendStorePurchaseSuccessful, 650, playerId, message)
 	end
+
 	return true
 end
 
@@ -464,7 +483,7 @@ function parseRequestTransactionHistory(playerId, msg)
 end
 
 local function getCategoriesRook()
-	local tmpTable, count = {}, 0
+	local tmpTable, count = { }, 0
 	for i, v in pairs(GameStore.Categories) do
 		if (v.rookgaard) then
 			tmpTable[#tmpTable + 1] = v
@@ -610,7 +629,7 @@ function Player.canBuyOffer(self, offer)
 				disabledReason = "You already have maximum of reward tokens."
 			end
 		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_PREYBONUS then
-			if self:getPreyCards() >= 50 then
+			if self:getPreyCards()>= 50 then
 				disabled = 1
 				disabledReason = "You already have maximum of prey wildcards."
 			end
@@ -703,14 +722,14 @@ function sendShowStoreOffers(playerId, category, redirectId)
 		return
 	end
 
-	local offers = {}
+	local offers = { }
 	local count = 0
 	for k, offer in ipairs(category.offers) do
 		local name = offer.name or "Something Special"
 		if not offers[name] then
-			offers[name] = {}
+			offers[name] = { }
 			count = count + 1
-			offers[name].offers = {}
+			offers[name].offers = { }
 			offers[name].state = offer.state
 			offers[name].id = offer.id
 			offers[name].type = offer.type
@@ -934,6 +953,8 @@ function sendUpdatedStoreBalances(playerId)
 	msg:addU32(player:getCoinsBalance()) -- How many are Transferable
 	msg:addU32(0) -- How many are reserved for a Character Auction
 	msg:addU32(player:getTournamentBalance()) -- Tournament Coins
+	
+	--msg:addU32(player:getCoinsBalanceTournaments()) -- Tournament Coins
 
 	msg:sendToPlayer(player)
 end
@@ -1030,7 +1051,7 @@ end
 
 -- Using for multi offer
 function GameStore.getOffersByName(name)
-	local offers = {}
+	local offers = { }
 	for Cat_k, category in ipairs(GameStore.Categories) do
 		if category.offers then
 			for Off_k, offer in ipairs(category.offers) do
@@ -1076,28 +1097,28 @@ GameStore.retrieveHistoryTotalPages = function (accountId)
 		return 0
 	end
 
-	local totalPages = Result.getNumber(resultId, "total")
-	Result.free(resultId)
+	local totalPages = result.getNumber(resultId, "total")
+	result.free(resultId)
 	return totalPages
 end
 
 GameStore.retrieveHistoryEntries = function(accountId, currentPage, entriesPerPage)
-	local entries = {}
+	local entries = { }
 	local offset = currentPage > 1 and entriesPerPage * (currentPage - 1) or 0
 
 	local resultId = db.storeQuery("SELECT * FROM `store_history` WHERE `account_id` = " .. accountId .. " ORDER BY `time` DESC LIMIT " .. offset .. ", " .. entriesPerPage .. ";")
 	if resultId ~= false then
 		repeat
 			local entry = {
-				mode = Result.getNumber(resultId, "mode"),
-				description = Result.getDataString(resultId, "description"),
-				amount = Result.getNumber(resultId, "coin_amount"),
-				type = Result.getNumber(resultId, "coin_type"),
-				time = Result.getNumber(resultId, "time"),
+				mode = result.getNumber(resultId, "mode"),
+				description = result.getDataString(resultId, "description"),
+				amount = result.getNumber(resultId, "coin_amount"),
+				type = result.getDataInt(resultId, "coin_type"),
+				time = result.getNumber(resultId, "time"),
 			}
 			table.insert(entries, entry)
-		until not Result.next(resultId)
-		Result.free(resultId)
+		until not result.next(resultId)
+		result.free(resultId)
 	end
 	return entries
 end
@@ -1235,7 +1256,7 @@ GameStore.canChangeToName = function(name)
 		return result
 	end
 
-	local letters = "{}|_*+-=<>0123456789@#%^&()/*'\\.,:;~!\"$"
+	local letters = "{ }|_*+-=<>0123456789@#%^&()/*'\\.,:;~!\"$"
 	for i = 1, letters:len() do
 		local c = letters:sub(i, i)
 		for i = 1, name:len() do
@@ -1278,7 +1299,12 @@ function GameStore.processChargesPurchase(player, itemtype, name, charges)
 
 	local inbox = player:getSlotItem(CONST_SLOT_STORE_INBOX)
 	if inbox and inbox:getEmptySlots() > 1 then
-		inbox:addItem(itemtype, charges)
+		local item = inbox:addItem(itemtype, charges)
+		if item then
+			item:setActionId(NOT_MOVEABLE_ACTION)
+		else
+			return error({ code = 0, message = "Please make sure you have free slots in your store inbox."})
+		end
 	else
 		return error({ code = 0, message = "Please make sure you have free slots in your store inbox."})
 	end
@@ -1312,6 +1338,10 @@ end
 
 function GameStore.processPremiumPurchase(player, offerId)
 	player:addPremiumDays(offerId - 3000)
+end
+
+function GameStore.processVipPurchase(player, offerId)
+	player:addVipDays(offerId - 3000)
 end
 
 function GameStore.processStackablePurchase(player, offerId, offerCount, offerName)
@@ -1358,6 +1388,8 @@ function GameStore.processStackablePurchase(player, offerId, offerCount, offerNa
 			local item = inbox:addItem(offerId, isKeg and 1 or offerCount)
 			if item and isKeg then
 				item:setAttribute(ITEM_ATTRIBUTE_CHARGES, offerCount)
+			else
+				item:setActionId(NOT_MOVEABLE_ACTION)
 			end
 		end
 	else
@@ -1446,8 +1478,10 @@ function GameStore.processNameChangePurchase(player, offer, productType, newName
 		end
 
 		player:makeCoinTransaction(offer)
-
+		
+		
 		local message = string.format("You have purchased %s for %d coins.", offer.name, offer.price)
+		
 		addPlayerEvent(sendStorePurchaseSuccessful, 500, playerId, message)
 
 		newName = newName:lower():gsub("(%l)(%w*)", function(a, b) return string.upper(a) .. b end)
@@ -1536,6 +1570,7 @@ function GameStore.processHirelingPurchase(player, offer, productType, hirelingN
 		end
 
 		player:makeCoinTransaction(offer, hirelingName)
+		
 		local message = "You have successfully bought " .. hirelingName
 		return addPlayerEvent(sendStorePurchaseSuccessful, 650, playerId, message)
 		-- If not, we ask him to do!
@@ -1594,12 +1629,17 @@ function GameStore.processHirelingOutfitPurchase(player, offer)
 end
 
 --==Player==--
-
 --- Tibia Coins
 function Player.getCoinsBalance(self)
 	resultId = db.storeQuery("SELECT `coins` FROM `accounts` WHERE `id` = " .. self:getAccountId())
 	if not resultId then return 0 end
-	return Result.getNumber(resultId, "coins")
+	return result.getNumber(resultId, "coins")
+end
+
+function Player.getCoinsBalanceTournaments(self)
+	resultId = db.storeQuery("SELECT `coins_tournaments` FROM `accounts` WHERE `id` = " .. self:getAccountId())
+	if not resultId then return 0 end
+	return result.getNumber(resultId, "coins_tournaments") --ALTERADO, ANTES ERA COINS
 end
 
 function Player.setCoinsBalance(self, coins)
@@ -1607,8 +1647,20 @@ function Player.setCoinsBalance(self, coins)
 	return true
 end
 
+function Player.setCoinsBalanceTournaments(self, coins)
+	db.query("UPDATE `accounts` SET `coins_tournaments` = " .. coins .. " WHERE `id` = " .. self:getAccountId())
+	return true
+end
+
 function Player.canRemoveCoins(self, coins)
 	if self:getCoinsBalance() < coins then
+		return false
+	end
+	return true
+end
+
+function Player.canRemoveCoinsTournaments(self, coins)
+	if self:getCoinsBalanceTournaments() < coins then
 		return false
 	end
 	return true
@@ -1622,6 +1674,14 @@ function Player.removeCoinsBalance(self, coins)
 	return false
 end
 
+function Player.removeCoinsBalanceTournaments(self, coins)
+	if self:canRemoveCoinsTournaments(coins) then
+		return self:setCoinsBalanceTournaments(self:getCoinsBalanceTournaments() - coins)
+	end
+
+	return false
+end
+
 function Player.addCoinsBalance(self, coins, update)
 	self:setCoinsBalance(self:getCoinsBalance() + coins)
 	if update then sendStoreBalanceUpdating(self, true) end
@@ -1630,15 +1690,15 @@ end
 
 --- Tournament Coins
 function Player.getTournamentBalance(self)
-	resultId = db.storeQuery("SELECT `tournament_coins` FROM `accounts` WHERE `id` = " .. self:getAccountId())
+	resultId = db.storeQuery("SELECT `coins_tournaments` FROM `accounts` WHERE `id` = " .. self:getAccountId())
 	if not resultId then
 		return 0
 	end
-	return Result.getNumber(resultId, "tournament_coins")
+	return result.getDataInt(resultId, "coins_tournaments")
 end
 
 function Player.setTournamentBalance(self, tournament)
-	db.query("UPDATE `accounts` SET `tournament_coins` = " .. tournament .. " WHERE `id` = " .. self:getAccountId())
+	db.query("UPDATE `accounts` SET `coins_tournaments` = " .. tournament .. " WHERE `id` = " .. self:getAccountId())
 	return true
 end
 
@@ -1672,7 +1732,7 @@ function Player.makeCoinTransaction(self, offer, desc)
 	else
 		desc = offer.name
 	end
-	
+
 	-- Remove coins
 	if offer.coinType == GameStore.CointType.Tournament then
 		op = self:removeTournamentBalance(offer.price)
@@ -1697,6 +1757,13 @@ function Player.canPayForOffer(self, coins, type)
 end
 
 --- Other players functions
+
+
+function Player.addCoinsBalanceTournaments(self, coins, update)
+	self:setCoinsBalanceTournaments(self:getCoinsBalanceTournaments() + coins)
+	if update then sendCoinBalanceUpdating(self, true) end
+	return true
+end
 
 function Player.sendButtonIndication(self, value1, value2)
 	local msg = NetworkMessage()
@@ -1723,11 +1790,11 @@ end
 
 local function getHomeOffers(playerId)
 	local player = Player(playerId)
-	if not player then return {} end
+	if not player then return { } end
 
 	local GameStoreCategories = GameStore.Categories
 
-	local offers = {}
+	local offers = { }
 	if (GameStoreCategories) then
 		for k, category in ipairs(GameStoreCategories) do
 			if category.offers then
@@ -1855,19 +1922,23 @@ function HandleHirelingNameChange(playerId, offer, newHirelingName)
 			return player:showInfoModal("Error", "Your hireling must be inside his/her lamp.")
 		end
 
+
 		local oldName = hireling.name
 		hireling.name = newHirelingName
-
+		
 		if not player:makeCoinTransaction(data.offer, oldName .. ' to ' .. newHirelingName) then
 			return player:showInfoModal("Error", "Transaction error")
 		end
-
+		
+		
 		local lamp = player:findHirelingLamp(hireling:getId())
 		if lamp then
 			lamp:setAttribute(ITEM_ATTRIBUTE_DESCRIPTION, "This mysterious lamp summons your very own personal hireling.\nThis item cannot be traded.\nThis magic lamp is the home of " .. hireling:getName() .. ".")
 		end
+		
 		Spdlog.debug(string.format('%s has been renamed to %s', oldName, newHirelingName))
 		sendUpdatedStoreBalances(playerId)
+		
 	end
 
 	player:sendHirelingSelectionModal('Choose a Hireling', 'Select a hireling below', cb, {offer=offer, newHirelingName=newHirelingName})

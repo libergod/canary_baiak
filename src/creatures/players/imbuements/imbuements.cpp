@@ -157,7 +157,7 @@ bool Imbuements::loadFromXml(bool /* reloading */) {
 
 					auto it2 = std::find_if(imbuement.items.begin(), imbuement.items.end(), [sourceId](const std::pair<uint16_t, uint16_t> &source) -> bool {
 						return source.first == sourceId;
-					});
+						});
 
 					if (it2 != imbuement.items.end()) {
 						SPDLOG_WARN("Duplicate item: {}, imbument name: {} ignored", childNode.attribute("value").value(), imbuement.name);
@@ -194,28 +194,38 @@ bool Imbuements::loadFromXml(bool /* reloading */) {
 						std::string tmpStrValue = asLowerCaseString(attr.as_string());
 						if (tmpStrValue == "sword") {
 							skillId = SKILL_SWORD;
-						} else if (tmpStrValue == "axe") {
+						}
+						else if (tmpStrValue == "axe") {
 							skillId = SKILL_AXE;
-						} else if (tmpStrValue == "club") {
+						}
+						else if (tmpStrValue == "club") {
 							skillId = SKILL_CLUB;
-						} else if ((tmpStrValue == "dist") || (tmpStrValue == "distance")) {
+						}
+						else if ((tmpStrValue == "dist") || (tmpStrValue == "distance")) {
 							skillId = SKILL_DISTANCE;
-						} else if (tmpStrValue == "fish") {
+						}
+						else if (tmpStrValue == "fish") {
 							skillId = SKILL_FISHING;
-						} else if (tmpStrValue == "shield") {
+						}
+						else if (tmpStrValue == "shield") {
 							skillId = SKILL_SHIELD;
-						} else if (tmpStrValue == "fist") {
+						}
+						else if (tmpStrValue == "fist") {
 							skillId = SKILL_FIST;
-						} else if (tmpStrValue == "magicpoints") {
+						}
+						else if (tmpStrValue == "magicpoints") {
 							skillId = STAT_MAGICPOINTS;
 							usenormalskill = 2;
-						} else if (tmpStrValue == "critical") {
+						}
+						else if (tmpStrValue == "critical") {
 							usenormalskill = 3;
 							skillId = SKILL_CRITICAL_HIT_DAMAGE;
-						} else if (tmpStrValue == "lifeleech") {
+						}
+						else if (tmpStrValue == "lifeleech") {
 							usenormalskill = 3;
 							skillId = SKILL_LIFE_LEECH_AMOUNT;
-						} else if (tmpStrValue == "manaleech") {
+						}
+						else if (tmpStrValue == "manaleech") {
 							usenormalskill = 3;
 							skillId = SKILL_MANA_LEECH_AMOUNT;
 						} else {
@@ -231,9 +241,11 @@ bool Imbuements::loadFromXml(bool /* reloading */) {
 
 						if (usenormalskill == 1) {
 							imbuement.skills[skillId] = bonus;
-						} else if (usenormalskill == 2) {
+						}
+						else if (usenormalskill == 2) {
 							imbuement.stats[skillId] = bonus;
-						} else if (usenormalskill == 3) {
+						}
+						else if (usenormalskill == 3) {
 							imbuement.skills[skillId] = bonus;
 							int32_t chance = 100;
 							if ((attr = childNode.attribute("chance")))
@@ -241,7 +253,8 @@ bool Imbuements::loadFromXml(bool /* reloading */) {
 
 							imbuement.skills[skillId - 1] = chance;
 						}
-					} else if (strcasecmp(effecttype.c_str(), "damage") == 0) {
+					}
+					else if (strcasecmp(effecttype.c_str(), "damage") == 0) {
 						if (!(attr = childNode.attribute("combat"))) {
 							SPDLOG_WARN("Missing combat for imbuement name {}", imbuement.name);
 							continue;
@@ -262,7 +275,8 @@ bool Imbuements::loadFromXml(bool /* reloading */) {
 
 						imbuement.combatType = combatType;
 						imbuement.elementDamage = std::min<int16_t>(100, percent);
-					} else if (strcasecmp(effecttype.c_str(), "reduction") == 0) {
+					}
+					else if (strcasecmp(effecttype.c_str(), "reduction") == 0) {
 						if (!(attr = childNode.attribute("combat"))) {
 							SPDLOG_WARN("Missing combat for imbuement name {}", imbuement.name);
 							continue;
@@ -282,14 +296,16 @@ bool Imbuements::loadFromXml(bool /* reloading */) {
 						uint32_t percent = std::min<uint32_t>(100, pugi::cast<uint32_t>(attr.value()));
 
 						imbuement.absorbPercent[combatTypeToIndex(combatType)] = percent;
-					} else if (strcasecmp(effecttype.c_str(), "speed") == 0) {
+					}
+					else if (strcasecmp(effecttype.c_str(), "speed") == 0) {
 						if (!(attr = childNode.attribute("value"))) {
 							SPDLOG_WARN("Missing speed value for imbuement name {}", imbuement.name);
 							continue;
 						}
 
 						imbuement.speed = pugi::cast<uint32_t>(attr.value());
-					} else if (strcasecmp(effecttype.c_str(), "capacity") == 0) {
+					}
+					else if (strcasecmp(effecttype.c_str(), "capacity") == 0) {
 						if (!(attr = childNode.attribute("value"))) {
 							SPDLOG_WARN("Missing cap value for imbuement name {}", imbuement.name);
 							continue;

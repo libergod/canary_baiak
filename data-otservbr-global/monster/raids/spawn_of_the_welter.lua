@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Spawn of the Welter")
-local monster = {}
+local monster = { }
 
 monster.description = "Spawn of the Welter"
 monster.experience = 0

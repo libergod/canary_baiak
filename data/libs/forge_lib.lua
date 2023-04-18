@@ -1,6 +1,6 @@
 if not ForgeMonster then
 	ForgeMonster = {
-		timeLeftToChangeMonsters = {},
+		timeLeftToChangeMonsters = { },
 		names = {
 			[FORGE_NORMAL_MONSTER] = 'normal',
 			[FORGE_INFLUENCED_MONSTER] = 'influenced',

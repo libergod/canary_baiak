@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("High Voltage Elemental")
-local monster = {}
+local monster = { }
 
 monster.description = "a high voltage elemental"
 monster.experience = 1500

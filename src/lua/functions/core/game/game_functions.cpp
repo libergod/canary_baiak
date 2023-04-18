@@ -47,7 +47,16 @@ int GameFunctions::luaGameCreateMonsterType(lua_State* L) {
 }
 
 int GameFunctions::luaGameCreateNpcType(lua_State* L) {
-	return NpcTypeFunctions::luaNpcTypeCreate(L);
+	// Game.createNpcType(name)
+	if (getScriptEnv()->getScriptInterface() != &g_scripts().getScriptInterface()) {
+		reportErrorFunc("NpcType can only be registered in the Scripts interface.");
+		lua_pushnil(L);
+		return 1;
+	}
+
+	NpcTypeFunctions::luaNpcTypeCreate(L);
+
+	return 1;
 }
 
 int GameFunctions::luaGameGetSpectators(lua_State* L) {
@@ -494,6 +503,12 @@ int GameFunctions::luaGameGetBestiaryCharm(lua_State* L) {
 
 int GameFunctions::luaGameCreateBestiaryCharm(lua_State* L) {
 	// Game.createBestiaryCharm(id)
+	if (getScriptEnv()->getScriptInterface() != &g_scripts().getScriptInterface()) {
+		reportErrorFunc("Charm bestiary can only be registered in the Scripts interface.");
+		lua_pushnil(L);
+		return 1;
+	}
+
 	if (Charm* charm = g_iobestiary().getBestiaryCharm(static_cast<charmRune_t>(getNumber<int8_t>(L, 1, 0)), true)) {
 		pushUserdata<Charm>(L, charm);
 		setMetatable(L, -1, "Charm");
@@ -505,9 +520,15 @@ int GameFunctions::luaGameCreateBestiaryCharm(lua_State* L) {
 
 int GameFunctions::luaGameCreateItemClassification(lua_State* L) {
 	// Game.createItemClassification(id)
-	const ItemClassification* itemClassification = g_game().getItemsClassification(getNumber<uint8_t>(L, 1), true);
+	if (getScriptEnv()->getScriptInterface() != &g_scripts().getScriptInterface()) {
+		reportErrorFunc("Item classification can only be registered in the Scripts interface.");
+		lua_pushnil(L);
+		return 1;
+	}
+
+	ItemClassification* itemClassification = g_game().getItemsClassification(getNumber<uint8_t>(L, 1), true);
 	if (itemClassification) {
-		pushUserdata<const ItemClassification>(L, itemClassification);
+		pushUserdata<ItemClassification>(L, itemClassification);
 		setMetatable(L, -1, "ItemClassification");
 	} else {
 		lua_pushnil(L);

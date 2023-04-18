@@ -1,3 +1,27 @@
+ -- HERE TRAINER ONLINE
+local staminaBonus = {
+    target ='Training Machine',
+    period = 60000, -- Period in milliseconds
+    bonus = 1, -- gain stamina
+    events = { }
+}
+
+local function addStamina(name)
+    local player = Player(name)
+    if not player then
+        staminaBonus.events[name] = nil
+    else
+        local target = player:getTarget()
+        if not target or target:getName() ~= staminaBonus.target then
+            staminaBonus.events[name] = nil
+        else
+            player:setStamina(player:getStamina() + staminaBonus.bonus)
+			player:sendTextMessage(MESSAGE_STATUS_SMALL, "Received stamina for being training online.")
+            staminaBonus.events[name] = addEvent(addStamina, staminaBonus.period, name)
+        end
+    end
+end
+
 function Creature:onChangeOutfit(outfit)
 	if self:isPlayer() then
 		local familiarLookType = self:getFamiliarLooktype()
@@ -49,7 +73,7 @@ local function removeCombatProtection(cid)
 	end, time * 1000, cid)
 end
 
-picIf = {}
+picIf = { }
 function Creature:onTargetCombat(target)
 	if not self then
 		return true
@@ -58,9 +82,18 @@ function Creature:onTargetCombat(target)
 	if not picIf[target.uid] then
 		if target:isMonster() then
 			target:registerEvent("RewardSystemSlogan")
-			picIf[target.uid] = {}
+			picIf[target.uid] = { }
 		end
 	end
+	
+	if self:isPlayer() then
+        if target and target:getName() == staminaBonus.target then
+            local name = self:getName()
+            if not staminaBonus.events[name] then
+                staminaBonus.events[name] = addEvent(addStamina, staminaBonus.period, name)
+            end
+        end
+       end
 
 	if target:isPlayer() then
 		if self:isMonster() then

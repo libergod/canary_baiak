@@ -2,8 +2,8 @@ local spellbook = Action()
 
 function spellbook.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	local text = ""
-	local tlvl = {}
-	local tml = {}
+	local tlvl = { }
+	local tml = { }
 
 	for _, spell in ipairs(player:getInstantSpells()) do
 		if spell.level ~= 0 or spell.mlevel ~= 0 then

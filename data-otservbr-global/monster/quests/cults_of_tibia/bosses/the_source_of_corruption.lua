@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("The Source Of Corruption")
-local monster = {}
+local monster = { }
 
 monster.description = "The Source Of Corruption"
 monster.experience = 0

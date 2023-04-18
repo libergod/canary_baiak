@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Cosmic Energy Prism B Invu")
-local monster = {}
+local monster = { }
 
 monster.name = "Cosmic Energy Prism B"
 monster.description = "cosmic energy prism B"

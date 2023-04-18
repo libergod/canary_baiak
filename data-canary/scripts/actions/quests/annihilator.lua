@@ -15,7 +15,7 @@ local annihilator = Action()
 
 function annihilator.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	if item.itemid == 2772 then
-		local players = {}
+		local players = { }
 		for _, position in ipairs(playerPosition) do
 			local topPlayer = Tile(position):getTopCreature()
 			if not topPlayer or not topPlayer:isPlayer() or topPlayer:getLevel() < 100 or topPlayer:getStorageValue(Storage.Quest.ExampleQuest.Example) ~= -1 then

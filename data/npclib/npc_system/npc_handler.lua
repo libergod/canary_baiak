@@ -64,6 +64,7 @@ if NpcHandler == nil then
 	TAG_TRAVELCOST = "|TRAVELCOST|"
 
 	NpcHandler = {
+		focus = 0,
 		keywordHandler = nil,
 		talkStart = nil,
 		talkDelay = 1000, -- Delay from each messages
@@ -99,16 +100,17 @@ if NpcHandler == nil then
 
 	-- Creates a new NpcHandler with an empty callbackFunction stack.
 	function NpcHandler:new(keywordHandler)
-		local obj = {}
-		obj.callbackFunctions = {}
-		obj.modules = {}
+		local obj = { }
+		obj.callbackFunctions = { }
+		obj.modules = { }
 		obj.npcName = ""
-		obj.eventSay = {}
-		obj.eventDelayedSay = {}
-		obj.topic = {}
-		obj.talkStart = {}
+		obj.focus = 0
+		obj.eventSay = { }
+		obj.eventDelayedSay = { }
+		obj.topic = { }
+		obj.talkStart = { }
 		obj.keywordHandler = keywordHandler
-		obj.messages = {}
+		obj.messages = { }
 
 		setmetatable(obj.messages, self.messages)
 		self.messages.__index = self.messages
@@ -148,6 +150,16 @@ if NpcHandler == nil then
 	-- npcHandler:setEventSay(playerId, nil)
 	function NpcHandler:setEventSay(playerId, newEventSay)
 		self.eventSay[playerId] = newEventSay
+	end
+	
+	-- npcHandler:getFocus(playerId)
+	function NpcHandler:getFocus()
+		return self.focus
+	end
+
+	-- npcHandler:setFocus(playerId, nil)
+	function NpcHandler:setFocus(playerId)
+		self.focus = newFocus
 	end
 
 	-- npcHandler:getTalkStart(playerId)
@@ -199,6 +211,7 @@ if NpcHandler == nil then
 		end
 
 		self:setTopic(playerId, 0)
+		self:setFocus(playerId)
 		local callback = self:getCallback(CALLBACK_SET_INTERACTION)
 		if callback == nil or callback(npc, player) then
 			self:processModuleCallback(CALLBACK_SET_INTERACTION, npc, player)
@@ -223,6 +236,7 @@ if NpcHandler == nil then
 		self:setEventSay(playerId, nil)
 		self:setTalkStart(playerId, nil)
 		self:setTopic(playerId, nil)
+		self:setFocus(0)
 
 		local callback = self:getCallback(CALLBACK_REMOVE_INTERACTION)
 		if callback == nil or callback(npc, player) then
@@ -591,10 +605,10 @@ if NpcHandler == nil then
 			return Spdlog.error("[NpcHandler:doNPCTalkALot] - npcUniqueId is wrong or unsafe.")
 		end
 
-		self.eventDelayedSay[playerId] = {}
-		local ret = {}
+		self.eventDelayedSay[playerId] = { }
+		local ret = { }
 		for messagesTable, messageString in pairs(msgs) do
-			self.eventDelayedSay[playerId][messagesTable] = {}
+			self.eventDelayedSay[playerId][messagesTable] = { }
 			if delay ~= nil and delay > 1 then
 				self.talkDelay = delay
 			end

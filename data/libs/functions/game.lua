@@ -58,7 +58,7 @@ function Game.getHouseByPlayerGUID(playerGUID)
 end
 
 function Game.getPlayersByAccountNumber(accountNumber)
-	local result = {}
+	local result = { }
 	local players, player = Game.getPlayers()
 	for i = 1, #players do
 		player = players[i]
@@ -72,7 +72,7 @@ end
 function Game.getPlayersByIPAddress(ip, mask)
 	if not mask then mask = 0xFFFFFFFF end
 	local masked = bit.band(ip, mask)
-	local result = {}
+	local result = { }
 	local players, player = Game.getPlayers()
 	for i = 1, #players do
 		player = players[i]
@@ -120,7 +120,7 @@ function Game.getSkillType(weaponType)
 end
 
 if not globalStorageTable then
-	globalStorageTable = {}
+	globalStorageTable = { }
 end
 
 function Game.getStorageValue(key)

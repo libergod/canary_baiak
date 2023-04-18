@@ -47,7 +47,7 @@ function StdModule.kick(npc, player, message, keywords, parameters, node)
 	return true
 end
 
-local GreetModule = {}
+local GreetModule = { }
 function GreetModule.greet(npc, player, message, keywords, parameters)
 	if not parameters.npcHandler:isInRange(npc, player) then
 		return true

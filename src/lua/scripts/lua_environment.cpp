@@ -82,7 +82,7 @@ std::shared_ptr<Combat> LuaEnvironment::getCombatObject(uint32_t id) const {
 	if (it == combatMap.end()) {
 		return nullptr;
 	}
-	return it->second;
+	return it -> second;
 }
 
 std::shared_ptr<Combat> LuaEnvironment::createCombatObject(LuaScriptInterface* interface) {

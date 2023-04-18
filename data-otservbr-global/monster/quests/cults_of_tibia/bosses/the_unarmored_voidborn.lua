@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("The Unarmored Voidborn")
-local monster = {}
+local monster = { }
 
 monster.description = "The Unarmored Voidborn"
 monster.experience = 15000

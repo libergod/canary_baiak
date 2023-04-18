@@ -575,6 +575,7 @@ class Game {
 		void playerSpeakToNpc(Player* player, const std::string &text);
 
 		phmap::flat_hash_map<uint32_t, Player*> players;
+		phmap::flat_hash_map<uint32_t, uint8_t> playersActiveImbuements;
 		phmap::flat_hash_map<std::string, Player*> mappedPlayerNames;
 		phmap::flat_hash_map<uint32_t, Guild*> guilds;
 		phmap::flat_hash_map<uint16_t, Item*> uniqueItems;

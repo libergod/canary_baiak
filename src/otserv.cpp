@@ -35,7 +35,6 @@
 std::mutex g_loaderLock;
 std::condition_variable g_loaderSignal;
 std::unique_lock<std::mutex> g_loaderUniqueLock(g_loaderLock);
-bool g_loaderDone = false;
 
 /**
  *It is preferable to keep the close button off as it closes the server without saving (this can cause the player to lose items from houses and others informations, since windows automatically closes the process in five seconds, when forcing the close)
@@ -54,15 +53,15 @@ void toggleForceCloseButton() {
 
 std::string getCompiler() {
 	std::string compiler;
-#if defined(__clang__)
-	return compiler = fmt::format("Clang++ {}.{}.{}", __clang_major__, __clang_minor__, __clang_patchlevel__);
-#elif defined(_MSC_VER)
-	return compiler = fmt::format("Microsoft Visual Studio {}", _MSC_VER);
-#elif defined(__GNUC__)
-	return compiler = fmt::format("G++ {}.{}.{}", __GNUC__, __GNUC_MINOR__, __GNUC_PATCHLEVEL__);
-#else
-	return compiler = "unknown";
-#endif
+	#if defined(__clang__)
+		return compiler = "Clang++ " + std::to_string(__clang_major__) + "." + std::to_string(__clang_minor__) + "." + std::to_string(__clang_patchlevel__) +"";
+	#elif defined(_MSC_VER)
+		return compiler = "Microsoft Visual Studio " + std::to_string(_MSC_VER) +"";
+	#elif defined(__GNUC__)
+		return compiler = "G++ " + std::to_string(__GNUC__) + "." + std::to_string(__GNUC_MINOR__) + "." + std::to_string(__GNUC_PATCHLEVEL__) +"";
+	#else
+		return compiler = "unknown";
+	#endif
 }
 
 void startupErrorMessage() {
@@ -214,9 +213,7 @@ int main(int argc, char* argv[]) {
 
 	g_dispatcher().addTask(createTask(std::bind(mainLoader, argc, argv, &serviceManager)));
 
-	g_loaderSignal.wait(g_loaderUniqueLock, [] {
-		return g_loaderDone;
-	});
+	g_loaderSignal.wait(g_loaderUniqueLock);
 
 	if (serviceManager.is_running()) {
 		SPDLOG_INFO("{} {}", g_configManager().getString(SERVER_NAME), "server online!");
@@ -380,8 +377,6 @@ void mainLoader(int, char*[], ServiceManager* services) {
 
 	std::string url = g_configManager().getString(DISCORD_WEBHOOK_URL);
 	webhook_send_message("Server is now online", "Server has successfully started.", WEBHOOK_COLOR_ONLINE, url);
-
-	g_loaderDone = true;
 
 	g_loaderSignal.notify_all();
 }

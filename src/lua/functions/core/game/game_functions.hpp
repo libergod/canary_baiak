@@ -85,9 +85,8 @@ class GameFunctions final : LuaScriptInterface {
 		static int luaGameGetBoostedCreature(lua_State* L);
 		static int luaGameGetBestiaryList(lua_State* L);
 
-		static int luaGameGetPlayers(lua_State* L);
-		static int luaGameLoadMap(lua_State* L);
-		static int luaGameloadMapChunk(lua_State* L);
+			static int luaGameGetPlayers(lua_State* L);
+			static int luaGameLoadMap(lua_State* L);
 
 		static int luaGameGetMonsterCount(lua_State* L);
 		static int luaGameGetPlayerCount(lua_State* L);

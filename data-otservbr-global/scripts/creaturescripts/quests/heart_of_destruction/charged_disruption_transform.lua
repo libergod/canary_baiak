@@ -1,5 +1,5 @@
 local explodeExhaust = 18 --in seconds
-local minionExhaust = {}
+local minionExhaust = { }
 
 local function minionExplode(creature)
     if not creature:isMonster() then

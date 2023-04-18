@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("An Observer Eye")
-local monster = {}
+local monster = { }
 
 monster.description = "an observer eye"
 monster.experience = 0

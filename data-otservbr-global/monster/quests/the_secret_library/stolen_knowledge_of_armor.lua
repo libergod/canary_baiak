@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Stolen Knowledge of Armor")
-local monster = {}
+local monster = { }
 
 monster.description = "stolen knowledge of armor"
 monster.experience = 0

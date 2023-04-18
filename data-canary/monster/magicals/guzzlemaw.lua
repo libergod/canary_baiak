@@ -1,6 +1,6 @@
 --# Monster converted using Devm monster converter #--
 local mType = Game.createMonsterType("Guzzlemaw")
-local monster = {}
+local monster = { }
 
 monster.description = "a guzzlemaw"
 monster.experience = 6050

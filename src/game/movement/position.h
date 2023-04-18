@@ -27,9 +27,9 @@ enum Direction : uint8_t {
 };
 
 struct Position {
-		constexpr Position() = default;
-		constexpr Position(uint16_t initX, uint16_t initY, uint8_t initZ) :
-			x(initX), y(initY), z(initZ) { }
+	constexpr Position() = default;
+	constexpr Position(uint16_t initX, uint16_t initY, uint8_t initZ) :
+		x(initX), y(initY), z(initZ) {}
 
 		template <int_fast32_t deltax, int_fast32_t deltay>
 		static bool areInRange(const Position &p1, const Position &p2) {

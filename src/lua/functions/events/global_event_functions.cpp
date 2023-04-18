@@ -10,7 +10,6 @@
 #include "pch.hpp"
 
 #include "lua/functions/events/global_event_functions.hpp"
-#include "game/game.h"
 #include "lua/global/globalevent.h"
 #include "lua/scripts/scripts.h"
 #include "utils/tools.h"
@@ -42,8 +41,6 @@ int GlobalEventFunctions::luaGlobalEventType(lua_State* L) {
 			global->setEventType(GLOBALEVENT_RECORD);
 		} else if (tmpStr == "periodchange") {
 			global->setEventType(GLOBALEVENT_PERIODCHANGE);
-		} else if (tmpStr == "onthink") {
-			global->setEventType(GLOBALEVENT_ON_THINK);
 		} else {
 			SPDLOG_ERROR("[GlobalEventFunctions::luaGlobalEventType] - "
 						 "Invalid type for global event: {}");
@@ -135,7 +132,6 @@ int GlobalEventFunctions::luaGlobalEventTime(lua_State* L) {
 		timeinfo->tm_sec = sec;
 
 		time_t difference = static_cast<time_t>(difftime(mktime(timeinfo), current_time));
-		// If the difference is negative, add 86400 seconds (1 day) to it
 		if (difference < 0) {
 			difference += 86400;
 		}

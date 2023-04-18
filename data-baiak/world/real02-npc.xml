@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<npcs>
+	<npc centerx="630" centery="1252" centerz="4" radius="1">
+		<npc name="Yasir" x="0" y="0" z="4" spawntime="60" />
+	</npc>
+	<npc centerx="951" centery="1205" centerz="5" radius="1">
+		<npc name="Zethra" x="0" y="0" z="5" spawntime="60" />
+	</npc>
+	<npc centerx="962" centery="1209" centerz="5" radius="1">
+		<npc name="Eliyas" x="0" y="0" z="5" spawntime="60" />
+	</npc>
+	<npc centerx="952" centery="1216" centerz="5" radius="1">
+		<npc name="Eva" x="0" y="0" z="5" spawntime="60" />
+	</npc>
+	<npc centerx="625" centery="1235" centerz="5" radius="1">
+		<npc name="Zethra" x="0" y="0" z="5" spawntime="60" />
+	</npc>
+	<npc centerx="641" centery="1237" centerz="5" radius="1">
+		<npc name="Eliyas" x="0" y="0" z="5" spawntime="60" />
+	</npc>
+	<npc centerx="625" centery="1240" centerz="5" radius="1">
+		<npc name="Lunna the Fooder" x="0" y="0" z="5" spawntime="60" />
+	</npc>
+	<npc centerx="641" centery="1242" centerz="5" radius="1">
+		<npc name="Eva" x="0" y="0" z="5" spawntime="60" />
+	</npc>
+	<npc centerx="633" centery="1252" centerz="5" radius="1">
+		<npc name="Rashid" x="0" y="0" z="5" spawntime="60" />
+	</npc>
+	<npc centerx="1158" centery="1034" centerz="7" radius="1">
+		<npc name="Oldrak" x="0" y="0" z="7" spawntime="60" />
+	</npc>
+	<npc centerx="953" centery="1205" centerz="7" radius="1">
+		<npc name="Lunna the Fooder" x="0" y="0" z="7" spawntime="60" />
+	</npc>
+	<npc centerx="1003" centery="1211" centerz="7" radius="1">
+		<npc name="Imbuement Assistant" x="0" y="0" z="7" spawntime="60" />
+	</npc>
+	<npc centerx="952" centery="1216" centerz="7" radius="1">
+		<npc name="Liane" x="0" y="0" z="7" spawntime="60" />
+	</npc>
+</npcs>

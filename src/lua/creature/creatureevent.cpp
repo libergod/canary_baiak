@@ -103,7 +103,7 @@ bool CreatureEvents::playerAdvance(
 */
 
 CreatureEvent::CreatureEvent(LuaScriptInterface* interface) :
-	Script(interface) { }
+	Script(interface) {}
 
 void CreatureEvents::removeInvalidEvents() {
 	for (auto it = creatureEvents.begin(); it != creatureEvents.end(); ++it) {
@@ -116,45 +116,45 @@ void CreatureEvents::removeInvalidEvents() {
 std::string CreatureEvent::getScriptTypeName() const {
 	// Depending on the type script event name is different
 	switch (type) {
-		case CREATURE_EVENT_LOGIN:
-			return "onLogin";
+	case CREATURE_EVENT_LOGIN:
+		return "onLogin";
 
-		case CREATURE_EVENT_LOGOUT:
-			return "onLogout";
+	case CREATURE_EVENT_LOGOUT:
+		return "onLogout";
 
-		case CREATURE_EVENT_THINK:
-			return "onThink";
+	case CREATURE_EVENT_THINK:
+		return "onThink";
 
-		case CREATURE_EVENT_PREPAREDEATH:
-			return "onPrepareDeath";
+	case CREATURE_EVENT_PREPAREDEATH:
+		return "onPrepareDeath";
 
-		case CREATURE_EVENT_DEATH:
-			return "onDeath";
+	case CREATURE_EVENT_DEATH:
+		return "onDeath";
 
-		case CREATURE_EVENT_KILL:
-			return "onKill";
+	case CREATURE_EVENT_KILL:
+		return "onKill";
 
-		case CREATURE_EVENT_ADVANCE:
-			return "onAdvance";
+	case CREATURE_EVENT_ADVANCE:
+		return "onAdvance";
 
-		case CREATURE_EVENT_MODALWINDOW:
-			return "onModalWindow";
+	case CREATURE_EVENT_MODALWINDOW:
+		return "onModalWindow";
 
-		case CREATURE_EVENT_TEXTEDIT:
-			return "onTextEdit";
+	case CREATURE_EVENT_TEXTEDIT:
+		return "onTextEdit";
 
-		case CREATURE_EVENT_HEALTHCHANGE:
-			return "onHealthChange";
+	case CREATURE_EVENT_HEALTHCHANGE:
+		return "onHealthChange";
 
-		case CREATURE_EVENT_MANACHANGE:
-			return "onManaChange";
+	case CREATURE_EVENT_MANACHANGE:
+		return "onManaChange";
 
-		case CREATURE_EVENT_EXTENDED_OPCODE:
-			return "onExtendedOpcode";
+	case CREATURE_EVENT_EXTENDED_OPCODE:
+		return "onExtendedOpcode";
 
-		case CREATURE_EVENT_NONE:
-		default:
-			return std::string();
+	case CREATURE_EVENT_NONE:
+	default:
+		return std::string();
 	}
 }
 
@@ -256,7 +256,8 @@ bool CreatureEvent::executeOnPrepareDeath(Creature* creature, Creature* killer) 
 	if (killer) {
 		LuaScriptInterface::pushUserdata<Creature>(L, killer);
 		LuaScriptInterface::setCreatureMetatable(L, -1, killer);
-	} else {
+	}
+	else {
 		lua_pushnil(L);
 	}
 
@@ -286,14 +287,16 @@ bool CreatureEvent::executeOnDeath(Creature* creature, Item* corpse, Creature* k
 	if (killer) {
 		LuaScriptInterface::pushUserdata<Creature>(L, killer);
 		LuaScriptInterface::setCreatureMetatable(L, -1, killer);
-	} else {
+	}
+	else {
 		lua_pushnil(L);
 	}
 
 	if (mostDamageKiller) {
 		LuaScriptInterface::pushUserdata<Creature>(L, mostDamageKiller);
 		LuaScriptInterface::setCreatureMetatable(L, -1, mostDamageKiller);
-	} else {
+	}
+	else {
 		lua_pushnil(L);
 	}
 
@@ -421,7 +424,8 @@ void CreatureEvent::executeHealthChange(Creature* creature, Creature* attacker, 
 	if (attacker) {
 		LuaScriptInterface::pushUserdata(L, attacker);
 		LuaScriptInterface::setCreatureMetatable(L, -1, attacker);
-	} else {
+	}
+	else {
 		lua_pushnil(L);
 	}
 
@@ -429,7 +433,8 @@ void CreatureEvent::executeHealthChange(Creature* creature, Creature* attacker, 
 
 	if (getScriptInterface()->protectedCall(L, 7, 4) != 0) {
 		LuaScriptInterface::reportError(nullptr, LuaScriptInterface::popString(L));
-	} else {
+	}
+	else {
 		damage.primary.value = std::abs(LuaScriptInterface::getNumber<int32_t>(L, -4));
 		damage.primary.type = LuaScriptInterface::getNumber<CombatType_t>(L, -3);
 		damage.secondary.value = std::abs(LuaScriptInterface::getNumber<int32_t>(L, -2));
@@ -466,7 +471,8 @@ void CreatureEvent::executeManaChange(Creature* creature, Creature* attacker, Co
 	if (attacker) {
 		LuaScriptInterface::pushUserdata(L, attacker);
 		LuaScriptInterface::setCreatureMetatable(L, -1, attacker);
-	} else {
+	}
+	else {
 		lua_pushnil(L);
 	}
 
@@ -474,7 +480,8 @@ void CreatureEvent::executeManaChange(Creature* creature, Creature* attacker, Co
 
 	if (getScriptInterface()->protectedCall(L, 7, 4) != 0) {
 		LuaScriptInterface::reportError(nullptr, LuaScriptInterface::popString(L));
-	} else {
+	}
+	else {
 		damage.primary.value = LuaScriptInterface::getNumber<int32_t>(L, -4);
 		damage.primary.type = LuaScriptInterface::getNumber<CombatType_t>(L, -3);
 		damage.secondary.value = LuaScriptInterface::getNumber<int32_t>(L, -2);

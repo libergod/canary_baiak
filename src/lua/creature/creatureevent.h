@@ -18,8 +18,8 @@ class CreatureEvent;
 using CreatureEvent_ptr = std::unique_ptr<CreatureEvent>;
 
 class CreatureEvent final : public Script {
-	public:
-		explicit CreatureEvent(LuaScriptInterface* interface);
+public:
+	explicit CreatureEvent(LuaScriptInterface* interface);
 
 		CreatureEventType_t getEventType() const {
 			return type;
@@ -40,8 +40,8 @@ class CreatureEvent final : public Script {
 			loaded = b;
 		}
 
-		void clearEvent();
-		void copyEvent(const CreatureEvent* creatureEvent);
+	void clearEvent();
+	void copyEvent(const CreatureEvent* creatureEvent);
 
 		// scripting
 		bool executeOnLogin(Player* player) const;
@@ -58,17 +58,17 @@ class CreatureEvent final : public Script {
 		void executeExtendedOpcode(Player* player, uint8_t opcode, const std::string &buffer) const;
 		//
 
-	private:
-		std::string getScriptTypeName() const override;
+private:
+	std::string getScriptTypeName() const override;
 
-		std::string eventName;
-		CreatureEventType_t type = CREATURE_EVENT_NONE;
-		bool loaded = false;
+	std::string eventName;
+	CreatureEventType_t type = CREATURE_EVENT_NONE;
+	bool loaded = false;
 };
 
 class CreatureEvents final : public Scripts {
-	public:
-		CreatureEvents() = default;
+public:
+	CreatureEvents() = default;
 
 		// non-copyable
 		CreatureEvents(const CreatureEvents &) = delete;
@@ -81,16 +81,16 @@ class CreatureEvents final : public Scripts {
 			return instance;
 		}
 
-		// global events
-		bool playerLogin(Player* player) const;
-		bool playerLogout(Player* player) const;
-		bool playerAdvance(Player* player, skills_t, uint32_t, uint32_t) const;
+	// global events
+	bool playerLogin(Player* player) const;
+	bool playerLogout(Player* player) const;
+	bool playerAdvance(Player* player, skills_t, uint32_t, uint32_t) const;
 
 		CreatureEvent* getEventByName(const std::string &name, bool forceLoaded = true);
 
-		bool registerLuaEvent(CreatureEvent* event);
-		void removeInvalidEvents();
-		void clear();
+	bool registerLuaEvent(CreatureEvent* event);
+	void removeInvalidEvents();
+	void clear();
 
 	private:
 		// creature events

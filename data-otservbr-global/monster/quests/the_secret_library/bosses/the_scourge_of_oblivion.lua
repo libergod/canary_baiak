@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("The Scourge Of Oblivion")
-local monster = {}
+local monster = { }
 
 monster.description = "The Scourge Of Oblivion"
 monster.experience = 50000

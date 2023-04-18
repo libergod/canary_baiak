@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Ancient Spawn of Morgathla")
-local monster = {}
+local monster = { }
 
 monster.description = "an ancient spawn of morgathla"
 monster.experience = 2400

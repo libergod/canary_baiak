@@ -77,7 +77,7 @@ uint32_t ScriptEnvironment::addThing(Thing* thing) {
 		return item->getAttribute<uint32_t>(ItemAttribute_t::UNIQUEID);
 	}
 
-	for (const auto &it : localMap) {
+	for (const auto &it: localMap) {
 		if (it.second == item) {
 			return it.first;
 		}

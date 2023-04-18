@@ -27,7 +27,7 @@ struct spawnBlockNpc_t {
 class SpawnNpc {
 	public:
 		SpawnNpc(Position initPos, int32_t initRadius) :
-			centerPos(std::move(initPos)), radius(initRadius) { }
+			centerPos(std::move(initPos)), radius(initRadius) {}
 		~SpawnNpc();
 
 		// non-copyable

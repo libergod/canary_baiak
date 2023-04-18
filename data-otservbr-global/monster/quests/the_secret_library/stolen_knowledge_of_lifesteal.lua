@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Stolen Knowledge of Lifesteal")
-local monster = {}
+local monster = { }
 
 monster.description = "stolen knowledge of lifesteal"
 monster.experience = 0

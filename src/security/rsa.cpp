@@ -80,7 +80,8 @@ void RSA::decrypt(char* msg) const {
 	mpz_clear(m);
 }
 
-std::string RSA::base64Decrypt(const std::string &input) const {
+std::string RSA::base64Decrypt(const std::string& input) const
+{
 	auto posOfCharacter = [](const uint8_t chr) -> uint16_t {
 		if (chr >= 'A' && chr <= 'Z') {
 			return chr - 'A';
@@ -135,7 +136,8 @@ enum {
 	CRYPT_RSA_ASN1_BITSTRING = 3
 };
 
-uint16_t RSA::decodeLength(char*&pos) const {
+uint16_t RSA::decodeLength(char*& pos) const
+{
 	std::string buffer;
 	auto length = static_cast<uint16_t>(static_cast<uint8_t>(*pos++));
 	if (length & 0x80) {
@@ -162,7 +164,8 @@ uint16_t RSA::decodeLength(char*&pos) const {
 	return length;
 }
 
-void RSA::readHexString(char*&pos, uint16_t length, std::string &output) const {
+void RSA::readHexString(char*& pos, uint16_t length, std::string& output) const
+{
 	output.reserve(static_cast<size_t>(length) * 2);
 	for (uint16_t i = 0; i < length; ++i) {
 		auto hex = static_cast<uint8_t>(*pos++);

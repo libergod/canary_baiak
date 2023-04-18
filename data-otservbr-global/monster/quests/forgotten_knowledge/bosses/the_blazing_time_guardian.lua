@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("The Blazing Time Guardian")
-local monster = {}
+local monster = { }
 
 monster.description = "the blazing time guardian"
 monster.experience = 50000

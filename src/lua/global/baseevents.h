@@ -90,6 +90,7 @@ class Event {
 		}
 
 		bool scripted = false;
+		bool fromLua = false;
 
 	protected:
 		virtual std::string getScriptEventName() const = 0;

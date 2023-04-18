@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Glitterscale")
-local monster = {}
+local monster = { }
 
 monster.description = "Glitterscale"
 monster.experience = 700

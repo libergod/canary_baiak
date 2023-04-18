@@ -148,7 +148,7 @@ function elementalSpheresLordLever.onUse(player, item, fromPosition, target, toP
 		return true
 	end
 
-	local players = {}
+	local players = { }
 	for i = 1, #config.positions do
 		local creature = Tile(config.positions[i]):getTopCreature()
 		if creature then

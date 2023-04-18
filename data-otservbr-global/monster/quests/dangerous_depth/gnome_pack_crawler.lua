@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Gnome Pack Crawler")
-local monster = {}
+local monster = { }
 
 monster.description = "a gnome pack crawler"
 monster.experience = 0

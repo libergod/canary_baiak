@@ -16,7 +16,7 @@ local holes = {593, 606, 608, 867, 21341} -- holes opened by shovel
 local sandIds = {231, 9059} -- desert sand
 local fruits = {2673, 2674, 2675, 2676, 2677, 2678, 2679, 2680, 2681, 2682, 2684, 2685, 5097, 8839, 8840, 8841} -- fruits to make decorated cake with knife
 
-ActionsLib = {}
+ActionsLib = { }
 
 ActionsLib.destroyItem = function(player, target, toPosition)
 	if type(target) ~= "userdata" or not target:isItem() then

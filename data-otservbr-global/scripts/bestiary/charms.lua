@@ -215,7 +215,7 @@ local charms = {
 
 for charmId, charmsTable in ipairs(charms) do
 	local charm = Game.createBestiaryCharm(charmId - 1)
-	local charmConfig = {}
+	local charmConfig = { }
 
 	local bestiaryRateCharmShopPrice = (configManager.getFloat(configKeys.BESTIARY_RATE_CHARM_SHOP_PRICE) or 1.0)
 	if charmsTable.name then

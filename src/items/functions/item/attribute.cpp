@@ -11,11 +11,11 @@
 
 #include "items/functions/item/attribute.hpp"
 
-/*
-=============================
-* ItemAttribute class (Attributes methods)
-=============================
-*/
+ /*
+ =============================
+ * ItemAttribute class (Attributes methods)
+ =============================
+ */
 const std::string &ItemAttribute::getAttributeString(ItemAttribute_t type) const {
 	static std::string emptyString;
 	if (!isAttributeString(type)) {
@@ -101,8 +101,8 @@ bool ItemAttribute::removeAttribute(ItemAttribute_t type) {
 			return false;
 		}
 
-		return true;
-	});
+	return true;
+		});
 
 	attributeBits &= ~type;
 	return true;

@@ -18,7 +18,7 @@ function bossDeath.onDeath(creature, corpse, killer, mostDamageKiller, lastHitUn
 		-- Avoid dividing by zero
 		local totalDamageOut, totalDamageIn, totalHealing = 0.1, 0.1, 0.1
 
-		local scores = {}
+		local scores = { }
 		local info = GlobalBosses[bossId]
 		local damageMap = creature:getDamageMap()
 

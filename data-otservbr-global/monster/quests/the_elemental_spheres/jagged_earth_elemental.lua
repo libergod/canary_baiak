@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("Jagged Earth Elemental")
-local monster = {}
+local monster = { }
 
 monster.description = "a jagged earth elemental"
 monster.experience = 1300

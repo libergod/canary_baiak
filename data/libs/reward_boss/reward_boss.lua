@@ -39,7 +39,7 @@ function InsertItems(buffer, info, parent, items)
 			if item:isContainer() then
 				local size = item:getSize()
 				if size > 0 then
-					local subItems = {}
+					local subItems = { }
 					for i = 1, size do
 						table.insert(subItems, item:getItem(i - 1))
 					end

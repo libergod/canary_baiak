@@ -167,6 +167,14 @@ class House {
 			return townId;
 		}
 
+		void setRequiredRebirth(uint32_t amount) {
+			this->requiredRebirth = amount;
+		}
+
+		uint32_t getRequiredRebirth() {
+			return requiredRebirth;
+		}
+
 		uint32_t getId() const {
 			return id;
 		}
@@ -222,6 +230,7 @@ class House {
 		uint32_t rentWarnings = 0;
 		uint32_t rent = 0;
 		uint32_t townId = 0;
+		uint32_t requiredRebirth = 0;
 
 		Position posEntry = {};
 

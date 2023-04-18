@@ -1,5 +1,5 @@
 local mType = Game.createMonsterType("The Corruptor Of Souls")
-local monster = {}
+local monster = { }
 
 monster.description = "The Corruptor Of Souls"
 monster.experience = 112000

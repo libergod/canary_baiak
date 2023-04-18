@@ -53,7 +53,6 @@ int32_t LuaScriptInterface::loadFile(const std::string &file, const std::string 
 	}
 
 	loadingFile = file;
-	setLoadingScriptName(scriptName);
 
 	if (!reserveScriptEnv()) {
 		return -1;
