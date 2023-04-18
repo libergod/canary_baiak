@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #include "pch.hpp"
 
@@ -336,8 +336,7 @@ int GlobalFunctions::luaDoTargetCombatHealth(lua_State* L) {
 	damage.primary.value = normal_random(getNumber<int32_t>(L, 4), getNumber<int32_t>(L, 5));
 
 	// Check if it's a healing then we sould add the non-aggresive tag
-	if (combatType == COMBAT_HEALING ||
-		(combatType == COMBAT_MANADRAIN && damage.primary.value > 0)) {
+	if (combatType == COMBAT_HEALING || (combatType == COMBAT_MANADRAIN && damage.primary.value > 0)) {
 		params.aggressive = false;
 	}
 
@@ -565,7 +564,7 @@ int GlobalFunctions::luaAddEvent(lua_State* L) {
 
 			LuaDataType type = getNumber<LuaDataType>(L, -1);
 			if (type != LuaData_Unknown && type != LuaData_Tile) {
-				indexes.push_back({i, type});
+				indexes.push_back({ i, type });
 			}
 			lua_pop(globalState, 2);
 		}
@@ -579,7 +578,7 @@ int GlobalFunctions::luaAddEvent(lua_State* L) {
 					warningString += 's';
 				}
 
-				for (const auto& entry : indexes) {
+				for (const auto &entry : indexes) {
 					if (entry == indexes.front()) {
 						warningString += ' ';
 					} else if (entry == indexes.back()) {
@@ -601,7 +600,7 @@ int GlobalFunctions::luaAddEvent(lua_State* L) {
 			}
 
 			if (g_configManager().getBoolean(CONVERT_UNSAFE_SCRIPTS)) {
-				for (const auto& entry : indexes) {
+				for (const auto &entry : indexes) {
 					switch (entry.second) {
 						case LuaData_Item:
 						case LuaData_Container:
@@ -642,7 +641,7 @@ int GlobalFunctions::luaAddEvent(lua_State* L) {
 
 	auto &lastTimerEventId = g_luaEnvironment.lastEventTimerId;
 	eventDesc.eventId = g_scheduler().addEvent(createSchedulerTask(
-					delay, std::bind(&LuaEnvironment::executeTimerEvent, &g_luaEnvironment, lastTimerEventId)
+		delay, std::bind(&LuaEnvironment::executeTimerEvent, &g_luaEnvironment, lastTimerEventId)
 	));
 
 	g_luaEnvironment.timerEvents.emplace(lastTimerEventId, std::move(eventDesc));

@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_CREATURES_NPCS_NPC_H_
 #define SRC_CREATURES_NPCS_NPC_H_
@@ -126,9 +126,9 @@ class Npc final : public Creature {
 		void resetPlayerInteractions();
 
 		bool isInteractingWithPlayer(uint32_t playerId) {
-		if (playerInteractions.find(playerId) == playerInteractions.end()) {
-			return false;
-		}
+			if (playerInteractions.find(playerId) == playerInteractions.end()) {
+				return false;
+			}
 			return true;
 		}
 

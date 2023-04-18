@@ -25,7 +25,7 @@ bool Ban::acceptConnection(uint32_t clientIP) {
 		return true;
 	}
 
-	ConnectBlock& connectBlock = it->second;
+	ConnectBlock &connectBlock = it->second;
 	if (connectBlock.blockTime > currentTime) {
 		connectBlock.blockTime += 250;
 		return false;
@@ -48,7 +48,7 @@ bool Ban::acceptConnection(uint32_t clientIP) {
 	return true;
 }
 
-bool IOBan::isAccountBanned(uint32_t accountId, BanInfo& banInfo) {
+bool IOBan::isAccountBanned(uint32_t accountId, BanInfo &banInfo) {
 	Database &db = Database::getInstance();
 
 	std::ostringstream query;
@@ -78,7 +78,7 @@ bool IOBan::isAccountBanned(uint32_t accountId, BanInfo& banInfo) {
 	return true;
 }
 
-bool IOBan::isIpBanned(uint32_t clientIP, BanInfo& banInfo) {
+bool IOBan::isIpBanned(uint32_t clientIP, BanInfo &banInfo) {
 	if (clientIP == 0) {
 		return false;
 	}

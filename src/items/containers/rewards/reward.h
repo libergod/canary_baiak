@@ -5,15 +5,14 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_ITEMS_CONTAINERS_REWARDS_REWARD_H_
 #define SRC_ITEMS_CONTAINERS_REWARDS_REWARD_H_
 
 #include "items/containers/container.h"
 
-class Reward : public Container
-{
+class Reward : public Container {
 	public:
 		explicit Reward();
 
@@ -24,13 +23,13 @@ class Reward : public Container
 			return this;
 		}
 
-		//cylinder implementations
+		// cylinder implementations
 		ReturnValue queryAdd(int32_t index, const Thing &thing, uint32_t count, uint32_t flags, Creature* actor = nullptr) const final;
 
 		void postAddNotification(Thing* thing, const Cylinder* oldParent, int32_t index, CylinderLink_t link = LINK_OWNER) final;
 		void postRemoveNotification(Thing* thing, const Cylinder* newParent, int32_t index, CylinderLink_t link = LINK_OWNER) final;
 
-		//overrides
+		// overrides
 		bool canRemove() const final {
 			return true;
 		}

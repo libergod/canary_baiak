@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #include "lua/callbacks/creaturecallback.h"
 
@@ -16,16 +16,16 @@ bool CreatureCallback::startScriptInterface(int32_t scriptId) {
 
 	if (!scriptInterface->reserveScriptEnv()) {
 		SPDLOG_ERROR(
-						"[CreatureCallback::startScriptInterface] - {} {} Call stack overflow. Too many lua script calls being nested.",
-						getCreatureClass(targetCreature),
-						targetCreature->getName()
+			"[CreatureCallback::startScriptInterface] - {} {} Call stack overflow. Too many lua script calls being nested.",
+			getCreatureClass(targetCreature),
+			targetCreature->getName()
 		);
 		return false;
 	}
 
 	scriptInterface
-					->getScriptEnv()
-					->setScriptId(scriptId, scriptInterface);
+		->getScriptEnv()
+		->setScriptId(scriptId, scriptInterface);
 
 	L = scriptInterface->getLuaState();
 
@@ -37,9 +37,9 @@ bool CreatureCallback::startScriptInterface(int32_t scriptId) {
 void CreatureCallback::pushSpecificCreature(Creature* creature) {
 	if (Npc* npc = creature->getNpc()) {
 		LuaScriptInterface::pushUserdata<Npc>(L, npc);
-	}else if (Monster* monster = creature->getMonster()) {
+	} else if (Monster* monster = creature->getMonster()) {
 		LuaScriptInterface::pushUserdata<Monster>(L, monster);
-	}else if (Player* player = creature->getPlayer()) {
+	} else if (Player* player = creature->getPlayer()) {
 		LuaScriptInterface::pushUserdata<Player>(L, player);
 	} else {
 		return;

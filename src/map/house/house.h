@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_MAP_HOUSE_HOUSE_H_
 #define SRC_MAP_HOUSE_HOUSE_H_
@@ -19,8 +19,7 @@ class House;
 class BedItem;
 class Player;
 
-class AccessList
-{
+class AccessList {
 	public:
 		void parseList(const std::string &list);
 		void addPlayer(const std::string &name);
@@ -38,8 +37,7 @@ class AccessList
 		bool allowEveryone = false;
 };
 
-class Door final : public Item
-{
+class Door final : public Item {
 	public:
 		explicit Door(uint16_t type);
 
@@ -58,9 +56,9 @@ class Door final : public Item
 			return house;
 		}
 
-		//serialization
+		// serialization
 		Attr_ReadValue readAttr(AttrTypes_t attr, PropStream &propStream) override;
-		void serializeAttr(PropWriteStream&) const override {}
+		void serializeAttr(PropWriteStream &) const override { }
 
 		void setDoorId(uint32_t doorId) {
 			setAttribute(ItemAttribute_t::DOORID, doorId);
@@ -87,12 +85,12 @@ class Door final : public Item
 using HouseTileList = std::list<HouseTile*>;
 using HouseBedItemList = std::list<BedItem*>;
 
-class HouseTransferItem final : public Item
-{
+class HouseTransferItem final : public Item {
 	public:
 		static HouseTransferItem* createHouseTransferItem(House* house);
 
-		explicit HouseTransferItem(House* newHouse) : Item(0), house(newHouse) {}
+		explicit HouseTransferItem(House* newHouse) :
+			Item(0), house(newHouse) { }
 
 		void onTradeEvent(TradeEvents_t event, Player* owner) override;
 		bool canTransform() const override {
@@ -103,8 +101,7 @@ class HouseTransferItem final : public Item
 		House* house;
 };
 
-class House
-{
+class House {
 	public:
 		explicit House(uint32_t houseId);
 
@@ -191,20 +188,20 @@ class House
 		void resetTransferItem();
 		bool executeTransfer(HouseTransferItem* item, Player* player);
 
-		const HouseTileList& getTiles() const {
+		const HouseTileList &getTiles() const {
 			return houseTiles;
 		}
 
-		const std::list<Door*>& getDoors() const {
+		const std::list<Door*> &getDoors() const {
 			return doorList;
 		}
 
 		void addBed(BedItem* bed);
-		const HouseBedItemList& getBeds() const {
+		const HouseBedItemList &getBeds() const {
 			return bedsList;
 		}
 		uint32_t getBedCount() {
-			return static_cast<uint32_t>(std::ceil(bedsList.size() / 2.)); //each bed takes 2 sqms of space, ceil is just for bad maps
+			return static_cast<uint32_t>(std::ceil(bedsList.size() / 2.)); // each bed takes 2 sqms of space, ceil is just for bad maps
 		}
 
 	private:
@@ -214,7 +211,7 @@ class House
 		AccessList guestList;
 		AccessList subOwnerList;
 
-		Container transfer_container{ITEM_LOCKER};
+		Container transfer_container { ITEM_LOCKER };
 
 		HouseTileList houseTiles;
 		std::list<Door*> doorList;
@@ -239,14 +236,13 @@ class House
 
 		bool isLoaded = false;
 
-		void handleContainer(ItemList& moveItemList, Item* item) const;
-		void handleWrapableItem(ItemList& moveItemList, Item* item) const;
+		void handleContainer(ItemList &moveItemList, Item* item) const;
+		void handleWrapableItem(ItemList &moveItemList, Item* item) const;
 };
 
 using HouseMap = std::map<uint32_t, House*>;
 
-class Houses
-{
+class Houses {
 	public:
 		Houses() = default;
 		~Houses() {

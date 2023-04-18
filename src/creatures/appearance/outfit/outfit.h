@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_CREATURES_APPEARANCE_OUTFIT_OUTFIT_H_
 #define SRC_CREATURES_APPEARANCE_OUTFIT_OUTFIT_H_
@@ -13,26 +13,26 @@
 #include "declarations.hpp"
 
 struct Outfit {
-	Outfit(std::string initName, uint16_t initLookType, bool initPremium, bool initUnlocked, std::string initFrom) :
-		name(initName), lookType(initLookType), premium(initPremium), unlocked(initUnlocked), from(initFrom) {}
+		Outfit(std::string initName, uint16_t initLookType, bool initPremium, bool initUnlocked, std::string initFrom) :
+			name(initName), lookType(initLookType), premium(initPremium), unlocked(initUnlocked), from(initFrom) { }
 
-	std::string name;
-	uint16_t lookType;
-	bool premium;
-	bool unlocked;
-	std::string from;
+		std::string name;
+		uint16_t lookType;
+		bool premium;
+		bool unlocked;
+		std::string from;
 };
 
 struct ProtocolOutfit {
 	ProtocolOutfit(const std::string &initName, uint16_t initLookType, uint8_t initAddons) :
 		name(initName), lookType(initLookType), addons(initAddons) {}
 
-	const std::string &name;
-	uint16_t lookType;
-	uint8_t addons;
+		const std::string &name;
+		uint16_t lookType;
+		uint8_t addons;
 };
 
-class Outfits{
+class Outfits {
 	public:
 		static Outfits &getInstance() {
 			static Outfits instance;

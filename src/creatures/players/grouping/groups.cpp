@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #include "pch.hpp"
 
@@ -16,23 +16,23 @@
 #include "utils/tools.h"
 
 namespace ParsePlayerFlagMap {
-// Initialize the map with all the values from the PlayerFlags_t enumeration
-phmap::flat_hash_map<std::string, PlayerFlags_t> initParsePlayerFlagMap() {
-	phmap::flat_hash_map<std::string, PlayerFlags_t> map;
-	// Iterate through all values of the PlayerFlags_t enumeration
-	for (auto value : magic_enum::enum_values<PlayerFlags_t>()) {
-		// Get the string representation of the current enumeration value
-		std::string name(magic_enum::enum_name(value).data());
-		// Convert the string to lowercase
-		std::ranges::transform(name.begin(), name.end(), name.begin(), ::tolower);
-		// Add the current value to the map with its lowercase string representation as the key
-		map[name] = value;
+	// Initialize the map with all the values from the PlayerFlags_t enumeration
+	phmap::flat_hash_map<std::string, PlayerFlags_t> initParsePlayerFlagMap() {
+		phmap::flat_hash_map<std::string, PlayerFlags_t> map;
+		// Iterate through all values of the PlayerFlags_t enumeration
+		for (auto value : magic_enum::enum_values<PlayerFlags_t>()) {
+			// Get the string representation of the current enumeration value
+			std::string name(magic_enum::enum_name(value).data());
+			// Convert the string to lowercase
+			std::ranges::transform(name.begin(), name.end(), name.begin(), ::tolower);
+			// Add the current value to the map with its lowercase string representation as the key
+			map[name] = value;
+		}
+
+		return map;
 	}
 
-	return map;
-}
-
-const phmap::flat_hash_map<std::string, PlayerFlags_t> parsePlayerFlagMap = initParsePlayerFlagMap();
+	const phmap::flat_hash_map<std::string, PlayerFlags_t> parsePlayerFlagMap = initParsePlayerFlagMap();
 }
 
 uint8_t Groups::getFlagNumber(PlayerFlags_t playerFlags) {

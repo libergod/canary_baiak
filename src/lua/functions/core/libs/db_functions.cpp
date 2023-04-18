@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #include "pch.hpp"
 
@@ -29,6 +29,7 @@ int DBFunctions::luaDatabaseAsyncExecute(lua_State* L) {
 			if (!luaState) {
 				return;
 			}
+
 			if (!DBFunctions::reserveScriptEnv()) {
 				luaL_unref(luaState, LUA_REGISTRYINDEX, ref);
 				return;
@@ -66,6 +67,7 @@ int DBFunctions::luaDatabaseAsyncStoreQuery(lua_State* L) {
 			if (!luaState) {
 				return;
 			}
+
 			if (!DBFunctions::reserveScriptEnv()) {
 				luaL_unref(luaState, LUA_REGISTRYINDEX, ref);
 				return;
@@ -74,8 +76,7 @@ int DBFunctions::luaDatabaseAsyncStoreQuery(lua_State* L) {
 			lua_rawgeti(luaState, LUA_REGISTRYINDEX, ref);
 			if (result) {
 				lua_pushnumber(luaState, ScriptEnvironment::addResult(result));
-			}
-			else {
+			} else {
 				pushBoolean(luaState, false);
 			}
 			auto env = getScriptEnv();

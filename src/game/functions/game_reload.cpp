@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #include "pch.hpp"
 
@@ -23,38 +23,38 @@ GameReload::~GameReload() = default;
 
 bool GameReload::init(Reload_t reloadTypes) const {
 	switch (reloadTypes) {
-	case Reload_t::RELOAD_TYPE_ALL:
-		return reloadAll();
-	case Reload_t::RELOAD_TYPE_CHAT:
-		return reloadChat();
-	case Reload_t::RELOAD_TYPE_CONFIG:
-		return reloadConfig();
-	case Reload_t::RELOAD_TYPE_EVENTS:
-		return reloadEvents();
-	case Reload_t::RELOAD_TYPE_CORE:
-		return reloadCore();
-	case Reload_t::RELOAD_TYPE_IMBUEMENTS:
-		return reloadImbuements();
-	case Reload_t::RELOAD_TYPE_ITEMS:
-		return reloadItems();
-	case Reload_t::RELOAD_TYPE_MODULES:
-		return reloadModules();
-	case Reload_t::RELOAD_TYPE_MONSTERS:
-		return reloadMonsters();
-	case Reload_t::RELOAD_TYPE_MOUNTS:
-		return reloadMounts();
-	case Reload_t::RELOAD_TYPE_NPCS:
-		return reloadNpcs();
-	case Reload_t::RELOAD_TYPE_RAIDS:
-		return reloadRaids();
-	case Reload_t::RELOAD_TYPE_SCRIPTS:
-		return reloadScripts();
-	case Reload_t::RELOAD_TYPE_TALKACTION:
-		return reloadTalkaction();
-	case Reload_t::RELOAD_TYPE_GROUPS:
-		return reloadGroups();
-	default:
-		return false;
+		case Reload_t::RELOAD_TYPE_ALL:
+			return reloadAll();
+		case Reload_t::RELOAD_TYPE_CHAT:
+			return reloadChat();
+		case Reload_t::RELOAD_TYPE_CONFIG:
+			return reloadConfig();
+		case Reload_t::RELOAD_TYPE_EVENTS:
+			return reloadEvents();
+		case Reload_t::RELOAD_TYPE_CORE:
+			return reloadCore();
+		case Reload_t::RELOAD_TYPE_IMBUEMENTS:
+			return reloadImbuements();
+		case Reload_t::RELOAD_TYPE_ITEMS:
+			return reloadItems();
+		case Reload_t::RELOAD_TYPE_MODULES:
+			return reloadModules();
+		case Reload_t::RELOAD_TYPE_MONSTERS:
+			return reloadMonsters();
+		case Reload_t::RELOAD_TYPE_MOUNTS:
+			return reloadMounts();
+		case Reload_t::RELOAD_TYPE_NPCS:
+			return reloadNpcs();
+		case Reload_t::RELOAD_TYPE_RAIDS:
+			return reloadRaids();
+		case Reload_t::RELOAD_TYPE_SCRIPTS:
+			return reloadScripts();
+		case Reload_t::RELOAD_TYPE_TALKACTION:
+			return reloadTalkaction();
+		case Reload_t::RELOAD_TYPE_GROUPS:
+			return reloadGroups();
+		default:
+			return false;
 	}
 }
 
@@ -63,11 +63,11 @@ uint8_t GameReload::getReloadNumber(Reload_t reloadTypes) const {
 }
 
 /*
-* From here down have the private members functions
-* These should only be used within the class itself
-* If it is necessary to call elsewhere, seriously think about creating a function that calls this
-* Changing this to public may cause some unexpected behavior or bug
-*/
+ * From here down have the private members functions
+ * These should only be used within the class itself
+ * If it is necessary to call elsewhere, seriously think about creating a function that calls this
+ * Changing this to public may cause some unexpected behavior or bug
+ */
 bool GameReload::reloadAll() const {
 	std::vector<bool> reloadResults;
 	reloadResults.reserve(magic_enum::enum_count<Reload_t>());

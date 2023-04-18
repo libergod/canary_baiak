@@ -5,15 +5,14 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_ITEMS_DECAY_DECAY_H_
 #define SRC_ITEMS_DECAY_DECAY_H_
 
 #include "items/item.h"
 
-class Decay
-{
+class Decay {
 	public:
 		Decay(const Decay &) = delete;
 		void operator=(const Decay &) = delete;

@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_GAME_SCHEDULING_TASKS_H_
 #define SRC_GAME_SCHEDULING_TASKS_H_
@@ -46,11 +46,11 @@ class Task {
 		// Expiration has another meaning for scheduler tasks,
 		// then it is the time the task should be added to the
 		// dispatcher
-		std::function<void (void)> func;
+		std::function<void(void)> func;
 };
 
-Task* createTask(std::function<void (void)> f);
-Task* createTask(uint32_t expiration, std::function<void (void)> f);
+Task* createTask(std::function<void(void)> f);
+Task* createTask(uint32_t expiration, std::function<void(void)> f);
 
 class Dispatcher : public ThreadHolder<Dispatcher> {
 	public:

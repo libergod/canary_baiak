@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_ITEMS_CYLINDER_H_
 #define SRC_ITEMS_CYLINDER_H_
@@ -18,35 +18,32 @@ class Creature;
 
 static constexpr int32_t INDEX_WHEREEVER = -1;
 
-class Cylinder : virtual public Thing
-{
+class Cylinder : virtual public Thing {
 	public:
 		/**
 		 * Query if the cylinder can add an object
 		 * \param index points to the destination index (inventory slot/container position)
-			* -1 is a internal value and means add to a empty position, with no destItem
+		 * -1 is a internal value and means add to a empty position, with no destItem
 		 * \param thing the object to move/add
 		 * \param count is the amount that we want to move/add
 		 * \param flags if FLAG_CHILDISOWNER if set the query is from a child-cylinder (check cap etc.)
-			* if FLAG_NOLIMIT is set blocking items/container limits is ignored
+		 * if FLAG_NOLIMIT is set blocking items/container limits is ignored
 		 * \param actor the creature trying to add the thing
 		 * \returns ReturnValue holds the return value
 		 */
-		virtual ReturnValue queryAdd(int32_t index, const Thing &thing, uint32_t count,
-				uint32_t flags, Creature* actor = nullptr) const = 0;
+		virtual ReturnValue queryAdd(int32_t index, const Thing &thing, uint32_t count, uint32_t flags, Creature* actor = nullptr) const = 0;
 
 		/**
 		 * Query the cylinder how much it can accept
 		 * \param index points to the destination index (inventory slot/container position)
-			* -1 is a internal value and means add to a empty position, with no destItem
+		 * -1 is a internal value and means add to a empty position, with no destItem
 		 * \param thing the object to move/add
 		 * \param count is the amount that we want to move/add
 		 * \param maxQueryCount is the max amount that the cylinder can accept
 		 * \param flags optional flags to modify the default behaviour
 		 * \returns ReturnValue holds the return value
 		 */
-		virtual ReturnValue queryMaxCount(int32_t index, const Thing &thing, uint32_t count, uint32_t &maxQueryCount,
-				uint32_t flags) const = 0;
+		virtual ReturnValue queryMaxCount(int32_t index, const Thing &thing, uint32_t count, uint32_t &maxQueryCount, uint32_t flags) const = 0;
 
 		/**
 		 * Query if the cylinder can remove an object
@@ -60,14 +57,14 @@ class Cylinder : virtual public Thing
 		/**
 		 * Query the destination cylinder
 		 * \param index points to the destination index (inventory slot/container position),
-			* -1 is a internal value and means add to a empty position, with no destItem
-			* this method can change the index to point to the new cylinder index
+		 * -1 is a internal value and means add to a empty position, with no destItem
+		 * this method can change the index to point to the new cylinder index
 		 * \param destItem is the destination object
 		 * \param flags optional flags to modify the default behaviour
-			* this method can modify the flags
+		 * this method can modify the flags
 		 * \returns Cylinder returns the destination cylinder
 		 */
-		virtual Cylinder* queryDestination(int32_t &index, const Thing &thing, Item** destItem,	uint32_t &flags) = 0;
+		virtual Cylinder* queryDestination(int32_t &index, const Thing &thing, Item** destItem, uint32_t &flags) = 0;
 
 		/**
 		 * Add the object to the cylinder
@@ -176,8 +173,7 @@ class Cylinder : virtual public Thing
 		virtual void startDecaying();
 };
 
-class VirtualCylinder final : public Cylinder
-{
+class VirtualCylinder final : public Cylinder {
 	public:
 		static VirtualCylinder* virtualCylinder;
 
@@ -194,14 +190,14 @@ class VirtualCylinder final : public Cylinder
 			return nullptr;
 		}
 
-		virtual void addThing(Thing*) override {}
-		virtual void addThing(int32_t, Thing*) override {}
-		virtual void updateThing(Thing*, uint16_t, uint32_t) override {}
-		virtual void replaceThing(uint32_t, Thing*) override {}
-		virtual void removeThing(Thing*, uint32_t) override {}
+		virtual void addThing(Thing*) override { }
+		virtual void addThing(int32_t, Thing*) override { }
+		virtual void updateThing(Thing*, uint16_t, uint32_t) override { }
+		virtual void replaceThing(uint32_t, Thing*) override { }
+		virtual void removeThing(Thing*, uint32_t) override { }
 
-		virtual void postAddNotification(Thing*, const Cylinder*, int32_t, CylinderLink_t = LINK_OWNER) override {}
-		virtual void postRemoveNotification(Thing*, const Cylinder*, int32_t, CylinderLink_t = LINK_OWNER) override {}
+		virtual void postAddNotification(Thing*, const Cylinder*, int32_t, CylinderLink_t = LINK_OWNER) override { }
+		virtual void postRemoveNotification(Thing*, const Cylinder*, int32_t, CylinderLink_t = LINK_OWNER) override { }
 
 		bool isPushable() const override {
 			return false;

@@ -5,18 +5,17 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_GAME_SCHEDUNLING_EVENTS_SCHEDULER_HPP_
 #define SRC_GAME_SCHEDUNLING_EVENTS_SCHEDULER_HPP_
 
-
 #include "utils/tools.h"
 
 struct EventScheduler {
-	std::string name;
-	int startDays;
-	int endDays;
+		std::string name;
+		int startDays;
+		int endDays;
 };
 
 class EventsScheduler {
@@ -36,7 +35,7 @@ class EventsScheduler {
 
 		// Event schedule xml load
 		bool loadScheduleEventFromXml();
-		
+
 		// Event schedule
 		uint16_t getExpSchedule() const {
 			return expSchedule;
@@ -65,7 +64,7 @@ class EventsScheduler {
 		void setSkillSchedule(uint16_t skillrate) {
 			skillSchedule = (skillSchedule * skillrate) / 100;
 		}
-		
+
 	private:
 		// Event schedule
 		uint16_t expSchedule = 100;
@@ -74,7 +73,6 @@ class EventsScheduler {
 		uint32_t spawnMonsterSchedule = 100;
 
 		std::vector<EventScheduler> eventScheduler;
-
 };
 
 constexpr auto g_eventsScheduler = &EventsScheduler::getInstance;

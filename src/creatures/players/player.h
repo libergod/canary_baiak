@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_CREATURES_PLAYERS_PLAYER_H_
 #define SRC_CREATURES_PLAYERS_PLAYER_H_
@@ -54,32 +54,32 @@ enum class ForgeConversion_t : uint8_t {
 };
 
 struct ForgeHistory {
-	ForgeConversion_t actionType = ForgeConversion_t::FORGE_ACTION_FUSION;
-	uint8_t tier = 0;
-	uint8_t bonus = 0;
+		ForgeConversion_t actionType = ForgeConversion_t::FORGE_ACTION_FUSION;
+		uint8_t tier = 0;
+		uint8_t bonus = 0;
 
-	time_t createdAt;
+		time_t createdAt;
 
-	uint16_t historyId = 0;
+		uint16_t historyId = 0;
 
-	uint64_t cost = 0;
-	uint64_t dustCost = 0;
-	uint64_t coresCost = 0;
-	uint64_t gained = 0;
+		uint64_t cost = 0;
+		uint64_t dustCost = 0;
+		uint64_t coresCost = 0;
+		uint64_t gained = 0;
 
-	bool success = false;
-	bool tierLoss = false;
-	bool successCore = false;
-	bool tierCore = false;
-	
-	std::string description;
-	std::string firstItemName;
-	std::string secondItemName;
+		bool success = false;
+		bool tierLoss = false;
+		bool successCore = false;
+		bool tierCore = false;
+
+		std::string description;
+		std::string firstItemName;
+		std::string secondItemName;
 };
 
 struct OpenContainer {
-	Container* container;
-	uint16_t index;
+		Container* container;
+		uint16_t index;
 };
 
 using MuteCountMap = std::map<uint32_t, uint32_t>;
@@ -242,7 +242,7 @@ class Player final : public Creature, public Cylinder {
 		}
 		void setGuild(Guild* guild);
 
-         GuildRank_ptr getGuildRank() const {
+		GuildRank_ptr getGuildRank() const {
 			return guildRank;
 		}
 		void setGuildRank(GuildRank_ptr newGuildRank) {
@@ -547,10 +547,10 @@ class Player final : public Creature, public Cylinder {
 			return lastLogout;
 		}
 
-		const Position& getLoginPosition() const {
+		const Position &getLoginPosition() const {
 			return loginPosition;
 		}
-		const Position& getTemplePosition() const {
+		const Position &getTemplePosition() const {
 			return town->getTemplePosition();
 		}
 		Town* getTown() const {
@@ -745,7 +745,6 @@ class Player final : public Creature, public Cylinder {
 		void setFaction(Faction_t factionId) {
 			faction = factionId;
 		}
-
 		// combat functions
 		bool setAttackedCreature(Creature* creature) override;
 		bool isImmune(CombatType_t type) const override;
@@ -772,14 +771,14 @@ class Player final : public Creature, public Cylinder {
 		}
 
 		uint16_t getSkillLevel(uint8_t skill) const {
-			uint16_t skillLevel = std::max<uint16_t>(0, skills[skill].level + varSkills[skill]);
+			auto skillLevel = std::max<int32_t>(0, skills[skill].level + varSkills[skill]);
 
 			auto it = maxValuePerSkill.find(skill);
 			if (it != maxValuePerSkill.end()) {
 				skillLevel = std::min<uint16_t>(it->second, skillLevel);
 			}
 
-			return skillLevel;
+			return static_cast<uint16_t>(skillLevel);
 		}
 		uint16_t getBaseSkill(uint8_t skill) const {
 			return skills[skill].level;
@@ -799,7 +798,7 @@ class Player final : public Creature, public Cylinder {
 		Item* getWeapon(bool ignoreAmmo = false) const;
 		WeaponType_t getWeaponType() const;
 		int32_t getWeaponSkill(const Item* item) const;
-		void getShieldAndWeapon(const Item* &shield, const Item* &weapon) const;
+		void getShieldAndWeapon(const Item*&shield, const Item*&weapon) const;
 
 		void drainHealth(Creature* attacker, int32_t damage) override;
 		void drainMana(Creature* attacker, int32_t manaLoss) override;
@@ -871,7 +870,7 @@ class Player final : public Creature, public Cylinder {
 		bool canFamiliar(uint16_t lookType) const;
 		void addFamiliar(uint16_t lookType);
 		bool removeFamiliar(uint16_t lookType);
-		bool getFamiliar(const Familiar& familiar) const;
+		bool getFamiliar(const Familiar &familiar) const;
 		void setFamiliarLooktype(uint16_t familiarLooktype) {
 			this->defaultOutfit.lookFamiliarsType = familiarLooktype;
 		}
@@ -927,7 +926,7 @@ class Player final : public Creature, public Cylinder {
 				client->sendAddCreature(creature, pos, creature->getTile()->getStackposOfCreature(this, creature), isLogin);
 			}
 		}
-		void sendCreatureMove(const Creature* creature, const Position &newPos, int32_t newStackPos, const Position& oldPos, int32_t oldStackPos, bool teleport) {
+		void sendCreatureMove(const Creature* creature, const Position &newPos, int32_t newStackPos, const Position &oldPos, int32_t oldStackPos, bool teleport) {
 			if (client) {
 				client->sendMoveCreature(creature, newPos, newStackPos, oldPos, oldStackPos, teleport);
 			}
@@ -1245,7 +1244,7 @@ class Player final : public Creature, public Cylinder {
 				client->sendTextMessage(TextMessage(mclass, message));
 			}
 		}
-		void sendTextMessage(const TextMessage& message) const {
+		void sendTextMessage(const TextMessage &message) const {
 			if (client) {
 				client->sendTextMessage(message);
 			}
@@ -1358,7 +1357,7 @@ class Player final : public Creature, public Cylinder {
 			}
 		}
 		// Imbuements
-		void onApplyImbuement(Imbuement* imbuement, Item *item, uint8_t slot, bool protectionCharm);
+		void onApplyImbuement(Imbuement* imbuement, Item* item, uint8_t slot, bool protectionCharm);
 		void onClearImbuement(Item* item, uint8_t slot);
 		void openImbuementWindow(Item* item);
 		void sendImbuementResult(const std::string message) {
@@ -1366,6 +1365,8 @@ class Player final : public Creature, public Cylinder {
 				client->sendImbuementResult(message);
 			}
 		}
+		void closeImbuementWindow() const {
+			if (client) {
 		void closeImbuementWindow() const {
 			if(client) {
 				client->closeImbuementWindow();
@@ -1428,9 +1429,10 @@ class Player final : public Creature, public Cylinder {
 			}
 		}
 		void sendCyclopediaCharacterRecentPvPKills(
-      uint16_t page, uint16_t pages,
-      const std::vector<RecentPvPKillEntry>& entries
-		){
+			uint16_t page, uint16_t pages,
+			const std::vector<
+				RecentPvPKillEntry> &entries
+		) {
 			if (client) {
 				client->sendCyclopediaCharacterRecentPvPKills(page, pages, entries);
 			}
@@ -1490,7 +1492,7 @@ class Player final : public Creature, public Cylinder {
 			asyncOngoingTasks &= ~(flags);
 		}
 		void sendTournamentLeaderboard() {
-  			if (client) {
+			if (client) {
 				client->sendTournamentLeaderboard();
 			}
 		}
@@ -1516,7 +1518,7 @@ class Player final : public Creature, public Cylinder {
 
 		void sendOpenStash(bool isNpc = false) {
 			if (client && ((getLastDepotId() != -1) || isNpc)) {
-        		client->sendOpenStash();
+				client->sendOpenStash();
 			}
 		}
 
@@ -1667,10 +1669,10 @@ class Player final : public Creature, public Cylinder {
 			if (client) {
 				client->sendKillTrackerUpdate(corpse, playerName, creatureOutfit);
 				return true;
- 			}
+			}
 
 			return false;
- 		}
+		}
 
 		void updatePartyTrackerAnalyzer() const {
 			if (client && party) {
@@ -1687,7 +1689,6 @@ class Player final : public Creature, public Cylinder {
 				client->sendUpdateInputAnalyzer(type, amount, target);
 			}
 		}
-
 
 		void createLeaderTeamFinder(NetworkMessage &msg) {
 			if (client) {
@@ -1738,7 +1739,7 @@ class Player final : public Creature, public Cylinder {
 		bool isImmuneCleanse(ConditionType_t conditiontype) {
 			uint64_t timenow = OTSYS_TIME();
 			if ((cleanseCondition.first == conditiontype)
-                    && (timenow <= cleanseCondition.second)) {
+				&& (timenow <= cleanseCondition.second)) {
 				return true;
 			}
 			return false;
@@ -1746,161 +1747,142 @@ class Player final : public Creature, public Cylinder {
 		uint16_t parseRacebyCharm(charmRune_t charmId, bool set, uint16_t newRaceid) {
 			uint16_t raceid = 0;
 			switch (charmId) {
-			case CHARM_WOUND:
-				if (set) {
-					charmRuneWound = newRaceid;
-				}
-				else {
-					raceid = charmRuneWound;
-				}
-				break;
-			case CHARM_ENFLAME:
-				if (set) {
-					charmRuneEnflame = newRaceid;
-				}
-				else {
-					raceid = charmRuneEnflame;
-				}
-				break;
-			case CHARM_POISON:
-				if (set) {
-					charmRunePoison = newRaceid;
-				}
-				else {
-					raceid = charmRunePoison;
-				}
-				break;
-			case CHARM_FREEZE:
-				if (set) {
-					charmRuneFreeze = newRaceid;
-				}
-				else {
-					raceid = charmRuneFreeze;
-				}
-				break;
-			case CHARM_ZAP:
-				if (set) {
-					charmRuneZap = newRaceid;
-				}
-				else {
-					raceid = charmRuneZap;
-				}
-				break;
-			case CHARM_CURSE:
-				if (set) {
-					charmRuneCurse = newRaceid;
-				}
-				else {
-					raceid = charmRuneCurse;
-				}
-				break;
-			case CHARM_CRIPPLE:
-				if (set) {
-					charmRuneCripple = newRaceid;
-				}
-				else {
-					raceid = charmRuneCripple;
-				}
-				break;
-			case CHARM_PARRY:
-				if (set) {
-					charmRuneParry = newRaceid;
-				}
-				else {
-					raceid = charmRuneParry;
-				}
-				break;
-			case CHARM_DODGE:
-				if (set) {
-					charmRuneDodge = newRaceid;
-				}
-				else {
-					raceid = charmRuneDodge;
-				}
-				break;
-			case CHARM_ADRENALINE:
-				if (set) {
-					charmRuneAdrenaline = newRaceid;
-				}
-				else {
-					raceid = charmRuneAdrenaline;
-				}
-				break;
-			case CHARM_NUMB:
-				if (set) {
-					charmRuneNumb = newRaceid;
-				}
-				else {
-					raceid = charmRuneNumb;
-				}
-				break;
-			case CHARM_CLEANSE:
-				if (set) {
-					charmRuneCleanse = newRaceid;
-				}
-				else {
-					raceid = charmRuneCleanse;
-				}
-				break;
-			case CHARM_BLESS:
-				if (set) {
-					charmRuneBless = newRaceid;
-				}
-				else {
-					raceid = charmRuneBless;
-				}
-				break;
-			case CHARM_SCAVENGE:
-				if (set) {
-					charmRuneScavenge = newRaceid;
-				}
-				else {
-					raceid = charmRuneScavenge;
-				}
-				break;
-			case CHARM_GUT:
-				if (set) {
-					charmRuneGut = newRaceid;
-				}
-				else {
-					raceid = charmRuneGut;
-				}
-				break;
-			case CHARM_LOW:
-				if (set) {
-					charmRuneLowBlow = newRaceid;
-				}
-				else {
-					raceid = charmRuneLowBlow;
-				}
-				break;
-			case CHARM_DIVINE:
-				if (set) {
-					charmRuneDivine = newRaceid;
-				}
-				else {
-					raceid = charmRuneDivine;
-				}
-				break;
-			case CHARM_VAMP:
-				if (set) {
-					charmRuneVamp = newRaceid;
-				}
-				else {
-					raceid = charmRuneVamp;
-				}
-				break;
-			case CHARM_VOID:
-				if (set) {
-					charmRuneVoid = newRaceid;
-				}
-				else {
-					raceid = charmRuneVoid;
-				}
-				break;
-			default:
-				raceid = 0;
-				break;
+				case CHARM_WOUND:
+					if (set) {
+						charmRuneWound = newRaceid;
+					} else {
+						raceid = charmRuneWound;
+					}
+					break;
+				case CHARM_ENFLAME:
+					if (set) {
+						charmRuneEnflame = newRaceid;
+					} else {
+						raceid = charmRuneEnflame;
+					}
+					break;
+				case CHARM_POISON:
+					if (set) {
+						charmRunePoison = newRaceid;
+					} else {
+						raceid = charmRunePoison;
+					}
+					break;
+				case CHARM_FREEZE:
+					if (set) {
+						charmRuneFreeze = newRaceid;
+					} else {
+						raceid = charmRuneFreeze;
+					}
+					break;
+				case CHARM_ZAP:
+					if (set) {
+						charmRuneZap = newRaceid;
+					} else {
+						raceid = charmRuneZap;
+					}
+					break;
+				case CHARM_CURSE:
+					if (set) {
+						charmRuneCurse = newRaceid;
+					} else {
+						raceid = charmRuneCurse;
+					}
+					break;
+				case CHARM_CRIPPLE:
+					if (set) {
+						charmRuneCripple = newRaceid;
+					} else {
+						raceid = charmRuneCripple;
+					}
+					break;
+				case CHARM_PARRY:
+					if (set) {
+						charmRuneParry = newRaceid;
+					} else {
+						raceid = charmRuneParry;
+					}
+					break;
+				case CHARM_DODGE:
+					if (set) {
+						charmRuneDodge = newRaceid;
+					} else {
+						raceid = charmRuneDodge;
+					}
+					break;
+				case CHARM_ADRENALINE:
+					if (set) {
+						charmRuneAdrenaline = newRaceid;
+					} else {
+						raceid = charmRuneAdrenaline;
+					}
+					break;
+				case CHARM_NUMB:
+					if (set) {
+						charmRuneNumb = newRaceid;
+					} else {
+						raceid = charmRuneNumb;
+					}
+					break;
+				case CHARM_CLEANSE:
+					if (set) {
+						charmRuneCleanse = newRaceid;
+					} else {
+						raceid = charmRuneCleanse;
+					}
+					break;
+				case CHARM_BLESS:
+					if (set) {
+						charmRuneBless = newRaceid;
+					} else {
+						raceid = charmRuneBless;
+					}
+					break;
+				case CHARM_SCAVENGE:
+					if (set) {
+						charmRuneScavenge = newRaceid;
+					} else {
+						raceid = charmRuneScavenge;
+					}
+					break;
+				case CHARM_GUT:
+					if (set) {
+						charmRuneGut = newRaceid;
+					} else {
+						raceid = charmRuneGut;
+					}
+					break;
+				case CHARM_LOW:
+					if (set) {
+						charmRuneLowBlow = newRaceid;
+					} else {
+						raceid = charmRuneLowBlow;
+					}
+					break;
+				case CHARM_DIVINE:
+					if (set) {
+						charmRuneDivine = newRaceid;
+					} else {
+						raceid = charmRuneDivine;
+					}
+					break;
+				case CHARM_VAMP:
+					if (set) {
+						charmRuneVamp = newRaceid;
+					} else {
+						raceid = charmRuneVamp;
+					}
+					break;
+				case CHARM_VOID:
+					if (set) {
+						charmRuneVoid = newRaceid;
+					} else {
+						raceid = charmRuneVoid;
+					}
+					break;
+				default:
+					raceid = 0;
+					break;
 			}
 			return raceid;
 		}
@@ -1909,8 +1891,8 @@ class Player final : public Creature, public Cylinder {
 		uint16_t getFreeBackpackSlots() const;
 
 		// Interfaces
-		error_t SetAccountInterface(account::Account *account);
-		error_t GetAccountInterface(account::Account *account);
+		error_t SetAccountInterface(account::Account* account);
+		error_t GetAccountInterface(account::Account* account);
 
 		void sendMessageDialog(const std::string &message) const {
 			if (client) {
@@ -2129,7 +2111,7 @@ class Player final : public Creature, public Cylinder {
 		void openContainerFromDepotSearch(const Position &pos);
 		Item* getItemFromDepotSearch(uint16_t itemId, const Position &pos);
 
-		std::pair<std::vector<Item*>, std::map<uint16_t, std::map<uint8_t, uint32_t>>> requestLockerItems(DepotLocker *depotLocker, bool sendToClient = false, uint8_t tier = 0) const;
+		std::pair<std::vector<Item*>, std::map<uint16_t, std::map<uint8_t, uint32_t>>> requestLockerItems(DepotLocker* depotLocker, bool sendToClient = false, uint8_t tier = 0) const;
 
 		/**
 		This function returns a pair of an array of items and a 16-bit integer from a DepotLocker instance, a 8-bit byte and a 16-bit integer.
@@ -2158,7 +2140,7 @@ class Player final : public Creature, public Cylinder {
 		void forgeTransferItemTier(uint16_t donorItemId, uint8_t tier, uint16_t receiveItemId);
 		void forgeResourceConversion(uint8_t action);
 		void forgeHistory(uint8_t page) const;
-		
+
 		void sendOpenForge() const {
 			if (client) {
 				client->sendOpenForge();
@@ -2196,7 +2178,7 @@ class Player final : public Creature, public Cylinder {
 				client->sendResourcesBalance(getMoney(), getBankBalance(), getPreyCards(), getTaskHuntingPoints(), getForgeDusts());
 			}
 		}
-		void addForgeDusts(uint64_t amount)	{
+		void addForgeDusts(uint64_t amount) {
 			forgeDusts += amount;
 			if (client) {
 				client->sendResourcesBalance(getMoney(), getBankBalance(), getPreyCards(), getTaskHuntingPoints(), getForgeDusts());
@@ -2212,7 +2194,7 @@ class Player final : public Creature, public Cylinder {
 			return forgeDusts;
 		}
 
-		void addForgeDustLevel(uint64_t amount)	{
+		void addForgeDustLevel(uint64_t amount) {
 			forgeDustLevel += amount;
 			if (client) {
 				client->sendResourcesBalance(getMoney(), getBankBalance(), getPreyCards(), getTaskHuntingPoints(), getForgeDusts());
@@ -2359,7 +2341,7 @@ class Player final : public Creature, public Cylinder {
 		// This function is a override function of base class
 		std::map<uint32_t, uint32_t> &getAllItemTypeCount(std::map<uint32_t, uint32_t> &countMap) const override;
 		// Function from player class with correct type sizes (uint16_t)
-		std::map<uint16_t, uint16_t>& getAllSaleItemIdAndCount(std::map<uint16_t, uint16_t> &countMap) const;
+		std::map<uint16_t, uint16_t> &getAllSaleItemIdAndCount(std::map<uint16_t, uint16_t> &countMap) const;
 		void getAllItemTypeCountAndSubtype(std::map<uint32_t, uint32_t> &countMap) const;
 		Item* getForgeItemFromId(uint16_t itemId, uint8_t tier);
 		Thing* getThing(size_t index) const override;
@@ -2425,12 +2407,10 @@ class Player final : public Creature, public Cylinder {
 		uint64_t lastQuestlogUpdate = 0;
 		uint64_t preyCards = 0;
 		uint64_t taskHuntingPoints = 0;
-
 		uint32_t bossPoints = 0;
 		uint32_t bossIdSlotOne = 0;
 		uint32_t bossIdSlotTwo = 0;
 		uint8_t bossRemoveTimes = 1;
-
 		uint64_t forgeDusts = 0;
 		uint64_t forgeDustLevel = 0;
 		int64_t lastFailedFollow = 0;
@@ -2455,7 +2435,7 @@ class Player final : public Creature, public Cylinder {
 		Inbox* inbox;
 		Item* imbuingItem = nullptr;
 		Item* tradeItem = nullptr;
- 		Item* inventory[CONST_SLOT_LAST + 1] = {};
+		Item* inventory[CONST_SLOT_LAST + 1] = {};
 		Item* writeItem = nullptr;
 		House* editHouse = nullptr;
 		Npc* shopOwner = nullptr;
@@ -2650,10 +2630,10 @@ class Player final : public Creature, public Cylinder {
 		Item* getQuiverAmmoOfType(const ItemType &it) const;
 
 		std::array<double_t, COMBAT_COUNT> getFinalDamageReduction() const;
-		void calculateDamageReductionFromEquipedItems(std::array<double_t, COMBAT_COUNT>& combatReductionMap) const;
-		void calculateDamageReductionFromItem(std::array<double_t, COMBAT_COUNT>& combatReductionMap, Item* item) const;
-		void updateDamageReductionFromItemImbuement(std::array<double_t, COMBAT_COUNT>& combatReductionMap, Item* item, uint16_t combatTypeIndex) const;
-		void updateDamageReductionFromItemAbility(std::array<double_t, COMBAT_COUNT>& combatReductionMap, const Item* item, uint16_t combatTypeIndex) const;
+		void calculateDamageReductionFromEquipedItems(std::array<double_t, COMBAT_COUNT> &combatReductionMap) const;
+		void calculateDamageReductionFromItem(std::array<double_t, COMBAT_COUNT> &combatReductionMap, Item* item) const;
+		void updateDamageReductionFromItemImbuement(std::array<double_t, COMBAT_COUNT> &combatReductionMap, Item* item, uint16_t combatTypeIndex) const;
+		void updateDamageReductionFromItemAbility(std::array<double_t, COMBAT_COUNT> &combatReductionMap, const Item* item, uint16_t combatTypeIndex) const;
 		double_t calculateDamageReduction(double_t currentTotal, int16_t resistance) const;
 
 		void removeEmptyRewards();

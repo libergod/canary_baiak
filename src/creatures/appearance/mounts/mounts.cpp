@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #include "pch.hpp"
 
@@ -58,7 +58,7 @@ Mount* Mounts::getMountByID(uint8_t id) {
 
 Mount* Mounts::getMountByName(const std::string &name) {
 	auto mountName = name.c_str();
-	for (auto& it : mounts) {
+	for (auto &it : mounts) {
 		if (strcasecmp(mountName, it.name.c_str()) == 0) {
 			return &it;
 		}

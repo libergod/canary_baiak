@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_SERVER_NETWORK_MESSAGE_NETWORKMESSAGE_H_
 #define SRC_SERVER_NETWORK_MESSAGE_NETWORKMESSAGE_H_
@@ -19,8 +19,7 @@ class Player;
 struct Position;
 class RSA;
 
-class NetworkMessage
-{
+class NetworkMessage {
 	public:
 		using MsgSize_t = uint16_t;
 		// Headers:
@@ -48,7 +47,7 @@ class NetworkMessage
 			return buffer[--info.position];
 		}
 
-		template<typename T>
+		template <typename T>
 		T get() {
 			if (!canRead(sizeof(T))) {
 				return 0;
@@ -78,7 +77,7 @@ class NetworkMessage
 			info.length++;
 		}
 
-		template<typename T>
+		template <typename T>
 		void add(T value) {
 			if (!canAdd(sizeof(T))) {
 				return;
@@ -152,9 +151,9 @@ class NetworkMessage
 		}
 
 		struct NetworkMessageInfo {
-			MsgSize_t length = 0;
-			MsgSize_t position = INITIAL_BUFFER_POSITION;
-			bool overrun = false;
+				MsgSize_t length = 0;
+				MsgSize_t position = INITIAL_BUFFER_POSITION;
+				bool overrun = false;
 		};
 
 		NetworkMessageInfo info;

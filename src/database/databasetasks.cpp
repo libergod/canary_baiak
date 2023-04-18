@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #include "pch.hpp"
 
@@ -13,22 +13,22 @@
 #include "game/scheduling/tasks.h"
 
 DatabaseTasks::DatabaseTasks() {
-  db_ = &Database::getInstance();
+	db_ = &Database::getInstance();
 }
 
-bool DatabaseTasks::SetDatabaseInterface(Database *database) {
-  if (database == nullptr) {
-    return false;
-  }
+bool DatabaseTasks::SetDatabaseInterface(Database* database) {
+	if (database == nullptr) {
+		return false;
+	}
 
-  db_ = database;
-  return true;
+	db_ = database;
+	return true;
 }
 
 void DatabaseTasks::start() {
-  if (db_ == nullptr) {
-    return;
-  }
+	if (db_ == nullptr) {
+		return;
+	}
 	db_->connect();
 	ThreadHolder::start();
 }
@@ -47,7 +47,7 @@ void DatabaseTasks::threadMain() {
 			}
 			taskSignal.wait(taskLockUnique, [this] {
 				return !tasks.empty() || getState() == THREAD_STATE_TERMINATED;
-				});
+			});
 		}
 
 		if (!tasks.empty()) {
@@ -95,7 +95,7 @@ void DatabaseTasks::runTask(const DatabaseTask &task) {
 }
 
 void DatabaseTasks::flush() {
-	std::unique_lock<std::mutex> guard{ taskLock };
+	std::unique_lock<std::mutex> guard { taskLock };
 	if (!tasks.empty()) {
 		flushTasks = true;
 		flushSignal.wait(guard);

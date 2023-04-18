@@ -59,14 +59,12 @@ ConditionDamage* Monsters::getDamageCondition(ConditionType_t conditionType, int
 	return condition;
 }
 
-bool Monsters::deserializeSpell(MonsterSpell* spell, spellBlock_t& sb, const std::string &description) {
+bool Monsters::deserializeSpell(MonsterSpell* spell, spellBlock_t &sb, const std::string &description) {
 	if (!spell->scriptName.empty()) {
 		spell->isScripted = true;
-	}
-	else if (!spell->name.empty()) {
+	} else if (!spell->name.empty()) {
 		spell->isScripted = false;
-	}
-	else {
+	} else {
 		return false;
 	}
 
@@ -117,19 +115,16 @@ bool Monsters::deserializeSpell(MonsterSpell* spell, spellBlock_t& sb, const std
 		combatPtr->setParam(COMBAT_PARAM_BLOCKARMOR, 1);
 		combatPtr->setParam(COMBAT_PARAM_BLOCKSHIELD, 1);
 		combatPtr->setOrigin(ORIGIN_MELEE);
-	}
-	else if (spellName == "combat") {
+	} else if (spellName == "combat") {
 		if (spell->combatType == COMBAT_PHYSICALDAMAGE) {
 			combatPtr->setParam(COMBAT_PARAM_BLOCKARMOR, 1);
 			combatPtr->setOrigin(ORIGIN_RANGED);
-		}
-		else if (spell->combatType == COMBAT_HEALING) {
+		} else if (spell->combatType == COMBAT_HEALING) {
 			combatPtr->setParam(COMBAT_PARAM_AGGRESSIVE, 0);
 		}
 
 		combatPtr->setParam(COMBAT_PARAM_TYPE, spell->combatType);
-	}
-	else if (spellName == "speed") {
+	} else if (spellName == "speed") {
 		int32_t speedChange = 0;
 		int32_t duration = 10000;
 
@@ -149,16 +144,14 @@ bool Monsters::deserializeSpell(MonsterSpell* spell, spellBlock_t& sb, const std
 		if (speedChange > 0) {
 			conditionType = CONDITION_HASTE;
 			combatPtr->setParam(COMBAT_PARAM_AGGRESSIVE, 0);
-		}
-		else {
+		} else {
 			conditionType = CONDITION_PARALYZE;
 		}
 
 		ConditionSpeed* condition = static_cast<ConditionSpeed*>(Condition::createCondition(CONDITIONID_COMBAT, conditionType, duration, 0));
 		condition->setFormulaVars(speedChange / 1000.0, 0, speedChange / 1000.0, 0);
 		combatPtr->addCondition(condition);
-	}
-	else if (spellName == "outfit") {
+	} else if (spellName == "outfit") {
 		int32_t duration = 10000;
 
 		if (spell->duration != 0) {
@@ -169,23 +162,20 @@ bool Monsters::deserializeSpell(MonsterSpell* spell, spellBlock_t& sb, const std
 
 		if (spell->outfitMonster != "") {
 			condition->setLazyMonsterOutfit(spell->outfitMonster);
-		}
-		else if (spell->outfitItem > 0) {
+		} else if (spell->outfitItem > 0) {
 			Outfit_t outfit;
 			outfit.lookTypeEx = spell->outfitItem;
 			condition->setOutfit(outfit);
-		}
-		else {
+		} else {
 			SPDLOG_ERROR("[Monsters::deserializeSpell] - "
-				"Missing outfit monster or item in outfit spell for: {}",
-				description);
+						 "Missing outfit monster or item in outfit spell for: {}",
+						 description);
 			return false;
 		}
 
 		combatPtr->setParam(COMBAT_PARAM_AGGRESSIVE, 0);
 		combatPtr->addCondition(condition);
-	}
-	else if (spellName == "invisible") {
+	} else if (spellName == "invisible") {
 		int32_t duration = 10000;
 
 		if (spell->duration != 0) {
@@ -195,8 +185,7 @@ bool Monsters::deserializeSpell(MonsterSpell* spell, spellBlock_t& sb, const std
 		Condition* condition = Condition::createCondition(CONDITIONID_COMBAT, CONDITION_INVISIBLE, duration, 0);
 		combatPtr->setParam(COMBAT_PARAM_AGGRESSIVE, 0);
 		combatPtr->addCondition(condition);
-	}
-	else if (spellName == "drunk") {
+	} else if (spellName == "drunk") {
 		int32_t duration = 10000;
 
 		if (spell->duration != 0) {
@@ -205,33 +194,26 @@ bool Monsters::deserializeSpell(MonsterSpell* spell, spellBlock_t& sb, const std
 
 		Condition* condition = Condition::createCondition(CONDITIONID_COMBAT, CONDITION_DRUNK, duration, 0);
 		combatPtr->addCondition(condition);
-	}
-	else if (spellName == "firefield") {
+	} else if (spellName == "firefield") {
 		combatPtr->setParam(COMBAT_PARAM_CREATEITEM, ITEM_FIREFIELD_PVP_FULL);
-	}
-	else if (spellName == "poisonfield") {
+	} else if (spellName == "poisonfield") {
 		combatPtr->setParam(COMBAT_PARAM_CREATEITEM, ITEM_POISONFIELD_PVP);
-	}
-	else if (spellName == "energyfield") {
+	} else if (spellName == "energyfield") {
 		combatPtr->setParam(COMBAT_PARAM_CREATEITEM, ITEM_ENERGYFIELD_PVP);
-	}
-	else if (spellName == "condition") {
+	} else if (spellName == "condition") {
 		if (spell->conditionType == CONDITION_NONE) {
 			SPDLOG_ERROR("[Monsters::deserializeSpell] - "
-				"{} condition is not set for: {}",
-				description, spell->name);
+						 "{} condition is not set for: {}",
+						 description, spell->name);
 		}
-	}
-	else if (spellName == "strength") {
+	} else if (spellName == "strength") {
 		//
-	}
-	else if (spellName == "effect") {
+	} else if (spellName == "effect") {
 		//
-	}
-	else {
+	} else {
 		SPDLOG_ERROR("[Monsters::deserializeSpell] - "
-			"{} unknown or missing parameter on spell with name: {}",
-			description, spell->name);
+					 "{} unknown or missing parameter on spell with name: {}",
+					 description, spell->name);
 	}
 
 	if (spell->shoot != CONST_ANI_NONE) {

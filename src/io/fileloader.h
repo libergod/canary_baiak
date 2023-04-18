@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_IO_FILELOADER_H_
 #define SRC_IO_FILELOADER_H_
@@ -16,47 +16,47 @@ namespace OTB {
 	using Identifier = std::array<char, 4>;
 
 	struct Node {
-		Node() = default;
-		Node(Node &&) = default;
-		Node &operator=(Node &&) = default;
-		Node(const Node &) = delete;
-		Node &operator=(const Node &) = delete;
+			Node() = default;
+			Node(Node &&) = default;
+			Node &operator=(Node &&) = default;
+			Node(const Node &) = delete;
+			Node &operator=(const Node &) = delete;
 
-		std::list<Node> children;
-		mio::mmap_source::const_iterator propsBegin;
-		mio::mmap_source::const_iterator propsEnd;
-		uint8_t type;
-		enum NodeChar: uint8_t {
-			ESCAPE = 0xFD,
-			START = 0xFE,
-			END = 0xFF,
-		};
+			std::list<Node> children;
+			mio::mmap_source::const_iterator propsBegin;
+			mio::mmap_source::const_iterator propsEnd;
+			uint8_t type;
+			enum NodeChar : uint8_t {
+				ESCAPE = 0xFD,
+				START = 0xFE,
+				END = 0xFF,
+			};
 	};
 
-	struct LoadError: std::exception {
-		const char * what() const noexcept override = 0;
+	struct LoadError : std::exception {
+			const char* what() const noexcept override = 0;
 	};
 
-	struct InvalidOTBFormat final: LoadError {
-		const char * what() const noexcept override {
-			return "Invalid OTBM file format";
-		}
+	struct InvalidOTBFormat final : LoadError {
+			const char* what() const noexcept override {
+				return "Invalid OTBM file format";
+			}
 	};
 
 	class Loader {
-		mio::mmap_source fileContents;
-		Node root;
-		std::vector < char > propBuffer;
+			mio::mmap_source fileContents;
+			Node root;
+			std::vector<char> propBuffer;
+
 		public:
 			Loader(const std::string &fileName, const Identifier &acceptedIdentifier);
-		bool getProps(const Node &node, PropStream &props);
-		const Node &parseTree();
+			bool getProps(const Node &node, PropStream &props);
+			const Node &parseTree();
 	};
 
 } // namespace OTB
 
-class PropStream
-{
+class PropStream {
 	public:
 		void init(const char* a, size_t size) {
 			p = a;

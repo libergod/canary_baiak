@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_IO_IOGUILD_H_
 #define SRC_IO_IOGUILD_H_
@@ -16,7 +16,7 @@ using GuildWarVector = std::vector<uint32_t>;
 class IOGuild {
 	public:
 		static Guild* loadGuild(uint32_t guildId);
-    static void saveGuild(Guild* guild);
+		static void saveGuild(Guild* guild);
 		static uint32_t getGuildIdByName(const std::string &name);
 		static void getWarList(uint32_t guildId, GuildWarVector &guildWarVector);
 };

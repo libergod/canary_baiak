@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_LUA_SCRIPTS_LUA_ENVIRONMENT_HPP_
 #define SRC_LUA_SCRIPTS_LUA_ENVIRONMENT_HPP_
@@ -21,14 +21,14 @@ class Cylinder;
 class Game;
 class GlobalFunctions;
 
-class LuaEnvironment: public LuaScriptInterface {
+class LuaEnvironment : public LuaScriptInterface {
 	public:
 		LuaEnvironment();
 		~LuaEnvironment();
 
 		// non-copyable
 		LuaEnvironment(const LuaEnvironment &) = delete;
-		LuaEnvironment &operator = (const LuaEnvironment &) = delete;
+		LuaEnvironment &operator=(const LuaEnvironment &) = delete;
 
 		bool initState() override;
 		bool reInitState();
@@ -87,7 +87,6 @@ class LuaEnvironment: public LuaScriptInterface {
 		uint32_t lastWeaponId = 0;
 
 		LuaScriptInterface* testInterface = nullptr;
-
 
 		friend class LuaScriptInterface;
 		friend class GlobalFunctions;

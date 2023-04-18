@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #include "pch.hpp"
 
@@ -14,7 +14,6 @@
 #include "io/iobestiary.h"
 #include "creatures/monsters/monsters.h"
 #include "creatures/players/player.h"
-
 
 bool IOBestiary::parseCharmCombat(Charm* charm, Player* player, Creature* target, int32_t realDamage) {
 	if (!charm || !player || !target) {
@@ -30,7 +29,7 @@ bool IOBestiary::parseCharmCombat(Charm* charm, Player* player, Creature* target
 			target->addCondition(cripple);
 			player->sendCancelMessage(charm->cancelMsg);
 			return false;
-      }
+		}
 		int32_t maxHealth = target->getMaxHealth();
 		charmDamage.primary.type = charm->dmgtype;
 		charmDamage.primary.value = ((-maxHealth * (charm->percent)) / 100);
@@ -160,7 +159,8 @@ void IOBestiary::setCharmRuneCreature(Player* player, Charm* charm, uint16_t rac
 }
 
 std::list<charmRune_t> IOBestiary::getCharmUsedRuneBitAll(Player* player) {
-	int32_t input = player->getUsedRunesBit();;
+	int32_t input = player->getUsedRunesBit();
+	;
 	int8_t i = 0;
 	std::list<charmRune_t> rtn;
 	while (input != 0) {
@@ -174,8 +174,7 @@ std::list<charmRune_t> IOBestiary::getCharmUsedRuneBitAll(Player* player) {
 	return rtn;
 }
 
-uint16_t IOBestiary::getBestiaryRaceUnlocked(Player* player, BestiaryType_t race) const
-{
+uint16_t IOBestiary::getBestiaryRaceUnlocked(Player* player, BestiaryType_t race) const {
 	if (!player) {
 		return 0;
 	}
@@ -192,8 +191,7 @@ uint16_t IOBestiary::getBestiaryRaceUnlocked(Player* player, BestiaryType_t race
 	return count;
 }
 
-void IOBestiary::addCharmPoints(Player* player, uint16_t amount, bool negative /*= false*/)
-{
+void IOBestiary::addCharmPoints(Player* player, uint16_t amount, bool negative /*= false*/) {
 	if (!player) {
 		return;
 	}
@@ -207,8 +205,7 @@ void IOBestiary::addCharmPoints(Player* player, uint16_t amount, bool negative /
 	player->setCharmPoints(myCharms);
 }
 
-void IOBestiary::addBestiaryKill(Player* player, MonsterType* mtype, uint32_t amount /*= 1*/)
-{
+void IOBestiary::addBestiaryKill(Player* player, MonsterType* mtype, uint32_t amount /*= 1*/) {
 	uint16_t raceid = mtype->info.raceid;
 	if (raceid == 0 || !player || !mtype) {
 		return;
@@ -256,8 +253,7 @@ charmRune_t IOBestiary::getCharmFromTarget(Player* player, MonsterType* mtype) {
 	return CHARM_NONE;
 }
 
-bool IOBestiary::hasCharmUnlockedRuneBit(Charm* charm, int32_t input) const
-{
+bool IOBestiary::hasCharmUnlockedRuneBit(Charm* charm, int32_t input) const {
 	if (!charm) {
 		return false;
 	}
@@ -265,8 +261,7 @@ bool IOBestiary::hasCharmUnlockedRuneBit(Charm* charm, int32_t input) const
 	return ((input & charm->binary) != 0);
 }
 
-int32_t IOBestiary::bitToggle(int32_t input, Charm* charm, bool on) const
-{
+int32_t IOBestiary::bitToggle(int32_t input, Charm* charm, bool on) const {
 	if (!charm) {
 		return CHARM_NONE;
 	}
@@ -283,8 +278,7 @@ int32_t IOBestiary::bitToggle(int32_t input, Charm* charm, bool on) const
 	}
 }
 
-void IOBestiary::sendBuyCharmRune(Player* player, charmRune_t runeID, uint8_t action, uint16_t raceid)
-{
+void IOBestiary::sendBuyCharmRune(Player* player, charmRune_t runeID, uint8_t action, uint16_t raceid) {
 	Charm* charm = getBestiaryCharm(runeID);
 	if (!player || !charm) {
 		return;
@@ -347,8 +341,7 @@ void IOBestiary::sendBuyCharmRune(Player* player, charmRune_t runeID, uint8_t ac
 	return;
 }
 
-std::map<uint8_t, int16_t> IOBestiary::getMonsterElements(MonsterType* mtype) const
-{
+std::map<uint8_t, int16_t> IOBestiary::getMonsterElements(MonsterType* mtype) const {
 	std::map<uint8_t, int16_t> defaultMap = {};
 	for (uint8_t i = 0; i <= 7; i++) {
 		defaultMap[i] = 100;
@@ -386,8 +379,7 @@ std::map<uint8_t, int16_t> IOBestiary::getMonsterElements(MonsterType* mtype) co
 	return defaultMap;
 }
 
-std::map<uint16_t, uint32_t> IOBestiary::getBestiaryKillCountByMonsterIDs(Player* player, std::map<uint16_t, std::string> mtype_list) const
-{
+std::map<uint16_t, uint32_t> IOBestiary::getBestiaryKillCountByMonsterIDs(Player* player, std::map<uint16_t, std::string> mtype_list) const {
 	std::map<uint16_t, uint32_t> raceMonsters = {};
 	for (auto it : mtype_list) {
 		uint16_t raceid = it.first;
@@ -399,8 +391,7 @@ std::map<uint16_t, uint32_t> IOBestiary::getBestiaryKillCountByMonsterIDs(Player
 	return raceMonsters;
 }
 
-std::list<uint16_t> IOBestiary::getBestiaryFinished(Player* player) const
-{
+std::list<uint16_t> IOBestiary::getBestiaryFinished(Player* player) const {
 	std::list<uint16_t> finishedMonsters = {};
 	std::map<uint16_t, std::string> besty_l = g_game().getBestiaryList();
 
@@ -415,8 +406,7 @@ std::list<uint16_t> IOBestiary::getBestiaryFinished(Player* player) const
 	return finishedMonsters;
 }
 
-int8_t IOBestiary::calculateDifficult(uint32_t chance) const
-{
+int8_t IOBestiary::calculateDifficult(uint32_t chance) const {
 	float chanceInPercent = chance / 1000;
 
 	if (chanceInPercent < 0.2) {

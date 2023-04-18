@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_CREATURES_PLAYERS_GROUPING_FAMILIARS_H_
 #define SRC_CREATURES_PLAYERS_GROUPING_FAMILIARS_H_
@@ -23,6 +23,7 @@ class Familiars {
 			return familiars[vocation];
 		}
 		const Familiar* getFamiliarByLookType(uint16_t vocation, uint16_t lookType) const;
+
 	private:
 		std::vector<Familiar> familiars[VOCATION_LAST + 1];
 };

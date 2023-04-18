@@ -46,7 +46,7 @@ const int64_t &ItemAttribute::getAttributeValue(ItemAttribute_t type) const {
 
 const Attributes* ItemAttribute::getAttribute(ItemAttribute_t type) const {
 	if (hasAttribute(type)) {
-		for (const Attributes& attribute : attributeVector) {
+		for (const Attributes &attribute : attributeVector) {
 			if (attribute.getAttributeType() == type) {
 				return &attribute;
 			}
@@ -57,7 +57,7 @@ const Attributes* ItemAttribute::getAttribute(ItemAttribute_t type) const {
 
 Attributes &ItemAttribute::getAttributesByType(ItemAttribute_t type) {
 	if (hasAttribute(type)) {
-		for (Attributes& attribute : attributeVector) {
+		for (Attributes &attribute : attributeVector) {
 			if (attribute.getAttributeType() == type) {
 				return attribute;
 			}
@@ -94,7 +94,7 @@ bool ItemAttribute::removeAttribute(ItemAttribute_t type) {
 		return false;
 	}
 
-	std::ranges::for_each(attributeVector, [this, type](auto& it) {
+	std::ranges::for_each(attributeVector, [this, type](auto &it) {
 		if (it.getAttributeType() == type) {
 			it = std::move(attributeVector.back());
 			attributeVector.pop_back();

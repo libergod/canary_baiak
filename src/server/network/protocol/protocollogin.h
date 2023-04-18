@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_SERVER_NETWORK_PROTOCOL_PROTOCOLLOGIN_H_
 #define SRC_SERVER_NETWORK_PROTOCOL_PROTOCOLLOGIN_H_
@@ -15,18 +15,18 @@
 class NetworkMessage;
 class OutputMessage;
 
-class ProtocolLogin : public Protocol
-{
+class ProtocolLogin : public Protocol {
 	public:
 		// static protocol information
-		enum {SERVER_SENDS_FIRST = false};
-		enum {PROTOCOL_IDENTIFIER = 0x01};
-		enum {USE_CHECKSUM = true};
+		enum { SERVER_SENDS_FIRST = false };
+		enum { PROTOCOL_IDENTIFIER = 0x01 };
+		enum { USE_CHECKSUM = true };
 		static const char* protocol_name() {
 			return "login protocol";
 		}
 
-		explicit ProtocolLogin(Connection_ptr loginConnection) : Protocol(loginConnection) {}
+		explicit ProtocolLogin(Connection_ptr loginConnection) :
+			Protocol(loginConnection) { }
 
 		void onRecvFirstMessage(NetworkMessage &msg);
 

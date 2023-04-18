@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #include "pch.hpp"
 
@@ -18,11 +18,11 @@
 
 // Prey class
 PreySlot::PreySlot(PreySlot_t id) :
-		id(id) {
-		eraseBonus();
-		reloadBonusValue();
-		reloadBonusType();
-		freeRerollTimeStamp = OTSYS_TIME() + g_configManager().getNumber(PREY_FREE_REROLL_TIME) * 1000;
+	id(id) {
+	eraseBonus();
+	reloadBonusValue();
+	reloadBonusType();
+	freeRerollTimeStamp = OTSYS_TIME() + g_configManager().getNumber(PREY_FREE_REROLL_TIME) * 1000;
 }
 
 void PreySlot::reloadBonusType() {
@@ -130,12 +130,11 @@ void PreySlot::reloadMonsterGrid(std::vector<uint16_t> blackList, uint32_t level
 
 // Task hunting class
 TaskHuntingSlot::TaskHuntingSlot(PreySlot_t id) :
-									id(id) {
+	id(id) {
 	freeRerollTimeStamp = OTSYS_TIME() + g_configManager().getNumber(TASK_HUNTING_FREE_REROLL_TIME) * 1000;
 }
 
-void TaskHuntingSlot::reloadMonsterGrid(std::vector<uint16_t> blackList, uint32_t level)
-{
+void TaskHuntingSlot::reloadMonsterGrid(std::vector<uint16_t> blackList, uint32_t level) {
 	raceIdList.clear();
 
 	if (!g_configManager().getBoolean(TASK_HUNTING_ENABLED)) {
@@ -210,8 +209,7 @@ void TaskHuntingSlot::reloadMonsterGrid(std::vector<uint16_t> blackList, uint32_
 	}
 }
 
-void TaskHuntingSlot::reloadReward()
-{
+void TaskHuntingSlot::reloadReward() {
 	if (!g_configManager().getBoolean(TASK_HUNTING_ENABLED)) {
 		return;
 	}
@@ -248,8 +246,7 @@ void TaskHuntingSlot::reloadReward()
 }
 
 // Prey/Task hunting global class
-void IOPrey::CheckPlayerPreys(Player* player, uint8_t amount) const
-{
+void IOPrey::CheckPlayerPreys(Player* player, uint8_t amount) const {
 	if (!player) {
 		return;
 	}
@@ -539,7 +536,7 @@ void IOPrey::InitializeTaskHuntOptions() {
 	uint8_t limitOfStars = 5;
 	uint16_t kills = killStage;
 	NetworkMessage msg;
-	for (uint8_t difficulty = PreyTaskDifficult_First; difficulty <= PreyTaskDifficult_Last; ++difficulty) {	// Difficulties of creatures on bestiary.
+	for (uint8_t difficulty = PreyTaskDifficult_First; difficulty <= PreyTaskDifficult_Last; ++difficulty) { // Difficulties of creatures on bestiary.
 		auto reward = static_cast<uint16_t>(std::round((10 * kills) / killStage));
 		// Amount of task stars on task hunting
 		for (uint8_t star = 1; star <= limitOfStars; ++star) {
@@ -564,8 +561,7 @@ void IOPrey::InitializeTaskHuntOptions() {
 	msg.addByte(0xBA);
 	std::map<uint16_t, std::string> bestiaryList = g_game().getBestiaryList();
 	msg.add<uint16_t>(static_cast<uint16_t>(bestiaryList.size()));
-	std::for_each(bestiaryList.begin(), bestiaryList.end(), [&msg](auto& mType)
-	{
+	std::for_each(bestiaryList.begin(), bestiaryList.end(), [&msg](auto &mType) {
 		const MonsterType* mtype = g_monsters().getMonsterType(mType.second);
 		if (!mtype) {
 			return;
@@ -582,8 +578,7 @@ void IOPrey::InitializeTaskHuntOptions() {
 	});
 
 	msg.addByte(static_cast<uint8_t>(taskOption.size()));
-	std::for_each(taskOption.begin(), taskOption.end(), [&msg](const TaskHuntingOption* option)
-	{
+	std::for_each(taskOption.begin(), taskOption.end(), [&msg](const TaskHuntingOption* option) {
 		msg.addByte(static_cast<uint8_t>(option->difficult));
 		msg.addByte(option->rarity);
 		msg.add<uint16_t>(option->firstKills);

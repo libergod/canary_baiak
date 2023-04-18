@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #include "pch.hpp"
 
@@ -311,8 +311,7 @@ int MonsterFunctions::luaMonsterChangeTargetDistance(lua_State* L) {
 	if (monster) {
 		int32_t distance = getNumber<int32_t>(L, 2, 1);
 		pushBoolean(L, monster->changeTargetDistance(distance));
-	}
-	else {
+	} else {
 		lua_pushnil(L);
 	}
 	return 1;

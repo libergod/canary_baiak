@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_CREATURES_MONSTERS_SPAWNS_SPAWN_MONSTER_H_
 #define SRC_CREATURES_MONSTERS_SPAWNS_SPAWN_MONSTER_H_
@@ -17,14 +17,14 @@ class Monster;
 class MonsterType;
 
 struct spawnBlock_t {
-	Position pos;
-	MonsterType* monsterType;
-	int64_t lastSpawn;
-	uint32_t interval;
-	Direction direction;
+		Position pos;
+		MonsterType* monsterType;
+		int64_t lastSpawn;
+		uint32_t interval;
+		Direction direction;
 };
 
-class SpawnMonster{
+class SpawnMonster {
 	public:
 		SpawnMonster(Position initPos, int32_t initRadius) :
 			centerPos(std::move(initPos)), radius(initRadius) {}
@@ -32,7 +32,7 @@ class SpawnMonster{
 
 		// non-copyable
 		SpawnMonster(const SpawnMonster &) = delete;
-		SpawnMonster &operator=(const SpawnMonster&) = delete;
+		SpawnMonster &operator=(const SpawnMonster &) = delete;
 
 		bool addMonster(const std::string &name, const Position &pos, Direction dir, uint32_t interval);
 		void removeMonster(Monster* monster);
@@ -69,7 +69,7 @@ class SpawnMonster{
 		void scheduleSpawn(uint32_t spawnMonsterId, spawnBlock_t &sb, uint16_t interval);
 };
 
-class SpawnsMonster{
+class SpawnsMonster {
 	public:
 		static bool isInZone(const Position &centerPos, int32_t radius, const Position &pos);
 

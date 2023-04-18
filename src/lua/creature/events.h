@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_LUA_CREATURE_EVENTS_H_
 #define SRC_LUA_CREATURE_EVENTS_H_
@@ -20,55 +20,54 @@ class Tile;
 class Imbuements;
 
 class Events {
-	struct EventsInfo {
-		// Creature
-		int32_t creatureOnChangeOutfit = -1;
-		int32_t creatureOnAreaCombat = -1;
-		int32_t creatureOnTargetCombat = -1;
-		int32_t creatureOnHear = -1;
-		int32_t creatureOnDrainHealth = -1;
+		struct EventsInfo {
+				// Creature
+				int32_t creatureOnChangeOutfit = -1;
+				int32_t creatureOnAreaCombat = -1;
+				int32_t creatureOnTargetCombat = -1;
+				int32_t creatureOnHear = -1;
+				int32_t creatureOnDrainHealth = -1;
 
-		// Party
-		int32_t partyOnJoin = -1;
-		int32_t partyOnLeave = -1;
-		int32_t partyOnDisband = -1;
-		int32_t partyOnShareExperience = -1;
+				// Party
+				int32_t partyOnJoin = -1;
+				int32_t partyOnLeave = -1;
+				int32_t partyOnDisband = -1;
+				int32_t partyOnShareExperience = -1;
 
-		// Player
-		int32_t playerOnBrowseField = -1;
-		int32_t playerOnLook = -1;
-		int32_t playerOnLookInBattleList = -1;
-		int32_t playerOnLookInTrade = -1;
-		int32_t playerOnLookInShop = -1;
-		int32_t playerOnMoveItem = -1;
-		int32_t playerOnItemMoved = -1;
-		int32_t playerOnChangeZone = -1;
-		int32_t playerOnMoveCreature = -1;
-		int32_t playerOnReportRuleViolation = -1;
-		int32_t playerOnReportBug = -1;
-		int32_t playerOnTurn = -1;
-		int32_t playerOnTradeRequest = -1;
-		int32_t playerOnTradeAccept = -1;
-		int32_t playerOnGainExperience = -1;
-		int32_t playerOnLoseExperience = -1;
-		int32_t playerOnGainSkillTries = -1;
-		int32_t playerOnRequestQuestLog = -1;
-		int32_t playerOnRequestQuestLine = -1;
-		int32_t playerOnStorageUpdate = -1;
-		int32_t playerOnRemoveCount = -1;
-		int32_t playerOnCombat = -1;
-		int32_t playerOnInventoryUpdate = -1;
+				// Player
+				int32_t playerOnBrowseField = -1;
+				int32_t playerOnLook = -1;
+				int32_t playerOnLookInBattleList = -1;
+				int32_t playerOnLookInTrade = -1;
+				int32_t playerOnLookInShop = -1;
+				int32_t playerOnMoveItem = -1;
+				int32_t playerOnItemMoved = -1;
+				int32_t playerOnChangeZone = -1;
+				int32_t playerOnMoveCreature = -1;
+				int32_t playerOnReportRuleViolation = -1;
+				int32_t playerOnReportBug = -1;
+				int32_t playerOnTurn = -1;
+				int32_t playerOnTradeRequest = -1;
+				int32_t playerOnTradeAccept = -1;
+				int32_t playerOnGainExperience = -1;
+				int32_t playerOnLoseExperience = -1;
+				int32_t playerOnGainSkillTries = -1;
+				int32_t playerOnRequestQuestLog = -1;
+				int32_t playerOnRequestQuestLine = -1;
+				int32_t playerOnStorageUpdate = -1;
+				int32_t playerOnRemoveCount = -1;
+				int32_t playerOnCombat = -1;
+				int32_t playerOnInventoryUpdate = -1;
 
-		// Monster
-		int32_t monsterOnDropLoot = -1;
-		int32_t monsterOnSpawn = -1;
+				// Monster
+				int32_t monsterOnDropLoot = -1;
+				int32_t monsterOnSpawn = -1;
 
-		// Npc
-		int32_t npcOnSpawn = -1;
-};
+				// Npc
+				int32_t npcOnSpawn = -1;
+		};
 
 	public:
-	
 		Events();
 
 		bool loadFromXml();
@@ -77,7 +76,7 @@ class Events {
 		Events(const Events &) = delete;
 		void operator=(const Events &) = delete;
 
-		static Events& getInstance() {
+		static Events &getInstance() {
 			// Guaranteed to be destroyed
 			static Events instance;
 			// Instantiated on first use

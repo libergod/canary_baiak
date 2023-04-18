@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #include "pch.hpp"
 
@@ -368,8 +368,7 @@ int ItemFunctions::luaItemGetAttribute(lua_State* L) {
 		}
 
 		lua_pushnumber(L, static_cast<lua_Number>(item->getAttribute<int64_t>(attribute)));
-	}
-	else if (item->isAttributeString(attribute)) {
+	} else if (item->isAttributeString(attribute)) {
 		pushString(L, item->getAttribute<std::string>(attribute));
 	} else {
 		lua_pushnil(L);
@@ -396,9 +395,9 @@ int ItemFunctions::luaItemSetAttribute(lua_State* L) {
 
 	if (item->isAttributeInteger(attribute)) {
 		switch (attribute) {
-		case ItemAttribute_t::DECAYSTATE: {
-			if (ItemDecayState_t decayState = getNumber<ItemDecayState_t>(L, 3);
-				decayState == DECAYING_FALSE || decayState == DECAYING_STOPPING) {
+			case ItemAttribute_t::DECAYSTATE: {
+				if (ItemDecayState_t decayState = getNumber<ItemDecayState_t>(L, 3);
+					decayState == DECAYING_FALSE || decayState == DECAYING_STOPPING) {
 					g_decay().stopDecay(item);
 				} else {
 					g_decay().startDecay(item);
@@ -418,14 +417,14 @@ int ItemFunctions::luaItemSetAttribute(lua_State* L) {
 				pushBoolean(L, false);
 				return 1;
 			}
-			default: break;
+			default:
+				break;
 		}
 
 		item->setAttribute(attribute, getNumber<int64_t>(L, 3));
 		item->updateTileFlags();
 		pushBoolean(L, true);
-	}
-	else if (item->isAttributeString(attribute)) {
+	} else if (item->isAttributeString(attribute)) {
 		auto newAttributeString = getString(L, 3);
 		item->setAttribute(attribute, newAttributeString);
 		item->updateTileFlags();
@@ -754,8 +753,7 @@ int ItemFunctions::luaItemHasProperty(lua_State* L) {
 	return 1;
 }
 
-int ItemFunctions::luaItemGetImbuement(lua_State* L)
-{
+int ItemFunctions::luaItemGetImbuement(lua_State* L) {
 	// item:getImbuement()
 	const Item* item = getUserdata<Item>(L, 1);
 	if (!item) {

@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_DATABASE_DATABASE_DEFINITIONS_HPP_
 #define SRC_DATABASE_DATABASE_DEFINITIONS_HPP_

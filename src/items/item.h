@@ -503,7 +503,7 @@ class Item : virtual public Thing, public ItemProperties {
 			return true;
 		}
 		virtual void onRemoved();
-		virtual void onTradeEvent(TradeEvents_t, Player*) {}
+		virtual void onTradeEvent(TradeEvents_t, Player*) { }
 
 		virtual void startDecaying();
 		virtual void stopDecaying();

@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_IO_IOMAP_H_
 #define SRC_IO_IOMAP_H_
@@ -22,37 +22,37 @@
 #pragma pack(1)
 
 struct OTBM_root_header {
-	uint32_t version;
-	uint16_t width;
-	uint16_t height;
-	uint32_t majorVersionItems;
-	uint32_t minorVersionItems;
+		uint32_t version;
+		uint16_t width;
+		uint16_t height;
+		uint32_t majorVersionItems;
+		uint32_t minorVersionItems;
 };
 
 struct OTBM_Destination_coords {
-	uint16_t x;
-	uint16_t y;
-	uint8_t z;
+		uint16_t x;
+		uint16_t y;
+		uint8_t z;
 };
 
 struct OTBM_Tile_coords {
-	uint8_t x;
-	uint8_t y;
+		uint8_t x;
+		uint8_t y;
 };
 
 #pragma pack()
 
 class IOMap {
-	static Tile* createTile(Item*&ground, Item* item, uint16_t x, uint16_t y, uint8_t z);
+		static Tile* createTile(Item*&ground, Item* item, uint16_t x, uint16_t y, uint8_t z);
 
 	public:
 		bool loadMap(Map* map, const std::string &identifier, const Position &pos = Position(), bool unload = false);
 
 		/**
-		* Load main map monsters
+		 * Load main map monsters
 		 * \param map Is the map class
 		 * \returns true if the monsters spawn map was loaded successfully
-		*/
+		 */
 		static bool loadMonsters(Map* map) {
 			if (map->monsterfile.empty()) {
 				// OTBM file doesn't tell us about the monsterfile,
@@ -65,10 +65,10 @@ class IOMap {
 		}
 
 		/**
-		* Load main map npcs
+		 * Load main map npcs
 		 * \param map Is the map class
 		 * \returns true if the npcs spawn map was loaded successfully
-		*/
+		 */
 		static bool loadNpcs(Map* map) {
 			if (map->npcfile.empty()) {
 				// OTBM file doesn't tell us about the npcfile,
@@ -81,10 +81,10 @@ class IOMap {
 		}
 
 		/**
-		* Load main map houses
+		 * Load main map houses
 		 * \param map Is the map class
 		 * \returns true if the main map houses was loaded successfully
-		*/
+		 */
 		static bool loadHouses(Map* map) {
 			if (map->housefile.empty()) {
 				// OTBM file doesn't tell us about the housefile,
@@ -97,10 +97,10 @@ class IOMap {
 		}
 
 		/**
-		* Load custom  map monsters
+		 * Load custom  map monsters
 		 * \param map Is the map class
 		 * \returns true if the monsters spawn map custom was loaded successfully
-		*/
+		 */
 		static bool loadMonstersCustom(Map* map) {
 			if (map->monsterfile.empty()) {
 				// OTBM file doesn't tell us about the monsterfile,
@@ -113,10 +113,10 @@ class IOMap {
 		}
 
 		/**
-		* Load custom map npcs
+		 * Load custom map npcs
 		 * \param map Is the map class
 		 * \returns true if the npcs spawn map custom was loaded successfully
-		*/
+		 */
 		static bool loadNpcsCustom(Map* map) {
 			if (map->npcfile.empty()) {
 				// OTBM file doesn't tell us about the npcfile,
@@ -129,10 +129,10 @@ class IOMap {
 		}
 
 		/**
-		* Load custom map houses
+		 * Load custom map houses
 		 * \param map Is the map class
 		 * \returns true if the map custom houses was loaded successfully
-		*/
+		 */
 		static bool loadHousesCustom(Map* map) {
 			if (map->housefile.empty()) {
 				// OTBM file doesn't tell us about the housefile,

@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #include "pch.hpp"
 
@@ -20,9 +20,8 @@ void Scheduler::threadMain() {
 		if (eventList.empty()) {
 			eventSignal.wait(eventLockUnique, [this] {
 				return !eventList.empty() || getState() == THREAD_STATE_TERMINATED;
-				});
-		}
-		else {
+			});
+		} else {
 			ret = eventSignal.wait_until(eventLockUnique, eventList.top()->getCycle());
 		}
 
@@ -110,7 +109,7 @@ void Scheduler::shutdown() {
 	setState(THREAD_STATE_TERMINATED);
 	eventLock.lock();
 
-	//this list should already be empty
+	// this list should already be empty
 	while (!eventList.empty()) {
 		delete eventList.top();
 		eventList.pop();
@@ -121,6 +120,6 @@ void Scheduler::shutdown() {
 	eventSignal.notify_one();
 }
 
-SchedulerTask* createSchedulerTask(uint32_t delay, std::function<void (void)> f) {
+SchedulerTask* createSchedulerTask(uint32_t delay, std::function<void(void)> f) {
 	return new SchedulerTask(delay, std::move(f));
 }

@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #include "pch.hpp"
 
@@ -31,7 +31,7 @@ Npc* Npc::createNpc(const std::string &name) {
 Npc::Npc(NpcType* npcType) :
 	Creature(),
 	strDescription(npcType->nameDescription),
-	npcType(npcType){
+	npcType(npcType) {
 	defaultOutfit = npcType->info.outfit;
 	currentOutfit = npcType->info.outfit;
 	float multiplier = g_configManager().getFloat(RATE_NPC_HEALTH);
@@ -52,11 +52,11 @@ Npc::Npc(NpcType* npcType) :
 Npc::~Npc() {
 }
 
-void Npc::addList(){
+void Npc::addList() {
 	g_game().addNpc(this);
 }
 
-void Npc::removeList(){
+void Npc::removeList() {
 	g_game().removeNpc(this);
 }
 
@@ -86,7 +86,7 @@ void Npc::onCreatureAppear(Creature* creature, bool isLogin) {
 	}
 }
 
-void Npc::onRemoveCreature(Creature* creature, bool isLogout){
+void Npc::onRemoveCreature(Creature* creature, bool isLogout) {
 	Creature::onRemoveCreature(creature, isLogout);
 
 	// onCreatureDisappear(self, creature)
@@ -140,8 +140,7 @@ void Npc::onCreatureMove(Creature* creature, const Tile* newTile, const Position
 void Npc::manageIdle() {
 	if (creatureCheck && playerSpectators.empty()) {
 		Game::removeCreatureCheck(this);
-	}
-	else if (!creatureCheck) {
+	} else if (!creatureCheck) {
 		g_game().addCreatureCheck(this);
 	}
 }
@@ -435,7 +434,7 @@ void Npc::onThinkWalk(uint32_t interval) {
 
 void Npc::onCreatureWalk() {
 	Creature::onCreatureWalk();
-	phmap::erase_if(playerSpectators, [this](const auto& creature) { return !this->canSee(creature->getPosition()); });
+	phmap::erase_if(playerSpectators, [this](const auto &creature) { return !this->canSee(creature->getPosition()); });
 }
 
 void Npc::onPlacedCreature() {
@@ -528,8 +527,7 @@ bool Npc::getNextStep(Direction &nextDirection, uint32_t &flags) {
 	return Creature::getNextStep(nextDirection, flags);
 }
 
-bool Npc::getRandomStep(Direction &moveDirection) const
-{
+bool Npc::getRandomStep(Direction &moveDirection) const {
 	static std::vector<Direction> directionvector {
 		Direction::DIRECTION_NORTH,
 		Direction::DIRECTION_WEST,
@@ -539,7 +537,7 @@ bool Npc::getRandomStep(Direction &moveDirection) const
 	std::ranges::shuffle(directionvector, getRandomGenerator());
 
 	for (const Position &creaturePos = getPosition();
-		Direction direction : directionvector)	{
+		 Direction direction : directionvector) {
 		if (canWalkTo(creaturePos, direction)) {
 			moveDirection = direction;
 			return true;
@@ -548,17 +546,17 @@ bool Npc::getRandomStep(Direction &moveDirection) const
 	return false;
 }
 
-void Npc::addShopPlayer(Player* player){
+void Npc::addShopPlayer(Player* player) {
 	shopPlayerSet.insert(player);
 }
 
-void Npc::removeShopPlayer(Player* player){
+void Npc::removeShopPlayer(Player* player) {
 	if (player) {
 		shopPlayerSet.erase(player);
 	}
 }
 
-void Npc::closeAllShopWindows(){
+void Npc::closeAllShopWindows() {
 	for (auto shopPlayer : shopPlayerSet) {
 		if (shopPlayer) {
 			shopPlayer->closeShopWindow();
@@ -573,8 +571,7 @@ void Npc::handlePlayerMove(Player* player, const Position &newPos) {
 	}
 	if (canSee(newPos)) {
 		onPlayerAppear(player);
-	}
-	else {
+	} else {
 		onPlayerDisappear(player);
 	}
 }

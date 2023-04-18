@@ -1,10 +1,10 @@
 ---@author @Glatharth
 ---@version 5.4
-Lever = { }
+Lever = {}
 setmetatable(Lever, {
 	__call = function(self)
 		local lever_data = {
-            positions = { },
+            positions = {},
             info_positions = nil,
             condition = function() return true end,
             teleport_player_func = function() return true end,
@@ -97,7 +97,7 @@ function Lever.checkPositions(self) -- Will check all positions defined in setPo
         error("Positions: not setted")
         return nil
     end
-    local array = { }
+    local array = {}
     for i, v in pairs(positions) do
         local tile = Tile(v.pos)
         local creature = tile:getBottomCreature()
@@ -178,7 +178,7 @@ function Lever.setStorageAllPlayers(self, key, value) -- Will set storage on all
         local player = v.creature
         if player then
             player:setStorageValue(key, value)
-			player:sendBosstiaryCooldownTimer()
+            player:sendBosstiaryCooldownTimer()
         end
     end
 end
@@ -278,7 +278,7 @@ function CreateDefaultLeverBoss(player, config) -- This function is to suppress 
 			spec:clearCreaturesCache()
 			spec:setOnlyPlayer(true)
 			spec:check()
-			local player_remove = { }
+			local player_remove = {}
 			for i, v in pairs(spec:getCreatureDetect()) do
 				for _, v_old in pairs(old_players) do
 					if v_old.creature == nil or v_old.creature:isMonster() then

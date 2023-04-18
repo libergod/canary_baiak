@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #include "pch.hpp"
 
@@ -100,33 +100,28 @@ int GameFunctions::luaGameGetBestiaryList(lua_State* L) {
 		for (auto ita : mtype_list) {
 			if (name) {
 				pushString(L, ita.second);
-			}
-			else {
+			} else {
 				lua_pushnumber(L, ita.first);
 			}
 			lua_rawseti(L, -2, ++index);
 		}
-	}
-	else {
+	} else {
 		if (isNumber(L, 2)) {
 			std::map<uint16_t, std::string> tmplist = g_iobestiary().findRaceByName("CANARY", false, getNumber<BestiaryType_t>(L, 2));
 			for (auto itb : tmplist) {
 				if (name) {
 					pushString(L, itb.second);
-				}
-				else {
+				} else {
 					lua_pushnumber(L, itb.first);
 				}
 				lua_rawseti(L, -2, ++index);
 			}
-		}
-		else {
+		} else {
 			std::map<uint16_t, std::string> tmplist = g_iobestiary().findRaceByName(getString(L, 2));
 			for (auto itc : tmplist) {
 				if (name) {
 					pushString(L, itc.second);
-				}
-				else {
+				} else {
 					lua_pushnumber(L, itc.first);
 				}
 				lua_rawseti(L, -2, ++index);
@@ -152,7 +147,16 @@ int GameFunctions::luaGameGetPlayers(lua_State* L) {
 int GameFunctions::luaGameLoadMap(lua_State* L) {
 	// Game.loadMap(path)
 	const std::string &path = getString(L, 1);
-	g_dispatcher().addTask(createTask([path]() {g_game().loadMap(path); }));
+	g_dispatcher().addTask(createTask([path]() { g_game().loadMap(path); }));
+	return 0;
+}
+
+int GameFunctions::luaGameloadMapChunk(lua_State* L) {
+	// Game.loadMapChunk(path, position, remove)
+	const std::string &path = getString(L, 1);
+	const Position &position = getPosition(L, 2);
+	bool unload = getBoolean(L, 3);
+	g_dispatcher().addTask(createTask([path, position, unload]() { g_game().loadMap(path, position, unload); }));
 	return 0;
 }
 
@@ -203,7 +207,7 @@ int GameFunctions::luaGameGetTowns(lua_State* L) {
 
 int GameFunctions::luaGameGetHouses(lua_State* L) {
 	// Game.getHouses()
-	const auto& houses = g_game().map.houses.getHouses();
+	const auto &houses = g_game().map.houses.getHouses();
 	lua_createtable(L, houses.size(), 0);
 
 	int index = 0;
@@ -251,7 +255,7 @@ int GameFunctions::luaGameGetReturnMessage(lua_State* L) {
 }
 
 int GameFunctions::luaGameCreateItem(lua_State* L) {
-	// Game.createItem(itemId[, count[, position]])
+	// Game.createItem(itemId or name[, count[, position]])
 	uint16_t itemId;
 	if (isNumber(L, 1)) {
 		itemId = getNumber<uint16_t>(L, 1);
@@ -489,7 +493,7 @@ int GameFunctions::luaGameGetBestiaryCharm(lua_State* L) {
 	lua_createtable(L, c_list.size(), 0);
 
 	int index = 0;
-	for (auto& it : c_list) {
+	for (auto &it : c_list) {
 		pushUserdata<Charm>(L, it);
 		setMetatable(L, -1, "Charm");
 		lua_rawseti(L, -2, ++index);
@@ -558,7 +562,8 @@ int GameFunctions::luaGameGetClientVersion(lua_State* L) {
 	lua_createtable(L, 0, 3);
 	setField(L, "min", CLIENT_VERSION);
 	setField(L, "max", CLIENT_VERSION);
-	setField(L, "string", std::to_string(CLIENT_VERSION_UPPER) + "." + std::to_string(CLIENT_VERSION_LOWER));
+	std::string version = fmt::format("{}.{}", CLIENT_VERSION_UPPER, CLIENT_VERSION_LOWER);
+	setField(L, "string", version);
 	return 1;
 }
 

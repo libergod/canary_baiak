@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #include "pch.hpp"
 
@@ -154,8 +154,7 @@ int NetworkMessageFunctions::luaNetworkMessageAdd8(lua_State* L) {
 	if (message) {
 		message->add<int8_t>(number);
 		pushBoolean(L, true);
-	}
-	else {
+	} else {
 		lua_pushnil(L);
 	}
 	return 1;
@@ -168,8 +167,7 @@ int NetworkMessageFunctions::luaNetworkMessageAdd16(lua_State* L) {
 	if (message) {
 		message->add<int16_t>(number);
 		pushBoolean(L, true);
-	}
-	else {
+	} else {
 		lua_pushnil(L);
 	}
 	return 1;
@@ -182,8 +180,7 @@ int NetworkMessageFunctions::luaNetworkMessageAdd32(lua_State* L) {
 	if (message) {
 		message->add<int32_t>(number);
 		pushBoolean(L, true);
-	}
-	else {
+	} else {
 		lua_pushnil(L);
 	}
 	return 1;
@@ -196,8 +193,7 @@ int NetworkMessageFunctions::luaNetworkMessageAdd64(lua_State* L) {
 	if (message) {
 		message->add<int64_t>(number);
 		pushBoolean(L, true);
-	}
-	else {
+	} else {
 		lua_pushnil(L);
 	}
 	return 1;

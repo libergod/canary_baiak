@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_IO_IOMARKET_H_
 #define SRC_IO_IOMARKET_H_
@@ -14,7 +14,8 @@
 #include "declarations.hpp"
 
 class IOMarket {
-	using StatisticsMap = std::map<uint16_t, std::map<uint8_t, MarketStatistics>>;
+		using StatisticsMap = std::map<uint16_t, std::map<uint8_t, MarketStatistics>>;
+
 	public:
 		static IOMarket &getInstance() {
 			static IOMarket instance;

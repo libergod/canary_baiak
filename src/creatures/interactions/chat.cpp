@@ -25,7 +25,7 @@ bool PrivateChatChannel::removeInvite(uint32_t guid) {
 	return invites.erase(guid) != 0;
 }
 
-void PrivateChatChannel::invitePlayer(const Player &player, Player& invitePlayer) {
+void PrivateChatChannel::invitePlayer(const Player &player, Player &invitePlayer) {
 	auto result = invites.emplace(invitePlayer.getGUID(), &invitePlayer);
 	if (!result.second) {
 		return;
@@ -44,7 +44,7 @@ void PrivateChatChannel::invitePlayer(const Player &player, Player& invitePlayer
 	}
 }
 
-void PrivateChatChannel::excludePlayer(const Player &player, Player& excludePlayer) {
+void PrivateChatChannel::excludePlayer(const Player &player, Player &excludePlayer) {
 	if (!removeInvite(excludePlayer.getGUID())) {
 		return;
 	}
@@ -123,7 +123,7 @@ void ChatChannel::sendToAll(const std::string &message, SpeakClasses type) const
 	}
 }
 
-bool ChatChannel::talk(const Player& fromPlayer, SpeakClasses type, const std::string &text) {
+bool ChatChannel::talk(const Player &fromPlayer, SpeakClasses type, const std::string &text) {
 	if (users.find(fromPlayer.getID()) == users.end()) {
 		return false;
 	}
@@ -143,8 +143,8 @@ bool ChatChannel::executeCanJoinEvent(const Player &player) {
 	LuaScriptInterface* scriptInterface = g_chat().getScriptInterface();
 	if (!scriptInterface->reserveScriptEnv()) {
 		SPDLOG_ERROR("[CanJoinChannelEvent::execute - Player {}, on channel {}] "
-			"Call stack overflow. Too many lua script calls being nested.",
-			player.getName(), getName());
+					 "Call stack overflow. Too many lua script calls being nested.",
+					 player.getName(), getName());
 		return false;
 	}
 
@@ -169,8 +169,8 @@ bool ChatChannel::executeOnJoinEvent(const Player &player) {
 	LuaScriptInterface* scriptInterface = g_chat().getScriptInterface();
 	if (!scriptInterface->reserveScriptEnv()) {
 		SPDLOG_ERROR("[OnJoinChannelEvent::execute - Player {}, on channel {}] "
-			"Call stack overflow. Too many lua script calls being nested",
-			player.getName(), getName());
+					 "Call stack overflow. Too many lua script calls being nested",
+					 player.getName(), getName());
 		return false;
 	}
 
@@ -195,8 +195,8 @@ bool ChatChannel::executeOnLeaveEvent(const Player &player) {
 	LuaScriptInterface* scriptInterface = g_chat().getScriptInterface();
 	if (!scriptInterface->reserveScriptEnv()) {
 		SPDLOG_ERROR("[OnLeaveChannelEvent::execute - Player {}, on channel {}] "
-			"Call stack overflow. Too many lua script calls being nested.",
-			player.getName(), getName());
+					 "Call stack overflow. Too many lua script calls being nested.",
+					 player.getName(), getName());
 		return false;
 	}
 
@@ -212,7 +212,7 @@ bool ChatChannel::executeOnLeaveEvent(const Player &player) {
 	return scriptInterface->callFunction(1);
 }
 
-bool ChatChannel::executeOnSpeakEvent(const Player &player, SpeakClasses& type, const std::string &message) {
+bool ChatChannel::executeOnSpeakEvent(const Player &player, SpeakClasses &type, const std::string &message) {
 	if (onSpeakEvent == -1) {
 		return true;
 	}
@@ -221,8 +221,8 @@ bool ChatChannel::executeOnSpeakEvent(const Player &player, SpeakClasses& type, 
 	LuaScriptInterface* scriptInterface = g_chat().getScriptInterface();
 	if (!scriptInterface->reserveScriptEnv()) {
 		SPDLOG_ERROR("[OnSpeakChannelEvent::execute - Player {}, type {}] "
-			"Call stack overflow. Too many lua script calls being nested.",
-			player.getName(), type);
+					 "Call stack overflow. Too many lua script calls being nested.",
+					 player.getName(), type);
 		return false;
 	}
 
@@ -286,7 +286,7 @@ bool Chat::load() {
 
 		auto it = normalChannels.find(channelId);
 		if (it != normalChannels.end()) {
-			ChatChannel& channel = it->second;
+			ChatChannel &channel = it->second;
 			channel.publicChannel = isPublic;
 			channel.name = channelName;
 
@@ -296,14 +296,13 @@ bool Chat::load() {
 					channel.canJoinEvent = scriptInterface.getEvent("canJoin");
 					channel.onJoinEvent = scriptInterface.getEvent("onJoin");
 					channel.onLeaveEvent = scriptInterface.getEvent("onLeave");
-				}
-				else {
+				} else {
 					SPDLOG_WARN("[Chat::load] - Can not load script: {}", scriptAttribute.as_string());
 				}
 			}
 
 			UsersMap tempUserMap = std::move(channel.users);
-			for (const auto& pair : tempUserMap) {
+			for (const auto &pair : tempUserMap) {
 				channel.addUser(*pair.second);
 			}
 			continue;
@@ -318,8 +317,7 @@ bool Chat::load() {
 				channel.canJoinEvent = scriptInterface.getEvent("canJoin");
 				channel.onJoinEvent = scriptInterface.getEvent("onJoin");
 				channel.onLeaveEvent = scriptInterface.getEvent("onLeave");
-			}
-			else {
+			} else {
 				SPDLOG_WARN("[Chat::load] Can not load script: {}", scriptAttribute.as_string());
 			}
 		}
@@ -353,23 +351,23 @@ ChatChannel* Chat::createChannel(const Player &player, uint16_t channelId) {
 		break;
 	}
 
-	case CHANNEL_PRIVATE: {
-		// only 1 private channel for each premium player
-		if (!player.isPremium() || (getPrivateChannel(player) != nullptr)) {
-			return nullptr;
-		}
-
-		// find a free private channel slot
-		for (uint16_t i = 100; i < 10000; ++i) {
-			auto ret = privateChannels.emplace(std::make_pair(i, PrivateChatChannel(i, player.getName() + "'s Channel")));
-			if (ret.second) { // second is a bool that indicates that a new channel has been placed in the map
-				auto& newChannel = (*ret.first).second;
-				newChannel.setOwner(player.getGUID());
-				return &newChannel;
+		case CHANNEL_PRIVATE: {
+			// only 1 private channel for each premium player
+			if (!player.isPremium() || (getPrivateChannel(player) != nullptr)) {
+				return nullptr;
 			}
+
+			// find a free private channel slot
+			for (uint16_t i = 100; i < 10000; ++i) {
+				auto ret = privateChannels.emplace(std::make_pair(i, PrivateChatChannel(i, player.getName() + "'s Channel")));
+				if (ret.second) { // second is a bool that indicates that a new channel has been placed in the map
+					auto &newChannel = (*ret.first).second;
+					newChannel.setOwner(player.getGUID());
+					return &newChannel;
+				}
+			}
+			break;
 		}
-		break;
-	}
 
 	default:
 		break;
@@ -445,15 +443,15 @@ bool Chat::removeUserFromChannel(const Player &player, uint16_t channelId) {
 }
 
 void Chat::removeUserFromAllChannels(const Player &player) {
-	for (auto& it : normalChannels) {
+	for (auto &it : normalChannels) {
 		it.second.removeUser(player);
 	}
 
-	for (auto& it : partyChannels) {
+	for (auto &it : partyChannels) {
 		it.second.removeUser(player);
 	}
 
-	for (auto& it : guildChannels) {
+	for (auto &it : guildChannels) {
 		it.second.removeUser(player);
 	}
 
@@ -534,7 +532,7 @@ ChannelList Chat::getChannelList(const Player &player) {
 	}
 
 	bool hasPrivate = false;
-	for (auto& it : privateChannels) {
+	for (auto &it : privateChannels) {
 		if (PrivateChatChannel* channel = &it.second) {
 			uint32_t guid = player.getGUID();
 			if (channel->isInvited(guid)) {
@@ -577,15 +575,15 @@ ChatChannel* Chat::getChannel(const Player &player, uint16_t channelId) {
 		break;
 	}
 
-	default: {
-		auto it = normalChannels.find(channelId);
-		if (it != normalChannels.end()) {
-			ChatChannel& channel = it->second;
-			if (!channel.executeCanJoinEvent(player)) {
-				return nullptr;
+		default: {
+			auto it = normalChannels.find(channelId);
+			if (it != normalChannels.end()) {
+				ChatChannel &channel = it->second;
+				if (!channel.executeCanJoinEvent(player)) {
+					return nullptr;
+				}
+				return &channel;
 			}
-			return &channel;
-		}
 
 		auto it2 = privateChannels.find(channelId);
 		if (it2 != privateChannels.end() && it2->second.isInvited(player.getGUID())) {
@@ -614,7 +612,7 @@ ChatChannel* Chat::getChannelById(uint16_t channelId) {
 }
 
 PrivateChatChannel* Chat::getPrivateChannel(const Player &player) {
-	for (auto& it : privateChannels) {
+	for (auto &it : privateChannels) {
 		if (it.second.getOwner() == player.getGUID()) {
 			return &it.second;
 		}

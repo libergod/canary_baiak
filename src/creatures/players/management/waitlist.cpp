@@ -15,24 +15,23 @@
 namespace {
 
 	struct Wait {
-		constexpr Wait(std::size_t initTimeout, uint32_t initPlayerGUID) :
-			timeout(initTimeout), playerGUID(initPlayerGUID) {}
+			constexpr Wait(std::size_t initTimeout, uint32_t initPlayerGUID) :
+				timeout(initTimeout), playerGUID(initPlayerGUID) { }
 
-		std::size_t timeout;
-		uint32_t playerGUID;
+			std::size_t timeout;
+			uint32_t playerGUID;
 	};
 
 	using WaitList = std::list<Wait>;
 
-	void cleanupList(WaitList& list) {
+	void cleanupList(WaitList &list) {
 		int64_t time = OTSYS_TIME();
 
 		auto it = list.begin(), end = list.end();
 		while (it != end) {
 			if ((it->timeout - time) <= 0) {
 				it = list.erase(it);
-			}
-			else {
+			} else {
 				++it;
 			}
 		}
@@ -46,27 +45,27 @@ namespace {
 } // namespace
 
 struct WaitListInfo {
-	WaitList priorityWaitList;
-	WaitList waitList;
+		WaitList priorityWaitList;
+		WaitList waitList;
 
-	std::pair<WaitList::iterator, WaitList::size_type> findClient(const Player* player) {
-		std::size_t slot = 1;
-		for (auto it = priorityWaitList.begin(), end = priorityWaitList.end(); it != end; ++it, ++slot) {
-			if (it->playerGUID == player->getGUID()) {
-				return { it, slot };
+		std::pair<WaitList::iterator, WaitList::size_type> findClient(const Player* player) {
+			std::size_t slot = 1;
+			for (auto it = priorityWaitList.begin(), end = priorityWaitList.end(); it != end; ++it, ++slot) {
+				if (it->playerGUID == player->getGUID()) {
+					return { it, slot };
+				}
 			}
-		}
 
-		for (auto it = waitList.begin(), end = waitList.end(); it != end; ++it, ++slot) {
-			if (it->playerGUID == player->getGUID()) {
-				return { it, slot };
+			for (auto it = waitList.begin(), end = waitList.end(); it != end; ++it, ++slot) {
+				if (it->playerGUID == player->getGUID()) {
+					return { it, slot };
+				}
 			}
+			return { waitList.end(), slot };
 		}
-		return { waitList.end(), slot };
-	}
 };
 
-WaitingList& WaitingList::getInstance() {
+WaitingList &WaitingList::getInstance() {
 	static WaitingList waitingList;
 	return waitingList;
 }
@@ -74,17 +73,13 @@ WaitingList& WaitingList::getInstance() {
 std::size_t WaitingList::getTime(std::size_t slot) {
 	if (slot < 5) {
 		return 5;
-	}
-	else if (slot < 10) {
+	} else if (slot < 10) {
 		return 10;
-	}
-	else if (slot < 20) {
+	} else if (slot < 20) {
 		return 20;
-	}
-	else if (slot < 50) {
+	} else if (slot < 50) {
 		return 60;
-	}
-	else {
+	} else {
 		return 120;
 	}
 }
@@ -120,8 +115,7 @@ bool WaitingList::clientLogin(const Player* player) {
 	slot = info->priorityWaitList.size();
 	if (player->isPremium()) {
 		info->priorityWaitList.emplace_back(OTSYS_TIME() + (getTimeout(slot + 1) * 1000), player->getGUID());
-	}
-	else {
+	} else {
 		slot += info->waitList.size();
 		info->waitList.emplace_back(OTSYS_TIME() + (getTimeout(slot + 1) * 1000), player->getGUID());
 	}

@@ -60,32 +60,30 @@ public:
 class Attributes : public ItemAttributeHelper {
 public:
 	explicit Attributes(ItemAttribute_t type) :
-		type(type), value(getDefaultValueForType(type)) {}
+			type(type), value(getDefaultValueForType(type)) { }
 	~Attributes() = default;
 
-	Attributes(const Attributes& i) :
-		type(i.type), value(i.value) {}
+		Attributes(const Attributes &i) :
+			type(i.type), value(i.value) { }
 	Attributes(Attributes &&attribute) noexcept :
-		type(attribute.type), value(std::move(attribute.value)) {}
+			type(attribute.type), value(std::move(attribute.value)) { }
 
-	Attributes &operator = (Attributes &&other) noexcept {
+		Attributes &operator=(Attributes &&other) noexcept {
 		type = other.type;
 		value = std::move(other.value);
 		return *this;
 	}
 
-	const ItemAttribute_t& getAttributeType() const {
+		const ItemAttribute_t &getAttributeType() const {
 		return type;
 	}
 
 	std::variant<int64_t, std::shared_ptr<std::string>> getDefaultValueForType(ItemAttribute_t attributeType) const {
 		if (isAttributeInteger(attributeType)) {
 			return 0;
-		}
-		else if (isAttributeString(attributeType)) {
+			} else if (isAttributeString(attributeType)) {
 			return std::make_shared<std::string>();
-		}
-		else {
+			} else {
 			return {};
 		}
 	}
@@ -100,7 +98,7 @@ public:
 			value = std::make_shared<std::string>(newValue);
 		}
 	}
-	const int64_t& getInteger() const {
+		const int64_t &getInteger() const {
 		if (std::holds_alternative<int64_t>(value)) {
 			return std::get<int64_t>(value);
 		}
@@ -108,7 +106,7 @@ public:
 		return emptyValue;
 	}
 
-	const std::shared_ptr<std::string>& getString() const {
+		const std::shared_ptr<std::string> &getString() const {
 		if (std::holds_alternative<std::shared_ptr<std::string>>(value)) {
 			return std::get<std::shared_ptr<std::string>>(value);
 		}
@@ -142,13 +140,13 @@ public:
 	void setAttribute(ItemAttribute_t type, const std::string &value);
 	bool removeAttribute(ItemAttribute_t type);
 
-	const std::string& getAttributeString(ItemAttribute_t type) const;
-	const int64_t& getAttributeValue(ItemAttribute_t type) const;
+		const std::string &getAttributeString(ItemAttribute_t type) const;
+		const int64_t &getAttributeValue(ItemAttribute_t type) const;
 
-	const std::underlying_type_t<ItemAttribute_t>& getAttributeBits() const {
+		const std::underlying_type_t<ItemAttribute_t> &getAttributeBits() const {
 		return attributeBits;
 	}
-	const std::vector<Attributes>& getAttributeVector() const {
+		const std::vector<Attributes> &getAttributeVector() const {
 		return attributeVector;
 	}
 
@@ -158,12 +156,12 @@ public:
 
 	const Attributes* getAttribute(ItemAttribute_t type) const;
 
-	Attributes& getAttributesByType(ItemAttribute_t type);
+		Attributes &getAttributesByType(ItemAttribute_t type);
 
 private:
 	// Singleton - ensures we don't accidentally copy it.
 	ItemAttribute(const ItemAttribute &) = delete;
-	ItemAttribute &operator = (const ItemAttribute &) = delete;
+		ItemAttribute &operator=(const ItemAttribute &) = delete;
 
 	std::map<std::string, CustomAttribute, std::less<>> customAttributeMap;
 	std::underlying_type_t<ItemAttribute_t> attributeBits = 0;

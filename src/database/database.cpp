@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #include "pch.hpp"
 
@@ -124,7 +124,7 @@ bool Database::executeQuery(const std::string &query) {
 		SPDLOG_ERROR("Query: {}", query.substr(0, 256));
 		SPDLOG_ERROR("Message: {}", mysql_error(handle));
 		auto error = mysql_errno(handle);
-		if (error != CR_SERVER_LOST && error != CR_SERVER_GONE_ERROR && error != CR_CONN_HOST_ERROR && error != 1053/*ER_SERVER_SHUTDOWN*/ && error != CR_CONNECTION_ERROR) {
+		if (error != CR_SERVER_LOST && error != CR_SERVER_GONE_ERROR && error != CR_CONN_HOST_ERROR && error != 1053 /*ER_SERVER_SHUTDOWN*/ && error != CR_CONNECTION_ERROR) {
 			success = false;
 			break;
 		}
@@ -141,7 +141,7 @@ bool Database::executeQuery(const std::string &query) {
 	return success;
 }
 
-DBResult_ptr Database::storeQuery(const std::string& query) {
+DBResult_ptr Database::storeQuery(const std::string &query) {
 	if (!handle) {
 		SPDLOG_ERROR("Database not initialized!");
 		return nullptr;
@@ -149,7 +149,7 @@ DBResult_ptr Database::storeQuery(const std::string& query) {
 
 	databaseLock.lock();
 
-	retry:
+retry:
 	while (mysql_real_query(handle, query.c_str(), query.length()) != 0) {
 		SPDLOG_ERROR("Query: {}", query);
 		SPDLOG_ERROR("Message: {}", mysql_error(handle));
@@ -265,8 +265,7 @@ uint8_t DBResult::getU8FromString(const std::string &string, const std::string &
 	return result;
 }
 
-int8_t DBResult::getInt8FromString(const std::string &string, const std::string &function) const
-{
+int8_t DBResult::getInt8FromString(const std::string &string, const std::string &function) const {
 	auto result = static_cast<int8_t>(std::atoi(string.c_str()));
 	if (result > std::numeric_limits<int8_t>::max()) {
 		SPDLOG_ERROR("[{}] Failed to get number value {} for tier table result, on function call: {}", __FUNCTION__, result, function);
@@ -285,10 +284,10 @@ bool DBResult::hasNext() const {
 }
 
 bool DBResult::next() {
-  if (!handle) {
-    SPDLOG_ERROR("Database not initialized!");
-    return false;
-  }
+	if (!handle) {
+		SPDLOG_ERROR("Database not initialized!");
+		return false;
+	}
 	row = mysql_fetch_row(handle);
 	return row != nullptr;
 }

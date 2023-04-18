@@ -5,15 +5,14 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_UTILS_WILDCARDTREE_H_
 #define SRC_UTILS_WILDCARDTREE_H_
 
 #include "declarations.hpp"
 
-class WildcardTreeNode
-{
+class WildcardTreeNode {
 	public:
 		explicit WildcardTreeNode(bool initBreakpoint) : breakpoint(initBreakpoint) {}
 		WildcardTreeNode(WildcardTreeNode &&other) = default;

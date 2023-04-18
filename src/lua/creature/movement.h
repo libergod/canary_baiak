@@ -19,43 +19,43 @@
 class MoveEvent;
 
 struct MoveEventList {
-	std::list<MoveEvent> moveEvent[MOVE_EVENT_LAST];
+		std::list<MoveEvent> moveEvent[MOVE_EVENT_LAST];
 };
 
 using VocEquipMap = std::map<uint16_t, bool>;
 
 class MoveEvents final : public Scripts {
-public:
-	MoveEvents() = default;
-	~MoveEvents() = default;
+	public:
+		MoveEvents() = default;
+		~MoveEvents() = default;
 
-	// non-copyable
-	MoveEvents(const MoveEvents&) = delete;
-	MoveEvents& operator=(const MoveEvents&) = delete;
+		// non-copyable
+		MoveEvents(const MoveEvents &) = delete;
+		MoveEvents &operator=(const MoveEvents &) = delete;
 
-	static MoveEvents& getInstance() {
-		// Guaranteed to be destroyed
-		static MoveEvents instance;
-		// Instantiated on first use
-		return instance;
-	}
+		static MoveEvents &getInstance() {
+			// Guaranteed to be destroyed
+			static MoveEvents instance;
+			// Instantiated on first use
+			return instance;
+		}
 
-	uint32_t onCreatureMove(Creature& creature, Tile& tile, MoveEvent_t eventType);
-	uint32_t onPlayerEquip(Player& player, Item& item, Slots_t slot, bool isCheck);
-	uint32_t onPlayerDeEquip(Player& player, Item& item, Slots_t slot);
-	uint32_t onItemMove(Item& item, Tile& tile, bool isAdd);
+		uint32_t onCreatureMove(Creature &creature, Tile &tile, MoveEvent_t eventType);
+		uint32_t onPlayerEquip(Player &player, Item &item, Slots_t slot, bool isCheck);
+		uint32_t onPlayerDeEquip(Player &player, Item &item, Slots_t slot);
+		uint32_t onItemMove(Item &item, Tile &tile, bool isAdd);
 
 	std::map<Position, MoveEventList> getPositionsMap() const {
 		return positionsMap;
 	}
 
-	bool hasPosition(Position position) const {
-		if (auto it = positionsMap.find(position);
-			it != positionsMap.end()) {
-			return true;
+		bool hasPosition(Position position) const {
+			if (auto it = positionsMap.find(position);
+				it != positionsMap.end()) {
+				return true;
+			}
+			return false;
 		}
-		return false;
-	}
 
 	void setPosition(Position position, MoveEventList moveEventList) {
 		positionsMap.try_emplace(position, moveEventList);
@@ -65,13 +65,13 @@ public:
 		return itemIdMap;
 	}
 
-	bool hasItemId(int32_t itemId) const {
-		if (auto it = itemIdMap.find(itemId);
-			it != itemIdMap.end()) {
-			return true;
+		bool hasItemId(int32_t itemId) const {
+			if (auto it = itemIdMap.find(itemId);
+				it != itemIdMap.end()) {
+				return true;
+			}
+			return false;
 		}
-		return false;
-	}
 
 	void setItemId(int32_t itemId, MoveEventList moveEventList) {
 		itemIdMap.try_emplace(itemId, moveEventList);
@@ -97,36 +97,36 @@ public:
 		return actionIdMap;
 	}
 
-	bool hasActionId(int32_t actionId) const {
-		if (auto it = actionIdMap.find(actionId);
-			it != actionIdMap.end()) {
-			return true;
+		bool hasActionId(int32_t actionId) const {
+			if (auto it = actionIdMap.find(actionId);
+				it != actionIdMap.end()) {
+				return true;
+			}
+			return false;
 		}
-		return false;
-	}
 
 	void setActionId(int32_t actionId, MoveEventList moveEventList) {
 		actionIdMap.try_emplace(actionId, moveEventList);
 	}
 
-	MoveEvent* getEvent(Item& item, MoveEvent_t eventType);
+		MoveEvent* getEvent(Item &item, MoveEvent_t eventType);
 
-	bool registerLuaItemEvent(MoveEvent& moveEvent);
-	bool registerLuaActionEvent(MoveEvent& moveEvent);
-	bool registerLuaUniqueEvent(MoveEvent& moveEvent);
-	bool registerLuaPositionEvent(MoveEvent& moveEvent);
-	bool registerLuaEvent(MoveEvent& event);
-	void clear();
+		bool registerLuaItemEvent(MoveEvent &moveEvent);
+		bool registerLuaActionEvent(MoveEvent &moveEvent);
+		bool registerLuaUniqueEvent(MoveEvent &moveEvent);
+		bool registerLuaPositionEvent(MoveEvent &moveEvent);
+		bool registerLuaEvent(MoveEvent &event);
+		void clear();
 
-private:
-	void clearMap(std::map<int32_t, MoveEventList>& map) const;
-	void clearPosMap(std::map<Position, MoveEventList>& map);
+	private:
+		void clearMap(std::map<int32_t, MoveEventList> &map) const;
+		void clearPosMap(std::map<Position, MoveEventList> &map);
 
-	bool registerEvent(MoveEvent& moveEvent, int32_t id, std::map<int32_t, MoveEventList>& moveListMap) const;
-	bool registerEvent(MoveEvent& moveEvent, const Position& position, std::map<Position, MoveEventList>& moveListMap) const;
-	MoveEvent* getEvent(Tile& tile, MoveEvent_t eventType);
+		bool registerEvent(MoveEvent &moveEvent, int32_t id, std::map<int32_t, MoveEventList> &moveListMap) const;
+		bool registerEvent(MoveEvent &moveEvent, const Position &position, std::map<Position, MoveEventList> &moveListMap) const;
+		MoveEvent* getEvent(Tile &tile, MoveEvent_t eventType);
 
-	MoveEvent* getEvent(Item& item, MoveEvent_t eventType, Slots_t slot);
+		MoveEvent* getEvent(Item &item, MoveEvent_t eventType, Slots_t slot);
 
 	std::map<int32_t, MoveEventList> uniqueIdMap;
 	std::map<int32_t, MoveEventList> actionIdMap;
@@ -143,114 +143,114 @@ public:
 	MoveEvent_t getEventType() const;
 	void setEventType(MoveEvent_t type);
 
-	uint32_t fireStepEvent(Creature& creature, Item* item, const Position& pos) const;
-	uint32_t fireAddRemItem(Item& item, Item& tileItem, const Position& pos) const;
-	uint32_t fireAddRemItem(Item& item, const Position& pos) const;
-	uint32_t fireEquip(Player& player, Item& item, Slots_t slot, bool isCheck);
+		uint32_t fireStepEvent(Creature &creature, Item* item, const Position &pos) const;
+		uint32_t fireAddRemItem(Item &item, Item &tileItem, const Position &pos) const;
+		uint32_t fireAddRemItem(Item &item, const Position &pos) const;
+		uint32_t fireEquip(Player &player, Item &item, Slots_t slot, bool isCheck);
 
 	uint32_t getSlot() const {
 		return slot;
 	}
 
-	// Scripting to lua interface
-	bool executeStep(Creature& creature, Item* item, const Position& pos) const;
-	bool executeEquip(Player& player, Item& item, Slots_t slot, bool isCheck) const;
-	bool executeAddRemItem(Item& item, Item& tileItem, const Position& pos) const;
-	// No have tile item
-	bool executeAddRemItem(Item& item, const Position& pos) const;
-	//
+		// Scripting to lua interface
+		bool executeStep(Creature &creature, Item* item, const Position &pos) const;
+		bool executeEquip(Player &player, Item &item, Slots_t slot, bool isCheck) const;
+		bool executeAddRemItem(Item &item, Item &tileItem, const Position &pos) const;
+		// No have tile item
+		bool executeAddRemItem(Item &item, const Position &pos) const;
+		//
 
-	// onEquip information
-	uint32_t getReqLevel() const {
-		return reqLevel;
-	}
-	uint32_t getReqMagLv() const {
-		return reqMagLevel;
-	}
-	bool isPremium() const {
-		return premium;
-	}
-	const std::string& getVocationString() const {
-		return vocationString;
-	}
-	void setVocationString(const std::string& str) {
-		vocationString = str;
-	}
-	uint32_t getWieldInfo() const {
-		return wieldInfo;
-	}
-	const std::map<uint16_t, bool>& getVocEquipMap() const {
-		return vocEquipMap;
-	}
-	void addVocEquipMap(std::string vocName) {
-		int32_t vocationId = g_vocations().getVocationId(vocName);
-		if (vocationId != -1) {
-			vocEquipMap[vocationId] = true;
+		// onEquip information
+		uint32_t getReqLevel() const {
+			return reqLevel;
 		}
-	}
-	bool getTileItem() const {
-		return tileItem;
-	}
-	void setTileItem(bool b) {
-		tileItem = b;
-	}
-	std::vector<uint32_t> getItemIdsVector() const {
-		return itemIdVector;
-	}
-	void setItemId(uint32_t id) {
-		itemIdVector.emplace_back(id);
-	}
-	std::vector<uint32_t> getActionIdsVector() const {
-		return actionIdVector;
-	}
-	void setActionId(uint32_t id) {
-		actionIdVector.emplace_back(id);
-	}
-	std::vector<uint32_t> getUniqueIdsVector() const {
-		return uniqueIdVector;
-	}
-	void setUniqueId(uint32_t id) {
-		uniqueIdVector.emplace_back(id);
-	}
-	std::vector<Position> getPositionsVector() const {
-		return positionVector;
-	}
-	void setPosition(Position pos) {
-		positionVector.emplace_back(pos);
-	}
-	void setSlot(uint32_t s) {
-		slot = s;
-	}
-	uint32_t getRequiredLevel() {
-		return reqLevel;
-	}
-	void setRequiredLevel(uint32_t level) {
-		reqLevel = level;
-	}
-	uint32_t getRequiredMagLevel() {
-		return reqMagLevel;
-	}
-	void setRequiredMagLevel(uint32_t level) {
-		reqMagLevel = level;
-	}
-	bool needPremium() {
-		return premium;
-	}
-	void setNeedPremium(bool b) {
-		premium = b;
-	}
-	uint32_t getWieldInfo() {
-		return wieldInfo;
-	}
-	void setWieldInfo(WieldInfo_t info) {
-		wieldInfo |= info;
-	}
+		uint32_t getReqMagLv() const {
+			return reqMagLevel;
+		}
+		bool isPremium() const {
+			return premium;
+		}
+		const std::string &getVocationString() const {
+			return vocationString;
+		}
+		void setVocationString(const std::string &str) {
+			vocationString = str;
+		}
+		uint32_t getWieldInfo() const {
+			return wieldInfo;
+		}
+		const std::map<uint16_t, bool> &getVocEquipMap() const {
+			return vocEquipMap;
+		}
+		void addVocEquipMap(std::string vocName) {
+			int32_t vocationId = g_vocations().getVocationId(vocName);
+			if (vocationId != -1) {
+				vocEquipMap[vocationId] = true;
+			}
+		}
+		bool getTileItem() const {
+			return tileItem;
+		}
+		void setTileItem(bool b) {
+			tileItem = b;
+		}
+		std::vector<uint32_t> getItemIdsVector() const {
+			return itemIdVector;
+		}
+		void setItemId(uint32_t id) {
+			itemIdVector.emplace_back(id);
+		}
+		std::vector<uint32_t> getActionIdsVector() const {
+			return actionIdVector;
+		}
+		void setActionId(uint32_t id) {
+			actionIdVector.emplace_back(id);
+		}
+		std::vector<uint32_t> getUniqueIdsVector() const {
+			return uniqueIdVector;
+		}
+		void setUniqueId(uint32_t id) {
+			uniqueIdVector.emplace_back(id);
+		}
+		std::vector<Position> getPositionsVector() const {
+			return positionVector;
+		}
+		void setPosition(Position pos) {
+			positionVector.emplace_back(pos);
+		}
+		void setSlot(uint32_t s) {
+			slot = s;
+		}
+		uint32_t getRequiredLevel() {
+			return reqLevel;
+		}
+		void setRequiredLevel(uint32_t level) {
+			reqLevel = level;
+		}
+		uint32_t getRequiredMagLevel() {
+			return reqMagLevel;
+		}
+		void setRequiredMagLevel(uint32_t level) {
+			reqMagLevel = level;
+		}
+		bool needPremium() {
+			return premium;
+		}
+		void setNeedPremium(bool b) {
+			premium = b;
+		}
+		uint32_t getWieldInfo() {
+			return wieldInfo;
+		}
+		void setWieldInfo(WieldInfo_t info) {
+			wieldInfo |= info;
+		}
 
-	static uint32_t StepInField(Creature* creature, Item* item, const Position& pos);
-	static uint32_t StepOutField(Creature* creature, Item* item, const Position& pos);
+		static uint32_t StepInField(Creature* creature, Item* item, const Position &pos);
+		static uint32_t StepOutField(Creature* creature, Item* item, const Position &pos);
 
-	static uint32_t AddItemField(Item* item, Item* tileItem, const Position& pos);
-	static uint32_t RemoveItemField(Item* item, Item* tileItem, const Position& pos);
+		static uint32_t AddItemField(Item* item, Item* tileItem, const Position &pos);
+		static uint32_t RemoveItemField(Item* item, Item* tileItem, const Position &pos);
 
 	static uint32_t EquipItem(MoveEvent* moveEvent, Player* player, Item* item, Slots_t slot, bool boolean);
 	static uint32_t DeEquipItem(MoveEvent* moveEvent, Player* player, Item* item, Slots_t slot, bool boolean);
@@ -260,39 +260,39 @@ private:
 
 	uint32_t slot = SLOTP_WHEREEVER;
 
-	MoveEvent_t eventType = MOVE_EVENT_NONE;
-	/// Step function
-	std::function<uint32_t(
-		Creature* creature,
-		Item* item,
-		const Position& pos
-	)>
-		stepFunction;
-	// Move function
-	std::function<uint32_t(
-		Item* item,
-		Item* tileItem,
-		const Position& pos
-	)>
-		moveFunction;
-	// equipFunction
-	std::function<uint32_t(
-		MoveEvent* moveEvent,
-		Player* player,
-		Item* item,
-		Slots_t slot,
-		bool boolean
-	)>
-		equipFunction;
+		MoveEvent_t eventType = MOVE_EVENT_NONE;
+		/// Step function
+		std::function<uint32_t(
+			Creature* creature,
+			Item* item,
+			const Position &pos
+		)>
+			stepFunction;
+		// Move function
+		std::function<uint32_t(
+			Item* item,
+			Item* tileItem,
+			const Position &pos
+		)>
+			moveFunction;
+		// equipFunction
+		std::function<uint32_t(
+			MoveEvent* moveEvent,
+			Player* player,
+			Item* item,
+			Slots_t slot,
+			bool boolean
+		)>
+			equipFunction;
 
-	// onEquip information
-	uint32_t reqLevel = 0;
-	uint32_t reqMagLevel = 0;
-	bool premium = false;
-	std::string vocationString;
-	uint32_t wieldInfo = 0;
-	std::map<uint16_t, bool> vocEquipMap;
-	bool tileItem = false;
+		// onEquip information
+		uint32_t reqLevel = 0;
+		uint32_t reqMagLevel = 0;
+		bool premium = false;
+		std::string vocationString;
+		uint32_t wieldInfo = 0;
+		std::map<uint16_t, bool> vocEquipMap;
+		bool tileItem = false;
 
 	std::vector<uint32_t> itemIdVector;
 	std::vector<uint32_t> actionIdVector;

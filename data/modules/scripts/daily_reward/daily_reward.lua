@@ -423,7 +423,7 @@ function Player.selectDailyReward(self, msg)
 	-- Items as reward
 	if (dailyTable.type == DAILY_REWARD_TYPE_ITEM) then
 
-		local items = { }
+		local items = {}
 		local possibleItems = DailyRewardItems[self:getVocation():getBaseId()];
 		if dailyTable.items then
 			possibleItems = dailyTable.items;
@@ -590,7 +590,7 @@ function Player.readDailyReward(self, msg, currentDay, state)
 			end
 
 			if not(rewards) then
-				rewards = { }
+				rewards = {}
 			end
 		else
 			if (state == DAILY_REWARD_STATUS_FREE) then

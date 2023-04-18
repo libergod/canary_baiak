@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_SERVER_NETWORK_PROTOCOL_PROTOCOLSTATUS_H_
 #define SRC_SERVER_NETWORK_PROTOCOL_PROTOCOLSTATUS_H_
@@ -13,13 +13,12 @@
 #include "server/network/message/networkmessage.h"
 #include "server/network/protocol/protocol.h"
 
-class ProtocolStatus final : public Protocol
-{
+class ProtocolStatus final : public Protocol {
 	public:
 		// static protocol information
-		enum {SERVER_SENDS_FIRST = false};
-		enum {PROTOCOL_IDENTIFIER = 0xFF};
-		enum {USE_CHECKSUM = false};
+		enum { SERVER_SENDS_FIRST = false };
+		enum { PROTOCOL_IDENTIFIER = 0xFF };
+		enum { USE_CHECKSUM = false };
 		static const char* protocol_name() {
 			return "status protocol";
 		}

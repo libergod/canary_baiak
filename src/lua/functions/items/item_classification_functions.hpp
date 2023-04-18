@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_LUA_FUNCTIONS_ITEMS_ITEM_CLASSIFICATION_FUNCTIONS_HPP_
 #define SRC_LUA_FUNCTIONS_ITEMS_ITEM_CLASSIFICATION_FUNCTIONS_HPP_
@@ -14,11 +14,11 @@
 
 class ItemClassificationFunctions final : LuaScriptInterface {
 	public:
-			static void init(lua_State* L) {
-				registerClass(L, "ItemClassification", "", ItemClassificationFunctions::luaItemClassificationCreate);
-				registerMetaMethod(L, "ItemClassification", "__eq", ItemClassificationFunctions::luaUserdataCompare);
+		static void init(lua_State* L) {
+			registerClass(L, "ItemClassification", "", ItemClassificationFunctions::luaItemClassificationCreate);
+			registerMetaMethod(L, "ItemClassification", "__eq", ItemClassificationFunctions::luaUserdataCompare);
 
-				registerMethod(L, "ItemClassification", "addTier", ItemClassificationFunctions::luaItemClassificationAddTier);
+			registerMethod(L, "ItemClassification", "addTier", ItemClassificationFunctions::luaItemClassificationAddTier);
 		}
 
 	private:

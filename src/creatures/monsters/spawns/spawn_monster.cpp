@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #include "pch.hpp"
 
@@ -86,7 +86,7 @@ bool SpawnsMonster::loadFromXML(const std::string &filemonstername) {
 				);
 
 				int32_t boostedrate = 1;
-				
+
 				if (nameAttribute.value() == boostedNameGet) {
 					boostedrate = 2;
 				}
@@ -171,7 +171,7 @@ bool SpawnMonster::isInSpawnMonsterZone(const Position &pos) {
 bool SpawnMonster::spawnMonster(uint32_t spawnMonsterId, MonsterType* monsterType, const Position &pos, Direction dir, bool startup /*= false*/) {
 	std::unique_ptr<Monster> monster_ptr(new Monster(monsterType));
 	if (startup) {
-		//No need to send out events to the surrounding since there is no one out there to listen!
+		// No need to send out events to the surrounding since there is no one out there to listen!
 		if (!g_game().internalPlaceCreature(monster_ptr.get(), pos, true)) {
 			return false;
 		}
@@ -196,7 +196,7 @@ bool SpawnMonster::spawnMonster(uint32_t spawnMonsterId, MonsterType* monsterTyp
 void SpawnMonster::startup() {
 	for (const auto &it : spawnMonsterMap) {
 		uint32_t spawnMonsterId = it.first;
-		const spawnBlock_t& sb = it.second;
+		const spawnBlock_t &sb = it.second;
 		spawnMonster(spawnMonsterId, sb.monsterType, sb.pos, sb.direction, true);
 	}
 }
@@ -214,7 +214,7 @@ void SpawnMonster::checkSpawnMonster() {
 			continue;
 		}
 
-		spawnBlock_t& sb = it.second;
+		spawnBlock_t &sb = it.second;
 		if (!sb.monsterType->canSpawn(sb.pos)) {
 			sb.lastSpawn = OTSYS_TIME();
 			continue;
@@ -243,7 +243,7 @@ void SpawnMonster::checkSpawnMonster() {
 	}
 }
 
-void SpawnMonster::scheduleSpawn(uint32_t spawnMonsterId, spawnBlock_t& sb, uint16_t interval) {
+void SpawnMonster::scheduleSpawn(uint32_t spawnMonsterId, spawnBlock_t &sb, uint16_t interval) {
 	if (interval <= 0) {
 		spawnMonster(spawnMonsterId, sb.monsterType, sb.pos, sb.direction);
 	} else {
@@ -252,14 +252,13 @@ void SpawnMonster::scheduleSpawn(uint32_t spawnMonsterId, spawnBlock_t& sb, uint
 	}
 }
 
-void SpawnMonster::cleanup()
-{
+void SpawnMonster::cleanup() {
 	auto it = spawnedMonsterMap.begin();
 	while (it != spawnedMonsterMap.end()) {
-            uint32_t spawnMonsterId = it->first;
+		uint32_t spawnMonsterId = it->first;
 		Monster* monster = it->second;
-            if (monster->isRemoved()) {
-               spawnMonsterMap[spawnMonsterId].lastSpawn = OTSYS_TIME();
+		if (monster->isRemoved()) {
+			spawnMonsterMap[spawnMonsterId].lastSpawn = OTSYS_TIME();
 			monster->decrementReferenceCounter();
 			it = spawnedMonsterMap.erase(it);
 		} else {
@@ -299,7 +298,7 @@ void SpawnMonster::removeMonster(Monster* monster) {
 	}
 }
 
-void SpawnMonster::stopEvent(){
+void SpawnMonster::stopEvent() {
 	if (checkSpawnMonsterEvent != 0) {
 		g_scheduler().stopEvent(checkSpawnMonsterEvent);
 		checkSpawnMonsterEvent = 0;

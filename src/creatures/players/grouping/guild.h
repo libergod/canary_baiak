@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_CREATURES_PLAYERS_GROUPING_GUILD_H_
 #define SRC_CREATURES_PLAYERS_GROUPING_GUILD_H_
@@ -13,19 +13,19 @@
 class Player;
 
 struct GuildRank {
-	uint32_t id;
-	std::string name;
-	uint8_t level;
+		uint32_t id;
+		std::string name;
+		uint8_t level;
 
-	GuildRank(uint32_t initId, std::string initName, uint8_t initLevel) :
-		id(initId), name(std::move(initName)), level(initLevel) {}
+		GuildRank(uint32_t initId, std::string initName, uint8_t initLevel) :
+			id(initId), name(std::move(initName)), level(initLevel) { }
 };
 
 using GuildRank_ptr = std::shared_ptr<GuildRank>;
 class Guild {
 	public:
 		Guild(uint32_t initId, std::string initName) :
-			name(std::move(initName)), id(initId) {}
+			name(std::move(initName)), id(initId) { }
 
 		void addMember(Player* player);
 		void removeMember(Player* player);
@@ -45,12 +45,12 @@ class Guild {
 		void setMemberCount(uint32_t count) {
 			memberCount = count;
 		}
-    uint64_t getBankBalance() const {
-      return bankBalance;
-    }
-    void setBankBalance(uint64_t balance) {
-      bankBalance = balance;
-    }
+		uint64_t getBankBalance() const {
+			return bankBalance;
+		}
+		void setBankBalance(uint64_t balance) {
+			bankBalance = balance;
+		}
 
 		const std::vector<GuildRank_ptr> &getRanks() const {
 			return ranks;

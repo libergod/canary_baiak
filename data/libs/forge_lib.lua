@@ -46,7 +46,7 @@ function ForgeMonster:onDeath(creature, corpse, killer, mostDamageKiller, unjust
 	end
 
 	local forgeAmountMultiplier = (configManager.getNumber(configKeys.FORGE_AMOUNT_MULTIPLIER) or 3)
-	
+
 	local stack = creature:getForgeStack()
 	if stack > 0 then
 		local party = nil
@@ -59,7 +59,7 @@ function ForgeMonster:onDeath(creature, corpse, killer, mostDamageKiller, unjust
 		end
 
 		if party and party:isSharedExperienceEnabled() then
-			local killers = { }
+			local killers = {}
 			local partyMembers = party:getMembers()
 
 			for pid, _ in pairs(creature:getDamageMap()) do
@@ -188,7 +188,7 @@ function ForgeMonster:pickClosestFiendish(creature)
 		return 0
 	end
 
-	local creatures = { }
+	local creatures = {}
 
 	local playerPosition = player:getPosition()
 	for _, cid in pairs(Game.getFiendishMonsters()) do

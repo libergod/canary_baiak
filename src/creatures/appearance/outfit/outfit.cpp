@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #include "pch.hpp"
 
@@ -14,7 +14,7 @@
 #include "utils/tools.h"
 #include "game/game.h"
 
-bool Outfits::loadFromXml(){
+bool Outfits::loadFromXml() {
 	pugi::xml_document doc;
 	auto folder = g_configManager().getString(CORE_DIRECTORY) + "/XML/outfits.xml";
 	pugi::xml_parse_result result = doc.load_file(folder.c_str());
@@ -90,8 +90,7 @@ const Outfit* Outfits::getOpositeSexOutfitByLookType(PlayerSex_t sex, uint16_t l
 		if (outfits[sex].at(i).lookType == lookType) {
 			if (outfits[searchSex].size() > i) {
 				return &outfits[searchSex].at(i);
-			}
-			else { // looktype found but the oposite sex array doesn't have this index.
+			} else { // looktype found but the oposite sex array doesn't have this index.
 				return nullptr;
 			}
 		}

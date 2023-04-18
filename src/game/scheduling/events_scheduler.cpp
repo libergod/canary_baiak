@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #include "pch.hpp"
 
@@ -30,7 +30,7 @@ bool EventsScheduler::loadScheduleEventFromXml() {
 	// Keep track of loaded scripts to check for duplicates
 	int count = 0;
 	std::set<std::string_view, std::less<>> loadedScripts;
-	for (const auto& eventNode : doc.child("events").children()) {
+	for (const auto &eventNode : doc.child("events").children()) {
 		std::string eventScript = eventNode.attribute("script").as_string();
 		std::string eventName = eventNode.attribute("name").as_string();
 
@@ -65,7 +65,7 @@ bool EventsScheduler::loadScheduleEventFromXml() {
 			return false;
 		}
 
-		for (const auto& ingameNode : eventNode.children()) {
+		for (const auto &ingameNode : eventNode.children()) {
 			if (ingameNode.attribute("exprate")) {
 				g_eventsScheduler().setExpSchedule(static_cast<uint16_t>(ingameNode.attribute("exprate").as_uint()));
 			}
@@ -85,7 +85,7 @@ bool EventsScheduler::loadScheduleEventFromXml() {
 		eventScheduler.push_back(EventScheduler(eventName, startDays, endDays));
 	}
 
-	for (const auto& event : eventScheduler) {
+	for (const auto &event : eventScheduler) {
 		if (daysMath >= event.startDays && daysMath <= event.endDays) {
 			SPDLOG_INFO("Active EventScheduler: {}", event.name);
 		}

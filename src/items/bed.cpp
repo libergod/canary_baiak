@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #include "pch.hpp"
 
@@ -14,13 +14,12 @@
 #include "io/iologindata.h"
 #include "game/scheduling/scheduler.h"
 
-BedItem::BedItem(uint16_t id) : Item(id)
-{
+BedItem::BedItem(uint16_t id) :
+	Item(id) {
 	internalRemoveSleeper();
 }
 
-Attr_ReadValue BedItem::readAttr(AttrTypes_t attr, PropStream &propStream)
-{
+Attr_ReadValue BedItem::readAttr(AttrTypes_t attr, PropStream &propStream) {
 	switch (attr) {
 		case ATTR_SLEEPERGUID: {
 			uint32_t guid;
@@ -79,8 +78,7 @@ BedItem* BedItem::getNextBedItem() const {
 	return tile->getBedItem();
 }
 
-bool BedItem::canUse(Player* player)
-{
+bool BedItem::canUse(Player* player) {
 	if ((player == nullptr) || (house == nullptr) || !player->isPremium()) {
 		return false;
 	}
@@ -104,8 +102,7 @@ bool BedItem::canUse(Player* player)
 	return true;
 }
 
-bool BedItem::trySleep(Player* player)
-{
+bool BedItem::trySleep(Player* player) {
 	if (!house || player->isRemoved()) {
 		return false;
 	}
@@ -121,8 +118,7 @@ bool BedItem::trySleep(Player* player)
 	return true;
 }
 
-bool BedItem::sleep(Player* player)
-{
+bool BedItem::sleep(Player* player) {
 	if (house == nullptr) {
 		return false;
 	}
@@ -161,8 +157,7 @@ bool BedItem::sleep(Player* player)
 	return true;
 }
 
-void BedItem::wakeUp(Player* player)
-{
+void BedItem::wakeUp(Player* player) {
 	if (house == nullptr) {
 		return;
 	}
@@ -200,8 +195,7 @@ void BedItem::wakeUp(Player* player)
 	}
 }
 
-void BedItem::regeneratePlayer(Player* player) const
-{
+void BedItem::regeneratePlayer(Player* player) const {
 	const uint32_t sleptTime = time(nullptr) - sleepStart;
 
 	Condition* condition = player->getCondition(CONDITION_REGENERATION, CONDITIONID_DEFAULT);

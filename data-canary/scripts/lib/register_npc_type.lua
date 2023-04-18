@@ -193,3 +193,9 @@ registerNpcType.currency = function(npcType, mask)
 		npcType:currency(mask.currency)
 	end
 end
+
+registerNpcType.speechBubble = function(npcType, mask)
+	if mask.speechBubble then
+		npcType:speechBubble(mask.speechBubble)
+	end
+end

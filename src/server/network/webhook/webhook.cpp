@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #include "pch.hpp"
 
@@ -49,7 +49,7 @@ void webhook_send_message(std::string title, std::string message, int color, std
 
 	if (title.empty() || message.empty()) {
 		SPDLOG_ERROR("Failed to send webhook message; "
-                     "title or message to send was empty");
+					 "title or message to send was empty");
 		return;
 	}
 
@@ -59,9 +59,9 @@ void webhook_send_message(std::string title, std::string message, int color, std
 
 	if (response_code != 204 && response_code != -1) {
 		SPDLOG_ERROR("Failed to send webhook message; "
-                     "HTTP request failed with code: {}"
-                     "response body: {} request body: {}",
-                     response_code, response_body, payload);
+					 "HTTP request failed with code: {}"
+					 "response body: {} request body: {}",
+					 response_code, response_body, payload);
 	}
 }
 
@@ -71,9 +71,9 @@ static std::string get_payload(std::string title, std::string message, int color
 	struct tm tm;
 
 #ifdef _MSC_VER
-  gmtime_s(&tm, &now);
+	gmtime_s(&tm, &now);
 #else
-  gmtime_r(&now, &tm);
+	gmtime_r(&now, &tm);
 #endif
 
 	char time_buf[sizeof "00:00"];
@@ -81,9 +81,9 @@ static std::string get_payload(std::string title, std::string message, int color
 
 	std::stringstream footer_text;
 	footer_text
-			<< g_configManager().getString(IP) << ":"
-			<< g_configManager().getNumber(GAME_PORT) << " | "
-			<< time_buf << " UTC";
+		<< g_configManager().getString(IP) << ":"
+		<< g_configManager().getNumber(GAME_PORT) << " | "
+		<< time_buf << " UTC";
 
 	Json::Value footer(Json::objectValue);
 	footer["text"] = Json::Value(footer_text.str());
@@ -132,8 +132,7 @@ static int webhook_send_message_(const char* url, const char* payload, std::stri
 	if (res == CURLE_OK) {
 		curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &response_code);
 	} else {
-		SPDLOG_ERROR("Failed to send webhook message with the error: {}",
-                     curl_easy_strerror(res));
+		SPDLOG_ERROR("Failed to send webhook message with the error: {}", curl_easy_strerror(res));
 	}
 
 	curl_easy_cleanup(curl);

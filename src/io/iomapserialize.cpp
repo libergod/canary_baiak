@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #include "pch.hpp"
 
@@ -56,13 +56,13 @@ bool IOMapSerialize::saveHouseItems() {
 	Database &db = Database::getInstance();
 	std::ostringstream query;
 
-	//Start the transaction
+	// Start the transaction
 	DBTransaction transaction;
 	if (!transaction.begin()) {
 		return false;
 	}
 
-	//clear old tile data
+	// clear old tile data
 	if (!db.executeQuery("DELETE FROM `tile_store`")) {
 		return false;
 	}
@@ -71,7 +71,7 @@ bool IOMapSerialize::saveHouseItems() {
 
 	PropWriteStream stream;
 	for (const auto &[key, house] : g_game().map.houses.getHouses()) {
-		//save house items
+		// save house items
 		for (HouseTile* tile : house->getTiles()) {
 			saveTile(stream, tile);
 
@@ -91,7 +91,7 @@ bool IOMapSerialize::saveHouseItems() {
 		return false;
 	}
 
-	//End the transaction
+	// End the transaction
 	bool success = transaction.commit();
 	SPDLOG_INFO("Saved house items in {} seconds", (OTSYS_TIME() - start) / (1000.));
 	return success;
@@ -127,7 +127,7 @@ bool IOMapSerialize::loadItem(PropStream &propStream, Cylinder* parent) {
 
 	const ItemType &iType = Item::items[id];
 	if (iType.moveable || !tile || iType.isCarpet()) {
-		//create a new item
+		// create a new item
 		Item* item = Item::CreateItem(id);
 		if (item) {
 			if (item->unserializeAttr(propStream)) {
@@ -175,7 +175,7 @@ bool IOMapSerialize::loadItem(PropStream &propStream, Cylinder* parent) {
 				SPDLOG_WARN("Deserialization error in {}", id);
 			}
 		} else {
-			//The map changed since the last save, just read the attributes
+			// The map changed since the last save, just read the attributes
 			std::unique_ptr<Item> dummy(Item::CreateItem(id));
 			if (dummy) {
 				dummy->unserializeAttr(propStream);
@@ -215,8 +215,7 @@ void IOMapSerialize::saveItem(PropWriteStream &stream, const Item* item) {
 	stream.write<uint8_t>(0x00); // attr end
 }
 
-void IOMapSerialize::saveTile(PropWriteStream& stream, const Tile* tile)
-{
+void IOMapSerialize::saveTile(PropWriteStream &stream, const Tile* tile) {
 	const TileItemVector* tileItems = tile->getItemList();
 	if (!tileItems) {
 		return;
@@ -228,8 +227,7 @@ void IOMapSerialize::saveTile(PropWriteStream& stream, const Tile* tile)
 		const ItemType &it = Item::items[item->getID()];
 
 		// Note that these are NEGATED, ie. these are the items that will be saved.
-		if (!(it.moveable || it.isCarpet() || item->getDoor() || (item->getContainer() &&
-											!item->getContainer()->empty()) || it.canWriteText || item->getBed())) {
+		if (!(it.moveable || it.isCarpet() || item->getDoor() || (item->getContainer() && !item->getContainer()->empty()) || it.canWriteText || item->getBed())) {
 			continue;
 		}
 

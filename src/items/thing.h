@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_ITEMS_THING_H_
 #define SRC_ITEMS_THING_H_
@@ -18,8 +18,7 @@ class Item;
 class Creature;
 class Container;
 
-class Thing
-{
+class Thing {
 	public:
 		constexpr Thing() = default;
 		virtual ~Thing() = default;

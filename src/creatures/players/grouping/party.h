@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_CREATURES_PLAYERS_GROUPING_PARTY_H_
 #define SRC_CREATURES_PLAYERS_GROUPING_PARTY_H_

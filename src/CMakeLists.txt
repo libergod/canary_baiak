@@ -191,7 +191,7 @@ PRIVATE
 	game/scheduling/tasks.cpp
 	io/fileloader.cpp
 	io/iobestiary.cpp
-  io/io_bosstiary.cpp
+	io/io_bosstiary.cpp
 	io/ioguild.cpp
 	io/iologindata.cpp
 	io/functions/iologindata_load_player.cpp
@@ -213,7 +213,7 @@ PRIVATE
 	items/decay/decay.cpp
 	items/item.cpp
 	items/items.cpp
-  items/functions/item/attribute.cpp
+	items/functions/item/attribute.cpp
 	items/functions/item/custom_attribute.cpp
 	items/functions/item/item_parse.cpp
 	items/thing.cpp
@@ -350,7 +350,7 @@ if (MSVC)
 			spdlog::spdlog
 			unofficial::libmariadb
 			unofficial::mariadbclient
-      ZLIB::ZLIB
+			ZLIB::ZLIB
 	)
 
 else()
@@ -378,7 +378,7 @@ else()
 			spdlog::spdlog
 			unofficial::libmariadb
 			unofficial::mariadbclient
-      ZLIB::ZLIB
+			ZLIB::ZLIB
 
 			Threads::Threads
 	)

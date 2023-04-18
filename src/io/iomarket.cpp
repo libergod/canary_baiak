@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #include "pch.hpp"
 
@@ -112,8 +112,7 @@ HistoryMarketOfferList IOMarket::getOwnHistory(MarketAction_t action, uint32_t p
 	return offerList;
 }
 
-void IOMarket::processExpiredOffers(DBResult_ptr result, bool)
-{
+void IOMarket::processExpiredOffers(DBResult_ptr result, bool) {
 	if (!result) {
 		return;
 	}
@@ -274,13 +273,12 @@ void IOMarket::deleteOffer(uint32_t offerId) {
 void IOMarket::appendHistory(uint32_t playerId, MarketAction_t type, uint16_t itemId, uint16_t amount, uint64_t price, time_t timestamp, uint8_t tier, MarketOfferState_t state) {
 	std::ostringstream query;
 	query << "INSERT INTO `market_history` (`player_id`, `sale`, `itemtype`, `amount`, `price`, `expires_at`, `inserted`, `state`, `tier`) VALUES ("
-		<< playerId << ',' << type << ',' << itemId << ',' << amount << ',' << price << ','
-		<< timestamp << ',' << getTimeNow() << ',' << state << ',' << std::to_string(tier) << ')';
+		  << playerId << ',' << type << ',' << itemId << ',' << amount << ',' << price << ','
+		  << timestamp << ',' << getTimeNow() << ',' << state << ',' << std::to_string(tier) << ')';
 	g_databaseTasks().addTask(query.str());
 }
 
-bool IOMarket::moveOfferToHistory(uint32_t offerId, MarketOfferState_t state)
-{
+bool IOMarket::moveOfferToHistory(uint32_t offerId, MarketOfferState_t state) {
 	Database &db = Database::getInstance();
 
 	std::ostringstream query;
@@ -304,7 +302,8 @@ bool IOMarket::moveOfferToHistory(uint32_t offerId, MarketOfferState_t state)
 		result->getNumber<uint16_t>("amount"),
 		result->getNumber<uint64_t>("price"),
 		getTimeNow(),
-		getTierFromDatabaseTable(result->getString("tier")), state);
+		getTierFromDatabaseTable(result->getString("tier")), state
+	);
 	return true;
 }
 

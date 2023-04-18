@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_LUA_MODULES_MODULES_H_
 #define SRC_LUA_MODULES_MODULES_H_
@@ -34,7 +34,7 @@ class Module final : public Event {
 		void clearEvent();
 		void copyEvent(Module* creatureEvent);
 
-		//scripting
+		// scripting
 		void executeOnRecvbyte(Player* player, NetworkMessage &msg);
 		//
 
@@ -45,6 +45,7 @@ class Module final : public Event {
 		int16_t getDelay() {
 			return delay;
 		}
+
 	protected:
 		std::string getScriptEventName() const final;
 
@@ -76,7 +77,7 @@ class Modules final : public BaseEvents {
 		LuaScriptInterface &getScriptInterface() override;
 		std::string getScriptBaseName() const override;
 		Event_ptr getEvent(const std::string &nodeName) override;
-		bool registerEvent(Event_ptr  event, const pugi::xml_node &node) override;
+		bool registerEvent(Event_ptr event, const pugi::xml_node &node) override;
 		void clear(bool) override final;
 
 		typedef std::map<uint8_t, Module> ModulesList;

@@ -5,20 +5,19 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #include "pch.hpp"
 
 #include "game/movement/position.h"
 #include "utils/tools.h"
 
-Direction Position::getRandomDirection()
-{
-	static std::vector<Direction> dirList{
-					DIRECTION_NORTH,
-					DIRECTION_WEST,
-					DIRECTION_EAST,
-					DIRECTION_SOUTH
+Direction Position::getRandomDirection() {
+	static std::vector<Direction> dirList {
+		DIRECTION_NORTH,
+		DIRECTION_WEST,
+		DIRECTION_EAST,
+		DIRECTION_SOUTH
 	};
 	std::shuffle(dirList.begin(), dirList.end(), getRandomGenerator());
 
@@ -34,8 +33,7 @@ std::ostream& operator<<(std::ostream &os, const Position &pos)
 	return os;
 }
 
-std::ostream& operator<<(std::ostream &os, const Direction &dir)
-{
+std::ostream &operator<<(std::ostream &os, const Direction &dir) {
 	switch (dir) {
 		case DIRECTION_NORTH:
 			os << "North";

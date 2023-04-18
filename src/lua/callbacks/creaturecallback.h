@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_LUA_CALLBACKS_CREATURECALLBACK_H_
 #define SRC_LUA_CALLBACKS_CREATURECALLBACK_H_
@@ -17,9 +17,9 @@ class Creature;
 
 class CreatureCallback {
 	public:
-		CreatureCallback(LuaScriptInterface* scriptInterface, Creature* targetCreature)
-			: scriptInterface(scriptInterface), targetCreature(targetCreature) {};
-		~CreatureCallback() {}
+		CreatureCallback(LuaScriptInterface* scriptInterface, Creature* targetCreature) :
+			scriptInterface(scriptInterface), targetCreature(targetCreature) {};
+		~CreatureCallback() { }
 
 		bool startScriptInterface(int32_t scriptId);
 

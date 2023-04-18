@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_CREATURES_PLAYERS_VOCATIONS_VOCATION_H_
 #define SRC_CREATURES_PLAYERS_VOCATIONS_VOCATION_H_
@@ -137,8 +137,7 @@ class Vocation {
 		static uint32_t skillBase[SKILL_LAST + 1];
 };
 
-class Vocations
-{
+class Vocations {
 	public:
 		Vocations() = default;
 

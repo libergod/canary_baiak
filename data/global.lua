@@ -14,7 +14,12 @@ function IsRunningGlobalDatapack()
 	end
 end
 
---dofile(DATA_DIRECTORY .. "/scripts/custom/upgrade_system/upgrade_system_core.lua")
+function IsRetroPVP()
+	return configManager.getBoolean(configKeys.TOGGLE_SERVER_IS_RETRO)
+end
+-- NOTE: 0 is disabled.
+PARTY_PROTECTION = (IsRetroPVP() and 0) or 1
+ADVANCED_SECURE_MODE = (IsRetroPVP() and 0) or 1
 
 
 function IsRetroPVP()
@@ -77,40 +82,40 @@ specialRopeSpots = { 12935 }
 -- Every 2 seconds
 updateInterval = 2
 if not GlobalBosses then
-	GlobalBosses = { }
+	GlobalBosses = {}
 end
 -- Healing
 -- Global table to insert data
 if healingImpact == nil then
-	healingImpact = { }
+	healingImpact = {}
 end
 -- Damage
 -- Global table to insert data
 if damageImpact == nil then
-	damageImpact = { }
+	damageImpact = {}
 end
 
 -- Exercise Training
 if onExerciseTraining == nil then
-	onExerciseTraining = { }
+	onExerciseTraining = {}
 end
 
 -- Stamina
 if nextUseStaminaTime == nil then
-	nextUseStaminaTime = { }
+	nextUseStaminaTime = {}
 end
 
 if nextUseXpStamina == nil then
-	nextUseXpStamina = { }
+	nextUseXpStamina = {}
 end
 
 if lastItemImbuing == nil then
-	lastItemImbuing = { }
+	lastItemImbuing = {}
 end
 
 -- Delay potion
 if not playerDelayPotion then
-	playerDelayPotion = { }
+	playerDelayPotion = {}
 end
 
 table.contains = function(array, value)
@@ -123,7 +128,7 @@ table.contains = function(array, value)
 end
 
 string.split = function(str, sep)
-	local res = { }
+	local res = {}
 	for v in str:gmatch("([^" .. sep .. "]+)") do
 		res[#res + 1] = v
 	end
@@ -131,7 +136,7 @@ string.split = function(str, sep)
 end
 
 string.splitTrimmed = function(str, sep)
-	local res = { }
+	local res = {}
 	for v in str:gmatch("([^" .. sep .. "]+)") do
 		res[#res + 1] = v:trim()
 	end
@@ -159,8 +164,8 @@ staminaBonus = {
 	target = 'Training Machine',
 	period = configManager.getNumber(configKeys.STAMINA_TRAINER_DELAY) * 60 * 1000, -- time on miliseconds trainers
 	bonus = configManager.getNumber(configKeys.STAMINA_TRAINER_GAIN), -- gain stamina trainers
-	eventsTrainer = { }, -- stamina in trainers
-	eventsPz = { } -- stamina in Pz
+	eventsTrainer = {}, -- stamina in trainers
+	eventsPz = {} -- stamina in Pz
 }
 
 FAMILIARSNAME = {

@@ -363,7 +363,6 @@ function Player:onMoveItem(item, count, fromPosition, toPosition, fromCylinder, 
 		end
 	end
 
-
 	-- Bath tube
 	local toTile = Tile(toCylinder:getPosition())
 	local topDownItem = toTile:getTopDownItem()
@@ -871,6 +870,7 @@ function Player:onChangeZone(zone)
 	end
 	return false
 end
+
 
 function Player:onInventoryUpdate(item, slot, equip)
 end

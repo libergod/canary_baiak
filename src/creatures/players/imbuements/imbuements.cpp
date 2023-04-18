@@ -56,8 +56,7 @@ bool Imbuements::loadFromXml(bool /* reloading */) {
 			);
 
 			// Category/Group
-		}
-		else if (strcasecmp(baseNode.name(), "category") == 0) {
+		} else if (strcasecmp(baseNode.name(), "category") == 0) {
 			pugi::xml_attribute id = baseNode.attribute("id");
 			if (!id) {
 				SPDLOG_WARN("Missing id for category entry");
@@ -70,8 +69,7 @@ bool Imbuements::loadFromXml(bool /* reloading */) {
 			);
 
 			// Imbuements
-		}
-		else if (strcasecmp(baseNode.name(), "imbuement") == 0) {
+		} else if (strcasecmp(baseNode.name(), "imbuement") == 0) {
 			++runningid;
 			pugi::xml_attribute base = baseNode.attribute("base");
 			if (!base) {
@@ -93,7 +91,7 @@ bool Imbuements::loadFromXml(bool /* reloading */) {
 				continue;
 			}
 
-			Imbuement& imbuement = imbuements.first->second;
+			Imbuement &imbuement = imbuements.first->second;
 
 			pugi::xml_attribute iconBase = baseNode.attribute("iconid");
 			if (!iconBase) {
@@ -157,7 +155,7 @@ bool Imbuements::loadFromXml(bool /* reloading */) {
 						count = pugi::cast<uint16_t>(childNode.attribute("count").value());
 					}
 
-					auto it2 = std::find_if(imbuement.items.begin(), imbuement.items.end(), [sourceId](const std::pair<uint16_t, uint16_t>& source) -> bool {
+					auto it2 = std::find_if(imbuement.items.begin(), imbuement.items.end(), [sourceId](const std::pair<uint16_t, uint16_t> &source) -> bool {
 						return source.first == sourceId;
 						});
 
@@ -168,16 +166,14 @@ bool Imbuements::loadFromXml(bool /* reloading */) {
 
 					imbuement.items.emplace_back(sourceId, count);
 
-				}
-				else if (strcasecmp(type.c_str(), "description") == 0) {
+				} else if (strcasecmp(type.c_str(), "description") == 0) {
 					std::string description = imbuement.name;
 					if ((attr = childNode.attribute("value"))) {
 						description = attr.as_string();
 					}
 
 					imbuement.description = description;
-				}
-				else if (strcasecmp(type.c_str(), "effect") == 0) {
+				} else if (strcasecmp(type.c_str(), "effect") == 0) {
 					// Effects
 					if (!(attr = childNode.attribute("type"))) {
 						SPDLOG_WARN("Missing effect type for imbuement name: {}", imbuement.name);
@@ -232,8 +228,7 @@ bool Imbuements::loadFromXml(bool /* reloading */) {
 						else if (tmpStrValue == "manaleech") {
 							usenormalskill = 3;
 							skillId = SKILL_MANA_LEECH_AMOUNT;
-						}
-						else {
+						} else {
 							SPDLOG_WARN("Unknow skill name {} in imbuement name {}", tmpStrValue, imbuement.name);
 							continue;
 						}
@@ -338,17 +333,17 @@ bool Imbuements::reload() {
 }
 
 BaseImbuement* Imbuements::getBaseByID(uint16_t id) {
-	auto baseImbuements = std::find_if(basesImbuement.begin(), basesImbuement.end(), [id](const BaseImbuement& groupImbuement) {
+	auto baseImbuements = std::find_if(basesImbuement.begin(), basesImbuement.end(), [id](const BaseImbuement &groupImbuement) {
 		return groupImbuement.id == id;
-		});
+	});
 
 	return baseImbuements != basesImbuement.end() ? &*baseImbuements : nullptr;
 }
 
 CategoryImbuement* Imbuements::getCategoryByID(uint16_t id) {
-	auto categoryImbuements = std::find_if(categoriesImbuement.begin(), categoriesImbuement.end(), [id](const CategoryImbuement& categoryImbuement) {
+	auto categoryImbuements = std::find_if(categoriesImbuement.begin(), categoriesImbuement.end(), [id](const CategoryImbuement &categoryImbuement) {
 		return categoryImbuement.id == id;
-		});
+	});
 
 	return categoryImbuements != categoriesImbuement.end() ? &*categoryImbuements : nullptr;
 }

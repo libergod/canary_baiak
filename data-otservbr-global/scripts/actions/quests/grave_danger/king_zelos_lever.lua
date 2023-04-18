@@ -1,42 +1,43 @@
 local config = {
-	bossName = "Faceless Bane",
+	bossName = "King Zelos",
 	requiredLevel = 250,
 	timeToFightAgain = 20, -- In hour
 	timeToDefeatBoss = 20, -- In minutes
 	playerPositions = {
-		{ pos = Position(33638, 32562, 13), teleport = Position(33617, 32567, 13), effect = CONST_ME_TELEPORT },
-		{ pos = Position(33639, 32562, 13), teleport = Position(33617, 32567, 13), effect = CONST_ME_TELEPORT },
-		{ pos = Position(33640, 32562, 13), teleport = Position(33617, 32567, 13), effect = CONST_ME_TELEPORT },
-		{ pos = Position(33641, 32562, 13), teleport = Position(33617, 32567, 13), effect = CONST_ME_TELEPORT },
-		{ pos = Position(33642, 32562, 13), teleport = Position(33617, 32567, 13), effect = CONST_ME_TELEPORT }
+		{pos = Position(33485, 31546, 13), teleport = Position(33443, 31554, 13), effect = CONST_ME_TELEPORT},
+		{pos = Position(33485, 31547, 13), teleport = Position(33443, 31554, 13), effect = CONST_ME_TELEPORT},
+		{pos = Position(33485, 31548, 13), teleport = Position(33443, 31554, 13), effect = CONST_ME_TELEPORT},
+		{pos = Position(33485, 31545, 13), teleport = Position(33443, 31554, 13), effect = CONST_ME_TELEPORT},
+		{pos = Position(33485, 31544, 13), teleport = Position(33443, 31554, 13), effect = CONST_ME_TELEPORT},
+		{pos = Position(33486, 31546, 13), teleport = Position(33443, 31554, 13), effect = CONST_ME_TELEPORT},
+		{pos = Position(33486, 31547, 13), teleport = Position(33443, 31554, 13), effect = CONST_ME_TELEPORT},
+		{pos = Position(33486, 31548, 13), teleport = Position(33443, 31554, 13), effect = CONST_ME_TELEPORT},
+		{pos = Position(33486, 31545, 13), teleport = Position(33443, 31554, 13), effect = CONST_ME_TELEPORT},
+		{pos = Position(33486, 31544, 13), teleport = Position(33443, 31554, 13), effect = CONST_ME_TELEPORT}
 	},
-	bossPosition = Position(33617, 32561, 13),
+	bossPosition = Position(33443, 31545, 13),
 	specPos = {
-		from = Position(33607, 32553, 13),
-		to = Position(33627, 32570, 13)
+		from = Position(33433, 31535, 13),
+		to = Position(33453, 31555, 13)
 	},
-	exit = Position(33618, 32523, 15),
-	storage = Storage.Quest.U12_00.TheDreamCourts.FacelessBaneTime
+	exit = Position(32172, 31918, 8),
+	storage = Storage.Quest.U12_20.GraveDanger.Bosses.KingZelosTimer
 }
 
-local threatenedLever = Action()
-
-function threatenedLever.onUse(player, item, fromPosition, target, toPosition, isHotkey)
+local kingZelosLever = Action()
+function kingZelosLever.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	if config.playerPositions[1].pos ~= player:getPosition() then
 		return false
 	end
-
 	local spec = Spectators()
 	spec:setOnlyPlayer(false)
 	spec:setRemoveDestination(config.exit)
 	spec:setCheckPosition(config.specPos)
 	spec:check()
-
 	if spec:getPlayers() > 0 then
-		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "There's someone fighting with " .. config.bossName .. ".")
+		player:say("There's someone fighting with " .. config.bossName .. ".", TALKTYPE_MONSTER_SAY)
 		return true
 	end
-
 	local lever = Lever()
 	lever:setPositions(config.playerPositions)
 	lever:setCondition(function(creature)
@@ -52,7 +53,7 @@ function threatenedLever.onUse(player, item, fromPosition, target, toPosition, i
 			for _, v in pairs(info) do
 				local newPlayer = v.creature
 				if newPlayer then
-					newPlayer:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You or a member in your team have to wait " .. config.timeToFightAgain .. " hours to face Faceless Bane again!")
+					newPlayer:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You or a member in your team have to wait " .. config.timeToFightAgain .. " hours to face ".. config.bossName .. " again!")
 					if newPlayer:getStorageValue(config.storage) > os.time() then
 						newPlayer:getPosition():sendMagicEffect(CONST_ME_POFF)
 					end
@@ -76,7 +77,7 @@ function threatenedLever.onUse(player, item, fromPosition, target, toPosition, i
 			spec:clearCreaturesCache()
 			spec:setOnlyPlayer(true)
 			spec:check()
-			local player_remove = { }
+			local player_remove = {}
 			for i, v in pairs(spec:getCreatureDetect()) do
 				for _, v_old in pairs(old_players) do
 					if v_old.creature == nil or v_old.creature:isMonster() then
@@ -93,5 +94,5 @@ function threatenedLever.onUse(player, item, fromPosition, target, toPosition, i
 	end
 end
 
-threatenedLever:uid(1039)
-threatenedLever:register()
+kingZelosLever:position({x = 33484, y = 31546, z = 13})
+kingZelosLever:register()

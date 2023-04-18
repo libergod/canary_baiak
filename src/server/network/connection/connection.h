@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_SERVER_NETWORK_CONNECTION_CONNECTION_H_
 #define SRC_SERVER_NETWORK_CONNECTION_CONNECTION_H_
@@ -29,8 +29,7 @@ class ServicePort;
 using ServicePort_ptr = std::shared_ptr<ServicePort>;
 using ConstServicePort_ptr = std::shared_ptr<const ServicePort>;
 
-class ConnectionManager
-{
+class ConnectionManager {
 	public:
 		static ConnectionManager &getInstance() {
 			static ConnectionManager instance;
@@ -48,12 +47,10 @@ class ConnectionManager
 		std::mutex connectionManagerLock;
 };
 
-class Connection : public std::enable_shared_from_this<Connection>
-{
+class Connection : public std::enable_shared_from_this<Connection> {
 	public:
 		// Constructor
-		Connection(asio::io_service &initIoService,
-			ConstServicePort_ptr initservicePort);
+		Connection(asio::io_service &initIoService, ConstServicePort_ptr initservicePort);
 		// Constructor end
 
 		// Destructor

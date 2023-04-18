@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_CREATURES_PLAYERS_GROUPING_GROUPS_H_
 #define SRC_CREATURES_PLAYERS_GROUPING_GROUPS_H_
@@ -13,12 +13,12 @@
 #include "declarations.hpp"
 
 struct Group {
-	std::string name;
-	std::array<bool, magic_enum::enum_integer(PlayerFlags_t::FlagLast)> flags { false };
-	uint32_t maxDepotItems;
-	uint32_t maxVipEntries;
-	uint16_t id;
-	bool access;
+		std::string name;
+		std::array<bool, magic_enum::enum_integer(PlayerFlags_t::FlagLast)> flags { false };
+		uint32_t maxDepotItems;
+		uint32_t maxVipEntries;
+		uint16_t id;
+		bool access;
 };
 
 class Groups {

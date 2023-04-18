@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #include "pch.hpp"
 
@@ -436,7 +436,7 @@ int ItemTypeFunctions::luaItemTypeGetElementType(lua_State* L) {
 		return 1;
 	}
 
-	auto& abilities = itemType->abilities;
+	auto &abilities = itemType->abilities;
 	if (abilities) {
 		lua_pushnumber(L, abilities->elementType);
 	} else {
@@ -453,7 +453,7 @@ int ItemTypeFunctions::luaItemTypeGetElementDamage(lua_State* L) {
 		return 1;
 	}
 
-	auto& abilities = itemType->abilities;
+	auto &abilities = itemType->abilities;
 	if (abilities) {
 		lua_pushnumber(L, abilities->elementDamage);
 	} else {
@@ -525,7 +525,7 @@ int ItemTypeFunctions::luaItemTypeGetSpeed(lua_State* L) {
 		return 1;
 	}
 
-	auto& abilities = itemType->abilities;
+	auto &abilities = itemType->abilities;
 	if (abilities) {
 		lua_pushnumber(L, abilities->speed);
 	} else {

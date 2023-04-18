@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_CREATURES_NPCS_SPAWNS_SPAWN_NPC_H_
 #define SRC_CREATURES_NPCS_SPAWNS_SPAWN_NPC_H_
@@ -17,11 +17,11 @@ class Npc;
 class NpcType;
 
 struct spawnBlockNpc_t {
-	Position pos;
-	NpcType* npcType;
-	int64_t lastSpawnNpc;
-	uint32_t interval;
-	Direction direction;
+		Position pos;
+		NpcType* npcType;
+		int64_t lastSpawnNpc;
+		uint32_t interval;
+		Direction direction;
 };
 
 class SpawnNpc {
@@ -83,7 +83,7 @@ class SpawnsNpc {
 		bool setStarted(bool setStarted) {
 			return started = setStarted;
 		}
-		
+
 		bool isLoaded() const {
 			return loaded;
 		}

@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_GAME_SCHEDULING_SCHEDULER_H_
 #define SRC_GAME_SCHEDULING_SCHEDULER_H_
@@ -29,8 +29,8 @@ class SchedulerTask : public Task {
 		}
 
 	private:
-		SchedulerTask(uint32_t delay, std::function<void (void)>&& f) :
-			Task(delay, std::move(f)) {}
+		SchedulerTask(uint32_t delay, std::function<void(void)> &&f) :
+			Task(delay, std::move(f)) { }
 
 		uint32_t eventId = 0;
 
@@ -40,15 +40,15 @@ class SchedulerTask : public Task {
 SchedulerTask* createSchedulerTask(uint32_t delay, std::function<void(void)> f);
 
 struct TaskComparator {
-	bool operator()(const SchedulerTask* lhs, const SchedulerTask* rhs) const {
-		return lhs->getCycle() > rhs->getCycle();
-	}
+		bool operator()(const SchedulerTask* lhs, const SchedulerTask* rhs) const {
+			return lhs->getCycle() > rhs->getCycle();
+		}
 };
 
 class Scheduler : public ThreadHolder<Scheduler> {
 	public:
 		Scheduler() = default;
-		
+
 		Scheduler(const Scheduler &) = delete;
 		void operator=(const Scheduler &) = delete;
 

@@ -22,17 +22,17 @@ using CreatureHashSet = phmap::flat_hash_set<Creature*>;
 using CreatureList = std::list<Creature*>;
 
 class Monster final : public Creature {
-public:
-	static Monster* createMonster(const std::string &name);
-	static int32_t despawnRange;
-	static int32_t despawnRadius;
+	public:
+		static Monster* createMonster(const std::string &name);
+		static int32_t despawnRange;
+		static int32_t despawnRadius;
 
 	explicit Monster(MonsterType* mType);
 	~Monster();
 
-	// non-copyable
-	Monster(const Monster&) = delete;
-	Monster& operator=(const Monster&) = delete;
+		// non-copyable
+		Monster(const Monster &) = delete;
+		Monster &operator=(const Monster &) = delete;
 
 	Monster* getMonster() override {
 		return this;
@@ -50,30 +50,30 @@ public:
 	void removeList() override;
 	void addList() override;
 
-	const std::string &getName() const override {
-		return mType->name;
-	}
-	// Real monster name, set on monster creation "createMonsterType(typeName)"
-	const std::string& getTypeName() const override {
-		return mType->typeName;
-	}
-	const std::string& getNameDescription() const override {
-		return mType->nameDescription;
-	}
-	std::string getDescription(int32_t) const override {
-		return strDescription + '.';
-	}
+		const std::string &getName() const override {
+			return mType->name;
+		}
+		// Real monster name, set on monster creation "createMonsterType(typeName)"
+		const std::string &getTypeName() const override {
+			return mType->typeName;
+		}
+		const std::string &getNameDescription() const override {
+			return mType->nameDescription;
+		}
+		std::string getDescription(int32_t) const override {
+			return strDescription + '.';
+		}
 
 	CreatureType_t getType() const override {
 		return CREATURETYPE_MONSTER;
 	}
 
-	const Position& getMasterPos() const {
-		return masterPos;
-	}
-	void setMasterPos(Position pos) {
-		masterPos = pos;
-	}
+		const Position &getMasterPos() const {
+			return masterPos;
+		}
+		void setMasterPos(Position pos) {
+			masterPos = pos;
+		}
 
 	RaceType_t getRace() const override {
 		return mType->info.race;
@@ -97,39 +97,39 @@ public:
 		return mType->info.enemyFactions.empty() ? false : mType->info.enemyFactions.find(faction) != mType->info.enemyFactions.end();
 	}
 
-	bool isPushable() const override {
-		return mType->info.pushable && baseSpeed != 0;
-	}
-	bool isAttackable() const override {
-		return mType->info.isAttackable;
-	}
-	bool canPushItems() const {
-		return mType->info.canPushItems;
-	}
-	bool canPushCreatures() const {
-		return mType->info.canPushCreatures;
-	}
-	bool isRewardBoss() const {
-		return mType->info.isRewardBoss;
-	}
-	bool isHostile() const {
-		return mType->info.isHostile;
-	}
-	bool isFamiliar() const {
-		return mType->info.isFamiliar;
-	}
-	bool canSeeInvisibility() const override {
-		return isImmune(CONDITION_INVISIBLE);
-	}
-	uint32_t getManaCost() const {
-		return mType->info.manaCost;
-	}
-	RespawnType getRespawnType() const {
-		return mType->info.respawnType;
-	}
-	void setSpawnMonster(SpawnMonster* newSpawnMonster) {
-		this->spawnMonster = newSpawnMonster;
-	}
+		bool isPushable() const override {
+			return mType->info.pushable && baseSpeed != 0;
+		}
+		bool isAttackable() const override {
+			return mType->info.isAttackable;
+		}
+		bool canPushItems() const {
+			return mType->info.canPushItems;
+		}
+		bool canPushCreatures() const {
+			return mType->info.canPushCreatures;
+		}
+		bool isRewardBoss() const {
+			return mType->info.isRewardBoss;
+		}
+		bool isHostile() const {
+			return mType->info.isHostile;
+		}
+		bool isFamiliar() const {
+			return mType->info.isFamiliar;
+		}
+		bool canSeeInvisibility() const override {
+			return isImmune(CONDITION_INVISIBLE);
+		}
+		uint32_t getManaCost() const {
+			return mType->info.manaCost;
+		}
+		RespawnType getRespawnType() const {
+			return mType->info.respawnType;
+		}
+		void setSpawnMonster(SpawnMonster* newSpawnMonster) {
+			this->spawnMonster = newSpawnMonster;
+		}
 
 	uint32_t getReflectValue(CombatType_t combatType) const;
 	uint32_t getHealingCombatValue(CombatType_t healingType) const;
@@ -137,15 +137,15 @@ public:
 	bool canWalkOnFieldType(CombatType_t combatType) const;
 	void onAttackedCreatureDisappear(bool isLogout) override;
 
-	void onCreatureAppear(Creature* creature, bool isLogin) override;
-	void onRemoveCreature(Creature* creature, bool isLogout) override;
-	void onCreatureMove(Creature* creature, const Tile* newTile, const Position& newPos, const Tile* oldTile, const Position& oldPos, bool teleport) override;
-	void onCreatureSay(Creature* creature, SpeakClasses type, const std::string &text) override;
+		void onCreatureAppear(Creature* creature, bool isLogin) override;
+		void onRemoveCreature(Creature* creature, bool isLogout) override;
+		void onCreatureMove(Creature* creature, const Tile* newTile, const Position &newPos, const Tile* oldTile, const Position &oldPos, bool teleport) override;
+		void onCreatureSay(Creature* creature, SpeakClasses type, const std::string &text) override;
 
-	void drainHealth(Creature* attacker, int32_t damage) override;
-	void changeHealth(int32_t healthChange, bool sendHealthChange = true) override;
-	bool getNextStep(Direction& direction, uint32_t &flags) override;
-	void onFollowCreatureComplete(const Creature* creature) override;
+		void drainHealth(Creature* attacker, int32_t damage) override;
+		void changeHealth(int32_t healthChange, bool sendHealthChange = true) override;
+		bool getNextStep(Direction &direction, uint32_t &flags) override;
+		void onFollowCreatureComplete(const Creature* creature) override;
 
 	void onThink(uint32_t interval) override;
 
@@ -215,8 +215,8 @@ public:
 
 	void setMonsterIcon(uint16_t iconcount, uint16_t iconnumber);
 
-	void setNormalCreatureLight() override;
-	bool getCombatValues(int32_t & min, int32_t & max) override;
+		void setNormalCreatureLight() override;
+		bool getCombatValues(int32_t &min, int32_t &max) override;
 
 	void doAttacking(uint32_t interval) override;
 	bool hasExtraSwing() override {
@@ -226,43 +226,43 @@ public:
 	bool searchTarget(TargetSearchType_t searchType = TARGETSEARCH_DEFAULT);
 	bool selectTarget(Creature* creature);
 
-	const CreatureList& getTargetList() const {
-		return targetList;
-	}
-	const CreatureHashSet& getFriendList() const {
-		return friendList;
-	}
+		const CreatureList &getTargetList() const {
+			return targetList;
+		}
+		const CreatureHashSet &getFriendList() const {
+			return friendList;
+		}
 
 	bool isTarget(const Creature* creature) const;
 	bool isFleeing() const {
 		return !isSummon() && getHealth() <= mType->info.runAwayHealth && challengeFocusDuration <= 0;
 	}
 
-	bool getDistanceStep(const Position& targetPos, Direction& direction, bool flee = false);
-	bool isTargetNearby() const {
-		return stepDuration >= 1;
-	}
-	bool isIgnoringFieldDamage() const {
-		return ignoreFieldDamage;
-	}
-	bool israndomStepping() const {
-		return randomStepping;
-	}
-	void setIgnoreFieldDamage(bool ignore) {
-		ignoreFieldDamage = ignore;
-	}
-	bool getIgnoreFieldDamage() const {
-		return ignoreFieldDamage;
-	}
-	uint16_t getRaceId() const {
-		return mType->info.raceid;
-	}
+		bool getDistanceStep(const Position &targetPos, Direction &direction, bool flee = false);
+		bool isTargetNearby() const {
+			return stepDuration >= 1;
+		}
+		bool isIgnoringFieldDamage() const {
+			return ignoreFieldDamage;
+		}
+		bool israndomStepping() const {
+			return randomStepping;
+		}
+		void setIgnoreFieldDamage(bool ignore) {
+			ignoreFieldDamage = ignore;
+		}
+		bool getIgnoreFieldDamage() const {
+			return ignoreFieldDamage;
+		}
+		uint16_t getRaceId() const {
+			return mType->info.raceid;
+		}
 
 	void updateTargetList();
 	void clearTargetList();
 	void clearFriendList();
 
-	BlockType_t blockHit(Creature* attacker, CombatType_t combatType, int32_t & damage, bool checkDefense = false, bool checkArmor = false, bool field = false) override;
+		BlockType_t blockHit(Creature* attacker, CombatType_t combatType, int32_t &damage, bool checkDefense = false, bool checkArmor = false, bool field = false) override;
 
 	static uint32_t monsterAutoID;
 
@@ -272,9 +272,9 @@ public:
 		return getForgeStack() == 0 && !isSummon() && !isRewardBoss() && canDropLoot() && isForgeCreature() && getRaceId() > 0;
 	}
 
-	bool isForgeCreature() const {
-		return mType->info.isForgeCreature;
-	}
+		bool isForgeCreature() const {
+			return mType->info.isForgeCreature;
+		}
 
 	void setForgeMonster(bool forge) {
 		mType->info.isForgeCreature = forge;
@@ -371,17 +371,17 @@ private:
 	void onAddCondition(ConditionType_t type) override;
 	void onEndCondition(ConditionType_t type) override;
 
-	bool canUseAttack(const Position &pos, const Creature* target) const;
-	bool canUseSpell(const Position &pos, const Position& targetPos, const spellBlock_t& sb, uint32_t interval, bool& inRange, bool& resetTicks);
-	bool getRandomStep(const Position &creaturePos, Direction& direction) const;
-	bool getDanceStep(const Position &creaturePos, Direction& direction, bool keepAttack = true, bool keepDistance = true);
-	bool isInSpawnRange(const Position &pos) const;
-	bool canWalkTo(Position pos, Direction direction) const;
+		bool canUseAttack(const Position &pos, const Creature* target) const;
+		bool canUseSpell(const Position &pos, const Position &targetPos, const spellBlock_t &sb, uint32_t interval, bool &inRange, bool &resetTicks);
+		bool getRandomStep(const Position &creaturePos, Direction &direction) const;
+		bool getDanceStep(const Position &creaturePos, Direction &direction, bool keepAttack = true, bool keepDistance = true);
+		bool isInSpawnRange(const Position &pos) const;
+		bool canWalkTo(Position pos, Direction direction) const;
 
-	static bool pushItem(Item* item, const Direction& nextDirection);
-	static void pushItems(Tile* tile, const Direction& nextDirection);
-	static bool pushCreature(Creature* creature);
-	static void pushCreatures(Tile* tile);
+		static bool pushItem(Item* item, const Direction &nextDirection);
+		static void pushItems(Tile* tile, const Direction &nextDirection);
+		static bool pushCreature(Creature* creature);
+		static void pushCreatures(Tile* tile);
 
 	void onThinkTarget(uint32_t interval);
 	void onThinkYell(uint32_t interval);
@@ -390,33 +390,33 @@ private:
 	bool isFriend(const Creature* creature) const;
 	bool isOpponent(const Creature* creature) const;
 
-	uint64_t getLostExperience() const override {
-		return skillLoss ? mType->info.experience : 0;
-	}
-	uint16_t getLookCorpse() const override {
-		return mType->info.lookcorpse;
-	}
-	void dropLoot(Container* corpse, Creature* lastHitCreature) override;
-	uint32_t getDamageImmunities() const override {
-		return mType->info.damageImmunities;
-	}
-	uint32_t getConditionImmunities() const override {
-		return mType->info.conditionImmunities;
-	}
-	void getPathSearchParams(const Creature* creature, FindPathParams& fpp) const override;
-	bool useCacheMap() const override {
-		return !randomStepping;
-	}
+		uint64_t getLostExperience() const override {
+			return skillLoss ? mType->info.experience : 0;
+		}
+		uint16_t getLookCorpse() const override {
+			return mType->info.lookcorpse;
+		}
+		void dropLoot(Container* corpse, Creature* lastHitCreature) override;
+		uint32_t getDamageImmunities() const override {
+			return mType->info.damageImmunities;
+		}
+		uint32_t getConditionImmunities() const override {
+			return mType->info.conditionImmunities;
+		}
+		void getPathSearchParams(const Creature* creature, FindPathParams &fpp) const override;
+		bool useCacheMap() const override {
+			return !randomStepping;
+		}
 
-	friend class MonsterFunctions;
-	friend class Map;
+		friend class MonsterFunctions;
+		friend class Map;
 
-	static std::vector<std::pair<int8_t, int8_t>> getPushItemLocationOptions(const Direction& direction);
+		static std::vector<std::pair<int8_t, int8_t>> getPushItemLocationOptions(const Direction &direction);
 
-	void doFollowCreature(uint32_t &flags, Direction& nextDirection, bool& result);
-	void doRandomStep(Direction& nextDirection, bool& result);
+		void doFollowCreature(uint32_t &flags, Direction &nextDirection, bool &result);
+		void doRandomStep(Direction &nextDirection, bool &result);
 
-	void onConditionStatusChange(const ConditionType_t& type);
+		void onConditionStatusChange(const ConditionType_t &type);
 };
 
 #endif // SRC_CREATURES_MONSTERS_MONSTER_H_

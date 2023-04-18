@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_UTILS_CONST_H_
 #define SRC_UTILS_CONST_H_
@@ -16,8 +16,6 @@ const uint32_t MAX_STATICWALK = 100;
 static constexpr size_t NETWORKMESSAGE_PLAYERNAME_MAXLENGTH = 30;
 static constexpr int32_t NETWORKMESSAGE_MAXSIZE = 65500;
 
-// QT clients probably have bigger input buffer because of exiva options
-// But for now we don't support exiva options
 static constexpr int32_t INPUTMESSAGE_MAXSIZE = 4096;
 
 static constexpr int32_t CHANNEL_GUILD = 0x00;
@@ -51,7 +49,6 @@ static constexpr int32_t PSTRG_FAMILIARS_RANGE_SIZE = 500;
 static constexpr int32_t IMMOVABLE_ACTION_ID = 100;
 
 #define IS_IN_KEYRANGE(key, range) \
-    (key >= PSTRG_##range##_START && \
-    ((key - PSTRG_##range##_START) <= PSTRG_##range##_SIZE))
+	(key >= PSTRG_##range##_START && ((key - PSTRG_##range##_START) <= PSTRG_##range##_SIZE))
 
 #endif // SRC_UTILS_CONST_H_

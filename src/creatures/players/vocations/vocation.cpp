@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #include "pch.hpp"
 
@@ -33,7 +33,7 @@ bool Vocations::loadFromXml() {
 		uint16_t id = pugi::cast<uint16_t>(attr.value());
 
 		auto res = vocationsMap.emplace(std::piecewise_construct, std::forward_as_tuple(id), std::forward_as_tuple(id));
-		Vocation& voc = res.first->second;
+		Vocation &voc = res.first->second;
 
 		if ((attr = vocationNode.attribute("name"))) {
 			voc.name = attr.as_string();
@@ -46,7 +46,7 @@ bool Vocations::loadFromXml() {
 		if ((attr = vocationNode.attribute("baseid"))) {
 			voc.baseId = pugi::cast<uint16_t>(attr.value());
 		}
-		
+
 		if ((attr = vocationNode.attribute("description"))) {
 			voc.description = attr.as_string();
 		}
@@ -120,12 +120,13 @@ bool Vocations::loadFromXml() {
 						voc.skillMultipliers[skill_id] = pugi::cast<float>(childNode.attribute("multiplier").value());
 					} else {
 						SPDLOG_WARN("[Vocations::loadFromXml] - "
-                                    "No valid skill id: {} for vocation: {}",
-                                    skill_id, voc.id);
+									"No valid skill id: {} for vocation: {}",
+									skill_id, voc.id);
 					}
 				} else {
 					SPDLOG_WARN("[Vocations::loadFromXml] - "
-                                "Missing skill id for vocation: {}", voc.id);
+								"Missing skill id for vocation: {}",
+								voc.id);
 				}
 			} else if (strcasecmp(childNode.name(), "formula") == 0) {
 				pugi::xml_attribute meleeDamageAttribute = childNode.attribute("meleeDamage");
@@ -157,8 +158,8 @@ Vocation* Vocations::getVocation(uint16_t id) {
 	auto it = vocationsMap.find(id);
 	if (it == vocationsMap.end()) {
 		SPDLOG_WARN("[Vocations::getVocation] - "
-                    "Vocation {} not found",
-										id);
+					"Vocation {} not found",
+					id);
 		return nullptr;
 	}
 	return &it->second;

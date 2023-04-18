@@ -5,15 +5,14 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_ITEMS_CONTAINERS_REWARDS_REWARDCHEST_H_
 #define SRC_ITEMS_CONTAINERS_REWARDS_REWARDCHEST_H_
 
 #include "items/containers/container.h"
 
-class RewardChest final : public Container
-{
+class RewardChest final : public Container {
 	public:
 		explicit RewardChest(uint16_t type);
 
@@ -24,7 +23,7 @@ class RewardChest final : public Container
 			return this;
 		}
 
-		//cylinder implementations
+		// cylinder implementations
 		ReturnValue queryAdd(int32_t index, const Thing &thing, uint32_t count, uint32_t flags, Creature* actor = nullptr) const final;
 
 		void postAddNotification(Thing* thing, const Cylinder* oldParent, int32_t index, CylinderLink_t link = LINK_OWNER) final;

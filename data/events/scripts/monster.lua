@@ -68,7 +68,7 @@ function Monster:onDropLoot(corpse)
 					end
 				end
 			end
-			
+
 			local boostedMessage
 			local isBoostedBoss = self:getName():lower() == (Game.getBoostedBoss()):lower()
 			local bossRaceIds = {player:getSlotBossId(1), player:getSlotBossId(2)}
@@ -96,12 +96,12 @@ function Monster:onDropLoot(corpse)
 					end
 				end
 			end
-			
-			local text = { }
+
+			local text = {}
 			if self:getName():lower() == (Game.getBoostedCreature()):lower() then
 				text = ("Loot of %s: %s (boosted loot)"):format(mType:getNameDescription(), corpse:getContentDescription())
 			elseif boostedMessage then
-				text = ("Loot of %s: %s (Boss bonus)"):format(mType:getNameDescription(), corpse:getContentDescription())	
+				text = ("Loot of %s: %s (Boss bonus)"):format(mType:getNameDescription(), corpse:getContentDescription())
 			else
 				text = ("Loot of %s: %s"):format(mType:getNameDescription(), corpse:getContentDescription())
 			end

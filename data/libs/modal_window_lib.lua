@@ -2,10 +2,10 @@ local ModalWindowAutoID = 10000
 
 if not __ModalWindow then
 	__ModalWindow = ModalWindow
-	ModalWindows = { }
+	ModalWindows = {}
 end
 
-ModalWindow = { }
+ModalWindow = {}
 ModalWindow.__index = ModalWindow
 
 function ModalWindow.new(self, ...)
@@ -14,8 +14,8 @@ function ModalWindow.new(self, ...)
 	end
 
 	self.modalWindowId = 0
-	self.buttons = { }
-	self.choices = { }
+	self.buttons = {}
+	self.choices = {}
 	self.using = 0
 	self.defaultEnterButton = 0
 	self.defaultEscapeButton = 1
@@ -93,7 +93,7 @@ function ModalWindow:callButton(name, player, button, choice)
 end
 
 function ModalWindow:clearButtons()
-	self.buttons = { }
+	self.buttons = {}
 	return true
 end
 
@@ -162,13 +162,13 @@ function ModalWindow:callChoice(text, player, button, choice)
 end
 
 function ModalWindow:clearChoices()
-	self.choices = { }
+	self.choices = {}
 	return true
 end
 
 function ModalWindow:clear()
-	self.choices = { }
-	self.buttons = { }
+	self.choices = {}
+	self.buttons = {}
 	return true
 end
 
@@ -207,7 +207,7 @@ end
 function ModalWindow:sendToPlayer(player)
 	local modalWindow = self:create()
 	local playerId = player:getId()
-	ModalWindows[playerId] = ModalWindows[playerId] or { }
+	ModalWindows[playerId] = ModalWindows[playerId] or {}
 	ModalWindows[playerId][self.modalWindowId] = self
 	player:registerEvent("modalWindowHelper")
 	self.using = self.using + 1

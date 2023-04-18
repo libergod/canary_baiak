@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_ITEMS_ITEMS_DEFINITIONS_HPP_
 #define SRC_ITEMS_ITEMS_DEFINITIONS_HPP_
@@ -200,9 +200,9 @@ enum AttrTypes_t {
 	ATTR_TELE_DEST = 8,
 	ATTR_ITEM = 9,
 	ATTR_DEPOT_ID = 10,
-	//ATTR_EXT_SPAWN_FILE = 11,
+	// ATTR_EXT_SPAWN_FILE = 11,
 	ATTR_RUNE_CHARGES = 12,
-	//ATTR_EXT_HOUSE_FILE = 13,
+	// ATTR_EXT_HOUSE_FILE = 13,
 	ATTR_HOUSEDOORID = 14,
 	ATTR_COUNT = 15,
 	ATTR_DURATION = 16,
@@ -315,14 +315,14 @@ enum ZoneType_t {
 };
 
 enum CylinderFlags_t {
-	FLAG_NOLIMIT = 1 << 0, //Bypass limits like capacity/container limits, blocking items/creatures etc.
-	FLAG_IGNOREBLOCKITEM = 1 << 1, //Bypass movable blocking item checks
-	FLAG_IGNOREBLOCKCREATURE = 1 << 2, //Bypass creature checks
-	FLAG_CHILDISOWNER = 1 << 3, //Used by containers to query capacity of the carrier (player)
-	FLAG_PATHFINDING = 1 << 4, //An additional check is done for floor changing/teleport items
-	FLAG_IGNOREFIELDDAMAGE = 1 << 5, //Bypass field damage checks
-	FLAG_IGNORENOTMOVEABLE = 1 << 6, //Bypass check for mobility
-	FLAG_IGNOREAUTOSTACK = 1 << 7, //queryDestination will not try to stack items together
+	FLAG_NOLIMIT = 1 << 0, // Bypass limits like capacity/container limits, blocking items/creatures etc.
+	FLAG_IGNOREBLOCKITEM = 1 << 1, // Bypass movable blocking item checks
+	FLAG_IGNOREBLOCKCREATURE = 1 << 2, // Bypass creature checks
+	FLAG_CHILDISOWNER = 1 << 3, // Used by containers to query capacity of the carrier (player)
+	FLAG_PATHFINDING = 1 << 4, // An additional check is done for floor changing/teleport items
+	FLAG_IGNOREFIELDDAMAGE = 1 << 5, // Bypass field damage checks
+	FLAG_IGNORENOTMOVEABLE = 1 << 6, // Bypass check for mobility
+	FLAG_IGNOREAUTOSTACK = 1 << 7, // queryDestination will not try to stack items together
 };
 
 enum CylinderLink_t {
@@ -446,8 +446,8 @@ enum ItemParseAttributes_t {
 };
 
 struct ImbuementInfo {
-	Imbuement* imbuement;
-	int32_t duration = 0;
+		Imbuement* imbuement;
+		uint32_t duration = 0;
 };
 
 #endif // SRC_ITEMS_ITEMS_DEFINITIONS_HPP_

@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #include "pch.hpp"
 
@@ -300,7 +300,7 @@ int NpcFunctions::luaNpcIsInteractingWithPlayer(lua_State* L) {
 }
 
 int NpcFunctions::luaNpcIsPlayerInteractingOnTopic(lua_State* L) {
-	//npc:isPlayerInteractingOnTopic(creature, topicId = 0)
+	// npc:isPlayerInteractingOnTopic(creature, topicId = 0)
 	Npc* npc = getUserdata<Npc>(L, 1);
 	Creature* creature = getCreature(L, 2);
 	uint32_t topicId = getNumber<uint32_t>(L, 3, 0);
@@ -357,7 +357,7 @@ int NpcFunctions::luaNpcOpenShopWindow(lua_State* L) {
 }
 
 int NpcFunctions::luaNpcCloseShopWindow(lua_State* L) {
-	//npc:closeShopWindow(player)
+	// npc:closeShopWindow(player)
 	Player* player = getPlayer(L, 2);
 	if (!player) {
 		reportErrorFunc(getErrorDesc(LUA_ERROR_PLAYER_NOT_FOUND));
@@ -381,7 +381,7 @@ int NpcFunctions::luaNpcCloseShopWindow(lua_State* L) {
 }
 
 int NpcFunctions::luaNpcIsMerchant(lua_State* L) {
-	//npc:isMerchant()
+	// npc:isMerchant()
 	Npc* npc = getUserdata<Npc>(L, 1);
 	if (!npc) {
 		reportErrorFunc(getErrorDesc(LUA_ERROR_NPC_NOT_FOUND));
@@ -401,7 +401,7 @@ int NpcFunctions::luaNpcIsMerchant(lua_State* L) {
 }
 
 int NpcFunctions::luaNpcGetShopItem(lua_State* L) {
-	//npc:getShopItem(itemId)
+	// npc:getShopItem(itemId)
 	Npc* npc = getUserdata<Npc>(L, 1);
 	if (!npc) {
 		reportErrorFunc(getErrorDesc(LUA_ERROR_CREATURE_NOT_FOUND));
@@ -410,8 +410,7 @@ int NpcFunctions::luaNpcGetShopItem(lua_State* L) {
 	}
 
 	const std::vector<ShopBlock> &shopVector = npc->getShopItemVector();
-	for (ShopBlock shopBlock : shopVector)
-	{
+	for (ShopBlock shopBlock : shopVector) {
 		setField(L, "id", shopBlock.itemId);
 		setField(L, "name", shopBlock.itemName);
 		setField(L, "subType", shopBlock.itemSubType);
@@ -425,8 +424,7 @@ int NpcFunctions::luaNpcGetShopItem(lua_State* L) {
 	return 1;
 }
 
-int NpcFunctions::luaNpcMove(lua_State* L)
-{
+int NpcFunctions::luaNpcMove(lua_State* L) {
 	// npc:move(direction)
 	Npc* npc = getUserdata<Npc>(L, 1);
 	if (npc) {
@@ -435,8 +433,7 @@ int NpcFunctions::luaNpcMove(lua_State* L)
 	return 0;
 }
 
-int NpcFunctions::luaNpcTurn(lua_State* L)
-{
+int NpcFunctions::luaNpcTurn(lua_State* L) {
 	// npc:turn(direction)
 	Npc* npc = getUserdata<Npc>(L, 1);
 	if (npc) {
@@ -445,8 +442,7 @@ int NpcFunctions::luaNpcTurn(lua_State* L)
 	return 0;
 }
 
-int NpcFunctions::luaNpcFollow(lua_State* L)
-{
+int NpcFunctions::luaNpcFollow(lua_State* L) {
 	// npc:follow(player)
 	Npc* npc = getUserdata<Npc>(L, 1);
 	if (!npc) {
@@ -458,8 +454,7 @@ int NpcFunctions::luaNpcFollow(lua_State* L)
 	return 1;
 }
 
-int NpcFunctions::luaNpcGetId(lua_State* L)
-{
+int NpcFunctions::luaNpcGetId(lua_State* L) {
 	// npc:getId()
 	Npc* npc = getUserdata<Npc>(L, 1);
 	if (!npc) {
@@ -467,13 +462,12 @@ int NpcFunctions::luaNpcGetId(lua_State* L)
 		lua_pushnil(L);
 		return 1;
 	}
-	
+
 	lua_pushnumber(L, npc->getID());
 	return 1;
 }
 
-int NpcFunctions::luaNpcSellItem(lua_State* L)
-{
+int NpcFunctions::luaNpcSellItem(lua_State* L) {
 	// npc:sellItem(player, itemid, amount, <optional: default: 1> subtype, <optional: default: 0> actionid, <optional: default: false> ignoreCap, <optional: default: false> inBackpacks)
 	Npc* npc = getUserdata<Npc>(L, 1);
 	if (!npc) {
@@ -644,9 +638,8 @@ int NpcFunctions::luaNpcSellItem(lua_State* L)
 	return 1;
 }
 
-int NpcFunctions::luaNpcGetDistanceTo(lua_State* L)
-{
-	//npc:getDistanceTo(uid)
+int NpcFunctions::luaNpcGetDistanceTo(lua_State* L) {
+	// npc:getDistanceTo(uid)
 	Npc* npc = getUserdata<Npc>(L, 1);
 	if (!npc) {
 		reportErrorFunc(getErrorDesc(LUA_ERROR_NPC_NOT_FOUND));

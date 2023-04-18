@@ -5,10 +5,9 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #include "pch.hpp"
-
 #include "io/iomap.h"
 #include "game/movement/teleport.h"
 #include "game/game.h"
@@ -128,8 +127,7 @@ bool IOMap::loadMap(Map* map, const std::string &fileName, const Position &pos, 
 	return true;
 }
 
-bool IOMap::parseMapDataAttributes(OTB::Loader &loader, const OTB::Node &mapNode, Map &map, const std::string &fileName)
-{
+bool IOMap::parseMapDataAttributes(OTB::Loader &loader, const OTB::Node &mapNode, Map &map, const std::string &fileName) {
 	PropStream propStream;
 	if (!loader.getProps(mapNode, propStream)) {
 		setLastErrorString("Could not read map data attributes.");
@@ -460,7 +458,6 @@ bool IOMap::parseTileArea(OTB::Loader &loader, const OTB::Node &tileAreaNode, Ma
 	return true;
 }
 
-
 bool IOMap::parseTowns(OTB::Loader &loader, const OTB::Node &townsNode, Map &map) {
 	for (auto &townNode : townsNode.children) {
 		PropStream propStream;
@@ -505,10 +502,9 @@ bool IOMap::parseTowns(OTB::Loader &loader, const OTB::Node &townsNode, Map &map
 	return true;
 }
 
-
 bool IOMap::parseWaypoints(OTB::Loader &loader, const OTB::Node &waypointsNode, Map &map) {
 	PropStream propStream;
-	for (auto& node : waypointsNode.children) {
+	for (auto &node : waypointsNode.children) {
 		if (node.type != OTBM_WAYPOINT) {
 			setLastErrorString("Unknown waypoint node.");
 			return false;
@@ -535,4 +531,3 @@ bool IOMap::parseWaypoints(OTB::Loader &loader, const OTB::Node &waypointsNode, 
 	}
 	return true;
 }
-

@@ -99,11 +99,10 @@ end
 
 -- Functions From OTServBR-Global
 function Player.getCookiesDelivered(self)
-
 	if not IsRunningGlobalDatapack() then
 		return true
 	end
-	
+
 	local storage, amount = {
 		Storage.WhatAFoolish.CookieDelivery.SimonTheBeggar, Storage.WhatAFoolish.CookieDelivery.Markwin, Storage.WhatAFoolish.CookieDelivery.Ariella,
 		Storage.WhatAFoolish.CookieDelivery.Hairycles, Storage.WhatAFoolish.CookieDelivery.Djinn, Storage.WhatAFoolish.CookieDelivery.AvarTar,
@@ -123,11 +122,10 @@ function Player.allowMovement(self, allow)
 end
 
 function Player.checkGnomeRank(self)
-
 	if not IsRunningGlobalDatapack() then
 		return true
 	end
-	
+
 	local points = self:getStorageValue(Storage.BigfootBurden.Rank)
 	local questProgress = self:getStorageValue(Storage.BigfootBurden.QuestLine)
 	if points >= 30 and points < 120 then
@@ -319,7 +317,7 @@ function Player.isMage(self)
 		self:getVocation():getId())
 end
 
-local ACCOUNT_STORAGES = { }
+local ACCOUNT_STORAGES = {}
 function Player.getAccountStorage(self, accountId, key, forceUpdate)
 	local accountId = self:getAccountId()
 	if ACCOUNT_STORAGES[accountId] and not forceUpdate then
@@ -425,11 +423,9 @@ function Player:CreateFamiliarSpell()
 	myFamiliar:changeSpeed(math.max(self:getSpeed() - myFamiliar:getBaseSpeed(), 0))
 	playerPosition:sendMagicEffect(CONST_ME_MAGIC_BLUE)
 	myFamiliar:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
-	-- Divide by 2 to get half the time (the default total time is 30 / 2 = 15)
-	local summonDuration = configManager.getNumber(configKeys.FAMILIAR_TIME) / 2
-	self:setStorageValue(Global.Storage.FamiliarSummon, os.time() + summonDuration * 60)
-	addEvent(RemoveFamiliar, summonDuration * 60 * 1000, myFamiliar:getId(), self:getId())
-	
+	-- 15 minute count starts after using the spell
+	self:setStorageValue(Storage.FamiliarSummon, os.time() + 15*60)
+	addEvent(RemoveFamiliar, 15*60*1000, myFamiliar:getId(), self:getId())
 	for sendMessage = 1, #FAMILIAR_TIMER do
 		self:setStorageValue(
 			FAMILIAR_TIMER[sendMessage].storage,

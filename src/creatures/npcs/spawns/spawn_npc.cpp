@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #include "pch.hpp"
 
@@ -19,7 +19,7 @@
 static constexpr int32_t MINSPAWN_INTERVAL = 1000; // 1 second
 static constexpr int32_t MAXSPAWN_INTERVAL = 86400000; // 1 day
 
-bool SpawnsNpc::loadFromXml(const std::string &fileNpcName){
+bool SpawnsNpc::loadFromXml(const std::string &fileNpcName) {
 	if (isLoaded()) {
 		return true;
 	}
@@ -108,8 +108,7 @@ void SpawnsNpc::startup() {
 	setStarted(true);
 }
 
-void SpawnsNpc::clear()
-{
+void SpawnsNpc::clear() {
 	for (SpawnNpc &spawnNpc : spawnNpcList) {
 		spawnNpc.stopEvent();
 	}
@@ -124,6 +123,7 @@ bool SpawnsNpc::isInZone(const Position &centerPos, int32_t radius, const Positi
 	if (radius == -1) {
 		return true;
 	}
+
 	return ((pos.getX() >= centerPos.getX() - radius) && (pos.getX() <= centerPos.getX() + radius) && (pos.getY() >= centerPos.getY() - radius) && (pos.getY() <= centerPos.getY() + radius));
 }
 
@@ -233,10 +233,10 @@ void SpawnNpc::scheduleSpawnNpc(uint32_t spawnId, spawnBlockNpc_t &sb, uint16_t 
 void SpawnNpc::cleanup() {
 	auto it = spawnedNpcMap.begin();
 	while (it != spawnedNpcMap.end()) {
-            uint32_t spawnId = it->first;
+		uint32_t spawnId = it->first;
 		Npc* npc = it->second;
-            if (npc->isRemoved()) {
-               spawnNpcMap[spawnId].lastSpawnNpc = OTSYS_TIME();
+		if (npc->isRemoved()) {
+			spawnNpcMap[spawnId].lastSpawnNpc = OTSYS_TIME();
 			npc->decrementReferenceCounter();
 			it = spawnedNpcMap.erase(it);
 		} else {

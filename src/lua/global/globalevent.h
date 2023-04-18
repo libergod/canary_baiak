@@ -22,16 +22,16 @@ public:
 	GlobalEvents();
 	~GlobalEvents();
 
-	// non-copyable
-	GlobalEvents(const GlobalEvents&) = delete;
-	GlobalEvents& operator=(const GlobalEvents&) = delete;
+		// non-copyable
+		GlobalEvents(const GlobalEvents &) = delete;
+		GlobalEvents &operator=(const GlobalEvents &) = delete;
 
-	static GlobalEvents& getInstance() {
-		// Guaranteed to be destroyed
-		static GlobalEvents instance;
-		// Instantiated on first use
-		return instance;
-	}
+		static GlobalEvents &getInstance() {
+			// Guaranteed to be destroyed
+			static GlobalEvents instance;
+			// Instantiated on first use
+			return instance;
+		}
 
 	void startup() const;
 
@@ -55,9 +55,9 @@ class GlobalEvent final : public Script {
 public:
 	explicit GlobalEvent(LuaScriptInterface* interface);
 
-	bool executePeriodChange(LightState_t lightState, LightInfo lightInfo) const;
-	bool executeRecord(uint32_t current, uint32_t old);
-	bool executeEvent() const;
+		bool executePeriodChange(LightState_t lightState, LightInfo lightInfo) const;
+		bool executeRecord(uint32_t current, uint32_t old);
+		bool executeEvent() const;
 
 	GlobalEvent_t getEventType() const {
 		return eventType;
@@ -66,18 +66,18 @@ public:
 		eventType = type;
 	}
 
-	const std::string& getName() const {
-		return name;
-	}
-	void setName(std::string eventName) {
-		name = eventName;
-	}
-	uint32_t getInterval() const {
-		return interval;
-	}
-	void setInterval(uint32_t eventInterval) {
-		interval |= eventInterval;
-	}
+		const std::string &getName() const {
+			return name;
+		}
+		void setName(std::string eventName) {
+			name = eventName;
+		}
+		uint32_t getInterval() const {
+			return interval;
+		}
+		void setInterval(uint32_t eventInterval) {
+			interval |= eventInterval;
+		}
 
 	int64_t getNextExecution() const {
 		return nextExecution;

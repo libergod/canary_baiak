@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #include "pch.hpp"
 
@@ -81,8 +81,7 @@ int NpcTypeFunctions::luaNpcTypeCanSpawn(lua_State* L) {
 	const Position &position = getPosition(L, 2);
 	if (npcType) {
 		pushBoolean(L, npcType->canSpawn(position));
-	}
-	else {
+	} else {
 		lua_pushnil(L);
 	}
 	return 1;
@@ -281,7 +280,7 @@ int NpcTypeFunctions::luaNpcTypeEventOnCallback(lua_State* L) {
 		if (npcType->loadCallback(&g_scripts().getScriptInterface())) {
 			pushBoolean(L, true);
 			return 1;
-		 }
+		}
 		pushBoolean(L, false);
 	} else {
 		lua_pushnil(L);
@@ -397,11 +396,11 @@ int NpcTypeFunctions::luaNpcTypeYellChance(lua_State* L) {
 	if (npcType) {
 		if (lua_gettop(L) == 1) {
 			if (lua_gettop(L) == 1) {
-			lua_pushnumber(L, npcType->info.yellChance);
-		} else {
-			npcType->info.yellChance = getNumber<uint32_t>(L, 2);
-			pushBoolean(L, true);
-		}
+				lua_pushnumber(L, npcType->info.yellChance);
+			} else {
+				npcType->info.yellChance = getNumber<uint32_t>(L, 2);
+				pushBoolean(L, true);
+			}
 		} else {
 			npcType->info.yellChance = getNumber<uint32_t>(L, 2);
 			pushBoolean(L, true);

@@ -435,7 +435,7 @@ function placeSpawnRandom(fromPositon, toPosition, monsterName, ammount, hasCall
 end
 
 function getMonstersInArea(fromPos, toPos, monsterName, ignoreMonsterId)
-	local monsters = { }
+	local monsters = {}
 	for _x = fromPos.x, toPos.x do
 		for _y = fromPos.y, toPos.y do
 			for _z = fromPos.z, toPos.z do
@@ -477,10 +477,10 @@ end
 
 function cleanAreaQuest(frompos, topos, itemtable, blockmonsters)
 	if not itemtable then
-		itemtable = { }
+		itemtable = {}
 	end
 	if not blockmonsters then
-		blockmonsters = { }
+		blockmonsters = {}
 	end
 	for _x = frompos.x, topos.x do
 		for _y = frompos.y, topos.y do
@@ -533,7 +533,7 @@ function kickerPlayerRoomAfferMin(playername, fromPosition, toPosition, teleport
 	if not players then
 		player = Player(playername)
 	end
-	local monster = { }
+	local monster = {}
 	if monsterName ~= "" then
 		monster = getMonstersInArea(fromPosition, toPosition, monsterName)
 	end
@@ -552,10 +552,10 @@ function kickerPlayerRoomAfferMin(playername, fromPosition, toPosition, teleport
 				end
 			else
 				if not itemtable then
-					itemtable = { }
+					itemtable = {}
 				end
 				if not blockmonsters then
-					blockmonsters = { }
+					blockmonsters = {}
 				end
 				cleanAreaQuest(fromPosition, toPosition, itemtable, blockmonsters)
 			end
@@ -575,10 +575,10 @@ function kickerPlayerRoomAfferMin(playername, fromPosition, toPosition, teleport
 				end
 			else
 				if not itemtable then
-					itemtable = { }
+					itemtable = {}
 				end
 				if not blockmonsters then
-					blockmonsters = { }
+					blockmonsters = {}
 				end
 				cleanAreaQuest(fromPosition, toPosition, itemtable, blockmonsters)
 			end
@@ -641,7 +641,7 @@ if not bosssPlayers then
 			local player = Player(cid)
 			if not player then return false end
 			if not self.players then
-				self.players = { }
+				self.players = {}
 			end
 			self.players[player:getId()] = 1
 		end,
@@ -731,7 +731,7 @@ function indexToStr(i, v, buffer)
 end
 
 function serializeTable(t, buffer)
-	local buffer = buffer or { }
+	local buffer = buffer or {}
 	table.insert(buffer, "{")
 	for i, x in pairs(t) do
 		indexToStr(i, x, buffer)
@@ -741,14 +741,14 @@ function serializeTable(t, buffer)
 end
 
 function table.copy(t, out)
-	out = out or { }
+	out = out or {}
 	if type(t) ~= "table" then
 		return false
 	end
 
 	for i, x in pairs(t) do
 		if type(x) == "table" then
-			out[i] = { }
+			out[i] = {}
 			table.copy(t[i], out[i])
 		else
 			out[i] = x
@@ -786,7 +786,7 @@ function pack(t, ...)
 end
 
 if not PLAYER_STORAGE then
-	PLAYER_STORAGE = { }
+	PLAYER_STORAGE = {}
 end
 
 function Player:setSpecialStorage(storage, value)
@@ -807,13 +807,13 @@ end
 
 function Player:loadSpecialStorage()
 	if not PLAYER_STORAGE then
-		PLAYER_STORAGE = { }
+		PLAYER_STORAGE = {}
 	end
 
-	PLAYER_STORAGE[self:getGuid()] = { }
+	PLAYER_STORAGE[self:getGuid()] = {}
 	local resultId = db.storeQuery("SELECT * FROM `player_misc` WHERE `player_id` = " .. self:getGuid())
 	if resultId then
-		local info = Result.getStream(resultId , "info") or "{ }"
+		local info = Result.getStream(resultId , "info") or "{}"
 		unserializeTable(info, PLAYER_STORAGE[self:getGuid()])
 	end
 end

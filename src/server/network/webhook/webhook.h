@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_SERVER_NETWORK_WEBHOOK_WEBHOOK_H_
 #define SRC_SERVER_NETWORK_WEBHOOK_WEBHOOK_H_

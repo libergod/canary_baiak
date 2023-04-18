@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_LUA_SCRIPTS_LUASCRIPT_H_
 #define SRC_LUA_SCRIPTS_LUASCRIPT_H_
@@ -42,7 +42,7 @@ class LuaScriptInterface : public LuaFunctionsLoader {
 			return loadingFile;
 		}
 
-		const std::string& getLoadingScriptName() const {
+		const std::string &getLoadingScriptName() const {
 			// If scripty name is empty, return warning informing
 			if (loadedScriptName.empty()) {
 				SPDLOG_WARN("[LuaScriptInterface::getLoadingScriptName] - Script name is empty");

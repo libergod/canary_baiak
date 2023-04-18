@@ -20,27 +20,27 @@ class ConfigManager {
 		ConfigManager(const ConfigManager &) = delete;
 		void operator=(const ConfigManager &) = delete;
 
-		static ConfigManager& getInstance() {
+		static ConfigManager &getInstance() {
 			// Guaranteed to be destroyed
 			static ConfigManager instance;
 			// Instantiated on first use
 			return instance;
 		}
-	
+
 		bool load();
 		bool reload();
 
-		const std::string& getString(stringConfig_t what) const;
+		const std::string &getString(stringConfig_t what) const;
 		int32_t getNumber(integerConfig_t what) const;
 		int16_t getShortNumber(integerConfig_t what) const;
 		bool getBoolean(booleanConfig_t what) const;
 		float getFloat(floatingConfig_t what) const;
 
-		const std::string& setConfigFileLua(const std::string& what) {
+		const std::string &setConfigFileLua(const std::string &what) {
 			configFileLua = { what };
 			return configFileLua;
 		};
-		const std::string& getConfigFileLua() const {
+		const std::string &getConfigFileLua() const {
 			return configFileLua;
 		};
 

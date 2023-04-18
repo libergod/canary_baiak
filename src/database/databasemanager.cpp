@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #include "pch.hpp"
 
@@ -13,7 +13,6 @@
 #include "database/databasemanager.h"
 #include "lua/functions/core/libs/core_libs_functions.hpp"
 #include "lua/scripts/luascript.h"
-
 
 bool DatabaseManager::optimizeTables() {
 	Database &db = Database::getInstance();
@@ -90,8 +89,8 @@ void DatabaseManager::updateDatabase() {
 		ss << g_configManager().getString(DATA_DIRECTORY) + "/migrations/" << version << ".lua";
 		if (luaL_dofile(L, ss.str().c_str()) != 0) {
 			SPDLOG_ERROR("DatabaseManager::updateDatabase - Version: {}"
-				"] {}",
-				version, lua_tostring(L, -1));
+						 "] {}",
+						 version, lua_tostring(L, -1));
 			break;
 		}
 

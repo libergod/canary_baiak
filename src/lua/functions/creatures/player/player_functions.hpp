@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_LUA_FUNCTIONS_CREATURES_PLAYER_PLAYER_FUNCTIONS_HPP_
 #define SRC_LUA_FUNCTIONS_CREATURES_PLAYER_PLAYER_FUNCTIONS_HPP_
@@ -296,6 +296,9 @@ class PlayerFunctions final : LuaScriptInterface {
 
 			registerMethod(L, "Player", "getForgeSlivers", PlayerFunctions::luaPlayerGetForgeSlivers);
 			registerMethod(L, "Player", "getForgeCores", PlayerFunctions::luaPlayerGetForgeCores);
+
+			registerMethod(L, "Player", "setFaction", PlayerFunctions::luaPlayerSetFaction);
+			registerMethod(L, "Player", "getFaction", PlayerFunctions::luaPlayerGetFaction);
 
 			// Bosstiary Functions
 			registerMethod(L, "Player", "addBosstiaryKill", PlayerFunctions::luaPlayerAddBosstiaryKill);
@@ -593,6 +596,9 @@ class PlayerFunctions final : LuaScriptInterface {
 		static int luaPlayerGetForgeCores(lua_State* L);
 		static int luaPlayerIsUIExhausted(lua_State* L);
 		static int luaPlayerUpdateUIExhausted(lua_State* L);
+
+		static int luaPlayerSetFaction(lua_State* L);
+		static int luaPlayerGetFaction(lua_State* L);
 
 		static int luaPlayerAddBosstiaryKill(lua_State* L);
 		static int luaPlayerSetBossPoints(lua_State* L);

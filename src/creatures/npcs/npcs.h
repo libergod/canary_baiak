@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_CREATURES_NPCS_NPCS_H_
 #define SRC_CREATURES_NPCS_NPCS_H_
@@ -24,49 +24,49 @@ class Shop {
 };
 
 class NpcType {
-	struct NpcInfo {
-		LuaScriptInterface* scriptInterface;
+		struct NpcInfo {
+				LuaScriptInterface* scriptInterface;
 
-		Outfit_t outfit = {};
-		RespawnType respawnType = {};
+				Outfit_t outfit = {};
+				RespawnType respawnType = {};
 
-		LightInfo light = {};
+				LightInfo light = {};
 
-		uint8_t speechBubble;
+				uint8_t speechBubble = SPEECHBUBBLE_NORMAL;
 
-		uint16_t currencyId = ITEM_GOLD_COIN;
+				uint16_t currencyId = ITEM_GOLD_COIN;
 
-		uint32_t yellChance = 0;
-		uint32_t yellSpeedTicks = 0;
-		uint32_t baseSpeed = 55;
-		uint32_t walkInterval = 2000;
+				uint32_t yellChance = 0;
+				uint32_t yellSpeedTicks = 0;
+				uint32_t baseSpeed = 55;
+				uint32_t walkInterval = 2000;
 
-		int32_t creatureAppearEvent = -1;
-		int32_t creatureDisappearEvent = -1;
-		int32_t creatureMoveEvent = -1;
-		int32_t creatureSayEvent = -1;
-		int32_t thinkEvent = -1;
-		int32_t playerCloseChannel = -1;
-		int32_t playerBuyEvent = -1;
-		int32_t playerSellEvent = -1;
-		int32_t playerLookEvent = -1;
+				int32_t creatureAppearEvent = -1;
+				int32_t creatureDisappearEvent = -1;
+				int32_t creatureMoveEvent = -1;
+				int32_t creatureSayEvent = -1;
+				int32_t thinkEvent = -1;
+				int32_t playerCloseChannel = -1;
+				int32_t playerBuyEvent = -1;
+				int32_t playerSellEvent = -1;
+				int32_t playerLookEvent = -1;
 
-		int32_t health = 100;
-		int32_t healthMax = 100;
+				int32_t health = 100;
+				int32_t healthMax = 100;
 
-		int32_t walkRadius = 10;
+				int32_t walkRadius = 10;
 
-		bool canPushItems = false;
-		bool canPushCreatures = false;
-		bool pushable = false;
-		bool floorChange = false;
+				bool canPushItems = false;
+				bool canPushCreatures = false;
+				bool pushable = false;
+				bool floorChange = false;
 
-		std::vector<voiceBlock_t> voiceVector;
-		std::vector<std::string> scripts;
-		std::vector<ShopBlock> shopItemVector;
+				std::vector<voiceBlock_t> voiceVector;
+				std::vector<std::string> scripts;
+				std::vector<ShopBlock> shopItemVector;
 
-		NpcsEvent_t eventType = NPCS_EVENT_NONE;
-	};
+				NpcsEvent_t eventType = NPCS_EVENT_NONE;
+		};
 
 	public:
 		NpcType() = default;
@@ -88,8 +88,7 @@ class NpcType {
 		bool canSpawn(const Position &pos);
 };
 
-class Npcs
-{
+class Npcs {
 	public:
 		Npcs() = default;
 		// non-copyable

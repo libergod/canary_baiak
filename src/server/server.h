@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_SERVER_SERVER_H_
 #define SRC_SERVER_SERVER_H_
@@ -15,8 +15,7 @@
 
 class Protocol;
 
-class ServiceBase
-{
+class ServiceBase {
 	public:
 		virtual bool is_single_socket() const = 0;
 		virtual bool is_checksummed() const = 0;
@@ -27,8 +26,7 @@ class ServiceBase
 };
 
 template <typename ProtocolType>
-class Service final : public ServiceBase
-{
+class Service final : public ServiceBase {
 	public:
 		bool is_single_socket() const override {
 			return ProtocolType::SERVER_SENDS_FIRST;
@@ -48,10 +46,10 @@ class Service final : public ServiceBase
 		}
 };
 
-class ServicePort : public std::enable_shared_from_this<ServicePort>
-{
+class ServicePort : public std::enable_shared_from_this<ServicePort> {
 	public:
-		explicit ServicePort(asio::io_service& init_io_service) : io_service(init_io_service) {}
+		explicit ServicePort(asio::io_service &init_io_service) :
+			io_service(init_io_service) { }
 		~ServicePort();
 
 		// non-copyable
@@ -64,7 +62,7 @@ class ServicePort : public std::enable_shared_from_this<ServicePort>
 		bool is_single_socket() const;
 		std::string get_protocol_names() const;
 
-		bool add_service(const Service_ptr& new_svc);
+		bool add_service(const Service_ptr &new_svc);
 		Protocol_ptr make_protocol(bool checksummed, NetworkMessage &msg, const Connection_ptr &connection) const;
 
 		void onStopServer();
@@ -81,8 +79,7 @@ class ServicePort : public std::enable_shared_from_this<ServicePort>
 		bool pendingStart = false;
 };
 
-class ServiceManager
-{
+class ServiceManager {
 	public:
 		ServiceManager() = default;
 		~ServiceManager();
@@ -107,18 +104,17 @@ class ServiceManager
 		phmap::flat_hash_map<uint16_t, ServicePort_ptr> acceptors;
 
 		asio::io_service io_service;
-		Signals signals{io_service};
-		asio::high_resolution_timer death_timer{ io_service };
+		Signals signals { io_service };
+		asio::high_resolution_timer death_timer { io_service };
 		bool running = false;
 };
 
 template <typename ProtocolType>
-bool ServiceManager::add(uint16_t port)
-{
+bool ServiceManager::add(uint16_t port) {
 	if (port == 0) {
 		SPDLOG_ERROR("[ServiceManager::add] - "
-                     "No port provided for service {}, service disabled",
-                     ProtocolType::protocol_name());
+					 "No port provided for service {}, service disabled",
+					 ProtocolType::protocol_name());
 		return false;
 	}
 
@@ -135,10 +131,8 @@ bool ServiceManager::add(uint16_t port)
 
 		if (service_port->is_single_socket() || ProtocolType::SERVER_SENDS_FIRST) {
 			SPDLOG_ERROR("[ServiceManager::add] - "
-												"{} and {} cannot use the same port {}",
-												ProtocolType::protocol_name(),
-												service_port->get_protocol_names(),
-												port);
+						 "{} and {} cannot use the same port {}",
+						 ProtocolType::protocol_name(), service_port->get_protocol_names(), port);
 			return false;
 		}
 	}

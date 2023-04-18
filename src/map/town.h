@@ -5,17 +5,17 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_MAP_TOWN_H_
 #define SRC_MAP_TOWN_H_
 
 #include "game/movement/position.h"
 
-class Town
-{
+class Town {
 	public:
-		explicit Town(uint32_t initId) : id(initId) {}
+		explicit Town(uint32_t initId) :
+			id(initId) { }
 
 		const Position &getTemplePosition() const {
 			return templePosition;
@@ -42,8 +42,7 @@ class Town
 
 using TownMap = std::map<uint32_t, Town*>;
 
-class Towns
-{
+class Towns {
 	public:
 		Towns() = default;
 		~Towns() {

@@ -22,20 +22,17 @@ public:
 	CustomAttribute(const std::string &initStringKey, const double initDoubleValue);
 	CustomAttribute(const std::string &initStringKey, const bool initBoolValue);
 
-	const std::string& getStringKey() const;
+		const std::string &getStringKey() const;
 
 	template <typename T>
 	T getAttribute() const {
 		if constexpr (std::is_same_v<T, std::string>) {
 			return getString();
-		}
-		else if constexpr (std::is_same_v<T, double>) {
+			} else if constexpr (std::is_same_v<T, double>) {
 			return getDouble();
-		}
-		else if constexpr (std::is_same_v<T, bool>) {
+			} else if constexpr (std::is_same_v<T, bool>) {
 			return getBool();
-		}
-		else {
+			} else {
 			return std::clamp(
 				static_cast<T>(getInteger()),
 				std::numeric_limits<T>::min(),

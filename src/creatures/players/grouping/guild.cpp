@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #include "pch.hpp"
 
@@ -52,5 +52,5 @@ GuildRank_ptr Guild::getRankByLevel(uint8_t level) const {
 }
 
 void Guild::addRank(uint32_t rankId, const std::string &rankName, uint8_t level) {
-	ranks.emplace_back(std::make_shared<GuildRank>(rankId,rankName,level));
+	ranks.emplace_back(std::make_shared<GuildRank>(rankId, rankName, level));
 }

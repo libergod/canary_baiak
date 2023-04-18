@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #include "pch.hpp"
 
@@ -18,7 +18,7 @@
 #include "lua/scripts/scripts.h"
 #include "game/game.h"
 
-bool NpcType::canSpawn(const Position &pos){
+bool NpcType::canSpawn(const Position &pos) {
 	bool canSpawn = true;
 	bool isDay = g_game().gameIsDay();
 

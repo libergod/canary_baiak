@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_GAME_GAME_H_
 #define SRC_GAME_GAME_H_
@@ -41,8 +41,7 @@ static constexpr int32_t EVENT_DECAYINTERVAL = 250;
 static constexpr int32_t EVENT_DECAY_BUCKETS = 4;
 static constexpr int32_t EVENT_FORGEABLEMONSTERCHECKINTERVAL = 300000;
 
-class Game
-{
+class Game {
 	public:
 		Game();
 		~Game();
@@ -67,18 +66,18 @@ class Game
 		void forceRemoveCondition(uint32_t creatureId, ConditionType_t type, ConditionId_t conditionId);
 
 		/**
-		* Load the main map
+		 * Load the main map
 		 * \param filename Is the map custom name (Example: "map".otbm, not is necessary add extension .otbm)
 		 * \returns true if the custom map was loaded successfully
-		*/
+		 */
 		bool loadMainMap(const std::string &filename);
 		/**
-		* Load the custom map
+		 * Load the custom map
 		 * \param filename Is the map custom name (Example: "map".otbm, not is necessary add extension .otbm)
 		 * \returns true if the custom map was loaded successfully
-		*/
+		 */
 		bool loadCustomMap(const std::string &filename);
-		void loadMap(const std::string &path);
+		void loadMap(const std::string &path, const Position &pos = Position(), bool unload = false);
 
 		void getMapDimensions(uint32_t &width, uint32_t &height) const {
 			width = map.width;
@@ -101,8 +100,7 @@ class Game
 		}
 
 		Cylinder* internalGetCylinder(Player* player, const Position &pos) const;
-		Thing* internalGetThing(Player* player, const Position &pos, int32_t index,
-								uint32_t itemId, StackPosType_t type) const;
+		Thing* internalGetThing(Player* player, const Position &pos, int32_t index, uint32_t itemId, StackPosType_t type) const;
 		static void internalGetPosition(Item* item, Position &pos, uint8_t &stackpos);
 
 		static std::string getTradeErrorDescription(ReturnValue ret, Item* item);
@@ -123,7 +121,7 @@ class Game
 
 		Player* getPlayerByGUID(const uint32_t &guid);
 
-		ReturnValue getPlayerByNameWildcard(const std::string &s, Player* &player);
+		ReturnValue getPlayerByNameWildcard(const std::string &s, Player*&player);
 
 		Player* getPlayerByAccount(uint32_t acc);
 
@@ -159,7 +157,7 @@ class Game
 		ItemClassification* getItemsClassification(uint8_t id, bool create) {
 			auto it = std::find_if(itemsClassifications.begin(), itemsClassifications.end(), [id](ItemClassification* it) {
 				return it->id == id;
-				});
+			});
 
 			if (it != itemsClassifications.end()) {
 				return *it;
@@ -176,56 +174,36 @@ class Game
 
 		bool gameIsDay();
 
-		ReturnValue internalMoveCreature(Creature* creature,
-                                         Direction direction, uint32_t flags = 0);
-		ReturnValue internalMoveCreature(Creature &creature,
-                                         Tile &toTile, uint32_t flags = 0);
+		ReturnValue internalMoveCreature(Creature* creature, Direction direction, uint32_t flags = 0);
+		ReturnValue internalMoveCreature(Creature &creature, Tile &toTile, uint32_t flags = 0);
 
-		ReturnValue internalMoveItem(Cylinder* fromCylinder, Cylinder* toCylinder,
-                                     int32_t index, Item* item, uint32_t count,
-                                     Item** internalMoveItem, uint32_t flags = 0,
-                                     Creature* actor = nullptr,
-                                     Item* tradeItem = nullptr);
+		ReturnValue internalMoveItem(Cylinder* fromCylinder, Cylinder* toCylinder, int32_t index, Item* item, uint32_t count, Item** internalMoveItem, uint32_t flags = 0, Creature* actor = nullptr, Item* tradeItem = nullptr);
 
-		ReturnValue internalAddItem(Cylinder* toCylinder, Item* item,
-                                     int32_t index = INDEX_WHEREEVER,
-                                     uint32_t flags = 0, bool test = false);
-		ReturnValue internalAddItem(Cylinder* toCylinder, Item* item, int32_t index,
-                                     uint32_t flags, bool test, uint32_t &remainderCount);
-		ReturnValue internalRemoveItem(Item* item, int32_t count = -1,
-                                       bool test = false, uint32_t flags = 0);
+		ReturnValue internalAddItem(Cylinder* toCylinder, Item* item, int32_t index = INDEX_WHEREEVER, uint32_t flags = 0, bool test = false);
+		ReturnValue internalAddItem(Cylinder* toCylinder, Item* item, int32_t index, uint32_t flags, bool test, uint32_t &remainderCount);
+		ReturnValue internalRemoveItem(Item* item, int32_t count = -1, bool test = false, uint32_t flags = 0);
 
-		ReturnValue internalPlayerAddItem(Player* player, Item* item,
-                                          bool dropOnMap = true,
-                                          Slots_t slot = CONST_SLOT_WHEREEVER);
+		ReturnValue internalPlayerAddItem(Player* player, Item* item, bool dropOnMap = true, Slots_t slot = CONST_SLOT_WHEREEVER);
 
-		Item* findItemOfType(const Cylinder* cylinder, uint16_t itemId,
-                             bool depthSearch = true, int32_t subType = -1) const;
+		Item* findItemOfType(const Cylinder* cylinder, uint16_t itemId, bool depthSearch = true, int32_t subType = -1) const;
 
 		void createLuaItemsOnMap();
 
-		bool removeMoney(Cylinder* cylinder, uint64_t money,
-                         uint32_t flags = 0, bool useBank = false);
+		bool removeMoney(Cylinder* cylinder, uint64_t money, uint32_t flags = 0, bool useBank = false);
 
 		void addMoney(Cylinder* cylinder, uint64_t money, uint32_t flags = 0);
 
 		Item* transformItem(Item* item, uint16_t newId, int32_t newCount = -1);
 
-		ReturnValue internalTeleport(Thing* thing, const Position &newPos,
-                                     bool pushMove = true, uint32_t flags = 0);
+		ReturnValue internalTeleport(Thing* thing, const Position &newPos, bool pushMove = true, uint32_t flags = 0);
 
 		bool internalCreatureTurn(Creature* creature, Direction dir);
 
-		bool internalCreatureSay(Creature* creature, SpeakClasses type,
-                                 const std::string &text,
-                                 bool ghostMode,
-                                 SpectatorHashSet* spectatorsPtr = nullptr,
-                                 const Position* pos = nullptr);
+		bool internalCreatureSay(Creature* creature, SpeakClasses type, const std::string &text, bool ghostMode, SpectatorHashSet* spectatorsPtr = nullptr, const Position* pos = nullptr);
 
 		void internalQuickLootCorpse(Player* player, Container* corpse);
 
-		ReturnValue internalQuickLootItem(Player* player, Item* item,
-                    ObjectCategory_t category = OBJECTCATEGORY_DEFAULT);
+		ReturnValue internalQuickLootItem(Player* player, Item* item, ObjectCategory_t category = OBJECTCATEGORY_DEFAULT);
 
 		ObjectCategory_t getObjectCategory(const Item* item);
 
@@ -237,12 +215,11 @@ class Game
 		void sendGuildMotd(uint32_t playerId);
 		void kickPlayer(uint32_t playerId, bool displayEffect);
 		void playerReportBug(uint32_t playerId, const std::string &message, const Position &position, uint8_t category);
-		void playerDebugAssert(uint32_t playerId, const std::string &assertLine, const std::string& date, const std::string &description, const std::string &comment);
+		void playerDebugAssert(uint32_t playerId, const std::string &assertLine, const std::string &date, const std::string &description, const std::string &comment);
 		void playerPreyAction(uint32_t playerId, uint8_t slot, uint8_t action, uint8_t option, int8_t index, uint16_t raceId);
 		void playerTaskHuntingAction(uint32_t playerId, uint8_t slot, uint8_t action, bool upgrade, uint16_t raceId);
 		void playerNpcGreet(uint32_t playerId, uint32_t npcId);
-		void playerAnswerModalWindow(uint32_t playerId, uint32_t modalWindowId,
-                                     uint8_t button, uint8_t choice);
+		void playerAnswerModalWindow(uint32_t playerId, uint32_t modalWindowId, uint8_t button, uint8_t choice);
 		void playerForgeFuseItems(
 			uint32_t playerId,
 			uint16_t itemId,
@@ -258,6 +235,7 @@ class Game
 		);
 		void playerForgeResourceConversion(uint32_t playerId, uint8_t action);
 		void playerBrowseForgeHistory(uint32_t playerId, uint8_t page);
+
 		void playerBosstiarySlot(uint32_t playerId, uint8_t slotId, uint32_t selectedBossId);
 		void playerSetBossPodium(uint32_t playerId, uint32_t bossRaceId, const Position &pos, uint8_t stackPos, const uint16_t itemId, uint8_t direction, uint8_t podiumVisible, uint8_t bossVisible);
 		void playerRotatePodium(uint32_t playerId, const Position &pos, uint8_t stackPos, const uint16_t itemId);
@@ -333,7 +311,8 @@ class Game
 		void playerQuickLoot(uint32_t playerId, const Position &pos, uint16_t itemId, uint8_t stackPos, Item* defaultItem = nullptr, bool lootAllCorpses = false, bool autoLoot = false);
 		void playerLootAllCorpses(Player* player, const Position &pos, bool lootAllCorpses);
 		void playerSetLootContainer(uint32_t playerId, ObjectCategory_t category, const Position &pos, uint16_t itemId, uint8_t stackPos);
-		void playerClearLootContainer(uint32_t playerId, ObjectCategory_t category);;
+		void playerClearLootContainer(uint32_t playerId, ObjectCategory_t category);
+		;
 		void playerOpenLootContainer(uint32_t playerId, ObjectCategory_t category);
 		void playerSetQuickLootFallback(uint32_t playerId, bool fallback);
 		void playerQuickLootBlackWhitelist(uint32_t playerId, QuickLootFilter_t filter, const std::vector<uint16_t> itemIds);
@@ -355,8 +334,7 @@ class Game
 		void playerRequestOutfit(uint32_t playerId);
 		void playerShowQuestLog(uint32_t playerId);
 		void playerShowQuestLine(uint32_t playerId, uint16_t questId);
-		void playerSay(uint32_t playerId, uint16_t channelId, SpeakClasses type,
-                      const std::string &receiver, const std::string &text);
+		void playerSay(uint32_t playerId, uint16_t channelId, SpeakClasses type, const std::string &receiver, const std::string &text);
 		void playerChangeOutfit(uint32_t playerId, Outfit_t outfit, uint8_t isMountRandomized = 0);
 		void playerInviteToParty(uint32_t playerId, uint32_t invitedId);
 		void playerJoinParty(uint32_t playerId, uint32_t leaderId);
@@ -383,7 +361,9 @@ class Game
 		void ReleaseCreature(Creature* creature);
 		void ReleaseItem(Item* item);
 		void addBestiaryList(uint16_t raceid, std::string name);
-		const std::map<uint16_t, std::string> &getBestiaryList() const { return BestiaryList; }
+		const std::map<uint16_t, std::string> &getBestiaryList() const {
+			return BestiaryList;
+		}
 
 		void setBoostedName(std::string name) {
 			boostedCreature = name;
@@ -424,16 +404,16 @@ class Game
 		void combatGetTypeInfo(CombatType_t combatType, Creature* target, TextColor_t &color, uint8_t &effect);
 
 		bool combatChangeHealth(Creature* attacker, Creature* target, CombatDamage &damage, bool isEvent = false);
-		void applyCharmRune(const Monster* targetMonster, Player* attackerPlayer, Creature* target, const int32_t & realDamage) const;
+		void applyCharmRune(const Monster* targetMonster, Player* attackerPlayer, Creature* target, const int32_t &realDamage) const;
 		void applyManaLeech(
 			Player* attackerPlayer, const Monster* targetMonster,
-			const CombatDamage &damage, const int32_t & realDamage
+			const CombatDamage &damage, const int32_t &realDamage
 		) const;
 		void applyLifeLeech(
 			Player* attackerPlayer, const Monster* targetMonster,
-			const CombatDamage &damage, const int32_t & realDamage
+			const CombatDamage &damage, const int32_t &realDamage
 		) const;
-		int32_t calculateLeechAmount(const int32_t & realDamage, const uint16_t& skillAmount, int targetsAffected) const;
+		int32_t calculateLeechAmount(const int32_t &realDamage, const uint16_t &skillAmount, int targetsAffected) const;
 		bool combatChangeMana(Creature* attacker, Creature* target, CombatDamage &damage);
 
 		// Animation help functions
@@ -534,35 +514,13 @@ class Game
 		void playerInspectItem(Player* player, const Position &pos);
 		void playerInspectItem(Player* player, uint16_t itemId, uint8_t itemCount, bool cyclopedia);
 
-		void addCharmRune(Charm* charm)
-		{
+		void addCharmRune(Charm* charm) {
 			CharmList.push_back(charm);
 			CharmList.shrink_to_fit();
 		}
 
 		std::vector<Charm*> getCharmList() {
 			return CharmList;
-		}
-
-		void increasePlayerActiveImbuements(uint32_t playerId) {
-			setPlayerActiveImbuements(playerId, playersActiveImbuements[playerId] + 1);
-		}
-
-		void decreasePlayerActiveImbuements(uint32_t playerId) {
-			setPlayerActiveImbuements(playerId, playersActiveImbuements[playerId] - 1);
-		}
-
-		void setPlayerActiveImbuements(uint32_t playerId, uint8_t value) {
-			if (value <= 0) {
-				playersActiveImbuements.erase(playerId);
-				return;
-			}
-			
-			playersActiveImbuements[playerId] = std::min<uint8_t>(255, value);
-		}
-
-		uint8_t getPlayerActiveImbuements(uint32_t playerId) {
-			return playersActiveImbuements[playerId];
 		}
 
 		FILELOADER_ERRORS loadAppearanceProtobuf(const std::string &file);
@@ -626,7 +584,7 @@ class Game
 		/* Items stored from the lua scripts positions
 		 * For example: ActionFunctions::luaActionPosition
 		 * This basically works so that the item is created after the map is loaded, because the scripts are loaded before the map is loaded, we will use this table to create items that don't exist in the map natively through each script
-		*/
+		 */
 		std::map<Position, uint16_t> mapLuaItemsStored;
 
 		std::map<uint16_t, std::string> BestiaryList;
@@ -652,7 +610,7 @@ class Game
 
 		std::map<uint32_t, TeamFinder*> teamFinderMap; // [leaderGUID] = TeamFinder*
 
-		//list of items that are in trading state, mapped to the player
+		// list of items that are in trading state, mapped to the player
 		std::map<Item*, uint32_t> tradeItems;
 
 		std::map<uint32_t, BedItem*> bedSleepersMap;
@@ -679,7 +637,7 @@ class Game
 		uint8_t lightLevel = LIGHT_LEVEL_DAY;
 		int32_t lightHour = SUNRISE + (SUNSET - SUNRISE) / 2;
 		// (1440 total light of tibian day)/(3600 real seconds each tibian day) * 10 seconds event interval
-		int32_t lightHourDelta = (LIGHT_DAY_LENGTH * (EVENT_LIGHTINTERVAL_MS/1000)) / DAY_LENGTH_SECONDS;
+		int32_t lightHourDelta = (LIGHT_DAY_LENGTH * (EVENT_LIGHTINTERVAL_MS / 1000)) / DAY_LENGTH_SECONDS;
 
 		ServiceManager* serviceManager = nullptr;
 
@@ -697,41 +655,41 @@ class Game
 		bool isTryingToStow(const Position &toPos, Cylinder* toCylinder) const;
 
 		void sendDamageMessageAndEffects(
-			const Creature* attacker, Creature* target, const CombatDamage &damage, const Position& targetPos,
-			Player* attackerPlayer, Player* targetPlayer, TextMessage& message,
+			const Creature* attacker, Creature* target, const CombatDamage &damage, const Position &targetPos,
+			Player* attackerPlayer, Player* targetPlayer, TextMessage &message,
 			const SpectatorHashSet &spectators, int32_t realDamage
 		);
 
 		void updatePlayerPartyHuntAnalyzer(const CombatDamage &damage, const Player* player) const;
 
 		void sendEffects(
-			Creature* target, const CombatDamage &damage, const Position& targetPos,
-			TextMessage& message, const SpectatorHashSet &spectators
+			Creature* target, const CombatDamage &damage, const Position &targetPos,
+			TextMessage &message, const SpectatorHashSet &spectators
 		);
 
 		void sendMessages(
 			const Creature* attacker, const Creature* target, const CombatDamage &damage,
-			const Position& targetPos, Player* attackerPlayer, Player* targetPlayer,
-			TextMessage& message, const SpectatorHashSet &spectators, int32_t realDamage
+			const Position &targetPos, Player* attackerPlayer, Player* targetPlayer,
+			TextMessage &message, const SpectatorHashSet &spectators, int32_t realDamage
 		) const;
 
-		bool shouldSendMessage(const TextMessage& message) const;
+		bool shouldSendMessage(const TextMessage &message) const;
 
 		void buildMessageAsAttacker(
-			const Creature* target, const CombatDamage &damage, TextMessage& message,
-			std::stringstream& ss, const std::string& damageString
+			const Creature* target, const CombatDamage &damage, TextMessage &message,
+			std::stringstream &ss, const std::string &damageString
 		) const;
 
 		void buildMessageAsTarget(
 			const Creature* attacker, const CombatDamage &damage, const Player* attackerPlayer,
-			const Player* targetPlayer, TextMessage& message, std::stringstream& ss,
-			const std::string& damageString
+			const Player* targetPlayer, TextMessage &message, std::stringstream &ss,
+			const std::string &damageString
 		) const;
 
 		void buildMessageAsSpectator(
 			const Creature* attacker, const Creature* target, const CombatDamage &damage,
-			const Player* targetPlayer, TextMessage& message, std::stringstream& ss,
-			const std::string& damageString, std::string& spectatorMessage
+			const Player* targetPlayer, TextMessage &message, std::stringstream &ss,
+			const std::string &damageString, std::string &spectatorMessage
 		) const;
 
 		void unwrapItem(Item* item, uint16_t unWrapId);

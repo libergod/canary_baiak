@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #include "pch.hpp"
 
@@ -29,10 +29,10 @@ void Dispatcher::threadMain() {
 		taskLockUnique.lock();
 
 		if (taskList.empty()) {
-			//if the list is empty wait for signal
+			// if the list is empty wait for signal
 			taskSignal.wait(taskLockUnique, [this] {
-			return !taskList.empty() || getState() == THREAD_STATE_TERMINATED;
-				});
+				return !taskList.empty() || getState() == THREAD_STATE_TERMINATED;
+			});
 		}
 
 		if (!taskList.empty()) {

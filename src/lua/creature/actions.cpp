@@ -473,7 +473,7 @@ void Actions::showUseHotkeyMessage(Player* player, const Item* item, uint32_t co
 
 // Action constructor
 Action::Action(LuaScriptInterface* interface) :
-	Script(interface) {}
+	Script(interface) { }
 
 ReturnValue Action::canExecuteAction(const Player* player, const Position &toPos) {
 	if (!allowFarUse) {

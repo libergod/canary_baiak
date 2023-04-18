@@ -5,7 +5,7 @@
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
-*/
+ */
 
 #ifndef SRC_CREATURES_APPEARANCE_MOUNTS_MOUNTS_H_
 #define SRC_CREATURES_APPEARANCE_MOUNTS_MOUNTS_H_
@@ -16,12 +16,12 @@ struct Mount {
 		name(initName), speed(initSpeed), clientId(initClientId), id(initId), premium(initPremium),
 		type(initType) {}
 
-	std::string name;
-	int32_t speed;
-	uint16_t clientId;
-	uint8_t id;
-	bool premium;
-	std::string type;
+		std::string name;
+		int32_t speed;
+		uint16_t clientId;
+		uint8_t id;
+		bool premium;
+		std::string type;
 };
 
 class Mounts {

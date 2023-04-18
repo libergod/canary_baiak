@@ -37,11 +37,11 @@ CustomAttribute::CustomAttribute(const std::string &initStringKey, const bool in
 	setValue(initBoolValue);
 }
 
-const std::string& CustomAttribute::getStringKey() const {
+const std::string &CustomAttribute::getStringKey() const {
 	return stringKey;
 }
 
-const int64_t& CustomAttribute::getInteger() const {
+const int64_t &CustomAttribute::getInteger() const {
 	if (std::holds_alternative<int64_t>(value)) {
 		return std::get<int64_t>(value);
 	}
@@ -50,7 +50,7 @@ const int64_t& CustomAttribute::getInteger() const {
 	return emptyValue;
 }
 
-const std::string& CustomAttribute::getString() const {
+const std::string &CustomAttribute::getString() const {
 	if (std::holds_alternative<std::string>(value)) {
 		return std::get<std::string>(value);
 	}
@@ -59,7 +59,7 @@ const std::string& CustomAttribute::getString() const {
 	return emptyValue;
 }
 
-const double& CustomAttribute::getDouble() const {
+const double &CustomAttribute::getDouble() const {
 	if (std::holds_alternative<double>(value)) {
 		return std::get<double>(value);
 	}
@@ -68,7 +68,7 @@ const double& CustomAttribute::getDouble() const {
 	return emptyValue;
 }
 
-const bool& CustomAttribute::getBool() const {
+const bool &CustomAttribute::getBool() const {
 	if (std::holds_alternative<bool>(value)) {
 		return std::get<bool>(value);
 	}
@@ -80,17 +80,13 @@ const bool& CustomAttribute::getBool() const {
 void CustomAttribute::pushToLua(lua_State* L) const {
 	if (hasValue<std::string>()) {
 		LuaScriptInterface::pushString(L, getString());
-	}
-	else if (hasValue<int64_t>()) {
+	} else if (hasValue<int64_t>()) {
 		lua_pushnumber(L, static_cast<lua_Number>(getAttribute<int64_t>()));
-	}
-	else if (hasValue<double>()) {
+	} else if (hasValue<double>()) {
 		lua_pushnumber(L, getDouble());
-	}
-	else if (hasValue<bool>()) {
+	} else if (hasValue<bool>()) {
 		LuaScriptInterface::pushBoolean(L, getBool());
-	}
-	else {
+	} else {
 		lua_pushnil(L);
 	}
 }
@@ -100,16 +96,13 @@ void CustomAttribute::serialize(PropWriteStream &propWriteStream) const {
 	if (hasValue<std::string>()) {
 		propWriteStream.write<uint8_t>(1);
 		propWriteStream.writeString(getString());
-	}
-	else if (hasValue<int64_t>()) {
+	} else if (hasValue<int64_t>()) {
 		propWriteStream.write<uint8_t>(2);
 		propWriteStream.write<int64_t>(getInteger());
-	}
-	else if (hasValue<double>()) {
+	} else if (hasValue<double>()) {
 		propWriteStream.write<uint8_t>(3);
 		propWriteStream.write<double>(getDouble());
-	}
-	else if (hasValue<bool>()) {
+	} else if (hasValue<bool>()) {
 		propWriteStream.write<uint8_t>(4);
 		propWriteStream.write<bool>(getBool());
 	}
