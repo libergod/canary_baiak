@@ -83,8 +83,7 @@ constexpr auto g_imbuements = &Imbuements::getInstance;
 class Imbuement {
 public:
 	Imbuement(uint16_t initId, uint16_t initBaseId) :
-		id(initId), baseid(initBaseId) {}
-				id(initId), baseid(initBaseId) {}
+		id(initId), baseid(initBaseId) { }
 
 	uint16_t getID() const {
 		return id;
@@ -93,10 +92,9 @@ public:
 	uint16_t getBaseID() const {
 		return baseid;
 	}
-		uint32_t getStorage() const {
-			return storage;
-		}
-		}
+	uint32_t getStorage() const {
+		return storage;
+	}
 
 	bool isPremium() {
 		return premium;
@@ -115,10 +113,10 @@ public:
 	uint16_t getCategory() const {
 		return category;
 	}
-		const std::vector<std::pair<uint16_t, uint16_t>> &getItems() const {
-			return items;
-		}
-		}
+
+	const std::vector<std::pair<uint16_t, uint16_t>> &getItems() const {
+		return items;
+	}
 
 	uint16_t getIconID() {
 		return icon + (baseid - 1);

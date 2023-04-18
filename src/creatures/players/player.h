@@ -1366,8 +1366,6 @@ class Player final : public Creature, public Cylinder {
 			}
 		}
 		void closeImbuementWindow() const {
-			if (client) {
-		void closeImbuementWindow() const {
 			if(client) {
 				client->closeImbuementWindow();
 			}
@@ -2289,8 +2287,8 @@ class Player final : public Creature, public Cylinder {
 
 		void checkLootContainers(const Item* item);
 
-		void gainExperience(uint64_t exp, Creature* target);
-		void addExperience(Creature* target, uint64_t exp, bool sendText = false);
+		void gainExperience(uint64_t exp, Creature * target);
+		void addExperience(Creature * target, uint64_t exp, bool sendText = false);
 		void removeExperience(uint64_t exp, bool sendText = false);
 
 		void updateInventoryWeight();
@@ -2300,31 +2298,31 @@ class Player final : public Creature, public Cylinder {
 		 */
 		void updateInventoryImbuement();
 
-		void setNextWalkActionTask(SchedulerTask* task);
-		void setNextWalkTask(SchedulerTask* task);
-		void setNextActionTask(SchedulerTask* task, bool resetIdleTime = true);
-		void setNextActionPushTask(SchedulerTask* task);
-		void setNextPotionActionTask(SchedulerTask* task);
+		void setNextWalkActionTask(SchedulerTask * task);
+		void setNextWalkTask(SchedulerTask * task);
+		void setNextActionTask(SchedulerTask * task, bool resetIdleTime = true);
+		void setNextActionPushTask(SchedulerTask * task);
+		void setNextPotionActionTask(SchedulerTask * task);
 
-		void death(Creature* lastHitCreature) override;
+		void death(Creature * lastHitCreature) override;
 		bool spawn();
 		void despawn();
-		bool dropCorpse(Creature* lastHitCreature, Creature* mostDamageCreature, bool lastHitUnjustified, bool mostDamageUnjustified) override;
-		Item* getCorpse(Creature* lastHitCreature, Creature* mostDamageCreature) override;
+		bool dropCorpse(Creature * lastHitCreature, Creature * mostDamageCreature, bool lastHitUnjustified, bool mostDamageUnjustified) override;
+		Item* getCorpse(Creature * lastHitCreature, Creature * mostDamageCreature) override;
 
 		// cylinder implementations
 		ReturnValue queryAdd(int32_t index, const Thing &thing, uint32_t count, uint32_t flags, Creature* actor = nullptr) const override;
 		ReturnValue queryMaxCount(int32_t index, const Thing &thing, uint32_t count, uint32_t &maxQueryCount, uint32_t flags) const override;
 		ReturnValue queryRemove(const Thing &thing, uint32_t count, uint32_t flags, Creature* actor = nullptr) const override;
-		Cylinder* queryDestination(int32_t &index, const Thing &thing, Item** destItem, uint32_t &flags) override;
+		Cylinder* queryDestination(int32_t & index, const Thing &thing, Item** destItem, uint32_t &flags) override;
 
-		void addThing(Thing*) override {}
-		void addThing(int32_t index, Thing* thing) override;
+		void addThing(Thing*) override { }
+		void addThing(int32_t index, Thing * thing) override;
 
-		void updateThing(Thing* thing, uint16_t itemId, uint32_t count) override;
-		void replaceThing(uint32_t index, Thing* thing) override;
+		void updateThing(Thing * thing, uint16_t itemId, uint32_t count) override;
+		void replaceThing(uint32_t index, Thing * thing) override;
 
-		void removeThing(Thing* thing, uint32_t count) override;
+		void removeThing(Thing * thing, uint32_t count) override;
 
 		int32_t getThingIndex(const Thing* thing) const override;
 		size_t getFirstIndex() const override;
@@ -2339,15 +2337,15 @@ class Player final : public Creature, public Cylinder {
 		// This get all player inventory items
 		std::vector<Item*> getAllInventoryItems(bool ignoreEquiped = false) const;
 		// This function is a override function of base class
-		std::map<uint32_t, uint32_t> &getAllItemTypeCount(std::map<uint32_t, uint32_t> &countMap) const override;
+		std::map<uint32_t, uint32_t> &getAllItemTypeCount(std::map<uint32_t, uint32_t> & countMap) const override;
 		// Function from player class with correct type sizes (uint16_t)
-		std::map<uint16_t, uint16_t> &getAllSaleItemIdAndCount(std::map<uint16_t, uint16_t> &countMap) const;
-		void getAllItemTypeCountAndSubtype(std::map<uint32_t, uint32_t> &countMap) const;
+		std::map<uint16_t, uint16_t> &getAllSaleItemIdAndCount(std::map<uint16_t, uint16_t> & countMap) const;
+		void getAllItemTypeCountAndSubtype(std::map<uint32_t, uint32_t> & countMap) const;
 		Item* getForgeItemFromId(uint16_t itemId, uint8_t tier);
 		Thing* getThing(size_t index) const override;
 
-		void internalAddThing(Thing* thing) override;
-		void internalAddThing(uint32_t index, Thing* thing) override;
+		void internalAddThing(Thing * thing) override;
+		void internalAddThing(uint32_t index, Thing * thing) override;
 
 		phmap::flat_hash_set<uint32_t> attackedSet;
 
@@ -2536,9 +2534,7 @@ class Player final : public Creature, public Cylinder {
 		BlockType_t lastAttackBlockType = BLOCK_NONE;
 		TradeState_t tradeState = TRADE_NONE;
 		FightMode_t fightMode = FIGHTMODE_ATTACK;
-
 		Faction_t faction = FACTION_PLAYER;
-
 		account::AccountType accountType = account::AccountType::ACCOUNT_TYPE_NORMAL;
 		QuickLootFilter_t quickLootFilter;
 		VipStatus_t statusVipList = VIPSTATUS_ONLINE;

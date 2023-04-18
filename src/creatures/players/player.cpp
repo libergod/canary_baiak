@@ -79,8 +79,7 @@ Player::~Player() {
 	logged = false;
 }
 
-void Player::doReborn() // rebirth
-{
+void Player::doReborn() {
 	int rebs = rebirth + 1;
 	std::ostringstream ss;
 	ss << "You advanced from Rebirth Level " << rebirth << " to " << rebs << '.';

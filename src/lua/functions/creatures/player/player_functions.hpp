@@ -597,9 +597,6 @@ class PlayerFunctions final : LuaScriptInterface {
 		static int luaPlayerIsUIExhausted(lua_State* L);
 		static int luaPlayerUpdateUIExhausted(lua_State* L);
 
-		static int luaPlayerSetFaction(lua_State* L);
-		static int luaPlayerGetFaction(lua_State* L);
-
 		static int luaPlayerAddBosstiaryKill(lua_State* L);
 		static int luaPlayerSetBossPoints(lua_State* L);
 		static int luaPlayerSetRemoveBossTime(lua_State* L);

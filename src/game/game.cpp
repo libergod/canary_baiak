@@ -3271,10 +3271,6 @@ void Game::playerSetShowOffSocket(uint32_t playerId, Outfit_t &outfit, const Pos
 		item->removeCustomAttribute("PastLookMount");
 	}
 
-	}
-	else {
-		item->removeAttribute(ItemAttribute_t::NAME);
-	}
 	item->setCustomAttribute("PodiumVisible", static_cast<int64_t>(podiumVisible));
 	item->setCustomAttribute("LookDirection", static_cast<int64_t>(direction));
 
@@ -4837,15 +4833,6 @@ void Game::playerChangeOutfit(uint32_t playerId, Outfit_t outfit, uint8_t isMoun
 
 		if (!player->hasMount(mount)) {
 			return;
-		}
-
-		const Tile* playerTile = player->getTile();
-		if (!playerTile) {
-			return;
-		}
-
-		if (playerTile->hasFlag(TILESTATE_PROTECTIONZONE)) {
-			outfit.lookMount = 0;
 		}
 
 		const Tile* playerTile = player->getTile();
