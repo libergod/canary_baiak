@@ -3,7 +3,7 @@ function checkVipTime.onLogin(player)
 		--player:sendVipDaysMessage()
 		
 		
-	function minimalTimers(seconds)
+function minimalTimers(seconds)
     local days = math.floor(seconds / 86400)
     seconds = seconds - days * 86400
     local hours = math.floor(seconds / 3600)

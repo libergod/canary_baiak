@@ -9,6 +9,16 @@ function superUpCreature.onThink(creature)
 
 	local storIndex = player:getStorageValue(STORAGEVALUE_SUPERUP_INDEX)
 	local storTime = player:getStorageValue(STORAGEVALUE_SUPERUP_TEMPO)
+	
+	if storIndex ~= -1 and storIndex >= 20000 then
+		local resultCave = db.storeQuery("SELECT guid_player, to_time FROM exclusive_hunts WHERE `hunt_id` = " .. storIndex .. " and `guid_player` = " .. player:getGuid())
+		if not resultCave then
+			player:setStorageValue(STORAGEVALUE_SUPERUP_TEMPO, -1)
+			player:setStorageValue(STORAGEVALUE_SUPERUP_INDEX, -1)
+			result.free(resultCave)
+			return false
+		end
+	end
 
 	for a, b in pairs(SUPERUP.areas) do
 		-- need to change isInArea for another function

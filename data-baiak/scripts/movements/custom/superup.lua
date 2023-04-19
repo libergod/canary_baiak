@@ -1,6 +1,27 @@
 local superup = MoveEvent()
 
 function superup.onStepIn(creature, item, position, fromPosition)
+
+function minimalTimers(seconds)
+    local days = math.floor(seconds / 86400)
+    seconds = seconds - days * 86400
+    local hours = math.floor(seconds / 3600)
+    seconds = seconds - hours * 3600
+    local minutes = math.floor(seconds / 60)
+    seconds = seconds - minutes * 60
+
+    if days > 0 then
+        return string.format("%d days, %d hours, %d minutes",days,hours,minutes)
+    elseif hours > 0 then
+        return string.format("%d hours, %d minutes",hours,minutes)
+    elseif minutes > 0 then
+        return string.format("%d minutes",minutes)
+    elseif seconds > 0 then
+        return string.format("%d seconds",seconds)
+    end
+end
+
+
 	local player = creature:getPlayer()
     if not player then
         return false
@@ -16,6 +37,7 @@ function superup.onStepIn(creature, item, position, fromPosition)
 		end
 
 		if player:getStorageValue(STORAGEVALUE_SUPERUP_INDEX) == item.actionid then
+			player:sendTextMessage(MESSAGE_LOGIN, string.format("You still have %s of time remaining to your exp cave!", minimalTimers(player:getStorageValue(STORAGEVALUE_SUPERUP_TEMPO) - os.time())))
 			return true
 		end
 
@@ -37,7 +59,7 @@ function superup.onStepIn(creature, item, position, fromPosition)
 			player:getPosition():sendMagicEffect(CONST_ME_POFF)
 		else
 			if player:removeItem(SUPERUP.itemID, 1) then
-				player:sendTextMessage(MESSAGE_LOGIN, string.format(SUPERUP.msg.disponivel, SUPERUP.setTime, SUPERUP.setTime > 1 and "horas" or "hora"))
+				player:sendTextMessage(MESSAGE_LOGIN, string.format(SUPERUP.msg.disponivel, SUPERUP.setTime, SUPERUP.setTime > 1 and "hours" or "hour"))
 				player:getPosition():sendMagicEffect(31)
 				player:setStorageValue(STORAGEVALUE_SUPERUP_TEMPO, (os.time() + tempo))
 				player:setStorageValue(STORAGEVALUE_SUPERUP_INDEX, item.actionid)

@@ -48,19 +48,18 @@ end
 
 function SUPERUP:freeCave()
 	freeCaves = { }
-	local db = db.storeQuery("SELECT `hunt_id`, `to_time`, `guid_player` FROM exclusive_hunts")
-	if not db then
+	local fres = db.storeQuery("SELECT `hunt_id`, `to_time`, `guid_player` FROM exclusive_hunts")
+	if not fres then
 		return
 	end
 
 	repeat
-		local idHunt = result.getNumber(db, "hunt_id")
-		local tempoFinal = result.getDataLong(db, "to_time")
-		local guidPlayer = result.getNumber(db, "guid_player")
-		result.free(db)
-
+		local idHunt = result.getNumber(fres, "hunt_id")
+		local tempoFinal = result.getDataLong(fres, "to_time")
+		local guidPlayer = result.getNumber(fres, "guid_player")
+		--Spdlog.info("[EXP CAVE] - Inserted in Table: ID Hunt: "..idHunt.." Tempo Final: "..tempoFinal.." guidPlayer: "..guidPlayer)
 		table.insert(freeCaves, {idHunt, tempoFinal, guidPlayer})
 
-	until not result.next(db)
+	until not result.next(fres)
 	return freeCaves
 end

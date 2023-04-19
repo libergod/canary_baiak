@@ -1,0 +1,112 @@
+- LingQ
+- Langdive
+- Quizlet
+
+
+- Ted ED
+- 
+
+
+
+/effect 32
+/effect 50 -> lvl up
+/effect 67 -> mrocegos
+/effect 73 -> vip login effect
+
+/effect 33 -> AFK system effect
+
+
+
+item id = 22723 DODGE TOKEN
+item id = 22724 CRITICAL TOKEN
+item id = 9170 STAMINA POTION
+item id = 21554 EXP RESTORE POTION
+item id = 12305 SUPER UP KEY
+
+SOUND_EFFECT_TYPE_
+====================================================================================================================================================================
+====================================================================SERVER INFOS====================================================================================
+====================================================================================================================================================================
+NEW:
+- DUNGEON System with Custom Caves and Rewards (EM DEV)
+- REBORN System
+- 
+
+EVENTS:
+- WoE - War of Emperium 
+- Firestorm 
+- SafeZone
+- SnowBall
+- Castle 24H
+- Last Man Standing (Battlefield)
+- Zombies (EM DEV)
+- Snake Event
+- Bomberman
+
+RECHARGE:
+- Softboots and Firewalker boots with Right Button
+- VIP Automatic Payment
+- Sleepshaw with right button
+- Automatic Exercise Weapon get next on finish
+- Stamina Refill every one minute training online
+
+MECHANICS:
+- Fist Skill will increase your attack velocity
+- TASK System
+- 20% + EXP chance to be dropped from monsters!
+
+OTHERS:
+- Free Bless until lvl 100.
+- 
+
+
+====================================================================================================================================================================
+========================================================================A FAZER=====================================================================================
+====================================================================================================================================================================
+
+- ADD event em todos os monstros: dodgeCriticalThree, (Monstro exemplo: DEMON) - 
+- Diminuir porcentagem de chance de Dodge - 
+- Adicionar drops de monstros no scripts/custom/exp_boostDrop.lua - (Adicionar apenas Super UP Cave)
+- Arrumar o restaure de Exp - OK
+- Arrumar sprites do evento Snake - OK
+- Implementar zombie - 
+- Colocar trainer no Castle - OK
+- Arrumar portas do Castle - OK
+- Adicionar Hunts Exclusivas Castle - 
+- Adicionar Daily Task - OK
+- Arrumar a Store in Game - OK
+- Adicionar Bosstiary - OK
+- Remover items premium dos drops de monstros - 
+- Remover gold ingot dos monstros (id 9058) - 
+- Corrigir TP saída Mirror Image
+- Zerar as Hunts exclusivas no reload do server - OK (testar)
+- corrigir From/To das super areas
+- Fazer as boss rooms
+- Adicionar NOLOGOUT nas Super Cave
+- Double axe / Double Sword alowed 
+
+
+CRIAR ARQUIVO CONFIG.INI NA PASTA CONF DO CLIENT PARA SUBSTITUIR OS URL
+
+[URLS]
+tibiaPageUrl=
+tibiaStoreGetCoinsUrl=
+getPremiumUrl=
+createAccountUrl=
+createTournamentCharacterUrl=
+accessAccountUrl=
+lostAccountUrl=
+manualUrl=
+faqUrl=
+premiumFeaturesUrl=
+limesurveyUrl=
+hintsUrl=
+cipSoftUrl=
+twitchTibiaUrl=
+youTubeTibiaUrl=
+crashReportUrl=
+fpsHistoryRecipient=
+tutorialProgressWebService=
+tournamentDetailsUrl=
+loginWebService=
+clientWebService=
