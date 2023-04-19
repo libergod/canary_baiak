@@ -22,7 +22,7 @@ time_daySto = 20025 -- storage do tempo da task daily, no caso para verificar e 
 
 
 local ranks_task = {
-	[{1, 50}] = "Novato", 
+	[{1, 50}] = "Newbie", 
 	[{51, 100}] = "Elite",
 	[{101, 150}] = "Master",
 	[{151, 200}] = "Destroyer",		
@@ -30,7 +30,7 @@ local ranks_task = {
 }
 
 local RankSequence = {
-	["Novato"] = 1,
+	["Newbie"] = 1,
 	["Elite"] = 2,
 	["Master"] = 3,
 	["Destroyer"] = 4,

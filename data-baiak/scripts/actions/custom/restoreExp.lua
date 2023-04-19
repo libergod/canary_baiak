@@ -16,38 +16,47 @@ function restoreExpPot.onUse(player, item, fromPosition, target, toPosition, isH
 					local expAfter = result.getDataInt(sqlExpAfter, 'expAfter')
 					result.free(sqlExpAfter)
 					if expAfter ~= -1 then
-						local expcalc = math.floor(expBefore - expAfter)
-						player:addExperience(expcalc, true)
-						item:remove()
-						db.query('UPDATE `player_exp_restore` SET `expAfter` = -1 where `id_player`='..player:getGuid())
-						db.query('UPDATE `player_exp_restore` SET `expBefore` = -1 where `id_player`='..player:getGuid())
-						db.query('UPDATE `player_exp_restore` SET `canRestore` = -1 where `id_player`='..player:getGuid())
-						player:getPosition():sendMagicEffect(CONST_ME_GIFT_WRAPS)
-						player:sendCancelMessage("You have restored some EXP from last Death.")	
-						return true
+						if expAfter > expBefore then
+							player:sendTextMessage(MESSAGE_LOGIN,"You have gained more exp than lost. Unable to restore exp.")
+							player:getPosition():sendMagicEffect(CONST_ME_POFF)
+							db.query('UPDATE `player_exp_restore` SET `expAfter` = -1 where `id_player`='..player:getGuid())
+							db.query('UPDATE `player_exp_restore` SET `expBefore` = -1 where `id_player`='..player:getGuid())
+							db.query('UPDATE `player_exp_restore` SET `canRestore` = -1 where `id_player`='..player:getGuid())
+							return false
+						else
+							local expcalc = math.floor(expBefore - expAfter)
+							player:addExperience(expcalc, true)
+							item:remove()
+							db.query('UPDATE `player_exp_restore` SET `expAfter` = -1 where `id_player`='..player:getGuid())
+							db.query('UPDATE `player_exp_restore` SET `expBefore` = -1 where `id_player`='..player:getGuid())
+							db.query('UPDATE `player_exp_restore` SET `canRestore` = -1 where `id_player`='..player:getGuid())
+							player:getPosition():sendMagicEffect(CONST_ME_GIFT_WRAPS)
+							player:sendTextMessage(MESSAGE_LOGIN,"You have restored some EXP from last Death.")	
+							return true
+						end
 					else
-						player:sendCancelMessage("You have exp to restore but need to relog first.")
+						player:sendTextMessage(MESSAGE_LOGIN,"You have exp to restore but need to relog first.")
 						player:getPosition():sendMagicEffect(CONST_ME_POFF)
 						return false
 					end
 				else
-					player:sendCancelMessage("You don't have the Exp restore potion.")	
+					player:sendTextMessage(MESSAGE_LOGIN,"You don't have the Exp restore potion.")	
 					player:getPosition():sendMagicEffect(CONST_ME_POFF)
 					return false
 				end
 			else
-				player:sendCancelMessage("You don't have the Exp restore potion.")	
+				player:sendTextMessage(MESSAGE_LOGIN,"You don't have the Exp restore potion.")	
 				player:getPosition():sendMagicEffect(CONST_ME_POFF)
 				return false
 			end
 		else
-			player:sendCancelMessage("You don't have the Exp restore potion.")
+			player:sendTextMessage(MESSAGE_LOGIN,"You don't have the Exp restore potion.")
 			player:getPosition():sendMagicEffect(CONST_ME_POFF)			
 			return false
 		end
 	else
 	-- Nao foi encontrado o user na tabela
-		player:sendCancelMessage("User not found to restore, try login again or report to administrator.")
+		player:sendTextMessage(MESSAGE_LOGIN,"User not found to restore, try login again or report to administrator.")
 		player:getPosition():sendMagicEffect(CONST_ME_POFF)
 		return false
 	end

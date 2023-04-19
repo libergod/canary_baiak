@@ -242,5 +242,17 @@ function hourToNumber(str)
     return hour
 end
 
+-- Used by SUPERUP functions
+function isInArea(pos, fromPos, toPos)
+    if pos.x >= fromPos.x and pos.x <= toPos.x then
+        if pos.y >= fromPos.y and pos.y <= toPos.y then
+            if pos.z >= fromPos.z and pos.z <= toPos.z then
+                return true
+            end
+        end
+    end
+    return false
+end
+
 -- Exercise Training
 onExerciseTraining = { }

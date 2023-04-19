@@ -28,7 +28,7 @@ function superup.onStepIn(creature, item, position, fromPosition)
 		local nome = result.getDataString(playerName, "name")
 
 		if value.dono > 0 and value.tempo > 0 then
-			player:sendCancelMessage(string.format(SUPERUP.msg.naoDisponivel, nome, os.date("%c", value.tempo)))
+			player:sendTextMessage(MESSAGE_LOGIN, string.format(SUPERUP.msg.naoDisponivel, nome, os.date("%c", value.tempo)))
 			player:teleportTo(fromPosition, true)
 			player:getPosition():sendMagicEffect(CONST_ME_POFF)
 		elseif player:getStorageValue(STORAGEVALUE_SUPERUP_INDEX) >= 1 then
@@ -37,7 +37,7 @@ function superup.onStepIn(creature, item, position, fromPosition)
 			player:getPosition():sendMagicEffect(CONST_ME_POFF)
 		else
 			if player:removeItem(SUPERUP.itemID, 1) then
-				player:sendCancelMessage(string.format(SUPERUP.msg.disponivel, SUPERUP.setTime, SUPERUP.setTime > 1 and "horas" or "hora"))
+				player:sendTextMessage(MESSAGE_LOGIN, string.format(SUPERUP.msg.disponivel, SUPERUP.setTime, SUPERUP.setTime > 1 and "horas" or "hora"))
 				player:getPosition():sendMagicEffect(31)
 				player:setStorageValue(STORAGEVALUE_SUPERUP_TEMPO, (os.time() + tempo))
 				player:setStorageValue(STORAGEVALUE_SUPERUP_INDEX, item.actionid)
