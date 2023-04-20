@@ -1267,7 +1267,13 @@ void Game::playerMoveItem(Player* player, const Position &fromPos, uint16_t item
 		}
 	}
 
-	if (isTryingToStow(toPos, toCylinder) && !item->isStoreItem()) {
+	// check if we can move this item
+	if (ReturnValue ret = checkMoveItemToCylinder(player, fromCylinder, toCylinder, item); ret != RETURNVALUE_NOERROR) {
+		player->sendCancelMessage(ret);
+		return;
+	}
+
+	if (isTryingToStow(toPos, toCylinder)) {
 		player->stowItem(item, count, false);
 		return;
 	}
@@ -1405,7 +1411,7 @@ bool Game::isTryingToStow(const Position &toPos, Cylinder* toCylinder) const {
 	return toCylinder->getContainer() && toCylinder->getItem()->getID() == ITEM_LOCKER && toPos.getZ() == ITEM_SUPPLY_STASH_INDEX;
 }
 
-ReturnValue Game::checkMoveItemToContainer(Cylinder* toCylinder, Item* item) {
+ReturnValue Game::checkMoveItemToCylinder(Player* player, Cylinder* fromCylinder, Cylinder* toCylinder, Item* item) {
 	if (toCylinder->getContainer()) {
 		auto containerID = toCylinder->getContainer()->getID();
 
@@ -1428,6 +1434,10 @@ ReturnValue Game::checkMoveItemToContainer(Cylinder* toCylinder, Item* item) {
 		if (item->isStoreItem()) {
 			bool isValidMoveItem = false;
 
+			if (HouseTile* fromHouseTile = dynamic_cast<HouseTile*>(fromCylinder->getTile()); fromHouseTile->getHouse()->getOwner() != player->getGUID()) {
+				return RETURNVALUE_NOTPOSSIBLE;
+			}
+
 			if (containerID == ITEM_STORE_INBOX) {
 				isValidMoveItem = true;
 			}
@@ -1442,6 +1452,20 @@ ReturnValue Game::checkMoveItemToContainer(Cylinder* toCylinder, Item* item) {
 
 			if (!isValidMoveItem) {
 				return RETURNVALUE_NOTPOSSIBLE;
+			}
+		}
+	} else if (toCylinder->getTile() && fromCylinder->getContainer()) {
+		if (item->isStoreItem()) {
+			if (HouseTile* toHouseTile = dynamic_cast<HouseTile*>(toCylinder->getTile()); toHouseTile->getHouse()->getOwner() != player->getGUID()) {
+				return RETURNVALUE_NOTPOSSIBLE;
+			}
+		}
+
+		if (item->getContainer()) {
+			for (Item* containerItem : item->getContainer()->getItems(true)) {
+				if (containerItem->isStoreItem()) {
+					return RETURNVALUE_NOTPOSSIBLE;
+				}
 			}
 		}
 	}
@@ -1491,10 +1515,6 @@ ReturnValue Game::internalMoveItem(Cylinder* fromCylinder, Cylinder* toCylinder,
 	//  Cip's client never sends the count of stackables when using "Move up" menu option
 	if (item->isStackable() && count == 255 && fromCylinder->getParent() == toCylinder) {
 		count = item->getItemCount();
-	}
-	// check if we can move this item
-	if (ReturnValue ret = checkMoveItemToContainer(toCylinder, item); ret != RETURNVALUE_NOERROR) {
-		return ret;
 	}
 
 	// check if we can add this item
@@ -3662,7 +3682,7 @@ void Game::playerStowItem(uint32_t playerId, const Position &pos, uint16_t itemI
 		return;
 
 	Item* item = thing->getItem();
-	if (!item || item->getID() != itemId || item->getItemCount() < count) {
+	if (!item || item->getID() != itemId || item->getItemCount() < count || item->isStoreItem()) {
 		player->sendCancelMessage(RETURNVALUE_NOTPOSSIBLE);
 		return;
 	}
