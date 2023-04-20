@@ -15,34 +15,35 @@
 #include "utils/tools.h"
 
 class ItemAttributeHelper {
-public:
-	bool isAttributeInteger(ItemAttribute_t type) const {
-		std::underlying_type_t<ItemAttribute_t> checkTypes = 0;
-		checkTypes |= ItemAttribute_t::ACTIONID;
-		checkTypes |= ItemAttribute_t::UNIQUEID;
-		checkTypes |= ItemAttribute_t::DATE;
-		checkTypes |= ItemAttribute_t::WEIGHT;
-		checkTypes |= ItemAttribute_t::ATTACK;
-		checkTypes |= ItemAttribute_t::DEFENSE;
-		checkTypes |= ItemAttribute_t::EXTRADEFENSE;
-		checkTypes |= ItemAttribute_t::ARMOR;
-		checkTypes |= ItemAttribute_t::HITCHANCE;
-		checkTypes |= ItemAttribute_t::SHOOTRANGE;
-		checkTypes |= ItemAttribute_t::OWNER;
-		checkTypes |= ItemAttribute_t::DURATION;
-		checkTypes |= ItemAttribute_t::DECAYSTATE;
-		checkTypes |= ItemAttribute_t::CORPSEOWNER;
-		checkTypes |= ItemAttribute_t::CHARGES;
-		checkTypes |= ItemAttribute_t::FLUIDTYPE;
-		checkTypes |= ItemAttribute_t::DOORID;
-		checkTypes |= ItemAttribute_t::IMBUEMENT_SLOT;
-		checkTypes |= ItemAttribute_t::OPENCONTAINER;
-		checkTypes |= ItemAttribute_t::QUICKLOOTCONTAINER;
-		checkTypes |= ItemAttribute_t::DURATION_TIMESTAMP;
-		checkTypes |= ItemAttribute_t::TIER;
-		checkTypes |= ItemAttribute_t::AMOUNT;
-		return (type & static_cast<ItemAttribute_t>(checkTypes)) != 0;
-	}
+	public:
+		bool isAttributeInteger(ItemAttribute_t type) const {
+			std::underlying_type_t<ItemAttribute_t> checkTypes = 0;
+			checkTypes |= ItemAttribute_t::STORE;
+			checkTypes |= ItemAttribute_t::ACTIONID;
+			checkTypes |= ItemAttribute_t::UNIQUEID;
+			checkTypes |= ItemAttribute_t::DATE;
+			checkTypes |= ItemAttribute_t::WEIGHT;
+			checkTypes |= ItemAttribute_t::ATTACK;
+			checkTypes |= ItemAttribute_t::DEFENSE;
+			checkTypes |= ItemAttribute_t::EXTRADEFENSE;
+			checkTypes |= ItemAttribute_t::ARMOR;
+			checkTypes |= ItemAttribute_t::HITCHANCE;
+			checkTypes |= ItemAttribute_t::SHOOTRANGE;
+			checkTypes |= ItemAttribute_t::OWNER;
+			checkTypes |= ItemAttribute_t::DURATION;
+			checkTypes |= ItemAttribute_t::DECAYSTATE;
+			checkTypes |= ItemAttribute_t::CORPSEOWNER;
+			checkTypes |= ItemAttribute_t::CHARGES;
+			checkTypes |= ItemAttribute_t::FLUIDTYPE;
+			checkTypes |= ItemAttribute_t::DOORID;
+			checkTypes |= ItemAttribute_t::IMBUEMENT_SLOT;
+			checkTypes |= ItemAttribute_t::OPENCONTAINER;
+			checkTypes |= ItemAttribute_t::QUICKLOOTCONTAINER;
+			checkTypes |= ItemAttribute_t::DURATION_TIMESTAMP;
+			checkTypes |= ItemAttribute_t::TIER;
+			checkTypes |= ItemAttribute_t::AMOUNT;
+			return (type & static_cast<ItemAttribute_t>(checkTypes)) != 0;
+		}
 
 	bool isAttributeString(ItemAttribute_t type) const {
 		std::underlying_type_t<ItemAttribute_t> checkTypes = 0;
