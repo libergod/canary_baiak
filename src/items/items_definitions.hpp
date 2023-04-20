@@ -192,6 +192,7 @@ enum AttrTypes_t {
 	// ATTR_NONE = 0 (last enum)
 	// ATTR_DESCRIPTION = 1,
 	// ATTR_EXT_FILE = 2,
+	ATTR_STORE = 1,
 	ATTR_TILE_FLAGS = 3,
 	ATTR_ACTION_ID = 4,
 	ATTR_UNIQUE_ID = 5,

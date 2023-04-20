@@ -1449,6 +1449,44 @@ ReturnValue Game::internalMoveItem(Cylinder* fromCylinder, Cylinder* toCylinder,
 		count = item->getItemCount();
 	}
 
+	if (toCylinder->getContainer()) {
+		auto containerID = toCylinder->getContainer()->getID();
+
+		if (containerID == ITEM_GOLD_POUCH) {
+			bool allowAnything = g_configManager().getBoolean(TOGGLE_GOLD_POUCH_ALLOW_ANYTHING);
+
+			if (!allowAnything && item->getID() != ITEM_GOLD_COIN && item->getID() != ITEM_PLATINUM_COIN && item->getID() != ITEM_CRYSTAL_COIN) {
+				return RETURNVALUE_CONTAINERNOTENOUGHROOM;
+			}
+		}
+
+		const Container* topParentContainer = toCylinder->getContainer()->getRootContainer();
+
+		if (!item->isStoreItem() && (containerID == ITEM_STORE_INBOX || topParentContainer->getParent() && topParentContainer->getParent()->getContainer() && topParentContainer->getParent()->getContainer()->getID() == ITEM_STORE_INBOX)) {
+			return RETURNVALUE_CONTAINERNOTENOUGHROOM;
+		}
+
+		if (item->isStoreItem()) {
+			bool isValidMoveItem = false;
+
+			if (containerID == ITEM_STORE_INBOX) {
+				isValidMoveItem = true;
+			}
+
+			if (toCylinder->getContainer()->isDepotChest()) {
+				isValidMoveItem = true;
+			}
+
+			if (topParentContainer->getParent() && topParentContainer->getParent()->getContainer() && (topParentContainer->getParent()->getContainer()->isDepotChest() || topParentContainer->getParent()->getContainer()->getID() == ITEM_STORE_INBOX)) {
+				isValidMoveItem = true;
+			}
+
+			if (!isValidMoveItem) {
+				return RETURNVALUE_NOTPOSSIBLE;
+			}
+		}
+	}
+
 	// check if we can add this item
 	ReturnValue ret = toCylinder->queryAdd(index, *item, count, flags, actor);
 	if (ret == RETURNVALUE_NEEDEXCHANGE) {
@@ -1657,6 +1695,8 @@ ReturnValue Game::internalAddItem(Cylinder* toCylinder, Item* item, int32_t inde
 		return RETURNVALUE_NOTPOSSIBLE;
 	}
 
+	auto addedItem = toCylinder->getItem();
+
 	Cylinder* destCylinder = toCylinder;
 	Item* toItem = nullptr;
 	toCylinder = toCylinder->queryDestination(index, *item, &toItem, flags);
@@ -1674,7 +1714,7 @@ ReturnValue Game::internalAddItem(Cylinder* toCylinder, Item* item, int32_t inde
 	uint32_t maxQueryCount = 0;
 	ret = destCylinder->queryMaxCount(INDEX_WHEREEVER, *item, item->getItemCount(), maxQueryCount, flags);
 
-	if (ret != RETURNVALUE_NOERROR && toCylinder->getItem() && toCylinder->getItem()->getID() != ITEM_REWARD_CONTAINER) {
+	if (ret != RETURNVALUE_NOERROR && addedItem && addedItem->getID() != ITEM_REWARD_CONTAINER) {
 		return ret;
 	}
 
@@ -1724,11 +1764,10 @@ ReturnValue Game::internalAddItem(Cylinder* toCylinder, Item* item, int32_t inde
 		}
 	}
 
-	Item* quiver = toCylinder->getItem();
-	if (quiver && quiver->isQuiver()
-		&& quiver->getHoldingPlayer()
-		&& quiver->getHoldingPlayer()->getThing(CONST_SLOT_RIGHT) == quiver) {
-		quiver->getHoldingPlayer()->sendInventoryItem(CONST_SLOT_RIGHT, quiver);
+	if (addedItem && addedItem->isQuiver()
+		&& addedItem->getHoldingPlayer()
+		&& addedItem->getHoldingPlayer()->getThing(CONST_SLOT_RIGHT) == addedItem) {
+		addedItem->getHoldingPlayer()->sendInventoryItem(CONST_SLOT_RIGHT, addedItem);
 	}
 
 	return RETURNVALUE_NOERROR;
@@ -3847,6 +3886,20 @@ void Game::playerRequestTrade(uint32_t playerId, const Position &pos, uint8_t st
 	if (tradeContainer && tradeContainer->getItemHoldingCount() + 1 > 100) {
 		player->sendTextMessage(MESSAGE_TRADE, "You can not trade more than 100 items.");
 		return;
+	}
+
+	if (tradeItem->isStoreItem()) {
+		player->sendTextMessage(MESSAGE_TRADE, "This item cannot be trade.");
+		return;
+	}
+
+	if (tradeItemContainer) {
+		for (Item* containerItem : tradeItemContainer->getItems(true)) {
+			if (containerItem->isStoreItem()) {
+				player->sendTextMessage(MESSAGE_TRADE, "This item cannot be trade.");
+				return;
+			}
+		}
 	}
 
 	if (!g_events().eventPlayerOnTradeRequest(player, tradePartner, tradeItem)) {
