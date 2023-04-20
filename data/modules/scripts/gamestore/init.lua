@@ -420,6 +420,7 @@ function parseBuyStoreOffer(playerId, msg)
 		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_BLESSINGS      then GameStore.processSignleBlessingPurchase(player, offer.blessid, offer.count)
 		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_ALLBLESSINGS   then GameStore.processAllBlessingsPurchase(player, offer.count)
 		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_PREMIUM        then GameStore.processPremiumPurchase(player, offer.id)
+		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_VIP        	then GameStore.processVipPurchase(player, offer.id)
 		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_STACKABLE      then GameStore.processStackablePurchase(player, offer.itemtype, offer.count, offer.name, offer.moveable)
 		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_HOUSE          then GameStore.processHouseRelatedPurchase(player, offer.itemtype, offer.count, offer.moveable)
 		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_OUTFIT         then GameStore.processOutfitPurchase(player, offer.sexId, offer.addon)
@@ -765,6 +766,19 @@ function sendShowStoreOffers(playerId, category, redirectId)
 	msg:addU16(#disableReasons)
 	for _, reason in ipairs(disableReasons) do
 		msg:addString(reason)
+	end
+
+	-- If player doesn't have hireling
+	if category.name == "Hirelings" then
+		if player:getHirelingsCount() < 1 then
+			offers["Hireling Name Change"] = nil
+			offers["Hireling Sex Change"] = nil
+			offers["Hireling Trader"] = nil
+			offers["Hireling Steward"] = nil
+			offers["Hireling Banker"] = nil
+			offers["Hireling Cook"] = nil
+			count = count - 6
+		end
 	end
 
 	msg:addU16(count)
@@ -1352,7 +1366,7 @@ function GameStore.processVipPurchase(player, offerId)
 	player:addVipDays(offerId - 3000)
 end
 
-function GameStore.processStackablePurchase(player, offerId, offerCount, offerName)
+function GameStore.processStackablePurchase(player, offerId, offerCount, offerName, moveable)
 	local function isKegItem(itemId)
 		return itemId >= ITEM_KEG_START and itemId <= ITEM_KEG_END
 	end
