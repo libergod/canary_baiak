@@ -1267,7 +1267,7 @@ void Game::playerMoveItem(Player* player, const Position &fromPos, uint16_t item
 		}
 	}
 
-	if (isTryingToStow(toPos, toCylinder)) {
+	if (isTryingToStow(toPos, toCylinder) && !item->isStoreItem()) {
 		player->stowItem(item, count, false);
 		return;
 	}
