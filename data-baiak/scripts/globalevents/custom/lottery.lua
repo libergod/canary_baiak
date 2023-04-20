@@ -125,9 +125,15 @@ function lottery.onThink(interval, lastExecution)
 				local query = db.query or db.executeQuery
 				local random_item = config.rewards_id[math.random(1, #config.rewards_id)]
 				local item = ItemType(random_item)
+				local itemWeight = item:getWeight()
 				local qntItem = 0
 
-				if item:getId() == 3043 then qntItem = crystalcount else qntItem = 0 end
+				if item:getId() == 3043 then 
+					qntItem = crystalcount 
+					itemWeight = item:getWeight() * crystalcount
+				else 
+					qntItem = 0 
+				end
 				
 				local item_name = item:getName()
 				local data = os.date("%d/%m/%Y - %H:%M:%S")
@@ -149,17 +155,35 @@ function lottery.onThink(interval, lastExecution)
 					end
 				   
 					if(random_item == 3043) then
-						winner:addItem(random_item, qntItem)
-						Spdlog.info("[LOTTERY SYSTEM] Winner: " .. winner:getName() .. ", Reward: " .. crystalcount .."x " ..
-						item:getPluralName() .. " ! Congratulations!")
-						Game.broadcastMessage("[LOTTERY SYSTEM] Winner: " .. winner:getName() .. ", Reward: " .. crystalcount .."x " ..
-						item:getPluralName() .. " ! Congratulations!", MESSAGE_GAME_HIGHLIGHT) 
-						query("INSERT INTO `lottery` (`name`, `item`, `qnt`, `item_name`, `date`) VALUES ('".. winner:getName() .."', '".. random_item .."', '"..qntItem.. "', '".. item_name .."', '".. data .."');")
+						if player:getFreeCapacity() > itemWeight or not(winner:addItem(random_item, qntItem) == RETURNVALUE_CONTAINERNOTENOUGHROOM) then
+							winner:addItem(random_item, qntItem)
+							Spdlog.info("[LOTTERY SYSTEM] Winner: " .. winner:getName() .. ", Reward: " .. crystalcount .."x " ..
+							item:getPluralName() .. " ! Congratulations!")
+							Game.broadcastMessage("[LOTTERY SYSTEM] Winner: " .. winner:getName() .. ", Reward: " .. crystalcount .."x " ..
+							item:getPluralName() .. " ! Congratulations!", MESSAGE_GAME_HIGHLIGHT) 
+							query("INSERT INTO `lottery` (`name`, `item`, `qnt`, `item_name`, `date`) VALUES ('".. winner:getName() .."', '".. random_item .."', '"..qntItem.. "', '".. item_name .."', '".. data .."');")
+						else
+							sendMailbox(winner:getId(), random_item, qntItem)
+							--winner:addItem(random_item, qntItem)
+							Spdlog.info("[LOTTERY SYSTEM] Winner: " .. winner:getName() .. ", Reward: " .. crystalcount .."x " ..
+							item:getPluralName() .. " ! Congratulations!")
+							Game.broadcastMessage("[LOTTERY SYSTEM] Winner: " .. winner:getName() .. ", Reward: " .. crystalcount .."x " ..
+							item:getPluralName() .. " ! Congratulations!", MESSAGE_GAME_HIGHLIGHT) 
+							query("INSERT INTO `lottery` (`name`, `item`, `qnt`, `item_name`, `date`) VALUES ('".. winner:getName() .."', '".. random_item .."', '"..qntItem.. "', '".. item_name .."', '".. data .."');")
+						end
 					else
-						winner:addItem(random_item, qntItem)
-						Spdlog.info("[LOTTERY SYSTEM] Winner: " .. winner:getName() .. ", Reward: " .. item:getName() .. "! Congratulations!")
-						Game.broadcastMessage("[LOTTERY SYSTEM] Winner: " .. winner:getName() .. ", Reward: " .. item:getName() .. "! Congratulations!")
-						query("INSERT INTO `lottery` (`name`, `item`, `qnt`, `item_name`, `date`) VALUES ('".. winner:getName() .."', '".. random_item .."', '1', '".. item_name .."', '".. data .."');")
+						if player:getFreeCapacity() > itemWeight or not(winner:addItem(random_item, qntItem) == RETURNVALUE_CONTAINERNOTENOUGHROOM) then
+							winner:addItem(random_item, qntItem)
+							Spdlog.info("[LOTTERY SYSTEM] Winner: " .. winner:getName() .. ", Reward: " .. item:getName() .. "! Congratulations!")
+							Game.broadcastMessage("[LOTTERY SYSTEM] Winner: " .. winner:getName() .. ", Reward: " .. item:getName() .. "! Congratulations!")
+							query("INSERT INTO `lottery` (`name`, `item`, `qnt`, `item_name`, `date`) VALUES ('".. winner:getName() .."', '".. random_item .."', '1', '".. item_name .."', '".. data .."');")
+						else
+							sendMailbox(winner:getId(), random_item, qntItem)
+							--winner:addItem(random_item, qntItem)
+							Spdlog.info("[LOTTERY SYSTEM] Winner: " .. winner:getName() .. ", Reward: " .. item:getName() .. "! Congratulations!")
+							Game.broadcastMessage("[LOTTERY SYSTEM] Winner: " .. winner:getName() .. ", Reward: " .. item:getName() .. "! Congratulations!")
+							query("INSERT INTO `lottery` (`name`, `item`, `qnt`, `item_name`, `date`) VALUES ('".. winner:getName() .."', '".. random_item .."', '1', '".. item_name .."', '".. data .."');")
+						end
 					end
 				else
 					--Spdlog.info("[LOTTERY SYSTEM] - No Players Online. Skipping.")

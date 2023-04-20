@@ -14,7 +14,7 @@ function gold_rank.onSay(player, words, param)
 		if str == "" then
 			str = "No highscore to show."
 		end
-		player:popupFYI("Current gold highscore for this server:\n" .. str)
+		player:popupFYI("Current gold highscore for RealBaiak:\n" .. str)
 	else
 		player:sendCancelMessage("No highscore to show.")
 	end
