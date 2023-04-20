@@ -39,7 +39,6 @@ GameStore.Categories = {
          count = 1,
          description = "<i>Secure one of these items:</i>\n\n&#8226; Pair of Soulstalkers\n&#8226; Pair of Soulwalkers\n&#8226; Soulbastion\n&#8226; Soulbiter\n&#8226; Soulbleeder\n&#8226; Soulcrusher\n&#8226; Soulcutter\n&#8226; Souleater\n&#8226; Soulhexer\n&#8226; Soulmaimer\n&#8226; Soulmantle\n&#8226; Soulpiercer\n&#8226; Soulshanks\n&#8226; Soulshell\n&#8226; Soulshredder\n&#8226; Soulshroud\n&#8226; Soulstrider\n&#8226; Soultainter",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
-		 moveable = true,
        },
 		{
          icons = { "Primal_Bag.png" },
@@ -49,7 +48,6 @@ GameStore.Categories = {
          count = 1,
          description = "<i>Secure one of these items:</i>\n\n&#8226; Spiritthorn Armor\n&#8226; Spiritthorn Helmet\n&#8226; Alicorn Headguard\n&#8226; Alicorn Quiver\n&#8226; Arcanomancer Regalia\n&#8226; Arcanomancer Folio\n&#8226; Arboreal Crown\n&#8226; Arboreal Tome\n&#8226; Spiritthorn Ring\n&#8226; Alicorn Ring\n&#8226; Arcanomancer Sigil\n&#8226; Arboreal Ring",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
-		 moveable = true,
        },
 	   {
          icons = { "Bag_You_Desire.png" },
@@ -60,7 +58,6 @@ GameStore.Categories = {
          description = "<i>Secure one of these items:</i>\n\n&#8226; Pair of Soulstalkers\n&#8226; Pair of Soulwalkers\n&#8226; Soulbastion\n&#8226; Soulbiter\n&#8226; Soulbleeder\n&#8226; Soulcrusher\n&#8226; Soulcutter\n&#8226; Souleater\n&#8226; Soulhexer\n&#8226; Soulmaimer\n&#8226; Soulmantle\n&#8226; Soulpiercer\n&#8226; Soulshanks\n&#8226; Soulshell\n&#8226; Soulshredder\n&#8226; Soulshroud\n&#8226; Soulstrider\n&#8226; Soultainter",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
-		 moveable = true,
        },
 		{
          icons = { "Primal_Bag.png" },
@@ -71,7 +68,6 @@ GameStore.Categories = {
          description = "<i>Secure one of these items:</i>\n\n&#8226; Spiritthorn Armor\n&#8226; Spiritthorn Helmet\n&#8226; Alicorn Headguard\n&#8226; Alicorn Quiver\n&#8226; Arcanomancer Regalia\n&#8226; Arcanomancer Folio\n&#8226; Arboreal Crown\n&#8226; Arboreal Tome\n&#8226; Spiritthorn Ring\n&#8226; Alicorn Ring\n&#8226; Arcanomancer Sigil\n&#8226; Arboreal Ring",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
-		 moveable = true,
        },
  },
 },
