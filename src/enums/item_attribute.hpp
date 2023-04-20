@@ -42,7 +42,6 @@ enum ItemAttribute_t : uint64_t {
 	DURATION_TIMESTAMP = 1 << 27,
 	AMOUNT = 1 << 28,
 	TIER = 1 << 29,
-	STORE = 1 << 30,
 
 	CUSTOM = 1U << 31
 };

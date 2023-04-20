@@ -209,24 +209,24 @@ Item::Item(const uint16_t itemId, uint16_t itemCount /*= 0*/) :
 }
 
 Item::Item(const Item &i) :
-    Thing(), id(i.id), count(i.count), loadedFromMap(i.loadedFromMap) {
-    if (i.attributePtr) {
-        attributePtr.reset(new ItemAttribute(*i.attributePtr));
-    }
+	Thing(), id(i.id), count(i.count), loadedFromMap(i.loadedFromMap) {
+	if (i.attributePtr) {
+		attributePtr.reset(new ItemAttribute());
+	}
 }
 
 Item* Item::clone() const {
-    Item* item = Item::CreateItem(id, count);
-    if (item == nullptr) {
-        SPDLOG_ERROR("[{}] item is nullptr", __FUNCTION__);
-        return nullptr;
-    }
+	Item* item = Item::CreateItem(id, count);
+	if (item == nullptr) {
+		SPDLOG_ERROR("[{}] item is nullptr", __FUNCTION__);
+		return nullptr;
+	}
 
-    if (attributePtr) {
-        item->attributePtr.reset(new ItemAttribute(*attributePtr));
-    }
+	if (attributePtr) {
+		item->attributePtr.reset(new ItemAttribute());
+	}
 
-    return item;
+	return item;
 }
 
 bool Item::equals(const Item* compareItem) const {
@@ -235,10 +235,6 @@ bool Item::equals(const Item* compareItem) const {
 	}
 
 	if (id != compareItem->id) {
-		return false;
-	}
-	
-	if (isStoreItem() != compareItem->isStoreItem()) {
 		return false;
 	}
 
@@ -407,15 +403,6 @@ void Item::setSubType(uint16_t n) {
 
 Attr_ReadValue Item::readAttr(AttrTypes_t attr, PropStream &propStream) {
 	switch (attr) {
-		case ATTR_STORE: {
-			int64_t timeStamp;
-			if (!propStream.read<int64_t>(timeStamp)) {
-				return ATTR_READ_ERROR;
-			}
-
-			setAttribute(ItemAttribute_t::STORE, timeStamp);
-			break;
-		}
 		case ATTR_COUNT:
 		case ATTR_RUNE_CHARGES: {
 			uint8_t charges;
@@ -738,11 +725,6 @@ Attr_ReadValue Item::readAttr(AttrTypes_t attr, PropStream &propStream) {
 				addCustomAttribute(key, customAttribute);
 				// Remove old custom attribute
 				removeAttribute(ItemAttribute_t::CUSTOM);
-
-				// Migrate wrapable items to the new store attribute
-				if (getCustomAttribute("unWrapId") && getAttribute<int64_t>(ItemAttribute_t::STORE) == 0) {
-					setAttribute(ItemAttribute_t::STORE, getTimeNow());
-				}
 			}
 			break;
 		}
@@ -821,10 +803,6 @@ bool Item::unserializeItemNode(OTB::Loader &, const OTB::Node &, PropStream &pro
 
 void Item::serializeAttr(PropWriteStream &propWriteStream) const {
 	const ItemType &it = items[id];
-	if (auto timeStamp = getAttribute<int64_t>(ItemAttribute_t::STORE)) {
-		propWriteStream.write<uint8_t>(ATTR_STORE);
-		propWriteStream.write<int64_t>(timeStamp);
-	}
 	if (it.stackable || it.isFluidContainer() || it.isSplash()) {
 		propWriteStream.write<uint8_t>(ATTR_COUNT);
 		propWriteStream.write<uint8_t>(getSubType());
