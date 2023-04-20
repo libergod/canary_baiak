@@ -39,6 +39,7 @@ GameStore.Categories = {
          count = 1,
          description = "<i>Secure one of these items:</i>\n\n&#8226; Pair of Soulstalkers\n&#8226; Pair of Soulwalkers\n&#8226; Soulbastion\n&#8226; Soulbiter\n&#8226; Soulbleeder\n&#8226; Soulcrusher\n&#8226; Soulcutter\n&#8226; Souleater\n&#8226; Soulhexer\n&#8226; Soulmaimer\n&#8226; Soulmantle\n&#8226; Soulpiercer\n&#8226; Soulshanks\n&#8226; Soulshell\n&#8226; Soulshredder\n&#8226; Soulshroud\n&#8226; Soulstrider\n&#8226; Soultainter",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
 		{
          icons = { "Primal_Bag.png" },
@@ -48,6 +49,7 @@ GameStore.Categories = {
          count = 1,
          description = "<i>Secure one of these items:</i>\n\n&#8226; Spiritthorn Armor\n&#8226; Spiritthorn Helmet\n&#8226; Alicorn Headguard\n&#8226; Alicorn Quiver\n&#8226; Arcanomancer Regalia\n&#8226; Arcanomancer Folio\n&#8226; Arboreal Crown\n&#8226; Arboreal Tome\n&#8226; Spiritthorn Ring\n&#8226; Alicorn Ring\n&#8226; Arcanomancer Sigil\n&#8226; Arboreal Ring",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
 	   {
          icons = { "Bag_You_Desire.png" },
@@ -58,6 +60,7 @@ GameStore.Categories = {
          description = "<i>Secure one of these items:</i>\n\n&#8226; Pair of Soulstalkers\n&#8226; Pair of Soulwalkers\n&#8226; Soulbastion\n&#8226; Soulbiter\n&#8226; Soulbleeder\n&#8226; Soulcrusher\n&#8226; Soulcutter\n&#8226; Souleater\n&#8226; Soulhexer\n&#8226; Soulmaimer\n&#8226; Soulmantle\n&#8226; Soulpiercer\n&#8226; Soulshanks\n&#8226; Soulshell\n&#8226; Soulshredder\n&#8226; Soulshroud\n&#8226; Soulstrider\n&#8226; Soultainter",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
 		{
          icons = { "Primal_Bag.png" },
@@ -68,6 +71,7 @@ GameStore.Categories = {
          description = "<i>Secure one of these items:</i>\n\n&#8226; Spiritthorn Armor\n&#8226; Spiritthorn Helmet\n&#8226; Alicorn Headguard\n&#8226; Alicorn Quiver\n&#8226; Arcanomancer Regalia\n&#8226; Arcanomancer Folio\n&#8226; Arboreal Crown\n&#8226; Arboreal Tome\n&#8226; Spiritthorn Ring\n&#8226; Alicorn Ring\n&#8226; Arcanomancer Sigil\n&#8226; Arboreal Ring",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
  },
 },
@@ -87,6 +91,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Arm: 20, sword fighting +4, club fighting +4, axe fighting +4, protection physical +13%, damage reflection +19).\n\n&#8226;It can only be wielded properly by knights of level 400 or higher.\n\n&#8226;Imbuement Slots: 2.\n\n&#8226;Classification: 4. Max. Tier: 10\n\n&#8226;It weighs 160.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
 		{
          icons = { "spiritthorn_helmet.png" },
@@ -96,6 +101,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Arm: 12, sword fighting +3, club fighting +3, axe fighting +3, protection physical +6%, energy +10%, damage reflection +13).\n\n&#8226;It can only be wielded properly by knights of level 400 or higher.\n\n&#8226;Imbuement Slots: 2.\n\n&#8226;Classification: 4. Max. Tier: 10\n\n&#8226;It weighs 44.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
 	   {
          icons = { "alicorn_headguard.png" },
@@ -105,6 +111,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Arm: 11, distance fighting +3, protection physical +5%, fire +5%, earth +5%, energy +5%, ice +5%, holy +5%, death +5%).\n\n&#8226;It can only be wielded properly by paladins of level 400 or higher.\n\n&#8226;Imbuement Slots: 2.\n\n&#8226;Classification: 4. Max. Tier: 10\n\n&#8226;It weighs 39.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
 	   {
          icons = { "alicorn_quiver.png" },
@@ -114,6 +121,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Vol: 12, magic level +1, perfect shot +20 at range 3).\n\n&#8226;It can only be wielded properly by paladins of level 400 or higher.\n\n&#8226;It weighs 20.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
 	   {
          icons = { "arcanomancer_regalia.png" },
@@ -123,6 +131,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Arm: 9, magic level +3, protection physical +3%, earth +7%).\n\n&#8226;It can only be wielded properly by sorcerers of level 400 or higher.\n\n&#8226;Imbuement Slots: 2.\n\n&#8226;Classification: 4. Max. Tier: 10\n\n&#8226;It weighs 15.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
 	   {
          icons = { "arcanomancer_folio.png" },
@@ -132,6 +141,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Def: 22, magic level +5, fire magic level +1, energy magic level +1, protection physical +3%, fire +8%).\n\n&#8226;It can only be wielded properly by sorcerers of level 400 or higher.\n\n&#8226;Imbuement Slots: 1.\n\n&#8226;It weighs 26.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
 	   {
          icons = { "arboreal_crown.png" },
@@ -141,6 +151,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Arm: 9, magic level +3, protection physical +2%, ice +9%).\n\n&#8226;It can only be wielded properly by druids of level 400 or higher.\n\n&#8226;Imbuement Slots: 2.\n\n&#8226;Classification: 4. Max. Tier: 10\n\n&#8226;It weighs 12.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
 	   {
          icons = { "arboreal_tome.png" },
@@ -150,6 +161,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Def: 22, magic level +5, ice magic level +1, healing magic level +1, protection physical +4%, energy +6%).\n\n&#8226;It can only be wielded properly by druids of level 400 or higher.\n\n&#8226;Imbuement Slots: 1.\n\n&#8226;It weighs 23.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
 	   {
          icons = { "spiritthorn_ring.png" },
@@ -159,6 +171,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Arm: 0, protection physical +2%, fire +4%, earth +4%, energy +4%, ice +4%).\n\n&#8226;It can only be wielded properly by knights of level 400 or higher.\n\n&#8226;It weighs 0.95 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
 	   {
          icons = { "alicorn_ring.png" },
@@ -168,6 +181,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Arm: 0, holy magic level +1, protection fire +4%, earth +4%, energy +4%, ice +4%).\n\n&#8226;It can only be wielded properly by paladins of level 400 or higher.\n\n&#8226;It weighs 0.85 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
 	   {
          icons = { "arcanomancer_sigil.png" },
@@ -177,6 +191,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Arm: 0, fire magic level +1, energy magic level +1, protection fire +4%, earth +4%, energy +4%, ice +4%).\n\n&#8226;It can only be wielded properly by sorcerers of level 400 or higher.\n\n&#8226;It weighs 0.90 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
 	   {
          icons = { "arboreal_ring.png" },
@@ -186,6 +201,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Arm: 0, healing magic level +2, protection fire +4%, earth +4%, energy +4%, ice +4%).\n\n&#8226;It can only be wielded properly by druids of level 400 or higher.\n\n&#8226;It weighs 0.70 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
 
 	--------------------------------------------------------	   
@@ -198,6 +214,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Arm: 20, sword fighting +4, club fighting +4, axe fighting +4, protection physical +13%, damage reflection +19).\n\n&#8226;It can only be wielded properly by knights of level 400 or higher.\n\n&#8226;Imbuement Slots: 2.\n\n&#8226;Classification: 4. Max. Tier: 10\n\n&#8226;It weighs 160.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
 	{
          icons = { "spiritthorn_helmet.png" },
@@ -208,6 +225,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Arm: 12, sword fighting +3, club fighting +3, axe fighting +3, protection physical +6%, energy +10%, damage reflection +13).\n\n&#8226;It can only be wielded properly by knights of level 400 or higher.\n\n&#8226;Imbuement Slots: 2.\n\n&#8226;Classification: 4. Max. Tier: 10\n\n&#8226;It weighs 44.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
 	   {
          icons = { "alicorn_headguard.png" },
@@ -218,6 +236,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Arm: 11, distance fighting +3, protection physical +5%, fire +5%, earth +5%, energy +5%, ice +5%, holy +5%, death +5%).\n\n&#8226;It can only be wielded properly by paladins of level 400 or higher.\n\n&#8226;Imbuement Slots: 2.\n\n&#8226;Classification: 4. Max. Tier: 10\n\n&#8226;It weighs 39.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
 	   {
          icons = { "alicorn_quiver.png" },
@@ -228,6 +247,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Vol: 12, magic level +1, perfect shot +20 at range 3).\n\n&#8226;It can only be wielded properly by paladins of level 400 or higher.\n\n&#8226;It weighs 20.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
 	   {
          icons = { "arcanomancer_regalia.png" },
@@ -238,6 +258,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Arm: 9, magic level +3, protection physical +3%, earth +7%).\n\n&#8226;It can only be wielded properly by sorcerers of level 400 or higher.\n\n&#8226;Imbuement Slots: 2.\n\n&#8226;Classification: 4. Max. Tier: 10\n\n&#8226;It weighs 15.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
 	   {
          icons = { "arcanomancer_folio.png" },
@@ -248,6 +269,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Def: 22, magic level +5, fire magic level +1, energy magic level +1, protection physical +3%, fire +8%).\n\n&#8226;It can only be wielded properly by sorcerers of level 400 or higher.\n\n&#8226;Imbuement Slots: 1.\n\n&#8226;It weighs 26.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
 	   {
          icons = { "arboreal_crown.png" },
@@ -258,6 +280,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Arm: 9, magic level +3, protection physical +2%, ice +9%).\n\n&#8226;It can only be wielded properly by druids of level 400 or higher.\n\n&#8226;Imbuement Slots: 2.\n\n&#8226;Classification: 4. Max. Tier: 10\n\n&#8226;It weighs 12.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
 	   {
          icons = { "arboreal_tome.png" },
@@ -268,6 +291,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Def: 22, magic level +5, ice magic level +1, healing magic level +1, protection physical +4%, energy +6%).\n\n&#8226;It can only be wielded properly by druids of level 400 or higher.\n\n&#8226;Imbuement Slots: 1.\n\n&#8226;It weighs 23.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
 	   {
          icons = { "spiritthorn_ring.png" },
@@ -278,6 +302,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Arm: 0, protection physical +2%, fire +4%, earth +4%, energy +4%, ice +4%).\n\n&#8226;It can only be wielded properly by knights of level 400 or higher.\n\n&#8226;It weighs 0.95 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
 	   {
          icons = { "alicorn_ring.png" },
@@ -288,6 +313,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Arm: 0, holy magic level +1, protection fire +4%, earth +4%, energy +4%, ice +4%).\n\n&#8226;It can only be wielded properly by paladins of level 400 or higher.\n\n&#8226;It weighs 0.85 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
 	   {
          icons = { "arcanomancer_sigil.png" },
@@ -298,6 +324,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Arm: 0, fire magic level +1, energy magic level +1, protection fire +4%, earth +4%, energy +4%, ice +4%).\n\n&#8226;It can only be wielded properly by sorcerers of level 400 or higher.\n\n&#8226;It weighs 0.90 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
 	   {
          icons = { "arboreal_ring.png" },
@@ -308,6 +335,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Arm: 0, healing magic level +2, protection fire +4%, earth +4%, energy +4%, ice +4%).\n\n&#8226;It can only be wielded properly by druids of level 400 or higher.\n\n&#8226;It weighs 0.70 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    },
 },
@@ -327,6 +355,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Atk:7 physical + 45 death, Def:32 +3, sword fighting +5, life leech chance +100%, life leech amount +5%, mana leech chance +100%, mana leech amount +3%).\n\n&#8226;It can only be wielded properly by knights of level 400 or higher.\n\n&#8226;It weighs 63.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
        {
          icons = { "Soulshredder.png" },
@@ -336,6 +365,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Atk:10 physical + 47 ice, Def:35, sword fighting +5, critical hit chance 10%, critical extra damage +10%).\n\n&#8226;It can only be wielded properly by knights of level 400 or higher.\n\n&#8226;It weighs 81.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
        {
          icons = { "Soulbiter.png" },
@@ -345,6 +375,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Atk:7 physical + 45 death, Def:32 +3, axe fighting +5, life leech chance +100%, life leech amount +5%, mana leech chance +100%, mana leech amount +3%).\n\n&#8226;It can only be wielded properly by knights of level 400 or higher.\n\n&#8226;It weighs 40.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
        {
          icons = { "Souleater.png" },
@@ -354,6 +385,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Atk:10 physical + 47 ice, Def:35, axe fighting +5, critical hit chance 10%, critical extra damage +10%).\n\n&#8226;It can only be wielded properly by knights of level 400 or higher.\n\n&#8226;It weighs 72.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
        {
          icons = { "Soulcrusher.png" },
@@ -363,6 +395,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Atk:6 physical + 46 ice, Def:33 +3, club fighting +5, life leech chance +100%, life leech amount +5%, mana leech chance +100%, mana leech amount +3%).\n\n&#8226;It can only be wielded properly by knights of level 400 or higher.\n\n&#8226;It weighs 41.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
        {
          icons = { "Soulmaimer.png" },
@@ -372,6 +405,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Atk:10 physical + 47 energy, Def:35, club fighting +5, critical hit chance 10%, critical extra damage +10%).\n\n&#8226;It can only be wielded properly by knights of level 400 or higher.\n\n&#8226;It weighs 89.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Soulbleeder.png" },
@@ -381,6 +415,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Range: 6, Atk +8, Hit% +5, distance fighting +4, critical hit chance 10, critical extra damage +10, protection holy +7%).\n\n&#8226;It can only be wielded properly by paladins of level 400 or higher.\n\n&#8226;It weighs 47.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Soulpiercer.png" },
@@ -390,6 +425,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Range: 6, Atk +9, Hit% +6, distance fighting +4, critical hit chance 10, critical extra damage +10, protection death +7%).\n\n&#8226;It can only be wielded properly by paladins of level 400 or higher.\n\n&#8226;It weighs 40.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Soultainter.png" },
@@ -399,6 +435,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(critical hit chance 10%, critical extra damage +10%, magic level +5, protection death +12%).\n\n&#8226;It can only be wielded properly by sorcerers of level 400 or higher.\n\n&#8226;It weighs 19.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Soulhexer.png" },
@@ -408,6 +445,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(life leech chance +100%, life leech amount +5%, mana leech chance +100%, mana leech amount +3%, magic level +5, protection ice +12%).\n\n&#8226;It can only be wielded properly by druids of level 400 or higher.\n\n&#8226;It weighs 25.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Soulshanks.png" },
@@ -417,6 +455,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Arm:10, magic level +3, protection death +10%).\n\n&#8226;It can only be wielded properly by sorcerers of level 400 or higher.\n\n&#8226;It weighs 38.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Soulstrider.png" },
@@ -426,6 +465,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Arm:10, magic level +3, protection fire +10%).\n\n&#8226;It can only be wielded properly by druids of level 400 or higher.\n\n&#8226;It weighs 38.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Soulshell.png" },
@@ -435,6 +475,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Arm:18, distance fighting +4, protection physical +3%, fire +15%).\n\n&#8226;It can only be wielded properly by paladins of level 400 or higher.\n\n&#8226;It weighs 123.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Soulmantle.png" },
@@ -444,6 +485,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Arm:17, magic level +4, protection physical +4%).\n\n&#8226;It can only be wielded properly by sorcerers of level 400 or higher.\n\n&#8226;It weighs 24.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Soulshroud.png" },
@@ -453,6 +495,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Arm:17, magic level +4, protection death +10%).\n\n&#8226;It can only be wielded properly by druids of level 400 or higher.\n\n&#8226;It weighs 24.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
        {
          icons = { "Pair_Of_Soulwalkers.png" },
@@ -462,6 +505,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Arm:4, club fighting +1, sword fighting +1, axe fighting +1, protection physical +7%, fire +5%, speed +15).\n\n&#8226;It can only be wielded properly by knights of level 400 or higher.\n\n&#8226;It weighs 13.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Pair_Of_Soulstalkers.png" },
@@ -471,6 +515,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Arm:3, distance fighting +1, protection physical +5%, speed +20).\n\n&#8226;It can only be wielded properly by paladins of level 400 or higher.\n\n&#8226;It weighs 13.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },		
        {
          icons = { "Soulbastion.png" },
@@ -480,6 +525,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Def:42, protection physical +10%, death +10%).\n\n&#8226;It can only be wielded properly by knights of level 400 or higher.\n\n&#8226;It weighs 58.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },  
 	--------------------------------------------------------	   
 	{
@@ -491,6 +537,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Atk:7 physical + 45 death, Def:32 +3, sword fighting +5, life leech chance +100%, life leech amount +5%, mana leech chance +100%, mana leech amount +3%).\n\n&#8226;It can only be wielded properly by knights of level 400 or higher.\n\n&#8226;It weighs 63.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
        {
          icons = { "Soulshredder.png" },
@@ -501,6 +548,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Atk:10 physical + 47 ice, Def:35, sword fighting +5, critical hit chance 10%, critical extra damage +10%).\n\n&#8226;It can only be wielded properly by knights of level 400 or higher.\n\n&#8226;It weighs 81.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
        {
          icons = { "Soulbiter.png" },
@@ -511,6 +559,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Atk:7 physical + 45 death, Def:32 +3, axe fighting +5, life leech chance +100%, life leech amount +5%, mana leech chance +100%, mana leech amount +3%).\n\n&#8226;It can only be wielded properly by knights of level 400 or higher.\n\n&#8226;It weighs 40.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
        {
          icons = { "Souleater.png" },
@@ -521,6 +570,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Atk:10 physical + 47 ice, Def:35, axe fighting +5, critical hit chance 10%, critical extra damage +10%).\n\n&#8226;It can only be wielded properly by knights of level 400 or higher.\n\n&#8226;It weighs 72.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
        {
          icons = { "Soulcrusher.png" },
@@ -531,6 +581,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Atk:6 physical + 46 ice, Def:33 +3, club fighting +5, life leech chance +100%, life leech amount +5%, mana leech chance +100%, mana leech amount +3%).\n\n&#8226;It can only be wielded properly by knights of level 400 or higher.\n\n&#8226;It weighs 41.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
        {
          icons = { "Soulmaimer.png" },
@@ -541,6 +592,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Atk:10 physical + 47 energy, Def:35, club fighting +5, critical hit chance 10%, critical extra damage +10%).\n\n&#8226;It can only be wielded properly by knights of level 400 or higher.\n\n&#8226;It weighs 89.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Soulbleeder.png" },
@@ -551,6 +603,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Range: 6, Atk +8, Hit% +5, distance fighting +4, critical hit chance 10, critical extra damage +10, protection holy +7%).\n\n&#8226;It can only be wielded properly by paladins of level 400 or higher.\n\n&#8226;It weighs 47.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Soulpiercer.png" },
@@ -561,6 +614,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Range: 6, Atk +9, Hit% +6, distance fighting +4, critical hit chance 10, critical extra damage +10, protection death +7%).\n\n&#8226;It can only be wielded properly by paladins of level 400 or higher.\n\n&#8226;It weighs 40.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Soultainter.png" },
@@ -571,6 +625,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(critical hit chance 10%, critical extra damage +10%, magic level +5, protection death +12%).\n\n&#8226;It can only be wielded properly by sorcerers of level 400 or higher.\n\n&#8226;It weighs 19.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Soulhexer.png" },
@@ -581,6 +636,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(life leech chance +100%, life leech amount +5%, mana leech chance +100%, mana leech amount +3%, magic level +5, protection ice +12%).\n\n&#8226;It can only be wielded properly by druids of level 400 or higher.\n\n&#8226;It weighs 25.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Soulshanks.png" },
@@ -591,6 +647,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Arm:10, magic level +3, protection death +10%).\n\n&#8226;It can only be wielded properly by sorcerers of level 400 or higher.\n\n&#8226;It weighs 38.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Soulstrider.png" },
@@ -601,6 +658,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Arm:10, magic level +3, protection fire +10%).\n\n&#8226;It can only be wielded properly by druids of level 400 or higher.\n\n&#8226;It weighs 38.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Soulshell.png" },
@@ -611,6 +669,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Arm:18, distance fighting +4, protection physical +3%, fire +15%).\n\n&#8226;It can only be wielded properly by paladins of level 400 or higher.\n\n&#8226;It weighs 123.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Soulmantle.png" },
@@ -621,6 +680,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Arm:17, magic level +4, protection physical +4%).\n\n&#8226;It can only be wielded properly by sorcerers of level 400 or higher.\n\n&#8226;It weighs 24.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Soulshroud.png" },
@@ -631,6 +691,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Arm:17, magic level +4, protection death +10%).\n\n&#8226;It can only be wielded properly by druids of level 400 or higher.\n\n&#8226;It weighs 24.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
        {
          icons = { "Pair_Of_Soulwalkers.png" },
@@ -641,6 +702,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Arm:4, club fighting +1, sword fighting +1, axe fighting +1, protection physical +7%, fire +5%, speed +15).\n\n&#8226;It can only be wielded properly by knights of level 400 or higher.\n\n&#8226;It weighs 13.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Pair_Of_Soulstalkers.png" },
@@ -651,6 +713,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Arm:3, distance fighting +1, protection physical +5%, speed +20).\n\n&#8226;It can only be wielded properly by paladins of level 400 or higher.\n\n&#8226;It weighs 13.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },		
        {
          icons = { "Soulbastion.png" },
@@ -661,6 +724,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Def:42, protection physical +10%, death +10%).\n\n&#8226;It can only be wielded properly by knights of level 400 or higher.\n\n&#8226;It weighs 58.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        }, 
    },
 },
@@ -680,6 +744,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Arm:8, magic level +2, protection fire +9%).\n\n&#8226;It can only be wielded properly by sorcerers and druids of level 300 or higher.\n\n&#8226;It weighs 13.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Falcon_Coif.png" },
@@ -689,6 +754,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Arm:10, distance fighting +2, shielding +2, protection physical +3%, fire +10%).\n\n&#8226;It can only be wielded properly by knights and paladins of level 300 or higher.\n\n&#8226;It weighs 28.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },	
    {
          icons = { "Falcon_Rod.png" },
@@ -698,6 +764,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(magic level +3, protection energy +8%).\n\n&#8226;It can only be wielded properly by druids of level 300 or higher.\n\n&#8226;It weighs 37.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Falcon_Wand.png" },
@@ -707,6 +774,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(magic level +3, protection fire +8%).\n\n&#8226;It can only be wielded properly by sorcerers of level 300 or higher.\n\n&#8226;It weighs 33.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },	
    {
          icons = { "Falcon_Bow.png" },
@@ -716,6 +784,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Range: 6, Atk +7, Hit% +5, distance fighting +2, protection fire +5%).\n\n&#8226;It can only be wielded properly by paladins of level 300 or higher.\n\n&#8226;It weighs 35.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Falcon_Plate.png" },
@@ -725,6 +794,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Arm:18, shielding +4, protection physical +12%).\n\n&#8226;It can only be wielded properly by knights of level 300 or higher.\n\n&#8226;It weighs 188.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Falcon_Greaves.png" },
@@ -734,6 +804,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Arm:10, club fighting +3, sword fighting +3, axe fighting +3, distance fighting +3, protection physical +7%, ice +7%).\n\n&#8226;It can only be wielded properly by knights and paladins of level 300 or higher.\n\n&#8226;It weighs 36.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },	
    {
          icons = { "Falcon_Shield.png" },
@@ -743,6 +814,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Def:39, protection physical +6%, fire +10%).\n\n&#8226;It can only be wielded properly by knights and paladins of level 300 or higher.\n\n&#8226;It weighs 57.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Falcon_Escutcheon.png" },
@@ -752,6 +824,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Def:40, protection physical +7%, fire +15%).\n\n&#8226;It can only be wielded properly by knights and paladins of level 300 or higher.\n\n&#8226;It weighs 60.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Falcon_Longsword.png" },
@@ -761,6 +834,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Atk:56, Def:34, sword fighting +4, protection earth +10%).\n\n&#8226;It can only be wielded properly by knights of level 300 or higher.\n\n&#8226;It weighs 82.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Falcon_Battleaxe.png" },
@@ -770,6 +844,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Atk:10 physical + 47 energy, Def:33, axe fighting +4, protection energy +12%).\n\n&#8226;It can only be wielded properly by knights of level 300 or higher.\n\n&#8226;It weighs 95.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Falcon_Mace.png" },
@@ -779,6 +854,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Atk:11 physical + 41 energy, Def:33 +3, club fighting +3, protection energy +7%).\n\n&#8226;It can only be wielded properly by knights of level 300 or higher.\n\n&#8226;It weighs 68.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
 	   ------------------
 	   {
@@ -790,6 +866,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Arm:8, magic level +2, protection fire +9%).\n\n&#8226;It can only be wielded properly by sorcerers and druids of level 300 or higher.\n\n&#8226;It weighs 13.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Falcon_Coif.png" },
@@ -800,6 +877,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Arm:10, distance fighting +2, shielding +2, protection physical +3%, fire +10%).\n\n&#8226;It can only be wielded properly by knights and paladins of level 300 or higher.\n\n&#8226;It weighs 28.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },	
    {
          icons = { "Falcon_Rod.png" },
@@ -810,6 +888,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(magic level +3, protection energy +8%).\n\n&#8226;It can only be wielded properly by druids of level 300 or higher.\n\n&#8226;It weighs 37.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Falcon_Wand.png" },
@@ -820,6 +899,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(magic level +3, protection fire +8%).\n\n&#8226;It can only be wielded properly by sorcerers of level 300 or higher.\n\n&#8226;It weighs 33.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },	
    {
          icons = { "Falcon_Bow.png" },
@@ -830,6 +910,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Range: 6, Atk +7, Hit% +5, distance fighting +2, protection fire +5%).\n\n&#8226;It can only be wielded properly by paladins of level 300 or higher.\n\n&#8226;It weighs 35.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Falcon_Plate.png" },
@@ -840,6 +921,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Arm:18, shielding +4, protection physical +12%).\n\n&#8226;It can only be wielded properly by knights of level 300 or higher.\n\n&#8226;It weighs 188.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Falcon_Greaves.png" },
@@ -850,6 +932,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Arm:10, club fighting +3, sword fighting +3, axe fighting +3, distance fighting +3, protection physical +7%, ice +7%).\n\n&#8226;It can only be wielded properly by knights and paladins of level 300 or higher.\n\n&#8226;It weighs 36.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },	
    {
          icons = { "Falcon_Shield.png" },
@@ -860,6 +943,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Def:39, protection physical +6%, fire +10%).\n\n&#8226;It can only be wielded properly by knights and paladins of level 300 or higher.\n\n&#8226;It weighs 57.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Falcon_Escutcheon.png" },
@@ -870,6 +954,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Def:40, protection physical +7%, fire +15%).\n\n&#8226;It can only be wielded properly by knights and paladins of level 300 or higher.\n\n&#8226;It weighs 60.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Falcon_Longsword.png" },
@@ -880,6 +965,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Atk:56, Def:34, sword fighting +4, protection earth +10%).\n\n&#8226;It can only be wielded properly by knights of level 300 or higher.\n\n&#8226;It weighs 82.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Falcon_Battleaxe.png" },
@@ -890,6 +976,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Atk:10 physical + 47 energy, Def:33, axe fighting +4, protection energy +12%).\n\n&#8226;It can only be wielded properly by knights of level 300 or higher.\n\n&#8226;It weighs 95.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Falcon_Mace.png" },
@@ -900,6 +987,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Atk:11 physical + 41 energy, Def:33 +3, club fighting +3, protection energy +7%).\n\n&#8226;It can only be wielded properly by knights of level 300 or higher.\n\n&#8226;It weighs 68.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
  },
 },
@@ -919,6 +1007,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Range: 6, Atk +6, Hit% +4, distance fighting +2, protection ice +5%).\n\n&#8226;It can only be wielded properly by paladins of level 270 or higher.\n\n&#8226;It weighs 48.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Lion_Rod.png" },
@@ -928,6 +1017,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(critical hit chance 10%, critical extra damage +35%, magic level +2).\n\n&#8226;It can only be wielded properly by druids of level 270 or higher.\n\n&#8226;It weighs 26.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Lion_wand.png" },
@@ -937,6 +1027,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(life leech chance +100%, life leech amount +18%, magic level +2).\n\n&#8226;It can only be wielded properly by sorcerers of level 220 or higher.\n\n&#8226;It weighs 21.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Lion_Spellbook.png" },
@@ -946,6 +1037,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Def:20, magic level +4, protection physical +3%, ice +7%).\n\n&#8226;It can only be wielded properly by sorcerers and druids of level 220 or higher.\n\n&#8226;It weighs 25.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Lion_Longsword.png" },
@@ -955,6 +1047,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Atk:8 physical + 44 earth, Def:31 +2, sword fighting +3).\n\n&#8226;It can only be wielded properly by knights of level 270 or higher.\n\n&#8226;It weighs 75.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Lion_Spangenhelm.png" },
@@ -964,6 +1057,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Arm:7, distance fighting +2, protection physical +3%, earth +5%).\n\n&#8226;It can only be wielded properly by paladins of level 230 or higher.\n\n&#8226;It weighs 30.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Lion_Plate.png" },
@@ -973,6 +1067,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Arm:17, club fighting +3, sword fighting +3, axe fighting +3, protection physical +6%).\n\n&#8226;It can only be wielded properly by knights of level 270 or higher.\n\n&#8226;It weighs 150.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Lion_Amulet.png" },
@@ -982,6 +1077,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Arm:3, protection physical +3%, ice +7%).\n\n&#8226;It can only be wielded properly by players of level 230 or higher. It weighs 5.20 oz.\n\n&#8226;The heraldic animal of the Order of the Lion is emblazoned on this imposing amulet. It is worn with pride by true knights of the lion.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Lion_Hammer.png" },
@@ -991,6 +1087,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Atk:8 physical + 44 earth, Def:31 +2, club fighting +3).\n\n&#8226;It can only be wielded properly by knights of level 270 or higher.\n\n&#8226;It weighs 65.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Lion_Shield.png" },
@@ -1000,6 +1097,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Def:39, protection physical +7%, earth +10%).\n\n&#8226;It can only be wielded properly by knights of level 250 or higher.\n\n&#8226;It weighs 65.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Lion_Axe.png" },
@@ -1009,6 +1107,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Atk:8 physical + 44 earth, Def:31 +2, axe fighting +3).\n\n&#8226;It can only be wielded properly by knights of level 270 or higher.\n\n&#8226;It weighs 79.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
 	   -------------------------------------------
 	   {
@@ -1020,6 +1119,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Range: 6, Atk +6, Hit% +4, distance fighting +2, protection ice +5%).\n\n&#8226;It can only be wielded properly by paladins of level 270 or higher.\n\n&#8226;It weighs 48.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Lion_Rod.png" },
@@ -1030,6 +1130,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(critical hit chance 10%, critical extra damage +35%, magic level +2).\n\n&#8226;It can only be wielded properly by druids of level 270 or higher.\n\n&#8226;It weighs 26.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Lion_wand.png" },
@@ -1040,6 +1141,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(life leech chance +100%, life leech amount +18%, magic level +2).\n\n&#8226;It can only be wielded properly by sorcerers of level 220 or higher.\n\n&#8226;It weighs 21.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Lion_Spellbook.png" },
@@ -1050,6 +1152,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Def:20, magic level +4, protection physical +3%, ice +7%).\n\n&#8226;It can only be wielded properly by sorcerers and druids of level 220 or higher.\n\n&#8226;It weighs 25.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Lion_Longsword.png" },
@@ -1060,6 +1163,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Atk:8 physical + 44 earth, Def:31 +2, sword fighting +3).\n\n&#8226;It can only be wielded properly by knights of level 270 or higher.\n\n&#8226;It weighs 75.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Lion_Spangenhelm.png" },
@@ -1070,6 +1174,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Arm:7, distance fighting +2, protection physical +3%, earth +5%).\n\n&#8226;It can only be wielded properly by paladins of level 230 or higher.\n\n&#8226;It weighs 30.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Lion_Plate.png" },
@@ -1080,6 +1185,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Arm:17, club fighting +3, sword fighting +3, axe fighting +3, protection physical +6%).\n\n&#8226;It can only be wielded properly by knights of level 270 or higher.\n\n&#8226;It weighs 150.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Lion_Amulet.png" },
@@ -1090,6 +1196,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Arm:3, protection physical +3%, ice +7%).\n\n&#8226;It can only be wielded properly by players of level 230 or higher. It weighs 5.20 oz.\n\n&#8226;The heraldic animal of the Order of the Lion is emblazoned on this imposing amulet.\n\n&#8226;It is worn with pride by true knights of the lion.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Lion_Hammer.png" },
@@ -1100,6 +1207,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Atk:8 physical + 44 earth, Def:31 +2, club fighting +3).\n\n&#8226;It can only be wielded properly by knights of level 270 or higher.\n\n&#8226;It weighs 65.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Lion_Shield.png" },
@@ -1110,6 +1218,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Def:39, protection physical +7%, earth +10%).\n\n&#8226;It can only be wielded properly by knights of level 250 or higher.\n\n&#8226;It weighs 65.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Lion_Axe.png" },
@@ -1120,6 +1229,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Atk:8 physical + 44 earth, Def:31 +2, axe fighting +3).\n\n&#8226;It can only be wielded properly by knights of level 270 or higher.\n\n&#8226;It weighs 79.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
  },
 },
@@ -1139,6 +1249,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Arm:7, magic level +2, protection physical +3%, energy +8%, ice -2%).\n\n&#8226;It can only be wielded properly by sorcerers and druids of level 200 or higher.\n\n&#8226;It weighs 24.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Gnome_Armor.png" },
@@ -1148,6 +1259,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Arm:17, distance fighting +3, protection physical +4%, energy +8%, ice -2%).\n\n&#8226;It can only be wielded properly by paladins of level 200 or higher.\n\n&#8226;It weighs 120.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Gnome_Legs.png" },
@@ -1157,6 +1269,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Arm:9, magic level +2, protection energy +7%, ice -2%).\n\n&#8226;It can only be wielded properly by sorcerers and druids of level 200 or higher.\n\n&#8226;It weighs 25.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Gnome_Shield.png" },
@@ -1166,6 +1279,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Def:38, shielding +2, protection physical +6%, energy +8%, ice -2%).\n\n&#8226;It can only be wielded properly by knights and paladins of level 200 or higher.\n\n&#8226;It weighs 60.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Gnome_Sword.png" },
@@ -1175,6 +1289,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Atk:10 physical + 42 energy, Def:29 +3, sword fighting +3, protection energy +6%).\n\n&#8226;It can only be wielded properly by knights of level 250 or higher.\n\n&#8226;It weighs 85.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
 	   ---------------------
 	   {
@@ -1186,6 +1301,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Arm:7, magic level +2, protection physical +3%, energy +8%, ice -2%).\n\n&#8226;It can only be wielded properly by sorcerers and druids of level 200 or higher.\n\n&#8226;It weighs 24.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Gnome_Armor.png" },
@@ -1196,6 +1312,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Arm:17, distance fighting +3, protection physical +4%, energy +8%, ice -2%).\n\n&#8226;It can only be wielded properly by paladins of level 200 or higher.\n\n&#8226;It weighs 120.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Gnome_Legs.png" },
@@ -1206,6 +1323,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Arm:9, magic level +2, protection energy +7%, ice -2%).\n\n&#8226;It can only be wielded properly by sorcerers and druids of level 200 or higher.\n\n&#8226;It weighs 25.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Gnome_Shield.png" },
@@ -1216,6 +1334,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Def:38, shielding +2, protection physical +6%, energy +8%, ice -2%).\n\n&#8226;It can only be wielded properly by knights and paladins of level 200 or higher.\n\n&#8226;It weighs 60.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Gnome_Sword.png" },
@@ -1226,6 +1345,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Atk:10 physical + 42 energy, Def:29 +3, sword fighting +3, protection energy +6%).\n\n&#8226;It can only be wielded properly by knights of level 250 or higher.\n\n&#8226;It weighs 85.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
  },
 },
@@ -1245,6 +1365,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Atk:7, Range: 6, Hit% +6, distance fighting +2).\n\n&#8226;It can only be wielded properly by paladins of level 220 or higher.\n\n&#8226;It weighs 40.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Cobra_Amulet.png" },
@@ -1254,6 +1375,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Arm:4, protection death +9%).\n\n&#8226;It can only be wielded properly by players of level 250 or higher.\n\n&#8226;It weighs 5.30 oz.\n\n&#8226;The bearer of this amulet will command the gaze, the resilience and deadliness of the cobra.\n\n&#8226;Yet what firmly has its place in the heart of its wearer, the cobra will conceal.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Cobra_Boots.png" },
@@ -1263,6 +1385,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Arm:3, protection physical +6%, speed +10).\n\n&#8226;It can only be wielded properly by knights of level 220 or higher.\n\n&#8226;It weighs 9.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Cobra_Club.png" },
@@ -1272,6 +1395,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Atk:8 physical + 44 fire, Def:29 +2, club fighting +2).\n\n&#8226;It can only be wielded properly by knights of level 220 or higher.\n\n&#8226;It weighs 25.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Cobra_Axe.png" },
@@ -1281,6 +1405,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Atk:8 physical + 44 ice, Def:29 +2, axe fighting +2).\n\n&#8226;It can only be wielded properly by knights of level 220 or higher.\n\n&#8226;It weighs 40.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Cobra_Hood.png" },
@@ -1290,6 +1415,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Arm:9, club fighting +1, sword fighting +1, axe fighting +1, protection physical +5%).\n\n&#8226;It can only be wielded properly by knights of level 270 or higher.\n\n&#8226;It weighs 27.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Cobra_Sword.png" },
@@ -1299,6 +1425,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Atk:52, Def:31 +2, sword fighting +3).\n\n&#8226;It can only be wielded properly by knights of level 220 or higher.\n\n&#8226;It weighs 63.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Cobra_Wand.png" },
@@ -1308,6 +1435,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(critical hit chance 10%, critical extra damage +35%, magic level +2).\n\n&#8226;It can only be wielded properly by sorcerers of level 270 or higher.\n\n&#8226;It weighs 19.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
    {
          icons = { "Cobra_Rod.png" },
@@ -1317,6 +1445,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(life leech chance +100%, life leech amount +18%, magic level +2).\n\n&#8226;It can only be wielded properly by druids of level 220 or higher.\n\n&#8226;It weighs 25.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
 	   
 	   ---------------
@@ -1329,6 +1458,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Atk:7, Range: 6, Hit% +6, distance fighting +2).\n\n&#8226;It can only be wielded properly by paladins of level 220 or higher.\n\n&#8226;It weighs 40.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Cobra_Amulet.png" },
@@ -1339,6 +1469,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Arm:4, protection death +9%).\n\n&#8226;It can only be wielded properly by players of level 250 or higher.\n\n&#8226;It weighs 5.30 oz.\n\n&#8226;The bearer of this amulet will command the gaze, the resilience and deadliness of the cobra.\n\n&#8226;Yet what firmly has its place in the heart of its wearer, the cobra will conceal.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Cobra_Boots.png" },
@@ -1349,6 +1480,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Arm:3, protection physical +6%, speed +10).\n\n&#8226;It can only be wielded properly by knights of level 220 or higher.\n\n&#8226;It weighs 9.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Cobra_Club.png" },
@@ -1359,6 +1491,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Atk:8 physical + 44 fire, Def:29 +2, club fighting +2).\n\n&#8226;It can only be wielded properly by knights of level 220 or higher.\n\n&#8226;It weighs 25.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Cobra_Axe.png" },
@@ -1369,6 +1502,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Atk:8 physical + 44 ice, Def:29 +2, axe fighting +2).\n\n&#8226;It can only be wielded properly by knights of level 220 or higher.\n\n&#8226;It weighs 40.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Cobra_Hood.png" },
@@ -1379,6 +1513,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Arm:9, club fighting +1, sword fighting +1, axe fighting +1, protection physical +5%).\n\n&#8226;It can only be wielded properly by knights of level 270 or higher.\n\n&#8226;It weighs 27.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Cobra_Sword.png" },
@@ -1389,6 +1524,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Atk:52, Def:31 +2, sword fighting +3).\n\n&#8226;It can only be wielded properly by knights of level 220 or higher.\n\n&#8226;It weighs 63.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Cobra_Wand.png" },
@@ -1399,6 +1535,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(critical hit chance 10%, critical extra damage +35%, magic level +2).\n\n&#8226;It can only be wielded properly by sorcerers of level 270 or higher.\n\n&#8226;It weighs 19.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Cobra_Rod.png" },
@@ -1409,6 +1546,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(life leech chance +100%, life leech amount +18%, magic level +2).\n\n&#8226;It can only be wielded properly by druids of level 220 or higher.\n\n&#8226;It weighs 25.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
  },
 },
@@ -1428,6 +1566,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Atk:50, Def:33).\n\n&#8226;It can only be wielded properly by knights of level 200 or higher.\n\n&#8226;It weighs 50.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
 	   {
          icons = { "Blade_Of_Destruction.png" },
@@ -1438,6 +1577,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Atk:50, Def:33).\n\n&#8226;It can only be wielded properly by knights of level 200 or higher.\n\n&#8226;It weighs 50.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Slayer_Of_Destruction.png" },
@@ -1447,6 +1587,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Atk:52, Def:32).\n\n&#8226;It can only be wielded properly by knights of level 200 or higher.\n\n&#8226;It weighs 70.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
 	{
          icons = { "Slayer_Of_Destruction.png" },
@@ -1457,6 +1598,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Atk:52, Def:32).\n\n&#8226;It can only be wielded properly by knights of level 200 or higher.\n\n&#8226;It weighs 70.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Axe_Of_Destruction.png" },
@@ -1466,6 +1608,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Atk:51, Def:31).\n\n&#8226;It can only be wielded properly by knights of level 200 or higher.\n\n&#8226;It weighs 50.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
 	{
          icons = { "Axe_Of_Destruction.png" },
@@ -1476,6 +1619,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Atk:51, Def:31).\n\n&#8226;It can only be wielded properly by knights of level 200 or higher.\n\n&#8226;It weighs 50.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Chopper_Of_Destruction.png" },
@@ -1485,6 +1629,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Atk:52, Def:32).\n\n&#8226;It can only be wielded properly by knights of level 200 or higher.\n\n&#8226;It weighs 70.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
 	{
          icons = { "Chopper_Of_Destruction.png" },
@@ -1495,6 +1640,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Atk:52, Def:32).\n\n&#8226;It can only be wielded properly by knights of level 200 or higher.\n\n&#8226;It weighs 70.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Mace_Of_Destruction.png" },
@@ -1504,6 +1650,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Atk:50, Def:30).\n\n&#8226;It can only be wielded properly by knights of level 200 or higher.\n\n&#8226;It weighs 50.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
 	{
          icons = { "Mace_Of_Destruction.png" },
@@ -1514,6 +1661,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Atk:50, Def:30).\n\n&#8226;It can only be wielded properly by knights of level 200 or higher.\n\n&#8226;It weighs 50.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Hammer_Of_Destruction.png" },
@@ -1523,6 +1671,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Atk:53, Def:30).\n\n&#8226;It can only be wielded properly by knights of level 200 or higher.\n\n&#8226;It weighs 70.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
 	{
          icons = { "Hammer_Of_Destruction.png" },
@@ -1533,6 +1682,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Atk:53, Def:30).\n\n&#8226;It can only be wielded properly by knights of level 200 or higher.\n\n&#8226;It weighs 70.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Bow_Of_Destruction.png" },
@@ -1542,6 +1692,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Range: 6, Atk +6, Hit% +6).\n\n&#8226;It can only be wielded properly by paladins of level 200 or higher.\n\n&#8226;It weighs 55.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
 	{
          icons = { "Bow_Of_Destruction.png" },
@@ -1552,6 +1703,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Range: 6, Atk +6, Hit% +6).\n\n&#8226;It can only be wielded properly by paladins of level 200 or higher.\n\n&#8226;It weighs 55.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Crossbow_Of_Destruction.png" },
@@ -1561,6 +1713,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(Range: 5, Atk +6, Hit% +6).\n\n&#8226;It can only be wielded properly by paladins of level 200 or higher.\n\n&#8226;It weighs 65.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
 	{
          icons = { "Crossbow_Of_Destruction.png" },
@@ -1571,6 +1724,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(Range: 5, Atk +6, Hit% +6).\n\n&#8226;It can only be wielded properly by paladins of level 200 or higher.\n\n&#8226;It weighs 65.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Wand_Of_Destruction.png" },
@@ -1580,6 +1734,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(magic level +2).\n\n&#8226;It can only be wielded properly by sorcerers of level 200 or higher.\n\n&#8226;It weighs 35.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
 	{
          icons = { "Wand_Of_Destruction.png" },
@@ -1590,6 +1745,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(magic level +2).\n\n&#8226;It can only be wielded properly by sorcerers of level 200 or higher.\n\n&#8226;It weighs 35.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
    {
          icons = { "Rod_Of_Destruction.png" },
@@ -1599,6 +1755,7 @@ GameStore.Categories = {
          count = 1,
          description = "\n\n&#8226;(magic level +2).\n\n&#8226;It can only be wielded properly by druids of level 200 or higher.\n\n&#8226;It weighs 35.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		 moveable = true,
        },
 	{
          icons = { "Rod_Of_Destruction.png" },
@@ -1609,6 +1766,7 @@ GameStore.Categories = {
          description = "\n\n&#8226;(magic level +2).\n\n&#8226;It can only be wielded properly by druids of level 200 or higher.\n\n&#8226;It weighs 35.00 oz.",
          type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		 coinType = GameStore.CointType.Tournament,
+		 moveable = true,
        },
  },
 },

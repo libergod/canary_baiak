@@ -1405,6 +1405,50 @@ bool Game::isTryingToStow(const Position &toPos, Cylinder* toCylinder) const {
 	return toCylinder->getContainer() && toCylinder->getItem()->getID() == ITEM_LOCKER && toPos.getZ() == ITEM_SUPPLY_STASH_INDEX;
 }
 
+ReturnValue Game::checkMoveItemToContainer(Cylinder* toCylinder, Item* item) {
+	if (toCylinder->getContainer()) {
+		auto containerID = toCylinder->getContainer()->getID();
+
+		if (containerID == ITEM_GOLD_POUCH) {
+			bool allowAnything = g_configManager().getBoolean(TOGGLE_GOLD_POUCH_ALLOW_ANYTHING);
+
+			if (!allowAnything && item->getID() != ITEM_GOLD_COIN && item->getID() != ITEM_PLATINUM_COIN && item->getID() != ITEM_CRYSTAL_COIN) {
+				return RETURNVALUE_CONTAINERNOTENOUGHROOM;
+			}
+
+			return RETURNVALUE_NOERROR;
+		}
+
+		const Container* topParentContainer = toCylinder->getContainer()->getRootContainer();
+
+		if (!item->isStoreItem() && (containerID == ITEM_STORE_INBOX || topParentContainer->getParent() && topParentContainer->getParent()->getContainer() && topParentContainer->getParent()->getContainer()->getID() == ITEM_STORE_INBOX)) {
+			return RETURNVALUE_CONTAINERNOTENOUGHROOM;
+		}
+
+		if (item->isStoreItem()) {
+			bool isValidMoveItem = false;
+
+			if (containerID == ITEM_STORE_INBOX) {
+				isValidMoveItem = true;
+			}
+
+			if (toCylinder->getContainer()->isDepotChest()) {
+				isValidMoveItem = true;
+			}
+
+			if (topParentContainer->getParent() && topParentContainer->getParent()->getContainer() && (topParentContainer->getParent()->getContainer()->isDepotChest() || topParentContainer->getParent()->getContainer()->getID() == ITEM_STORE_INBOX)) {
+				isValidMoveItem = true;
+			}
+
+			if (!isValidMoveItem) {
+				return RETURNVALUE_NOTPOSSIBLE;
+			}
+		}
+	}
+
+	return RETURNVALUE_NOERROR;
+}
+
 ReturnValue Game::internalMoveItem(Cylinder* fromCylinder, Cylinder* toCylinder, int32_t index, Item* item, uint32_t count, Item** internalMoveItem, uint32_t flags /*= 0*/, Creature* actor /*=nullptr*/, Item* tradeItem /* = nullptr*/) {
 	if (fromCylinder == nullptr) {
 		SPDLOG_ERROR("[{}] fromCylinder is nullptr", __FUNCTION__);
@@ -1448,43 +1492,9 @@ ReturnValue Game::internalMoveItem(Cylinder* fromCylinder, Cylinder* toCylinder,
 	if (item->isStackable() && count == 255 && fromCylinder->getParent() == toCylinder) {
 		count = item->getItemCount();
 	}
-
-	if (toCylinder->getContainer()) {
-		auto containerID = toCylinder->getContainer()->getID();
-
-		if (containerID == ITEM_GOLD_POUCH) {
-			bool allowAnything = g_configManager().getBoolean(TOGGLE_GOLD_POUCH_ALLOW_ANYTHING);
-
-			if (!allowAnything && item->getID() != ITEM_GOLD_COIN && item->getID() != ITEM_PLATINUM_COIN && item->getID() != ITEM_CRYSTAL_COIN) {
-				return RETURNVALUE_CONTAINERNOTENOUGHROOM;
-			}
-		}
-
-		const Container* topParentContainer = toCylinder->getContainer()->getRootContainer();
-
-		if (!item->isStoreItem() && (containerID == ITEM_STORE_INBOX || topParentContainer->getParent() && topParentContainer->getParent()->getContainer() && topParentContainer->getParent()->getContainer()->getID() == ITEM_STORE_INBOX)) {
-			return RETURNVALUE_CONTAINERNOTENOUGHROOM;
-		}
-
-		if (item->isStoreItem()) {
-			bool isValidMoveItem = false;
-
-			if (containerID == ITEM_STORE_INBOX) {
-				isValidMoveItem = true;
-			}
-
-			if (toCylinder->getContainer()->isDepotChest()) {
-				isValidMoveItem = true;
-			}
-
-			if (topParentContainer->getParent() && topParentContainer->getParent()->getContainer() && (topParentContainer->getParent()->getContainer()->isDepotChest() || topParentContainer->getParent()->getContainer()->getID() == ITEM_STORE_INBOX)) {
-				isValidMoveItem = true;
-			}
-
-			if (!isValidMoveItem) {
-				return RETURNVALUE_NOTPOSSIBLE;
-			}
-		}
+	// check if we can move this item
+	if (ReturnValue ret = checkMoveItemToContainer(toCylinder, item); ret != RETURNVALUE_NOERROR) {
+		return ret;
 	}
 
 	// check if we can add this item
@@ -4384,6 +4394,7 @@ void Game::playerQuickLoot(uint32_t playerId, const Position &pos, uint16_t item
 
 			return;
 		}
+		//ALTERAR AQUI PARA PERMITIR AUTOLOOT APENAS VIP
 	} else if (!player->isPremium()) {
 		player->sendCancelMessage("You must be premium.");
 		return;
