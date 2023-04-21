@@ -930,9 +930,11 @@ bool IOLoginData::savePlayer(Player* player) {
 	query << " WHERE `id` = " << player->getGUID();
 
 	DBTransaction transaction;
-	if (!transaction.begin()) {
+	if (!transaction.start()) {
 		return false;
 	}
+
+	DBTransactionGuard guard(transaction);
 
 	if (!db.executeQuery(query.str())) {
 		return false;
@@ -1211,7 +1213,7 @@ bool IOLoginData::savePlayer(Player* player) {
 	}
 
 	// End the transaction
-	return transaction.commit();
+	return true;
 }
 
 std::string IOLoginData::getNameByGuid(uint32_t guid) {

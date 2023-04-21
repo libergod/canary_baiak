@@ -33,11 +33,9 @@ class Database {
 
 		bool connect();
 
-		bool connect(const char* host, const char* user, const char* password, const char* database, uint32_t port, const char* sock);
+		bool executeQuery(const std::string_view &query);
 
-		bool executeQuery(const std::string &query);
-
-		DBResult_ptr storeQuery(const std::string &query);
+		DBResult_ptr storeQuery(const std::string_view &query);
 
 		std::string escapeString(const std::string &s) const;
 
@@ -60,12 +58,17 @@ class Database {
 		bool rollback();
 		bool commit();
 
+		bool isRecoverableError(unsigned int error) const {
+			return error == CR_SERVER_LOST || error == CR_SERVER_GONE_ERROR || error == CR_CONN_HOST_ERROR || error == 1053 /*ER_SERVER_SHUTDOWN*/ || error == CR_CONNECTION_ERROR;
+		}
+
 	private:
 		MYSQL* handle = nullptr;
 		std::recursive_mutex databaseLock;
 		uint64_t maxPacketSize = 1048576;
 
 		friend class DBTransaction;
+		friend class DBTransactionGuard;
 };
 
 class DBResult {
@@ -165,7 +168,7 @@ class DBResult {
 class DBInsert {
 	public:
 		explicit DBInsert(std::string query);
-		bool addRow(const std::string &row);
+		bool addRow(const std::string_view row);
 		bool addRow(std::ostringstream &row);
 		bool execute();
 
@@ -179,12 +182,13 @@ class DBTransaction {
 	public:
 		constexpr DBTransaction() = default;
 
-		~DBTransaction() {
+		~DBTransaction() noexcept {
 			if (state == STATE_START) {
 				try {
-					Database::getInstance().rollback();
-				} catch (std::exception &exception) {
-					SPDLOG_ERROR("{} - Catch exception error: {}", __FUNCTION__, exception.what());
+					rollback();
+				} catch (const std::exception &exception) {
+					// Error occurred while rollback transaction
+					SPDLOG_ERROR("Error occurred while rolling back transaction", __FUNCTION__, exception.what());
 				}
 			}
 		}
@@ -193,22 +197,102 @@ class DBTransaction {
 		DBTransaction(const DBTransaction &) = delete;
 		DBTransaction &operator=(const DBTransaction &) = delete;
 
-		bool begin() {
-			state = STATE_START;
-			return Database::getInstance().beginTransaction();
-		}
-
-		bool commit() {
-			if (state != STATE_START) {
+		bool start() {
+			// Ensure that the transaction has not already been started
+			if (state != STATE_NO_START) {
 				return false;
 			}
 
-			state = STATE_COMMIT;
-			return Database::getInstance().commit();
+			try {
+				// Start the transaction
+				state = STATE_START;
+				return Database::getInstance().beginTransaction();
+			} catch (const std::exception &exception) {
+				// An error occurred while starting the transaction
+				state = STATE_NO_START;
+				SPDLOG_ERROR("An error occurred while starting the transaction", __FUNCTION__, exception.what());
+				return false;
+			}
+		}
+
+		void rollback() {
+			// Ensure that the transaction has been started
+			if (state != STATE_START) {
+				return;
+			}
+
+			try {
+				// Rollback the transaction
+				state = STATE_NO_START;
+				Database::getInstance().rollback();
+			} catch (const std::exception &exception) {
+				// An error occurred while rolling back the transaction
+				SPDLOG_ERROR("An error occurred while rolling back the transaction", __FUNCTION__, exception.what());
+			}
+		}
+
+		void commit() {
+			// Ensure that the transaction has been started
+			if (state != STATE_START) {
+				SPDLOG_ERROR("Transaction not started");
+				return;
+			}
+
+			try {
+				// Commit the transaction
+				state = STATE_COMMIT;
+				Database::getInstance().commit();
+			} catch (const std::exception &exception) {
+				// An error occurred while committing the transaction
+				state = STATE_NO_START;
+				SPDLOG_ERROR("An error occurred while committing the transaction", __FUNCTION__, exception.what());
+			}
+		}
+
+		bool isStarted() const {
+			return state == STATE_START;
+		}
+		bool isCommitted() const {
+			return state == STATE_COMMIT;
+		}
+		bool isRolledBack() const {
+			return state == STATE_NO_START;
 		}
 
 	private:
 		TransactionStates_t state = STATE_NO_START;
+};
+
+class DBTransactionGuard {
+	public:
+		explicit DBTransactionGuard(DBTransaction &transaction) :
+			transaction_(transaction) { }
+
+		// non-copyable
+		DBTransactionGuard(const DBTransactionGuard &) = delete;
+		DBTransactionGuard &operator=(const DBTransactionGuard &) = delete;
+
+		// non-movable
+		DBTransactionGuard(DBTransactionGuard &&) = delete;
+		DBTransactionGuard &operator=(DBTransactionGuard &&) = delete;
+
+		~DBTransactionGuard() noexcept {
+			try {
+				transaction_.commit();
+			} catch (const std::exception &exception) {
+				// Error occurred while committing transaction
+				SPDLOG_ERROR("Error occurred while committing transaction", __FUNCTION__, exception.what());
+				try {
+					transaction_.rollback();
+				} catch (const std::exception &exception) {
+					// Error occurred while rolling back transaction
+					SPDLOG_ERROR("Error occurred while rolling back transaction", __FUNCTION__, exception.what());
+				}
+			}
+		}
+
+	private:
+		DBTransaction &transaction_;
 };
 
 #endif // SRC_DATABASE_DATABASE_H_
