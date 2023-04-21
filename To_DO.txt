@@ -84,7 +84,7 @@ OTHERS:
 - Fazer as boss rooms
 - Adicionar NOLOGOUT nas Super Cave
 - Double axe / Double Sword alowed 
-
+- Personagem recebendo backpack+ 3 golds ao criar acc
 
 CRIAR ARQUIVO CONFIG.INI NA PASTA CONF DO CLIENT PARA SUBSTITUIR OS URL
 
