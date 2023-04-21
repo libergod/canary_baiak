@@ -28,6 +28,7 @@ function addLevelUpAnimation.onAdvance(player, skill, oldLevel, newLevel)
 		end
 		player:say("[LEVEL UP]", TALKTYPE_MONSTER_SAY)
 		position:sendMagicEffect(40)
+		player:save()
 	end
 
 	return true

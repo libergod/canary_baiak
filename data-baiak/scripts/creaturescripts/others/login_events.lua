@@ -36,7 +36,6 @@ function loginEvents.onLogin(player)
 		--Monster
 		"LowerRoshamuul",
 		--Others
-		"AdvanceSave",
 		"BestiaryOnKill",
 		"BosstiaryOnKill",
 		"BossParticipation",
