@@ -9,7 +9,7 @@
 -- Loading map: Game.loadMap(DATA_DIRECTORY.. '/world/myMapFolder/myMapFile.otbm')
 -- Loading spawn: addEvent(function() Game.loadSpawnFile(DATA_DIRECTORY.. '/world/mySpawnFolder/mySpawnFile.xml) end, 30 * 1000)
 
-local Example_One = GlobalEvent("Example one")
+local Example_One = GlobalEvent("Testing Double Event")
 function Example_One.onStartup()
 	return true
 end
