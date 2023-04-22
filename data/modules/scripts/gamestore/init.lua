@@ -33,7 +33,9 @@ GameStore.OfferTypes = {
 	OFFER_TYPE_HIRELING_SKILL = 23,
 	OFFER_TYPE_HIRELING_OUTFIT = 24,
 	OFFER_TYPE_HUNTINGSLOT = 25,
-	OFFER_TYPE_VIP = 26
+	OFFER_TYPE_VIP = 26,
+	OFFER_TYPE_REMOVERED = 27,
+    OFFER_TYPE_REMOVEBLACK = 28
 }
 
 GameStore.SubActions = {
@@ -393,6 +395,8 @@ function parseBuyStoreOffer(playerId, msg)
 			offer.type ~= GameStore.OfferTypes.OFFER_TYPE_HIRELING_SEXCHANGE and
 			offer.type ~= GameStore.OfferTypes.OFFER_TYPE_HIRELING_SKILL and
 			offer.type ~= GameStore.OfferTypes.OFFER_TYPE_HIRELING_OUTFIT and
+			offer.type ~= GameStore.OfferTypes.OFFER_TYPE_REMOVERED and
+			offer.type ~= GameStore.OfferTypes.OFFER_TYPE_REMOVEBLACK and
 	not offer.id) then
 		return queueSendStoreAlertToUser("This offer is unavailable [1]", 350, playerId, GameStore.StoreErrors.STORE_ERROR_INFORMATION)
 	end
@@ -439,6 +443,8 @@ function parseBuyStoreOffer(playerId, msg)
 		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_HIRELING_SEXCHANGE   then GameStore.processHirelingChangeSexPurchase(player, offer)
 		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_HIRELING_SKILL       then GameStore.processHirelingSkillPurchase(player, offer)
 		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_HIRELING_OUTFIT      then GameStore.processHirelingOutfitPurchase(player, offer)
+		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_REMOVERED      then GameStore.processRemoveRedPurchase(player)
+		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_REMOVEBLACK    then GameStore.processRemoveBlackPurchase(player)
 		else
 			-- This should never happen by our convention, but just in case the guarding condition is messed up...
 			error({code = 0, message = "This offer is unavailable [2]"})
@@ -576,6 +582,34 @@ function Player.canBuyOffer(self, offer)
 			if pounch then
 				disabled = 1
 				disabledReason = "You already have Loot Pouch."
+			end
+			elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_REMOVERED then
+			if self:getSkullTime() == 0 then
+				disabled = 1
+				disabledReason = "You do no have skull."
+			end
+			if self:getSkull() ~= SKULL_RED then
+				disabled = 1
+				disabledReason = "You do no have Red Skull."
+			end
+			local tileInfo = getTileInfo(self:getPosition())
+			if not tileInfo or tileInfo.protection == false then
+				disabled = 1
+				disabledReason = "You can only buy this in a protection zone."
+			end
+		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_REMOVEBLACK then
+			if self:getSkullTime() == 0 then
+				disabled = 1
+				disabledReason = "You do no have skull."
+			end
+			if self:getSkull() ~= SKULL_BLACK then
+				disabled = 1
+				disabledReason = "You do no have Black Skull."
+			end
+			local tileInfo = getTileInfo(self:getPosition())
+			if not tileInfo or tileInfo.protection == false then
+				disabled = 1
+				disabledReason = "You can only buy this in a protection zone."
 			end
 		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_BLESSINGS then
 			if self:getBlessingCount(offer.blessid) >= 5 then
@@ -1537,6 +1571,53 @@ function GameStore.processExpBoostPuchase(player)
 	end
 
 	player:setStorageValue(GameStore.Storages.expBoostCount, expBoostCount + 1)
+end
+
+--Remove RedSkull
+function GameStore.processRemoveRedPurchase(player, fromPosition, target, toPosition, isHotkey)
+    local playerId = player:getId()
+    if player:getSkull() == SKULL_RED then
+    	-- Avisa no broadcast que o player tirou skull, se não quiser só remover a linha
+        Game.broadcastMessage('Player: '.. player:getName() ..' just removed your skull', MESSAGE_GAME_HIGHLIGHT)
+        
+        player:setSkull(SKULL_NONE)
+        player:setSkullTime(0)
+        player:getPosition():sendMagicEffect(50)
+		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You frags and skull have been cleaned, automatic relogin in 10 seconds!")
+		addEvent(function()
+			local player = Player(playerId)
+			if not player then
+				return false
+			end
+
+			player:remove()
+		end, 10000)
+    	db.query('UPDATE `player_kills` SET `time` = 1 WHERE `player_id` = '..playerId..'')		
+	end
+end
+
+--Remove BlackSkull
+function GameStore.processRemoveBlackPurchase(player, fromPosition, target, toPosition, isHotkey)
+    local playerId = player:getId()
+    if player:getSkull() == SKULL_BLACK then
+    
+    	-- Avisa no broadcast que o player tirou skull, se não quiser só remover a linha
+        Game.broadcastMessage('Player: '.. player:getName() ..' just removed your skull', MESSAGE_GAME_HIGHLIGHT)
+
+        player:setSkull(SKULL_NONE)
+        player:setSkullTime(0)
+        player:getPosition():sendMagicEffect(50)
+		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You frags and skull have been cleaned, automatic relogin in 10 seconds!")
+		addEvent(function()
+			local player = Player(playerId)
+			if not player then
+				return false
+			end
+
+			player:remove()
+		end, 10000)
+    	db.query('UPDATE `player_kills` SET `time` = 1 WHERE `player_id` = '..playerId..'')		
+	end
 end
 
 function GameStore.processPreyThirdSlot(player)

@@ -3,7 +3,7 @@ config = {
             [46001] = {
                 name = { active = true, value = "Addon Doll"},
                 rewards = {
-                    {id = 8778, count = 1},
+                    {id = 9177, count = 1},
                 },
                 level = { active = false, min = 150,},
                 storage = { active = false, key = 91143,},

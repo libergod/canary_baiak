@@ -78,13 +78,19 @@ OTHERS:
 - Adicionar Bosstiary - OK
 - Remover items premium dos drops de monstros - 
 - Remover gold ingot dos monstros (id 9058) - 
-- Corrigir TP saída Mirror Image
+- Corrigir TP saída Mirror Image - OK
 - Zerar as Hunts exclusivas no reload do server - OK (testar)
 - corrigir From/To das super areas
 - Fazer as boss rooms
 - Adicionar NOLOGOUT nas Super Cave
 - Double axe / Double Sword alowed 
 - Personagem recebendo backpack+ 3 golds ao criar acc
+- Adicionar npc de barco
+- Add Som nas runes
+- Reward talkation
+- Aumentar espaço da ponte dos grim heaper
+- Dano dos bixos diminuido - testar
+
 
 CRIAR ARQUIVO CONFIG.INI NA PASTA CONF DO CLIENT PARA SUBSTITUIR OS URL
 

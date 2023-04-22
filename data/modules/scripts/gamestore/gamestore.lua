@@ -7752,6 +7752,22 @@ GameStore.Categories = {
           description = "<i>Turns your female character into a male one - or vice versa.</i>\n\n{character}\n{activated}\n{info} you will keep all outfits you have purchased or earned in quest",
           type = GameStore.OfferTypes.OFFER_TYPE_SEXCHANGE,
         },
+		{
+            icons = { "Remove_Red.png" },
+            name = "Remove Red",
+            price = 50,
+            id = 65112,
+            description = "<i>Remove you Red Skull and clean your frags!</i>\n\n{character}\n{info} You can only buy in pz.",
+            type = GameStore.OfferTypes.OFFER_TYPE_REMOVERED,
+        },
+        {
+            icons = { "Remove_Black.png" },
+            name = "Remove Black",
+            price = 50,
+            id = 65113,
+            description = "<i>Remove you Black Skull and clean your frags!</i>\n\n{character}\n{info} You can only buy in pz.",
+            type = GameStore.OfferTypes.OFFER_TYPE_REMOVEBLACK,
+        },
       },
   },
 -- Usefull Things  

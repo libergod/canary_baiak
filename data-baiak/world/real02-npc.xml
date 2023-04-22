@@ -6,11 +6,23 @@
 	<npc centerx="951" centery="1205" centerz="5" radius="1">
 		<npc name="Zethra" x="0" y="0" z="5" spawntime="60" />
 	</npc>
+	<npc centerx="963" centery="1205" centerz="5" radius="1">
+		<npc name="Dorbin" x="0" y="0" z="5" spawntime="60" />
+	</npc>
+	<npc centerx="951" centery="1209" centerz="5" radius="1">
+		<npc name="Chuckles" x="0" y="0" z="5" spawntime="60" />
+	</npc>
 	<npc centerx="962" centery="1209" centerz="5" radius="1">
 		<npc name="Eliyas" x="0" y="0" z="5" spawntime="60" />
 	</npc>
 	<npc centerx="952" centery="1216" centerz="5" radius="1">
 		<npc name="Eva" x="0" y="0" z="5" spawntime="60" />
+	</npc>
+	<npc centerx="625" centery="1232" centerz="5" radius="1">
+		<npc name="Nah'Bob" x="0" y="0" z="5" spawntime="60" />
+	</npc>
+	<npc centerx="641" centery="1232" centerz="5" radius="1">
+		<npc name="Alesar" x="0" y="0" z="5" spawntime="60" />
 	</npc>
 	<npc centerx="625" centery="1235" centerz="5" radius="1">
 		<npc name="Zethra" x="0" y="0" z="5" spawntime="60" />
@@ -23,6 +35,12 @@
 	</npc>
 	<npc centerx="641" centery="1242" centerz="5" radius="1">
 		<npc name="Eva" x="0" y="0" z="5" spawntime="60" />
+	</npc>
+	<npc centerx="625" centery="1244" centerz="5" radius="1">
+		<npc name="Haroun" x="0" y="0" z="5" spawntime="60" />
+	</npc>
+	<npc centerx="641" centery="1247" centerz="5" radius="1">
+		<npc name="Yaman" x="0" y="0" z="5" spawntime="60" />
 	</npc>
 	<npc centerx="633" centery="1252" centerz="5" radius="1">
 		<npc name="Rashid" x="0" y="0" z="5" spawntime="60" />

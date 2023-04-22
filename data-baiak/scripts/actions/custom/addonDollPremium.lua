@@ -14,7 +14,7 @@ local storage = 32943
 local addonDollCoin = Action()
 function addonDollCoin.onUse(player, item, fromPosition, itemEx, toPosition, isHotkey)
     if player:getStorageValue(storage) > 0 then
-        player:sendCancelMessage("Você já tem todos os addons.")
+        player:sendCancelMessage("You already have the basic addons.")
 		player:getPosition():sendMagicEffect(CONST_ME_POFF)
         return true
     end
@@ -26,7 +26,7 @@ function addonDollCoin.onUse(player, item, fromPosition, itemEx, toPosition, isH
     
 	player:addOutfitAddon(130, 1)
 	player:addOutfitAddon(138, 1)
-    player:sendCancelMessage("Você recebeu os addons básicos.")
+    player:sendCancelMessage("You received all the basic addons.")
     player:getPosition():sendMagicEffect(CONST_ME_GIFT_WRAPS)
 	player:setStorageValue(storage, 1)
 	item:remove(1)
