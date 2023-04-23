@@ -78,6 +78,9 @@ Reserved player action storage key ranges (const.h)
 	Questline = Storage through the Quest
 ]]
 
+
+STORAGEVALUE_REWARD_DAILY_EXERCISE = 97150
+
 -- Storage EBB and FLOW System
 STORAGEVALUE_EBB_FLOW = 97149
 
