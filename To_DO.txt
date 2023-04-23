@@ -53,10 +53,13 @@ RECHARGE:
 MECHANICS:
 - Fist Skill will increase your attack velocity
 - TASK System
-- 20% + EXP chance to be dropped from monsters!
+- 20% + EXP Boost will have a chance to be dropped!
+- Bonus Party Share Exp
+- Send Party Invitation with !invite and accept with !join
 
 OTHERS:
 - Free Bless until lvl 100.
+- Guild Tornaments Coin every 24h. (!guildcoins)
 - 
 
 
@@ -90,7 +93,7 @@ OTHERS:
 - Reward talkation
 - Aumentar espaço da ponte dos grim heaper
 - Dano dos bixos diminuido - testar
-
+- task system !task esta com storage igual pra todos os monstros
 
 CRIAR ARQUIVO CONFIG.INI NA PASTA CONF DO CLIENT PARA SUBSTITUIR OS URL
 
