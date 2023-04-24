@@ -1417,6 +1417,10 @@ bool Game::isTryingToStow(const Position &toPos, Cylinder* toCylinder) const {
 }
 
 ReturnValue Game::checkMoveItemToCylinder(Player* player, Cylinder* fromCylinder, Cylinder* toCylinder, Item* item) {
+	if (!player || !toCylinder || !item) {
+		return RETURNVALUE_NOTPOSSIBLE;
+	}
+
 	if (toCylinder->getContainer()) {
 		auto containerID = toCylinder->getContainer()->getID();
 
@@ -1426,8 +1430,6 @@ ReturnValue Game::checkMoveItemToCylinder(Player* player, Cylinder* fromCylinder
 			if (!allowAnything && item->getID() != ITEM_GOLD_COIN && item->getID() != ITEM_PLATINUM_COIN && item->getID() != ITEM_CRYSTAL_COIN) {
 				return RETURNVALUE_CONTAINERNOTENOUGHROOM;
 			}
-
-			return RETURNVALUE_NOERROR;
 		}
 
 		const Container* topParentContainer = toCylinder->getContainer()->getRootContainer();
@@ -1438,16 +1440,11 @@ ReturnValue Game::checkMoveItemToCylinder(Player* player, Cylinder* fromCylinder
 
 		if (item->isStoreItem()) {
 			bool isValidMoveItem = false;
-
-			if (HouseTile* fromHouseTile = dynamic_cast<HouseTile*>(fromCylinder->getTile()); fromHouseTile->getHouse()->getOwner() != player->getGUID()) {
+			if (HouseTile* fromHouseTile = dynamic_cast<HouseTile*>(fromCylinder->getTile()); fromHouseTile && fromHouseTile->getHouse()->getOwner() != player->getGUID()) {
 				return RETURNVALUE_NOTPOSSIBLE;
 			}
 
-			if (containerID == ITEM_STORE_INBOX) {
-				isValidMoveItem = true;
-			}
-
-			if (toCylinder->getContainer()->isDepotChest()) {
+			if (containerID == ITEM_STORE_INBOX || containerID == ITEM_DEPOT || toCylinder->getContainer()->isDepotChest()) {
 				isValidMoveItem = true;
 			}
 
@@ -1459,19 +1456,35 @@ ReturnValue Game::checkMoveItemToCylinder(Player* player, Cylinder* fromCylinder
 				return RETURNVALUE_NOTPOSSIBLE;
 			}
 		}
-	} else if (toCylinder->getTile() && fromCylinder->getContainer()) {
-		if (item->isStoreItem()) {
-			if (HouseTile* toHouseTile = dynamic_cast<HouseTile*>(toCylinder->getTile()); toHouseTile->getHouse()->getOwner() != player->getGUID()) {
-				return RETURNVALUE_NOTPOSSIBLE;
-			}
-		}
 
-		if (item->getContainer()) {
+		if (item->getContainer() && !item->isStoreItem()) {
 			for (Item* containerItem : item->getContainer()->getItems(true)) {
-				if (containerItem->isStoreItem()) {
+				if (containerItem->isStoreItem() && ((containerID != ITEM_GOLD_POUCH && containerID != ITEM_DEPOT && containerID != ITEM_STORE_INBOX) || (topParentContainer->getParent() && topParentContainer->getParent()->getContainer() && (!topParentContainer->getParent()->getContainer()->isDepotChest() || topParentContainer->getParent()->getContainer()->getID() != ITEM_STORE_INBOX)))) {
 					return RETURNVALUE_NOTPOSSIBLE;
 				}
 			}
+		}
+	} else if (toCylinder->getTile()) {
+		HouseTile* toHouseTile = dynamic_cast<HouseTile*>(toCylinder->getTile());
+		if (fromCylinder->getContainer()) {
+			if (item->isStoreItem()) {
+				if (!toHouseTile || toHouseTile && toHouseTile->getHouse()->getOwner() != player->getGUID()) {
+					return RETURNVALUE_NOTPOSSIBLE;
+				}
+			}
+			if (item->getContainer() && !item->isStoreItem()) {
+				for (Item* containerItem : item->getContainer()->getItems(true)) {
+					if (containerItem->isStoreItem()) {
+						return RETURNVALUE_NOTPOSSIBLE;
+					}
+				}
+			}
+
+			return RETURNVALUE_NOERROR;
+		}
+
+		if (item->isStoreItem() && !toHouseTile) {
+			return RETURNVALUE_NOTPOSSIBLE;
 		}
 	}
 
@@ -3941,7 +3954,7 @@ void Game::playerRequestTrade(uint32_t playerId, const Position &pos, uint8_t st
 			}
 		}
 	}
-
+	
 	if (!g_events().eventPlayerOnTradeRequest(player, tradePartner, tradeItem)) {
 		return;
 	}
