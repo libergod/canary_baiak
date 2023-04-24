@@ -1,6 +1,6 @@
 if not slotMachineData then
 	slotMachineData = {
-		needItem = {id = 3031, count = 100000},
+		needItem = {id = 3043, count = 200000},
 		items = vector(22723,22724, 21554, 9170),
 
 		positions = {
@@ -106,7 +106,7 @@ function SlotMachineTools.onUse(player, item, fromPosition, target, toPosition, 
 		--if not player:removeItem(item.id, item.count) then
 			if not player:removeMoney(item.count) then
 				if not player:removeMoneyBank(item.count) then
-					player:sendCancelMessage(('Você não possui %dx gold coins.'):format(item.count * 1000))
+					player:sendCancelMessage(('Você não possui %dx crystal coins.'):format(item.count * 1000))
 					return true
 				end
 			end

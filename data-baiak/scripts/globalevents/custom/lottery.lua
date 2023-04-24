@@ -155,7 +155,7 @@ function lottery.onThink(interval, lastExecution)
 					end
 				   
 					if(random_item == 3043) then
-						if player:getFreeCapacity() > itemWeight or not(winner:addItem(random_item, qntItem) == RETURNVALUE_CONTAINERNOTENOUGHROOM) then
+						if winner:getFreeCapacity() > itemWeight or not(winner:addItem(random_item, qntItem) == RETURNVALUE_CONTAINERNOTENOUGHROOM) then
 							winner:addItem(random_item, qntItem)
 							Spdlog.info("[LOTTERY SYSTEM] Winner: " .. winner:getName() .. ", Reward: " .. crystalcount .."x " ..
 							item:getPluralName() .. " ! Congratulations!")
@@ -172,7 +172,7 @@ function lottery.onThink(interval, lastExecution)
 							query("INSERT INTO `lottery` (`name`, `item`, `qnt`, `item_name`, `date`) VALUES ('".. winner:getName() .."', '".. random_item .."', '"..qntItem.. "', '".. item_name .."', '".. data .."');")
 						end
 					else
-						if player:getFreeCapacity() > itemWeight or not(winner:addItem(random_item, qntItem) == RETURNVALUE_CONTAINERNOTENOUGHROOM) then
+						if winner:getFreeCapacity() > itemWeight or not(winner:addItem(random_item, qntItem) == RETURNVALUE_CONTAINERNOTENOUGHROOM) then
 							winner:addItem(random_item, qntItem)
 							Spdlog.info("[LOTTERY SYSTEM] Winner: " .. winner:getName() .. ", Reward: " .. item:getName() .. "! Congratulations!")
 							Game.broadcastMessage("[LOTTERY SYSTEM] Winner: " .. winner:getName() .. ", Reward: " .. item:getName() .. "! Congratulations!")

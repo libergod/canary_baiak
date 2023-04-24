@@ -487,7 +487,14 @@ function Player:onReportRuleViolation(targetName, reportType, reportReason, comm
 		return
 	end
 
-	local file = io.open(string.format("%s/reports/players/%s-%s-%d.txt", CORE_DIRECTORY, name, targetName, reportType), "a")
+	if not fileExist(string.format("%s/reports/players/%s-%s-%d.txt", CORE_DIRECTORY, name, targetName, reportType)) then
+		local file = io.open(string.format("%s/reports/players/%s-%s-%d.txt", CORE_DIRECTORY, name, targetName, reportType), "w+")
+	else
+		local file = io.open(string.format("%s/reports/players/%s-%s-%d.txt", CORE_DIRECTORY, name, targetName, reportType), "a")
+	end
+	
+	
+	--local file = io.open(string.format("%s/reports/players/%s-%s-%d.txt", CORE_DIRECTORY, name, targetName, reportType), "a")
 	if not file then
 		self:sendTextMessage(MESSAGE_EVENT_ADVANCE,
 			"There was an error when processing your report, please contact a gamemaster.")
@@ -517,7 +524,15 @@ function Player:onReportBug(message, position, category)
 	end
 
 	local name = self:getName()
-	local file = io.open(string.format("%s/reports/bugs/%s/report.txt", CORE_DIRECTORY, name), "a")
+	
+	if not fileExist(string.format("%s/reports/bugs/%s/report.txt", CORE_DIRECTORY, name)) then
+		local file = io.open(string.format("%s/reports/bugs/%s/report.txt", CORE_DIRECTORY, name), "w+")
+	else
+		local file = io.open(string.format("%s/reports/bugs/%s/report.txt", CORE_DIRECTORY, name), "a")
+	end
+	
+	
+	--local file = io.open(string.format("%s/reports/bugs/%s/report.txt", CORE_DIRECTORY, name), "a")
 
 	if not file then
 		self:sendTextMessage(MESSAGE_EVENT_ADVANCE,

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <events>
 	<event name="Testing Double Event" startdate="04/01/2023" enddate="04/29/2023" script="example.lua" >
-		<ingame exprate="150" lootrate="100" spawnrate="100" skillrate="150" />
+		<ingame exprate="100" lootrate="100" spawnrate="100" skillrate="100" />
 		<description description="Testing Double Event." />
 		<colors colordark="#46FF33" colorlight="#FF5733" />
 		<details displaypriority="0" isseasonal="0" specialevent="0" />

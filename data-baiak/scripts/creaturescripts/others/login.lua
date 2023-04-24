@@ -397,6 +397,9 @@ function playerLogin.onLogin(player)
 	if configManager.getBoolean(configKeys.XP_DISPLAY_MODE) then
 		local baseRate = player:getFinalBaseRateExperience()
 		player:setBaseXpGain(baseRate * 100)
+	else
+		local baseRate = player:getFinalBaseRateExperience()
+		player:setBaseXpGain(baseRate)
 	end
 
 	local staminaMinutes = player:getStamina()
