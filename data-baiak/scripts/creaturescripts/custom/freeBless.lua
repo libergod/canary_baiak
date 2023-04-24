@@ -13,7 +13,7 @@ function onLogin(player)
 		
 		player:say("[FREE BLESS]", TALKTYPE_MONSTER_SAY)
 		player:getPosition():sendMagicEffect(50)
-		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Você ganhou todas as blesses por estar abaixo do level ".. freeBless.level ..".")
+		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You earned all blesses for free for being under level ".. freeBless.level ..".")
 		for i = 1, #freeBless.blesses do
 			player:addBlessing(freeBless.blesses[i])
 		end

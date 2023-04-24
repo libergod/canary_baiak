@@ -88,7 +88,6 @@ OTHERS:
 - Adicionar NOLOGOUT nas Super Cave - 
 - Double axe / Double Sword alowed 
 - Personagem recebendo backpack+ 3 golds ao criar acc
-- Adicionar npc de barco
 - Add Som nas runes
 - Reward talkation
 - Aumentar espaço da ponte dos grim heaper
@@ -113,6 +112,7 @@ OTHERS:
 - Remover teleport de saida da ultima sala POI sala do Jugger
 - Corrigir Freeze Rune - OK
 - Adicionar NPC de reset no templo para testes - 
+- Adicionar velocidade para varinhas de players VIP
 
 CRIAR ARQUIVO CONFIG.INI NA PASTA CONF DO CLIENT PARA SUBSTITUIR OS URL
 
