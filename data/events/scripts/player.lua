@@ -623,7 +623,7 @@ local function useStaminaXpBoost(player)
 	end
 
 	local playerId = player:getId()
-	if not playerId then
+	if not playerId or not nextUseStaminaTime[playerId] then
 		return false
 	end
 
