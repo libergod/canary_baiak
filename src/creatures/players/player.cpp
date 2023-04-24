@@ -2448,6 +2448,11 @@ void Player::death(Creature* lastHitCreature) {
 	loginPosition = town->getTemplePosition();
 
 	g_game().sendSingleSoundEffect(this->getPosition(), sex == PLAYERSEX_FEMALE ? SoundEffect_t::HUMAN_FEMALE_DEATH : SoundEffect_t::HUMAN_MALE_DEATH, this);
+
+	if (getSkull() != SKULL_RED && getSkull() != SKULL_BLACK) {
+		setSkull(SKULL_NONE);
+	}
+
 	if (skillLoss) {
 		uint8_t unfairFightReduction = 100;
 		int playerDmg = 0;
