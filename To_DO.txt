@@ -106,10 +106,11 @@ OTHERS:
 - Ativar/Desativar autoloot por comando
 - Super Up permitir party entrar na hunt
 - Ajustar Dodge para dar menos chance
-- Possibilitar a balance/withdraw/deposit do gold ingot
+- Possibilitar a balance/withdraw/deposit do gold ingot - OK (Falta mexer em codigo para entregar Gold Ingot) - ADDMONEY
 - Add bixos e hunt Marapur / Gnomproma
 - Report Coordinate in game
 - Remover teleport de saida da ultima sala POI sala do Jugger
 - Corrigir Freeze Rune - OK
 - Adicionar NPC de reset no templo para testes - 
 - Adicionar velocidade para varinhas de players VIP - 
+- Ajustar Fist skill nas vocations.xml está mt lento - 
