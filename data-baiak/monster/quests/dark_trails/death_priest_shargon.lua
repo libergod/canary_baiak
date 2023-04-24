@@ -86,7 +86,6 @@ monster.loot = {
 	{id = 3069, chance = 100000}, -- necrotic rod
 	{id = 3035, chance = 100000, maxCount = 13}, -- platinum coin
 	{id = 238, chance = 10000, maxCount = 4}, -- great mana potion
-	{id = 9058, chance = 25000}, -- gold ingot
 	{id = 9056, chance = 9090}, -- black skull
 	{id = 8531, chance = 9090} -- blood goblet
 }

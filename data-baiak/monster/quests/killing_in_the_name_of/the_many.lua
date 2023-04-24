@@ -68,7 +68,6 @@ monster.loot = {
 	{id = 9302, chance = 80000}, -- sacred tree amulet
 	{id = 3369, chance = 79000}, -- warrior helmet
 	{id = 3029, chance = 77000, maxCount = 5}, -- small sapphire
-	{id = 9058, chance = 60000, maxCount = 3}, -- gold ingot
 	{id = 3436, chance = 53000}, -- medusa shield
 	{id = 9606, chance = 37000}, -- egg of the many
 	{id = 3392, chance = 20000}, -- royal helmet

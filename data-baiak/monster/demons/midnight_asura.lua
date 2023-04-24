@@ -95,7 +95,6 @@ monster.loot = {
 	{id = 7404, chance = 130}, -- assassin dagger
 	{id = 3041, chance = 320}, -- blue gem
 	{id = 3567, chance = 300}, -- blue robe
-	{id = 9058, chance = 300}, -- gold ingot
 	{id = 21974, chance = 300}, -- golden lotus brooch
 	{id = 3070, chance = 300}, -- moonlight rod
 	{id = 3069, chance = 90}, -- necrotic rod

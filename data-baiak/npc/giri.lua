@@ -71,7 +71,6 @@ npcConfig.shop = {
 	{ itemName = "giant emerald", clientId = 30060, sell = 90000 },
 	{ itemName = "giant ruby", clientId = 30059, sell = 70000 },
 	{ itemName = "giant sapphire", clientId = 30061, sell = 50000 },
-	{ itemName = "gold ingot", clientId = 9058, sell = 5000 },
 	{ itemName = "gold nugget", clientId = 3040, sell = 850 },
 	{ itemName = "golden amulet", clientId = 3013, buy = 6600 },
 	{ itemName = "golden goblet", clientId = 5805, buy = 5000 },

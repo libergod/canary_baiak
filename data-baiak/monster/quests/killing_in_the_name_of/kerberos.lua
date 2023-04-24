@@ -67,7 +67,6 @@ monster.loot = {
 	{id = 3027, chance = 96880, maxCount = 5}, -- black pearl
 	{id = 6558, chance = 100000}, -- flask of demonic blood
 	{id = 6499, chance = 62500}, -- demonic essence
-	{id = 9058, chance = 100000, maxCount = 5}, -- gold ingot
 	{id = 3318, chance = 10810}, -- knight axe
 	{id = 6553, chance = 6250}, -- ruthless axe
 	{id = 9637, chance = 100000}, -- hellhound slobber

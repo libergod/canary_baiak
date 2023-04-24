@@ -82,7 +82,6 @@ monster.loot = {
 	{id = 3582, chance = 60780}, -- ham
 	{id = 3577, chance = 4920}, -- meat
 	{id = 3035, chance = 62080, maxCount = 3}, -- platinum coin
-	{id = 9058, chance = 290}, -- gold ingot
 	{id = 5878, chance = 17950}, -- minotaur leather
 	{id = 239, chance = 7670}, -- great health potion
 	{id = 238, chance = 7380}, -- great mana potion

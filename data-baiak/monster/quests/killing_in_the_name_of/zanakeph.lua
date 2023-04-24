@@ -71,7 +71,6 @@ monster.loot = {
 	{id = 2903, chance = 100000}, -- golden mug
 	{id = 3035, chance = 100000, maxCount = 10}, -- platinum coin
 	{id = 10316, chance = 100000, maxCount = 3}, -- unholy bone
-	{id = 9058, chance = 78000}, -- gold ingot
 	{id = 6499, chance = 56000}, -- demonic essence
 	{id = 3370, chance = 47270}, -- knight armor
 	{id = 3385, chance = 40000}, -- crown helmet

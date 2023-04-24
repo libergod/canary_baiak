@@ -153,7 +153,6 @@ npcConfig.shop = {
 	{ itemName = "giant shimmering pearl", clientId = 281, sell = 3000 }, -- green
 	{ itemName = "giant shimmering pearl", clientId = 282, sell = 3000 }, -- brown
 	{ itemName = "giant topaz", clientId = 32623, sell = 80000 },
-	{ itemName = "gold ingot", clientId = 9058, sell = 5000 },
 	{ itemName = "gold nugget", clientId = 3040, sell = 850 },
 	{ itemName = "golden amulet", clientId = 3013, buy = 6600 },
 	{ itemName = "golden goblet", clientId = 5805, buy = 5000 },

@@ -81,7 +81,6 @@ monster.loot = {
 	{id = 3031, chance = 90000, maxCount = 130}, -- gold coin
 	{id = 3035, chance = 20000, maxCount = 9}, -- platinum coin
 	{id = 6558, chance = 4000, maxCount = 3}, -- flask of demonic blood
-	{id = 9058, chance = 1300, maxCount = 2}, -- gold ingot
 	{id = 238, chance = 9600, maxCount = 2}, -- great mana potion
 	{id = 7642, chance = 2300, maxCount = 2}, -- great spirit potion
 	{id = 3033, chance = 2000, maxCount = 5}, -- small amethyst

@@ -80,12 +80,12 @@ OTHERS:
 - Arrumar a Store in Game - OK
 - Adicionar Bosstiary - OK
 - Remover items premium dos drops de monstros - 
-- Remover gold ingot dos monstros (id 9058) - 
+- Remover gold ingot dos monstros (id 9058) - OK
 - Corrigir TP saída Mirror Image - OK
 - Zerar as Hunts exclusivas no reload do server - OK (testar)
-- corrigir From/To das super areas
-- Fazer as boss rooms
-- Adicionar NOLOGOUT nas Super Cave
+- corrigir From/To das super areas - 
+- Fazer as boss rooms - 
+- Adicionar NOLOGOUT nas Super Cave - 
 - Double axe / Double Sword alowed 
 - Personagem recebendo backpack+ 3 golds ao criar acc
 - Adicionar npc de barco
@@ -112,6 +112,7 @@ OTHERS:
 - Report Coordinate in game
 - Remover teleport de saida da ultima sala POI sala do Jugger
 - Corrigir Freeze Rune - OK
+- Adicionar NPC de reset no templo para testes - 
 
 CRIAR ARQUIVO CONFIG.INI NA PASTA CONF DO CLIENT PARA SUBSTITUIR OS URL
 

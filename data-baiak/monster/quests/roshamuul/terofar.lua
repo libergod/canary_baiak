@@ -81,7 +81,6 @@ monster.loot = {
 	{id = 16119, chance = 22220, maxCount = 8}, -- blue crystal shard
 	{id = 16120, chance = 33330, maxCount = 8}, -- violet crystal shard
 	{id = 16121, chance = 44440, maxCount = 8}, -- green crystal shard
-	{id = 9058, chance = 16670}, -- gold ingot
 	{id = 281, chance = 38890}, -- giant shimmering pearl (green)
 	{id = 282, chance = 38890}, -- giant shimmering pearl (brown)
 	{id = 3420, chance = 11110}, -- demon shield
