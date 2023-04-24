@@ -86,12 +86,12 @@ OTHERS:
 - corrigir From/To das super areas - 
 - Fazer as boss rooms - 
 - Adicionar NOLOGOUT nas Super Cave - 
-- Double axe / Double Sword alowed 
+- Double axe / Double Sword alowed (PENSAR)
 - Personagem recebendo backpack+ 3 golds ao criar acc
 - Add Som nas runes
-- Reward talkation
+- Reward talkation - OK
 - Aumentar espaço da ponte dos grim heaper
-- Dano dos bixos diminuido - testar
+- Dano dos bixos diminuido - OK
 - task system !task esta com storage igual pra todos os monstros
 - Criar hunt de Fury
 - Criar hunt de Infernalist
@@ -112,29 +112,4 @@ OTHERS:
 - Remover teleport de saida da ultima sala POI sala do Jugger
 - Corrigir Freeze Rune - OK
 - Adicionar NPC de reset no templo para testes - 
-- Adicionar velocidade para varinhas de players VIP
-
-CRIAR ARQUIVO CONFIG.INI NA PASTA CONF DO CLIENT PARA SUBSTITUIR OS URL
-
-[URLS]
-tibiaPageUrl=
-tibiaStoreGetCoinsUrl=
-getPremiumUrl=
-createAccountUrl=
-createTournamentCharacterUrl=
-accessAccountUrl=
-lostAccountUrl=
-manualUrl=
-faqUrl=
-premiumFeaturesUrl=
-limesurveyUrl=
-hintsUrl=
-cipSoftUrl=
-twitchTibiaUrl=
-youTubeTibiaUrl=
-crashReportUrl=
-fpsHistoryRecipient=
-tutorialProgressWebService=
-tournamentDetailsUrl=
-loginWebService=
-clientWebService=
+- Adicionar velocidade para varinhas de players VIP - 
