@@ -100,16 +100,16 @@ OTHERS:
 - trocar spaw time dos super up para 15 sec
 - Trocar os spaw time normal para 40sec
 - verificar paralize
-- verificar criar item com tier
-- comprar silver/gold token
-- lugar pra comprar/vender pedrinhas
-- Ativar/Desativar autoloot por comando
-- Super Up permitir party entrar na hunt
-- Ajustar Dodge para dar menos chance
+- verificar criar item com tier - OK /i soulbleeder,1,10 (cria tier 10)
+- comprar silver/gold token -
+- lugar pra comprar/vender pedrinhas -
+- Ativar/Desativar autoloot por comando -
+- Super Up permitir party entrar na hunt 
+- Ajustar Dodge para dar menos chance - 
 - Possibilitar a balance/withdraw/deposit do gold ingot - OK (Falta mexer em codigo para entregar Gold Ingot) - ADDMONEY
-- Add bixos e hunt Marapur / Gnomproma
-- Report Coordinate in game
-- Remover teleport de saida da ultima sala POI sala do Jugger
+- Add bixos e hunt Marapur / Gnomproma - 
+- Report Coordinate in game - 
+- Remover teleport de saida da ultima sala POI sala do Jugger - 
 - Corrigir Freeze Rune - OK
 - Adicionar NPC de reset no templo para testes - 
 - Adicionar velocidade para varinhas de players VIP - 

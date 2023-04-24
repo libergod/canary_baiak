@@ -311,6 +311,10 @@ class PlayerFunctions final : LuaScriptInterface {
 			registerMethod(L, "Player", "sendSingleSoundEffect", PlayerFunctions::luaPlayerSendSingleSoundEffect);
 			registerMethod(L, "Player", "sendDoubleSoundEffect", PlayerFunctions::luaPlayerSendDoubleSoundEffect);
 
+			registerMethod(L, "Player", "hasGroupFlag", PlayerFunctions::luaPlayerHasGroupFlag);
+			registerMethod(L, "Player", "setGroupFlag", PlayerFunctions::luaPlayerSetGroupFlag);
+			registerMethod(L, "Player", "removeGroupFlag", PlayerFunctions::luaPlayerRemoveGroupFlag);
+
 			GroupFunctions::init(L);
 			GuildFunctions::init(L);
 			MountFunctions::init(L);
@@ -609,6 +613,10 @@ class PlayerFunctions final : LuaScriptInterface {
 
 		static int luaPlayerSendSingleSoundEffect(lua_State* L);
 		static int luaPlayerSendDoubleSoundEffect(lua_State* L);
+
+		static int luaPlayerHasGroupFlag(lua_State* L);
+		static int luaPlayerSetGroupFlag(lua_State* L);
+		static int luaPlayerRemoveGroupFlag(lua_State* L);
 
 		friend class CreatureFunctions;
 };
