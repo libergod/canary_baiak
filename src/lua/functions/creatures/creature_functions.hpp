@@ -28,6 +28,8 @@ class CreatureFunctions final : LuaScriptInterface {
 			registerMethod(L, "Creature", "isCreature", CreatureFunctions::luaCreatureIsCreature);
 			registerMethod(L, "Creature", "isInGhostMode", CreatureFunctions::luaCreatureIsInGhostMode);
 			registerMethod(L, "Creature", "isHealthHidden", CreatureFunctions::luaCreatureIsHealthHidden);
+			registerMethod(L, "Creature", "isMovementBlocked", CreatureFunctions::luaCreatureIsMovementBlocked);
+			registerMethod(L, "Creature", "setMovementBlocked", CreatureFunctions::luaCreatureSetMovementBlocked);
 			registerMethod(L, "Creature", "isImmune", CreatureFunctions::luaCreatureIsImmune);
 			registerMethod(L, "Creature", "canSee", CreatureFunctions::luaCreatureCanSee);
 			registerMethod(L, "Creature", "canSeeCreature", CreatureFunctions::luaCreatureCanSeeCreature);
@@ -143,6 +145,9 @@ class CreatureFunctions final : LuaScriptInterface {
 
 		static int luaCreatureIsMoveLocked(lua_State* L);
 		static int luaCreatureSetMoveLocked(lua_State* L);
+
+		static int luaCreatureIsMovementBlocked(lua_State* L);
+		static int luaCreatureSetMovementBlocked(lua_State* L);
 
 		static int luaCreatureGetSkull(lua_State* L);
 		static int luaCreatureSetSkull(lua_State* L);

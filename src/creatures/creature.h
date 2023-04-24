@@ -437,6 +437,14 @@ public:
 			canUseDefense = useDefense;
 		}
 
+		void setMovementBlocked(bool state) {
+			movementBlocked = state;
+			cancelNextWalk = true;
+		}
+		bool isMovementBlocked() const {
+			return movementBlocked;
+		}
+
 		// creature script events
 		bool registerCreatureEvent(const std::string &name);
 		bool unregisterCreatureEvent(const std::string &name);
@@ -572,6 +580,7 @@ protected:
 		bool floorChange = false;
 		bool canUseDefense = true;
 		bool moveLocked = false;
+		bool movementBlocked = false;
 
 		// creature script events
 		bool hasEventRegistered(CreatureEventType_t event) const {
