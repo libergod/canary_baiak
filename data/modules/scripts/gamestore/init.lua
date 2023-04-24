@@ -226,20 +226,10 @@ function onRecvbyte(player, msg, byte)
 		return player:sendCancelMessage("Store don't have offers for rookgaard citizen.")
 	end
 
-	local exaust = player:getStorageValue(Global.Storage.StoreExaust)
-	local currentTime = os.time()
-
 	if byte == GameStore.RecivedPackets.C_StoreEvent then
 	elseif byte == GameStore.RecivedPackets.C_TransferCoins then
 		parseTransferCoins(player:getId(), msg)
 	elseif byte == GameStore.RecivedPackets.C_OpenStore then
-		if exaust > currentTime then
-			player:sendCancelMessage("You are exhausted")
-			return false
-		end
-		local num = currentTime + 1
-		player:setStorageValue(Global.Storage.StoreExaust, num)
-
 		parseOpenStore(player:getId(), msg)
 	elseif byte == GameStore.RecivedPackets.C_RequestStoreOffers then
 		parseRequestStoreOffers(player:getId(), msg)
@@ -250,6 +240,13 @@ function onRecvbyte(player, msg, byte)
 	elseif byte == GameStore.RecivedPackets.C_RequestTransactionHistory then
 		parseRequestTransactionHistory(player:getId(), msg)
 	end
+	
+	if player:isUIExhausted(250) then
+		player:sendCancelMessage("You are exhausted.")
+		return false
+	end
+
+	player:updateUIExhausted()
 	return true
 end
 
@@ -258,12 +255,6 @@ function parseTransferCoins(playerId, msg)
 	if not player then
 		return false
 	end
-	
-	if player:isUIExhausted(2000) then
-		return addPlayerEvent(sendStoreError, 250, playerId, GameStore.StoreErrors.STORE_ERROR_TRANSFER, "You are exhausted.")
-	end
-
-	player:updateUIExhausted()
 
 	if player:isUIExhausted(2000) then
 		return addPlayerEvent(sendStoreError, 250, playerId, GameStore.StoreErrors.STORE_ERROR_TRANSFER, "You are exhausted.")
@@ -298,6 +289,7 @@ function parseTransferCoins(playerId, msg)
 	-- Adding history for both reciver/sender
 	GameStore.insertHistory(accountId, GameStore.HistoryTypes.HISTORY_TYPE_NONE, player:getName() .. " transfered you this amount.", amount, GameStore.CointType.Coin)
 	GameStore.insertHistory(player:getAccountId(), GameStore.HistoryTypes.HISTORY_TYPE_NONE, "You transfered this amount to " .. reciver, -1 * amount, GameStore.CointType.Coin)
+	openStore(playerId)
 end
 
 function parseOpenStore(playerId, msg)
