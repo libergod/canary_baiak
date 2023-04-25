@@ -10816,6 +10816,12 @@
 	<monster centerx="1553" centery="1585" centerz="7" radius="1">
 		<monster name="Minotaur Bruiser" x="0" y="0" z="7" spawntime="2020336640" />
 	</monster>
+	<monster centerx="950" centery="1586" centerz="7" radius="1">
+		<monster name="Infernalist" x="-1" y="-1" z="7" spawntime="40" />
+		<monster name="Infernalist" x="0" y="-1" z="7" spawntime="40" />
+		<monster name="Infernalist" x="-1" y="0" z="7" spawntime="40" />
+		<monster name="Infernalist" x="0" y="0" z="7" spawntime="40" />
+	</monster>
 	<monster centerx="1422" centery="1586" centerz="7" radius="1">
 		<monster name="Ice Golem" x="0" y="0" z="7" spawntime="60" />
 	</monster>
@@ -10827,6 +10833,12 @@
 	</monster>
 	<monster centerx="637" centery="1587" centerz="7" radius="1">
 		<monster name="Wyvern" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="961" centery="1587" centerz="7" radius="1">
+		<monster name="Infernalist" x="-1" y="-1" z="7" spawntime="40" />
+		<monster name="Infernalist" x="0" y="-1" z="7" spawntime="40" />
+		<monster name="Infernalist" x="-1" y="0" z="7" spawntime="40" />
+		<monster name="Infernalist" x="0" y="0" z="7" spawntime="40" />
 	</monster>
 	<monster centerx="1553" centery="1587" centerz="7" radius="1">
 		<monster name="Minotaur Bruiser" x="0" y="0" z="7" spawntime="60" />
@@ -10878,6 +10890,12 @@
 	<monster centerx="640" centery="1590" centerz="7" radius="1">
 		<monster name="Wyvern" x="0" y="0" z="7" spawntime="60" />
 		<monster name="Wyvern" x="0" y="1" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="973" centery="1590" centerz="7" radius="1">
+		<monster name="Infernalist" x="-1" y="-1" z="7" spawntime="40" />
+		<monster name="Infernalist" x="0" y="-1" z="7" spawntime="40" />
+		<monster name="Infernalist" x="-1" y="0" z="7" spawntime="40" />
+		<monster name="Infernalist" x="0" y="0" z="7" spawntime="40" />
 	</monster>
 	<monster centerx="1552" centery="1590" centerz="7" radius="1">
 		<monster name="Minotaur" x="0" y="0" z="7" spawntime="60" />
@@ -10942,6 +10960,12 @@
 		<monster name="Wyvern" x="0" y="-1" z="7" spawntime="2020596736" />
 		<monster name="Wyvern" x="0" y="0" z="7" spawntime="60" />
 	</monster>
+	<monster centerx="936" centery="1591" centerz="7" radius="1">
+		<monster name="Infernalist" x="0" y="0" z="7" spawntime="40" />
+		<monster name="Infernalist" x="1" y="0" z="7" spawntime="40" />
+		<monster name="Infernalist" x="0" y="1" z="7" spawntime="40" />
+		<monster name="Infernalist" x="1" y="1" z="7" spawntime="40" />
+	</monster>
 	<monster centerx="1608" centery="1591" centerz="7" radius="1">
 		<monster name="Minotaur" x="0" y="0" z="7" spawntime="60" />
 		<monster name="Minotaur Guard" x="1" y="1" z="7" spawntime="60" />
@@ -10966,6 +10990,11 @@
 	</monster>
 	<monster centerx="1609" centery="1593" centerz="7" radius="1">
 		<monster name="Minotaur Guard" x="0" y="0" z="7" spawntime="2020337152" />
+	</monster>
+	<monster centerx="943" centery="1594" centerz="7" radius="1">
+		<monster name="Infernalist" x="0" y="0" z="7" spawntime="40" />
+		<monster name="Infernalist" x="-1" y="1" z="7" spawntime="40" />
+		<monster name="Infernalist" x="0" y="1" z="7" spawntime="40" />
 	</monster>
 	<monster centerx="1413" centery="1594" centerz="7" radius="1">
 		<monster name="Ice Witch" x="0" y="0" z="7" spawntime="60" />
@@ -11057,6 +11086,14 @@
 	</monster>
 	<monster centerx="650" centery="1598" centerz="7" radius="1">
 		<monster name="Wyvern" x="-1" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="951" centery="1598" centerz="7" radius="1">
+		<monster name="Infernalist" x="0" y="0" z="7" spawntime="40" />
+	</monster>
+	<monster centerx="985" centery="1598" centerz="7" radius="1">
+		<monster name="Infernalist" x="0" y="0" z="7" spawntime="40" />
+		<monster name="Infernalist" x="1" y="0" z="7" spawntime="40" />
+		<monster name="Infernalist" x="1" y="1" z="7" spawntime="40" />
 	</monster>
 	<monster centerx="1055" centery="1598" centerz="7" radius="1">
 		<monster name="Frost Dragon" x="0" y="0" z="7" spawntime="60" />
@@ -11277,6 +11314,14 @@
 	<monster centerx="637" centery="1600" centerz="7" radius="1">
 		<monster name="Wyvern" x="0" y="0" z="7" spawntime="60" />
 	</monster>
+	<monster centerx="947" centery="1600" centerz="7" radius="1">
+		<monster name="Infernalist" x="0" y="0" z="7" spawntime="40" />
+	</monster>
+	<monster centerx="975" centery="1600" centerz="7" radius="1">
+		<monster name="Infernalist" x="1" y="-1" z="7" spawntime="40" />
+		<monster name="Infernalist" x="0" y="0" z="7" spawntime="40" />
+		<monster name="Infernalist" x="1" y="0" z="7" spawntime="40" />
+	</monster>
 	<monster centerx="1564" centery="1600" centerz="7" radius="1">
 		<monster name="Minotaur Bruiser" x="-1" y="0" z="7" spawntime="2020336640" />
 		<monster name="Minotaur Bruiser" x="0" y="0" z="7" spawntime="60" />
@@ -11325,6 +11370,18 @@
 	</monster>
 	<monster centerx="655" centery="1601" centerz="7" radius="1">
 		<monster name="Wyvern" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="925" centery="1601" centerz="7" radius="1">
+		<monster name="Infernalist" x="-1" y="0" z="7" spawntime="40" />
+		<monster name="Infernalist" x="0" y="0" z="7" spawntime="40" />
+		<monster name="Infernalist" x="-1" y="1" z="7" spawntime="40" />
+		<monster name="Infernalist" x="0" y="1" z="7" spawntime="40" />
+	</monster>
+	<monster centerx="933" centery="1601" centerz="7" radius="1">
+		<monster name="Infernalist" x="0" y="0" z="7" spawntime="40" />
+	</monster>
+	<monster centerx="935" centery="1601" centerz="7" radius="1">
+		<monster name="Infernalist" x="0" y="0" z="7" spawntime="40" />
 	</monster>
 	<monster centerx="1624" centery="1601" centerz="7" radius="1">
 		<monster name="Minotaur Guard" x="0" y="0" z="7" spawntime="60" />
@@ -11386,6 +11443,12 @@
 	<monster centerx="653" centery="1603" centerz="7" radius="1">
 		<monster name="Wyvern" x="0" y="0" z="7" spawntime="60" />
 	</monster>
+	<monster centerx="959" centery="1603" centerz="7" radius="1">
+		<monster name="Infernalist" x="0" y="-1" z="7" spawntime="40" />
+		<monster name="Infernalist" x="-1" y="0" z="7" spawntime="40" />
+		<monster name="Infernalist" x="0" y="0" z="7" spawntime="40" />
+		<monster name="Infernalist" x="-1" y="1" z="7" spawntime="40" />
+	</monster>
 	<monster centerx="1591" centery="1603" centerz="7" radius="1">
 		<monster name="Minotaur" x="0" y="0" z="7" spawntime="60" />
 	</monster>
@@ -11414,6 +11477,12 @@
 	</monster>
 	<monster centerx="661" centery="1604" centerz="7" radius="1">
 		<monster name="Wyvern" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="943" centery="1604" centerz="7" radius="1">
+		<monster name="Infernalist" x="0" y="0" z="7" spawntime="40" />
+		<monster name="Infernalist" x="-1" y="1" z="7" spawntime="40" />
+		<monster name="Infernalist" x="0" y="1" z="7" spawntime="40" />
+		<monster name="Infernalist" x="1" y="1" z="7" spawntime="40" />
 	</monster>
 	<monster centerx="1394" centery="1604" centerz="7" radius="1">
 		<monster name="Ice Witch" x="0" y="0" z="7" spawntime="60" />
@@ -11662,6 +11731,16 @@
 		<monster name="Wyvern" x="-1" y="0" z="7" spawntime="60" />
 		<monster name="Wyvern" x="0" y="0" z="7" spawntime="60" />
 	</monster>
+	<monster centerx="952" centery="1608" centerz="7" radius="1">
+		<monster name="Infernalist" x="0" y="0" z="7" spawntime="40" />
+		<monster name="Infernalist" x="1" y="0" z="7" spawntime="40" />
+	</monster>
+	<monster centerx="968" centery="1608" centerz="7" radius="1">
+		<monster name="Infernalist" x="0" y="-1" z="7" spawntime="40" />
+		<monster name="Infernalist" x="1" y="-1" z="7" spawntime="40" />
+		<monster name="Infernalist" x="0" y="0" z="7" spawntime="40" />
+		<monster name="Infernalist" x="1" y="0" z="7" spawntime="40" />
+	</monster>
 	<monster centerx="1364" centery="1608" centerz="7" radius="1">
 		<monster name="Ice Golem" x="0" y="0" z="7" spawntime="60" />
 		<monster name="Ice Witch" x="1" y="0" z="7" spawntime="60" />
@@ -11740,6 +11819,12 @@
 	<monster centerx="639" centery="1611" centerz="7" radius="1">
 		<monster name="Wyvern" x="0" y="0" z="7" spawntime="60" />
 	</monster>
+	<monster centerx="927" centery="1611" centerz="7" radius="1">
+		<monster name="Infernalist" x="0" y="0" z="7" spawntime="40" />
+		<monster name="Infernalist" x="1" y="0" z="7" spawntime="40" />
+		<monster name="Infernalist" x="0" y="1" z="7" spawntime="40" />
+		<monster name="Infernalist" x="1" y="1" z="7" spawntime="40" />
+	</monster>
 	<monster centerx="1405" centery="1611" centerz="7" radius="1">
 		<monster name="Ice Witch" x="0" y="0" z="7" spawntime="60" />
 	</monster>
@@ -11755,6 +11840,12 @@
 	<monster centerx="647" centery="1612" centerz="7" radius="1">
 		<monster name="Wyvern" x="0" y="0" z="7" spawntime="60" />
 		<monster name="Wyvern" x="1" y="1" z="7" spawntime="2020596736" />
+	</monster>
+	<monster centerx="985" centery="1612" centerz="7" radius="1">
+		<monster name="Infernalist" x="0" y="0" z="7" spawntime="40" />
+		<monster name="Infernalist" x="1" y="0" z="7" spawntime="40" />
+		<monster name="Infernalist" x="0" y="1" z="7" spawntime="40" />
+		<monster name="Infernalist" x="1" y="1" z="7" spawntime="40" />
 	</monster>
 	<monster centerx="1361" centery="1612" centerz="7" radius="1">
 		<monster name="Ice Witch" x="0" y="0" z="7" spawntime="60" />
@@ -11813,6 +11904,17 @@
 	<monster centerx="640" centery="1614" centerz="7" radius="1">
 		<monster name="Wyvern" x="0" y="0" z="7" spawntime="60" />
 		<monster name="Wyvern" x="0" y="1" z="7" spawntime="2020596736" />
+	</monster>
+	<monster centerx="936" centery="1614" centerz="7" radius="1">
+		<monster name="Infernalist" x="0" y="-1" z="7" spawntime="40" />
+		<monster name="Infernalist" x="1" y="-1" z="7" spawntime="40" />
+		<monster name="Infernalist" x="0" y="0" z="7" spawntime="40" />
+		<monster name="Infernalist" x="1" y="0" z="7" spawntime="40" />
+	</monster>
+	<monster centerx="961" centery="1614" centerz="7" radius="1">
+		<monster name="Infernalist" x="-1" y="0" z="7" spawntime="40" />
+		<monster name="Infernalist" x="0" y="0" z="7" spawntime="40" />
+		<monster name="Infernalist" x="0" y="1" z="7" spawntime="40" />
 	</monster>
 	<monster centerx="1374" centery="1614" centerz="7" radius="1">
 		<monster name="Ice Witch" x="0" y="0" z="7" spawntime="60" />
@@ -12052,6 +12154,11 @@
 	<monster centerx="664" centery="1621" centerz="7" radius="1">
 		<monster name="Wyvern" x="0" y="0" z="7" spawntime="60" />
 	</monster>
+	<monster centerx="946" centery="1621" centerz="7" radius="1">
+		<monster name="Infernalist" x="0" y="0" z="7" spawntime="40" />
+		<monster name="Infernalist" x="-1" y="1" z="7" spawntime="40" />
+		<monster name="Infernalist" x="0" y="1" z="7" spawntime="40" />
+	</monster>
 	<monster centerx="1600" centery="1621" centerz="7" radius="1">
 		<monster name="Minotaur Guard" x="-1" y="-1" z="7" spawntime="60" />
 		<monster name="Minotaur" x="0" y="0" z="7" spawntime="60" />
@@ -12068,6 +12175,11 @@
 	</monster>
 	<monster centerx="639" centery="1622" centerz="7" radius="1">
 		<monster name="Wyvern" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="979" centery="1622" centerz="7" radius="1">
+		<monster name="Infernalist" x="0" y="0" z="7" spawntime="40" />
+		<monster name="Infernalist" x="0" y="1" z="7" spawntime="40" />
+		<monster name="Infernalist" x="1" y="1" z="7" spawntime="40" />
 	</monster>
 	<monster centerx="1569" centery="1622" centerz="7" radius="1">
 		<monster name="Minotaur Guard" x="0" y="0" z="7" spawntime="60" />
@@ -12204,6 +12316,16 @@
 	<monster centerx="656" centery="1629" centerz="7" radius="1">
 		<monster name="Wyvern" x="0" y="0" z="7" spawntime="60" />
 	</monster>
+	<monster centerx="953" centery="1629" centerz="7" radius="1">
+		<monster name="Infernalist" x="0" y="-1" z="7" spawntime="40" />
+		<monster name="Infernalist" x="0" y="0" z="7" spawntime="40" />
+		<monster name="Infernalist" x="1" y="1" z="7" spawntime="40" />
+	</monster>
+	<monster centerx="972" centery="1629" centerz="7" radius="1">
+		<monster name="Infernalist" x="1" y="-1" z="7" spawntime="40" />
+		<monster name="Infernalist" x="0" y="0" z="7" spawntime="40" />
+		<monster name="Infernalist" x="1" y="0" z="7" spawntime="40" />
+	</monster>
 	<monster centerx="1599" centery="1629" centerz="7" radius="1">
 		<monster name="Minotaur Guard" x="0" y="0" z="7" spawntime="60" />
 	</monster>
@@ -12215,6 +12337,16 @@
 	</monster>
 	<monster centerx="660" centery="1630" centerz="7" radius="1">
 		<monster name="Wyvern" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="955" centery="1630" centerz="7" radius="1">
+		<monster name="Infernalist" x="0" y="-1" z="7" spawntime="40" />
+		<monster name="Infernalist" x="1" y="-1" z="7" spawntime="40" />
+		<monster name="Infernalist" x="0" y="0" z="7" spawntime="40" />
+	</monster>
+	<monster centerx="964" centery="1630" centerz="7" radius="1">
+		<monster name="Infernalist" x="0" y="0" z="7" spawntime="40" />
+		<monster name="Infernalist" x="1" y="0" z="7" spawntime="40" />
+		<monster name="Infernalist" x="1" y="1" z="7" spawntime="40" />
 	</monster>
 	<monster centerx="1045" centery="1630" centerz="7" radius="1">
 		<monster name="Frost Dragon" x="0" y="0" z="7" spawntime="60" />

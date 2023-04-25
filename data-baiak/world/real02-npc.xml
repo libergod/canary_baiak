@@ -48,6 +48,9 @@
 	<npc centerx="1158" centery="1034" centerz="7" radius="1">
 		<npc name="Oldrak" x="0" y="0" z="7" spawntime="60" />
 	</npc>
+	<npc centerx="1019" centery="1162" centerz="7" radius="1">
+		<npc name="King Tibianus" x="0" y="0" z="7" spawntime="60" />
+	</npc>
 	<npc centerx="953" centery="1205" centerz="7" radius="1">
 		<npc name="Lunna the Fooder" x="0" y="0" z="7" spawntime="60" />
 	</npc>
@@ -56,5 +59,11 @@
 	</npc>
 	<npc centerx="952" centery="1216" centerz="7" radius="1">
 		<npc name="Liane" x="0" y="0" z="7" spawntime="60" />
+	</npc>
+	<npc centerx="1000" centery="1217" centerz="7" radius="1">
+		<npc name="Addoner" x="0" y="0" z="7" spawntime="60" />
+	</npc>
+	<npc centerx="991" centery="1203" centerz="7" radius="1">
+		<npc name="The Master Reborned" x="0" y="0" z="7" spawntime="60" />
 	</npc>
 </npcs>

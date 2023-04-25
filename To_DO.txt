@@ -96,11 +96,11 @@ OTHERS:
 - Criar hunt de Fury
 - Criar hunt de Infernalist
 - Modificar super up Floating Savant + Burning Book
-- Floating savant remover o summon de lava lurker
-- trocar spaw time dos super up para 15 sec
-- Trocar os spaw time normal para 40sec
-- verificar paralize
-- verificar criar item com tier - OK /i soulbleeder,1,10 (cria tier 10)
+- Floating savant remover o summon de lava lurker - 
+- trocar spaw time dos super up para 15 sec - 
+- Trocar os spaw time normal para 40sec - 
+- verificar paralize - 
+- verificar criar item com tier - OK /i soulbleeder,1,10 (cria tier 10) -
 - comprar silver/gold token -
 - lugar pra comprar/vender pedrinhas -
 - Ativar/Desativar autoloot por comando -
@@ -109,8 +109,9 @@ OTHERS:
 - Possibilitar a balance/withdraw/deposit do gold ingot - OK (Falta mexer em codigo para entregar Gold Ingot) - ADDMONEY
 - Add bixos e hunt Marapur / Gnomproma - 
 - Report Coordinate in game - 
-- Remover teleport de saida da ultima sala POI sala do Jugger - 
+- Remover teleport de saida da ultima sala POI sala do Jugger - Ok
 - Corrigir Freeze Rune - OK
 - Adicionar NPC de reset no templo para testes - 
 - Adicionar velocidade para varinhas de players VIP - 
-- Ajustar Fist skill nas vocations.xml está mt lento - 
+- Ajustar Fist skill nas vocations.xml está mt lento - OK
+- Vender todas as vials usando !sellvial - OK
