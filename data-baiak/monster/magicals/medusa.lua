@@ -26,6 +26,12 @@ monster.Bestiary = {
 	Locations = "Vandura Mountain (single spawn), Talahu (Medusa Cave), Deeper Banuta, Medusa Tower."
 	}
 
+monster.events = {
+	"dodgeCriticalThree",
+	"dodgeCriticalOne",
+	"dodgeCriticalTwo"
+}
+
 monster.health = 4500
 monster.maxHealth = 4500
 monster.race = "blood"

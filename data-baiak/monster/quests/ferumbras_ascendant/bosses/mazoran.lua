@@ -13,6 +13,12 @@ monster.outfit = {
 	lookMount = 0
 }
 
+monster.events = {
+	"dodgeCriticalThree",
+	"dodgeCriticalOne",
+	"dodgeCriticalTwo"
+}
+
 monster.health = 370000
 monster.maxHealth = 370000
 monster.race = "fire"

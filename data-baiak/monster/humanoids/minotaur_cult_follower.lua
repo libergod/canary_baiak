@@ -26,6 +26,12 @@ monster.Bestiary = {
 	Locations = "Minotaurs Cult Cave."
 	}
 
+monster.events = {
+	"dodgeCriticalThree",
+	"dodgeCriticalOne",
+	"dodgeCriticalTwo"
+}
+
 monster.health = 1600
 monster.maxHealth = 1600
 monster.race = "blood"

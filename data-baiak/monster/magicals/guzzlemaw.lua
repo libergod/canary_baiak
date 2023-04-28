@@ -27,6 +27,12 @@ monster.Bestiary = {
 		(south of the Depot and west of the entrance to Roshamuul Prison)."
 	}
 
+monster.events = {
+	"dodgeCriticalThree",
+	"dodgeCriticalOne",
+	"dodgeCriticalTwo"
+}
+
 monster.health = 6400
 monster.maxHealth = 6400
 monster.race = "blood"

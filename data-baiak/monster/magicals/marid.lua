@@ -26,6 +26,12 @@ monster.Bestiary = {
 	Locations = "Kha'zeel, Magician Quarter."
 }
 
+monster.events = {
+	"dodgeCriticalThree",
+	"dodgeCriticalOne",
+	"dodgeCriticalTwo"
+}
+
 monster.health = 550
 monster.maxHealth = 550
 monster.race = "blood"

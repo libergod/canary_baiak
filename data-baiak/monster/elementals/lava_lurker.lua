@@ -26,6 +26,12 @@ monster.Bestiary = {
 	Locations = "Deep Hub Magma Dungeon, Lava Pump Dungeon (Dwarfs), Lava Pump Dungeon (Gnomes), Lava Pump Dungeon (Scouts)."
 	}
 
+monster.events = {
+	"dodgeCriticalThree",
+	"dodgeCriticalOne",
+	"dodgeCriticalTwo"
+}
+
 monster.health = 5900
 monster.maxHealth = 5900
 monster.race = "fire"

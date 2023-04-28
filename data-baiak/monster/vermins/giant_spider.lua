@@ -35,6 +35,12 @@ monster.Bestiary = {
 		Second floor of Krailos Spider Lair , Caverna Exanima."
 	}
 
+monster.events = {
+	"dodgeCriticalThree",
+	"dodgeCriticalOne",
+	"dodgeCriticalTwo"
+}
+
 monster.health = 1300
 monster.maxHealth = 1300
 monster.race = "venom"

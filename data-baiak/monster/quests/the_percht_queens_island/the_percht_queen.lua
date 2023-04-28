@@ -7,6 +7,12 @@ monster.outfit = {
 	lookTypeEx = 30340 -- (frozen) // lookTypeEx = 30341 (thawed)
 }
 
+monster.events = {
+	"dodgeCriticalThree",
+	"dodgeCriticalOne",
+	"dodgeCriticalTwo"
+}
+
 monster.health = 2300
 monster.maxHealth = 2300
 monster.race = "undead"

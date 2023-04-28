@@ -27,6 +27,12 @@ monster.Bestiary = {
 		Deeper Banuta, Vengoth Castle, Robson Isle, Drillworm Caves, Crystal Grounds, Middle Spike."
 	}
 
+monster.events = {
+	"dodgeCriticalThree",
+	"dodgeCriticalOne",
+	"dodgeCriticalTwo"
+}
+
 monster.health = 650
 monster.maxHealth = 650
 monster.race = "undead"

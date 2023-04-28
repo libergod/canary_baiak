@@ -28,6 +28,12 @@ monster.Bestiary = {
 		Black Sheep with the Hunter in Femur Hills."
 	}
 
+monster.events = {
+	"dodgeCriticalThree",
+	"dodgeCriticalOne",
+	"dodgeCriticalTwo"
+}
+
 monster.health = 20
 monster.maxHealth = 20
 monster.race = "blood"

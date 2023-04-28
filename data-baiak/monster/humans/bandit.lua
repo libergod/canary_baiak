@@ -27,6 +27,12 @@ monster.Bestiary = {
 		Tyrsung, Thais Bandit Cave, Formorgar Mines. Also summoned by Gamel."
 	}
 
+monster.events = {
+	"dodgeCriticalThree",
+	"dodgeCriticalOne",
+	"dodgeCriticalTwo"
+}
+
 monster.health = 245
 monster.maxHealth = 245
 monster.race = "blood"

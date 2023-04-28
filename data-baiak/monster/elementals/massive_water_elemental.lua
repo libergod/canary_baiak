@@ -27,6 +27,12 @@ monster.Bestiary = {
 		before Zugurosh in The Inquisition Quest."
 	}
 
+monster.events = {
+	"dodgeCriticalThree",
+	"dodgeCriticalOne",
+	"dodgeCriticalTwo"
+}
+
 monster.health = 1250
 monster.maxHealth = 1250
 monster.race = "undead"

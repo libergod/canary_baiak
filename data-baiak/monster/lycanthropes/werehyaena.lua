@@ -26,8 +26,20 @@ monster.Bestiary = {
 	Locations = "This monster you can find in Hyaena Lairs."
 	}
 
+monster.events = {
+	"dodgeCriticalThree",
+	"dodgeCriticalOne",
+	"dodgeCriticalTwo"
+}
+
 monster.health = 2700
-monster.maxHealth = monster.health
+monster.maxHealth = monster.events = {
+	"dodgeCriticalThree",
+	"dodgeCriticalOne",
+	"dodgeCriticalTwo"
+}
+
+monster.health
 monster.race = "blood"
 monster.corpse = 33821
 monster.speed = 120

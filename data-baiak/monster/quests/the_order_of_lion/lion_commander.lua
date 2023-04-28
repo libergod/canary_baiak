@@ -17,6 +17,12 @@ monster.events = {
 	"lionCommanderDeath"
 }
 
+monster.events = {
+	"dodgeCriticalThree",
+	"dodgeCriticalOne",
+	"dodgeCriticalTwo"
+}
+
 monster.health = 15200
 monster.maxHealth = 15200
 monster.race = "blood"

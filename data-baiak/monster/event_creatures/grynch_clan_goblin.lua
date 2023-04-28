@@ -28,6 +28,12 @@ monster.Bestiary = {
 			There are two or three messages that appear on each raid and three massive spawns of goblins."
 	}
 
+monster.events = {
+	"dodgeCriticalThree",
+	"dodgeCriticalOne",
+	"dodgeCriticalTwo"
+}
+
 monster.health = 80
 monster.maxHealth = 80
 monster.race = "blood"

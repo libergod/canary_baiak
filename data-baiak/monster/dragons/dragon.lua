@@ -31,6 +31,12 @@ monster.Bestiary = {
 		underground of Fenrock (on the way to Beregar), Krailos Steppe and Crystal Lakes."
 	}
 
+monster.events = {
+	"dodgeCriticalThree",
+	"dodgeCriticalOne",
+	"dodgeCriticalTwo"
+}
+
 monster.health = 1000
 monster.maxHealth = 1000
 monster.race = "blood"

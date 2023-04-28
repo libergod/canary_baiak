@@ -27,6 +27,12 @@ monster.Bestiary = {
 		center of Liberty Bay. These cannot be reached."
 	}
 
+monster.events = {
+	"dodgeCriticalThree",
+	"dodgeCriticalOne",
+	"dodgeCriticalTwo"
+}
+
 monster.health = 185
 monster.maxHealth = 185
 monster.race = "blood"

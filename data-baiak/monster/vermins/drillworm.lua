@@ -26,6 +26,12 @@ monster.Bestiary = {
 	Locations = "Drillworm Caves, Lower Spike and in the Lost Dwarf version of the Forsaken Mine."
 	}
 
+monster.events = {
+	"dodgeCriticalThree",
+	"dodgeCriticalOne",
+	"dodgeCriticalTwo"
+}
+
 monster.health = 1500
 monster.maxHealth = 1500
 monster.race = "venom"

@@ -28,6 +28,12 @@ monster.Bestiary = {
 		Northern Darama Desert, Port Hope Surroundings, Treasure Island, Yalahar Factory Quarter."
 	}
 
+monster.events = {
+	"dodgeCriticalThree",
+	"dodgeCriticalOne",
+	"dodgeCriticalTwo"
+}
+
 monster.health = 70
 monster.maxHealth = 70
 monster.race = "venom"

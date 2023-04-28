@@ -27,6 +27,12 @@ monster.Bestiary = {
 		Frost Dragon Tunnel, Chyllfroest."
 	}
 
+monster.events = {
+	"dodgeCriticalThree",
+	"dodgeCriticalOne",
+	"dodgeCriticalTwo"
+}
+
 monster.health = 800
 monster.maxHealth = 800
 monster.race = "undead"

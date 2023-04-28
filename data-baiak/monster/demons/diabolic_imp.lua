@@ -27,6 +27,12 @@ monster.Bestiary = {
 		Hellgore volcano on Goroma during the Fire from the Earth Mini World Change."
 	}
 
+monster.events = {
+	"dodgeCriticalThree",
+	"dodgeCriticalOne",
+	"dodgeCriticalTwo"
+}
+
 monster.health = 1950
 monster.maxHealth = 1950
 monster.race = "fire"

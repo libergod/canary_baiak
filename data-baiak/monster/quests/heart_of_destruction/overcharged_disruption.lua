@@ -7,6 +7,12 @@ monster.outfit = {
 	lookTypeEx = 1959
 }
 
+monster.events = {
+	"dodgeCriticalThree",
+	"dodgeCriticalOne",
+	"dodgeCriticalTwo"
+}
+
 monster.health = 128000
 monster.maxHealth = 128000
 monster.race = "venom"

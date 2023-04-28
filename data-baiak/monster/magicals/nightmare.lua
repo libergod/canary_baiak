@@ -27,6 +27,12 @@ monster.Bestiary = {
 		(In multiple places during The Inquisition Quest), Alchemist Quarter, Vengoth Castle, Deeper Banuta, Krailos Ruins."
 	}
 
+monster.events = {
+	"dodgeCriticalThree",
+	"dodgeCriticalOne",
+	"dodgeCriticalTwo"
+}
+
 monster.health = 2700
 monster.maxHealth = 2700
 monster.race = "blood"

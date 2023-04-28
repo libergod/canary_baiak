@@ -26,6 +26,12 @@ monster.Bestiary = {
 	Locations = "In another dimension, through a portal in the Raging Mage tower, southern Zao."
 	}
 
+monster.events = {
+	"dodgeCriticalThree",
+	"dodgeCriticalOne",
+	"dodgeCriticalTwo"
+}
+
 monster.health = 1500
 monster.maxHealth = 1500
 monster.race = "venom"
