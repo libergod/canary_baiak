@@ -67,8 +67,8 @@ OTHERS:
 ========================================================================A FAZER=====================================================================================
 ====================================================================================================================================================================
 
-- ADD event em todos os monstros: dodgeCriticalThree, (Monstro exemplo: DEMON) - 
-- Diminuir porcentagem de chance de Dodge - 
+- ADD event em todos os monstros: dodgeCriticalThree, (Monstro exemplo: DEMON) - OK
+- Diminuir porcentagem de chance de Dodge - OK
 - Adicionar drops de monstros no scripts/custom/exp_boostDrop.lua - (Adicionar apenas Super UP Cave)
 - Arrumar o restaure de Exp - OK
 - Arrumar sprites do evento Snake - OK
@@ -79,7 +79,7 @@ OTHERS:
 - Adicionar Daily Task - OK
 - Arrumar a Store in Game - OK
 - Adicionar Bosstiary - OK
-- Remover items premium dos drops de monstros - 
+- Remover items premium dos drops de monstros - OK
 - Remover gold ingot dos monstros (id 9058) - OK
 - Corrigir TP saída Mirror Image - OK
 - Zerar as Hunts exclusivas no reload do server - OK (testar)
@@ -87,10 +87,10 @@ OTHERS:
 - Fazer as boss rooms - 
 - Adicionar NOLOGOUT nas Super Cave - 
 - Double axe / Double Sword alowed (PENSAR)
-- Personagem recebendo backpack+ 3 golds ao criar acc
-- Add Som nas runes
+- Personagem recebendo backpack+ 3 golds ao criar acc - 
+- Add Som nas runes - 
 - Reward talkation - OK
-- Aumentar espaço da ponte dos grim heaper
+- Aumentar espaço da ponte dos grim heaper - 
 - Dano dos bixos diminuido - OK
 - task system !task esta com storage igual pra todos os monstros
 - Criar hunt de Fury

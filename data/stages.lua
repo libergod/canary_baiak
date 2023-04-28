@@ -54,12 +54,22 @@ skillsStages = {
 magicLevelStages = {
 	{
 		minlevel = 0,
-		maxlevel = 60,
+		maxlevel = 20,
 		multiplier = 100 --3x mais que o global
+	},
+	{
+		minlevel = 21,
+		maxlevel = 35,
+		multiplier = 80 --3x mais que o global
+	},
+	{
+		minlevel = 35,
+		maxlevel = 60,
+		multiplier = 70 --3x mais que o global
 	}, {
 		minlevel = 61,
 		maxlevel = 80,
-		multiplier = 80
+		multiplier = 60
 	}, {
 		minlevel = 81,
 		maxlevel = 100,
@@ -67,11 +77,11 @@ magicLevelStages = {
 	}, {
 		minlevel = 101,
 		maxlevel = 110,
-		multiplier = 30
+		multiplier = 40
 	}, {
 		minlevel = 111,
 		maxlevel = 125,
-		multiplier = 15
+		multiplier = 20
 	}, {
 		minlevel = 126,
 		multiplier = 10
