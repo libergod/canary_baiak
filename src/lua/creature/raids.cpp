@@ -325,7 +325,17 @@ bool AnnounceEvent::configureRaidEvent(const pugi::xml_node &eventNode) {
 
 bool AnnounceEvent::executeEvent() {
 	std::string url = g_configManager().getString(DISCORD_WEBHOOK_URL);
-	g_game().broadcastMessage(message, messageType);
+	//AO INVEZ DE BRODCASTMESSAGE, ENVIAR AO CHAT DE RAIDS
+
+	uint16_t channelId = 12;
+	const ChatChannel* channel = g_chat().getChannelById(channelId);
+	if (!channel) {
+		g_game().broadcastMessage(message, messageType);
+	} else {
+		const SpeakClasses type = TALKTYPE_CHANNEL_O;
+		channel->sendToAllRaid(message, type);
+	}
+
 	webhook_send_message("Incoming raid!", message, WEBHOOK_COLOR_RAID, url);
 	return true;
 }

@@ -74,7 +74,7 @@ function emper_dmg.onThink(creature)
 				--creature:say("NOT ATTACKING YOU!", TALKTYPE_ORANGE_2)
 				return false
 			else
-				creatures:sendTextMessage(MESSAGE_LOGIN, "Tower attacking you!")
+				--creatures:sendTextMessage(MESSAGE_LOGIN, "Tower attacking you!")
 				--creature:say("ATTACKING YOU!", TALKTYPE_ORANGE_2)
 				return true
 			end

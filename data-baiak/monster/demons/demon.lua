@@ -28,11 +28,11 @@ monster.Bestiary = {
 		(found in every throneroom except Verminor's), deep Formorgar Mines, Demon Forge, \z
 		Alchemist Quarter, Magician Quarter, Chyllfroest, Oramond Dungeon, Abandoned Sewers."
 	}
-
-monster.events = {
-	"autoLoot",
-	"dodgeCriticalThree"
 	--"expHit"
+monster.events = {
+	"dodgeCriticalThree",
+	"dodgeCriticalOne",
+	"dodgeCriticalTwo"
 }
 
 monster.health = 8200

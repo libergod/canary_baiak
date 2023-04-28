@@ -3045,7 +3045,19 @@ void ProtocolGame::sendCyclopediaCharacterCombatStats() {
 	msg.addByte(CYCLOPEDIA_CHARACTERINFO_COMBATSTATS);
 	msg.addByte(0x00);
 	for (uint8_t i = SKILL_CRITICAL_HIT_CHANCE; i <= SKILL_LAST; ++i) {
-		msg.add<uint16_t>(std::min<int32_t>(player->getSkillLevel(i, true), std::numeric_limits<uint16_t>::max()));
+		//msg.add<uint16_t>(std::min<int32_t>(player->getSkillLevel(i, true), std::numeric_limits<uint16_t>::max()));
+
+		switch (i) {
+			case SKILL_CRITICAL_HIT_CHANCE : {
+				int32_t playerSkillCriticalCustom = player->getStorageValue(STORAGE_CUSTOM_CRITICAL);
+				playerSkillCriticalCustom = (playerSkillCriticalCustom / 1000) * 100;
+				msg.add<uint16_t>(std::min<int32_t>(player->getSkillLevel(i, true) + playerSkillCriticalCustom, std::numeric_limits<uint16_t>::max()));
+				break;
+			}
+			default:
+				msg.add<uint16_t>(std::min<int32_t>(player->getSkillLevel(i, true), std::numeric_limits<uint16_t>::max()));
+				break;
+		}
 		msg.add<uint16_t>(0);
 	}
 
@@ -6156,7 +6168,18 @@ void ProtocolGame::AddPlayerSkills(NetworkMessage &msg) {
 	}
 
 	for (uint8_t i = SKILL_CRITICAL_HIT_CHANCE; i <= SKILL_LAST; ++i) {
-		msg.add<uint16_t>(std::min<int32_t>(player->getSkillLevel(i, true), std::numeric_limits<uint16_t>::max()));
+		// ADD CUSTOM CRITICAL CHANCE SYSTEM CRIT/DODGE
+		switch (i) {
+			case SKILL_CRITICAL_HIT_CHANCE : {
+				int32_t playerSkillCriticalCustom = player->getStorageValue(STORAGE_CUSTOM_CRITICAL);
+				playerSkillCriticalCustom = (playerSkillCriticalCustom / 1000) * 100;
+				msg.add<uint16_t>(std::min<int32_t>(player->getSkillLevel(i, true) + playerSkillCriticalCustom, std::numeric_limits<uint16_t>::max()));
+				break;
+			}
+			default:
+				msg.add<uint16_t>(std::min<int32_t>(player->getSkillLevel(i, true), std::numeric_limits<uint16_t>::max()));
+				break;
+		}
 		msg.add<uint16_t>(player->getBaseSkill(i));
 	}
 

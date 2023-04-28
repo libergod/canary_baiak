@@ -115,3 +115,10 @@ OTHERS:
 - Adicionar velocidade para varinhas de players VIP - 
 - Ajustar Fist skill nas vocations.xml está mt lento - OK
 - Vender todas as vials usando !sellvial - OK
+- Hunt Lion - super up aumentar respaw
+- Corrigir TP no templo de ICELAND p/ 817,1409,7
+- Add teleport em templos faltantes
+- Tirar todos os itens do player e mandar para a BP ao resetar
+- Adicionar NPCs Lailene, Alexander
+- Verificar Events do FEROXA e drops com id = 0
+- Arrumar bug de morrer antes de resetar, para pegar lvl maximo com pot de restore xp - 

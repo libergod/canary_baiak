@@ -117,6 +117,12 @@ bool ChatChannel::hasUser(const Player &player) {
 	return users.find(player.getID()) != users.end();
 }
 
+void ChatChannel::sendToAllRaid(const std::string &message, SpeakClasses type) const {
+	for (const auto &it : users) {
+		it.second->sendChannelMessage("RAID: ", message, type, id);
+	}
+}
+
 void ChatChannel::sendToAll(const std::string &message, SpeakClasses type) const {
 	for (const auto &it : users) {
 		it.second->sendChannelMessage("", message, type, id);

@@ -64,7 +64,7 @@ end
 
 -- List of all towns to ask about and to sail to
 local towns = {
-	[TOWNS_LIST.THUNDER_CITY] = {
+	[TOWNS_LIST.REAL_CITY] = {
 		name = "Ab'dendriel",
 		about = {
 			"Main city of the elves - lots of trees, bug milk and stuff that easily burns ...",
@@ -75,7 +75,7 @@ local towns = {
 		message = "So it's Ab'Dendriel, the tree city of the elves you chose as your new home?",
 		destination = {x = 32734, y = 31668, z = 6}
 	},
-	[TOWNS_LIST.JAMILA_ISLAND] = {
+	[TOWNS_LIST.JAH_ISLAND] = {
 		name = "Ankrahmun",
 		about = {"Desert pyramid city close to the ocean, some underground tombs where I heard it's not bad hunting."},
 		canBeSailed = true,
@@ -83,7 +83,7 @@ local towns = {
 		message = "So it's Ankrahmun, the city you chose as your new home?",
 		destination = {x = 33092, y = 32883, z = 6}
 	},
-	[TOWNS_LIST.AKRAVI] = {
+	[TOWNS_LIST.KRAVHZI] = {
 		name = "Carlin",
 		about = {
 			"A city ruled by forthright independent women. \z
@@ -94,7 +94,7 @@ local towns = {
 		message = "So it's Carlin, the city under women's rule, a rival to Thais you chose as your new home?",
 		destination = {x = 32387, y = 31820, z = 6}
 	},
-	[TOWNS_LIST.AL_ARAR] = {
+	[TOWNS_LIST.AL_NAHF] = {
 		name = "Darashia",
 		about = {
 			"One of the two desert cities. \z
@@ -105,7 +105,7 @@ local towns = {
 		message = "So it's Darashia, the city you chose as your new home?",
 		destination = {x = 33289, y = 32481, z = 6}
 	},
-	[TOWNS_LIST.BHARK] = {
+	[TOWNS_LIST.BKRIANZ] = {
 		name = "Edron",
 		about = {
 			"Quiet little castle city on an island in the north-eastern part of Tibia. \z
@@ -116,12 +116,12 @@ local towns = {
 		message = "So it's Edron, the city you chose as your new home?",
 		destination = {x = 33175, y = 31764, z = 6}
 	},
-	[TOWNS_LIST.WHINTERMERE] = {
+	[TOWNS_LIST.ICELAND] = {
 		name = "Kazordoon",
 		about = {"The underground dwarven city. Doesn't have a real harbour, so I can't bring you there, sorry."},
 		canBeSailed = false
 	},
-	[TOWNS_LIST.SHADOW_WOOD] = {
+	[TOWNS_LIST.WOODZBROCK] = {
 		name = "Liberty Bay",
 		about = {
 			"Liberty Bay is on an island group in the South Seas. Ah, home sweet home. Err. I mean, \z
@@ -132,7 +132,7 @@ local towns = {
 		message = "So it's Liberty Bay, the city you chose as your new home?",
 		destination = {x = 32285, y = 32892, z = 6}
 	},
-	[TOWNS_LIST.PREMIA] = {
+	[TOWNS_LIST.PREMIA_ISLAND] = {
 		name = "Port Hope",
 		about = {
 			"Port Hope is an outpost right in the middle of the jungle. ...",
@@ -146,7 +146,7 @@ local towns = {
 	}
 }
 
-local defaultTown = TOWNS_LIST.THUNDER_CITY
+local defaultTown = TOWNS_LIST.REAL_CITY
 local townNames = {all = "", free = "", premium = ""}
 
 -- Function to build town names strings and adds additional data to sailable/premium towns about
