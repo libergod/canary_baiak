@@ -2449,10 +2449,6 @@ void Player::death(Creature* lastHitCreature) {
 
 	g_game().sendSingleSoundEffect(this->getPosition(), sex == PLAYERSEX_FEMALE ? SoundEffect_t::HUMAN_FEMALE_DEATH : SoundEffect_t::HUMAN_MALE_DEATH, this);
 
-	if (getSkull() != SKULL_RED && getSkull() != SKULL_BLACK) {
-		setSkull(SKULL_NONE);
-	}
-
 	if (skillLoss) {
 		uint8_t unfairFightReduction = 100;
 		int playerDmg = 0;
@@ -2631,7 +2627,7 @@ void Player::death(Creature* lastHitCreature) {
 		while (it != end) {
 			Condition* condition = *it;
 			// isSupress block to delete spells conditions (ensures that the player cannot, for example, reset the cooldown time of the familiar and summon several)
-			if (condition->isPersistent() && isSuppress(condition->getType())) {
+			if (condition->isPersistent() && condition->isRemovableOnDeath()) {
 				it = conditions.erase(it);
 
 				condition->endCondition(this);
