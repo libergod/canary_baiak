@@ -4054,24 +4054,6 @@ void Player::getPathSearchParams(const Creature* creature, FindPathParams &fpp) 
 	fpp.fullPathSearch = true;
 }
 
-uint16_t Player::getSkillLevel(uint8_t skill, bool sendToClient /* = false*/) const {
-	auto skillLevel = std::max<int64_t>(0, skills[skill].level + varSkills[skill]);
-
-	if (auto it = maxValuePerSkill.find(skill);
-		it != maxValuePerSkill.end()) {
-		skillLevel = std::min<int64_t>(it->second, skillLevel);
-	}
-
-	auto safeConverted = toSafeNumber<uint16_t>(__FUNCTION__, skillLevel);
-
-	// Send to client multiplied skill mana/life leech (13.00+ version changed to decimal)
-	if (sendToClient && (skill == SKILL_MANA_LEECH_AMOUNT || skill == SKILL_LIFE_LEECH_AMOUNT)) {
-		return safeConverted * 100;
-	}
-
-	return safeConverted;
-}
-
 void Player::doAttacking(uint32_t) {
 	if (lastAttack == 0) {
 		lastAttack = OTSYS_TIME() - getAttackSpeed() - 1;
@@ -6565,7 +6547,7 @@ void Player::forgeFuseItems(uint16_t itemId, uint8_t tier, bool success, bool re
 
 				for (const auto &[mapTier, mapPrice] : itemClassification->tiers) {
 					if (mapTier == firstForgingItem->getTier()) {
-						cost = mapPrice;
+						cost = mapPrice.priceToUpgrade;
 						break;
 					}
 				}
@@ -6638,7 +6620,7 @@ void Player::forgeFuseItems(uint16_t itemId, uint8_t tier, bool success, bool re
 
 			for (const auto &[mapTier, mapPrice] : itemClassification->tiers) {
 				if (mapTier == firstForgingItem->getTier()) {
-					cost = mapPrice;
+					cost = mapPrice.priceToUpgrade;
 					break;
 				}
 			}
@@ -6758,6 +6740,7 @@ void Player::forgeTransferItemTier(uint16_t donorItemId, uint8_t tier, uint16_t 
 		if (itemClassification->id != donorItem->getClassification()) {
 			continue;
 		}
+
 		for (const auto &[mapTier, mapPrice] : itemClassification->tiers) {
 			if (mapTier == donorItem->getTier() - 1) {
 				cost = mapPrice.priceToUpgrade;
@@ -6771,19 +6754,6 @@ void Player::forgeTransferItemTier(uint16_t donorItemId, uint8_t tier, uint16_t 
 		SPDLOG_ERROR("[{}] Failed to remove item 'id: {}, count: {}' from player {}", __FUNCTION__, ITEM_FORGE_CORE, 1, getName());
 		sendForgeError(RETURNVALUE_CONTACTADMINISTRATOR);
 		return;
-	}
-	uint64_t cost = 0;
-	for (const auto &itemClassification : g_game().getItemsClassifications()) {
-		if (itemClassification->id != donorItem->getClassification()) {
-			continue;
-		}
-
-		for (const auto &[mapTier, mapPrice] : itemClassification->tiers) {
-			if (mapTier == donorItem->getTier() - 1) {
-				cost = mapPrice;
-				break;
-			}
-		}
 	}
 
 	if (!g_game().removeMoney(this, cost, 0, true)) {
