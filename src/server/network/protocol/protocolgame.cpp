@@ -3852,7 +3852,6 @@ void ProtocolGame::sendSaleItemList(const std::vector<ShopBlock> &shopVector, co
 
 		it = inventoryMap.find(shopBlock.itemId);
 		if (it != inventoryMap.end()) {
-			itemsToSend++;
 			msg.add<uint16_t>(shopBlock.itemId);
 			msg.add<uint16_t>(it->second);
 		}
