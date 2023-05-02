@@ -20,6 +20,12 @@ monster.Bestiary = {
 	Locations = "Raids in Darashia, Krailos, Liberty Bay."
 }
 
+monster.events = {
+	"dodgeCriticalThree",
+	"dodgeCriticalOne",
+	"dodgeCriticalTwo"
+}
+
 monster.health = 3000
 monster.maxHealth = 3000
 monster.race = "blood"

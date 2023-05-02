@@ -27,6 +27,12 @@ monster.Bestiary = {
 		one in the Gardens of Night (here, unreachable); one near Roswitha in Rathleton."
 	}
 
+monster.events = {
+	"dodgeCriticalThree",
+	"dodgeCriticalOne",
+	"dodgeCriticalTwo"
+}
+
 monster.health = 75
 monster.maxHealth = 75
 monster.race = "blood"

@@ -26,6 +26,12 @@ monster.Bestiary = {
 	Locations = "Magician Quarter, Vengoth, Deeper Banuta, Formorgar Mines, Chyllfroest, Oramond Dungeon."
 	}
 
+monster.events = {
+	"dodgeCriticalThree",
+	"dodgeCriticalOne",
+	"dodgeCriticalTwo"
+}
+
 monster.health = 3500
 monster.maxHealth = 3500
 monster.race = "fire"

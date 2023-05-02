@@ -28,6 +28,12 @@ monster.Bestiary = {
 		Thais Northern Dungeon, Thais Surroundings, Thais Underground, Ulderek's Rock, Yalahar Foreigner Quarter."
 	}
 
+monster.events = {
+	"dodgeCriticalThree",
+	"dodgeCriticalOne",
+	"dodgeCriticalTwo"
+}
+
 monster.health = 260
 monster.maxHealth = 260
 monster.race = "blood"

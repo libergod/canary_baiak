@@ -26,6 +26,12 @@ monster.Bestiary = {
 	Locations = "Pits of Inferno, The Vats - Edron."
 	}
 
+monster.events = {
+	"dodgeCriticalThree",
+	"dodgeCriticalOne",
+	"dodgeCriticalTwo"
+}
+
 monster.health = 3650
 monster.maxHealth = 3650
 monster.race = "venom"

@@ -26,6 +26,12 @@ monster.Bestiary = {
 	Locations = "Pits of Inferno, Edron (In the Vats during The Inquisition Quest), Roshamuul Prison."
 	}
 
+monster.events = {
+	"dodgeCriticalThree",
+	"dodgeCriticalOne",
+	"dodgeCriticalTwo"
+}
+
 monster.health = 8900
 monster.maxHealth = 8900
 monster.race = "undead"

@@ -28,6 +28,12 @@ monster.Bestiary = {
 		Ancient Temple, Foreigner Quarter, Zao Orc Land."
 	}
 
+monster.events = {
+	"dodgeCriticalThree",
+	"dodgeCriticalOne",
+	"dodgeCriticalTwo"
+}
+
 monster.health = 210
 monster.maxHealth = 210
 monster.race = "blood"

@@ -26,6 +26,12 @@ monster.Bestiary = {
 	Locations = "Can be found in Truffels Garden as well as the Mushroom Gardens."
 	}
 
+monster.events = {
+	"dodgeCriticalThree",
+	"dodgeCriticalOne",
+	"dodgeCriticalTwo"
+}
+
 monster.health = 1200
 monster.maxHealth = 1200
 monster.race = "venom"

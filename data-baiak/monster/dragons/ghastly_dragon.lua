@@ -27,6 +27,12 @@ monster.Bestiary = {
 		Zao Palace, Deeper Banuta, Chyllfroest."
 	}
 
+monster.events = {
+	"dodgeCriticalThree",
+	"dodgeCriticalOne",
+	"dodgeCriticalTwo"
+}
+
 monster.health = 7800
 monster.maxHealth = 7800
 monster.race = "undead"

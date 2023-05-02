@@ -214,11 +214,11 @@
 		<monster name="Cyclops Drone" x="0" y="0" z="3" spawntime="60" />
 	</monster>
 	<monster centerx="1639" centery="1353" centerz="3" radius="2">
-		<monster name="Cyclops" x="1" y="-2" z="3" spawntime="6060316672" />
+		<monster name="Cyclops" x="1" y="-2" z="3" spawntime="60" />
 		<monster name="Cyclops" x="1" y="-1" z="3" spawntime="60" />
 		<monster name="Cyclops Drone" x="-1" y="0" z="3" spawntime="60" />
 		<monster name="Cyclops" x="1" y="1" z="3" spawntime="60" />
-		<monster name="Cyclops" x="0" y="2" z="3" spawntime="6060316672" />
+		<monster name="Cyclops" x="0" y="2" z="3" spawntime="60" />
 	</monster>
 	<monster centerx="1661" centery="1356" centerz="3" radius="2">
 		<monster name="Cyclops" x="-1" y="-2" z="3" spawntime="60" />
@@ -341,7 +341,7 @@
 	<monster centerx="1597" centery="1406" centerz="3" radius="2">
 		<monster name="Cyclops" x="0" y="-2" z="3" spawntime="60" />
 		<monster name="Cyclops" x="-1" y="0" z="3" spawntime="60" />
-		<monster name="Cyclops" x="-1" y="1" z="3" spawntime="6060316672" />
+		<monster name="Cyclops" x="-1" y="1" z="3" spawntime="60" />
 		<monster name="Cyclops Smith" x="2" y="1" z="3" spawntime="60" />
 	</monster>
 	<monster centerx="1741" centery="1489" centerz="3" radius="1">
@@ -497,7 +497,7 @@
 	</monster>
 	<monster centerx="1632" centery="1347" centerz="4" radius="3">
 		<monster name="Cyclops" x="2" y="-2" z="4" spawntime="60" />
-		<monster name="Cyclops" x="2" y="-1" z="4" spawntime="6060316672" />
+		<monster name="Cyclops" x="2" y="-1" z="4" spawntime="60" />
 		<monster name="Cyclops" x="-1" y="1" z="4" spawntime="60" />
 		<monster name="Cyclops" x="2" y="1" z="4" spawntime="60" />
 	</monster>
@@ -522,7 +522,7 @@
 		<monster name="Cyclops" x="1" y="-1" z="4" spawntime="60" />
 		<monster name="Cyclops" x="-1" y="0" z="4" spawntime="60" />
 		<monster name="Cyclops" x="1" y="2" z="4" spawntime="60" />
-		<monster name="Cyclops" x="2" y="2" z="4" spawntime="6060316672" />
+		<monster name="Cyclops" x="2" y="2" z="4" spawntime="60" />
 	</monster>
 	<monster centerx="1608" centery="1364" centerz="4" radius="1">
 		<monster name="Cyclops Drone" x="0" y="-1" z="4" spawntime="60" />
@@ -4175,7 +4175,7 @@
 		<monster name="Demon" x="4" y="-7" z="6" spawntime="60" />
 		<monster name="Demon" x="60" y="-3" z="6" spawntime="60" />
 		<monster name="Demon" x="-8" y="-2" z="6" spawntime="60" />
-		<monster name="Demon" x="60" y="-2" z="6" spawntime="6060317440" />
+		<monster name="Demon" x="60" y="-2" z="6" spawntime="60" />
 		<monster name="Demon" x="14" y="-1" z="6" spawntime="60" />
 		<monster name="Demon" x="-7" y="1" z="6" spawntime="60" />
 		<monster name="Demon" x="2" y="2" z="6" spawntime="60" />
@@ -4829,7 +4829,7 @@
 		<monster name="Dwarf Soldier" x="-23" y="4" z="7" spawntime="60" />
 		<monster name="Dwarf Miner" x="-60" y="4" z="7" spawntime="60" />
 		<monster name="Dwarf Miner" x="-19" y="4" z="7" spawntime="60" />
-		<monster name="Dwarf Soldier" x="-25" y="5" z="7" spawntime="6060360256" />
+		<monster name="Dwarf Soldier" x="-25" y="5" z="7" spawntime="60" />
 		<monster name="Dwarf" x="-22" y="5" z="7" spawntime="60" />
 		<monster name="Dwarf Soldier" x="-25" y="6" z="7" spawntime="60" />
 		<monster name="Dwarf" x="-23" y="6" z="7" spawntime="60" />
@@ -4837,16 +4837,16 @@
 		<monster name="Dwarf Geomancer" x="-22" y="8" z="7" spawntime="60" />
 		<monster name="Dwarf" x="-22" y="9" z="7" spawntime="60" />
 		<monster name="Dwarf Geomancer" x="-60" y="11" z="7" spawntime="60" />
-		<monster name="Dwarf Geomancer" x="-19" y="11" z="7" spawntime="6060321280" />
+		<monster name="Dwarf Geomancer" x="-19" y="11" z="7" spawntime="60" />
 		<monster name="Dwarf" x="-18" y="11" z="7" spawntime="60" />
 		<monster name="Dwarf Miner" x="-17" y="12" z="7" spawntime="60" />
 		<monster name="Dwarf" x="0" y="12" z="7" spawntime="60" />
 		<monster name="Dwarf" x="-19" y="13" z="7" spawntime="60" />
-		<monster name="Dwarf Miner" x="-17" y="13" z="7" spawntime="6060360256" />
+		<monster name="Dwarf Miner" x="-17" y="13" z="7" spawntime="60" />
 		<monster name="Dwarf Geomancer" x="-2" y="13" z="7" spawntime="60" />
 		<monster name="Dwarf Geomancer" x="-17" y="14" z="7" spawntime="60" />
 		<monster name="Dwarf Miner" x="-3" y="14" z="7" spawntime="60" />
-		<monster name="Dwarf Geomancer" x="-2" y="14" z="7" spawntime="6060321280" />
+		<monster name="Dwarf Geomancer" x="-2" y="14" z="7" spawntime="60" />
 		<monster name="Dwarf Miner" x="0" y="14" z="7" spawntime="60" />
 		<monster name="Dwarf" x="-17" y="15" z="7" spawntime="60" />
 		<monster name="Dwarf Soldier" x="-22" y="16" z="7" spawntime="60" />
@@ -4859,9 +4859,9 @@
 		<monster name="Dwarf Guard" x="-2" y="17" z="7" spawntime="60" />
 		<monster name="Dwarf" x="-1" y="17" z="7" spawntime="60" />
 		<monster name="Dwarf" x="-22" y="18" z="7" spawntime="60" />
-		<monster name="Dwarf" x="-21" y="18" z="7" spawntime="6060321536" />
+		<monster name="Dwarf" x="-21" y="18" z="7" spawntime="60" />
 		<monster name="Dwarf" x="-15" y="18" z="7" spawntime="60" />
-		<monster name="Dwarf Guard" x="-2" y="18" z="7" spawntime="6060360256" />
+		<monster name="Dwarf Guard" x="-2" y="18" z="7" spawntime="60" />
 		<monster name="Dwarf Geomancer" x="-25" y="19" z="7" spawntime="60" />
 		<monster name="Dwarf" x="-14" y="19" z="7" spawntime="60" />
 		<monster name="Dwarf Miner" x="-13" y="19" z="7" spawntime="60" />
@@ -4869,22 +4869,22 @@
 		<monster name="Dwarf" x="-14" y="60" z="7" spawntime="60" />
 		<monster name="Dwarf Guard" x="-12" y="60" z="7" spawntime="60" />
 		<monster name="Dwarf Miner" x="-11" y="60" z="7" spawntime="60" />
-		<monster name="Dwarf Miner" x="-10" y="60" z="7" spawntime="6060360256" />
+		<monster name="Dwarf Miner" x="-10" y="60" z="7" spawntime="60" />
 		<monster name="Dwarf Soldier" x="1" y="60" z="7" spawntime="60" />
 		<monster name="Dwarf Soldier" x="2" y="60" z="7" spawntime="60" />
 		<monster name="Dwarf Miner" x="-11" y="21" z="7" spawntime="60" />
 		<monster name="Dwarf" x="1" y="21" z="7" spawntime="60" />
-		<monster name="Dwarf" x="2" y="21" z="7" spawntime="6060321536" />
+		<monster name="Dwarf" x="2" y="21" z="7" spawntime="60" />
 		<monster name="Dwarf Geomancer" x="-11" y="22" z="7" spawntime="60" />
-		<monster name="Dwarf Geomancer" x="-10" y="22" z="7" spawntime="6060321280" />
+		<monster name="Dwarf Geomancer" x="-10" y="22" z="7" spawntime="60" />
 		<monster name="Dwarf" x="3" y="22" z="7" spawntime="60" />
 		<monster name="Dwarf" x="-10" y="23" z="7" spawntime="60" />
-		<monster name="Dwarf" x="3" y="23" z="7" spawntime="6060321536" />
+		<monster name="Dwarf" x="3" y="23" z="7" spawntime="60" />
 		<monster name="Dwarf Soldier" x="-8" y="24" z="7" spawntime="60" />
 		<monster name="Dwarf Miner" x="-1" y="24" z="7" spawntime="60" />
 		<monster name="Dwarf Geomancer" x="1" y="24" z="7" spawntime="60" />
-		<monster name="Dwarf Miner" x="-2" y="25" z="7" spawntime="6060360256" />
-		<monster name="Dwarf Geomancer" x="0" y="25" z="7" spawntime="6060321280" />
+		<monster name="Dwarf Miner" x="-2" y="25" z="7" spawntime="60" />
+		<monster name="Dwarf Geomancer" x="0" y="25" z="7" spawntime="60" />
 		<monster name="Dwarf" x="2" y="25" z="7" spawntime="60" />
 	</monster>
 	<monster centerx="787" centery="647" centerz="7" radius="1">
@@ -4894,12 +4894,12 @@
 		<monster name="Dwarf Miner" x="24" y="-17" z="7" spawntime="60" />
 		<monster name="Dwarf" x="25" y="-17" z="7" spawntime="60" />
 		<monster name="Dwarf" x="25" y="-15" z="7" spawntime="60" />
-		<monster name="Dwarf Guard" x="-5" y="-8" z="7" spawntime="6060360256" />
+		<monster name="Dwarf Guard" x="-5" y="-8" z="7" spawntime="60" />
 		<monster name="Dwarf Guard" x="-4" y="-8" z="7" spawntime="60" />
 		<monster name="Dwarf" x="-3" y="-8" z="7" spawntime="60" />
 		<monster name="Dwarf Soldier" x="-7" y="-7" z="7" spawntime="60" />
 		<monster name="Dwarf Miner" x="-9" y="-6" z="7" spawntime="60" />
-		<monster name="Dwarf Miner" x="-8" y="-6" z="7" spawntime="6060360256" />
+		<monster name="Dwarf Miner" x="-8" y="-6" z="7" spawntime="60" />
 		<monster name="Dwarf Miner" x="-6" y="-6" z="7" spawntime="60" />
 		<monster name="Dwarf" x="-4" y="-6" z="7" spawntime="60" />
 		<monster name="Dwarf Geomancer" x="-2" y="-6" z="7" spawntime="60" />
@@ -4913,7 +4913,7 @@
 		<monster name="Dwarf Soldier" x="-13" y="-4" z="7" spawntime="60" />
 		<monster name="Dwarf Miner" x="-12" y="-4" z="7" spawntime="60" />
 		<monster name="Dwarf Guard" x="-4" y="-4" z="7" spawntime="60" />
-		<monster name="Dwarf Soldier" x="-3" y="-4" z="7" spawntime="6060360256" />
+		<monster name="Dwarf Soldier" x="-3" y="-4" z="7" spawntime="60" />
 		<monster name="Dwarf Miner" x="-14" y="-3" z="7" spawntime="60" />
 		<monster name="Dwarf" x="-13" y="-3" z="7" spawntime="60" />
 		<monster name="Dwarf Miner" x="-12" y="-3" z="7" spawntime="60" />
@@ -4922,7 +4922,7 @@
 		<monster name="Dwarf Geomancer" x="-4" y="-2" z="7" spawntime="60" />
 		<monster name="Dwarf Miner" x="3" y="-2" z="7" spawntime="60" />
 		<monster name="Dwarf" x="4" y="-2" z="7" spawntime="60" />
-		<monster name="Dwarf" x="6" y="-2" z="7" spawntime="6060321536" />
+		<monster name="Dwarf" x="6" y="-2" z="7" spawntime="60" />
 		<monster name="Dwarf Miner" x="8" y="-2" z="7" spawntime="60" />
 		<monster name="Dwarf Guard" x="-6" y="-1" z="7" spawntime="60" />
 		<monster name="Dwarf Soldier" x="-4" y="-1" z="7" spawntime="60" />
@@ -4931,10 +4931,10 @@
 		<monster name="Dwarf" x="6" y="-1" z="7" spawntime="60" />
 		<monster name="Dwarf" x="9" y="-1" z="7" spawntime="60" />
 		<monster name="Dwarf Guard" x="25" y="-1" z="7" spawntime="60" />
-		<monster name="Dwarf Soldier" x="-4" y="0" z="7" spawntime="6060360256" />
+		<monster name="Dwarf Soldier" x="-4" y="0" z="7" spawntime="60" />
 		<monster name="Dwarf" x="5" y="0" z="7" spawntime="60" />
 		<monster name="Dwarf Geomancer" x="7" y="0" z="7" spawntime="60" />
-		<monster name="Dwarf" x="10" y="0" z="7" spawntime="6060321536" />
+		<monster name="Dwarf" x="10" y="0" z="7" spawntime="60" />
 		<monster name="Dwarf" x="12" y="0" z="7" spawntime="60" />
 		<monster name="Dwarf Geomancer" x="14" y="0" z="7" spawntime="60" />
 		<monster name="Dwarf Geomancer" x="16" y="0" z="7" spawntime="60" />
@@ -4946,13 +4946,13 @@
 		<monster name="Dwarf Soldier" x="7" y="1" z="7" spawntime="60" />
 		<monster name="Dwarf Guard" x="9" y="1" z="7" spawntime="60" />
 		<monster name="Dwarf Geomancer" x="13" y="1" z="7" spawntime="60" />
-		<monster name="Dwarf" x="16" y="1" z="7" spawntime="6060321536" />
-		<monster name="Dwarf" x="17" y="1" z="7" spawntime="6060321536" />
+		<monster name="Dwarf" x="16" y="1" z="7" spawntime="60" />
+		<monster name="Dwarf" x="17" y="1" z="7" spawntime="60" />
 		<monster name="Dwarf Miner" x="18" y="1" z="7" spawntime="60" />
 		<monster name="Dwarf" x="60" y="1" z="7" spawntime="60" />
-		<monster name="Dwarf" x="21" y="1" z="7" spawntime="6060321536" />
+		<monster name="Dwarf" x="21" y="1" z="7" spawntime="60" />
 		<monster name="Dwarf Soldier" x="23" y="1" z="7" spawntime="60" />
-		<monster name="Dwarf" x="24" y="1" z="7" spawntime="6060321536" />
+		<monster name="Dwarf" x="24" y="1" z="7" spawntime="60" />
 		<monster name="Dwarf Guard" x="-8" y="2" z="7" spawntime="60" />
 		<monster name="Dwarf Guard" x="12" y="2" z="7" spawntime="60" />
 		<monster name="Dwarf Geomancer" x="24" y="2" z="7" spawntime="60" />
@@ -4969,14 +4969,14 @@
 		<monster name="Dwarf Geomancer" x="2" y="7" z="7" spawntime="60" />
 		<monster name="Dwarf Miner" x="-2" y="8" z="7" spawntime="60" />
 		<monster name="Dwarf Miner" x="1" y="8" z="7" spawntime="60" />
-		<monster name="Dwarf Geomancer" x="2" y="8" z="7" spawntime="6060321280" />
+		<monster name="Dwarf Geomancer" x="2" y="8" z="7" spawntime="60" />
 		<monster name="Dwarf" x="-1" y="9" z="7" spawntime="60" />
 		<monster name="Dwarf" x="2" y="9" z="7" spawntime="60" />
 		<monster name="Dwarf Soldier" x="3" y="9" z="7" spawntime="60" />
 		<monster name="Dwarf Geomancer" x="4" y="9" z="7" spawntime="60" />
 		<monster name="Dwarf Miner" x="-3" y="10" z="7" spawntime="60" />
-		<monster name="Dwarf" x="0" y="10" z="7" spawntime="6060321536" />
-		<monster name="Dwarf" x="1" y="10" z="7" spawntime="6060321536" />
+		<monster name="Dwarf" x="0" y="10" z="7" spawntime="60" />
+		<monster name="Dwarf" x="1" y="10" z="7" spawntime="60" />
 		<monster name="Dwarf" x="0" y="11" z="7" spawntime="60" />
 		<monster name="Dwarf Soldier" x="2" y="11" z="7" spawntime="60" />
 	</monster>
@@ -5005,10 +5005,10 @@
 	<monster centerx="838" centery="682" centerz="7" radius="25">
 		<monster name="Dwarf Miner" x="-5" y="-25" z="7" spawntime="60" />
 		<monster name="Dwarf Guard" x="-3" y="-25" z="7" spawntime="60" />
-		<monster name="Dwarf" x="2" y="-25" z="7" spawntime="6060321536" />
+		<monster name="Dwarf" x="2" y="-25" z="7" spawntime="60" />
 		<monster name="Dwarf Guard" x="3" y="-25" z="7" spawntime="60" />
 		<monster name="Dwarf" x="5" y="-25" z="7" spawntime="60" />
-		<monster name="Dwarf" x="-5" y="-24" z="7" spawntime="6060321536" />
+		<monster name="Dwarf" x="-5" y="-24" z="7" spawntime="60" />
 		<monster name="Dwarf" x="-4" y="-24" z="7" spawntime="60" />
 		<monster name="Dwarf Soldier" x="-1" y="-24" z="7" spawntime="60" />
 		<monster name="Dwarf Soldier" x="2" y="-24" z="7" spawntime="60" />
@@ -5029,29 +5029,29 @@
 		<monster name="Dwarf Guard" x="-5" y="-21" z="7" spawntime="60" />
 		<monster name="Dwarf Soldier" x="6" y="-21" z="7" spawntime="60" />
 		<monster name="Dwarf Geomancer" x="11" y="-21" z="7" spawntime="60" />
-		<monster name="Dwarf" x="12" y="-21" z="7" spawntime="6060321536" />
+		<monster name="Dwarf" x="12" y="-21" z="7" spawntime="60" />
 		<monster name="Dwarf" x="13" y="-21" z="7" spawntime="60" />
-		<monster name="Dwarf Geomancer" x="16" y="-21" z="7" spawntime="6060321280" />
+		<monster name="Dwarf Geomancer" x="16" y="-21" z="7" spawntime="60" />
 		<monster name="Dwarf Geomancer" x="17" y="-21" z="7" spawntime="60" />
 		<monster name="Dwarf Geomancer" x="18" y="-21" z="7" spawntime="60" />
 		<monster name="Dwarf Guard" x="60" y="-21" z="7" spawntime="60" />
 		<monster name="Dwarf Soldier" x="-8" y="-60" z="7" spawntime="60" />
-		<monster name="Dwarf Geomancer" x="-6" y="-60" z="7" spawntime="6060321280" />
+		<monster name="Dwarf Geomancer" x="-6" y="-60" z="7" spawntime="60" />
 		<monster name="Dwarf Miner" x="6" y="-60" z="7" spawntime="60" />
 		<monster name="Dwarf" x="8" y="-60" z="7" spawntime="60" />
-		<monster name="Dwarf Miner" x="9" y="-60" z="7" spawntime="6060360256" />
+		<monster name="Dwarf Miner" x="9" y="-60" z="7" spawntime="60" />
 		<monster name="Dwarf Miner" x="10" y="-60" z="7" spawntime="60" />
 		<monster name="Dwarf Guard" x="15" y="-60" z="7" spawntime="60" />
 		<monster name="Dwarf" x="17" y="-60" z="7" spawntime="60" />
 		<monster name="Dwarf Miner" x="19" y="-60" z="7" spawntime="60" />
 		<monster name="Dwarf Miner" x="-10" y="-19" z="7" spawntime="60" />
 		<monster name="Dwarf Guard" x="-9" y="-19" z="7" spawntime="60" />
-		<monster name="Dwarf Soldier" x="-8" y="-19" z="7" spawntime="6060360256" />
+		<monster name="Dwarf Soldier" x="-8" y="-19" z="7" spawntime="60" />
 		<monster name="Dwarf" x="-6" y="-19" z="7" spawntime="60" />
 		<monster name="Dwarf Soldier" x="15" y="-19" z="7" spawntime="60" />
 		<monster name="Dwarf Soldier" x="16" y="-19" z="7" spawntime="60" />
 		<monster name="Dwarf Soldier" x="-8" y="-18" z="7" spawntime="60" />
-		<monster name="Dwarf" x="-6" y="-18" z="7" spawntime="6060321536" />
+		<monster name="Dwarf" x="-6" y="-18" z="7" spawntime="60" />
 		<monster name="Dwarf Guard" x="17" y="-18" z="7" spawntime="60" />
 		<monster name="Dwarf Guard" x="-16" y="-17" z="7" spawntime="60" />
 		<monster name="Dwarf" x="-13" y="-17" z="7" spawntime="60" />
@@ -5067,25 +5067,25 @@
 		<monster name="Dwarf Miner" x="-7" y="-14" z="7" spawntime="60" />
 		<monster name="Dwarf" x="-23" y="-13" z="7" spawntime="60" />
 		<monster name="Dwarf" x="-22" y="-13" z="7" spawntime="60" />
-		<monster name="Dwarf" x="-60" y="-13" z="7" spawntime="6060321536" />
+		<monster name="Dwarf" x="-60" y="-13" z="7" spawntime="60" />
 		<monster name="Dwarf" x="-6" y="-13" z="7" spawntime="60" />
 		<monster name="Dwarf Guard" x="0" y="-13" z="7" spawntime="60" />
 		<monster name="Dwarf" x="-7" y="-12" z="7" spawntime="60" />
-		<monster name="Dwarf" x="-6" y="-12" z="7" spawntime="6060321536" />
+		<monster name="Dwarf" x="-6" y="-12" z="7" spawntime="60" />
 		<monster name="Dwarf Guard" x="-3" y="-12" z="7" spawntime="60" />
 		<monster name="Dwarf Soldier" x="0" y="-12" z="7" spawntime="60" />
-		<monster name="Dwarf Miner" x="-5" y="-11" z="7" spawntime="6060360256" />
+		<monster name="Dwarf Miner" x="-5" y="-11" z="7" spawntime="60" />
 		<monster name="Dwarf Miner" x="-4" y="-11" z="7" spawntime="60" />
 		<monster name="Dwarf Soldier" x="-2" y="-11" z="7" spawntime="60" />
 		<monster name="Dwarf Miner" x="-1" y="-11" z="7" spawntime="60" />
 		<monster name="Dwarf" x="1" y="-11" z="7" spawntime="60" />
 		<monster name="Dwarf" x="-3" y="-10" z="7" spawntime="60" />
 		<monster name="Dwarf" x="-1" y="-10" z="7" spawntime="60" />
-		<monster name="Dwarf" x="1" y="-10" z="7" spawntime="6060321536" />
+		<monster name="Dwarf" x="1" y="-10" z="7" spawntime="60" />
 		<monster name="Dwarf Soldier" x="-1" y="-9" z="7" spawntime="60" />
 		<monster name="Dwarf Geomancer" x="1" y="-9" z="7" spawntime="60" />
 		<monster name="Dwarf Soldier" x="-3" y="-8" z="7" spawntime="60" />
-		<monster name="Dwarf Geomancer" x="1" y="-8" z="7" spawntime="6060321280" />
+		<monster name="Dwarf Geomancer" x="1" y="-8" z="7" spawntime="60" />
 		<monster name="Dwarf Soldier" x="1" y="-6" z="7" spawntime="60" />
 		<monster name="Dwarf" x="1" y="-5" z="7" spawntime="60" />
 		<monster name="Dwarf" x="-4" y="-4" z="7" spawntime="60" />
@@ -5096,18 +5096,18 @@
 		<monster name="Dwarf Geomancer" x="-4" y="-3" z="7" spawntime="60" />
 		<monster name="Dwarf Soldier" x="6" y="-3" z="7" spawntime="60" />
 		<monster name="Dwarf Soldier" x="19" y="-3" z="7" spawntime="60" />
-		<monster name="Dwarf Geomancer" x="-4" y="-2" z="7" spawntime="6060321280" />
+		<monster name="Dwarf Geomancer" x="-4" y="-2" z="7" spawntime="60" />
 		<monster name="Dwarf Guard" x="-3" y="-2" z="7" spawntime="60" />
 		<monster name="Dwarf Soldier" x="4" y="-2" z="7" spawntime="60" />
 		<monster name="Dwarf Soldier" x="5" y="-2" z="7" spawntime="60" />
 		<monster name="Dwarf" x="19" y="-2" z="7" spawntime="60" />
 		<monster name="Dwarf Miner" x="21" y="-2" z="7" spawntime="60" />
 		<monster name="Dwarf Soldier" x="22" y="-2" z="7" spawntime="60" />
-		<monster name="Dwarf Guard" x="-3" y="-1" z="7" spawntime="6060360256" />
+		<monster name="Dwarf Guard" x="-3" y="-1" z="7" spawntime="60" />
 		<monster name="Dwarf Miner" x="6" y="-1" z="7" spawntime="60" />
 		<monster name="Dwarf Miner" x="8" y="-1" z="7" spawntime="60" />
 		<monster name="Dwarf Geomancer" x="15" y="-1" z="7" spawntime="60" />
-		<monster name="Dwarf Geomancer" x="16" y="-1" z="7" spawntime="6060321280" />
+		<monster name="Dwarf Geomancer" x="16" y="-1" z="7" spawntime="60" />
 		<monster name="Dwarf Soldier" x="17" y="-1" z="7" spawntime="60" />
 		<monster name="Dwarf" x="21" y="-1" z="7" spawntime="60" />
 		<monster name="Dwarf Geomancer" x="22" y="-1" z="7" spawntime="60" />
@@ -5117,7 +5117,7 @@
 		<monster name="Dwarf" x="-4" y="0" z="7" spawntime="60" />
 		<monster name="Dwarf Guard" x="8" y="0" z="7" spawntime="60" />
 		<monster name="Dwarf Miner" x="13" y="0" z="7" spawntime="60" />
-		<monster name="Dwarf Geomancer" x="14" y="0" z="7" spawntime="6060321280" />
+		<monster name="Dwarf Geomancer" x="14" y="0" z="7" spawntime="60" />
 		<monster name="Dwarf" x="22" y="0" z="7" spawntime="60" />
 		<monster name="Dwarf Miner" x="23" y="0" z="7" spawntime="60" />
 		<monster name="Dwarf Guard" x="-3" y="1" z="7" spawntime="60" />
@@ -5137,8 +5137,8 @@
 		<monster name="Dwarf Soldier" x="11" y="5" z="7" spawntime="60" />
 		<monster name="Dwarf" x="-5" y="6" z="7" spawntime="60" />
 		<monster name="Dwarf Guard" x="8" y="6" z="7" spawntime="60" />
-		<monster name="Dwarf" x="-5" y="7" z="7" spawntime="6060321536" />
-		<monster name="Dwarf" x="8" y="7" z="7" spawntime="6060321536" />
+		<monster name="Dwarf" x="-5" y="7" z="7" spawntime="60" />
+		<monster name="Dwarf" x="8" y="7" z="7" spawntime="60" />
 		<monster name="Dwarf Soldier" x="9" y="7" z="7" spawntime="60" />
 		<monster name="Dwarf Miner" x="10" y="7" z="7" spawntime="60" />
 		<monster name="Dwarf" x="-6" y="8" z="7" spawntime="60" />
@@ -5146,15 +5146,15 @@
 		<monster name="Dwarf Miner" x="-7" y="9" z="7" spawntime="60" />
 		<monster name="Dwarf Geomancer" x="9" y="9" z="7" spawntime="60" />
 		<monster name="Dwarf Miner" x="8" y="10" z="7" spawntime="60" />
-		<monster name="Dwarf Geomancer" x="9" y="10" z="7" spawntime="6060321280" />
+		<monster name="Dwarf Geomancer" x="9" y="10" z="7" spawntime="60" />
 		<monster name="Dwarf" x="-8" y="11" z="7" spawntime="60" />
 		<monster name="Dwarf" x="-7" y="11" z="7" spawntime="60" />
 		<monster name="Dwarf Soldier" x="-6" y="11" z="7" spawntime="60" />
 		<monster name="Dwarf Miner" x="10" y="11" z="7" spawntime="60" />
 		<monster name="Dwarf Guard" x="11" y="11" z="7" spawntime="60" />
 		<monster name="Dwarf Guard" x="-9" y="12" z="7" spawntime="60" />
-		<monster name="Dwarf" x="-8" y="12" z="7" spawntime="6060321536" />
-		<monster name="Dwarf" x="-7" y="12" z="7" spawntime="6060321536" />
+		<monster name="Dwarf" x="-8" y="12" z="7" spawntime="60" />
+		<monster name="Dwarf" x="-7" y="12" z="7" spawntime="60" />
 		<monster name="Dwarf Miner" x="9" y="12" z="7" spawntime="60" />
 		<monster name="Dwarf Soldier" x="10" y="12" z="7" spawntime="60" />
 		<monster name="Dwarf Geomancer" x="-7" y="13" z="7" spawntime="60" />
@@ -5211,26 +5211,26 @@
 		<monster name="Grim Reaper" x="26" y="-1" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="-21" y="0" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="-12" y="0" z="7" spawntime="60" />
-		<monster name="Grim Reaper" x="-11" y="0" z="7" spawntime="6060327936" />
+		<monster name="Grim Reaper" x="-11" y="0" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="-3" y="0" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="11" y="0" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="13" y="0" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="16" y="0" z="7" spawntime="60" />
-		<monster name="Grim Reaper" x="-21" y="1" z="7" spawntime="6060327936" />
+		<monster name="Grim Reaper" x="-21" y="1" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="21" y="1" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="24" y="2" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="-18" y="3" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="27" y="3" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="-11" y="8" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="-10" y="12" z="7" spawntime="60" />
-		<monster name="Grim Reaper" x="-10" y="13" z="7" spawntime="6060327936" />
+		<monster name="Grim Reaper" x="-10" y="13" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="-10" y="15" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="-9" y="18" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="12" y="19" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="-12" y="60" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="-7" y="60" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="3" y="60" z="7" spawntime="60" />
-		<monster name="Grim Reaper" x="18" y="60" z="7" spawntime="6060327936" />
+		<monster name="Grim Reaper" x="18" y="60" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="19" y="60" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="1" y="21" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="21" y="21" z="7" spawntime="60" />
@@ -7271,7 +7271,7 @@
 	</monster>
 	<monster centerx="2405" centery="1078" centerz="7" radius="2">
 		<monster name="Cyclops Drone" x="-2" y="-1" z="7" spawntime="15" />
-		<monster name="Cyclops Drone" x="-1" y="-1" z="7" spawntime="1568879616" />
+		<monster name="Cyclops Drone" x="-1" y="-1" z="7" spawntime="60" />
 		<monster name="Cyclops Drone" x="1" y="-1" z="7" spawntime="15" />
 		<monster name="Cyclops Drone" x="2" y="0" z="7" spawntime="15" />
 	</monster>
@@ -7770,7 +7770,7 @@
 		<monster name="Defiler" x="4" y="3" z="7" spawntime="60" />
 		<monster name="Defiler" x="14" y="3" z="7" spawntime="60" />
 		<monster name="Defiler" x="-7" y="6" z="7" spawntime="60" />
-		<monster name="Defiler" x="24" y="6" z="7" spawntime="6060318464" />
+		<monster name="Defiler" x="24" y="6" z="7" spawntime="60" />
 		<monster name="Defiler" x="25" y="6" z="7" spawntime="60" />
 		<monster name="Defiler" x="15" y="7" z="7" spawntime="60" />
 		<monster name="Defiler" x="16" y="7" z="7" spawntime="60" />
@@ -7794,7 +7794,7 @@
 		<monster name="Defiler" x="-10" y="-3" z="7" spawntime="60" />
 		<monster name="Defiler" x="-4" y="-1" z="7" spawntime="60" />
 		<monster name="Defiler" x="-3" y="1" z="7" spawntime="60" />
-		<monster name="Defiler" x="-3" y="2" z="7" spawntime="6060318464" />
+		<monster name="Defiler" x="-3" y="2" z="7" spawntime="60" />
 		<monster name="Defiler" x="-1" y="4" z="7" spawntime="60" />
 		<monster name="Defiler" x="0" y="4" z="7" spawntime="60" />
 		<monster name="Defiler" x="-2" y="9" z="7" spawntime="60" />
@@ -9967,7 +9967,7 @@
 		<monster name="Quara Predator Scout" x="9" y="-12" z="7" spawntime="60" />
 		<monster name="Quara Mantassin" x="18" y="-12" z="7" spawntime="60" />
 		<monster name="Quara Pincher" x="21" y="-12" z="7" spawntime="60" />
-		<monster name="Quara Constrictor" x="23" y="-12" z="7" spawntime="6060343040" />
+		<monster name="Quara Constrictor" x="23" y="-12" z="7" spawntime="60" />
 		<monster name="Quara Constrictor" x="24" y="-12" z="7" spawntime="60" />
 		<monster name="Quara Pincher" x="8" y="-10" z="7" spawntime="60" />
 		<monster name="Quara Pincher" x="7" y="-9" z="7" spawntime="60" />
@@ -10236,7 +10236,7 @@
 	</monster>
 	<monster centerx="1454" centery="1462" centerz="7" radius="1">
 		<monster name="Giant Spider" x="0" y="0" z="7" spawntime="60" />
-		<monster name="Giant Spider" x="0" y="1" z="7" spawntime="6060327424" />
+		<monster name="Giant Spider" x="0" y="1" z="7" spawntime="60" />
 	</monster>
 	<monster centerx="1691" centery="1462" centerz="7" radius="1">
 		<monster name="Lost Soul" x="0" y="0" z="7" spawntime="60" />
@@ -10595,7 +10595,7 @@
 		<monster name="Grim Reaper" x="24" y="4" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="-19" y="10" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="-16" y="10" z="7" spawntime="60" />
-		<monster name="Grim Reaper" x="-15" y="10" z="7" spawntime="6060327936" />
+		<monster name="Grim Reaper" x="-15" y="10" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="9" y="11" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="-16" y="12" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="-14" y="12" z="7" spawntime="60" />
@@ -10605,7 +10605,7 @@
 		<monster name="Grim Reaper" x="16" y="60" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="0" y="21" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="15" y="23" z="7" spawntime="60" />
-		<monster name="Grim Reaper" x="15" y="24" z="7" spawntime="6060327936" />
+		<monster name="Grim Reaper" x="15" y="24" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="-1" y="26" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="-6" y="27" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="15" y="28" z="7" spawntime="60" />
@@ -10692,7 +10692,7 @@
 	</monster>
 	<monster centerx="259" centery="1522" centerz="7" radius="60">
 		<monster name="Grim Reaper" x="1" y="6" z="7" spawntime="60" />
-		<monster name="Grim Reaper" x="2" y="6" z="7" spawntime="6060327936" />
+		<monster name="Grim Reaper" x="2" y="6" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="5" y="6" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="5" y="9" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="-9" y="10" z="7" spawntime="60" />
@@ -10843,22 +10843,22 @@
 		<monster name="Grim Reaper" x="13" y="3" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="-6" y="4" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="6" y="4" z="7" spawntime="60" />
-		<monster name="Grim Reaper" x="9" y="4" z="7" spawntime="6060327936" />
+		<monster name="Grim Reaper" x="9" y="4" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="11" y="4" z="7" spawntime="60" />
 	</monster>
 	<monster centerx="1859" centery="1562" centerz="7" radius="1">
 		<monster name="Demon" x="0" y="0" z="7" spawntime="60" />
 	</monster>
 	<monster centerx="248" centery="1563" centerz="7" radius="60">
-		<monster name="Grim Reaper" x="17" y="-60" z="7" spawntime="6060327936" />
+		<monster name="Grim Reaper" x="17" y="-60" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="18" y="-60" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="18" y="-15" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="13" y="-8" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="-1" y="-7" z="7" spawntime="60" />
-		<monster name="Grim Reaper" x="0" y="-7" z="7" spawntime="6060327936" />
+		<monster name="Grim Reaper" x="0" y="-7" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="-7" y="-6" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="-10" y="-5" z="7" spawntime="60" />
-		<monster name="Grim Reaper" x="10" y="-5" z="7" spawntime="6060327936" />
+		<monster name="Grim Reaper" x="10" y="-5" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="8" y="-4" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="10" y="-4" z="7" spawntime="60" />
 	</monster>
@@ -10935,7 +10935,7 @@
 		<monster name="Braindeath" x="19" y="27" z="7" spawntime="60" />
 		<monster name="Braindeath" x="-24" y="28" z="7" spawntime="60" />
 		<monster name="Braindeath" x="-19" y="28" z="7" spawntime="60" />
-		<monster name="Braindeath" x="-60" y="29" z="7" spawntime="6060311296" />
+		<monster name="Braindeath" x="-60" y="29" z="7" spawntime="60" />
 	</monster>
 	<monster centerx="1593" centery="1572" centerz="7" radius="1">
 		<monster name="Minotaur Mage" x="0" y="0" z="7" spawntime="60" />
@@ -11079,7 +11079,7 @@
 		<monster name="Minotaur Guard" x="1" y="-1" z="7" spawntime="60" />
 		<monster name="Minotaur Archer" x="0" y="0" z="7" spawntime="60" />
 		<monster name="Minotaur Archer" x="0" y="1" z="7" spawntime="60" />
-		<monster name="Minotaur Guard" x="1" y="1" z="7" spawntime="6060337152" />
+		<monster name="Minotaur Guard" x="1" y="1" z="7" spawntime="60" />
 	</monster>
 	<monster centerx="1549" centery="1581" centerz="7" radius="1">
 		<monster name="Minotaur" x="0" y="0" z="7" spawntime="60" />
@@ -11404,7 +11404,7 @@
 		<monster name="Minotaur Mage" x="0" y="1" z="7" spawntime="60" />
 	</monster>
 	<monster centerx="1609" centery="1593" centerz="7" radius="1">
-		<monster name="Minotaur Guard" x="0" y="0" z="7" spawntime="6060337152" />
+		<monster name="Minotaur Guard" x="0" y="0" z="7" spawntime="60" />
 	</monster>
 	<monster centerx="943" centery="1594" centerz="7" radius="1">
 		<monster name="Infernalist" x="0" y="0" z="7" spawntime="40" />
@@ -11569,7 +11569,7 @@
 		<monster name="Dragon" x="-1" y="-22" z="7" spawntime="60" />
 		<monster name="Dragon" x="2" y="-22" z="7" spawntime="60" />
 		<monster name="Dragon" x="3" y="-22" z="7" spawntime="60" />
-		<monster name="Dragon Hatchling" x="-12" y="-21" z="7" spawntime="6060600" />
+		<monster name="Dragon Hatchling" x="-12" y="-21" z="7" spawntime="60" />
 		<monster name="Dragon Hatchling" x="-11" y="-21" z="7" spawntime="60" />
 		<monster name="Dragon Lord" x="-6" y="-21" z="7" spawntime="60" />
 		<monster name="Dragon Lord" x="13" y="-21" z="7" spawntime="60" />
@@ -11689,7 +11689,7 @@
 	</monster>
 	<monster centerx="1552" centery="1599" centerz="7" radius="1">
 		<monster name="Minotaur" x="0" y="0" z="7" spawntime="60" />
-		<monster name="Minotaur Guard" x="1" y="1" z="7" spawntime="6060337152" />
+		<monster name="Minotaur Guard" x="1" y="1" z="7" spawntime="60" />
 	</monster>
 	<monster centerx="1556" centery="1599" centerz="7" radius="1">
 		<monster name="Minotaur Archer" x="0" y="0" z="7" spawntime="60" />
@@ -12915,14 +12915,14 @@
 		<monster name="Braindeath" x="-5" y="0" z="7" spawntime="60" />
 		<monster name="Braindeath" x="2" y="0" z="7" spawntime="60" />
 		<monster name="Braindeath" x="-21" y="3" z="7" spawntime="60" />
-		<monster name="Braindeath" x="-60" y="3" z="7" spawntime="6060311296" />
+		<monster name="Braindeath" x="-60" y="3" z="7" spawntime="60" />
 		<monster name="Braindeath" x="-1" y="3" z="7" spawntime="60" />
 		<monster name="Braindeath" x="-21" y="4" z="7" spawntime="60" />
 		<monster name="Braindeath" x="-4" y="4" z="7" spawntime="60" />
 		<monster name="Braindeath" x="-2" y="7" z="7" spawntime="60" />
 		<monster name="Braindeath" x="-3" y="9" z="7" spawntime="60" />
 		<monster name="Braindeath" x="-3" y="17" z="7" spawntime="60" />
-		<monster name="Braindeath" x="-2" y="17" z="7" spawntime="6060311296" />
+		<monster name="Braindeath" x="-2" y="17" z="7" spawntime="60" />
 		<monster name="Braindeath" x="0" y="17" z="7" spawntime="60" />
 		<monster name="Braindeath" x="-4" y="18" z="7" spawntime="60" />
 		<monster name="Braindeath" x="0" y="19" z="7" spawntime="60" />
@@ -14307,7 +14307,7 @@
 	</monster>
 	<monster centerx="289" centery="1689" centerz="7" radius="1">
 		<monster name="Medusa" x="0" y="0" z="7" spawntime="60" />
-		<monster name="Medusa" x="0" y="1" z="7" spawntime="6060333824" />
+		<monster name="Medusa" x="0" y="1" z="7" spawntime="60" />
 		<monster name="Medusa" x="1" y="1" z="7" spawntime="60" />
 	</monster>
 	<monster centerx="291" centery="1689" centerz="7" radius="1">
@@ -26166,9 +26166,9 @@
 		<monster name="Behemoth" x="18" y="-14" z="8" spawntime="60" />
 		<monster name="Behemoth" x="-15" y="-12" z="8" spawntime="60" />
 		<monster name="Behemoth" x="4" y="-12" z="8" spawntime="60" />
-		<monster name="Behemoth" x="14" y="-11" z="8" spawntime="6060313344" />
+		<monster name="Behemoth" x="14" y="-11" z="8" spawntime="60" />
 		<monster name="Behemoth" x="0" y="-10" z="8" spawntime="60" />
-		<monster name="Behemoth" x="14" y="-10" z="8" spawntime="6060313344" />
+		<monster name="Behemoth" x="14" y="-10" z="8" spawntime="60" />
 		<monster name="Behemoth" x="11" y="-9" z="8" spawntime="60" />
 		<monster name="Behemoth" x="-18" y="-8" z="8" spawntime="60" />
 		<monster name="Behemoth" x="-23" y="-6" z="8" spawntime="60" />
@@ -26642,7 +26642,7 @@
 	<monster centerx="1389" centery="1582" centerz="8" radius="1">
 		<monster name="Ice Golem" x="-1" y="0" z="8" spawntime="60" />
 		<monster name="Ice Witch" x="0" y="0" z="8" spawntime="60" />
-		<monster name="Ice Golem" x="-1" y="1" z="8" spawntime="6060330752" />
+		<monster name="Ice Golem" x="-1" y="1" z="8" spawntime="60" />
 	</monster>
 	<monster centerx="1415" centery="1582" centerz="8" radius="1">
 		<monster name="Ice Witch" x="0" y="0" z="8" spawntime="60" />
@@ -26758,7 +26758,7 @@
 	<monster centerx="1367" centery="1596" centerz="8" radius="1">
 		<monster name="Ice Golem" x="1" y="-1" z="8" spawntime="60" />
 		<monster name="Ice Golem" x="0" y="0" z="8" spawntime="60" />
-		<monster name="Ice Golem" x="1" y="0" z="8" spawntime="6060330752" />
+		<monster name="Ice Golem" x="1" y="0" z="8" spawntime="60" />
 		<monster name="Ice Golem" x="0" y="1" z="8" spawntime="60" />
 	</monster>
 	<monster centerx="1384" centery="1597" centerz="8" radius="1">

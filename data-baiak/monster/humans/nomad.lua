@@ -27,6 +27,12 @@ monster.Bestiary = {
 		Southern Darama Desert, Yalahar Foreigner Quarter, Yalahar Trade Quarter."
 	}
 
+monster.events = {
+	"dodgeCriticalThree",
+	"dodgeCriticalOne",
+	"dodgeCriticalTwo"
+}
+
 monster.health = 160
 monster.maxHealth = 160
 monster.race = "blood"

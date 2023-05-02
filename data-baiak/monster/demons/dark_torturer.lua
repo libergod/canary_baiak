@@ -26,6 +26,12 @@ monster.Bestiary = {
 	Locations = "Pits of Inferno, Vengoth, Blood Halls, Oramond Dungeon, Roshamuul Prison."
 	}
 
+monster.events = {
+	"dodgeCriticalThree",
+	"dodgeCriticalOne",
+	"dodgeCriticalTwo"
+}
+
 monster.health = 7350
 monster.maxHealth = 7350
 monster.race = "undead"
