@@ -2291,7 +2291,7 @@ class Player final : public Creature, public Cylinder {
 			}
 		}
 
-		void sendInventoryImbuements(std::map<Slots_t, Item*> items) {
+		void sendInventoryImbuements(const std::map<Slots_t, Item*> items) const {
 			if (client) {
 				client->sendInventoryImbuements(items);
 			}
