@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Vengoth Castle, Vengoth Werewolf Cave, Grimvale, were-beasts cave south-west of Edron."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 1955
 monster.maxHealth = 1955
 monster.race = "blood"

@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Hot Spot (in Gnomebase Alpha) and Lower Spike."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 1600
 monster.maxHealth = 1600
 monster.race = "fire"

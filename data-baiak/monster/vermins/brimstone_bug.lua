@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Beneath Razzachai, Northern Zao Plantations, Brimstone Bug Caves, Chyllfroest, Krailos Spider Lair."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 1300
 monster.maxHealth = 1300
 monster.race = "venom"

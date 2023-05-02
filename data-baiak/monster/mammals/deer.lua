@@ -27,12 +27,6 @@ monster.Bestiary = {
 		Rookgaard and on Tutorial Island. There are also 2 unreachable Deer found near Fiehonja's protection zone."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 25
 monster.maxHealth = 25
 monster.race = "blood"

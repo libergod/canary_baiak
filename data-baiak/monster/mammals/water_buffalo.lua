@@ -27,12 +27,6 @@ monster.Bestiary = {
 		various places around Venore swamp, especially near the southern production site."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 390
 monster.maxHealth = 390
 monster.race = "blood"

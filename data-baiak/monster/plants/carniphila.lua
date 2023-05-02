@@ -27,12 +27,6 @@ monster.Bestiary = {
 		Forbidden Lands, Deeper Banuta, Arena and Zoo quarter in Yalahar."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 255
 monster.maxHealth = 255
 monster.race = "venom"

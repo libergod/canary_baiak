@@ -27,12 +27,6 @@ monster.Bestiary = {
 		reachable from the city Library."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 6500
 monster.maxHealth = 6500
 monster.race = "ink"

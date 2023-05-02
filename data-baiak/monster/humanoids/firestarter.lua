@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Shadowthorn, during the Thornfire World Change."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 180
 monster.maxHealth = 180
 monster.race = "blood"

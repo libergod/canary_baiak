@@ -27,12 +27,6 @@ monster.Bestiary = {
 		and 2 crypt shamblers on the shore east of Trapwood."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 80
 monster.maxHealth = 80
 monster.race = "blood"

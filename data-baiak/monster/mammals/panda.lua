@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "South of Port Hope around Trapwood, as well as a lone specimen in the Arena Quarter."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 80
 monster.maxHealth = 80
 monster.race = "blood"

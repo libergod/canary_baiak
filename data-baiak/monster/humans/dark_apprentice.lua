@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Magician Tower, Dark Cathedral, Hero Cave, Magician Quarter."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 225
 monster.maxHealth = 225
 monster.race = "blood"

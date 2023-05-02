@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Island of Destiny, Drefia, Ghostland and beneath Fenrock."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 65
 monster.maxHealth = 65
 monster.race = "undead"

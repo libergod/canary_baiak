@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Lower Roshamuul, Guzzlemaw Valley, the entrance to Upper Roshamuul."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 4100
 monster.maxHealth = 4100
 monster.race = "blood"

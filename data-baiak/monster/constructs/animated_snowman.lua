@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Percht Island."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 450
 monster.maxHealth = 450
 monster.race = "venom"

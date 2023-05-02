@@ -28,12 +28,6 @@ monster.Bestiary = {
 		Chyllfroest, Oramond Fury Dungeon."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 8350
 monster.maxHealth = 8350
 monster.race = "undead"

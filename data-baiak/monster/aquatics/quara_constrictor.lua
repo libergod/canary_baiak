@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Calassa, Frozen Trench underwater sites, Yalahar (Sunken Quarter)."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 450
 monster.maxHealth = 450
 monster.race = "blood"

@@ -27,12 +27,6 @@ monster.Bestiary = {
 		Hrodmir Quara Scout Caves, Quara Grotto, Oramond."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 450
 monster.maxHealth = 450
 monster.race = "blood"

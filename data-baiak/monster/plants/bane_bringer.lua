@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Green Claw Swamp underground, near the big witches' cauldron."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 2500
 monster.maxHealth = 2500
 monster.race = "venom"

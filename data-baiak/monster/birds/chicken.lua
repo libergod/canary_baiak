@@ -28,12 +28,6 @@ monster.Bestiary = {
 		Factory Quarter, also theres one in the farm near Edron."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 15
 monster.maxHealth = 15
 monster.race = "blood"

@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Rotten Wasteland."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 27000
 monster.maxHealth = 27000
 monster.race = "blood"

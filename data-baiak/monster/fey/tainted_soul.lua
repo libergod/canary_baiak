@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Around venore."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 250
 monster.maxHealth = 250
 monster.race = "undead"

@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Forbidden Temple (Carlin)."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 1650
 monster.maxHealth = 1650
 monster.race = "blood"

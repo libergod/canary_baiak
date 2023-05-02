@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Forest Fury Camp and in the Forest Fury version of the Forsaken Mine."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 480
 monster.maxHealth = 480
 monster.race = "blood"

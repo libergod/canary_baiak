@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Crystal Grounds, Mushroom Farms, Middle Spike."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 570
 monster.maxHealth = 570
 monster.race = "venom"

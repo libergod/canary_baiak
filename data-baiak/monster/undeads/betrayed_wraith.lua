@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Pits of Inferno, Helheim, The Inquisition Quest, Roshamuul Prison."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 4200
 monster.maxHealth = 4200
 monster.race = "undead"

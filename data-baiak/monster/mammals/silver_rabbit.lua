@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "A lot of places on the Ice Islands and one on Rookgaard (unreachable)."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 15
 monster.maxHealth = 15
 monster.race = "blood"

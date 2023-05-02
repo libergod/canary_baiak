@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Buried Cathedral, Haunted Cellar, Court of Summer, Court of Winter, Dream Labyrinth."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 5000
 monster.maxHealth = 5000
 monster.race = "blood"

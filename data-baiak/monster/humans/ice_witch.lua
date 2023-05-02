@@ -27,12 +27,6 @@ monster.Bestiary = {
 		Formorgar Glacier deepest mines, Magician Quarter in Yalahar (Level 60 Requirement Door)."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 650
 monster.maxHealth = 650
 monster.race = "blood"

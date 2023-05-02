@@ -28,12 +28,6 @@ monster.Bestiary = {
 		Ramoa, Lich Hell, Upper Spike."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 150
 monster.maxHealth = 150
 monster.race = "undead"

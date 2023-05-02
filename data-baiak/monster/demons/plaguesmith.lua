@@ -27,12 +27,6 @@ monster.Bestiary = {
 		Magician Quarter, Alchemist Quarter, Roshamuul Prison."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 8250
 monster.maxHealth = 8250
 monster.race = "venom"

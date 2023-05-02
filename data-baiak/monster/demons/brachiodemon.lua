@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Claustrophobic Inferno."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 25000
 monster.maxHealth = 25000
 monster.race = "blood"

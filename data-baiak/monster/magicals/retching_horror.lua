@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "All over the surface of Upper Roshamuul and Nightmare Isles."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 5300
 monster.maxHealth = 5300
 monster.race = "fire"

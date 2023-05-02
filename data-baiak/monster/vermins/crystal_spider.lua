@@ -27,12 +27,6 @@ monster.Bestiary = {
 		Ice Witch Temple, Nibelor Ice Cave, the Crystal Caves in The Inquisition Quest, Mushroom Gardens."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 1250
 monster.maxHealth = 1250
 monster.race = "venom"

@@ -27,12 +27,6 @@ monster.Bestiary = {
 		Terramite Breeding Tunnels. Also raids desert north of Ankrahmun."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 365
 monster.maxHealth = 365
 monster.race = "venom"

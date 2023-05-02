@@ -27,12 +27,6 @@ monster.Bestiary = {
 		Liberty Bay, south gate of Thais."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 20
 monster.maxHealth = 20
 monster.race = "blood"

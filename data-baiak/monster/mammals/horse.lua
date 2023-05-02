@@ -27,12 +27,6 @@ monster.Bestiary = {
 		one near Roswitha in Rathleton."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 75
 monster.maxHealth = 75
 monster.race = "blood"

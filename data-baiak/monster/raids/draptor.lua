@@ -27,12 +27,6 @@ monster.Bestiary = {
 		while 6 of them may also appear in mission 8 of Wrath of the Emperor Quest."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 3000
 monster.maxHealth = 3000
 monster.race = "blood"

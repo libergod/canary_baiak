@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Asura Palace."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 8500
 monster.maxHealth = 8500
 monster.race = "blood"

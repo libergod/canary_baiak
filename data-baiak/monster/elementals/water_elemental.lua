@@ -28,12 +28,6 @@ monster.Bestiary = {
 		Drain Mini World Change), Krailos Steppe underwater cave."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 550
 monster.maxHealth = 550
 monster.race = "undead"

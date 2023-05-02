@@ -27,12 +27,6 @@ monster.Bestiary = {
 		Vengoth Castle, Formorgar Mines, Lower Spike, Robson Isle (single respawn), Krailos."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 1400
 monster.maxHealth = 1400
 monster.race = "blood"

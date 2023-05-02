@@ -29,12 +29,6 @@ monster.Bestiary = {
 		Also found in Rookgaard West plains, Zao Orc Land."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 105
 monster.maxHealth = 105
 monster.race = "blood"

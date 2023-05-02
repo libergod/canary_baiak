@@ -27,12 +27,6 @@ monster.Bestiary = {
 		and Slime cave east of Venore, Arena and Zoo Quarter, Gnarlhound Caves."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 70
 monster.maxHealth = 70
 monster.race = "venom"

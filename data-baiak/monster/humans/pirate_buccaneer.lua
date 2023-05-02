@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Nargor, Tyrsung (on the ship), Yalahar (Foreign Quarter), Krailos Steppe."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 425
 monster.maxHealth = 425
 monster.race = "blood"

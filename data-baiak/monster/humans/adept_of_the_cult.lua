@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Goroma, Liberty Bay's deeper cult dungeon, Formorgar Mines, Magician Quarter, Forbidden Temple."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 430
 monster.maxHealth = 430
 monster.race = "blood"

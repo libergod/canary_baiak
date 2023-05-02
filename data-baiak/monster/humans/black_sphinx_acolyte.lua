@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Issavi Sewers, Kilmaresh Catacombs and Kilmaresh Mountains (above and under ground)."
 }
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 8100
 monster.maxHealth = 8100
 monster.race = "blood"

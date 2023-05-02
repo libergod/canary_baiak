@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "The Hive, Hive Outpost."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 460
 monster.maxHealth = 460
 monster.race = "venom"

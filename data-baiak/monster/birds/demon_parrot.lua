@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Isle of Evil."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 360
 monster.maxHealth = 360
 monster.race = "blood"

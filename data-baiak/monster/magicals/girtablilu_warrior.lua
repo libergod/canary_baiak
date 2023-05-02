@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Ruins of Nuur"
 }
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 8500
 monster.maxHealth = 8500
 monster.race = "blood"

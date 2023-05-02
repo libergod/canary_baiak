@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Around Port Hope, Arena and Zoo Quarter in Yalahar, few on Zao steppes."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 300
 monster.maxHealth = 300
 monster.race = "blood"

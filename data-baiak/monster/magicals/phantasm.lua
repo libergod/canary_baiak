@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Pits of Inferno, The Inquisition Quest, Deeper Banuta."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 3950
 monster.maxHealth = 3950
 monster.race = "undead"

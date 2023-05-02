@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "In Banuta, north-east of Port Hope."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 225
 monster.maxHealth = 225
 monster.race = "blood"

@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Secret Library."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 500
 monster.maxHealth = 500
 monster.race = "ink"

@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "South of Stonehome, deep under Telas's house."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 1500
 monster.maxHealth = 1500
 monster.race = "blood"

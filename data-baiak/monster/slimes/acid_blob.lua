@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Alchemist Quarter, Deeper Banuta."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 250
 monster.maxHealth = 250
 monster.race = "venom"

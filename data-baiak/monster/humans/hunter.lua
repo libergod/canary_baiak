@@ -28,12 +28,6 @@ monster.Bestiary = {
 		a castle tower at Elvenbane, Trade Quarter, Smuggler camp on Tyrsung, Formorgar Mines."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 150
 monster.maxHealth = 150
 monster.race = "blood"

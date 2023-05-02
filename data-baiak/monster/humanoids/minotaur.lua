@@ -29,12 +29,6 @@ monster.Bestiary = {
 		Thais Minotaur Camp, Foreigner Quarter."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 100
 monster.maxHealth = 100
 monster.race = "blood"

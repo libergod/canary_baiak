@@ -28,12 +28,6 @@ monster.Bestiary = {
 		Ancient Temple, Fenrock, Arena and Zoo Quarter."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 145
 monster.maxHealth = 145
 monster.race = "blood"

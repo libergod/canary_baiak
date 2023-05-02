@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Throughout the Foreigner, Factory, and Trade Quarters in Yalahar."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 295
 monster.maxHealth = 295
 monster.race = "blood"

@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Meriana and other Shattered Isles, Port Hope caves, The Witches Cliff (only accessible during a quest)."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 25
 monster.maxHealth = 25
 monster.race = "venom"

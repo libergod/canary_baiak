@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Fiehonja, Krailos Steppe underwater cave."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 55
 monster.maxHealth = 55
 monster.race = "undead"

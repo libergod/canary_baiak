@@ -27,12 +27,6 @@ monster.Bestiary = {
 		Oramond Dungeon (depending on Magistrate votes), Underground Glooth Factory, Oramond Fury Dungeon."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 1100
 monster.maxHealth = 1100
 monster.race = "blood"

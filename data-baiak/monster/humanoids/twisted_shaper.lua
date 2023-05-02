@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Astral Shaper Dungeon, Old Masonry, small dungeon under the Formorgar Mines."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 2500
 monster.maxHealth = 2500
 monster.race = "blood"

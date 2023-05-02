@@ -27,12 +27,6 @@ monster.Bestiary = {
 		Also in the were-beasts cave south-west of Edron and in the Last Sanctum."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 1700
 monster.maxHealth = 1700
 monster.race = "blood"

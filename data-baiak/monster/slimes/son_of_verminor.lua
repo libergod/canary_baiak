@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Deep in the Pits of Inferno, in Verminor's throne room. Also in the Demon Forge (The Vats and The Hive)."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 8500
 monster.maxHealth = 8500
 monster.race = "venom"

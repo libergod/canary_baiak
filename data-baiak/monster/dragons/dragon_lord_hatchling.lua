@@ -27,12 +27,6 @@ monster.Bestiary = {
 		on the way to Pythius the Rotten, Razzachai, Dragonblaze Peaks."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 750
 monster.maxHealth = 750
 monster.race = "blood"

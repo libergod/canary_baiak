@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Underground Glooth Factory."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 2400
 monster.maxHealth = 2400
 monster.race = "blood"

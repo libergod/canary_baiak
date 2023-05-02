@@ -27,12 +27,6 @@ monster.Bestiary = {
 		Dryad Gardens."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 450
 monster.maxHealth = 450
 monster.race = "undead"

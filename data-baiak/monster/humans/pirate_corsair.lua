@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Nargor, Trade Quarter, Foreigner Quarter (Dock), Krailos Steppe."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 675
 monster.maxHealth = 675
 monster.race = "blood"

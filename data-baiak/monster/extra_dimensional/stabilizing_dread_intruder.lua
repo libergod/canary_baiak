@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Otherworld (Edron)"
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 2800
 monster.maxHealth = 2800
 monster.race = "venom"

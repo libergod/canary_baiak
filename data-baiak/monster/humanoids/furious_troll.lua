@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Old Beregar mines."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 245
 monster.maxHealth = 245
 monster.race = "blood"

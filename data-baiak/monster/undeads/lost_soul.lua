@@ -27,12 +27,6 @@ monster.Bestiary = {
 		Roshamuul Prison and in The Arcanum (Part of the Inquisition quest)."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 5800
 monster.maxHealth = 5800
 monster.race = "undead"

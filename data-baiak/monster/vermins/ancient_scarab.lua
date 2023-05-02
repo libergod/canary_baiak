@@ -28,12 +28,6 @@ monster.Bestiary = {
 		Arena and Zoo Quarter and beneath Fenrock."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 1000
 monster.maxHealth = 1000
 monster.race = "venom"

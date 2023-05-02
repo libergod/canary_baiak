@@ -27,12 +27,6 @@ monster.Bestiary = {
 		Tiquanda Laboratory."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 150
 monster.maxHealth = 150
 monster.race = "venom"

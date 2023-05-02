@@ -28,12 +28,6 @@ monster.Bestiary = {
 		underground of Fenrock (on the way to Beregar), Vengoth."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 500
 monster.maxHealth = 500
 monster.race = "blood"

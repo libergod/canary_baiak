@@ -27,12 +27,6 @@ monster.Bestiary = {
 		have been done the day before) and the Silencer Plateau (when Silencer Resonating Chambers are used there)."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 28000
 monster.maxHealth = 28000
 monster.race = "undead"

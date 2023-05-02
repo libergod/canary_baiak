@@ -32,12 +32,6 @@ monster.Bestiary = {
 		Fury Dungeon, Lower Spike, Krailos Steppe."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 1900
 monster.maxHealth = 1900
 monster.race = "blood"

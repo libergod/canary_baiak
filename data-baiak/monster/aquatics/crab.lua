@@ -27,12 +27,6 @@ monster.Bestiary = {
 		There is also one located underwater by The Tibianic, however it is unreachable."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 55
 monster.maxHealth = 55
 monster.race = "undead"

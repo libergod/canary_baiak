@@ -29,12 +29,6 @@ monster.Bestiary = {
 		Cemetery Quarter in Yalahar, Vengoth Castle, one in Robson Isle."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 1000
 monster.maxHealth = 1000
 monster.race = "undead"

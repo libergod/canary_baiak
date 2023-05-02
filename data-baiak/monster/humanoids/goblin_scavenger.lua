@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Femor Hills, Edron Goblin Cave, and Fenrock."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 60
 monster.maxHealth = 60
 monster.race = "blood"

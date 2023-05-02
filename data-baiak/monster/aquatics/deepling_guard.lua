@@ -27,12 +27,6 @@ monster.Bestiary = {
 		Also may spawn during the gemcutting mission. Many more spawns in almost all areas of Deepling stage 2 and 3."
 }
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 1900
 monster.maxHealth = 1900
 monster.race = "blood"

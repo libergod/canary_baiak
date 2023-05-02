@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Chor, Zzaion and Foreigner Quarter."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 265
 monster.maxHealth = 265
 monster.race = "blood"

@@ -27,12 +27,6 @@ monster.Bestiary = {
 		They will appear when they're not overhunted."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 195
 monster.maxHealth = 195
 monster.race = "blood"

@@ -28,12 +28,6 @@ monster.Bestiary = {
 		Wasp Towers in Darashia, all over Tiquanda, and all over Vandura."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 35
 monster.maxHealth = 35
 monster.race = "venom"

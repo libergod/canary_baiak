@@ -27,12 +27,6 @@ monster.Bestiary = {
 		(The Shadow Nexus, Battlefield), Vengoth, Fury Dungeon, Oramond Fury Dungeon, The Extension Site."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 4100
 monster.maxHealth = 4100
 monster.race = "blood"

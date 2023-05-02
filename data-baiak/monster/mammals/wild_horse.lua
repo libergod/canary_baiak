@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Near the Thais Troll Cave entrance during the Horse Station World Change."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 75
 monster.maxHealth = 75
 monster.race = "blood"

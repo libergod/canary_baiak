@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Horestis Tomb."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 900
 monster.maxHealth = 900
 monster.race = "undead"

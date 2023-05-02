@@ -28,12 +28,6 @@ monster.Bestiary = {
 		Mintwallin central park and on the way to the old Mintwallin area, Factory Quarter (Yalahar)."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 20
 monster.maxHealth = 20
 monster.race = "blood"

@@ -27,12 +27,6 @@ monster.Bestiary = {
 		Oramond Dungeon (depending on Magistrate votes)."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 2700
 monster.maxHealth = 2700
 monster.race = "venom"

@@ -27,12 +27,6 @@ monster.Bestiary = {
 		Drefia Grim Reaper Dungeons, as well in Vengoth."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 1350
 monster.maxHealth = 1350
 monster.race = "undead"

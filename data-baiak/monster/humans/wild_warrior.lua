@@ -27,12 +27,6 @@ monster.Bestiary = {
 		the small camp near Femor Hills, in Ghostlands disguised as a statue."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 135
 monster.maxHealth = 135
 monster.race = "blood"

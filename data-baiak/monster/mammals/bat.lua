@@ -27,12 +27,6 @@ monster.Bestiary = {
 		Femor Hills, Thais Bat Dungeon, Thais Bandit Cave and in many other caves."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 30
 monster.maxHealth = 30
 monster.race = "blood"

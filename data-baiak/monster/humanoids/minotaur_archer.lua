@@ -28,12 +28,6 @@ monster.Bestiary = {
 		Hero Cave, Foreigner Quarter and Elvenbane."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 100
 monster.maxHealth = 100
 monster.race = "blood"

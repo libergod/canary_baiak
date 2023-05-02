@@ -27,12 +27,6 @@ monster.Bestiary = {
 		Killer Caiman Cave in the Zao Steppe, Chyllfroest."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 1500
 monster.maxHealth = 1500
 monster.race = "blood"

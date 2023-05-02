@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Krailos Steppe."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 1400
 monster.maxHealth = 1400
 monster.race = "blood"

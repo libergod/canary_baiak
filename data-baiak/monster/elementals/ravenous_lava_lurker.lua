@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Gnome Deep Hub in the Gnomish area."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 5000
 monster.maxHealth = 5000
 monster.race = "fire"

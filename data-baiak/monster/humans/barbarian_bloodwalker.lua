@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Krimhorn, Bittermor, Ragnir, Arena and Zoo Quarter inside the Arena."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 305
 monster.maxHealth = 305
 monster.race = "blood"

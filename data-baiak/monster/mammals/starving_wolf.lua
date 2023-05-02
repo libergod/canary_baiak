@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "East, west and south-west of the Femor Hills."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 85
 monster.maxHealth = 85
 monster.race = "blood"

@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Nargor, Tyrsung, Yalahar, Krailos Steppe."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 210
 monster.maxHealth = 210
 monster.race = "blood"

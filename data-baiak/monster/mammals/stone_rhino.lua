@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Area before final boss of Forgotten Knowledge Quest."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 3000
 monster.maxHealth = 3000
 monster.race = "blood"

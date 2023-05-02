@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Magician Quarter (Yalahar)."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 3550
 monster.maxHealth = 3550
 monster.race = "undead"

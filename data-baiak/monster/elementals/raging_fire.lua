@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Jaccus Maxxen's Dungeon."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 1800
 monster.maxHealth = 1800
 monster.race = "fire"

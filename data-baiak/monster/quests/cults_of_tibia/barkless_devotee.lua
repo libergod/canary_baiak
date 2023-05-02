@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Barkless Cult Trial Zone (below Ab'Dendriel)."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 2800
 monster.maxHealth = 2800
 monster.race = "blood"

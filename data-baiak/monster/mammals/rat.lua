@@ -27,12 +27,6 @@ monster.Bestiary = {
 		They can be found almost everywhere in Tibia."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 20
 monster.maxHealth = 20
 monster.race = "blood"

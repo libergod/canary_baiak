@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Ice Islands, Svargrond and Edron."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 55
 monster.maxHealth = 55
 monster.race = "blood"

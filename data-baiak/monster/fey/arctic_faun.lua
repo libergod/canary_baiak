@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Arctic Faun's Island."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 300
 monster.maxHealth = 300
 monster.race = "blood"

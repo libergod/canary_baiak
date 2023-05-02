@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Kilmaresh Central Steppe, Kilmaresh Southern Steppe, Green Belt."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 8300
 monster.maxHealth = 8300
 monster.race = "blood"

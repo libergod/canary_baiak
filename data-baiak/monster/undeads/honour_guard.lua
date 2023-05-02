@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Desert north of Ankrahmun."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 85
 monster.maxHealth = 85
 monster.race = "undead"

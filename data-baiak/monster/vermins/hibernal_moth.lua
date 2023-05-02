@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Court of Winter at night."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 850
 monster.maxHealth = 850
 monster.race = "blood"

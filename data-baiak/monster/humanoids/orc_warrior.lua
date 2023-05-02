@@ -28,12 +28,6 @@ monster.Bestiary = {
 		Foreigner Quarter, Zao Orc Land."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 125
 monster.maxHealth = 125
 monster.race = "blood"

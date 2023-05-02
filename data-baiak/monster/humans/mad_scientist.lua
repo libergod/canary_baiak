@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Magician Quarter, Trade Quarter, Factory Quarter,Isle of Evil, Tiquanda Laboratory."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 325
 monster.maxHealth = 325
 monster.race = "blood"

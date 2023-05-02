@@ -27,12 +27,6 @@ monster.Bestiary = {
 		north-west of Carlin during raids and Thais Knights' Guild arena during raids on Kingsday."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 60
 monster.maxHealth = 60
 monster.race = "blood"

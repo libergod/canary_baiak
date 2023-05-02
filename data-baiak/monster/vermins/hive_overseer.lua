@@ -29,12 +29,6 @@ monster.Bestiary = {
 		Liberty Bay Hive Outpost: one spawn on the second floor underground."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 7500
 monster.maxHealth = 7500
 monster.race = "venom"

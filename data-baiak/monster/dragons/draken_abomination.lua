@@ -26,12 +26,6 @@ monster.Bestiary = {
 	Locations = "Razachai including the Inner Sanctum."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 6250
 monster.maxHealth = 6250
 monster.race = "venom"

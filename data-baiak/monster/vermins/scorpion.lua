@@ -30,12 +30,6 @@ monster.Bestiary = {
 		Cyclopolis, Ghostlands, Vengoth, Lion's Rock."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 45
 monster.maxHealth = 45
 monster.race = "venom"

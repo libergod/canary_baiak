@@ -27,12 +27,6 @@ monster.Bestiary = {
 		Shadowthorn Bog God Temple, Northern Zao Plantations, Northern Brimstone Bug Cave."
 	}
 
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
-}
-
 monster.health = 135
 monster.maxHealth = 135
 monster.race = "blood"
