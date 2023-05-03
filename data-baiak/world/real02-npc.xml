@@ -75,4 +75,13 @@
 	<npc centerx="1000" centery="1217" centerz="7" radius="1">
 		<npc name="Addoner" x="0" y="0" z="7" spawntime="60" />
 	</npc>
+	<npc centerx="1983" centery="807" centerz="10" radius="1">
+		<npc name="Gnomad" x="0" y="0" z="10" spawntime="60" />
+	</npc>
+	<npc centerx="1977" centery="809" centerz="11" radius="1">
+		<npc name="Gnomole" x="0" y="0" z="11" spawntime="60" />
+	</npc>
+	<npc centerx="1965" centery="803" centerz="12" radius="1">
+		<npc name="Gnomercy" x="0" y="0" z="12" spawntime="60" />
+	</npc>
 </npcs>
