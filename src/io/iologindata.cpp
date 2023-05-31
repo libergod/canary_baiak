@@ -149,7 +149,8 @@ bool IOLoginData::loadPlayer(Player* player, DBResult_ptr result) {
 	}
 
 	acc.GetCoins(&(player->coinBalance));
-	acc.GetCoinsTournaments(&(player->coinBalanceTournaments));
+	//acc.GetCoinsTournaments(&(player->coinBalanceTournaments));
+	acc.GetTransferableCoins(&(player->coinTransferableBalance));
 
 	Group* group = g_game().groups.getGroup(result->getNumber<uint16_t>("group_id"));
 	if (!group) {

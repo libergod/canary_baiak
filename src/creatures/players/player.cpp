@@ -5094,6 +5094,11 @@ void Player::setTibiaCoinsTournaments(int32_t v) {
 	coinBalanceTournaments = v;
 }
 
+void Player::setTransferableTibiaCoins(int32_t v) {
+	coinTransferableBalance = v;
+}
+
+
 PartyShields_t Player::getPartyShield(const Player* player) const {
 	if (!player) {
 		return SHIELD_NONE;

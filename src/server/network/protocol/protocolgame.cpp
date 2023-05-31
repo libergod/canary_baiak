@@ -2878,7 +2878,7 @@ void ProtocolGame::sendCreatureShield(const Creature* creature) {
 }
 
 void ProtocolGame::sendCreatureEmblem(const Creature* creature) {
-	if (!creature || !canSee(creature) || oldProtocol) {
+	if (!creature || !canSee(creature)) {
 		return;
 	}
 
@@ -3911,8 +3911,9 @@ void ProtocolGame::sendCoinBalance() {
 	msg.addByte(0x01);
 
 	msg.add<uint32_t>(player->coinBalance); // Normal Coins
-	msg.add<uint32_t>(player->coinBalance); // Transferable Coins
+	msg.add<uint32_t>(player->coinTransferableBalance); // Transferable Coins
 	msg.add<uint32_t>(player->coinBalance); // Reserved Auction Coins
+
 
 	writeToOutputBuffer(msg);
 }
@@ -3931,11 +3932,10 @@ void ProtocolGame::updateCoinBalance() {
 				uint32_t coins;
 				uint32_t coinstournaments;
 				account.GetCoins(&coins);
-				account.GetCoinsTournaments(&coinstournaments);
+				uint32_t transfercoins;
+				account.GetTransferableCoins(&transfercoins);
 				threadPlayer->coinBalance = coins;
-				//INICIO //GUSTAVO LIBER - 09/09/2022 - COIN TOURNAMENTS ADD
-				threadPlayer->coinBalanceTournaments = coinstournaments;
-				//FIM //GUSTAVO LIBER - 09/09/2022 - COIN TOURNAMENTS ADD
+				threadPlayer->coinTransferableBalance = transfercoins;
 				threadPlayer->sendCoinBalance();
 			}
 		},

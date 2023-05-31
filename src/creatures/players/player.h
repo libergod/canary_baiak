@@ -549,6 +549,7 @@ class Player final : public Creature, public Cylinder {
 
 		void setTibiaCoins(int32_t v);
 		void setTibiaCoinsTournaments(int32_t v);
+		void setTransferableTibiaCoins(int32_t v);
 
 		uint16_t getHelpers() const;
 
@@ -2574,6 +2575,7 @@ class Player final : public Creature, public Cylinder {
 		int32_t idleTime = 0;
 		uint32_t coinBalance = 0;
 		uint32_t coinBalanceTournaments = 0;
+		uint32_t coinTransferableBalance = 0;
 		uint16_t expBoostStamina = 0;
 		uint8_t randomMount = 0;
 

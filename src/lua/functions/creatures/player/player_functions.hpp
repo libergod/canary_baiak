@@ -216,6 +216,10 @@ class PlayerFunctions final : LuaScriptInterface {
 			registerMethod(L, "Player", "removeTournamentsCoins", PlayerFunctions::luaPlayerRemoveTournamentsCoins);
 			//FIM //GUSTAVO LIBER - 09/09/2022 - COIN TOURNAMENTS ADD
 
+			registerMethod(L, "Player", "getTransferableCoins", PlayerFunctions::luaPlayerGetTransferableCoins);
+			registerMethod(L, "Player", "addTransferableCoins", PlayerFunctions::luaPlayerAddTransferableCoins);
+			registerMethod(L, "Player", "removeTransferableCoins", PlayerFunctions::luaPlayerRemoveTransferableCoins);
+
 			registerMethod(L, "Player", "setFaction", PlayerFunctions::luaPlayerSetFaction);
 			registerMethod(L, "Player", "getFaction", PlayerFunctions::luaPlayerGetFaction);
 
@@ -523,6 +527,10 @@ class PlayerFunctions final : LuaScriptInterface {
 		static int luaPlayerAddTournamentsCoins(lua_State* L);
 		static int luaPlayerRemoveTournamentsCoins(lua_State* L);
 		//FIM //GUSTAVO LIBER - 09/09/2022 - COIN TOURNAMENTS ADD
+
+		static int luaPlayerGetTransferableCoins(lua_State* L);
+		static int luaPlayerAddTransferableCoins(lua_State* L);
+		static int luaPlayerRemoveTransferableCoins(lua_State* L);
 
 		static int luaPlayerSetFaction(lua_State* L);
 		static int luaPlayerGetFaction(lua_State* L);

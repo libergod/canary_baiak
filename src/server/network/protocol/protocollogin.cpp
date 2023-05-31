@@ -29,6 +29,7 @@ void ProtocolLogin::disconnectClient(const std::string &message, uint16_t versio
 
 void ProtocolLogin::getCharacterList(const std::string &email, const std::string &password, uint16_t version) {
 	account::Account account;
+
 	if (!IOLoginData::authenticateAccountPassword(email, password, &account)) {
 		disconnectClient("Email or password is not correct", version);
 		return;
