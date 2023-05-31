@@ -35,7 +35,8 @@ GameStore.OfferTypes = {
 	OFFER_TYPE_HUNTINGSLOT = 25,
 	OFFER_TYPE_VIP = 26,
 	OFFER_TYPE_REMOVERED = 27,
-    OFFER_TYPE_REMOVEBLACK = 28
+    OFFER_TYPE_REMOVEBLACK = 28,
+	OFFER_TYPE_ITEM_BED = 29
 }
 
 GameStore.SubActions = {
@@ -97,6 +98,7 @@ function convertType(type)
 		[GameStore.OfferTypes.OFFER_TYPE_HOUSE] = GameStore.ConverType.SHOW_ITEM,
 		[GameStore.OfferTypes.OFFER_TYPE_CHARGES] = GameStore.ConverType.SHOW_ITEM,
 		[GameStore.OfferTypes.OFFER_TYPE_HIRELING] = GameStore.ConverType.SHOW_HIRELING,
+		[GameStore.OfferTypes.OFFER_TYPE_ITEM_BED] = GameStore.ConverType.SHOW_NONE,
 	}
 
 	if not types[type] then
@@ -436,6 +438,7 @@ function parseBuyStoreOffer(playerId, msg)
 		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_HIRELING_OUTFIT      then GameStore.processHirelingOutfitPurchase(player, offer)
 		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_REMOVERED      then GameStore.processRemoveRedPurchase(player)
 		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_REMOVEBLACK    then GameStore.processRemoveBlackPurchase(player)
+		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_ITEM_BED             then GameStore.processHouseRelatedPurchase(player, offer.itemtype, offer.count, offer.moveable)
 		else
 			-- This should never happen by our convention, but just in case the guarding condition is messed up...
 			error({code = 0, message = "This offer is unavailable [2]"})

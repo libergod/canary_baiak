@@ -68,7 +68,6 @@ GameStore.ActionType = {
 GameStore.CointType = {
 	Coin = 0,
 	Transferable = 1,
-	Tournament = 2,
 }
 
 GameStore.Storages = {
@@ -226,20 +225,10 @@ function onRecvbyte(player, msg, byte)
 		return player:sendCancelMessage("Store don't have offers for rookgaard citizen.")
 	end
 
-	local exaust = player:getStorageValue(Global.Storage.StoreExaust)
-	local currentTime = os.time()
-
 	if byte == GameStore.RecivedPackets.C_StoreEvent then
 	elseif byte == GameStore.RecivedPackets.C_TransferCoins then
 		parseTransferCoins(player:getId(), msg)
 	elseif byte == GameStore.RecivedPackets.C_OpenStore then
-		if exaust > currentTime then
-			player:sendCancelMessage("You are exhausted")
-			return false
-		end
-		local num = currentTime + 1
-		player:setStorageValue(Global.Storage.StoreExaust, num)
-
 		parseOpenStore(player:getId(), msg)
 	elseif byte == GameStore.RecivedPackets.C_RequestStoreOffers then
 		parseRequestStoreOffers(player:getId(), msg)
@@ -250,6 +239,13 @@ function onRecvbyte(player, msg, byte)
 	elseif byte == GameStore.RecivedPackets.C_RequestTransactionHistory then
 		parseRequestTransactionHistory(player:getId(), msg)
 	end
+	
+	if player:isUIExhausted(250) then
+		player:sendCancelMessage("You are exhausted.")
+		return false
+	end
+
+	player:updateUIExhausted()
 	return true
 end
 
@@ -258,12 +254,6 @@ function parseTransferCoins(playerId, msg)
 	if not player then
 		return false
 	end
-	
-	if player:isUIExhausted(2000) then
-		return addPlayerEvent(sendStoreError, 250, playerId, GameStore.StoreErrors.STORE_ERROR_TRANSFER, "You are exhausted.")
-	end
-
-	player:updateUIExhausted()
 
 	if player:isUIExhausted(2000) then
 		return addPlayerEvent(sendStoreError, 250, playerId, GameStore.StoreErrors.STORE_ERROR_TRANSFER, "You are exhausted.")
@@ -298,6 +288,7 @@ function parseTransferCoins(playerId, msg)
 	-- Adding history for both reciver/sender
 	GameStore.insertHistory(accountId, GameStore.HistoryTypes.HISTORY_TYPE_NONE, player:getName() .. " transfered you this amount.", amount, GameStore.CointType.Coin)
 	GameStore.insertHistory(player:getAccountId(), GameStore.HistoryTypes.HISTORY_TYPE_NONE, "You transfered this amount to " .. reciver, -1 * amount, GameStore.CointType.Coin)
+	openStore(playerId)
 end
 
 function parseOpenStore(playerId, msg)
@@ -927,7 +918,7 @@ function sendStoreTransactionHistory(playerId, page, entriesPerPage)
 		msg:addU32(entry.time)
 		msg:addByte(entry.mode) -- 0 = normal, 1 = gift, 2 = refund
 		msg:add32(entry.amount)
-		msg:addByte(entry.type) -- 0 = transferable tibia coin, 1 = normal tibia coin, 2 = tournament coin
+		msg:addByte(entry.type) -- 0 = transferable tibia coin, 1 = normal tibia coin
 		msg:addString(entry.description)
 		msg:addByte(0) -- details
 	end
@@ -995,7 +986,6 @@ function sendUpdatedStoreBalances(playerId)
 	msg:addU32(player:getCoinsBalance()) -- Tibia Coins
 	msg:addU32(player:getCoinsBalance()) -- How many are Transferable
 	msg:addU32(0) -- How many are reserved for a Character Auction
-	msg:addU32(player:getTournamentBalance()) -- Tournament Coins
 	
 	--msg:addU32(player:getCoinsBalanceTournaments()) -- Tournament Coins
 
@@ -1788,41 +1778,6 @@ function Player.addCoinsBalance(self, coins, update)
 	return true
 end
 
---- Tournament Coins
-function Player.getTournamentBalance(self)
-	resultId = db.storeQuery("SELECT `coins_tournaments` FROM `accounts` WHERE `id` = " .. self:getAccountId())
-	if not resultId then
-		return 0
-	end
-	return result.getDataInt(resultId, "coins_tournaments")
-end
-
-function Player.setTournamentBalance(self, tournament)
-	db.query("UPDATE `accounts` SET `coins_tournaments` = " .. tournament .. " WHERE `id` = " .. self:getAccountId())
-	return true
-end
-
-function Player.canRemoveTournament(self, tournament)
-	if self:getTournamentBalance() < tournament then
-		return false
-	end
-	return true
-end
-
-function Player.removeTournamentBalance(self, tournament)
-	if self:canRemoveTournament(tournament) then
-		return self:setTournamentBalance(self:getTournamentBalance() - tournament)
-	end
-
-	return false
-end
-
-function Player.addTournamentBalance(self, tournament, update)
-	self:setTournamentBalance(self:getTournamentBalance() + tournament)
-	if update then sendStoreBalanceUpdating(self, true) end
-	return true
-end
-
 --- Support Functions
 function Player.makeCoinTransaction(self, offer, desc)
 	local op = true
@@ -1834,11 +1789,7 @@ function Player.makeCoinTransaction(self, offer, desc)
 	end
 
 	-- Remove coins
-	if offer.coinType == GameStore.CointType.Tournament then
-		op = self:removeTournamentBalance(offer.price)
-	else
-		op = self:removeCoinsBalance(offer.price)
-	end
+	op = self:removeCoinsBalance(offer.price)
 
 	-- When the transaction is suscessfull add to the history
 	if op then
@@ -1849,11 +1800,7 @@ function Player.makeCoinTransaction(self, offer, desc)
 end
 
 function Player.canPayForOffer(self, coins, type)
-	if type == GameStore.CointType.Tournament then
-		return self:canRemoveTournament(coins)
-	else
-		return self:canRemoveCoins(coins)
-	end
+	return self:canRemoveCoins(coins)
 end
 
 --- Other players functions
@@ -1924,9 +1871,10 @@ function sendHomePage(playerId)
 	msg:addByte(0x0) -- Window Type
 	msg:addByte(0x0) -- Collections Size
 	msg:addU16(0x00) -- Collection Name
-
+	
 	local homeOffers = getHomeOffers(player:getId())
 	local disableReasons = {}
+	
 	for p, offer in pairs(homeOffers)do
 		local canBuy = player:canBuyOffer(offer)
 		if (canBuy.disabled == 1) then
