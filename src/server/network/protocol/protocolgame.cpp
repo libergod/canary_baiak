@@ -255,10 +255,11 @@ void ProtocolGame::release() {
 
 void ProtocolGame::login(const std::string &name, uint32_t accountId, OperatingSystem_t operatingSystem) {
 	// dispatcher thread
-	Player* foundPlayer = g_game().getPlayerByName(name);
+	Player* foundPlayer = g_game().getPlayerUniqueLogin(name);
 	if (!foundPlayer) {
 		player = new Player(getThis());
 		player->setName(name);
+		g_game().addPlayerUniqueLogin(player);
 
 		player->incrementReferenceCounter();
 		player->setID();
@@ -389,6 +390,8 @@ void ProtocolGame::connect(uint32_t playerId, OperatingSystem_t operatingSystem)
 
 	player = foundPlayer;
 	player->incrementReferenceCounter();
+
+	g_game().addPlayerUniqueLogin(player);
 
 	g_chat().removeUserFromAllChannels(*player);
 	player->clearModalWindows();
