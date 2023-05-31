@@ -10,7 +10,7 @@ function rune.onCastSpell(creature, variant, isHotkey)
 
 	local monsterType = target:getType()
 	if not creature:hasFlag(PlayerFlag_CanConvinceAll) then
-		if not monsterType:isConvinceable() or (target:getMaster() and target:getMaster():getName():lower() ~= "a carved stone tile") then
+		if not monsterType:isConvinceable() or creature:getMaster() then
 			creature:sendCancelMessage(RETURNVALUE_NOTPOSSIBLE)
 			creature:getPosition():sendMagicEffect(CONST_ME_POFF)
 			return false
@@ -37,6 +37,7 @@ function rune.onCastSpell(creature, variant, isHotkey)
 	return true
 end
 
+rune:id(12)
 rune:group("support")
 rune:name("convince creature rune")
 rune:castSound(SOUND_EFFECT_TYPE_SPELL_OR_RUNE)

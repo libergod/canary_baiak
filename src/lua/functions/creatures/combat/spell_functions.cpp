@@ -182,8 +182,8 @@ int SpellFunctions::luaSpellId(lua_State* L) {
 	// spell:id(id)
 	Spell* spell = getUserdata<Spell>(L, 1);
 	if (spell) {
-		if (spell->spellType != SPELL_INSTANT) {
-			reportErrorFunc("The method: 'spell:id(id)' is only for use of instant spells");
+		if (spell->spellType != SPELL_INSTANT && spell->spellType != SPELL_RUNE) {
+			reportErrorFunc("The method: 'spell:id(id)' is only for use of instant spells and rune spells");
 			pushBoolean(L, false);
 			return 1;
 		}
