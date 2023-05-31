@@ -82,27 +82,9 @@ monster.summon = {
 }
 
 monster.loot = {
-	{id = "watermelon tourmaline", chance = 100000, maxCount = 4},
+	{id = 33780, chance = 100000, maxCount = 4},
 	{id = 37810, chance = 100000},
-	{id = 2160, chance = 66667, maxCount = 135},
-	{id = 35281, chance = 44444},
-	{id = 26029, chance = 44444, maxCount = 53},
-	{id = 8473, chance = 33333, maxCount = 54},
-	{id = 26030, chance = 22222, maxCount = 53},
-	{id = 32710, chance = 22222},
-	{id = 33979, chance = 22222},
-	{id = 32709, chance = 20000},
-	{id = 36435, chance = 20000},
-	{id = 2152, chance = 20000},
-	{id = 37610, chance = 20000},
-	{id = 37607, chance = 20000},
-	{id = 37609, chance = 20000},
-	{id = 37608, chance = 20000},
-	{id = 36436, chance = 20000, maxCount = 2},
-	{id = 37613, chance = 20000},
-	{id = 32716, chance = 11111},
-	{id = 15515, chance = 11111},
-	{id = 37611, chance = 11111}
+	{id = 3043, chance = 66667, maxCount = 135}
 }
 
 monster.attacks = {

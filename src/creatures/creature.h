@@ -231,7 +231,11 @@ public:
 	}
 	bool isInvisible() const;
 	ZoneType_t getZone() const {
-		return getTile()->getZone();
+		if (getTile()) {
+			return tile->getZone();
+		}
+
+		return ZONE_NORMAL;
 	}
 
 		// walk functions
