@@ -374,6 +374,7 @@ class Game {
 
 		void setBoostedName(std::string name) {
 			boostedCreature = name;
+			SPDLOG_INFO("Boosted creature: {}", name);
 		}
 
 		std::string getBoostedMonsterName() const {
