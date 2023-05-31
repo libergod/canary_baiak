@@ -4116,6 +4116,7 @@ void Player::internalAddThing(uint32_t index, Thing* thing) {
 
 	if (!thing)
 		return;
+
 	Item* item = thing->getItem();
 	if (!item) {
 		return;
