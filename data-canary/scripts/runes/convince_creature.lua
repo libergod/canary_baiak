@@ -37,6 +37,7 @@ function rune.onCastSpell(creature, variant, isHotkey)
 	return true
 end
 
+rune:id(12)
 rune:group("support")
 rune:name("convince creature rune")
 rune:castSound(SOUND_EFFECT_TYPE_SPELL_OR_RUNE)

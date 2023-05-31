@@ -101,8 +101,8 @@ local function explode(item)
 					Position(x, y, z):sendMagicEffect(CONST_ME_FIREAREA)
 				end
 			end
-		end
 	end
+		
 	checarPos(item)
 		if item then
 			item:remove()
