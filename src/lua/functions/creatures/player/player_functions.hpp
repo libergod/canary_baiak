@@ -317,6 +317,9 @@ class PlayerFunctions final : LuaScriptInterface {
 
 			registerMethod(L, "Player", "getName", PlayerFunctions::luaPlayerGetName);
 
+			registerMethod(L, "Player", "addHazardSystemPoints", PlayerFunctions::luaPlayerAddHazardSystemPoints);
+			registerMethod(L, "Player", "getHazardSystemPoints", PlayerFunctions::luaPlayerGetHazardSystemPoints);
+
 			GroupFunctions::init(L);
 			GuildFunctions::init(L);
 			MountFunctions::init(L);
@@ -621,6 +624,10 @@ class PlayerFunctions final : LuaScriptInterface {
 		static int luaPlayerRemoveGroupFlag(lua_State* L);
 
 		static int luaPlayerGetName(lua_State* L);
+
+		// Hazard system
+		static int luaPlayerAddHazardSystemPoints(lua_State* L);
+		static int luaPlayerGetHazardSystemPoints(lua_State* L);
 
 		friend class CreatureFunctions;
 };

@@ -485,6 +485,9 @@ class ProtocolGame final : public Protocol {
 		void sendSpecialContainersAvailable();
 		void addBless();
 		void parsePacketDead(uint8_t recvbyte);
+
+		// Hazard system
+		void reloadHazardSystemIcon(uint16_t reference);
 };
 
 #endif // SRC_SERVER_NETWORK_PROTOCOL_PROTOCOLGAME_H_

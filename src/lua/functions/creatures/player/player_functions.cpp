@@ -3519,3 +3519,31 @@ int PlayerFunctions::luaPlayerGetName(lua_State* L) {
 	pushString(L, player->getName());
 	return 1;
 }
+
+// Hazard system
+int PlayerFunctions::luaPlayerAddHazardSystemPoints(lua_State* L) {
+	// player:addHazardSystemPoints(amount)
+	Player* player = getUserdata<Player>(L, 1);
+	if (!player) {
+		pushBoolean(L, false);
+		reportErrorFunc(getErrorDesc(LUA_ERROR_PLAYER_NOT_FOUND));
+		return 1;
+	}
+
+	player->addHazardSystemPoints(getNumber<int32_t>(L, 2, 0));
+	pushBoolean(L, true);
+	return 1;
+}
+
+int PlayerFunctions::luaPlayerGetHazardSystemPoints(lua_State* L) {
+	// player:getHazardSystemPoints()
+	const auto player = getUserdata<Player>(L, 1);
+	if (!player) {
+		pushBoolean(L, false);
+		reportErrorFunc(getErrorDesc(LUA_ERROR_PLAYER_NOT_FOUND));
+		return 1;
+	}
+
+	lua_pushnumber(L, player->getHazardSystemPoints());
+	return 1;
+}

@@ -443,6 +443,7 @@ void Creature::checkSummonMove(const Position &newPos, bool teleportSummon) cons
 						continue;
 					}
 				}
+			}
 
 			if (monster && monster->isSummon() && !monster->isFamiliar() && !teleportSummon && checkRemoveDist) {
 				despawnMonsterList.push_back(creature);
