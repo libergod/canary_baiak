@@ -315,6 +315,8 @@ class PlayerFunctions final : LuaScriptInterface {
 			registerMethod(L, "Player", "setGroupFlag", PlayerFunctions::luaPlayerSetGroupFlag);
 			registerMethod(L, "Player", "removeGroupFlag", PlayerFunctions::luaPlayerRemoveGroupFlag);
 
+			registerMethod(L, "Player", "getName", PlayerFunctions::luaPlayerGetName);
+
 			GroupFunctions::init(L);
 			GuildFunctions::init(L);
 			MountFunctions::init(L);
@@ -617,6 +619,8 @@ class PlayerFunctions final : LuaScriptInterface {
 		static int luaPlayerHasGroupFlag(lua_State* L);
 		static int luaPlayerSetGroupFlag(lua_State* L);
 		static int luaPlayerRemoveGroupFlag(lua_State* L);
+
+		static int luaPlayerGetName(lua_State* L);
 
 		friend class CreatureFunctions;
 };

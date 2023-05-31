@@ -200,7 +200,7 @@ int CreatureFunctions::luaCreatureGetId(lua_State* L) {
 }
 
 int CreatureFunctions::luaCreatureGetName(lua_State* L) {
-	// creature:getTypeName()
+	// creature:getName()
 	const Creature* creature = getUserdata<const Creature>(L, 1);
 	if (creature) {
 		pushString(L, creature->getName());
@@ -211,7 +211,7 @@ int CreatureFunctions::luaCreatureGetName(lua_State* L) {
 }
 
 int CreatureFunctions::luaCreatureGetTypeName(lua_State* L) {
-	// creature:getName()
+	// creature:getTypeName()
 	const Creature* creature = getUserdata<const Creature>(L, 1);
 	if (creature) {
 		pushString(L, creature->getTypeName());
