@@ -575,6 +575,10 @@ void Container::addThing(Thing* thing) {
 }
 
 void Container::addThing(int32_t index, Thing* thing) {
+
+	if (!thing)
+		return /*RETURNVALUE_NOTPOSSIBLE*/;
+
 	if (index >= static_cast<int32_t>(capacity())) {
 		return /*RETURNVALUE_NOTPOSSIBLE*/;
 	}
@@ -770,6 +774,10 @@ void Container::internalAddThing(Thing* thing) {
 }
 
 void Container::internalAddThing(uint32_t, Thing* thing) {
+
+	if (!thing)
+		return;
+
 	Item* item = thing->getItem();
 	if (item == nullptr) {
 		return;
