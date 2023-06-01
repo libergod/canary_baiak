@@ -118,7 +118,7 @@ function Player.getCookiesDelivered(self)
 end
 
 function Player.allowMovement(self, allow)
-	return self:setStorageValue(Global.Storage.blockMovementStorage, allow and -1 or 1)
+	return self:setStorageValue(Global.Storage.BlockMovementStorage, allow and -1 or 1)
 end
 
 function Player.checkGnomeRank(self)
@@ -283,7 +283,7 @@ function Player:removeMoneyBank(amount)
 end
 
 function Player.hasAllowMovement(self)
-	return self:getStorageValue(Global.Storage.blockMovementStorage) ~= 1
+	return self:getStorageValue(Global.Storage.BlockMovementStorage) ~= 1
 end
 
 function Player.hasRookgaardShield(self)
