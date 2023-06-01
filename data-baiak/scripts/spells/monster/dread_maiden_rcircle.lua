@@ -2,23 +2,22 @@ local combat = Combat()
 combat:setParameter(COMBAT_PARAM_TYPE, COMBAT_LIFEDRAIN)
 combat:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_DRAWBLOOD)
 
-	arr = {
-		{0, 0, 1, 1, 1, 0, 0},
-		{0, 1, 0, 0, 0, 1, 0},
-		{1, 0, 0, 2, 0, 0, 1},
-		{1, 0, 0, 0, 0, 0, 1},
-		{1, 0, 0, 0, 0, 0, 1},
-		{0, 1, 0, 0, 0, 1, 0},
-		{0, 0, 1, 1, 1, 0, 0}
-	}
+local combatArea = {
+	{0, 0, 1, 1, 1, 0, 0},
+	{0, 1, 0, 0, 0, 1, 0},
+	{1, 0, 0, 2, 0, 0, 1},
+	{1, 0, 0, 0, 0, 0, 1},
+	{1, 0, 0, 0, 0, 0, 1},
+	{0, 1, 0, 0, 0, 1, 0},
+	{0, 0, 1, 1, 1, 0, 0}
+}
 
-local area = createCombatArea(arr)
-	setCombatArea(combat, area)
+combat:setArea(createCombatArea(combatArea))
 
 local spell = Spell("instant")
 
-function spell.onCastSpell(cid, var)
-	return doCombat(cid, combat, var)
+function spell.onCastSpell(creature, var)
+	return combat:execute(creature, var)
 end
 
 spell:name("dread rcircle")

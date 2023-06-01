@@ -2,13 +2,12 @@ local combat = Combat()
 combat:setParameter(COMBAT_PARAM_TYPE, COMBAT_MANADRAIN)
 combat:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_HITBYPOISON)
 
-local area = createCombatArea(AREA_CIRCLE1X1)
-combat:setArea(area)
+combat:setArea(createCombatArea(AREA_CIRCLE1X1))
 
 local spell = Spell("instant")
 
-function spell.onCastSpell(cid, var)
-	return doCombat(cid, combat, var)
+function spell.onCastSpell(creature, variant)
+	return combat:execute(creature, variant)
 end
 
 spell:name("mana leechMY")
