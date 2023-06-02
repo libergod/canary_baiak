@@ -182,9 +182,11 @@ void ConfigFunctions::init(lua_State* L) {
 
 	registerEnumIn(L, "configKeys", BESTIARY_KILL_MULTIPLIER);
 	registerEnumIn(L, "configKeys", BOSSTIARY_KILL_MULTIPLIER);
+
 	registerEnumIn(L, "configKeys", BOOSTED_BOSS_SLOT);
 	registerEnumIn(L, "configKeys", BOOSTED_BOSS_LOOT_BONUS);
 	registerEnumIn(L, "configKeys", BOOSTED_BOSS_KILL_BONUS);
+
 	registerEnumIn(L, "configKeys", BESTIARY_RATE_CHARM_SHOP_PRICE);
 
 	registerEnumIn(L, "configKeys", FAMILIAR_TIME);

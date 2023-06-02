@@ -2295,6 +2295,7 @@ class Player final : public Creature, public Cylinder {
 		uint32_t getBossPoints() const {
 			return bossPoints;
 		}
+
 		void sendBosstiaryCooldownTimer() const {
 			if (client) {
 				client->sendBosstiaryCooldownTimer();

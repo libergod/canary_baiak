@@ -101,13 +101,13 @@ function bossDeath.onDeath(creature, corpse, killer, mostDamageKiller, lastHitUn
 				-- Bosstiary Loot Bonus
 				local bonus, boostedMessage
 				local isBoostedBoss = creature:getName():lower() == (Game.getBoostedBoss()):lower()
-				local bossRaceIds = {player:getSlotBossId(1), player:getSlotBossId(2)}
+				local bossRaceIds = {con.player:getSlotBossId(1), con.player:getSlotBossId(2)}
 				local isBoss = table.contains(bossRaceIds, monsterType:bossRaceId()) or isBoostedBoss
-				if isBoss and monsterType:bossRaceId() ~= 0 then
-					if monsterType:bossRaceId() == player:getSlotBossId(1) then
-						bonus = player:getBossBonus(1)
-					elseif monsterType:bossRaceId() == player:getSlotBossId(2) then
-						bonus = player:getBossBonus(2)
+				if isBoss then
+					if monsterType:bossRaceId() == con.player:getSlotBossId(1) then
+						bonus = con.player:getBossBonus(1)
+					elseif monsterType:bossRaceId() == con.player:getSlotBossId(2) then
+						bonus = con.player:getBossBonus(2)
 					else
 						bonus = configManager.getNumber(configKeys.BOOSTED_BOSS_LOOT_BONUS)
 					end

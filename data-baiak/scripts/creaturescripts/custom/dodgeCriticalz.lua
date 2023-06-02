@@ -14,7 +14,7 @@ function dodgeCriticalThree.onHealthChange(creature, attacker, primaryDamage, pr
 		--Spdlog.info("Critical level: ".. attacker:getCriticalLevel())
 		if (attacker:getCriticalLevel() * 1) >= math.random (0, 1000) then
 			--primaryDamage = primaryDamage + math.ceil(primaryDamage * CRITICAL.PERCENT)
-			primaryDamage = primaryDamage + math.ceil(primaryDamage * (player:getCriticalLevel() / 1000))
+			primaryDamage = primaryDamage + math.ceil(primaryDamage * (attacker:getCriticalLevel() / 1000))
 			--(player:getCriticalLevel() / 1000)
 			--attacker:say("CRITICAL!", TALKTYPE_MONSTER_SAY)
 			creature:getPosition():sendMagicEffect(CONST_ME_CRITICAL_DAMAGE)

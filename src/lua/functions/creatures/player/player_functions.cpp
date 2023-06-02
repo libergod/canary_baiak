@@ -3417,12 +3417,10 @@ int PlayerFunctions::luaPlayerAddBosstiaryKill(lua_State* L) {
 		if (mtype) {
 			g_ioBosstiary().addBosstiaryKill(player, mtype, getNumber<uint32_t>(L, 3, 1));
 			pushBoolean(L, true);
-		}
-		else {
+		} else {
 			lua_pushnil(L);
 		}
-	}
-	else {
+	} else {
 		lua_pushnil(L);
 	}
 	return 1;
