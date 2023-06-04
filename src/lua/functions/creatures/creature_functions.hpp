@@ -47,6 +47,7 @@ class CreatureFunctions final : LuaScriptInterface {
 			registerMethod(L, "Creature", "getLight", CreatureFunctions::luaCreatureGetLight);
 			registerMethod(L, "Creature", "setLight", CreatureFunctions::luaCreatureSetLight);
 			registerMethod(L, "Creature", "getSpeed", CreatureFunctions::luaCreatureGetSpeed);
+			registerMethod(L, "Creature", "setSpeed", CreatureFunctions::luaCreatureSetSpeed);
 			registerMethod(L, "Creature", "getBaseSpeed", CreatureFunctions::luaCreatureGetBaseSpeed);
 			registerMethod(L, "Creature", "changeSpeed", CreatureFunctions::luaCreatureChangeSpeed);
 			registerMethod(L, "Creature", "setDropLoot", CreatureFunctions::luaCreatureSetDropLoot);
@@ -125,6 +126,8 @@ class CreatureFunctions final : LuaScriptInterface {
 		static int luaCreatureSetLight(lua_State* L);
 
 		static int luaCreatureGetSpeed(lua_State* L);
+		static int luaCreatureSetSpeed(lua_State* L); // send speed
+
 		static int luaCreatureGetBaseSpeed(lua_State* L);
 		static int luaCreatureChangeSpeed(lua_State* L);
 
