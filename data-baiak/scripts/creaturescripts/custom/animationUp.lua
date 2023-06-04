@@ -31,6 +31,8 @@ function addLevelUpAnimation.onAdvance(player, skill, oldLevel, newLevel)
 		player:save()
 	end
 
+	player:getFinalLowLevelBonus()
+	
 	return true
 end
 

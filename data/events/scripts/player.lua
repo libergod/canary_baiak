@@ -694,16 +694,11 @@ function Player:onGainExperience(target, exp, rawExp)
 	self:setStoreXpBoost(storeXpBoostAmount)
 
 	-- Stamina Bonus
-	local staminaBoost = 1
+	local staminaBonusXp = 1
 	if configManager.getBoolean(configKeys.STAMINA_SYSTEM) then
 		useStamina(self)
-		local staminaMinutes = self:getStamina()
-			if staminaMinutes > 2340 and self:isPremium() then
-				staminaBoost = 1.5
-			elseif staminaMinutes <= 840 then
-				staminaBoost = 0.5 --TODO destroy loot of people with 840- stamina
-			end
-		self:setStaminaXpBoost(staminaBoost * 100)
+		staminaBonusXp = self:getFinalBonusStamina()
+		self:setStaminaXpBoost(staminaBonusXp * 100)
 	end
 
 	-- Boosted creature
@@ -738,12 +733,16 @@ function Player:onGainExperience(target, exp, rawExp)
 		end
 	end
 
+	local lowLevelBonuxExp = self:getFinalLowLevelBonus()
 	local baseRate = self:getFinalBaseRateExperience()
 	local finalExperience
 	if configManager.getBoolean(configKeys.RATE_USE_STAGES) then
-		finalExperience = (((exp * baseRate + (exp * (storeXpBoostAmount/100))) * staminaBoost) * dropedExpBoost) * onlineExpBoost
+	
+		finalExperience = (((exp * baseRate + (exp * (storeXpBoostAmount/100)) + (exp * (lowLevelBonuxExp/100))) * staminaBonusXp) * dropedExpBoost) * onlineExpBoost
+		Spdlog.info("[EXP DEBUG] - RATE USAGE TRUE, exp: " ..exp.." baseRate: "..baseRate.. " part3: "..exp * (storeXpBoostAmount/100).. " + part4: "..(exp * (lowLevelBonuxExp/100)).. " staminaBonusXp: " ..staminaBonusXp.. " Dropedboost: " ..dropedExpBoost.. " onlineBoost: "..onlineExpBoost)
 	else
-		finalExperience = (((exp + (exp * (storeXpBoostAmount/100))) * staminaBoost) * dropedExpBoost) * onlineExpBoost
+		finalExperience = (((exp + (exp * (storeXpBoostAmount/100)) + (exp * (lowLevelBonuxExp/100))) * staminaBonusXp) * dropedExpBoost) * onlineExpBoost
+		Spdlog.info("[EXP DEBUG] -  RATE USAFE FALSE, exp: " ..exp.." part3: "..exp * (storeXpBoostAmount/100).. " + part4: "..(exp * (lowLevelBonuxExp/100)).. " staminaBonusXp: " ..staminaBonusXp.. " Dropedboost: " ..dropedExpBoost.. " onlineBoost: "..onlineExpBoost)
 	end
 
 	return math.max(finalExperience)
