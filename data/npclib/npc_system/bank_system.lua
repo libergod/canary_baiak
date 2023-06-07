@@ -1,12 +1,12 @@
-local count = { }
-local transfer = { }
+local count = {}
+local transfer = {}
 local receiptFormat = "Date: %s\nType: %s\nGold Amount: %d\nReceipt Owner: %s\nRecipient: %s\n\n%s"
 
 function Npc:parseBankMessages(message, npc, creature, npcHandler)
 	local messagesTable = {
 		["money"] = "We can {change} money for you. You can also access your {bank account}",
 		["change"] = "There are three different coin types in Tibia: \z
-                        100 gold coins equal 1 platinum coin, 100 platinum coins equal 1 crystal coin, 100 crystal coin equal 1 gold ingot. \z
+                        100 gold coins equal 1 platinum coin, 100 platinum coins equal 1 crystal coin. \z
                         So if you'd like to change 100 gold into 1 platinum, \z
                         simply say '{change gold}' and then '1 platinum'",
 		["bank"] = "We can {change} money for you. You can also access your {bank account}",

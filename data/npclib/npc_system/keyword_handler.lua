@@ -14,11 +14,11 @@ if KeywordHandler == nil then
 
 	-- Created a new keywordnode with the given keywords, callback function and parameters and without any childNodes.
 	function KeywordNode:new(keys, func, param, condition, action)
-		local obj = { }
+		local obj = {}
 		obj.keywords = keys
 		obj.callback = func
 		obj.parameters = param
-		obj.children = { }
+		obj.children = {}
 		obj.condition = condition
 		obj.action = action
 		setmetatable(obj, self)
@@ -53,7 +53,7 @@ if KeywordHandler == nil then
 			return true
 		end
 
-		local data = { }
+		local data = {}
 		local last = 0
 		for _, keyword in ipairs(self.keywords) do
 			if type(keyword) == 'string' then
@@ -126,9 +126,9 @@ if KeywordHandler == nil then
 
 	-- Creates a new keywordhandler with an empty rootnode.
 	function KeywordHandler:new()
-		local obj = { }
+		local obj = {}
 		obj.root = KeywordNode:new(nil, nil, nil)
-		obj.lastNode = { }
+		obj.lastNode = {}
 		setmetatable(obj, self)
 		self.__index = self
 		return obj

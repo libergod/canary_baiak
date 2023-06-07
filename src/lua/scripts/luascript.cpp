@@ -251,3 +251,4 @@ void LuaScriptInterface::callVoidFunction(int params) {
 
 	resetScriptEnv();
 }
+
