@@ -526,9 +526,9 @@ function Player:onReportBug(message, position, category)
 	local name = self:getName()
 	
 	if not fileExist(string.format("%s/reports/bugs/%s/report.txt", CORE_DIRECTORY, name)) then
-		local file = io.open(string.format("%s/reports/bugs/%s/report.txt", CORE_DIRECTORY, name), "w+")
+		local file = io.open(string.format("%s/reports/bugs/%s-report.txt", CORE_DIRECTORY, name), "w+")
 	else
-		local file = io.open(string.format("%s/reports/bugs/%s/report.txt", CORE_DIRECTORY, name), "a")
+		local file = io.open(string.format("%s/reports/bugs/%s-report.txt", CORE_DIRECTORY, name), "a")
 	end
 	
 	
