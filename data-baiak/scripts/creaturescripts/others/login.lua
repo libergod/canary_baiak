@@ -170,14 +170,6 @@ function playerLogin.onLogin(player)
 	end
 	-- End 'Premium Ends Teleport to Temple'
 
-
-
-
-	--Spdlog.info("[CRITICAL SYSTEM] - Critical Hit Chance: " ..player:getSkillLevel(SKILL_CRITICAL_HIT_CHANCE).." Critical Hit Damage: "..player:getSkillLevel(SKILL_CRITICAL_HIT_DAMAGE))
-
-
-
-
 	-- GUILD LEVEL SYSTEM
 	local guild = player:getGuild()
 	if guild then

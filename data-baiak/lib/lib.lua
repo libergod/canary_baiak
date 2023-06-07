@@ -45,9 +45,6 @@ dofile(DATA_DIRECTORY.. '/lib/events/bosses.lua')
 -- FireStorm
 dofile(DATA_DIRECTORY.. '/lib/events/firestorm.lua')
 
--- Tasks
-dofile(DATA_DIRECTORY.. '/lib/custom/task.lua')
-
 -- SuperUP
 dofile(DATA_DIRECTORY.. '/lib/custom/superup.lua')
 

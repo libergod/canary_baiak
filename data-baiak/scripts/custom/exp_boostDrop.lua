@@ -48,6 +48,20 @@ local function sendMessage(target)
     target:sendMagicEffect(57)
 end
 
+
+local function removeBoostExp(target)
+    if not target then
+        return true
+    end
+	local tile = Tile(target)
+    if tile then
+		local ground = tile:getGround()
+		if ground then
+			ground:setActionId()
+		end
+	end
+end
+
 function custom_exp_damage_effect.onKill(creature, target)
     if target:isPlayer() then
         return true
@@ -66,6 +80,8 @@ function custom_exp_damage_effect.onKill(creature, target)
                 for i = 0, 3 do
                     addEvent(sendMessage, 750 * i, target:getPosition())
                 end
+				
+				addEvent(removeBoostExp, 1000 * 3, target:getPosition())
             end
         end
     end
