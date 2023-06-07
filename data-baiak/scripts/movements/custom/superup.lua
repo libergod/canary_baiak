@@ -21,43 +21,6 @@ function minimalTimers(seconds)
     end
 end
 
-function isSamePartyMembers(cid, value)
-
-local player = Player(cid)
-	if not player then
-		return false
-	end
-
-local party = player:getParty()
-
-local playerName = db.storeQuery(string.format("SELECT name FROM players WHERE id = %d", value.dono))
-local nomeOwner = result.getDataString(playerName, "name")
-local idOwner = value.dono
-
-local playerOwner = Player(idOwner)
-	if not playerOwner then
-		return false
-	end
-	
-local partyOwner = playerOwner:getParty()	
-
-if party then
-	if partyOwner then
-		local partyMembers = party:getMembers()
-		for i = 1, #partyMembers do
-			local member = partyMembers[i]
-			if member and member:isPlayer() then
-				if member:getStorageValue(STORAGEVALUE_SUPERUP_INDEX) then
-					return true
-				end
-			end
-		end
-	end
-end
-
-end
-
-
 	local player = creature:getPlayer()
     if not player then
         return false
@@ -71,21 +34,64 @@ end
 			player:getPosition():sendMagicEffect(CONST_ME_POFF)
 			return true
 		end
-
-		if player:getStorageValue(STORAGEVALUE_SUPERUP_INDEX) == item.actionid then
-			player:sendTextMessage(MESSAGE_LOGIN, string.format("You still have %s of time remaining to your exp cave!", minimalTimers(player:getStorageValue(STORAGEVALUE_SUPERUP_TEMPO) - os.time())))
-			return true
-		end
-
+		
 		local value = SUPERUP:getCave(item.actionid)
 		if not value then
 			return false
 		end
-
+		
 		local playerName = db.storeQuery(string.format("SELECT name FROM players WHERE id = %d", value.dono))
 		local nome = result.getDataString(playerName, "name")
+		
+		if player:getStorageValue(STORAGEVALUE_SUPERUP_INDEX) == item.actionid then
+			player:sendTextMessage(MESSAGE_LOGIN, string.format("You still have %s of time remaining to your exp cave!", minimalTimers(player:getStorageValue(STORAGEVALUE_SUPERUP_TEMPO) - os.time())))
+			return true
+		else
+			if value.dono > 0 and value.tempo > 0 then
+				local partyPlayer = player:getParty()
+				local playerOwner = Player(value.dono)
+				local ownerParty = playerOwner:getParty()
+				
+				if partyPlayer then
+					if ownerParty then
+						local partyMembers = partyPlayer:getMembers()
+						for i = 1, #partyMembers do
+							local member = partyMembers[i]
+							if member and member:isPlayer() then
+								if member:getStorageValue(STORAGEVALUE_SUPERUP_INDEX) >= 1 and member:getStorageValue(STORAGEVALUE_SUPERUP_INDEX) == item.actionid then
+									player:sendTextMessage(MESSAGE_LOGIN, string.format("You entered on %s exp's cave. You have %s of time remaining at the cave!",nome, minimalTimers(playerOwner:getStorageValue(STORAGEVALUE_SUPERUP_TEMPO) - os.time())))
+									return true
+								end
+							end
+						end
+					end
+				end
+			end
+		end
 
 		if value.dono > 0 and value.tempo > 0 then
+			local partyPlayer = player:getParty()
+			local playerOwner = Player(value.dono)
+			local ownerParty = playerOwner:getParty()
+			
+			if partyPlayer then
+				if ownerParty then
+					local partyMembers = ownerParty:getMembers()
+					local partyLeader = ownerParty:getLeader():getName()
+					local partyLeaderPlayer = partyPlayer:getLeader():getName()
+					for i = 1, #partyMembers do
+						local member = partyMembers[i]
+						Spdlog.info("[EXP CAVE] - Member: ".. member:getName() .." of partyMembers Size: "..#partyMembers.. " Player Party Leader: "..partyLeaderPlayer.." Owner Party Lider: "..partyLeader)
+						if member and member:isPlayer() then
+							--if member:getStorageValue(STORAGEVALUE_SUPERUP_INDEX) >= 1 and member:getStorageValue(STORAGEVALUE_SUPERUP_INDEX) == item.actionid then
+							if partyPlayer:getLeader():getStorageValue(STORAGEVALUE_SUPERUP_INDEX) >= 1 and ownerParty:getLeader():getStorageValue(STORAGEVALUE_SUPERUP_INDEX) >= 1 and partyPlayer:getLeader():getStorageValue(STORAGEVALUE_SUPERUP_INDEX) == item.actionid and ownerParty:getLeader():getStorageValue(STORAGEVALUE_SUPERUP_INDEX) == item.actionid then
+								player:sendTextMessage(MESSAGE_LOGIN, string.format("You entered on %s exp's cave. You have %s of time remaining at the cave!",nome, minimalTimers(playerOwner:getStorageValue(STORAGEVALUE_SUPERUP_TEMPO) - os.time())))
+								return true
+							end
+						end
+					end
+				end
+			end
 			player:sendTextMessage(MESSAGE_LOGIN, string.format(SUPERUP.msg.naoDisponivel, nome, os.date("%c", value.tempo)))
 			player:teleportTo(fromPosition, true)
 			player:getPosition():sendMagicEffect(CONST_ME_POFF)

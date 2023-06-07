@@ -84,7 +84,9 @@ OTHERS:
 - Corrigir TP saída Mirror Image - OK
 - Zerar as Hunts exclusivas no reload do server - OK
 - corrigir From/To das super areas - OK
+
 - Fazer as boss rooms - 
+
 - Adicionar NOLOGOUT nas Super Cave - OK
 - Personagem recebendo backpack+ 3 golds ao criar acc - 
 - Add Som nas runes - OK
@@ -93,8 +95,8 @@ OTHERS:
 - Dano dos bixos diminuido - OK
 - task system !task esta com storage igual pra todos os monstros - REMOVIDO TASK SYSTEM
 
-- Criar hunt de Fury
-- Criar hunt de Infernalist
+- Criar hunt de Fury - 
+- Criar hunt de Infernalist - 
 
 - Modificar super up Floating Savant + Burning Book - OK
 - Floating savant remover o summon de lava lurker - 
@@ -102,26 +104,29 @@ OTHERS:
 - Trocar os spaw time normal para 40sec - OK
 - verificar paralize - 
 - verificar criar item com tier - OK /i soulbleeder,1,10 (cria tier 10) - OK
+
 - comprar silver/gold token -
 - lugar pra comprar/vender pedrinhas -
+
 - 1030, 1218,8 - verificar esta quest escondida está com teleporte errado - 
 - Ativar/Desativar autoloot por comando - 
 - Ativar/Desativar autoloot por VIP - 
-- Super Up permitir party entrar na hunt 
-- Ajustar Dodge para dar menos chance - 
+- Super Up permitir party entrar na hunt - OK
+- Ajustar Dodge para dar menos chance - OK
 - Possibilitar a balance/withdraw/deposit do gold ingot - OK (Falta mexer em codigo para entregar Gold Ingot) - ADDMONEY
 - Add bixos e hunt Marapur / Gnomproma - 
 - Report Coordinate in game - 
 - Remover teleport de saida da ultima sala POI sala do Jugger - Ok
 - Corrigir Freeze Rune - OK
-- Adicionar NPC de reset no templo para testes - 
+- Adicionar NPC de reset no templo para testes - OK
 - Adicionar velocidade para varinhas de players VIP - 
 - Ajustar Fist skill nas vocations.xml está mt lento - OK
 - Vender todas as vials usando !sellvial - OK
-- Hunt Lion - super up aumentar respaw
+- Hunt Lion - super up aumentar respaw - OK
 - Corrigir TP no templo de ICELAND p/ 817,1409,7
-- Add teleport em templos faltantes
-- Tirar todos os itens do player e mandar para a BP ao resetar
-- Adicionar NPCs Lailene, Alexander
-- Verificar Events do FEROXA e drops com id = 0
+- Add teleport em templos faltantes - 
+- Tirar todos os itens do player e mandar para a BP ao resetar - 
+- Adicionar NPCs Lailene, Alexander - 
+- Verificar Events do FEROXA e drops com id = 0 - 
 - Arrumar bug de morrer antes de resetar, para pegar lvl maximo com pot de restore xp - 
+- Remover do banco de dados a cave exp caso o user nao tenha mais tempo via storage - 
