@@ -23,6 +23,11 @@ local function addStamina(name)
 end
 
 function Creature:onChangeOutfit(outfit)
+	for k, functionCallback in pairs(EventCallback) do
+		if type(functionCallback) == "function" and k:sub(1, #("onChangeOutfit")) == "onChangeOutfit" then
+			functionCallback(self, outfit)
+		end
+	end
 	if self:isPlayer() then
 		local familiarLookType = self:getFamiliarLooktype()
 		if familiarLookType ~= 0 then
@@ -40,9 +45,19 @@ function Creature:onChangeOutfit(outfit)
 end
 
 function Creature:onHear(speaker, words, type)
+	for k, functionCallback in pairs(EventCallback) do
+		if type(functionCallback) == "function" and k:sub(1, #("onHear")) == "onHear" then
+			functionCallback(self, speaker, words, type)
+		end
+	end
 end
 
 function Creature:onAreaCombat(tile, isAggressive)
+	for k, functionCallback in pairs(EventCallback) do
+		if type(functionCallback) == "function" and k:sub(1, #("onAreaCombat")) == "onAreaCombat" then
+			functionCallback(self, tile, isAggressive)
+		end
+	end
 	return true
 end
 
@@ -77,6 +92,12 @@ picIf = { }
 function Creature:onTargetCombat(target)
 	if not self then
 		return true
+	end
+	
+	for k, functionCallback in pairs(EventCallback) do
+		if type(functionCallback) == "function" and k:sub(1, #("onTargetCombat")) == "onTargetCombat" then
+			functionCallback(self, target)
+		end
 	end
 
 	if not picIf[target.uid] then
@@ -147,8 +168,12 @@ function Creature:onTargetCombat(target)
 	return true
 end
 
-function Creature:onDrainHealth(attacker, typePrimary, damagePrimary,
-				typeSecondary, damageSecondary, colorPrimary, colorSecondary)
+function Creature:onDrainHealth(attacker, typePrimary, damagePrimary, typeSecondary, damageSecondary, colorPrimary, colorSecondary)
+	for k, functionCallback in pairs(EventCallback) do
+		if type(functionCallback) == "function" and k:sub(1, #("onDrainHealth")) == "onDrainHealth" then
+			functionCallback(self, attacker, typePrimary, damagePrimary, typeSecondary, damageSecondary, colorPrimary, colorSecondary)
+		end
+	end
 	if (not self) then
 		return typePrimary, damagePrimary, typeSecondary, damageSecondary, colorPrimary, colorSecondary
 	end

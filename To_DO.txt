@@ -130,3 +130,6 @@ OTHERS:
 - Verificar Events do FEROXA e drops com id = 0 - 
 - Arrumar bug de morrer antes de resetar, para pegar lvl maximo com pot de restore xp - 
 - Remover do banco de dados a cave exp caso o user nao tenha mais tempo via storage - 
+
+- Adicionar Outfits com ASAS!!
+- 

@@ -23,7 +23,13 @@ function Monster:onDropLoot(corpse)
 	if configManager.getNumber(configKeys.RATE_LOOT) == 0 then
 		return
 	end
-
+	
+	for k, dropLoot in pairs(EventCallback) do
+		if type(dropLoot) == "function" and k:sub(1, #("onDropLoot")) == "onDropLoot" then
+			corpse = dropLoot(self, corpse)
+		end
+	end
+	
 	local mType = self:getType()
 	if mType:isRewardBoss() then
 		corpse:registerReward()
@@ -145,6 +151,12 @@ function Monster:onDropLoot(corpse)
 end
 
 function Monster:onSpawn(position)
+	for k, spawn in pairs(EventCallback) do
+		if type(spawn) == "function" and k:sub(1, #("onSpawn")) == "onSpawn" then
+			self = spawn(self, position)
+		end
+	end
+
 	if self:getType():isRewardBoss() then
 		self:setReward(true)
 	end

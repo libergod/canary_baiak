@@ -204,15 +204,12 @@ casinoRoulette:register()
 
 
 --
---local disableMovingItemsToRoulettePositions = EventCallback
 
---disableMovingItemsToRoulettePositions.onMoveItem = function(self, item, count, fromPosition, toPosition, fromCylinder, toCylinder)
---    for v, k in pairs(config.roulettePositions) do
---        if toPosition == k then
---            return false
---        end
- --   end
- --   return true
---end
-
---disableMovingItemsToRoulettePositions:register()
+function EventCallback.onMoveItem(self, item, count, fromPosition, toPosition, fromCylinder, toCylinder)
+	for v, k in pairs(config.roulettePositions) do
+        if toPosition == k then
+            return false
+        end
+    end
+    return true
+end
