@@ -133,3 +133,14 @@ OTHERS:
 
 - Adicionar Outfits com ASAS!!
 - 
+
+- EXUNA TEST (BOUNCE_SPELL.LUA) - Modificar magia para um nome melhor!! - ED+MS
+
+
+SPELLS
+- ID 800 - Repeat Flux - repeat flux (lvl 500, mana 400) - RP (SINGLE)
+- ID 801 - Bounce Mort - bounce mort (lvl 500, mana 10%) - MS (SINGLE)
+- ID 802 - Energy Rain - exevo gran mas energy (lvl 500, mana 900) - MS (MAS WAVE)
+- ID 803 - Divine Grow Ghost - exevo mas san ghost (lvl 500, mana 900) - RP (MAS WAVE)
+- ID 804 - Exevo Grow Earth - exevo mas earth grow (lvl 500, mana 900) - ED (MAS WAVE)
+- ID 805 - Bounce Frigo - bounce frigo (lvl 500, mana 10%) - ED (SINGLE)
