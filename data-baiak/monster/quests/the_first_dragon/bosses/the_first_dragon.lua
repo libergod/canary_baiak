@@ -26,6 +26,12 @@ monster.corpse = 25065
 monster.speed = 175
 monster.manaCost = 0
 
+monster.bosstiary = {
+	bossRaceId = 1368,
+	bossRace = RARITY_ARCHFOE,
+	storageCooldown = Storage.FirstDragon.FirstDragonTimer
+}
+
 monster.changeTarget = {
 	interval = 5000,
 	chance = 0

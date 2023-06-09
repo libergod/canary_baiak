@@ -102,6 +102,9 @@
 	<npc centerx="590" centery="1303" centerz="7" radius="1">
 		<npc name="Imbuement Assistant" x="0" y="0" z="7" spawntime="60" />
 	</npc>
+	<npc centerx="598" centery="1304" centerz="7" radius="1">
+		<npc name="Token Assistant" x="0" y="0" z="7" spawntime="60" />
+	</npc>
 	<npc centerx="582" centery="1306" centerz="7" radius="1">
 		<npc name="Archery" x="0" y="0" z="7" spawntime="60" />
 	</npc>
@@ -119,8 +122,5 @@
 	</npc>
 	<npc centerx="1965" centery="803" centerz="12" radius="1">
 		<npc name="Gnomercy" x="0" y="0" z="12" spawntime="60" />
-	</npc>
-	<npc centerx="598" centery="1304" centerz="7" radius="1">
-		<npc name="Token Assistant" x="0" y="0" z="7" spawntime="60" />
 	</npc>
 </npcs>

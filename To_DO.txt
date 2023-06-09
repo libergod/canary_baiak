@@ -72,10 +72,14 @@ OTHERS:
 - Adicionar drops de monstros no scripts/custom/exp_boostDrop.lua - (Adicionar apenas Super UP Cave)
 - Arrumar o restaure de Exp - OK
 - Arrumar sprites do evento Snake - OK
+
 - Implementar zombie - 
+
 - Colocar trainer no Castle - OK
 - Arrumar portas do Castle - OK
+
 - Adicionar Hunts Exclusivas Castle - 
+
 - Adicionar Daily Task - OK
 - Arrumar a Store in Game - OK
 - Adicionar Bosstiary - OK
@@ -84,6 +88,9 @@ OTHERS:
 - Corrigir TP saída Mirror Image - OK
 - Zerar as Hunts exclusivas no reload do server - OK
 - corrigir From/To das super areas - OK
+
+- Ajustar entrada do Ebb and Flow, deve ser a cima esquerda - 
+- Ajustar qnd inundar levar para o inicio cima esquerda - 
 
 - Fazer as boss rooms - 
 
@@ -135,12 +142,12 @@ OTHERS:
 - 
 
 - EXUNA TEST (BOUNCE_SPELL.LUA) - Modificar magia para um nome melhor!! - ED+MS
-
+- Criar logica para boss Thaian -> Precisa carregar outro mapa a cada X segundos e sumonar o Thaian's Ghost, que ao morrer, causa 5k dano no Thaian.
 
 SPELLS
 - ID 800 - Repeat Flux - repeat flux (lvl 500, mana 400) - RP (SINGLE)
 - ID 801 - Bounce Mort - bounce mort (lvl 500, mana 10%) - MS (SINGLE)
 - ID 802 - Energy Rain - exevo gran mas energy (lvl 500, mana 900) - MS (MAS WAVE)
 - ID 803 - Divine Grow Ghost - exevo mas san ghost (lvl 500, mana 900) - RP (MAS WAVE)
-- ID 804 - Exevo Grow Earth - exevo mas earth grow (lvl 500, mana 900) - ED (MAS WAVE)
+- ID 804 - Exevo Grow Earth - exevo mas earth grow (lvl 500, mana 900) - ED (MAS WAVE) -> Verificar codigo incorreto
 - ID 805 - Bounce Frigo - bounce frigo (lvl 500, mana 10%) - ED (SINGLE)

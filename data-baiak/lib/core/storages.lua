@@ -2849,6 +2849,8 @@ Storage = {
 				PaleWormEntrance = 47017,
 				PaleWormTimer = 47018,
 				PaleWormKilled = 47019,
+				BrainHeadTimer = 47020,
+				ThaianTimer = 47021,
 			},
 			PoltergeistOutfits = { }
 		},
