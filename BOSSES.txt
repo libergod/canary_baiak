@@ -2,12 +2,12 @@ Bigfoot's Burden Quest
 	- Deathstrike - WZ1 - OK
 	- Gnomevil  - WZ2 - OK
 	- Mini Boss  
-		- Versperoth
+		- Versperoth (Ao matar, dá acesso ao Abyssador!!! )
 	- Abyssador - WZ3 - OK
 		
 Heart of Destruction bosses
 	- Anomaly - OK
-	- Realityquake - Verificar arquivo
+	- Realityquake - OK
 	- Rupture - OK
 	- Eradicator - OK
 	- Outburst - OK
@@ -21,11 +21,11 @@ Grimvale Quest link: https://www.tibiawiki.com.br/wiki/Grimvale_Quest
 	- Black Vixen - OK
 	
 	- Todos num TP só!!
-	- Yirkas Blue Scales - TODO
-	- Katex Blood Tongue - TODO
-	- Srezz Yellow Eyes - TODO
-	- Utua Stone Sting - TODO
-
+	- Yirkas Blue Scales - OK (Falta Criar HUB para os Mini Bosses)
+	- Katex Blood Tongue - OK (Falta Criar HUB para os Mini Bosses)
+	- Srezz Yellow Eyes - OK (Falta Criar HUB para os Mini Bosses)
+	- Utua Stone Sting - OK (Falta Criar HUB para os Mini Bosses)
+	
 Feaster of Souls
 	- Brain Head - OK
 	- Unaz the Mean - OK
@@ -38,69 +38,69 @@ Feaster of Souls
 	- The Pale Worm - OK
 	
 The Secret Library Quest
-	- Brokul 
-	- Grand Master Oberon
+	- Brokul - OK
+	- Grand Master Oberon - OK
 	- Mini Boss 
-		- Grand Commander Soeren
-		- Preceptor Lazare 
-		- Grand Chaplain Gaunder 
-		- Grand Canon Dominus
-		- Dazed Leaf Golem
-		- Furious Scorpion
+		- Grand Commander Soeren - OK (Falta Criar HUB para os Mini Bosses)
+		- Preceptor Lazare  - OK (Falta Criar HUB para os Mini Bosses)
+		- Grand Chaplain Gaunder  - OK (Falta Criar HUB para os Mini Bosses)
+		- Grand Canon Dominus - OK (Falta Criar HUB para os Mini Bosses)
+		- Dazed Leaf Golem - OK (Falta Criar HUB para os Mini Bosses)
+		- Furious Scorpion - OK (Falta Criar HUB para os Mini Bosses)
 		- Raxias
 	=Etapa 1
-	- Ghulosh 
-	- Gorzindel 
-	- Lokathmor
-	- Mazzinor 
+	- Ghulosh - OK
+	- Gorzindel - OK 
+	- Lokathmor - OK
+	- Mazzinor  - OK
 	=Etapa 2
-	- The Devourer of Secrets
-	- The Spellstealer
-	- Brother Chill e Brother Freeze
-	- The Scion of Havoc
-	- The Scourge of Oblivion - FINAL
+	- The Devourer of Secrets - OK
+	- The Spellstealer - OK
+	- Brother Chill e Brother Freeze - OK
+	- The Scion of Havoc - OK
+	- The Scourge of Oblivion - FINAL - OK
 
 Grave Danger Quest
-	- Count Vlarkorth
-	- Lord Azaram
-	- Earl Osam
+	- Count Vlarkorth - OK
+	- Lord Azaram - OK
+	- Earl Osam - OK
 	- Mini Boss
-		- Gaffir
-		- Custodian
-		- Guard Captain Quaid
-	- Scarlett Etzel
-	- Sir Baeloc & Sir Nictros
-	- Duke Krule
-	- King Zelos - FINAL
+		- Gaffir - OK (Falta Criar HUB para os Mini Bosses)
+		- Custodian - OK (Falta Criar HUB para os Mini Bosses)
+		- Guard Captain Quaid - OK (Falta Criar HUB para os Mini Bosses)
+	- Scarlett Etzel - OK
+	- Sir Baeloc & Sir Nictros - OK
+	- Duke Krule - OK
+	- King Zelos - FINAL - OK
 	
 Cults of Tibia Quest
-	- Leiden e Ravenous Hunger
-	- Essence Of Malice
-	- The Sandking
-	- The False God
-	- The Sinister Hermit e The Souldespoiler
-	- The Voidborn
-	- The Remorseless Corruptor / The Source Of Corruption - FINAL
+	- Leiden e Ravenous Hunger - OK
+	- Essence Of Malice - OK
+	- The Sandking - OK
+	- The False God - OK
+	- The Sinister Hermit e The Souldespoiler - OK
+	- The Voidborn - OK
+	- The Remorseless Corruptor / The Source Of Corruption - FINAL - OK
 
 The Dream Courts Quest
-	- Faceless Bane 
+	- Faceless Bane - OK
 	- Mini Boss
 		Arena Dream Scar
-		- Plagueroot 
-		- Malofur Mangrinder
-		- Maxxenius 
-		- Alptramun 
-		- Izcandar the Banished
-		- The Nightmare Beast - FINAL
+		- Plagueroot  - OK (Falta Criar HUB para os Mini Bosses)
+		- Malofur Mangrinder - OK (Falta Criar HUB para os Mini Bosses)
+		- Maxxenius  - OK (Falta Criar HUB para os Mini Bosses)
+		- Alptramun  - OK (Falta Criar HUB para os Mini Bosses)
+		- Izcandar the Banished - OK (Falta Criar HUB para os Mini Bosses)
+		- The Nightmare Beast - OK (Falta Criar HUB para os Mini Bosses)
 		
 The First Dragon Quest
-	- Gelidrazah
-	- Kalyassa 
-	- Tazhadur 
-	- Zorvorax 
+	- Gelidrazah The Frozen - OK
+	- Kalyassa  - OK
+	- Tazhadur  - OK
+	- Zorvorax  - OK
 	- Mini Boss
-		- Fallen Challenger 
-	- The First Dragon - FINAL (BUGADO!!)
+		- Fallen Challenger - OK
+	- The First Dragon - FINAL - OK
 
 *Soul War Quest - LVL 400
 	- Goshnar's Malice
@@ -141,33 +141,33 @@ The First Dragon Quest
 	- Ascending Ferumbras - FINAL
 	
 A Pirate Tail Quest
-	- Tentugly's Head
-	- Ratmiral Blackwhiskers - FINAL
+	- Tentugly's Head - OK
+	- Ratmiral Blackwhiskers - FINAL - OK
 	
 Kilmaresh Quest
-	- Urmahlullu the Immaculate
+	- Urmahlullu the Immaculate - OK
 	
 Too Hot To Handle Quest
-	- Mega Magmaoid
-	- The Brainstealer - FINAL
+	- The Mega Magmaoid - OK
+	- The Brainstealer - FINAL - OK
 
 Within the Tides Quest
 	- Mini Boss
-		- The Flaming Orchid
-		- The Moonlight Aster
-		- The Winter Bloom
-		- Kusuma 
-	- Timira the Many-Headed - FINAL
+		- The Flaming Orchid - OK (Falta Criar HUB para os Mini Bosses)
+		- The Moonlight Aster - OK (Falta Criar HUB para os Mini Bosses)
+		- The Winter Bloom - OK (Falta Criar HUB para os Mini Bosses)
+		- Kusuma  - OK (Falta Criar HUB para os Mini Bosses)
+	- Timira the Many-Headed - FINAL - OK
 	
-Primal Ordeal Quest - LVL 700
+*Primal Ordeal Quest - LVL 700
 	- Magma Bubble
 	- Primal Menace
 	
 Adventures of Galthen Quest
-	- Megasylvan Yselda
-	- Ahau - FINAL
+	- Megasylvan Yselda - OK
+	- Ahau - FINAL - FALTA FAZER O BOSS
 
 OTHERS
-	- Drume
+	- Drume - OK
 
 	

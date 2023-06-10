@@ -819,10 +819,10 @@ function Player:onGainExperience(target, exp, rawExp)
 	if configManager.getBoolean(configKeys.RATE_USE_STAGES) then
 	
 		finalExperience = (((exp * baseRate + (exp * (storeXpBoostAmount/100)) + (exp * (lowLevelBonuxExp/100))) * staminaBonusXp) * dropedExpBoost) * onlineExpBoost
-		Spdlog.info("[EXP DEBUG] - RATE USAGE TRUE, exp: " ..exp.." baseRate: "..baseRate.. " part3: "..exp * (storeXpBoostAmount/100).. " + part4: "..(exp * (lowLevelBonuxExp/100)).. " staminaBonusXp: " ..staminaBonusXp.. " Dropedboost: " ..dropedExpBoost.. " onlineBoost: "..onlineExpBoost)
+		--Spdlog.info("[EXP DEBUG] - RATE USAGE TRUE, exp: " ..exp.." baseRate: "..baseRate.. " part3: "..exp * (storeXpBoostAmount/100).. " + part4: "..(exp * (lowLevelBonuxExp/100)).. " staminaBonusXp: " ..staminaBonusXp.. " Dropedboost: " ..dropedExpBoost.. " onlineBoost: "..onlineExpBoost)
 	else
 		finalExperience = (((exp + (exp * (storeXpBoostAmount/100)) + (exp * (lowLevelBonuxExp/100))) * staminaBonusXp) * dropedExpBoost) * onlineExpBoost
-		Spdlog.info("[EXP DEBUG] -  RATE USAFE FALSE, exp: " ..exp.." part3: "..exp * (storeXpBoostAmount/100).. " + part4: "..(exp * (lowLevelBonuxExp/100)).. " staminaBonusXp: " ..staminaBonusXp.. " Dropedboost: " ..dropedExpBoost.. " onlineBoost: "..onlineExpBoost)
+		--Spdlog.info("[EXP DEBUG] -  RATE USAFE FALSE, exp: " ..exp.." part3: "..exp * (storeXpBoostAmount/100).. " + part4: "..(exp * (lowLevelBonuxExp/100)).. " staminaBonusXp: " ..staminaBonusXp.. " Dropedboost: " ..dropedExpBoost.. " onlineBoost: "..onlineExpBoost)
 	end
 
 	return math.max(finalExperience)

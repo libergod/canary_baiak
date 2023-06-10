@@ -139,7 +139,7 @@ OTHERS:
 - Remover do banco de dados a cave exp caso o user nao tenha mais tempo via storage - 
 
 - Adicionar Outfits com ASAS!!
-- 
+- 37317 - Colocar na STORE p/ a Roleta!!!
 
 - EXUNA TEST (BOUNCE_SPELL.LUA) - Modificar magia para um nome melhor!! - ED+MS
 - Criar logica para boss Thaian -> Precisa carregar outro mapa a cada X segundos e sumonar o Thaian's Ghost, que ao morrer, causa 5k dano no Thaian.
@@ -151,3 +151,11 @@ SPELLS
 - ID 803 - Divine Grow Ghost - exevo mas san ghost (lvl 500, mana 900) - RP (MAS WAVE)
 - ID 804 - Exevo Grow Earth - exevo mas earth grow (lvl 500, mana 900) - ED (MAS WAVE) -> Verificar codigo incorreto
 - ID 805 - Bounce Frigo - bounce frigo (lvl 500, mana 10%) - ED (SINGLE)
+
+
+
+TUTORIAL FOR NEW BOSSES
+
+- Check Data Editor (Sprite Editor) for the ID of ItemEx if necessary
+- Check Static Data Editor if there is bosses on Monster tab. Load by Staticdata file.
+- Open Canary Monster Editor and grab ID of boss and LookTypeEx

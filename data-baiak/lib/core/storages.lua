@@ -2896,7 +2896,10 @@ Storage = {
 			},
 			CitizenOfIssaviOutfits = { },
 			RoyalBounaceanAdvisorOutfits = { },
-			TooHotToHandle = { }
+			TooHotToHandle = {
+				TheMegaMagmaoidTimer = 47701,
+				TheBrainstealerTimer = 47702,
+			}
 		},
 		U12_80 = { -- update 12.80 - Reserved Storages 47801 - 47850
 			RoyalCostumeOutfits = { }
@@ -2910,6 +2913,9 @@ Storage = {
 					ThePrimalMenaceTimer = 47854,
 					ThePrimalMenaceKilled = 47855,
 				},
+			},
+			WithinTheTides = {
+				TimiraTheManyHeads = 47861,
 			},
 		},
 	},
