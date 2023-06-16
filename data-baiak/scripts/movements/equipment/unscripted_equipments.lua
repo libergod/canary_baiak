@@ -23,7 +23,7 @@ local items = {
 		},
 	},
 	{
-		-- enchanted turtle amulet
+		-- turtle amulet
 		itemid = 39235,
 		type = "deequip",
 		slot = "necklace"
@@ -2402,7 +2402,7 @@ local items = {
 		slot = "ring",
 	},
 	{
-		-- amulet of theurgy
+		-- enchanted theurgic amulet
 		itemid = 30403,
 		type = "equip",
 		slot = "necklace",
@@ -2415,7 +2415,7 @@ local items = {
 		},
 	},
 	{
-		-- amulet of theurgy
+		-- enchanted theurgic amulet
 		itemid = 30403,
 		type = "deequip",
 		slot = "necklace",
