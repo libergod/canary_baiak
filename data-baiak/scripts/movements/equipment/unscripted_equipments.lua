@@ -6971,7 +6971,7 @@ local items = {
 		slot = "shield"
 	},
 	{
-		-- ogre sceptra
+		-- ogre scepta
 		itemid = 22183,
 		type = "equip",
 		slot = "hand",
@@ -6982,7 +6982,7 @@ local items = {
 		}
 	},
 	{
-		-- ogre sceptra
+		-- ogre scepta
 		itemid = 22183,
 		type = "deequip",
 		slot = "hand",
@@ -18295,7 +18295,7 @@ local items = {
 		level = 33
 	},
 	{
-		-- snakebit rod
+		-- snakebite rod
 		itemid = 3066,
 		type = "equip",
 		slot = "hand",
@@ -18306,7 +18306,7 @@ local items = {
 		}
 	},
 	{
-		-- snakebit rod
+		-- snakebite rod
 		itemid = 3066,
 		type = "deequip",
 		slot = "hand",
