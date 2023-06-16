@@ -18,16 +18,14 @@ local function chain(player)
 				return -1
 			elseif creature:getMaster() == nil and creature:getType():getTargetDistance() > 1 then
 				table.insert(monsters, creature)
-			elseif creature:getMaster() == nil then
-				table.insert(meleeMonsters, creature)
 			end
 		end
 	end
  
 	local counter = 1
 	local tempSize = #monsters
-	if tempSize < 5 and #meleeMonsters > 0 then
-		for i = tempSize, 5 do
+	if tempSize < 3 and #meleeMonsters > 0 then
+		for i = tempSize, 3 do
 			if meleeMonsters[counter] ~= nil then
 				table.insert(monsters, meleeMonsters[counter])
 				counter = counter + 1
@@ -39,7 +37,7 @@ local function chain(player)
 	local lastChainPosition = player:getPosition()
 	local closestMonster, closestMonsterIndex, closestMonsterPosition
 	local path, tempPosition, updateLastChain
-	while (totalChain < 5 and #monsters > 0) do
+	while (totalChain < 3 and #monsters > 0) do
 		closestMonster = nil
 		for index, monster in pairs(monsters) do
 			tempPosition = monster:getPosition()
@@ -66,7 +64,6 @@ local function chain(player)
 		if updateLastChain then
 			closestMonsterPosition:sendMagicEffect(CONST_ME_CHIVALRIOUS_CHALLENGE)
 			closestMonster:changeTargetDistance(1)
-			doChallengeCreature(player, closestMonster)
 			lastChain = closestMonster
 			lastChainPosition = closestMonsterPosition
 			totalChain = totalChain + 1
@@ -86,7 +83,7 @@ function spell.onCastSpell(creature, variant)
 		creature:getPosition():sendMagicEffect(CONST_ME_POFF)
 		return false
 	else
-		creature:sendCancelMessage("There are no monsters.")
+		creature:sendCancelMessage("There are no ranged monsters.")
 		creature:getPosition():sendMagicEffect(CONST_ME_POFF)
 		return false
 	end

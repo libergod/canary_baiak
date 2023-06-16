@@ -121,7 +121,7 @@ OTHERS:
 - Super Up permitir party entrar na hunt - OK
 - Ajustar Dodge para dar menos chance - OK
 - Possibilitar a balance/withdraw/deposit do gold ingot - OK (Falta mexer em codigo para entregar Gold Ingot) - ADDMONEY
-- Add bixos e hunt Marapur / Gnomproma - 
+- Add bixos e hunt Marapur / Gnomproma - OK, Falta Testar
 - Report Coordinate in game - 
 - Remover teleport de saida da ultima sala POI sala do Jugger - Ok
 - Corrigir Freeze Rune - OK
@@ -133,7 +133,6 @@ OTHERS:
 - Corrigir TP no templo de ICELAND p/ 817,1409,7
 - Add teleport em templos faltantes - 
 - Tirar todos os itens do player e mandar para a BP ao resetar - 
-- Adicionar NPCs Lailene, Alexander - 
 - Verificar Events do FEROXA e drops com id = 0 - 
 - Arrumar bug de morrer antes de resetar, para pegar lvl maximo com pot de restore xp - 
 - Remover do banco de dados a cave exp caso o user nao tenha mais tempo via storage - 
