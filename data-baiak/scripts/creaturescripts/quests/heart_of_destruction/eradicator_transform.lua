@@ -12,10 +12,10 @@ function eradicatorTransform.onThink(creature)
 
 			local monster = Game.createMonster("eradicator2", pos, false, true)
 			monster:addHealth(-monster:getHealth() + health, COMBAT_PHYSICALDAMAGE)
-			Game.createMonster("spark of destruction", {x = 32304, y = 31282, z = 14}, false, true)
-			Game.createMonster("spark of destruction", {x = 32305, y = 31287, z = 14}, false, true)
-			Game.createMonster("spark of destruction", {x = 32312, y = 31287, z = 14}, false, true)
-			Game.createMonster("spark of destruction", {x = 32314, y = 31282, z = 14}, false, true)
+			Game.createMonster("spark of destruction", {x = 1246, y = 698, z = 7}, false, true)
+			Game.createMonster("spark of destruction", {x = 1247, y = 703, z = 7}, false, true)
+			Game.createMonster("spark of destruction", {x = 1254, y = 703, z = 7}, false, true)
+			Game.createMonster("spark of destruction", {x = 1256, y = 698, z = 7}, false, true)
 			eradicatorWeak = 1 -- Eradicator form
 			eradicatorReleaseT = false -- Release spell
 			areaEradicator2 = addEvent(function() eradicatorReleaseT = true end, 9000)

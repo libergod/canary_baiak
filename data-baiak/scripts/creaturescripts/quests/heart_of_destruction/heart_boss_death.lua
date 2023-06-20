@@ -1,6 +1,6 @@
 function clearDevourer()
-	local upConer = {x = 32260, y = 31336, z = 14} -- upLeftCorner
-	local downConer = {x = 32283, y = 31360, z = 14} -- downRightCorner
+	local upConer = {x = 1192, y = 761, z = 7} -- upLeftCorner
+	local downConer = {x = 1215, y = 785, z = 7} -- downRightCorner
 	for i=upConer.x, downConer.x do
 		for j=upConer.y, downConer.y do
 			for k = upConer.z, downConer.z do
@@ -24,8 +24,8 @@ function clearDevourer()
 end
 
 local function setStorageDevourer()
-	local upConer = {x = 32260, y = 31336, z = 14} -- upLeftCorner
-	local downConer = {x = 32283, y = 31360, z = 14} -- downRightCorner
+	local upConer = {x = 1192, y = 761, z = 7} -- upLeftCorner
+	local downConer = {x = 1215, y = 785, z = 7} -- downRightCorner
 
 	for i=upConer.x, downConer.x do
 		for j=upConer.y, downConer.y do
@@ -74,38 +74,38 @@ end
 
 local bosses = {
 	["anomaly"] = {
-		tile = {x = 32261, y = 31250, z = 14},
+		tile = {x = 1203, y = 666, z = 7},
 		actionId = 14325,
-		fromPos = {x = 32258, y = 31237, z = 14},
-		toPos = {x = 32284, y = 31262, z = 14},
+		fromPos = {x = 1200, y = 653, z = 7},
+		toPos = {x = 1226, y = 678, z = 7},
 		storage = 14326
 	},
 	["rupture"] = {
-		tile = {x = 32326, y = 31250, z = 14},
+		tile = {x = 1268, y = 666, z = 7},
 		actionId = 14325,
-		fromPos = {x = 32324, y = 31239, z = 14},
-		toPos = {x = 32347, y = 31263, z = 14},
+		fromPos = {x = 1266, y = 655, z = 7},
+		toPos = {x = 1289, y = 679, z = 7},
 		storage = 14327
 	},
 	["realityquake"] = {
-		tile = {x = 32199, y = 31248, z = 14},
+		tile = {x = 1141, y = 664, z = 7},
 		actionId = 14325,
-		fromPos = {x = 32197, y = 31236, z = 14},
-		toPos = {x = 32220, y = 31260, z = 14},
+		fromPos = {x = 1139, y = 652, z = 7},
+		toPos = {x = 1162, y = 676, z = 7},
 		storage = 14328
 	},
 	["eradicator"] = {
-		tile = {x = 32318, y = 31284, z = 14},
+		tile = {x = 1260, y = 700, z = 7},
 		actionId = 14325,
-		fromPos = {x = 32297, y = 31272, z = 14},
-		toPos = {x = 32321, y = 31296, z = 14},
+		fromPos = {x = 1239, y = 688, z = 7},
+		toPos = {x = 1263, y = 712, z = 7},
 		storage = 14330
 	},
 	["outburst"] = {
-		tile = {x = 32225, y = 31285, z = 14},
+		tile = {x = 1167, y = 701, z = 7},
 		actionId = 14325,
-		fromPos = {x = 32223, y = 31273, z = 14},
-		toPos = {x = 32246, y = 31297, z = 14},
+		fromPos = {x = 1165, y = 689, z = 7},
+		toPos = {x = 1188, y = 713, z = 7},
 		storage = 14332
 	}
 }
@@ -127,7 +127,7 @@ function heartBossDeath.onDeath(creature)
 		end
 		setStorage(bossName.fromPos, bossName.toPos, bossName.storage)
 	elseif monsterName == "world devourer" then
-		local vortex = Tile({x = 32281, y = 31348, z = 14}):getItemById(23483)
+		local vortex = Tile({x = 1213, y = 773, z = 7}):getItemById(23483)
 		if vortex then
 			vortex:transform(23482)
 			vortex:setActionId(14354)

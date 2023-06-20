@@ -3,13 +3,6 @@ function aftershockTransform.onThink(creature)
 	if not creature:isMonster() then
 		return true
 	end
-
-	local sparkOfDestructionPositions = {
-		{x = 32203, y = 31246, z = 14},
-		{x = 32205, y = 31251, z = 14},
-		{x = 32210, y = 31251, z = 14},
-		{x = 32212, y = 31246, z = 14}
-	}
 	
 	local monsterTable = {
 		[80] = {fromStage = 0, toStage = 1},
@@ -25,10 +18,11 @@ function aftershockTransform.onThink(creature)
 			local aftershockHealth = creature:getHealth()
 			if hp <= index and aftershockStage == value.fromStage then
 				creature:remove()
-				for i = 1, #sparkOfDestructionPositions do
-					Game.createMonster("spark of destruction", #sparkOfDestructionPositions[i], false, true)
-				end
-				local monster = Game.createMonster("foreshock", {x = 32208, y = 31248, z = 14}, false, true)
+				Game.createMonster("spark of destruction", {x = 1145, y = 662, z = 7}, false, true)
+				Game.createMonster("spark of destruction", {x = 1147, y = 667, z = 7}, false, true)
+				Game.createMonster("spark of destruction", {x = 1152, y = 667, z = 7}, false, true)
+				Game.createMonster("spark of destruction", {x = 1154, y = 662, z = 7}, false, true)
+				local monster = Game.createMonster("foreshock", {x = 1150, y = 664, z = 7}, false, true)
 				monster:addHealth(-monster:getHealth() + aftershockHealth, COMBAT_PHYSICALDAMAGE)
 				aftershockStage = value.toStage
 			end

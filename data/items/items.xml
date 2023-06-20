@@ -34505,6 +34505,7 @@
 	<item id="22747" article="a" name="water vortex">
 		<attribute key="type" value="teleport"/>
 		<attribute key="description" value="It draws you nearer."/>
+		<attribute key="effect" value="teleport"/>
 	</item>
 	<item id="22748" article="a" name="ramp">
 		<attribute key="floorchange" value="down"/>

@@ -1,6 +1,6 @@
 local function setStorage()
-	local upConer = {x = 32192, y = 31311, z = 14} -- upLeftCorner
-	local downConer = {x = 32225, y = 31343, z = 14} -- downRightCorner
+	local upConer = {x = 1145, y = 724, z = 7} -- upLeftCorner
+	local downConer = {x = 1178, y = 756, z = 7} -- downRightCorner
 	for i=upConer.x, downConer.x do
 		for j=upConer.y, downConer.y do
 			for k= upConer.z, downConer.z do
@@ -29,7 +29,7 @@ function depolarizedDeath.onDeath(creature)
 	Game.setStorageValue(14323, Game.getStorageValue(14323) + 1)
 	if Game.getStorageValue(14323) == 10 then
 		setStorage()
-		creature:say("You have reached enough charges to pass further into the destruction!", TALKTYPE_MONSTER_YELL, isInGhostMode, pid, {x = 32209, y = 31326, z = 14})
+		creature:say("You have reached enough charges to pass further into the destruction!", TALKTYPE_MONSTER_YELL, isInGhostMode, pid, {x = 1162, y = 739, z = 7})
 		Game.setStorageValue(14323, -1)
 	end
 	return true

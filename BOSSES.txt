@@ -1,17 +1,17 @@
 Bigfoot's Burden Quest
-	- Deathstrike - WZ1 - OK
-	- Gnomevil  - WZ2 - OK
+	- Deathstrike - WZ1 - FINALIZADO E TESTADO!
+	- Gnomevil  - WZ2 - FINALIZADO E TESTADO!
 	- Mini Boss  
-		- Versperoth (Ao matar, dá acesso ao Abyssador!!! )
-	- Abyssador - WZ3 - OK
+		- Versperoth - FINALIZADO E TESTADO!
+	- Abyssador - WZ3 - FINALIZADO E TESTADO!
 		
 Heart of Destruction bosses
-	- Anomaly - OK
-	- Realityquake - OK
-	- Rupture - OK
-	- Eradicator - OK
-	- Outburst - OK
-	- World Devourer - OK - FINAL
+	- Anomaly - FINALIZADO E TESTADO!
+	- Realityquake - FINALIZADO E TESTADO!
+	- Rupture - FINALIZADO E TESTADO!
+	- Eradicator - FINALIZADO! -> Necessário Testar
+	- Outburst - FINALIZADO! -> Necessário Testar
+	- World Devourer - OK - FINALIZADO! -> Necessário Testar
 
 Grimvale Quest link: https://www.tibiawiki.com.br/wiki/Grimvale_Quest
 	- Bloodback - OK

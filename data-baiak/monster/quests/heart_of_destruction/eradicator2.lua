@@ -1,6 +1,7 @@
-local mType = Game.createMonsterType("Eradicator")
+local mType = Game.createMonsterType("Eradicator2")
 local monster = {}
 
+monster.name = "Eradicator"
 monster.description = "Eradicator"
 monster.experience = 50000
 monster.outfit = {
@@ -11,12 +12,6 @@ monster.outfit = {
 	lookFeet = 94,
 	lookAddons = 1,
 	lookMount = 0
-}
-
-monster.events = {
-	"dodgeCriticalThree",
-	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
 }
 
 monster.health = 290000
@@ -65,7 +60,10 @@ monster.flags = {
 
 monster.events = {
 	"HeartBossDeath",
-	"EradicatorTransform"
+	"EradicatorTransform",
+	"dodgeCriticalThree",
+	"dodgeCriticalOne",
+	"dodgeCriticalTwo"
 }
 
 monster.light = {

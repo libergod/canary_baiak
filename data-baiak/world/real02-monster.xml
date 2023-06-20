@@ -893,7 +893,7 @@
 		<monster name="Brokul" x="-8" y="-4" z="5" spawntime="30" direction="2" />
 		<monster name="Abyssador" x="-3" y="-4" z="5" spawntime="30" direction="1" />
 		<monster name="Rupture" x="3" y="-4" z="5" spawntime="30" direction="3" />
-		<monster name="Eradicator" x="8" y="-4" z="5" spawntime="30" direction="2" />
+		<monster name="Eradicator3" x="8" y="-4" z="5" spawntime="30" direction="2" />
 		<monster name="Outburst" x="10" y="-4" z="5" spawntime="30" direction="2" />
 		<monster name="Brother Chill" x="-27" y="-2" z="5" spawntime="30" direction="1" />
 		<monster name="The Scion Of Havoc" x="-27" y="0" z="5" spawntime="30" direction="1" />
@@ -4901,7 +4901,7 @@
 		<monster name="Grim Reaper" x="-2" y="3" z="7" spawntime="40" />
 	</monster>
 	<monster centerx="1203" centery="737" centerz="7" radius="1">
-		<monster name="Spark Of Destruction" x="0" y="0" z="7" spawntime="40" />
+		<monster name="Spark Of Destruction" x="0" y="0" z="7" spawntime="60" />
 	</monster>
 	<monster centerx="1342" centery="739" centerz="7" radius="1">
 		<monster name="Mirror Image" x="0" y="0" z="7" spawntime="40" />
@@ -4913,10 +4913,10 @@
 		<monster name="Mirror Image" x="0" y="0" z="7" spawntime="40" />
 	</monster>
 	<monster centerx="1198" centery="740" centerz="7" radius="1">
-		<monster name="Spark Of Destruction" x="0" y="0" z="7" spawntime="40" />
+		<monster name="Spark Of Destruction" x="0" y="0" z="7" spawntime="60" />
 	</monster>
 	<monster centerx="1208" centery="740" centerz="7" radius="1">
-		<monster name="Spark Of Destruction" x="0" y="0" z="7" spawntime="40" />
+		<monster name="Spark Of Destruction" x="0" y="0" z="7" spawntime="60" />
 	</monster>
 	<monster centerx="1332" centery="742" centerz="7" radius="1">
 		<monster name="Mirror Image" x="0" y="0" z="7" spawntime="40" />
@@ -5040,13 +5040,13 @@
 		<monster name="Many Faces" x="1" y="-1" z="7" spawntime="40" />
 	</monster>
 	<monster centerx="1203" centery="767" centerz="7" radius="1">
-		<monster name="Spark Of Destruction" x="0" y="0" z="7" spawntime="40" />
+		<monster name="Spark Of Destruction" x="0" y="0" z="7" spawntime="60" />
 	</monster>
 	<monster centerx="1345" centery="769" centerz="7" radius="1">
 		<monster name="Mirror Image" x="0" y="0" z="7" spawntime="40" />
 	</monster>
 	<monster centerx="1209" centery="772" centerz="7" radius="1">
-		<monster name="Spark Of Destruction" x="0" y="0" z="7" spawntime="40" />
+		<monster name="Spark Of Destruction" x="0" y="0" z="7" spawntime="60" />
 	</monster>
 	<monster centerx="1347" centery="772" centerz="7" radius="1">
 		<monster name="Many Faces" x="0" y="0" z="7" spawntime="40" />
@@ -5068,7 +5068,7 @@
 		<monster name="Many Faces" x="1" y="1" z="7" spawntime="40" />
 	</monster>
 	<monster centerx="1198" centery="776" centerz="7" radius="1">
-		<monster name="Spark Of Destruction" x="0" y="0" z="7" spawntime="40" />
+		<monster name="Spark Of Destruction" x="0" y="0" z="7" spawntime="60" />
 	</monster>
 	<monster centerx="1348" centery="776" centerz="7" radius="1">
 		<monster name="Mirror Image" x="0" y="0" z="7" spawntime="40" />
@@ -5077,7 +5077,7 @@
 		<monster name="Mirror Image" x="0" y="0" z="7" spawntime="40" />
 	</monster>
 	<monster centerx="1206" centery="777" centerz="7" radius="1">
-		<monster name="Spark Of Destruction" x="0" y="0" z="7" spawntime="40" />
+		<monster name="Spark Of Destruction" x="0" y="0" z="7" spawntime="60" />
 	</monster>
 	<monster centerx="1402" centery="779" centerz="7" radius="1">
 		<monster name="Mirror Image" x="0" y="0" z="7" spawntime="40" />
@@ -5209,7 +5209,7 @@
 		<monster name="Demon" x="-30" y="30" z="7" spawntime="15" />
 	</monster>
 	<monster centerx="1176" centery="793" centerz="7" radius="1">
-		<monster name="Spark Of Destruction" x="0" y="0" z="7" spawntime="40" />
+		<monster name="Spark Of Destruction" x="0" y="0" z="7" spawntime="60" />
 	</monster>
 	<monster centerx="1408" centery="793" centerz="7" radius="1">
 		<monster name="Mirror Image" x="0" y="0" z="7" spawntime="40" />
@@ -5225,14 +5225,14 @@
 		<monster name="Hellfire Fighter" x="1" y="-1" z="7" spawntime="40" />
 		<monster name="Hellfire Fighter" x="0" y="0" z="7" spawntime="40" />
 	</monster>
-	<monster centerx="1231" centery="794" centerz="7" radius="1">
-		<monster name="Spark Of Destruction" x="0" y="0" z="7" spawntime="40" />
+	<monster centerx="1232" centery="794" centerz="7" radius="1">
+		<monster name="Spark Of Destruction" x="-1" y="-1" z="7" spawntime="60" />
 	</monster>
 	<monster centerx="1171" centery="795" centerz="7" radius="1">
-		<monster name="Spark Of Destruction" x="0" y="0" z="7" spawntime="40" />
+		<monster name="Spark Of Destruction" x="0" y="0" z="7" spawntime="60" />
 	</monster>
 	<monster centerx="1226" centery="795" centerz="7" radius="1">
-		<monster name="Spark Of Destruction" x="0" y="0" z="7" spawntime="40" />
+		<monster name="Spark Of Destruction" x="0" y="0" z="7" spawntime="60" />
 	</monster>
 	<monster centerx="1417" centery="795" centerz="7" radius="1">
 		<monster name="Mirror Image" x="0" y="0" z="7" spawntime="40" />
@@ -5252,10 +5252,10 @@
 		<monster name="Hellfire Fighter" x="1" y="1" z="7" spawntime="40" />
 	</monster>
 	<monster centerx="1180" centery="797" centerz="7" radius="1">
-		<monster name="Spark Of Destruction" x="0" y="0" z="7" spawntime="40" />
+		<monster name="Spark Of Destruction" x="0" y="0" z="7" spawntime="60" />
 	</monster>
 	<monster centerx="1237" centery="797" centerz="7" radius="1">
-		<monster name="Spark Of Destruction" x="0" y="0" z="7" spawntime="40" />
+		<monster name="Spark Of Destruction" x="0" y="0" z="7" spawntime="60" />
 	</monster>
 	<monster centerx="1336" centery="797" centerz="7" radius="1">
 		<monster name="Mirror Image" x="0" y="0" z="7" spawntime="40" />
@@ -31421,8 +31421,8 @@
 		<monster name="Magma Crawler" x="1" y="0" z="11" spawntime="40" />
 	</monster>
 	<monster centerx="2064" centery="848" centerz="11" radius="1">
-		<monster name="Weeper" x="0" y="-1" z="11" spawntime="40" />
 		<monster name="Infected Weeper" x="1" y="-1" z="11" spawntime="40" />
+		<monster name="Weeper" x="1" y="0" z="11" spawntime="40" />
 		<monster name="Lost Berserker" x="0" y="1" z="11" spawntime="40" />
 	</monster>
 	<monster centerx="2059" centery="849" centerz="11" radius="1">

@@ -1,6 +1,6 @@
 local heartMinionDeath = CreatureEvent("HeartMinionDeath")
 function heartMinionDeath.onDeath(creature)
-	if not creature or not creature:isMonster() then -- éMonstro!
+	if not creature or not creature:isMonster() then
 		return true
 	end
 	local monster = creature:getName():lower()
