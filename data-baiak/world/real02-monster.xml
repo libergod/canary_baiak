@@ -4314,6 +4314,10 @@
 	<monster centerx="980" centery="404" centerz="7" radius="1">
 		<monster name="Ghoulish Hyaena" x="1" y="0" z="7" spawntime="40" />
 	</monster>
+	<monster centerx="851" centery="407" centerz="7" radius="3">
+		<monster name="Werebadger" x="2" y="-1" z="7" spawntime="60" />
+		<monster name="Werebadger" x="-1" y="0" z="7" spawntime="60" />
+	</monster>
 	<monster centerx="778" centery="412" centerz="7" radius="3">
 		<monster name="Werebear" x="-1" y="-3" z="7" spawntime="40" />
 		<monster name="Werewolf" x="2" y="-3" z="7" spawntime="40" />
@@ -4334,10 +4338,6 @@
 	</monster>
 	<monster centerx="799" centery="455" centerz="7" radius="3">
 		<monster name="Werefox" x="-3" y="0" z="7" spawntime="40" />
-		<monster name="Werefox" x="2" y="0" z="7" spawntime="15" />
-		<monster name="Werebear" x="2" y="1" z="7" spawntime="15" />
-		<monster name="Werefox" x="1" y="2" z="7" spawntime="15" />
-		<monster name="Werefox" x="0" y="3" z="7" spawntime="15" />
 	</monster>
 	<monster centerx="841" centery="455" centerz="7" radius="3">
 		<monster name="Wereboar" x="2" y="-2" z="7" spawntime="40" />
@@ -4360,8 +4360,6 @@
 		<monster name="Rift Invader" x="9" y="7" z="7" spawntime="40" />
 	</monster>
 	<monster centerx="792" centery="456" centerz="7" radius="1">
-		<monster name="Werebadger" x="0" y="-1" z="7" spawntime="15" />
-		<monster name="Werebadger" x="1" y="-1" z="7" spawntime="15" />
 		<monster name="Werebadger" x="0" y="0" z="7" spawntime="15" />
 	</monster>
 	<monster centerx="1016" centery="456" centerz="7" radius="1">
@@ -4375,13 +4373,10 @@
 		<monster name="Electric Sparks" x="1" y="9" z="7" spawntime="15" />
 	</monster>
 	<monster centerx="792" centery="462" centerz="7" radius="3">
-		<monster name="Werefox" x="-2" y="-2" z="7" spawntime="40" />
 		<monster name="Wereboar" x="1" y="-2" z="7" spawntime="40" />
-		<monster name="Wereboar" x="-1" y="0" z="7" spawntime="15" />
 	</monster>
 	<monster centerx="799" centery="462" centerz="7" radius="3">
 		<monster name="Werebear" x="2" y="-3" z="7" spawntime="15" />
-		<monster name="Wereboar" x="-3" y="-1" z="7" spawntime="15" />
 		<monster name="Wereboar" x="0" y="-1" z="7" spawntime="15" />
 		<monster name="Werefox" x="-3" y="1" z="7" spawntime="40" />
 	</monster>
