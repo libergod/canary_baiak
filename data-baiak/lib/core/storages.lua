@@ -3102,6 +3102,9 @@ GlobalStorage = {
 		ThePaleWorm = {
 			Battle = 90001,
 		},
+		TheUnWelcome = {
+			BrotherBattle = 90002,
+		},
 	},
 }
 
