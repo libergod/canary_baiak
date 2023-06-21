@@ -22142,23 +22142,59 @@
 	<monster centerx="958" centery="645" centerz="8" radius="1">
 		<monster name="Lizard Chosen" x="0" y="0" z="8" spawntime="40" />
 	</monster>
+	<monster centerx="1435" centery="647" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
 	<monster centerx="946" centery="648" centerz="8" radius="1">
 		<monster name="Lizard Chosen" x="0" y="0" z="8" spawntime="40" />
 	</monster>
 	<monster centerx="925" centery="649" centerz="8" radius="1">
 		<monster name="Lizard Chosen" x="0" y="0" z="8" spawntime="40" />
 	</monster>
+	<monster centerx="1364" centery="649" centerz="8" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1370" centery="649" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1378" centery="649" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
 	<monster centerx="961" centery="650" centerz="8" radius="1">
 		<monster name="Lizard Chosen" x="0" y="0" z="8" spawntime="40" />
 	</monster>
+	<monster centerx="1387" centery="650" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1417" centery="650" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
 	<monster centerx="918" centery="651" centerz="8" radius="1">
 		<monster name="Lizard Chosen" x="0" y="0" z="8" spawntime="40" />
+	</monster>
+	<monster centerx="1402" centery="651" centerz="8" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1410" centery="651" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
 	</monster>
 	<monster centerx="899" centery="652" centerz="8" radius="1">
 		<monster name="Lizard Chosen" x="0" y="0" z="8" spawntime="40" />
 	</monster>
 	<monster centerx="924" centery="652" centerz="8" radius="1">
 		<monster name="Lizard Chosen" x="0" y="0" z="8" spawntime="40" />
+	</monster>
+	<monster centerx="1354" centery="652" centerz="8" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1394" centery="652" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1350" centery="653" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1435" centery="653" centerz="8" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="8" spawntime="60" />
 	</monster>
 	<monster centerx="914" centery="655" centerz="8" radius="1">
 		<monster name="Lizard Chosen" x="0" y="0" z="8" spawntime="40" />
@@ -22169,6 +22205,9 @@
 	<monster centerx="1157" centery="655" centerz="8" radius="1">
 		<monster name="Bony Sea Devil" x="0" y="0" z="8" spawntime="40" />
 	</monster>
+	<monster centerx="1392" centery="655" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
 	<monster centerx="907" centery="656" centerz="8" radius="1">
 		<monster name="Lizard Chosen" x="0" y="0" z="8" spawntime="40" />
 	</monster>
@@ -22178,14 +22217,29 @@
 	<monster centerx="1175" centery="656" centerz="8" radius="1">
 		<monster name="Capricious Phantom" x="0" y="0" z="8" spawntime="40" />
 	</monster>
+	<monster centerx="1394" centery="656" centerz="8" radius="1">
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1417" centery="656" centerz="8" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1434" centery="656" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
 	<monster centerx="1133" centery="657" centerz="8" radius="1">
 		<monster name="Turbulent Elemental" x="0" y="0" z="8" spawntime="40" />
 	</monster>
 	<monster centerx="1180" centery="657" centerz="8" radius="1">
 		<monster name="Bony Sea Devil" x="0" y="0" z="8" spawntime="40" />
 	</monster>
+	<monster centerx="1354" centery="657" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
 	<monster centerx="934" centery="658" centerz="8" radius="1">
 		<monster name="Lizard Chosen" x="0" y="0" z="8" spawntime="40" />
+	</monster>
+	<monster centerx="1437" centery="658" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
 	</monster>
 	<monster centerx="951" centery="659" centerz="8" radius="1">
 		<monster name="Lizard Chosen" x="0" y="0" z="8" spawntime="40" />
@@ -22208,8 +22262,20 @@
 	<monster centerx="1173" centery="660" centerz="8" radius="1">
 		<monster name="Bony Sea Devil" x="0" y="0" z="8" spawntime="40" />
 	</monster>
+	<monster centerx="1347" centery="660" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1362" centery="660" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1420" centery="660" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
 	<monster centerx="1184" centery="661" centerz="8" radius="1">
 		<monster name="Hazardous Phantom" x="0" y="0" z="8" spawntime="40" />
+	</monster>
+	<monster centerx="1389" centery="661" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
 	</monster>
 	<monster centerx="1154" centery="662" centerz="8" radius="1">
 		<monster name="Hazardous Phantom" x="0" y="0" z="8" spawntime="40" />
@@ -22220,14 +22286,32 @@
 	<monster centerx="1147" centery="663" centerz="8" radius="1">
 		<monster name="Turbulent Elemental" x="0" y="0" z="8" spawntime="40" />
 	</monster>
+	<monster centerx="1365" centery="663" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
 	<monster centerx="905" centery="664" centerz="8" radius="1">
 		<monster name="Lizard Chosen" x="0" y="0" z="8" spawntime="40" />
+	</monster>
+	<monster centerx="1435" centery="664" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
 	</monster>
 	<monster centerx="1173" centery="665" centerz="8" radius="1">
 		<monster name="Turbulent Elemental" x="0" y="0" z="8" spawntime="40" />
 	</monster>
 	<monster centerx="1182" centery="665" centerz="8" radius="1">
 		<monster name="Bony Sea Devil" x="0" y="0" z="8" spawntime="40" />
+	</monster>
+	<monster centerx="1346" centery="665" centerz="8" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1371" centery="665" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1423" centery="666" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1430" centery="666" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
 	</monster>
 	<monster centerx="1144" centery="667" centerz="8" radius="1">
 		<monster name="Capricious Phantom" x="0" y="0" z="8" spawntime="40" />
@@ -22256,8 +22340,62 @@
 	<monster centerx="1186" centery="668" centerz="8" radius="1">
 		<monster name="Turbulent Elemental" x="-1" y="1" z="8" spawntime="40" />
 	</monster>
+	<monster centerx="1385" centery="669" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1377" centery="670" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1381" centery="671" centerz="8" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1421" centery="671" centerz="8" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1438" centery="671" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
 	<monster centerx="917" centery="672" centerz="8" radius="1">
 		<monster name="Lizard Chosen" x="0" y="0" z="8" spawntime="40" />
+	</monster>
+	<monster centerx="1377" centery="673" centerz="8" radius="1">
+		<monster name="Demon" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1373" centery="674" centerz="8" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1381" centery="674" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1388" centery="674" centerz="8" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1392" centery="674" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1345" centery="675" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1407" centery="675" centerz="8" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1371" centery="676" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1366" centery="678" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1384" centery="678" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1438" centery="678" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1360" centery="681" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1384" centery="681" centerz="8" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="8" spawntime="60" />
 	</monster>
 	<monster centerx="1173" centery="682" centerz="8" radius="1">
 		<monster name="Capricious Phantom" x="0" y="0" z="8" spawntime="40" />
@@ -22268,8 +22406,14 @@
 	<monster centerx="1187" centery="682" centerz="8" radius="1">
 		<monster name="Turbulent Elemental" x="0" y="0" z="8" spawntime="40" />
 	</monster>
+	<monster centerx="1346" centery="682" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
 	<monster centerx="1138" centery="683" centerz="8" radius="1">
 		<monster name="Turbulent Elemental" x="0" y="0" z="8" spawntime="40" />
+	</monster>
+	<monster centerx="1438" centery="683" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
 	</monster>
 	<monster centerx="914" centery="684" centerz="8" radius="1">
 		<monster name="Lizard Chosen" x="0" y="0" z="8" spawntime="40" />
@@ -22286,8 +22430,29 @@
 	<monster centerx="1187" centery="687" centerz="8" radius="1">
 		<monster name="Bony Sea Devil" x="0" y="0" z="8" spawntime="40" />
 	</monster>
+	<monster centerx="1343" centery="687" centerz="8" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1350" centery="687" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1382" centery="687" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1390" centery="687" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1372" centery="688" centerz="8" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1376" centery="688" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
 	<monster centerx="1174" centery="689" centerz="8" radius="1">
 		<monster name="Bony Sea Devil" x="0" y="0" z="8" spawntime="40" />
+	</monster>
+	<monster centerx="1388" centery="689" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
 	</monster>
 	<monster centerx="1169" centery="690" centerz="8" radius="1">
 		<monster name="Turbulent Elemental" x="0" y="0" z="8" spawntime="40" />
@@ -22295,8 +22460,29 @@
 	<monster centerx="1179" centery="690" centerz="8" radius="1">
 		<monster name="Turbulent Elemental" x="0" y="0" z="8" spawntime="40" />
 	</monster>
+	<monster centerx="1367" centery="690" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1418" centery="690" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
 	<monster centerx="1139" centery="691" centerz="8" radius="1">
 		<monster name="Capricious Phantom" x="0" y="0" z="8" spawntime="40" />
+	</monster>
+	<monster centerx="1393" centery="691" centerz="8" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1435" centery="691" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1350" centery="692" centerz="8" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1352" centery="692" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1413" centery="692" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
 	</monster>
 	<monster centerx="1152" centery="693" centerz="8" radius="1">
 		<monster name="Turbulent Elemental" x="0" y="0" z="8" spawntime="40" />
@@ -22304,17 +22490,47 @@
 	<monster centerx="1174" centery="693" centerz="8" radius="1">
 		<monster name="Hazardous Phantom" x="0" y="0" z="8" spawntime="40" />
 	</monster>
+	<monster centerx="1345" centery="693" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1362" centery="693" centerz="8" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1404" centery="693" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1426" centery="693" centerz="8" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1342" centery="694" centerz="8" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
 	<monster centerx="1143" centery="695" centerz="8" radius="1">
 		<monster name="Turbulent Elemental" x="0" y="0" z="8" spawntime="40" />
 	</monster>
 	<monster centerx="1185" centery="695" centerz="8" radius="1">
 		<monster name="Capricious Phantom" x="0" y="0" z="8" spawntime="40" />
 	</monster>
+	<monster centerx="1359" centery="696" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1384" centery="696" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
 	<monster centerx="1151" centery="697" centerz="8" radius="1">
 		<monster name="Hazardous Phantom" x="0" y="0" z="8" spawntime="40" />
 	</monster>
+	<monster centerx="1341" centery="697" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
 	<monster centerx="1181" centery="698" centerz="8" radius="1">
 		<monster name="Bony Sea Devil" x="0" y="0" z="8" spawntime="40" />
+	</monster>
+	<monster centerx="1389" centery="698" centerz="8" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="1431" centery="698" centerz="8" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="8" spawntime="60" />
 	</monster>
 	<monster centerx="1184" centery="699" centerz="8" radius="1">
 		<monster name="Turbulent Elemental" x="0" y="0" z="8" spawntime="40" />
@@ -22324,6 +22540,9 @@
 	</monster>
 	<monster centerx="1176" centery="700" centerz="8" radius="1">
 		<monster name="Bony Sea Devil" x="0" y="0" z="8" spawntime="40" />
+	</monster>
+	<monster centerx="1379" centery="700" centerz="8" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="8" spawntime="60" />
 	</monster>
 	<monster centerx="1155" centery="703" centerz="8" radius="1">
 		<monster name="Bony Sea Devil" x="0" y="0" z="8" spawntime="40" />
@@ -26858,6 +27077,88 @@
 	<monster centerx="704" centery="6060" centerz="8" radius="1">
 		<monster name="Dark Torturer" x="0" y="0" z="8" spawntime="40" />
 	</monster>
+	<monster centerx="1330" centery="174" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1322" centery="175" centerz="9" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1360" centery="176" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1338" centery="177" centerz="9" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1355" centery="177" centerz="9" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1352" centery="178" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1348" centery="180" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1362" centery="180" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1320" centery="181" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1364" centery="182" centerz="9" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1407" centery="183" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="1" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1320" centery="184" centerz="9" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1374" centery="185" centerz="9" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1364" centery="186" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1378" centery="186" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1412" centery="186" centerz="9" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1380" centery="187" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1356" centery="188" centerz="9" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1396" centery="188" centerz="9" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1416" centery="188" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1391" centery="189" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1410" centery="189" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1414" centery="191" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1321" centery="192" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1367" centery="193" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1354" centery="194" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1368" centery="197" centerz="9" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
 	<monster centerx="1047" centery="199" centerz="9" radius="1">
 		<monster name="Sibang" x="-1" y="0" z="9" spawntime="40" />
 		<monster name="Sibang" x="0" y="0" z="9" spawntime="40" />
@@ -26870,6 +27171,177 @@
 		<monster name="Nightmare" x="1" y="0" z="9" spawntime="40" />
 		<monster name="Serpent Spawn" x="-1" y="1" z="9" spawntime="40" />
 		<monster name="Sibang" x="1" y="1" z="9" spawntime="40" />
+	</monster>
+	<monster centerx="1414" centery="200" centerz="9" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1327" centery="202" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1351" centery="202" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1370" centery="203" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1407" centery="203" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1404" centery="205" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1401" centery="207" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1345" centery="208" centerz="9" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1337" centery="209" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1372" centery="211" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1330" centery="213" centerz="9" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1390" centery="213" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1371" centery="215" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="-1" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1415" centery="215" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1373" centery="216" centerz="9" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1395" centery="216" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1415" centery="217" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1352" centery="218" centerz="9" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1328" centery="219" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1415" centery="220" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1372" centery="221" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1325" centery="224" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1319" centery="226" centerz="9" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1363" centery="226" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1416" centery="226" centerz="9" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1328" centery="228" centerz="9" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1346" centery="229" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1358" centery="229" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1371" centery="229" centerz="9" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1320" centery="231" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1353" centery="231" centerz="9" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1415" centery="234" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1370" centery="235" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1411" centery="235" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1322" centery="239" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1408" centery="239" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1411" centery="239" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1369" centery="241" centerz="9" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1417" centery="241" centerz="9" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1320" centery="242" centerz="9" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1341" centery="242" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1348" centery="242" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1392" centery="242" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1416" centery="243" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1387" centery="244" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1384" centery="245" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1365" centery="246" centerz="9" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1336" centery="247" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1354" centery="247" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1375" centery="247" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1379" centery="247" centerz="9" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1318" centery="248" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1333" centery="249" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1358" centery="249" centerz="9" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1363" centery="251" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1372" centery="252" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1325" centery="253" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
 	</monster>
 	<monster centerx="1363" centery="329" centerz="9" radius="1">
 		<monster name="Werelion" x="0" y="0" z="9" spawntime="40" />
@@ -27600,6 +28072,9 @@
 		<monster name="Brachiodemon" x="2" y="-1" z="9" spawntime="40" />
 		<monster name="Infernal Demon" x="1" y="0" z="9" spawntime="40" />
 	</monster>
+	<monster centerx="1379" centery="641" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
 	<monster centerx="1133" centery="642" centerz="9" radius="1">
 		<monster name="Bony Sea Devil" x="0" y="0" z="9" spawntime="40" />
 	</monster>
@@ -27617,6 +28092,12 @@
 		<monster name="Infernal Demon" x="-1" y="2" z="9" spawntime="40" />
 		<monster name="Brachiodemon" x="2" y="2" z="9" spawntime="40" />
 	</monster>
+	<monster centerx="1405" centery="642" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1412" centery="642" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
 	<monster centerx="1227" centery="644" centerz="9" radius="1">
 		<monster name="Infernal Demon" x="0" y="0" z="9" spawntime="40" />
 	</monster>
@@ -27624,6 +28105,18 @@
 		<monster name="Infernal Demon" x="-1" y="-1" z="9" spawntime="40" />
 		<monster name="Infernal Phantom" x="-1" y="1" z="9" spawntime="40" />
 		<monster name="Brachiodemon" x="-2" y="2" z="9" spawntime="40" />
+	</monster>
+	<monster centerx="1373" centery="644" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1383" centery="644" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1392" centery="644" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1395" centery="644" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
 	</monster>
 	<monster centerx="1142" centery="645" centerz="9" radius="5">
 		<monster name="Bony Sea Devil" x="1" y="-2" z="9" spawntime="40" />
@@ -27648,6 +28141,15 @@
 		<monster name="Infernal Demon" x="-1" y="-1" z="9" spawntime="40" />
 		<monster name="Infernal Phantom" x="-1" y="0" z="9" spawntime="40" />
 	</monster>
+	<monster centerx="1403" centery="645" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1346" centery="646" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1400" centery="648" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
 	<monster centerx="1186" centery="649" centerz="9" radius="5">
 		<monster name="Capricious Phantom" x="3" y="-2" z="9" spawntime="40" />
 		<monster name="Capricious Phantom" x="-3" y="-1" z="9" spawntime="40" />
@@ -27657,10 +28159,19 @@
 		<monster name="Capricious Phantom" x="3" y="2" z="9" spawntime="40" />
 		<monster name="Bony Sea Devil" x="-4" y="3" z="9" spawntime="40" />
 	</monster>
+	<monster centerx="1347" centery="650" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1350" centery="650" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
 	<monster centerx="1267" centery="653" centerz="9" radius="2">
 		<monster name="Brachiodemon" x="-2" y="-2" z="9" spawntime="40" />
 		<monster name="Infernal Phantom" x="0" y="-1" z="9" spawntime="40" />
 		<monster name="Infernal Demon" x="-1" y="1" z="9" spawntime="40" />
+	</monster>
+	<monster centerx="1369" centery="653" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
 	</monster>
 	<monster centerx="1278" centery="654" centerz="9" radius="2">
 		<monster name="Infernal Demon" x="-1" y="-2" z="9" spawntime="40" />
@@ -27678,6 +28189,15 @@
 		<monster name="Infernal Phantom" x="-1" y="0" z="9" spawntime="40" />
 		<monster name="Brachiodemon" x="2" y="0" z="9" spawntime="40" />
 	</monster>
+	<monster centerx="1355" centery="655" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1371" centery="655" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1402" centery="656" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
 	<monster centerx="1244" centery="657" centerz="9" radius="1">
 		<monster name="Infernal Demon" x="0" y="0" z="9" spawntime="40" />
 	</monster>
@@ -27689,6 +28209,12 @@
 	<monster centerx="1279" centery="657" centerz="9" radius="1">
 		<monster name="Infernal Demon" x="0" y="0" z="9" spawntime="40" />
 	</monster>
+	<monster centerx="1378" centery="658" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1409" centery="658" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
 	<monster centerx="1225" centery="660" centerz="9" radius="2">
 		<monster name="Infernal Phantom" x="0" y="-1" z="9" spawntime="40" />
 		<monster name="Infernal Demon" x="0" y="0" z="9" spawntime="40" />
@@ -27697,6 +28223,15 @@
 	<monster centerx="1279" centery="660" centerz="9" radius="1">
 		<monster name="Brachiodemon" x="0" y="0" z="9" spawntime="40" />
 		<monster name="Infernal Phantom" x="1" y="1" z="9" spawntime="40" />
+	</monster>
+	<monster centerx="1363" centery="660" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1382" centery="660" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1397" centery="660" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
 	</monster>
 	<monster centerx="1254" centery="661" centerz="9" radius="1">
 		<monster name="Brachiodemon" x="1" y="-1" z="9" spawntime="40" />
@@ -27720,6 +28255,9 @@
 	<monster centerx="1279" centery="662" centerz="9" radius="2">
 		<monster name="Brachiodemon" x="-2" y="-2" z="9" spawntime="40" />
 		<monster name="Infernal Phantom" x="-1" y="1" z="9" spawntime="40" />
+	</monster>
+	<monster centerx="1345" centery="662" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
 	</monster>
 	<monster centerx="1156" centery="663" centerz="9" radius="5">
 		<monster name="Bony Sea Devil" x="-3" y="-3" z="9" spawntime="40" />
@@ -27755,6 +28293,42 @@
 	<monster centerx="1165" centery="665" centerz="9" radius="1">
 		<monster name="Bony Sea Devil" x="0" y="0" z="9" spawntime="40" />
 	</monster>
+	<monster centerx="1378" centery="667" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1383" centery="668" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1389" centery="668" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1413" centery="668" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1367" centery="670" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1380" centery="670" centerz="9" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1386" centery="670" centerz="9" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1346" centery="671" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1359" centery="671" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1373" centery="671" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1415" centery="672" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1385" centery="674" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
 	<monster centerx="1176" centery="675" centerz="9" radius="5">
 		<monster name="Capricious Phantom" x="-2" y="-3" z="9" spawntime="40" />
 		<monster name="Bony Sea Devil" x="2" y="-3" z="9" spawntime="40" />
@@ -27769,6 +28343,9 @@
 		<monster name="Brachiodemon" x="2" y="-2" z="9" spawntime="40" />
 		<monster name="Infernal Phantom" x="1" y="0" z="9" spawntime="40" />
 	</monster>
+	<monster centerx="1381" centery="675" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
 	<monster centerx="1252" centery="676" centerz="9" radius="2">
 		<monster name="Infernal Phantom" x="-1" y="1" z="9" spawntime="40" />
 		<monster name="Brachiodemon" x="2" y="1" z="9" spawntime="40" />
@@ -27782,6 +28359,15 @@
 		<monster name="Infernal Demon" x="-1" y="-2" z="9" spawntime="40" />
 		<monster name="Infernal Phantom" x="0" y="0" z="9" spawntime="40" />
 		<monster name="Brachiodemon" x="-1" y="1" z="9" spawntime="40" />
+	</monster>
+	<monster centerx="1415" centery="677" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1384" centery="679" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1342" centery="680" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
 	</monster>
 	<monster centerx="1231" centery="681" centerz="9" radius="2">
 		<monster name="Brachiodemon" x="2" y="-2" z="9" spawntime="40" />
@@ -27805,6 +28391,9 @@
 		<monster name="Infernal Phantom" x="0" y="0" z="9" spawntime="40" />
 		<monster name="Brachiodemon" x="-2" y="2" z="9" spawntime="40" />
 		<monster name="Infernal Demon" x="2" y="2" z="9" spawntime="40" />
+	</monster>
+	<monster centerx="1422" centery="682" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
 	</monster>
 	<monster centerx="1274" centery="683" centerz="9" radius="2">
 		<monster name="Infernal Demon" x="-1" y="-1" z="9" spawntime="40" />
@@ -27831,9 +28420,15 @@
 		<monster name="Bony Sea Devil" x="1" y="3" z="9" spawntime="40" />
 		<monster name="Turbulent Elemental" x="3" y="3" z="9" spawntime="40" />
 	</monster>
+	<monster centerx="1359" centery="685" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
 	<monster centerx="1282" centery="687" centerz="9" radius="2">
 		<monster name="Brachiodemon" x="-1" y="-1" z="9" spawntime="40" />
 		<monster name="Infernal Phantom" x="0" y="0" z="9" spawntime="40" />
+	</monster>
+	<monster centerx="1386" centery="687" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
 	</monster>
 	<monster centerx="1239" centery="688" centerz="9" radius="2">
 		<monster name="Infernal Demon" x="-2" y="-2" z="9" spawntime="40" />
@@ -27855,8 +28450,29 @@
 	<monster centerx="1133" centery="689" centerz="9" radius="1">
 		<monster name="Turbulent Elemental" x="0" y="0" z="9" spawntime="40" />
 	</monster>
+	<monster centerx="1428" centery="689" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1433" centery="690" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
 	<monster centerx="1191" centery="691" centerz="9" radius="1">
 		<monster name="Bony Sea Devil" x="1" y="-1" z="9" spawntime="40" />
+	</monster>
+	<monster centerx="1409" centery="692" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1426" centery="692" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1437" centery="692" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1392" centery="694" centerz="9" radius="1">
+		<monster name="Grim Reaper" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1402" centery="694" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
 	</monster>
 	<monster centerx="1152" centery="695" centerz="9" radius="5">
 		<monster name="Bony Sea Devil" x="2" y="-3" z="9" spawntime="40" />
@@ -27864,6 +28480,21 @@
 		<monster name="Turbulent Elemental" x="-4" y="0" z="9" spawntime="40" />
 		<monster name="Capricious Phantom" x="-1" y="1" z="9" spawntime="40" />
 		<monster name="Capricious Phantom" x="3" y="3" z="9" spawntime="40" />
+	</monster>
+	<monster centerx="1339" centery="695" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1341" centery="695" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1344" centery="695" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1363" centery="695" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1418" centery="695" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
 	</monster>
 	<monster centerx="1141" centery="696" centerz="9" radius="5">
 		<monster name="Capricious Phantom" x="-2" y="-2" z="9" spawntime="40" />
@@ -27878,6 +28509,15 @@
 		<monster name="Turbulent Elemental" x="3" y="0" z="9" spawntime="40" />
 		<monster name="Bony Sea Devil" x="3" y="3" z="9" spawntime="40" />
 		<monster name="Turbulent Elemental" x="-3" y="4" z="9" spawntime="40" />
+	</monster>
+	<monster centerx="1355" centery="696" centerz="9" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1366" centery="696" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="1369" centery="697" centerz="9" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="9" spawntime="60" />
 	</monster>
 	<monster centerx="1243" centery="699" centerz="9" radius="1">
 		<monster name="Infernal Demon" x="0" y="0" z="9" spawntime="40" />
@@ -29349,6 +29989,203 @@
 	<monster centerx="1455" centery="1543" centerz="9" radius="3">
 		<monster name="Werewolf" x="0" y="-3" z="9" spawntime="40" />
 	</monster>
+	<monster centerx="1401" centery="151" centerz="10" radius="8">
+		<monster name="Flimsy Lost Soul" x="1" y="-3" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="1" y="-2" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="0" y="-1" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="-2" y="7" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="-5" y="8" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="-4" y="8" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1363" centery="153" centerz="10" radius="8">
+		<monster name="Flimsy Lost Soul" x="-3" y="-1" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="0" y="-1" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="-4" y="1" z="10" spawntime="60" />
+		<monster name="Freakish Lost Soul" x="-2" y="1" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="4" y="2" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="5" y="3" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="-8" y="8" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1331" centery="157" centerz="10" radius="8">
+		<monster name="Freakish Lost Soul" x="-6" y="-3" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="-2" y="-2" z="10" spawntime="60" />
+		<monster name="Freakish Lost Soul" x="-1" y="-2" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="2" y="2" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="4" y="3" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1351" centery="157" centerz="10" radius="8">
+		<monster name="Flimsy Lost Soul" x="-2" y="-1" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="-5" y="0" z="10" spawntime="60" />
+		<monster name="Freakish Lost Soul" x="-3" y="1" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="-3" y="2" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1314" centery="160" centerz="10" radius="8">
+		<monster name="Flimsy Lost Soul" x="7" y="-5" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="4" y="4" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="5" y="5" z="10" spawntime="60" />
+		<monster name="Freakish Lost Soul" x="5" y="6" z="10" spawntime="60" />
+		<monster name="Freakish Lost Soul" x="7" y="7" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1328" centery="170" centerz="10" radius="8">
+		<monster name="Flimsy Lost Soul" x="-5" y="-2" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="5" y="1" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="7" y="2" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="8" y="6" z="10" spawntime="60" />
+		<monster name="Freakish Lost Soul" x="8" y="7" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1376" centery="171" centerz="10" radius="8">
+		<monster name="Mean Lost Soul" x="2" y="-5" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="1" y="-3" z="10" spawntime="60" />
+		<monster name="Freakish Lost Soul" x="3" y="-2" z="10" spawntime="60" />
+		<monster name="Freakish Lost Soul" x="-3" y="4" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="0" y="4" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="-5" y="5" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1403" centery="174" centerz="10" radius="8">
+		<monster name="Flimsy Lost Soul" x="-1" y="-5" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="-1" y="-4" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="1" y="-1" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="2" y="-1" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="-2" y="4" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="-1" y="4" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="-7" y="8" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1359" centery="180" centerz="10" radius="8">
+		<monster name="Mean Lost Soul" x="-4" y="-7" z="10" spawntime="60" />
+		<monster name="Freakish Lost Soul" x="1" y="1" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="-5" y="2" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="1" y="2" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="2" y="2" z="10" spawntime="60" />
+		<monster name="Freakish Lost Soul" x="3" y="2" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="-6" y="3" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1368" centery="180" centerz="10" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1392" centery="192" centerz="10" radius="8">
+		<monster name="Flimsy Lost Soul" x="-2" y="-1" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="-1" y="-1" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="-1" y="5" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="-1" y="6" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="1" y="7" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="5" y="8" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="6" y="8" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1320" centery="193" centerz="10" radius="8">
+		<monster name="Freakish Lost Soul" x="7" y="-4" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="8" y="-4" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="3" y="-3" z="10" spawntime="60" />
+		<monster name="Freakish Lost Soul" x="4" y="-3" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="3" y="-1" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="-4" y="0" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="-5" y="1" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="-6" y="3" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="-7" y="7" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1340" centery="193" centerz="10" radius="8">
+		<monster name="Flimsy Lost Soul" x="-5" y="-4" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="-4" y="-4" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="-3" y="1" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="-1" y="2" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="7" y="3" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="1" y="6" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1358" centery="204" centerz="10" radius="8">
+		<monster name="Flimsy Lost Soul" x="-2" y="-5" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="5" y="-1" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="-2" y="3" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="-7" y="6" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1412" centery="206" centerz="10" radius="8">
+		<monster name="Flimsy Lost Soul" x="-4" y="-7" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="-2" y="-6" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="1" y="-3" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="-1" y="0" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="-2" y="5" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="-4" y="8" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1317" centery="209" centerz="10" radius="8">
+		<monster name="Freakish Lost Soul" x="-6" y="-8" z="10" spawntime="60" />
+		<monster name="Freakish Lost Soul" x="-8" y="-7" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="-6" y="-7" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="1" y="1" z="10" spawntime="60" />
+		<monster name="Freakish Lost Soul" x="2" y="3" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="3" y="3" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="4" y="5" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1380" centery="209" centerz="10" radius="8">
+		<monster name="Flimsy Lost Soul" x="5" y="-3" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="-4" y="-2" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="0" y="1" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="-1" y="3" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="2" y="5" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1348" centery="215" centerz="10" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1324" centery="218" centerz="10" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1334" centery="221" centerz="10" radius="8">
+		<monster name="Flimsy Lost Soul" x="4" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1396" centery="221" centerz="10" radius="8">
+		<monster name="Flimsy Lost Soul" x="6" y="-5" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="7" y="-5" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="6" y="-4" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="3" y="-2" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="-5" y="-1" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="-3" y="0" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="2" y="7" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="3" y="7" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1317" centery="230" centerz="10" radius="8">
+		<monster name="Mean Lost Soul" x="7" y="-7" z="10" spawntime="60" />
+		<monster name="Freakish Lost Soul" x="-1" y="-4" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="1" y="-4" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="0" y="-3" z="10" spawntime="60" />
+		<monster name="Freakish Lost Soul" x="0" y="-2" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="3" y="4" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="4" y="4" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="6" y="7" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1362" centery="236" centerz="10" radius="8">
+		<monster name="Freakish Lost Soul" x="4" y="-4" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="6" y="-4" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="5" y="-3" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="7" y="-3" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="1" y="-2" z="10" spawntime="60" />
+		<monster name="Freakish Lost Soul" x="6" y="-2" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="-4" y="3" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="-7" y="4" z="10" spawntime="60" />
+		<monster name="Freakish Lost Soul" x="-8" y="5" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1325" centery="239" centerz="10" radius="1">
+		<monster name="Flimsy Lost Soul" x="0" y="0" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="1" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1391" centery="242" centerz="10" radius="8">
+		<monster name="Mean Lost Soul" x="7" y="-6" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="2" y="-2" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="3" y="-2" z="10" spawntime="60" />
+		<monster name="Freakish Lost Soul" x="0" y="1" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="-2" y="2" z="10" spawntime="60" />
+		<monster name="Freakish Lost Soul" x="-4" y="3" z="10" spawntime="60" />
+		<monster name="Freakish Lost Soul" x="-3" y="3" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1350" centery="245" centerz="10" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1335" centery="246" centerz="10" radius="8">
+		<monster name="Freakish Lost Soul" x="-6" y="-4" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="-6" y="-2" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="-4" y="-2" z="10" spawntime="60" />
+		<monster name="Freakish Lost Soul" x="-7" y="-1" z="10" spawntime="60" />
+		<monster name="Freakish Lost Soul" x="-6" y="0" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="-3" y="0" z="10" spawntime="60" />
+		<monster name="Mean Lost Soul" x="3" y="2" z="10" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="7" y="2" z="10" spawntime="60" />
+	</monster>
 	<monster centerx="937" centery="352" centerz="10" radius="1">
 		<monster name="Grave Guard" x="1" y="0" z="10" spawntime="40" />
 	</monster>
@@ -29562,13 +30399,82 @@
 		<monster name="Infernal Demon" x="-1" y="0" z="10" spawntime="40" />
 		<monster name="Infernal Demon" x="2" y="2" z="10" spawntime="40" />
 	</monster>
+	<monster centerx="1387" centery="641" centerz="10" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1370" centery="642" centerz="10" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1393" centery="642" centerz="10" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
 	<monster centerx="1271" centery="643" centerz="10" radius="2">
 		<monster name="Brachiodemon" x="-1" y="-1" z="10" spawntime="40" />
 		<monster name="Infernal Demon" x="1" y="-1" z="10" spawntime="40" />
 	</monster>
+	<monster centerx="1362" centery="643" centerz="10" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1376" centery="643" centerz="10" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1350" centery="644" centerz="10" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1355" centery="644" centerz="10" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1381" centery="644" centerz="10" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1384" centery="644" centerz="10" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1373" centery="645" centerz="10" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1400" centery="647" centerz="10" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1347" centery="648" centerz="10" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1349" centery="648" centerz="10" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1381" centery="648" centerz="10" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1419" centery="649" centerz="10" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1370" centery="650" centerz="10" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
 	<monster centerx="1221" centery="651" centerz="10" radius="2">
 		<monster name="Infernal Demon" x="-1" y="-1" z="10" spawntime="40" />
 		<monster name="Brachiodemon" x="-1" y="1" z="10" spawntime="40" />
+	</monster>
+	<monster centerx="1403" centery="652" centerz="10" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1352" centery="653" centerz="10" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1420" centery="653" centerz="10" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1368" centery="655" centerz="10" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1405" centery="657" centerz="10" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1338" centery="658" centerz="10" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1362" centery="659" centerz="10" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="10" spawntime="60" />
 	</monster>
 	<monster centerx="1264" centery="660" centerz="10" radius="2">
 		<monster name="Brachiodemon" x="-1" y="-1" z="10" spawntime="40" />
@@ -29578,9 +30484,24 @@
 		<monster name="Brachiodemon" x="-1" y="1" z="10" spawntime="40" />
 		<monster name="Infernal Demon" x="1" y="1" z="10" spawntime="40" />
 	</monster>
+	<monster centerx="1407" centery="661" centerz="10" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
 	<monster centerx="1241" centery="662" centerz="10" radius="2">
 		<monster name="Brachiodemon" x="0" y="-1" z="10" spawntime="40" />
 		<monster name="Infernal Demon" x="0" y="2" z="10" spawntime="40" />
+	</monster>
+	<monster centerx="1411" centery="662" centerz="10" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1414" centery="663" centerz="10" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1419" centery="663" centerz="10" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1340" centery="664" centerz="10" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="10" spawntime="60" />
 	</monster>
 	<monster centerx="1279" centery="665" centerz="10" radius="2">
 		<monster name="Infernal Demon" x="0" y="1" z="10" spawntime="40" />
@@ -29601,9 +30522,30 @@
 	<monster centerx="1236" centery="669" centerz="10" radius="2">
 		<monster name="Infernal Phantom" x="0" y="0" z="10" spawntime="40" />
 	</monster>
+	<monster centerx="1339" centery="669" centerz="10" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1342" centery="669" centerz="10" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
 	<monster centerx="1271" centery="670" centerz="10" radius="2">
 		<monster name="Brachiodemon" x="0" y="-1" z="10" spawntime="40" />
 		<monster name="Infernal Phantom" x="0" y="0" z="10" spawntime="40" />
+	</monster>
+	<monster centerx="1353" centery="670" centerz="10" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1356" centery="670" centerz="10" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1402" centery="672" centerz="10" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1411" centery="673" centerz="10" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1408" centery="674" centerz="10" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="10" spawntime="60" />
 	</monster>
 	<monster centerx="1241" centery="675" centerz="10" radius="2">
 		<monster name="Infernal Demon" x="-1" y="-2" z="10" spawntime="40" />
@@ -29620,16 +30562,58 @@
 		<monster name="Brachiodemon" x="1" y="-1" z="10" spawntime="40" />
 		<monster name="Infernal Phantom" x="0" y="0" z="10" spawntime="40" />
 	</monster>
+	<monster centerx="1410" centery="679" centerz="10" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
 	<monster centerx="1223" centery="682" centerz="10" radius="2">
 		<monster name="Infernal Demon" x="-1" y="-1" z="10" spawntime="40" />
 		<monster name="Infernal Phantom" x="0" y="0" z="10" spawntime="40" />
 		<monster name="Brachiodemon" x="-1" y="1" z="10" spawntime="40" />
+	</monster>
+	<monster centerx="1350" centery="682" centerz="10" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1343" centery="683" centerz="10" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1359" centery="683" centerz="10" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1393" centery="683" centerz="10" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1390" centery="685" centerz="10" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1412" centery="686" centerz="10" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1361" centery="687" centerz="10" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1388" centery="687" centerz="10" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1421" centery="687" centerz="10" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1424" centery="687" centerz="10" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1427" centery="688" centerz="10" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="10" spawntime="60" />
 	</monster>
 	<monster centerx="1255" centery="689" centerz="10" radius="1">
 		<monster name="Brachiodemon" x="0" y="0" z="10" spawntime="40" />
 	</monster>
 	<monster centerx="1286" centery="689" centerz="10" radius="1">
 		<monster name="Infernal Demon" x="0" y="0" z="10" spawntime="40" />
+	</monster>
+	<monster centerx="1412" centery="689" centerz="10" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1424" centery="689" centerz="10" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="10" spawntime="60" />
 	</monster>
 	<monster centerx="1242" centery="690" centerz="10" radius="1">
 		<monster name="Brachiodemon" x="0" y="0" z="10" spawntime="40" />
@@ -29641,6 +30625,9 @@
 		<monster name="Infernal Demon" x="0" y="2" z="10" spawntime="40" />
 		<monster name="Brachiodemon" x="1" y="2" z="10" spawntime="40" />
 	</monster>
+	<monster centerx="1341" centery="690" centerz="10" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
 	<monster centerx="1241" centery="692" centerz="10" radius="2">
 		<monster name="Brachiodemon" x="-2" y="-1" z="10" spawntime="40" />
 		<monster name="Infernal Phantom" x="0" y="0" z="10" spawntime="40" />
@@ -29649,13 +30636,37 @@
 	<monster centerx="1253" centery="692" centerz="10" radius="1">
 		<monster name="Infernal Demon" x="0" y="0" z="10" spawntime="40" />
 	</monster>
+	<monster centerx="1411" centery="692" centerz="10" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1380" centery="693" centerz="10" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1391" centery="694" centerz="10" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
 	<monster centerx="1254" centery="695" centerz="10" radius="1">
 		<monster name="Infernal Demon" x="0" y="0" z="10" spawntime="40" />
+	</monster>
+	<monster centerx="1365" centery="695" centerz="10" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="10" spawntime="60" />
 	</monster>
 	<monster centerx="1227" centery="696" centerz="10" radius="2">
 		<monster name="Infernal Demon" x="-2" y="-1" z="10" spawntime="40" />
 		<monster name="Infernal Phantom" x="0" y="0" z="10" spawntime="40" />
 		<monster name="Brachiodemon" x="-1" y="1" z="10" spawntime="40" />
+	</monster>
+	<monster centerx="1342" centery="696" centerz="10" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1404" centery="696" centerz="10" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1376" centery="697" centerz="10" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
+	<monster centerx="1392" centery="697" centerz="10" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="10" spawntime="60" />
 	</monster>
 	<monster centerx="1245" centery="698" centerz="10" radius="1">
 		<monster name="Brachiodemon" x="0" y="0" z="10" spawntime="40" />
@@ -29670,6 +30681,9 @@
 	</monster>
 	<monster centerx="1271" centery="699" centerz="10" radius="1">
 		<monster name="Infernal Demon" x="0" y="0" z="10" spawntime="40" />
+	</monster>
+	<monster centerx="1372" centery="699" centerz="10" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="10" spawntime="60" />
 	</monster>
 	<monster centerx="1249" centery="700" centerz="10" radius="2">
 		<monster name="Brachiodemon" x="-1" y="-1" z="10" spawntime="40" />
@@ -29686,8 +30700,14 @@
 		<monster name="Infernal Demon" x="1" y="0" z="10" spawntime="40" />
 		<monster name="Infernal Phantom" x="0" y="1" z="10" spawntime="40" />
 	</monster>
+	<monster centerx="1352" centery="700" centerz="10" radius="1">
+		<monster name="Freakish Lost Soul" x="0" y="0" z="10" spawntime="60" />
+	</monster>
 	<monster centerx="1230" centery="701" centerz="10" radius="1">
 		<monster name="Infernal Demon" x="0" y="0" z="10" spawntime="40" />
+	</monster>
+	<monster centerx="1343" centery="701" centerz="10" radius="1">
+		<monster name="Mean Lost Soul" x="0" y="0" z="10" spawntime="60" />
 	</monster>
 	<monster centerx="1272" centery="708" centerz="10" radius="2">
 		<monster name="Infernal Demon" x="2" y="-1" z="10" spawntime="40" />

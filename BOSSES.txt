@@ -14,28 +14,28 @@ Heart of Destruction bosses
 	- World Devourer - OK - FINALIZADO! -> Necessário Testar
 
 Grimvale Quest link: https://www.tibiawiki.com.br/wiki/Grimvale_Quest
-	- Bloodback - OK
-	- Darkfang - OK
-	- Sharpclaw - OK
-	- Shadowpelt - OK
-	- Black Vixen - OK
+	- Bloodback - FINALIZADO E TESTADO!
+	- Darkfang - FINALIZADO E TESTADO!
+	- Sharpclaw - FINALIZADO E TESTADO!
+	- Shadowpelt - FINALIZADO E TESTADO!
+	- Black Vixen - FINALIZADO E TESTADO!
 	
 	- Todos num TP só!!
-	- Yirkas Blue Scales - OK (Falta Criar HUB para os Mini Bosses)
-	- Katex Blood Tongue - OK (Falta Criar HUB para os Mini Bosses)
-	- Srezz Yellow Eyes - OK (Falta Criar HUB para os Mini Bosses)
-	- Utua Stone Sting - OK (Falta Criar HUB para os Mini Bosses)
+	- Yirkas Blue Scales - FINALIZADO E TESTADO!
+	- Katex Blood Tongue - FINALIZADO E TESTADO!
+	- Srezz Yellow Eyes - FINALIZADO E TESTADO!
+	- Utua Stone Sting - FINALIZADO E TESTADO!
 	
 Feaster of Souls
 	- Brain Head - OK
-	- Unaz the Mean - OK
-	- Irgix the Flimsy - OK
-	- Vok the Freakish - OK
+	- Unaz the Mean - FINALIZADO E TESTADO!
+	- Irgix the Flimsy - FINALIZADO E TESTADO!
+	- Vok the Freakish - FINALIZADO E TESTADO!
 	- Thaian - OK
 	- The Dread Maiden - OK
-	- The Unwelcome - OK
+	- The Unwelcome - OK 
 	- The Fear Feaster - OK
-	- The Pale Worm - OK
+	- The Pale Worm - FINALIZADO E TESTADO!
 	
 The Secret Library Quest
 	- Brokul - OK

@@ -2851,6 +2851,7 @@ Storage = {
 				PaleWormKilled = 47019,
 				BrainHeadTimer = 47020,
 				ThaianTimer = 47021,
+				PaleWormSteps = 47022,
 			},
 			PoltergeistOutfits = { }
 		},
@@ -3097,6 +3098,11 @@ GlobalStorage = {
 	IceCrack = 65016,
 	UglyMonster = 65017,
 	KeysUpdate = 40000, -- Reserved storage from 40000 - 40000
+	FeasterOfSouls = {
+		ThePaleWorm = {
+			Battle = 90001,
+		},
+	},
 }
 
 startupGlobalStorages = {
