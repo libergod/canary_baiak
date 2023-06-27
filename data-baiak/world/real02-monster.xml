@@ -888,7 +888,7 @@
 		<monster name="Mazzinor" x="-20" y="-4" z="5" spawntime="30" direction="2" />
 		<monster name="Lokathmor" x="-18" y="-4" z="5" spawntime="30" direction="2" />
 		<monster name="Gorzindel" x="-16" y="-4" z="5" spawntime="30" direction="2" />
-		<monster name="Ghulosh" x="-14" y="-4" z="5" spawntime="30" direction="2" />
+		<monster name="Ghulosh2" x="-14" y="-4" z="5" spawntime="30" direction="2" />
 		<monster name="Grand Master Oberon" x="-10" y="-4" z="5" spawntime="30" direction="2" />
 		<monster name="Brokul" x="-8" y="-4" z="5" spawntime="30" direction="2" />
 		<monster name="Abyssador" x="-3" y="-4" z="5" spawntime="30" direction="1" />

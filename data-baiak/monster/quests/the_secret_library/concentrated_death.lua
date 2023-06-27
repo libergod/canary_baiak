@@ -16,7 +16,9 @@ monster.outfit = {
 monster.events = {
 	"dodgeCriticalThree",
 	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
+	"dodgeCriticalTwo",
+	"concentratedDeath" -- Invoca The Book of Death quando morre (Nao se mexe e da pouco dano)
+	--"receiveDamageDeathGaze" -- Reflete dano ao Ghulosh deathgaze
 }
 
 monster.health = 10000

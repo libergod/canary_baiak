@@ -23,7 +23,7 @@ monster.health = 300000
 monster.maxHealth = 300000
 monster.race = "undead"
 monster.corpse = 0
-monster.speed = 15
+monster.speed = 50
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -69,7 +69,8 @@ monster.loot = {
 }
 
 monster.attacks = {
-	{name ="melee", interval = 2000, chance = 100, minDamage = 0, maxDamage = -200}
+	{name ="melee", interval = 2000, chance = 100, minDamage = -100, maxDamage = -400},
+	{name ="ghurloshDeathGazeHur", interval = 2000, chance = 90, minDamage = -150, maxDamage = -450, target = false}
 }
 
 monster.defenses = {

@@ -16,7 +16,8 @@ monster.outfit = {
 monster.events = {
 	"dodgeCriticalThree",
 	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
+	"dodgeCriticalTwo",
+	"brokulDeath"
 }
 
 monster.health = 50000
@@ -33,7 +34,8 @@ monster.changeTarget = {
 
 monster.bosstiary = {
 	bossRaceId = 1645,
-	bossRace = RARITY_ARCHFOE
+	bossRace = RARITY_ARCHFOE,
+	storageCooldown = Storage.Quest.U11_80.TheSecretLibrary.BrokulTimer
 }
 
 monster.strategiesTarget = {
@@ -71,7 +73,7 @@ monster.light = {
 monster.summon = {
 	maxSummons = 5,
 	summons = {
-		{name = "neutral deepling warrior", chance = 70, interval = 1000, count = 5}
+		{name = "neutral deepling warrior", chance = 30, interval = 1000, count = 5}
 	}
 }
 

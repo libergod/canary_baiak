@@ -38,7 +38,7 @@ Feaster of Souls
 	- The Pale Worm - FINALIZADO E TESTADO!
 	
 The Secret Library Quest
-	- Brokul - OK
+	- Brokul - FINALIZADO E TESTADO!
 	- Grand Master Oberon - OK
 	- Mini Boss 
 		- Grand Commander Soeren - OK (Falta Criar HUB para os Mini Bosses)
@@ -49,10 +49,10 @@ The Secret Library Quest
 		- Furious Scorpion - OK (Falta Criar HUB para os Mini Bosses)
 		- Raxias
 	=Etapa 1
-	- Ghulosh - OK
-	- Gorzindel - OK 
-	- Lokathmor - OK
-	- Mazzinor  - OK
+	- Ghulosh - FINALIZADO E TESTADO!
+	- Gorzindel - FINALIZADO E TESTADO!
+	- Lokathmor - FINALIZADO ! FALTA TESTAR!
+	- Mazzinor  - FINALIZADO ! FALTA TESTAR!
 	=Etapa 2
 	- The Devourer of Secrets - OK
 	- The Spellstealer - OK

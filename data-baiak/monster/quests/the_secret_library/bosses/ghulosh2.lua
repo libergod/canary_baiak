@@ -1,6 +1,7 @@
-local mType = Game.createMonsterType("Ghulosh")
+local mType = Game.createMonsterType("Ghulosh2")
 local monster = {}
 
+monster.name = "Ghulosh"
 monster.description = "Ghulosh"
 monster.experience = 100000
 monster.outfit = {
@@ -16,9 +17,7 @@ monster.outfit = {
 monster.events = {
 	"dodgeCriticalThree",
 	"dodgeCriticalOne",
-	"dodgeCriticalTwo",
-	"transformOnChangeHealth",
-	"becomeDeathgaze" -- se tranforma com X % de vida no ghulosh deathgaze e invoca 2 Blood Tear
+	"dodgeCriticalTwo"
 }
 
 monster.health = 300000

@@ -2765,7 +2765,9 @@ Storage = {
 				MazzinorKilled = 46022,
 				ScourgeOfOblivionDoor = 46023,
 				ScourgeOfOblivionTimer = 46024,
-				ScourgeOfOblivionKilled = 46025
+				ScourgeOfOblivionKilled = 46025,
+				BrokulKilled = 35000,
+				BrokulTimer = 36000
 			},
 		},
 		U12_00 = { -- update 12.00 - Reserved Storages 46301 - 46600
@@ -3105,6 +3107,11 @@ GlobalStorage = {
 		TheUnWelcome = {
 			BrotherBattle = 90002,
 		},
+	},
+	TheSecretLibrary = {
+		GhuloshHealth = 90003,
+		GhuloshFight = 90004,
+		GorzindelFight = 90005,
 	},
 }
 

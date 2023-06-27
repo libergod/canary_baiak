@@ -33,7 +33,8 @@ monster.changeTarget = {
 
 monster.bosstiary = {
 	bossRaceId = 1642,
-	bossRace = RARITY_ARCHFOE
+	bossRace = RARITY_ARCHFOE,
+	storageCooldown = Storage.Quest.U11_80.TheSecretLibrary.ScourgeOfOblivionTimer
 }
 
 monster.strategiesTarget = {
