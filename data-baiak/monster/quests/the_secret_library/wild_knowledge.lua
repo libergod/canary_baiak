@@ -16,7 +16,8 @@ monster.outfit = {
 monster.events = {
 	"dodgeCriticalThree",
 	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
+	"dodgeCriticalTwo",
+	"wildKnowledgeDeath"
 }
 
 monster.health = 2000

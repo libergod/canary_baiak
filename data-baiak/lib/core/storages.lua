@@ -2767,7 +2767,8 @@ Storage = {
 				ScourgeOfOblivionTimer = 46024,
 				ScourgeOfOblivionKilled = 46025,
 				BrokulKilled = 35000,
-				BrokulTimer = 36000
+				BrokulTimer = 36000,
+				MazzinorProtection = 46026,
 			},
 		},
 		U12_00 = { -- update 12.00 - Reserved Storages 46301 - 46600
@@ -3112,6 +3113,8 @@ GlobalStorage = {
 		GhuloshHealth = 90003,
 		GhuloshFight = 90004,
 		GorzindelFight = 90005,
+		MazzinorFight = 90006,
+		MazzinorHealth = 90007,
 	},
 }
 

@@ -23,7 +23,20 @@ local config = {
 
 local mazzinorLever = Action()
 function mazzinorLever.onUse(player, item, fromPosition, target, toPosition, isHotkey)
-	return CreateDefaultLeverBoss(player, config)
+
+	if CreateDefaultLeverBoss(player, config) then
+		Game.setStorageValue(GlobalStorage.TheSecretLibrary.MazzinorFight, 1)
+		Game.createMonster("Wild Knowledge", {x = 1143, y = 423, z = 8}, false, true)
+		Game.createMonster("Wild Knowledge", {x = 1147, y = 423, z = 8}, false, true)
+		Game.createMonster("Wild Knowledge", {x = 1143, y = 427, z = 8}, false, true)
+		Game.createMonster("Wild Knowledge", {x = 1147, y = 427, z = 8}, false, true)
+		Game.createMonster("Wild Knowledge", {x = 1145, y = 429, z = 8}, false, true)
+		
+		return true
+	else
+		return CreateDefaultLeverBoss(player, config)
+	end
+	return true
 end
 
 mazzinorLever:position({x = 1141, y = 479, z = 8})

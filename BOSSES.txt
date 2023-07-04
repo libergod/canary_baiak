@@ -51,8 +51,8 @@ The Secret Library Quest
 	=Etapa 1
 	- Ghulosh - FINALIZADO E TESTADO!
 	- Gorzindel - FINALIZADO E TESTADO!
-	- Lokathmor - FINALIZADO ! FALTA TESTAR!
-	- Mazzinor  - FINALIZADO ! FALTA TESTAR!
+	- Lokathmor - em progresso....
+	- Mazzinor  - FINALIZADO E TESTADO!
 	=Etapa 2
 	- The Devourer of Secrets - OK
 	- The Spellstealer - OK

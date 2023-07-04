@@ -19,8 +19,8 @@ monster.events = {
 	"dodgeCriticalTwo"
 }
 
-monster.health = 10000
-monster.maxHealth = 10000
+monster.health = 3000
+monster.maxHealth = 3000
 monster.race = "undead"
 monster.corpse = 27586
 monster.speed = 175

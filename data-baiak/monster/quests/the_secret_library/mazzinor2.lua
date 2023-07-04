@@ -1,6 +1,7 @@
-local mType = Game.createMonsterType("Mazzinor")
+local mType = Game.createMonsterType("Mazzinor2")
 local monster = {}
 
+monster.name = "Mazzinor"
 monster.description = "a mazzinor"
 monster.experience = 100000
 monster.outfit = {
@@ -16,8 +17,7 @@ monster.outfit = {
 monster.events = {
 	"dodgeCriticalThree",
 	"dodgeCriticalOne",
-	"dodgeCriticalTwo",
-	"mazzinorTransform"
+	"dodgeCriticalTwo"
 }
 
 monster.health = 300000
@@ -48,7 +48,7 @@ monster.flags = {
 	hostile = true,
 	convinceable = false,
 	pushable = false,
-	rewardBoss = true,
+	rewardBoss = false,
 	illusionable = false,
 	canPushItems = true,
 	canPushCreatures = true,
