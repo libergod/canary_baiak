@@ -9,7 +9,7 @@ function darkKnowledgeDeath.onDeath(creature, corpse, killer, mostDamageKiller, 
 		return true
 	end
 	
-	local tp = Game.createItem(769, 1, creature:getPosition())
+	local tp = Game.createItem(28488, 1, creature:getPosition())
 	if tp then
 		tp:setActionId(21305)
 	end

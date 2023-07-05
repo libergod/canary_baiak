@@ -23,7 +23,20 @@ local config = {
 
 local lokathmorLever = Action()
 function lokathmorLever.onUse(player, item, fromPosition, target, toPosition, isHotkey)
-	return CreateDefaultLeverBoss(player, config)
+	if CreateDefaultLeverBoss(player, config) then
+		Game.setStorageValue(GlobalStorage.TheSecretLibrary.LokathmorFight, -1) -- Lokathmor solto 
+		
+		Game.createMonster("Knowledge Raider", {x = 1169, y = 400, z = 8}, false, true)
+		Game.createMonster("Knowledge Raider", {x = 1174, y = 400, z = 8}, false, true)
+		Game.createMonster("Knowledge Raider", {x = 1177, y = 390, z = 8}, false, true)
+		Game.createMonster("Knowledge Raider", {x = 1167, y = 390, z = 8}, false, true)
+		Game.createMonster("Knowledge Raider", {x = 1171, y = 389, z = 8}, false, true)
+		
+		return true
+	else
+		return CreateDefaultLeverBoss(player, config)
+	end
+	return true
 end
 
 lokathmorLever:position({x = 1141, y = 455, z = 8})

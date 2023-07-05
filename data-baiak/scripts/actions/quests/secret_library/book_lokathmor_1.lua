@@ -5,7 +5,7 @@ function bookLokathmorFull.onUse(player, item, fromPosition, target, toPosition,
 		item:setActionId()
 		item:transform(27881)
 		item:getPosition():sendMagicEffect(CONST_ME_MAGIC_BLUE)
-		-- SETAR GLOBAL STORAGE PARA -1 (LIBERAR O LOTHRAMOR)
+		Game.setStorageValue(GlobalStorage.TheSecretLibrary.LokathmorFight, -1) -- Lokathmor solto 
 	end
 	return true
 end

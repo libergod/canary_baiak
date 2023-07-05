@@ -35,7 +35,7 @@ Feaster of Souls
 	- The Dread Maiden - OK
 	- The Unwelcome - FINALIZADO E TESTADO!
 	- The Fear Feaster - OK
-	- The Pale Worm - FINALIZADO E TESTADO!
+	- The Pale Worm - FINALIZADO E TESTADO! -- Falta mecanica da lanterna
 	
 The Secret Library Quest
 	- Brokul - FINALIZADO E TESTADO!
@@ -51,7 +51,7 @@ The Secret Library Quest
 	=Etapa 1
 	- Ghulosh - FINALIZADO E TESTADO!
 	- Gorzindel - FINALIZADO E TESTADO!
-	- Lokathmor - em progresso....
+	- Lokathmor - FINALIZADO E TESTADO!
 	- Mazzinor  - FINALIZADO E TESTADO!
 	=Etapa 2
 	- The Devourer of Secrets - OK

@@ -3115,6 +3115,8 @@ GlobalStorage = {
 		GorzindelFight = 90005,
 		MazzinorFight = 90006,
 		MazzinorHealth = 90007,
+		LokathmorFight = 90008,
+		LokathmorHealth = 90009,
 	},
 }
 
