@@ -624,6 +624,32 @@ local items = {
 		slot = "armor"
 	},
 	{
+		-- Morshabaal's mask
+		itemid = 37611,
+		type = "equip",
+		slot = "shield",
+		level = 150
+	},
+	{
+		-- Morshabaal's mask
+		itemid = 37611,
+		type = "deequip",
+		slot = "shield",
+		level = 150
+	},
+	{
+		-- green demon helmet
+		itemid = 37609,
+		type = "equip",
+		slot = "head"
+	},
+	{
+		-- green demon helmet
+		itemid = 37609,
+		type = "deequip",
+		slot = "head"
+	},
+	{
 		-- changing backpack
 		itemid = 37536,
 		type = "equip",
@@ -1462,7 +1488,8 @@ local items = {
 		-- lion spellbook
 		itemid = 34153,
 		type = "deequip",
-		slot = "shield"
+		slot = "shield",
+		level = 220
 	},
 	{
 		-- lion spellbook
@@ -10738,13 +10765,13 @@ local items = {
 	},
 	{
 		-- shield of the white knight
-		itemid = 3537,
+		itemid = 9377,
 		type = "equip",
 		slot = "shield"
 	},
 	{
 		-- shield of the white knight
-		itemid = 3537,
+		itemid = 9377,
 		type = "deequip",
 		slot = "shield"
 	},
