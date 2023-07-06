@@ -883,7 +883,7 @@
 		<monster name="Anomaly" x="3" y="-8" z="5" spawntime="30" direction="3" />
 		<monster name="Gnomevil" x="-3" y="-6" z="5" spawntime="30" direction="1" />
 		<monster name="World Devourer" x="3" y="-6" z="5" spawntime="30" direction="3" />
-		<monster name="The Scourge Of Oblivion" x="-22" y="-4" z="5" spawntime="30" direction="2" />
+		<monster name="The Scourge Of Oblivion2" x="-22" y="-4" z="5" spawntime="30" direction="2" />
 		<monster name="Mazzinor" x="-20" y="-4" z="5" spawntime="30" direction="2" />
 		<monster name="Lokathmor" x="-18" y="-4" z="5" spawntime="30" direction="2" />
 		<monster name="Gorzindel" x="-16" y="-4" z="5" spawntime="30" direction="2" />

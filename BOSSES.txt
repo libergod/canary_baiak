@@ -58,7 +58,7 @@ The Secret Library Quest
 	- The Spellstealer - FINALIZADO E TESTADO!
 	- Brother Chill e Brother Freeze - FINALIZADO E TESTADO!
 	- The Scion of Havoc - FINALIZADO E TESTADO!
-	- The Scourge of Oblivion - FINAL - OK
+	- The Scourge of Oblivion - FINALIZADO E TESTADO!
 
 Grave Danger Quest
 	- Count Vlarkorth - OK
