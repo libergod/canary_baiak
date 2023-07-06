@@ -662,6 +662,18 @@ local items = {
 		slot = "head"
 	},
 	{
+		-- green demon legs
+		itemid = 37607,
+		type = "equip",
+		slot = "legs"
+	},
+	{
+		-- green demon legs
+		itemid = 37607,
+		type = "deequip",
+		slot = "legs"
+	},
+	{
 		-- changing backpack
 		itemid = 37536,
 		type = "equip",
@@ -2084,6 +2096,18 @@ local items = {
 		itemid = 32585,
 		type = "deequip",
 		slot = "armor"
+	},
+	{
+		-- lederhosen
+		itemid = 32097,
+		type = "equip",
+		slot = "legs"
+	},
+	{
+		-- lederhosen
+		itemid = 32097,
+		type = "deequip",
+		slot = "legs"
 	},
 	{
 		-- traditional leather shoes
@@ -18443,6 +18467,18 @@ local items = {
 		type = "deequip",
 		slot = "head",
 		level = 250
+	},
+	{
+		-- broken iks faulds
+		itemid = 40531,
+		type = "equip",
+		slot = "legs"
+	},
+	{
+		-- broken iks faulds
+		itemid = 40531,
+		type = "deequip",
+		slot = "legs"
 	},
 	{
 		-- broken iks sandals
