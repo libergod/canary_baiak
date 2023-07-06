@@ -624,6 +624,18 @@ local items = {
 		slot = "armor"
 	},
 	{
+		-- green demon slippers
+		itemid = 37610,
+		type = "equip",
+		slot = "feet"
+	},
+	{
+		-- green demon slippers
+		itemid = 37610,
+		type = "deequip",
+		slot = "feet"
+	},
+	{
 		-- Morshabaal's mask
 		itemid = 37611,
 		type = "equip",
@@ -2072,6 +2084,18 @@ local items = {
 		itemid = 32585,
 		type = "deequip",
 		slot = "armor"
+	},
+	{
+		-- traditional leather shoes
+		itemid = 32098,
+		type = "equip",
+		slot = "feet"
+	},
+	{
+		-- traditional leather shoes
+		itemid = 32098,
+		type = "deequip",
+		slot = "feet"
 	},
 	{
 		-- meat hammer
@@ -14836,15 +14860,13 @@ local items = {
 		-- pair of soft boots
 		itemid = 6529,
 		type = "equip",
-		slot = "feet",
-		level = 10
+		slot = "feet"
 	},
 	{
 		-- pair of soft boots
 		itemid = 6529,
 		type = "deequip",
-		slot = "feet",
-		level = 10
+		slot = "feet"
 	},
 	{
 		-- tortoise shield
@@ -15623,15 +15645,13 @@ local items = {
 		-- pair of soft boots
 		itemid = 3549,
 		type = "equip",
-		slot = "feet",
-		level = 10
+		slot = "feet"
 	},
 	{
 		-- pair of soft boots
 		itemid = 3549,
 		type = "deequip",
-		slot = "feet",
-		level = 10
+		slot = "feet"
 	},
 	{
 		-- scythe
@@ -18423,6 +18443,18 @@ local items = {
 		type = "deequip",
 		slot = "head",
 		level = 250
+	},
+	{
+		-- broken iks sandals
+		itemid = 40534,
+		type = "equip",
+		slot = "feet"
+	},
+	{
+		-- broken iks sandals
+		itemid = 40534,
+		type = "deequip",
+		slot = "feet"
 	},
         {
 		-- Mutated Skin Legs
