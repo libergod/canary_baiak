@@ -883,8 +883,7 @@
 		<monster name="Anomaly" x="3" y="-8" z="5" spawntime="30" direction="3" />
 		<monster name="Gnomevil" x="-3" y="-6" z="5" spawntime="30" direction="1" />
 		<monster name="World Devourer" x="3" y="-6" z="5" spawntime="30" direction="3" />
-		<monster name="The Spellstealer" x="-24" y="-4" z="5" spawntime="30" direction="2" />
-		<monster name="The Devourer Of Secrets" x="-22" y="-4" z="5" spawntime="30" direction="2" />
+		<monster name="The Scourge Of Oblivion" x="-22" y="-4" z="5" spawntime="30" direction="2" />
 		<monster name="Mazzinor" x="-20" y="-4" z="5" spawntime="30" direction="2" />
 		<monster name="Lokathmor" x="-18" y="-4" z="5" spawntime="30" direction="2" />
 		<monster name="Gorzindel" x="-16" y="-4" z="5" spawntime="30" direction="2" />
@@ -895,9 +894,6 @@
 		<monster name="Rupture" x="3" y="-4" z="5" spawntime="30" direction="3" />
 		<monster name="Eradicator3" x="8" y="-4" z="5" spawntime="30" direction="2" />
 		<monster name="Outburst" x="10" y="-4" z="5" spawntime="30" direction="2" />
-		<monster name="Brother Chill" x="-27" y="-2" z="5" spawntime="30" direction="1" />
-		<monster name="The Scion Of Havoc" x="-27" y="0" z="5" spawntime="30" direction="1" />
-		<monster name="The Scourge Of Oblivion" x="-27" y="2" z="5" spawntime="30" direction="1" />
 		<monster name="The Dread Maiden" x="-24" y="5" z="5" spawntime="30" />
 		<monster name="Thaian" x="-22" y="5" z="5" spawntime="30" />
 		<monster name="Brain Head" x="-20" y="5" z="5" spawntime="30" />

@@ -16,11 +16,12 @@ monster.outfit = {
 monster.events = {
 	"dodgeCriticalThree",
 	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
+	"dodgeCriticalTwo",
+	"scourageInvasionVerify"
 }
 
-monster.health = 1000
-monster.maxHealth = 1000
+monster.health = 8000
+monster.maxHealth = 8000
 monster.race = "fire"
 monster.corpse = 5995
 monster.speed = 175

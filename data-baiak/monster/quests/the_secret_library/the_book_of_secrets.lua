@@ -10,14 +10,15 @@ monster.outfit = {
 monster.events = {
 	"dodgeCriticalThree",
 	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
+	"dodgeCriticalTwo",
+	"onDeathBookOfSecrets"
 }
 
 monster.health = 10000
 monster.maxHealth = 10000
 monster.race = "undead"
 monster.corpse = 0
-monster.speed = 175
+monster.speed = 0
 monster.manaCost = 0
 
 monster.changeTarget = {

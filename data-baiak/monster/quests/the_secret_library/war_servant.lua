@@ -1,6 +1,7 @@
 local mType = Game.createMonsterType("War Servant")
 local monster = {}
 
+monster.name = "War Servant"
 monster.description = "a war servant"
 monster.experience = 0
 monster.outfit = {
@@ -16,7 +17,8 @@ monster.outfit = {
 monster.events = {
 	"dodgeCriticalThree",
 	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
+	"dodgeCriticalTwo",
+	"onDeathWarServant"
 }
 
 monster.health = 10000

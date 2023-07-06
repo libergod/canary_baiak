@@ -1,12 +1,13 @@
-local mType = Game.createMonsterType("Demon Slave")
+local mType = Game.createMonsterType("The Spellstealer3")
 local monster = {}
 
-monster.description = "a demon slave"
+monster.name = "The Spellstealer"
+monster.description = "the spellstealer"
 monster.experience = 0
 monster.outfit = {
-	lookType = 35,
-	lookHead = 0,
-	lookBody = 0,
+	lookType = 12,
+	lookHead = 10, -- azul /claro
+	lookBody = 57, --cinza
 	lookLegs = 0,
 	lookFeet = 0,
 	lookAddons = 0,
@@ -19,10 +20,10 @@ monster.events = {
 	"dodgeCriticalTwo"
 }
 
-monster.health = 8000
-monster.maxHealth = 8000
-monster.race = "fire"
-monster.corpse = 5995
+monster.health = 10000
+monster.maxHealth = 10000
+monster.race = "undead"
+monster.corpse = 6068
 monster.speed = 175
 monster.manaCost = 0
 

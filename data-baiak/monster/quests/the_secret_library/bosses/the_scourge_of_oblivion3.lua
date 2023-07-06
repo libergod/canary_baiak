@@ -1,4 +1,4 @@
-local mType = Game.createMonsterType("The Scourge Of Oblivion")
+local mType = Game.createMonsterType("The Scourge Of Oblivion3")
 local monster = {}
 
 monster.name = "The Scourge Of Oblivion"
@@ -6,9 +6,9 @@ monster.description = "The Scourge Of Oblivion"
 monster.experience = 75000
 monster.outfit = {
 	lookType = 875,
-	lookHead = 79,
-	lookBody = 3,
-	lookLegs = 4,
+	lookHead = 85,
+	lookBody = 104,
+	lookLegs = 125,
 	lookFeet = 2,
 	lookAddons = 3,
 	lookMount = 0
@@ -17,9 +17,7 @@ monster.outfit = {
 monster.events = {
 	"dodgeCriticalThree",
 	"dodgeCriticalOne",
-	"dodgeCriticalTwo",
-	"transformScourge",
-	"noDamageSourceOfOblivion"
+	"dodgeCriticalTwo"
 }
 
 monster.health = 650000
@@ -122,23 +120,23 @@ monster.attacks = {
 }
 
 monster.defenses = {
-	defense = 40,
-	armor = 30,
+	defense = 160,
+	armor = 160,
 	{name ="combat", interval = 6000, chance = 25, type = COMBAT_HEALING, minDamage = 2000, maxDamage = 5000, effect = CONST_ME_MAGIC_BLUE, target = false},
 	{name ="speed", interval = 1000, chance = 8, speedChange = 1901, effect = CONST_ME_MAGIC_RED, target = false, duration = 5000}
 }
 
 monster.reflects = {
-	{type = COMBAT_PHYSICALDAMAGE, percent = 0},
-	{type = COMBAT_ENERGYDAMAGE, percent = 0},
-	{type = COMBAT_EARTHDAMAGE, percent = 0},
-	{type = COMBAT_FIREDAMAGE, percent = 0},
-	{type = COMBAT_LIFEDRAIN, percent = 0},
-	{type = COMBAT_MANADRAIN, percent = 0},
-	{type = COMBAT_DROWNDAMAGE, percent = 0},
-	{type = COMBAT_ICEDAMAGE, percent = 0},
-	{type = COMBAT_HOLYDAMAGE , percent = 0},
-	{type = COMBAT_DEATHDAMAGE , percent = 0}
+	{type = COMBAT_PHYSICALDAMAGE, percent = 100},
+	{type = COMBAT_ENERGYDAMAGE, percent = 100},
+	{type = COMBAT_EARTHDAMAGE, percent = 100},
+	{type = COMBAT_FIREDAMAGE, percent = 100},
+	{type = COMBAT_LIFEDRAIN, percent = 100},
+	{type = COMBAT_MANADRAIN, percent = 100},
+	{type = COMBAT_DROWNDAMAGE, percent = 100},
+	{type = COMBAT_ICEDAMAGE, percent = 100},
+	{type = COMBAT_HOLYDAMAGE , percent = 100},
+	{type = COMBAT_DEATHDAMAGE , percent = 100}
 }
 
 monster.elements = {

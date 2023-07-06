@@ -3117,6 +3117,12 @@ GlobalStorage = {
 		MazzinorHealth = 90007,
 		LokathmorFight = 90008,
 		LokathmorHealth = 90009,
+		SpellsteallerTransform = 90010,
+		ScourageInvasionLevel = 90011,
+		ScourageInvasionKills = 90012,
+		ScourageBrotherKilled = 90013,
+		ScourageTransform = 90014,
+		ScourageTransform2 = 90015,
 	},
 }
 

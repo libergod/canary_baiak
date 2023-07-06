@@ -54,10 +54,10 @@ The Secret Library Quest
 	- Lokathmor - FINALIZADO E TESTADO!
 	- Mazzinor  - FINALIZADO E TESTADO!
 	=Etapa 2
-	- The Devourer of Secrets - OK
-	- The Spellstealer - OK
-	- Brother Chill e Brother Freeze - OK
-	- The Scion of Havoc - OK
+	- The Devourer of Secrets - FINALIZADO E TESTADO!
+	- The Spellstealer - FINALIZADO E TESTADO!
+	- Brother Chill e Brother Freeze - FINALIZADO E TESTADO!
+	- The Scion of Havoc - FINALIZADO E TESTADO!
 	- The Scourge of Oblivion - FINAL - OK
 
 Grave Danger Quest

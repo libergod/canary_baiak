@@ -1,12 +1,13 @@
 local mType = Game.createMonsterType("The Spellstealer")
 local monster = {}
 
+monster.name = "The Spellstealer"
 monster.description = "the spellstealer"
 monster.experience = 0
 monster.outfit = {
 	lookType = 12,
-	lookHead = 81,
-	lookBody = 100,
+	lookHead = 10,
+	lookBody = 57, -- gray
 	lookLegs = 0,
 	lookFeet = 0,
 	lookAddons = 0,
@@ -16,11 +17,14 @@ monster.outfit = {
 monster.events = {
 	"dodgeCriticalThree",
 	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
+	"dodgeCriticalTwo",
+	"transformSpellStealler",
+	"noDamageSpellStealler",
+	"deathSpellStealler"
 }
 
-monster.health = 10000
-monster.maxHealth = 10000
+monster.health = 280000
+monster.maxHealth = 280000
 monster.race = "undead"
 monster.corpse = 6068
 monster.speed = 175

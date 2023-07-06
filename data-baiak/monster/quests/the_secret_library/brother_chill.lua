@@ -16,11 +16,12 @@ monster.outfit = {
 monster.events = {
 	"dodgeCriticalThree",
 	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
+	"dodgeCriticalTwo",
+	"deathBrother1"
 }
 
-monster.health = 10000
-monster.maxHealth = 10000
+monster.health = 190000
+monster.maxHealth = 190000
 monster.race = "blood"
 monster.corpse = 7282
 monster.speed = 175
@@ -76,7 +77,8 @@ monster.attacks = {
 
 monster.defenses = {
 	defense = 33,
-	armor = 28
+	armor = 28,
+	{name ="brothersHeal", interval = 2000, chance = 100, target = false}
 }
 
 monster.elements = {
