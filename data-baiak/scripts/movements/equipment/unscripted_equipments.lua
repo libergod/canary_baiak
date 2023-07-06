@@ -131,7 +131,7 @@ local items = {
 		slot = "ring"
 	},
 	{
-		-- charged arcanomancer ring
+		-- charged arcanomancer sigil
 		itemid = 39184,
 		type = "equip",
 		slot = "ring",
@@ -142,7 +142,7 @@ local items = {
 		}
 	},
 	{
-		-- charged arcanomancer ring
+		-- charged arcanomancer sigil
 		itemid = 39184,
 		type = "deequip",
 		slot = "ring"
@@ -176,7 +176,7 @@ local items = {
 		}
 	},
 	{
-		-- charged alicorn ring
+		-- alicorn ring
 		itemid = 39182,
 		type = "deequip",
 		slot = "ring"
@@ -1841,19 +1841,13 @@ local items = {
 		-- lion ring
 		itemid = 34080,
 		type = "deequip",
-		slot = "ring",
-		level = 270
+		slot = "ring"
 	},
 	{
 		-- lion ring
 		itemid = 34080,
 		type = "equip",
-		slot = "ring",
-		level = 270,
-		vocation = {
-			{"Knight", true},
-			{"Elite Knight"}
-		}
+		slot = "ring"
 	},
 	{
 		-- Lit Torch (Sparkling)
@@ -1894,14 +1888,14 @@ local items = {
 		level = 200
 	},
 	{
-		-- ring of souls
+		-- enchanted ring of souls
 		itemid = 32635,
 		type = "equip",
 		slot = "ring",
 		level = 200
 	},
 	{
-		-- ring of souls
+		-- enchanted ring of souls
 		itemid = 32635,
 		type = "deequip",
 		slot = "ring",
