@@ -3843,7 +3843,7 @@ local items = {
 		itemid = 27452,
 		type = "equip",
 		slot = "hand",
-                level = 200,
+		level = 200,
 		vocation = {
 			{"Knight", true},
 			{"Elite Knight"}
@@ -6624,11 +6624,7 @@ local items = {
 		itemid = 22727,
 		type = "equip",
 		slot = "hand",
-        level = 70,
-		vocation = {
-			{"Knight", true},
-			{"Elite Knight"}
-		}
+        level = 70
 	},
 	{
 		-- rift lance
@@ -7656,7 +7652,7 @@ local items = {
 		itemid = 21174,
 		type = "equip",
 		slot = "hand",
-        level = 40
+        level = 45
 	},
 	{
 		-- mino lance
@@ -8165,7 +8161,12 @@ local items = {
 		-- umbral master chopper
 		itemid = 20075,
 		type = "equip",
-		slot = "hand"
+		slot = "hand",
+        level = 250,
+		vocation = {
+			{"Knight", true},
+			{"Elite Knight"}
+        }
 	},
 	{
 		-- umbral master chopper
@@ -8178,7 +8179,7 @@ local items = {
 		itemid = 20074,
 		type = "equip",
 		slot = "hand",
-                level = 120,
+		level = 120,
 		vocation = {
 			{"Knight", true},
 			{"Elite Knight"}
@@ -8247,7 +8248,7 @@ local items = {
 		itemid = 20070,
 		type = "equip",
 		slot = "hand",
-              level = 75,
+		level = 75,
 		vocation = {
 			{"Knight", true},
 			{"Elite Knight"}
@@ -16873,7 +16874,11 @@ local items = {
 		itemid = 3342,
 		type = "equip",
 		slot = "hand",
-        level = 65
+        level = 65,
+		vocation = {
+			{"Knight", true},
+			{"Elite Knight"}
+		}
 	},
 	{
 		-- war axe
@@ -17021,11 +17026,7 @@ local items = {
 		itemid = 3331,
 		type = "equip",
 		slot = "hand",
-        level = 70,
-		vocation = {
-			{"Knight", true},
-			{"Elite Knight"}
-		}
+        level = 70
 	},
 	{
 		-- ravager's axe
@@ -17868,7 +17869,11 @@ local items = {
 		-- battle axe
 		itemid = 3266,
 		type = "equip",
-		slot = "hand"
+		slot = "hand",
+		vocation = {
+			{"Knight", true},
+			{"Elite Knight"}
+		}
 	},
 	{
 		-- battle axe
