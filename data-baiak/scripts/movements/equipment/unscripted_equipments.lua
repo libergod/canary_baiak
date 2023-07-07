@@ -145,7 +145,12 @@ local items = {
 		-- charged arcanomancer sigil
 		itemid = 39184,
 		type = "deequip",
-		slot = "ring"
+		slot = "ring",
+		level = 400,
+		vocation = {
+			{"Sorcerer", true},
+			{"Master Sorcerer"}
+		}
 	},
 	{
 		-- charged arcanomancer sigil
