@@ -122,10 +122,9 @@ void House::updateDoorDescription() const {
 		const int32_t housePrice = g_configManager().getNumber(HOUSE_PRICE);
 		if (housePrice != -1) {
 			ss << " It costs " << (houseTiles.size() * housePrice) << " gold coins.";
-		}
-
-		if (requiredRebirth > 0) {
-			ss << " It requires " << requiredRebirth << " rebirths.";
+			if (requiredRebirth > 0) {
+				ss << " It requires " << requiredRebirth << " rebirths.";
+			}
 		}
 	}
 
