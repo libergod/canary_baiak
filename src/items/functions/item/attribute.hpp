@@ -156,7 +156,12 @@ public:
 	}
 
 	bool hasAttribute(ItemAttribute_t type) const {
-		return (type & static_cast<ItemAttribute_t>(attributeBits)) != 0;
+		for (const auto &attr : attributeVector) {
+			if (attr.getAttributeType() == type) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	const Attributes* getAttribute(ItemAttribute_t type) const;
@@ -165,7 +170,6 @@ public:
 
 private:
 	std::map<std::string, CustomAttribute, std::less<>> customAttributeMap;
-	std::underlying_type_t<ItemAttribute_t> attributeBits = 0;
 	std::vector<Attributes> attributeVector;
 };
 

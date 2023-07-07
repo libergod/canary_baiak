@@ -44,7 +44,7 @@ enum ItemAttribute_t : uint64_t {
 	TIER = 30,
 	STORE = 31,
 
-	CUSTOM = 1U << 32
+	CUSTOM = 32
 };
 
 enum ItemDecayState_t : uint8_t {
