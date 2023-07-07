@@ -662,6 +662,18 @@ local items = {
 		slot = "head"
 	},
 	{
+		-- green demon armor
+		itemid = 37608,
+		type = "equip",
+		slot = "armor"
+	},
+	{
+		-- green demon armor
+		itemid = 37608,
+		type = "deequip",
+		slot = "armor"
+	},
+	{
 		-- green demon legs
 		itemid = 37607,
 		type = "equip",
@@ -1648,13 +1660,13 @@ local items = {
 		}
 	},
 	{
-		-- soulmantel armor
+		-- soulmantle
 		itemid = 34095,
 		type = "deequip",
 		slot = "armor"
 	},
 	{
-		-- soulmantel armor
+		-- soulmantle
 		itemid = 34095,
 		type = "equip",
 		slot = "armor",
@@ -2094,6 +2106,18 @@ local items = {
 	{
 		-- burial shroud
 		itemid = 32585,
+		type = "deequip",
+		slot = "armor"
+	},
+	{
+		-- traditional shirt
+		itemid = 32099,
+		type = "equip",
+		slot = "armor"
+	},
+	{
+		-- traditional shirt
+		itemid = 32099,
 		type = "deequip",
 		slot = "armor"
 	},
@@ -18467,6 +18491,18 @@ local items = {
 		type = "deequip",
 		slot = "head",
 		level = 250
+	},
+	{
+		-- broken iks cuirass
+		itemid = 40533,
+		type = "equip",
+		slot = "armor"
+	},
+	{
+		-- broken iks cuirass
+		itemid = 40533,
+		type = "deequip",
+		slot = "armor"
 	},
 	{
 		-- broken iks faulds
