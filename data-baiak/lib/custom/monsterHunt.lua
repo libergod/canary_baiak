@@ -8,7 +8,7 @@ MONSTER_HUNT = {
 				"Wednesday-10",
 				"Wednesday-22",
 
-				"Friday-10",
+				"Friday-10", 
 				"Friday-22",
 				
 				"Saturday-10",
@@ -101,6 +101,12 @@ function MONSTER_HUNT:endEvent()
 			return true
 		end
 		table.sort(MONSTER_HUNT.players, function(a,b) return a[2] > b[2] end)
+		
+		if #MONSTER_HUNT.players == nil or #MONSTER_HUNT.players <= 0 then
+			Game.broadcastMessage(MONSTER_HUNT.messages.prefix .. MONSTER_HUNT.messages.noWinner)
+			Spdlog.info("[HUNT EVENT] - Ended Hunt Event!")
+			return true
+		end
 
 		local player = Player(MONSTER_HUNT.players[1][1])
 		if player then

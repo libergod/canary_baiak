@@ -16,7 +16,9 @@ monster.outfit = {
 monster.events = {
 	"dodgeCriticalThree",
 	"dodgeCriticalOne",
-	"dodgeCriticalTwo"
+	"dodgeCriticalTwo",
+	"manageLifeCountVlarkorth",
+	"manageSummonCountVlarkorth"
 }
 
 monster.health = 300000
@@ -66,12 +68,6 @@ monster.light = {
 	color = 0
 }
 
-monster.summon = {
-	maxSummons = 6,
-	summons = {
-		{name = "Soulless Minion", chance = 70, interval = 1800, count = 6}
-	}
-}
 
 monster.voices = {
 	interval = 5000,

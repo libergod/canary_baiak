@@ -3124,6 +3124,10 @@ GlobalStorage = {
 		ScourageTransform = 90014,
 		ScourageTransform2 = 90015,
 	},
+	GraveDanger = {
+		CountVlarkorthHealth = 90016,
+		CountVlarkorthCounting = 90017,
+	},
 }
 
 startupGlobalStorages = {

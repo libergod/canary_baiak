@@ -39,15 +39,13 @@ Feaster of Souls
 	
 The Secret Library Quest
 	- Brokul - FINALIZADO E TESTADO!
-	- Grand Master Oberon - OK
+	- Grand Master Oberon - FINALIZADO E TESTADO!
 	- Mini Boss 
-		- Grand Commander Soeren - OK (Falta Criar HUB para os Mini Bosses)
-		- Preceptor Lazare  - OK (Falta Criar HUB para os Mini Bosses)
-		- Grand Chaplain Gaunder  - OK (Falta Criar HUB para os Mini Bosses)
-		- Grand Canon Dominus - OK (Falta Criar HUB para os Mini Bosses)
-		- Dazed Leaf Golem - OK (Falta Criar HUB para os Mini Bosses)
-		- Furious Scorpion - OK (Falta Criar HUB para os Mini Bosses)
-		- Raxias
+		- Grand Commander Soeren - FINALIZADO E TESTADO!
+		- Preceptor Lazare  - FINALIZADO E TESTADO!
+		- Grand Chaplain Gaunder  - FINALIZADO E TESTADO!
+		- Grand Canon Dominus - FINALIZADO E TESTADO!
+		- Dazed Leaf Golem - FINALIZADO E TESTADO!
 	=Etapa 1
 	- Ghulosh - FINALIZADO E TESTADO!
 	- Gorzindel - FINALIZADO E TESTADO!
@@ -58,10 +56,10 @@ The Secret Library Quest
 	- The Spellstealer - FINALIZADO E TESTADO!
 	- Brother Chill e Brother Freeze - FINALIZADO E TESTADO!
 	- The Scion of Havoc - FINALIZADO E TESTADO!
-	- The Scourge of Oblivion - FINALIZADO E TESTADO!
+	- The Scourge of Oblivion - FINALIZADO E TESTADO! (Falta configurar as magias de retas qnd tiver azul)
 
 Grave Danger Quest
-	- Count Vlarkorth - OK
+	- Count Vlarkorth - Implementando...
 	- Lord Azaram - OK
 	- Earl Osam - OK
 	- Mini Boss

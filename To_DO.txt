@@ -74,6 +74,7 @@ OTHERS:
 - Arrumar sprites do evento Snake - OK
 
 - Implementar zombie - 
+- Ajustar tp saida do snowballevent - (1553,852,7) - 
 
 - Colocar trainer no Castle - OK
 - Arrumar portas do Castle - OK
