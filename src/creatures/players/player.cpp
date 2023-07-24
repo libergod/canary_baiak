@@ -1752,6 +1752,11 @@ void Player::onChangeZone(ZoneType_t zone) {
 	g_events().eventPlayerOnChangeZone(this, zone);
 }
 
+void Player::onChangeHazard(bool isHazard) {
+	g_events().eventPlayerOnChangeHazard(this, isHazard);
+	sendIcons();
+}
+
 void Player::onAttackedCreatureChangeZone(ZoneType_t zone) {
 	if (zone == ZONE_PROTECTION) {
 		if (!hasFlag(PlayerFlags_t::IgnoreProtectionZone)) {
@@ -2265,7 +2270,7 @@ void Player::addExperience(Creature* target, uint64_t exp, bool sendText /* = fa
 
 	// Hazard system experience
 	const Monster* monster = target && target->getMonster() ? target->getMonster() : nullptr;
-	bool handleHazardExperience = monster && monster->isOnHazardSystem() && getHazardSystemPoints() > 0;
+	bool handleHazardExperience = monster && monster->getHazard() && getHazardSystemPoints() > 0;
 	if (handleHazardExperience) {
 		exp += (exp * (1.75 * getHazardSystemPoints() * g_configManager().getNumber(HAZARD_EXP_BONUS_MULTIPLIER))) / 100.;
 	}
@@ -7308,36 +7313,31 @@ void Player::closeAllExternalContainers() {
  * Hazard system
  ******************************************************************************/
 
-void Player::addHazardSystemPoints(int32_t amount) {
-	addStorageValue(STORAGEVALUE_HAZARDCOUNT, std::max<int32_t>(0, std::min<int32_t>(0xFFFF, static_cast<int32_t>(getHazardSystemPoints()) + amount)), true);
+void Player::setHazardSystemPoints(int32_t count) {
+	addStorageValue(STORAGEVALUE_HAZARDCOUNT, std::max<int32_t>(0, std::min<int32_t>(0xFFFF, count)), true);
 	reloadHazardSystemPointsCounter = true;
-	if (hazardSystemReferenceCounter > 0) {
-		const auto tile = getTile();
-		if (!tile) {
-			return;
+	const auto tile = getTile();
+	if (!tile) {
+		return;
+	}
+
+	SpectatorHashSet spectators;
+	g_game().map.getSpectators(spectators, tile->getPosition(), true);
+	for (Creature* spectator : spectators) {
+		if (!spectator || spectator == this) {
+			continue;
 		}
 
-		SpectatorHashSet spectators;
-		g_game().map.getSpectators(spectators, tile->getPosition(), true);
-		for (Creature* spectator : spectators) {
-			if (!spectator || spectator == this) {
-				continue;
-			}
-
-			Player* player = spectator->getPlayer();
-			if (player) {
-				player->sendCreatureIcon(getPlayer());
-			}
-		}
-
-		if (client) {
-			client->reloadHazardSystemIcon(hazardSystemReferenceCounter);
+		Player* player = spectator->getPlayer();
+		if (player) {
+			player->sendCreatureIcon(this);
 		}
 	}
+		client->reloadHazardSystemIcon();
 }
 
 void Player::parseAttackRecvHazardSystem(CombatDamage &damage, const Monster* monster) {
-	if (!monster || !monster->isOnHazardSystem()) {
+	if (!monster || !monster->getHazard()) {
 		return;
 	}
 
@@ -7368,8 +7368,9 @@ void Player::parseAttackRecvHazardSystem(CombatDamage &damage, const Monster* mo
 
 	uint16_t stage = 0;
 	auto chance = static_cast<uint16_t>(normal_random(1, 10000));
+	auto critChance = g_configManager().getNumber(HAZARD_CRITICAL_CHANCE);
 	// Critical chance
-	if ((lastHazardSystemCriticalHit + g_configManager().getNumber(HAZARD_CRITICAL_INTERVAL)) <= OTSYS_TIME() && chance <= monster->getHazardSystemCritChance() && !damage.critical) {
+	if (monster->getHazardSystemCrit() && (lastHazardSystemCriticalHit + g_configManager().getNumber(HAZARD_CRITICAL_INTERVAL)) <= OTSYS_TIME() && chance <= critChance && !damage.critical) {
 		damage.critical = true;
 		damage.extension = true;
 		damage.exString = "(Hazard)";
@@ -7399,7 +7400,7 @@ void Player::parseAttackDealtHazardSystem(CombatDamage &damage, const Monster* m
 		return;
 	}
 
-	if (!monster || !monster->isOnHazardSystem()) {
+	if (!monster || !monster->getHazard()) {
 		return;
 	}
 
@@ -7455,52 +7456,12 @@ void Player::reloadHazardSystemIcon() {
 
 				Player* player = spectator->getPlayer();
 				if (player) {
-					player->sendCreatureIcon(getPlayer());
+					player->sendCreatureIcon(this);
 				}
 			}
 		}
 		if (client) {
-			client->reloadHazardSystemIcon(hazardSystemReferenceCounter);
-		}
-	}
-}
-
-void Player::incrementeHazardSystemReference() {
-	hazardSystemReferenceCounter++;
-	if (hazardSystemReferenceCounter != 0) {
-		reloadHazardSystemIcon();
-	}
-}
-
-void Player::decrementeHazardSystemReference() {
-	if (hazardSystemReferenceCounter == 0) {
-		return;
-	}
-
-	hazardSystemReferenceCounter--;
-	if (hazardSystemReferenceCounter == 0) {
-		if (getHazardSystemPoints() > 0) {
-			Tile* tile = getTile();
-			if (!tile) {
-				return;
-			}
-
-			SpectatorHashSet spectators;
-			g_game().map.getSpectators(spectators, tile->getPosition(), true);
-			for (Creature* spectator : spectators) {
-				if (!spectator || spectator == this) {
-					continue;
-				}
-
-				Player* player = spectator->getPlayer();
-				if (player) {
-					player->sendCreatureIcon(getPlayer());
-				}
-			}
-		}
-
-		if (client) {
-			client->reloadHazardSystemIcon(hazardSystemReferenceCounter);
+			client->reloadHazardSystemIcon();
 		}
 		reloadHazardSystemPointsCounter = true;
 	}

@@ -149,7 +149,7 @@ function loginEvents.onLogin(player)
 		-- The Dream Courts
 		"DreamCourtsKill",
 		-- Hazard System
-		"HazardSystemCombat"
+		"PrimalHazardKill"
 	}
 
 	for i = 1, #events do

@@ -859,6 +859,7 @@ class Player final : public Creature, public Cylinder {
 		void onAttackedCreatureChangeZone(ZoneType_t zone) override;
 		void onIdleStatus() override;
 		void onPlacedCreature() override;
+		void onChangeHazard(bool isHazard) override;
 
 		LightInfo getCreatureLight() const override;
 
@@ -2357,7 +2358,7 @@ class Player final : public Creature, public Cylinder {
 		void parseAttackRecvHazardSystem(CombatDamage &damage, const Monster* monster);
 		void parseAttackDealtHazardSystem(CombatDamage &damage, const Monster* monster);
 		// Points increase:
-		void addHazardSystemPoints(int32_t amount);
+		void setHazardSystemPoints(int32_t amount);
 		// Points get:
 		uint16_t getHazardSystemPoints() const {
 			int32_t points = 0;
@@ -2370,11 +2371,6 @@ class Player final : public Creature, public Cylinder {
 
 		// Reference counter used on client UI.
 		void reloadHazardSystemIcon();
-		uint16_t getHazardSystemReference() const {
-			return hazardSystemReferenceCounter;
-		}
-		void incrementeHazardSystemReference();
-		void decrementeHazardSystemReference();
 		/*******************************************************************************/
 
 	private:
@@ -2668,7 +2664,6 @@ class Player final : public Creature, public Cylinder {
 		// Hazard system
 		int64_t lastHazardSystemCriticalHit = 0;
 		bool reloadHazardSystemPointsCounter = true;
-		uint16_t hazardSystemReferenceCounter = 0;
 		// Hazard end
 
 		void updateItemsLight(bool internal = false);

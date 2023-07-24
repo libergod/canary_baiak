@@ -322,7 +322,7 @@ class PlayerFunctions final : LuaScriptInterface {
 
 			registerMethod(L, "Player", "getName", PlayerFunctions::luaPlayerGetName);
 
-			registerMethod(L, "Player", "addHazardSystemPoints", PlayerFunctions::luaPlayerAddHazardSystemPoints);
+			registerMethod(L, "Player", "setHazardSystemPoints", PlayerFunctions::luaPlayerAddHazardSystemPoints);
 			registerMethod(L, "Player", "getHazardSystemPoints", PlayerFunctions::luaPlayerGetHazardSystemPoints);
 
 			registerMethod(L, "Player", "sendCreatureSquare", PlayerFunctions::luaPlayerSendCreatureSquare);

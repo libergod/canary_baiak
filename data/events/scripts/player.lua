@@ -985,11 +985,15 @@ function Player:onChangeZone(zone)
 	return false
 end
 
+function Player:onChangeHazard(isHazard)
+	if not isHazard then
+		self:setHazardSystemPoints(0)
+		player:getParty():updateHazard()
+		return true
+	end
+
+	return self:updateHazard()
+end
 
 function Player:onInventoryUpdate(item, slot, equip)
-	for k, functionCallback in pairs(EventCallback) do
-		if type(functionCallback) == "function" and k:sub(1, #("onInventoryUpdate")) == "onInventoryUpdate" then
-			functionCallback(self, item, slot, equip)
-		end
-	end
 end

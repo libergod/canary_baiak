@@ -27,6 +27,8 @@ dofile(CORE_DIRECTORY .. "/libs/vocation.lua")
 dofile(CORE_DIRECTORY .. "/libs/window.lua")
 dofile(CORE_DIRECTORY .. "/libs/forge_lib.lua")
 
+dofile(CORE_DIRECTORY .. "/libs/hazard_lib.lua")
+
 -- Callback events
 dofile(CORE_DIRECTORY .. "/libs/event_callback.lua")
 

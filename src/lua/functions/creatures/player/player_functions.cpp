@@ -3580,7 +3580,7 @@ int PlayerFunctions::luaPlayerGetName(lua_State* L) {
 
 // Hazard system
 int PlayerFunctions::luaPlayerAddHazardSystemPoints(lua_State* L) {
-	// player:addHazardSystemPoints(amount)
+	// player:setHazardSystemPoints(amount)
 	Player* player = getUserdata<Player>(L, 1);
 	if (!player) {
 		pushBoolean(L, false);
@@ -3588,7 +3588,7 @@ int PlayerFunctions::luaPlayerAddHazardSystemPoints(lua_State* L) {
 		return 1;
 	}
 
-	player->addHazardSystemPoints(getNumber<int32_t>(L, 2, 0));
+	player->setHazardSystemPoints(getNumber<int32_t>(L, 2, 0));
 	pushBoolean(L, true);
 	return 1;
 }

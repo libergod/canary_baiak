@@ -487,7 +487,7 @@ class ProtocolGame final : public Protocol {
 		void parsePacketDead(uint8_t recvbyte);
 
 		// Hazard system
-		void reloadHazardSystemIcon(uint16_t reference);
+		void reloadHazardSystemIcon();
 
 		uint8_t m_playerDeathTime = 0;
 
