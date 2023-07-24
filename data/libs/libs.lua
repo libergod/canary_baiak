@@ -29,3 +29,6 @@ dofile(CORE_DIRECTORY .. "/libs/forge_lib.lua")
 
 -- Callback events
 dofile(CORE_DIRECTORY .. "/libs/event_callback.lua")
+
+-- Loyalty System
+dofile(CORE_DIRECTORY .. "/libs/loyalty_lib.lua")

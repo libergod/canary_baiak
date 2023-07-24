@@ -498,12 +498,13 @@ void ConditionAttributes::updateStats(Player* player) {
 
 void ConditionAttributes::updatePercentSkills(Player* player) {
 	for (uint8_t i = SKILL_FIRST; i <= SKILL_LAST; ++i) {
-		if (skillsPercent[i] == 0) {
+		skills_t skill = static_cast<skills_t>(i);
+		if (skillsPercent[skill] == 0) {
 			continue;
 		}
 
-		int64_t unmodifiedSkill = player->getBaseSkill(i);
-		skills[i] = unmodifiedSkill * (skillsPercent[i] - 100) / 100;
+		int32_t unmodifiedSkill = player->getBaseSkill(skill);
+		skills[skill] = static_cast<int32_t>(unmodifiedSkill * ((skillsPercent[skill] - 100) / 100.f));
 	}
 }
 

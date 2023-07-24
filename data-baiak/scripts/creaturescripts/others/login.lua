@@ -343,6 +343,9 @@ function playerLogin.onLogin(player)
 			player:sendTextMessage(MESSAGE_BOOSTED_CREATURE, "Skill Rate Decreased! Your skills progresses at a lower rate.")
 		end
 	end
+	
+	-- Loyalty system
+	player:initializeLoyaltySystem()
 
 	-- Stamina
 	nextUseStaminaTime[playerId] = 1
