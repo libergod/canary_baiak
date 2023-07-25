@@ -74,6 +74,7 @@
 
 // GMP
 #include <gmp.h>
+#include <gsl/gsl-lite.hpp>
 
 // JSON
 #include <json/json.h>

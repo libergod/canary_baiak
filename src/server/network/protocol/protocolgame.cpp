@@ -5428,7 +5428,7 @@ void ProtocolGame::sendAddCreature(const Creature* creature, const Position &pos
 	sendBasicData();
 
 	// Wheel of destiny cooldown
-	if (!oldProtocol && g_configManager().getBoolean(TOGGLE_WHEELSYSTEM)) {
+	if (g_configManager().getBoolean(TOGGLE_WHEELSYSTEM)) {
 		player->wheel()->sendGiftOfLifeCooldown();
 	}
 
@@ -7371,7 +7371,7 @@ void ProtocolGame::reloadHazardSystemIcon() {
 }
 
 void ProtocolGame::parseOpenWheel(NetworkMessage &msg) {
-	if (oldProtocol || !g_configManager().getBoolean(TOGGLE_WHEELSYSTEM)) {
+	if (!g_configManager().getBoolean(TOGGLE_WHEELSYSTEM)) {
 		return;
 	}
 
@@ -7380,7 +7380,7 @@ void ProtocolGame::parseOpenWheel(NetworkMessage &msg) {
 }
 
 void ProtocolGame::sendOpenWheelWindow(uint32_t ownerId) {
-	if (!player || oldProtocol || !g_configManager().getBoolean(TOGGLE_WHEELSYSTEM)) {
+	if (!player || !g_configManager().getBoolean(TOGGLE_WHEELSYSTEM)) {
 		return;
 	}
 
@@ -7390,7 +7390,7 @@ void ProtocolGame::sendOpenWheelWindow(uint32_t ownerId) {
 }
 
 void ProtocolGame::parseSaveWheel(NetworkMessage &msg) {
-	if (oldProtocol || !g_configManager().getBoolean(TOGGLE_WHEELSYSTEM)) {
+	if (!g_configManager().getBoolean(TOGGLE_WHEELSYSTEM)) {
 		return;
 	}
 

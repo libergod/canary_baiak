@@ -365,7 +365,7 @@ void Events::eventCreatureOnHear(Creature* creature, Creature* speaker, const st
 	scriptInterface.callVoidFunction(4);
 }
 
-void Events::eventCreatureOnDrainHealth(Creature* creature, Creature* attacker, CombatType_t &typePrimary, int64_t &damagePrimary, CombatType_t &typeSecondary, int64_t &damageSecondary, TextColor_t &colorPrimary, TextColor_t &colorSecondary) {
+void Events::eventCreatureOnDrainHealth(Creature* creature, Creature* attacker, CombatType_t &typePrimary, int32_t &damagePrimary, CombatType_t &typeSecondary, int32_t &damageSecondary, TextColor_t &colorPrimary, TextColor_t &colorSecondary) {
 	if (info.creatureOnDrainHealth == -1) {
 		return;
 	}

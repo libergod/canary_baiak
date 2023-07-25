@@ -182,7 +182,7 @@ public:
 		int64_t getHealth() const {
 			return health;
 		}
-		virtual int64_t getMaxHealth() const {
+		virtual int32_t getMaxHealth() const {
 			return healthMax;
 		}
 		uint32_t getMana() const {
@@ -208,7 +208,7 @@ public:
 			maxManaShield = value;
 		}
 
-		int64_t getBuff(int64_t buff) {
+		int32_t getBuff(int32_t buff) {
 			return varBuffs[buff];
 		}
 
@@ -216,7 +216,7 @@ public:
 			return varBuffs[buff];
 		}
 
-		void setBuff(buffs_t buff, int64_t modifier) {
+		void setBuff(buffs_t buff, int32_t modifier) {
 			varBuffs[buff] += modifier;
 		}
 
@@ -283,7 +283,7 @@ public:
 		 */
 		void mitigateDamage(const CombatType_t &combatType, BlockType_t &blockType, int32_t &damage) const;
 
-		virtual BlockType_t blockHit(Creature* attacker, CombatType_t combatType, int64_t &damage, bool checkDefense = false, bool checkArmor = false, bool field = false);
+		virtual BlockType_t blockHit(Creature* attacker, CombatType_t combatType, int32_t &damage, bool checkDefense = false, bool checkArmor = false, bool field = false);
 
 	bool setMaster(Creature* newMaster, bool reloadCreature = false);
 

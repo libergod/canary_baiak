@@ -250,16 +250,6 @@ std::string Player::getDescription(int32_t lookDistance) const {
 	return s.str();
 }
 
-int64_t Player::getMaxHealth() const {
-	auto safeConverted = toSafeNumber<int64_t>(__FUNCTION__, std::max<int64_t>(0, healthMax + varStats[STAT_MAXHITPOINTS]));
-	return safeConverted;
-}
-
-uint32_t Player::getMaxMana() const {
-	auto safeConverted = toSafeNumber<uint32_t>(__FUNCTION__, std::max<int64_t>(0, manaMax + varStats[STAT_MAXMANAPOINTS]));
-	return safeConverted;
-}
-
 Item* Player::getInventoryItem(Slots_t slot) const {
 	if (slot < CONST_SLOT_FIRST || slot > CONST_SLOT_LAST) {
 		return nullptr;
@@ -2523,7 +2513,7 @@ bool Player::hasShield() const {
 	return false;
 }
 
-BlockType_t Player::blockHit(Creature* attacker, CombatType_t combatType, int64_t &damage, bool checkDefense /* = false*/, bool checkArmor /* = false*/, bool field /* = false*/) {
+BlockType_t Player::blockHit(Creature* attacker, CombatType_t combatType, int32_t &damage, bool checkDefense /* = false*/, bool checkArmor /* = false*/, bool field /* = false*/) {
 	BlockType_t blockType = Creature::blockHit(attacker, combatType, damage, checkDefense, checkArmor, field);
 
 	if (attacker) {

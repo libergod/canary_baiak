@@ -633,11 +633,11 @@ void Monster::onFollowCreatureComplete(const Creature* creature) {
 	}
 }
 
-BlockType_t Monster::blockHit(Creature* attacker, CombatType_t combatType, int64_t &damage, bool checkDefense /* = false*/, bool checkArmor /* = false*/, bool /* field = false */) {
+BlockType_t Monster::blockHit(Creature* attacker, CombatType_t combatType, int32_t &damage, bool checkDefense /* = false*/, bool checkArmor /* = false*/, bool /* field = false */) {
 	BlockType_t blockType = Creature::blockHit(attacker, combatType, damage, checkDefense, checkArmor);
 
 	if (damage != 0) {
-		int64_t elementMod = 0;
+		int32_t elementMod = 0;
 		auto it = mType->info.elementMap.find(combatType);
 		if (it != mType->info.elementMap.end()) {
 			elementMod = it->second;
