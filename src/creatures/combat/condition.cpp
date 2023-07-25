@@ -23,6 +23,11 @@ bool Condition::setParam(ConditionParam_t param, int64_t value) {
 		return true;
 	}
 
+		case CONDITION_PARAM_DRAIN_BODY: {
+		drainBodyStage = std::min(static_cast<uint8_t>(value), std::numeric_limits<uint8_t>::max());
+		return true;
+	}
+
 	case CONDITION_PARAM_BUFF_SPELL: {
 		isBuff = (value != 0);
 		return true;
@@ -341,6 +346,10 @@ bool ConditionGeneric::startCondition(Creature* creature) {
 void ConditionGeneric::endCondition(Creature*) { }
 
 void ConditionGeneric::addCondition(Creature* creature, const Condition* addCondition) {
+	if (!creature) {
+		return;
+	}
+
 	if (updateCondition(addCondition)) {
 		setTicks(addCondition->getTicks());
 
@@ -398,6 +407,10 @@ void ConditionAttributes::addCondition(Creature* creature, const Condition* addC
 			updatePercentStats(player);
 			updateStats(player);
 		}
+	}
+
+	if (drainBodyStage > 0) {
+		creature->setWheelOfDestinyDrainBodyDebuff(drainBodyStage);
 	}
 }
 

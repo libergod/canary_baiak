@@ -35,6 +35,9 @@ static constexpr int32_t STORAGEVALUE_BESTIARYKILLCOUNT = 61305000; // Can get u
 // Hazard system storage
 static constexpr int32_t STORAGEVALUE_HAZARDCOUNT = 112550;
 
+// Wheel of destiny
+static constexpr int32_t STORAGEVALUE_GIFT_OF_LIFE_COOLDOWN_WOD = 43200;
+
 // Reserved player storage key ranges;
 // [10000000 - 20000000];
 static constexpr int32_t PSTRG_RESERVED_RANGE_START = 10000000;

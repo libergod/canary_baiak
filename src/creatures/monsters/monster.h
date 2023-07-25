@@ -75,6 +75,10 @@ class Monster final : public Creature {
 			masterPos = pos;
 		}
 
+		float getMitigation() const override {
+			return mType->info.mitigation;
+		}
+
 	RaceType_t getRace() const override {
 		return mType->info.race;
 	}
@@ -151,7 +155,7 @@ class Monster final : public Creature {
 
 	bool challengeCreature(Creature* creature) override;
 
-	bool changeTargetDistance(int32_t distance);
+	bool changeTargetDistance(int32_t distance, uint32_t duration = 12000);
 
 	CreatureIcon_t getIcon() const override {
 		if (challengeMeleeDuration > 0 && mType->info.targetDistance > targetDistance) {
