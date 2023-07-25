@@ -323,6 +323,7 @@
     <ClCompile Include="..\src\map\map.cpp" />
     <ClCompile Include="..\src\otserv.cpp" />
     <ClCompile Include="..\src\protobuf\appearances.pb.cc" />
+	<ClCompile Include="..\src\security\argon.cpp" />
     <ClCompile Include="..\src\security\rsa.cpp" />
     <ClCompile Include="..\src\server\network\connection\connection.cpp" />
     <ClCompile Include="..\src\server\network\message\networkmessage.cpp" />

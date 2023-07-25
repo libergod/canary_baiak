@@ -7,6 +7,10 @@ dataPackDirectory = "data-otservbr-global"
 -- Don't change this unless you know what you're doing
 coreDirectory = "data"
 
+-- Enable/disable development mode
+-- NOTE: In development mode, additional logs will be enabled, for deputation and testing purposes.
+developmentMode = false
+
 -- Combat settings
 -- NOTE: valid values for worldType are: "pvp", "no-pvp" and "pvp-enforced"
 worldType = "pvp"
@@ -143,6 +147,12 @@ loyaltyPointsPerPremiumDaySpent = 0
 loyaltyPointsPerPremiumDayPurchased = 0
 loyaltyBonusPercentageMultiplier = 1.0
 
+-- Wheel of destiny system
+-- NOTE: set wheelSystemEnabled = false to disable the wheel of destiny
+-- NOTE: only the wheel points are modified, all other data is on the client executable and cannot be modified
+wheelSystemEnabled = true
+wheelPointsPerLevel = 1
+
 -- Familiar system
 -- NOTE: the time will be divided by 2 to get half the value, the familiar lasts 15 minutes by default and the cooldown of the spell is 30 minutes
 -- Only change it here if you know what you are doing or to make testing easier with familiars
@@ -275,6 +285,19 @@ mysqlDatabase = "otservbr-global"
 mysqlPort = 3306
 mysqlSock = ""
 passwordType = "sha1"
+
+
+-- NOTE: memoryConst: This is the memory cost for the Argon2 hash algorithm. It specifies the amount of memory that the algorithm will use when calculating a hash.
+--The memory cost is measured in units of KiB (1024 bytes). A higher memory cost makes the algorithm more resistant to brute-force and hash-table attacks, but also consumes more memory.
+-- NOTE: temporaryConst: This is the time cost for the Argon2 hash algorithm. It specifies the amount of computational time that the algorithm will spend when calculating a hash.
+--A higher time cost makes the algorithm more secure but also slower.
+-- NOTE: parallelism: This is the parallelism factor for the Argon2 hash algorithm. It specifies the number of parallel threads that the algorithm will use when calculating a hash.
+--In general, a higher level of parallelism can make the algorithm faster on systems with multiple CPU cores, but it can also increase memory usage.
+-- NOTE: These settings have to be the same on the site and server.
+memoryConst = "1<<16"
+temporaryConst= 2
+parallelism = 2
+
 
 -- Misc.
 -- NOTE: experienceDisplayRates: set to false to ignore exp rate or true to include exp rate

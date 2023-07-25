@@ -215,6 +215,10 @@ void ConfigFunctions::init(lua_State* L) {
 	registerEnumIn(L, "configKeys", LOYALTY_POINTS_PER_PREMIUM_DAY_SPENT);
 	registerEnumIn(L, "configKeys", LOYALTY_POINTS_PER_PREMIUM_DAY_PURCHASED);
 	registerEnumIn(L, "configKeys", LOYALTY_BONUS_PERCENTAGE_MULTIPLIER);
+	
+	registerEnumIn(L, "configKeys", M_CONST);
+	registerEnumIn(L, "configKeys", T_CONST);
+	registerEnumIn(L, "configKeys", PARALLELISM);
 
 #undef registerEnumIn
 }

@@ -50,6 +50,7 @@ option(OPTIONS_ENABLE_OPENMP "Enable Open Multi-Processing support." ON)
 option(DEBUG_LOG "Enable Debug Log" OFF)
 option(ASAN_ENABLED "Build this target with AddressSanitizer" OFF)
 option(BUILD_STATIC_LIBRARY "Build using static libraries" OFF)
+option(SPEED_UP_BUILD_UNITY "Compile using build unity for speed up build" ON)
 
 
 # *****************************************************************************
@@ -130,6 +131,12 @@ endif(DEBUG_LOG)
 # === PRECOMPILED HEADER ===
 target_precompile_headers(${PROJECT_NAME} PRIVATE pch.hpp)
 
+# === UNITY BUILD (compile time reducer) ===
+if(SPEED_UP_BUILD_UNITY)
+	set_target_properties(${PROJECT_NAME} PROPERTIES UNITY_BUILD ON)
+	log_option_enabled("Build unity for speed up compilation")
+endif()
+
 # *****************************************************************************
 # Packages / Libs
 # *****************************************************************************
@@ -137,7 +144,6 @@ find_package(asio CONFIG REQUIRED)
 find_package(absl CONFIG REQUIRED)
 find_package(CURL CONFIG REQUIRED)
 find_package(GMP REQUIRED)
-find_package(gsl-lite CONFIG REQUIRED)
 find_package(jsoncpp CONFIG REQUIRED)
 find_package(LuaJIT REQUIRED)
 find_package(MySQL REQUIRED)
@@ -145,6 +151,7 @@ find_package(magic_enum CONFIG REQUIRED)
 find_package(Protobuf REQUIRED)
 find_package(pugixml CONFIG REQUIRED)
 find_package(spdlog REQUIRED)
+find_package(unofficial-argon2 CONFIG REQUIRED)
 find_package(unofficial-libmariadb CONFIG REQUIRED)
 find_package(mio REQUIRED)
 find_package(Threads REQUIRED)
@@ -180,6 +187,7 @@ PRIVATE
 	creatures/players/management/ban.cpp
 	creatures/players/management/waitlist.cpp
 	creatures/players/player.cpp
+	creatures/players/wheel/player_wheel.cpp
 	creatures/players/vocations/vocation.cpp
 	database/database.cpp
 	database/databasemanager.cpp
@@ -192,6 +200,7 @@ PRIVATE
 	game/scheduling/events_scheduler.cpp
 	game/scheduling/tasks.cpp
 	io/fileloader.cpp
+	io/io_wheel.cpp
 	io/iobestiary.cpp
 	io/io_bosstiary.cpp
 	io/ioguild.cpp
@@ -288,6 +297,8 @@ PRIVATE
 	map/house/housetile.cpp
 	map/map.cpp
 	otserv.cpp
+	pch.cpp
+	security/argon.cpp
 	security/rsa.cpp
 	server/network/connection/connection.cpp
 	server/network/message/networkmessage.cpp
@@ -346,12 +357,12 @@ if (MSVC)
 			absl::any absl::log absl::base absl::bits
 			CURL::libcurl
 			fmt::fmt
-			gsl::gsl-lite
 			magic_enum::magic_enum
 			mio::mio
 			protobuf::libprotobuf
 			pugixml::pugixml
 			spdlog::spdlog
+			unofficial::argon2::libargon2
 			unofficial::libmariadb
 			unofficial::mariadbclient
 			ZLIB::ZLIB
@@ -375,13 +386,13 @@ else()
 			absl::any absl::log absl::base absl::bits
 			CURL::libcurl
 			fmt::fmt
-			gsl::gsl-lite
 			jsoncpp_static
 			magic_enum::magic_enum
 			mio::mio
 			protobuf::libprotobuf
 			pugixml::pugixml
 			spdlog::spdlog
+			unofficial::argon2::libargon2
 			unofficial::libmariadb
 			unofficial::mariadbclient
 			ZLIB::ZLIB

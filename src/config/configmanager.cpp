@@ -339,6 +339,10 @@ bool ConfigManager::load() {
 	integer[LOYALTY_POINTS_PER_PREMIUM_DAY_PURCHASED] = getGlobalNumber(L, "loyaltyPointsPerPremiumDayPurchased", 0);
 	floating[LOYALTY_BONUS_PERCENTAGE_MULTIPLIER] = getGlobalFloat(L, "loyaltyBonusPercentageMultiplier", 1.0);
 
+	string[M_CONST] = getGlobalString(L, "memoryConst", "1<<16");
+	integer[T_CONST] = getGlobalNumber(L, "temporaryConst", 2);
+	integer[PARALLELISM] = getGlobalNumber(L, "parallelism", 2);
+	
 	loaded = true;
 	lua_close(L);
 	return true;
