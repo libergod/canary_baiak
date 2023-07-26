@@ -215,7 +215,9 @@ void ConfigFunctions::init(lua_State* L) {
 	registerEnumIn(L, "configKeys", LOYALTY_POINTS_PER_PREMIUM_DAY_SPENT);
 	registerEnumIn(L, "configKeys", LOYALTY_POINTS_PER_PREMIUM_DAY_PURCHASED);
 	registerEnumIn(L, "configKeys", LOYALTY_BONUS_PERCENTAGE_MULTIPLIER);
-	
+	registerEnumIn(L, "configKeys", TOGGLE_ATTACK_SPEED_ONFIST);
+	registerEnumIn(L, "configKeys", MULTIPLIER_ATTACKONFIST);
+	registerEnumIn(L, "configKeys", MAX_SPEED_ATTACKONFIST);
 	registerEnumIn(L, "configKeys", M_CONST);
 	registerEnumIn(L, "configKeys", T_CONST);
 	registerEnumIn(L, "configKeys", PARALLELISM);
