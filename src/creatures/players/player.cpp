@@ -1230,60 +1230,28 @@ ReturnValue Player::rewardChestCollect(const Container* fromCorpse /* = nullptr*
 		return fromCorpse ? RETURNVALUE_REWARDCONTAINERISEMPTY : RETURNVALUE_REWARDCHESTISEMPTY;
 	}
 
-	uint32_t movedRewardItems = 0;
 	auto rewardCount = rewardItemsVector.size();
-	bool fallbackConsumed = false;
-	Item* fallbackItem = getInventoryItem(CONST_SLOT_BACKPACK);
-	int32_t movedMoney = 0;
+	uint32_t movedRewardItems = 0;
 	for (auto item : rewardItemsVector) {
-		if (uint32_t worth = item->getWorth(); worth > 0) {
-			movedMoney += worth;
-			g_game().internalRemoveItem(item);
-			rewardCount--;
-			continue;
-		}
-
-		ObjectCategory_t category = g_game().getObjectCategory(item);
-		Container* lootContainer = getLootContainer(category);
-		// Limit the collect count if the "maxMoveItems" is not "0"
-		auto limitMove = maxMoveItems != 0 && movedItems == maxMoveItems;
-		if (!lootContainer && !quickLootFallbackToMainContainer || limitMove) {
-			if (limitMove) {
-				sendCancelMessage(fmt::format("You can only collect {} items at a time.", maxMoveItems));
-			} else {
-				sendTextMessage(MESSAGE_EVENT_ADVANCE, "Your main backpack is not configured.");
-			}
+		// Stop if player not have free capacity
+		if (getCapacity() < item->getWeight()) {
 			break;
 		}
 
-		if (fallbackItem) {
-			if (Container* mainBackpack = fallbackItem->getContainer(); mainBackpack && !fallbackConsumed) {
-				setLootContainer(OBJECTCATEGORY_DEFAULT, mainBackpack);
-				sendInventoryItem(CONST_SLOT_BACKPACK, fallbackItem);
-			}
-
-			lootContainer = fallbackItem->getContainer();
-			fallbackConsumed = true;
-		}
-
-		if (!lootContainer) {
-			sendTextMessage(MESSAGE_EVENT_ADVANCE, "You don't have any backpack configured in quickloot to retrieve items.");
+		// Limit the collect count if the "maxMoveItems" is not "0"
+		auto limitMove = maxMoveItems != 0 && movedRewardItems == maxMoveItems;
+		if (limitMove) {
+			sendCancelMessage(fmt::format("You can only collect {} items at a time.", maxMoveItems));
 			return RETURNVALUE_NOTPOSSIBLE;
 		}
 
-		auto recurseReturn = recurseMoveItemToContainer(item, lootContainer);
-		if (recurseReturn != RETURNVALUE_NOERROR) {
-			continue;
+		ObjectCategory_t category = g_game().getObjectCategory(item);
+		if (g_game().internalQuickLootItem(this, item, category) == RETURNVALUE_NOERROR) {
+			movedRewardItems++;
 		}
-
-		movedRewardItems++;
 	}
 
-	if (movedMoney > 0) {
-		setBankBalance(getBankBalance() + movedMoney);
-	}
-
-	auto lootedMessage = fmt::format("{} of {} objects were picked up and {} gold moved to your bank.", movedRewardItems, rewardCount, movedMoney);
+	auto lootedMessage = fmt::format("{} of {} objects were picked up.", movedRewardItems, rewardCount);
 	sendTextMessage(MESSAGE_EVENT_ADVANCE, lootedMessage);
 
 	auto finalReturn = movedRewardItems == 0 ? RETURNVALUE_NOTENOUGHROOM : RETURNVALUE_NOERROR;
