@@ -73,6 +73,11 @@ OTHERS:
 - Arrumar o restaure de Exp - OK
 - Arrumar sprites do evento Snake - OK
 
+- Adicionar Boss, Mobs, NPC, e Mapa - https://github.com/opentibiabr/canary/pull/1224/files
+- Ajustar Entra/saida nos arquivos - D:\Github\canary_baiak\data-baiak\scripts\actions\quests\adventures_of_galthen\iksupan_entrance.lua
+				   - D:\Github\canary_baiak\data-baiak\scripts\actions\quests\adventures_of_galthen\iksupan_exit.lua
+			           - D:\Github\canary_baiak\data-baiak\scripts\movements\teleport\gnomprona.lua
+
 - Implementar zombie - 
 - Ajustar tp saida do snowballevent - (1553,852,7) - 
 
