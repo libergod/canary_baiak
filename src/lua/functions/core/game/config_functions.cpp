@@ -215,6 +215,12 @@ void ConfigFunctions::init(lua_State* L) {
 	registerEnumIn(L, "configKeys", LOYALTY_POINTS_PER_PREMIUM_DAY_SPENT);
 	registerEnumIn(L, "configKeys", LOYALTY_POINTS_PER_PREMIUM_DAY_PURCHASED);
 	registerEnumIn(L, "configKeys", LOYALTY_BONUS_PERCENTAGE_MULTIPLIER);
+
+	registerEnumIn(L, "configKeys", PARTY_SHARE_LOOT_BOOSTS);
+	registerEnumIn(L, "configKeys", TIBIADROME_CONCOCTION_COOLDOWN);
+	registerEnumIn(L, "configKeys", TIBIADROME_CONCOCTION_DURATION);
+	registerEnumIn(L, "configKeys", TIBIADROME_CONCOCTION_TICK_TYPE);
+
 	registerEnumIn(L, "configKeys", TOGGLE_ATTACK_SPEED_ONFIST);
 	registerEnumIn(L, "configKeys", MULTIPLIER_ATTACKONFIST);
 	registerEnumIn(L, "configKeys", MAX_SPEED_ATTACKONFIST);

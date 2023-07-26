@@ -34,3 +34,6 @@ dofile(CORE_DIRECTORY .. "/libs/event_callback.lua")
 
 -- Loyalty System
 dofile(CORE_DIRECTORY .. "/libs/loyalty_lib.lua")
+
+-- Concoctions System
+dofile(CORE_DIRECTORY .. "/libs/concoctions_lib.lua")

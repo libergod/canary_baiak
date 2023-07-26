@@ -355,6 +355,9 @@ function playerLogin.onLogin(player)
 
 	-- EXP Stamina
 	nextUseXpStamina[playerId] = 1
+	
+	-- Concoction Duration
+	nextUseConcoctionTime[playerId] = 1
 
 	if (player:getAccountType() == ACCOUNT_TYPE_TUTOR) then
 	local msg = [[:: Tutor Rules

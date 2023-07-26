@@ -109,6 +109,10 @@ if nextUseXpStamina == nil then
 	nextUseXpStamina = {}
 end
 
+if nextUseConcoctionTime == nil then
+	nextUseConcoctionTime = {}
+end
+
 if lastItemImbuing == nil then
 	lastItemImbuing = {}
 end
