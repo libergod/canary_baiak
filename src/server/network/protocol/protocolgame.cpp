@@ -3067,7 +3067,7 @@ void ProtocolGame::sendCyclopediaCharacterGeneralStats() {
 		static const uint8_t HardcodedSkillIds[] = { 11, 9, 8, 10, 7, 6, 13 };
 		skills_t skill = static_cast<skills_t>(i);
 		msg.addByte(HardcodedSkillIds[i]);
-		msg.add<uint16_t>(std::min<int32_t>(player->getSkillLevel(skill, true), std::numeric_limits<uint16_t>::max()));
+		msg.add<uint16_t>(std::min<int32_t>(player->getSkillLevel(skill), std::numeric_limits<uint16_t>::max()));
 		msg.add<uint16_t>(player->getBaseSkill(skill));
 		msg.add<uint16_t>(player->getLoyaltySkill(skill));
 		msg.add<uint16_t>(player->getSkillPercent(skill) * 100);
@@ -6300,7 +6300,7 @@ void ProtocolGame::AddPlayerSkills(NetworkMessage &msg) {
 
 	for (uint8_t i = SKILL_CRITICAL_HIT_CHANCE; i <= SKILL_LAST; ++i) {
 		skills_t skill = static_cast<skills_t>(i);
-		msg.add<uint16_t>(std::min<int32_t>(player->getSkillLevel(skill, true), std::numeric_limits<uint16_t>::max()));
+		msg.add<uint16_t>(std::min<int32_t>(player->getSkillLevel(skill), std::numeric_limits<uint16_t>::max()));
 		msg.add<uint16_t>(player->getBaseSkill(skill));
 	}
 
