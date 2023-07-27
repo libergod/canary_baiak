@@ -461,9 +461,6 @@ class ProtocolGame final : public Protocol {
 		// otclient
 		void parseExtendedOpcode(NetworkMessage &msg);
 
-		// OTCv8
-		void sendFeatures();
-
 		// reloadCreature
 		void reloadCreature(const Creature* creature);
 
@@ -494,8 +491,6 @@ class ProtocolGame final : public Protocol {
 		bool shouldAddExivaRestrictions = false;
 
 		bool oldProtocol = false;
-
-		uint16_t otclientV8 = 0;
 
 		void sendInventory();
 		void sendOpenStash();
