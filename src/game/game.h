@@ -367,7 +367,6 @@ class Game {
 		void playerSaveWheel(uint32_t playerId, NetworkMessage &msg);
 
 		static void updatePremium(account::Account &account);
-		void updatePlayerHelpers(Player* player);
 
 		void cleanup();
 		void shutdown();

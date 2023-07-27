@@ -310,15 +310,7 @@ function parseRequestStoreOffers(playerId, msg)
 
 	local actionType = msg:getByte()
 
-	local oldProtocol = player:getClient().version < 1200
-
-	if oldProtocol then
-		local categoryName = msg:getString()
-		local category = GameStore.getCategoryByName(categoryName, player)
-		if category then
-			addPlayerEvent(sendShowStoreOffersOnOldProtocol, 350, playerId, category)
-		end
-	elseif actionType == GameStore.ActionType.OPEN_CATEGORY then
+	if actionType == GameStore.ActionType.OPEN_CATEGORY then
 		local categoryName = msg:getString()
 		local category = GameStore.getCategoryByName(categoryName)
 		if category then
@@ -515,12 +507,8 @@ function openStore(playerId)
 		return false
 	end
 
-	local oldProtocol = player:getClient().version < 1200
 	local msg = NetworkMessage()
 	msg:addByte(GameStore.SendingPackets.S_OpenStore)
-	if oldProtocol then
-		msg:addByte(0x00)
-	end
 
 	local GameStoreCategories, GameStoreCount = nil, 0
 	if (player:getVocation():getId() == 0) then
@@ -533,18 +521,10 @@ function openStore(playerId)
 		msg:addU16(GameStoreCount)
 		for k, category in ipairs(GameStoreCategories) do
 			msg:addString(category.name)
-			if oldProtocol then
-				msg:addString(category.description)
-			end
-			
 			msg:addByte(category.state or GameStore.States.STATE_NONE)
-			local size = #category.icons > 255 and 255 or #category.icons
-			msg:addByte(size)			
+			msg:addByte(#category.icons)
 			for m, icon in ipairs(category.icons) do
-				if size > 0 then
-					msg:addString(icon)
-					size = size - 1
-				end
+				msg:addString(icon)
 			end
 
 			if category.parent then
@@ -754,29 +734,17 @@ function sendShowStoreOffers(playerId, category, redirectId)
 	if not player then
 		return false
 	end
-	
-	local oldProtocol = player:getClient().version < 1200
 
 	local msg = NetworkMessage()
 	local haveSaleOffer = 0
 	msg:addByte(GameStore.SendingPackets.S_StoreOffers)
 	msg:addString(category.name)
 
-	local categoryLimit = 65535
-	if oldProtocol then
-		categoryLimit = 30
-	elseif category.offers then
-		categoryLimit = #category.offers > categoryLimit and categoryLimit or #category.offers
-	else
-		categoryLimit = 0
-	end
+	msg:addU32(redirectId or 0)
 
-	if not(oldProtocol) then
-		msg:addU32(redirectId or 0)
-		msg:addByte(0) -- Window Type
-		msg:addByte(0) -- Collections Size
-		msg:addU16(0) -- Collection Name
-	end
+	msg:addByte(0) -- Window Type
+	msg:addByte(0) -- Collections Size
+	msg:addU16(0) -- Collection Name
 
 	if not category.offers then
 		msg:addU16(0) -- Disable reasons
@@ -830,14 +798,10 @@ function sendShowStoreOffers(playerId, category, redirectId)
 		msg:addString(reason)
 	end
 
-	if count > categoryLimit then
-		count = categoryLimit
-	end
-
 	msg:addU16(count)
-	for name, offer in pairs(offers) do
-		if count > 0 then
-			count = count - 1
+
+	if count > 0 then
+		for name, offer in pairs(offers) do
 			msg:addString(name)
 			msg:addByte(#offer.offers)
 			sendOfferDescription(player, offer.id and offer.id or 0xFFFF, offer.description)
@@ -936,115 +900,11 @@ function sendShowStoreOffers(playerId, category, redirectId)
 	msg:delete()
 end
 
-function sendShowStoreOffersOnOldProtocol(playerId, category)
-	local player = Player(playerId)
-	if not player then
-		return false
-	end
-
-	local msg = NetworkMessage()
-	local haveSaleOffer = 0
-	msg:addByte(GameStore.SendingPackets.S_StoreOffers)
-	msg:addString(category.name)
-
-	if not(category.offers) then
-		msg:addU16(0)
-		msg:sendToPlayer(player)
-		player:sendButtonIndication(haveSaleOffer, 1)
-		return
-	end
-
-	local limit = 30
-	local count = 0
-	for _, offer in ipairs(category.offers) do
-		if limit > 0 then
-			-- Blocking offers that are not on coin currency. On old protocol we cannot change or validate any currency instead the default (Coin)
-			if (not(offer.coinType) or offer.coinType == GameStore.CointType.Coin) then
-				count = count + 1
-			end
-			limit = limit - 1
-		end
-	end
-
-	msg:addU16(count)
-	for _, offer in ipairs(category.offers) do
-		if (count > 0 and offer.coinType == GameStore.CointType.Coin) then
-			count = count - 1
-			local name = ""
-			if offer.type == GameStore.OfferTypes.OFFER_TYPE_ITEM and offer.count then
-				name = offer.count .. "x "
-			end
-
-			if offer.type == GameStore.OfferTypes.OFFER_TYPE_STACKABLE and offer.count then
-				name = offer.count .. "x "
-			end
-
-			name = name .. (offer.name or "Something Special")
-			local newPrice = nil
-			if (offer.state == GameStore.States.STATE_SALE) then
-				local daySub = offer.validUntil - os.sdate("*t").day
-				if (daySub < 0) then
-					newPrice = offer.basePrice
-				end
-			end
-
-			local disabled, disabledReason = player:canBuyOffer(offer).disabled, player:canBuyOffer(offer).disabledReason
-			local offerPrice = offer.type == GameStore.OfferTypes.OFFER_TYPE_EXPBOOST and GameStore.ExpBoostValues[player:getStorageValue(GameStore.Storages.expBoostCount)] or (newPrice or offer.price or 0xFFFF)
-			msg:addU32(offer.id and offer.id or 0xFFFF)
-			msg:addString(name)
-			msg:addString(offer.description or GameStore.getDefaultDescription(offer.type,offer.count))
-			msg:addU32(offerPrice)
-			if (offer.state) then
-				if (offer.state == GameStore.States.STATE_SALE) then
-					local daySub = offer.validUntil - os.sdate("*t").day
-					if (daySub >= 0) then
-						msg:addByte(offer.state)
-						msg:addU32(os.stime() + daySub * 86400)
-						msg:addU32(offer.basePrice)
-						haveSaleOffer = 1
-					else
-						msg:addByte(GameStore.States.STATE_NONE)
-					end
-				else
-					msg:addByte(offer.state)
-				end
-			else
-				msg:addByte(GameStore.States.STATE_NONE)
-			end
-
-			msg:addByte(disabled)
-			if disabled == 1 then
-				msg:addString(disabledReason)
-			end
-
-			if offer.type == GameStore.OfferTypes.OFFER_TYPE_MOUNT then
-				msg:addByte(1)
-				msg:addString((offer.name):gsub("% ", "_") .. ".png")
-			elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_OUTFIT then
-				msg:addByte(2)
-				msg:addString(offer.icons[1])
-				msg:addString(offer.icons[2])
-			else
-				msg:addByte(#offer.icons)
-				for k, icon in ipairs(offer.icons) do
-					msg:addString(icon)
-				end
-			end
-
-			msg:addU16(0) -- Suboffers
-		end
-	end
-
-	player:sendButtonIndication(haveSaleOffer, 1)
-	msg:sendToPlayer(player)
-end
-
 function sendStoreTransactionHistory(playerId, page, entriesPerPage)
 	local player = Player(playerId)
 	if not player then
 		return false
 	end
-	local oldProtocol = player:getClient().version < 1200
 	local totalEntries = GameStore.retrieveHistoryTotalPages(player:getAccountId())
 	local totalPages = math.ceil(totalEntries / entriesPerPage)
 	local entries = GameStore.retrieveHistoryEntries(player:getAccountId(), page, entriesPerPage) -- this makes everything easy!
@@ -1059,19 +919,13 @@ function sendStoreTransactionHistory(playerId, page, entriesPerPage)
 	msg:addByte(#entries)
 
 	for k, entry in ipairs(entries) do
-		if not(oldProtocol) then
-			msg:addU32(0)
-		end
+		msg:addU32(0)
 		msg:addU32(entry.time)
 		msg:addByte(entry.mode) -- 0 = normal, 1 = gift, 2 = refund
-		msg:addU32(entry.amount)
-		if not oldProtocol then
-			msg:addByte(0x0) -- 0 = transferable tibia coin, 1 = normal tibia coin
-		end
+		msg:add32(entry.amount)
+		msg:addByte(entry.type) -- 0 = transferable tibia coin, 1 = normal tibia coin
 		msg:addString(entry.description)
-		if not(oldProtocol) then
-			msg:addByte(0) -- details
-		end
+		msg:addByte(0) -- details
 	end
 	msg:sendToPlayer(player)
 end
@@ -1082,20 +936,11 @@ function sendStorePurchaseSuccessful(playerId, message)
 		return false
 	end
 
-	local oldProtocol = player:getClient().version < 1200
-	
 	local msg = NetworkMessage()
 	msg:addByte(GameStore.SendingPackets.S_CompletePurchase)
 	msg:addByte(0x00)
 	msg:addString(message)
-	if oldProtocol then
-		-- Send all coins can be used for buy store offers
-		local totalCoins = player:getTibiaCoins() + player:getTransferableCoins()
-		msg:addU32(totalCoins)
-		-- Send transferable coins can be used on transfer
-		msg:addU32(player:getTransferableCoins())
-	end
-	
+
 	msg:sendToPlayer(player)
 end
 
@@ -1119,7 +964,7 @@ function sendStoreBalanceUpdating(playerId, updating)
 	if not player then
 		return false
 	end
-		
+
 	local msg = NetworkMessage()
 	msg:addByte(GameStore.SendingPackets.S_CoinBalanceUpdating)
 	msg:addByte(0x00)
@@ -1136,8 +981,6 @@ function sendUpdatedStoreBalances(playerId)
 		return false
 	end
 
-	local oldProtocol = player:getClient().version < 1200
-	
 	local msg = NetworkMessage()
 	msg:addByte(GameStore.SendingPackets.S_CoinBalanceUpdating)
 	msg:addByte(0x01)
@@ -1149,12 +992,11 @@ function sendUpdatedStoreBalances(playerId)
 	local totalCoins = player:getTibiaCoins() + player:getTransferableCoins()
 	msg:addU32(totalCoins)
 	msg:addU32(player:getTransferableCoins()) -- How many are Transferable
-	if not oldProtocol then
-		-- How many are reserved for a Character Auction
-		-- We currently do not have this system implemented, so we will send 0
-		msg:addU32(0)
-	end
 	
+	msg:addU32(0) -- How many are reserved for a Character Auction
+	
+	--msg:addU32(player:getCoinsBalanceTournaments()) -- Tournament Coins
+
 	msg:sendToPlayer(player)
 end
 
@@ -1312,6 +1154,7 @@ GameStore.retrieveHistoryEntries = function(accountId, currentPage, entriesPerPa
 				mode = result.getNumber(resultId, "mode"),
 				description = result.getString(resultId, "description"),
 				amount = result.getNumber(resultId, "coin_amount"),
+				type = result.getNumber(resultId, "coin_type"),
 				time = result.getNumber(resultId, "time"),
 			}
 			table.insert(entries, entry)
@@ -1809,10 +1652,6 @@ end
 function GameStore.processHirelingPurchase(player, offer, productType, hirelingName, chosenSex)
 	local playerId = player:getId()
 	local offerId = offer.id
-	
-	if player:getClient().version < 1200 then
-		return error({code = 1, message = "You cannot buy hirelings on client 10, please relog on client 12 and try again."})
-	end
 
 	if productType == GameStore.ClientOfferTypes.CLIENT_STORE_OFFER_HIRELING then
 
@@ -1846,11 +1685,6 @@ end
 function GameStore.processHirelingChangeNamePurchase(player, offer, productType, newHirelingName)
 	local playerId = player:getId()
 	local offerId = offer.id
-	
-	if player:getClient().version < 1200 then
-		return error({code = 1, message = "You cannot buy hireling change name on client 10, please relog on client 12 and try again."})
-	end
-	
 	if productType == GameStore.ClientOfferTypes.CLIENT_STORE_OFFER_NAMECHANGE then
 		local result = GameStore.canUseHirelingName(newHirelingName)
 		if not result.ability then
@@ -1871,10 +1705,6 @@ end
 
 function GameStore.processHirelingChangeSexPurchase(player, offer)
 	local playerId = player:getId()
-	
-	if player:getClient().version < 1200 then
-		return error({code = 1, message = "You cannot buy hireling change sex on client 10, please relog on client 12 and try again."})
-	end
 
 	local message = 'Close the store window to select which hireling should have the sex changed.'
 	addPlayerEvent(sendStorePurchaseSuccessful, 200, playerId, message)
@@ -1883,10 +1713,6 @@ function GameStore.processHirelingChangeSexPurchase(player, offer)
 end
 
 function GameStore.processHirelingSkillPurchase(player, offer)
-	if player:getClient().version < 1200 then
-		return error({code = 1, message = "You cannot buy hireling skill on client 10, please relog on client 12 and try again."})
-	end
-	
 	player:getPosition():sendMagicEffect(CONST_ME_MAGIC_BLUE)
 	local skill = offer.id - HIRELING_STORAGE.SKILL
 	player:enableHirelingSkill(skill)
@@ -1894,10 +1720,6 @@ function GameStore.processHirelingSkillPurchase(player, offer)
 end
 
 function GameStore.processHirelingOutfitPurchase(player, offer)
-	if player:getClient().version < 1200 then
-		return error({code = 1, message = "You cannot buy hireling outfit on client 10, please relog on client 12 and try again."})
-	end
-	
 	player:getPosition():sendMagicEffect(CONST_ME_MAGIC_GREEN)
 	local outfit = offer.id - HIRELING_STORAGE.OUTFIT
 	player:enableHirelingOutfit(outfit)

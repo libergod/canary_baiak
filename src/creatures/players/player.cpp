@@ -25,7 +25,6 @@
 #include "io/iobestiary.h"
 #include "items/bed.h"
 #include "items/weapons/weapons.h"
-#include "core.hpp"
 
 MuteCountMap Player::muteCountMap;
 
@@ -1127,16 +1126,11 @@ DepotLocker* Player::getDepotLocker(uint32_t depotId) {
 		return it->second;
 	}
 
-	// We need to make room for supply stash on 12+ protocol versions and remove it for 10x.
-	bool createSupplyStash = getProtocolVersion() > 1200;
-
-	DepotLocker* depotLocker = new DepotLocker(ITEM_LOCKER, createSupplyStash ? 4 : 3);
+	DepotLocker* depotLocker = new DepotLocker(ITEM_LOCKER);
 	depotLocker->setDepotId(depotId);
 	depotLocker->internalAddThing(Item::CreateItem(ITEM_MARKET));
 	depotLocker->internalAddThing(inbox);
-	if (createSupplyStash) {
-		depotLocker->internalAddThing(Item::CreateItem(ITEM_SUPPLY_STASH));
-	}
+	depotLocker->internalAddThing(Item::CreateItem(ITEM_SUPPLY_STASH));
 	Container* depotChest = Item::CreateItemAsContainer(ITEM_DEPOT, static_cast<uint16_t>(g_configManager().getNumber(DEPOT_BOXES)));
 	for (uint32_t i = g_configManager().getNumber(DEPOT_BOXES); i > 0; i--) {
 		DepotChest* depotBox = getDepotChest(i, true);
@@ -1648,8 +1642,7 @@ void Player::onCreatureAppear(Creature* creature, bool isLogin) {
 			bed->wakeUp(this);
 		}
 
-		auto version = client->oldProtocol ? getProtocolVersion() : CLIENT_VERSION;
-		SPDLOG_INFO("{} has logged in. (Protocol: {})", name, version);
+		SPDLOG_INFO("{} has logged in", name);
 
 		if (guild) {
 			guild->addMember(this);
@@ -6205,7 +6198,7 @@ void Player::initializeTaskHunting() {
 		}
 	}
 
-	if (client && g_configManager().getBoolean(TASK_HUNTING_ENABLED) && getProtocolVersion() > 1200) {
+	if (client && g_configManager().getBoolean(TASK_HUNTING_ENABLED)) {
 		client->writeToOutputBuffer(g_ioprey().GetTaskHuntingBaseDate());
 	}
 }

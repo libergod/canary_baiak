@@ -112,8 +112,6 @@ class ProtocolGame final : public Protocol {
 		void parseLootContainer(NetworkMessage &msg);
 		void parseQuickLootBlackWhitelist(NetworkMessage &msg);
 
-		void sendCreatureHelpers(uint32_t creatureId, uint16_t helpers);
-
 		// Depot search
 		void sendDepotItems(const ItemsTierCountList &itemMap, uint16_t count);
 		void sendCloseDepotSearch();
@@ -280,8 +278,6 @@ class ProtocolGame final : public Protocol {
 		void sendBosstiaryCooldownTimer();
 		void sendBosstiaryEntryChanged(uint32_t bossid);
 
-		void sendAllowBugReport();
-
 		void sendDistanceShoot(const Position &from, const Position &to, uint8_t type);
 		void sendMagicEffect(const Position &pos, uint8_t type);
 		void removeMagicEffect(const Position &pos, uint8_t type);
@@ -356,7 +352,6 @@ class ProtocolGame final : public Protocol {
 		void sendCloseTrade();
 		void updatePartyTrackerAnalyzer(const Party* party);
 
-		void sendTextWindow(uint32_t windowTextId, uint32_t itemId, const std::string &text);
 		void sendTextWindow(uint32_t windowTextId, Item* item, uint16_t maxlen, bool canWrite);
 		void sendHouseWindow(uint32_t windowTextId, const std::string &text);
 		void sendOutfitWindow();
@@ -421,8 +416,8 @@ class ProtocolGame final : public Protocol {
 		// analyzers
 		void sendKillTrackerUpdate(Container* corpse, const std::string &name, const Outfit_t creatureOutfit);
 		void sendUpdateSupplyTracker(const Item* item);
-		void sendUpdateImpactTracker(CombatType_t type, int32_t amount);
-		void sendUpdateInputAnalyzer(CombatType_t type, int32_t amount, std::string target);
+		void sendUpdateImpactTracker(CombatType_t type, uint32_t amount);
+		void sendUpdateInputAnalyzer(CombatType_t type, uint32_t amount, const std::string &target);
 
 		// Hotkey equip/dequip item
 		void parseHotkeyEquip(NetworkMessage &msg);
@@ -490,9 +485,8 @@ class ProtocolGame final : public Protocol {
 		bool loggedIn = false;
 		bool shouldAddExivaRestrictions = false;
 
-		bool oldProtocol = false;
-
 		void sendInventory();
+
 		void sendOpenStash();
 		void parseStashWithdraw(NetworkMessage &msg);
 		void sendSpecialContainersAvailable();
