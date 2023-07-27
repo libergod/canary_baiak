@@ -30,7 +30,6 @@ void ProtocolLogin::disconnectClient(const std::string &message) {
 
 void ProtocolLogin::getCharacterList(const std::string &accountIdentifier, const std::string &password) {
 	account::Account account;
-
 	account.setProtocolCompat(oldProtocol);
 
 	if (oldProtocol && !g_configManager().getBoolean(OLD_PROTOCOL)) {

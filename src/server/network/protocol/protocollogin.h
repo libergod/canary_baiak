@@ -36,7 +36,6 @@ class ProtocolLogin : public Protocol {
 		void getCharacterList(const std::string &accountIdentifier, const std::string &password);
 
 		bool oldProtocol = false;
-
 };
 
 #endif // SRC_SERVER_NETWORK_PROTOCOL_PROTOCOLLOGIN_H_
