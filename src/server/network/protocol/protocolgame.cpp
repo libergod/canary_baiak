@@ -117,11 +117,29 @@ void ProtocolGame::AddItem(NetworkMessage &msg, uint16_t id, uint8_t count, uint
 
 	msg.add<uint16_t>(it.id);
 
+	if (oldProtocol) {
+		msg.addByte(0xFF);
+	}
+
 	if (it.stackable) {
 		msg.addByte(count);
-	} else if (it.isSplash() || it.isFluidContainer()) {
+	}
+
+	if (it.isSplash() || it.isFluidContainer()) {
 		msg.addByte(count);
-	} else if (it.isContainer()) {
+	}
+
+	if (oldProtocol) {
+		if (it.animationType == ANIMATION_RANDOM) {
+			msg.addByte(0xFE);
+		} else if (it.animationType == ANIMATION_DESYNC) {
+			msg.addByte(0xFF);
+		}
+
+		return;
+	}
+
+	if (it.isContainer()) {
 		msg.addByte(0x00);
 		msg.addByte(0x00);
 	}
@@ -155,11 +173,29 @@ void ProtocolGame::AddItem(NetworkMessage &msg, const Item* item) {
 
 	msg.add<uint16_t>(it.id);
 
+	if (oldProtocol) {
+		msg.addByte(0xFF);
+	}
+
 	if (it.stackable) {
-		msg.addByte(std::min<uint16_t>(0xFF, item->getItemCount()));
-	} else if (it.isSplash() || it.isFluidContainer()) {
+		msg.addByte(static_cast<uint8_t>(std::min<uint16_t>(std::numeric_limits<uint8_t>::max(), item->getItemCount())));
+	}
+
+	if (it.isSplash() || it.isFluidContainer()) {
 		msg.addByte(item->getAttribute<uint8_t>(ItemAttribute_t::FLUIDTYPE));
-	} else if (it.isContainer()) {
+	}
+
+	if (oldProtocol) {
+		if (it.animationType == ANIMATION_RANDOM) {
+			msg.addByte(0xFE);
+		} else if (it.animationType == ANIMATION_DESYNC) {
+			msg.addByte(0xFF);
+		}
+
+		return;
+	}
+
+	if (it.isContainer()) {
 		const Container* container = item->getContainer();
 		if (container && container->getHoldingPlayer() == player) {
 			uint32_t lootFlags = 0;
@@ -499,7 +535,7 @@ void ProtocolGame::onRecvFirstMessage(NetworkMessage &msg) {
 		return;
 	}
 
-	if (operatingSystem == CLIENTOS_NEW_LINUX) {
+	if (!oldProtocol && operatingSystem == CLIENTOS_NEW_LINUX) {
 		// TODO: check what new info for linux is send
 		msg.getString();
 		msg.getString();
@@ -528,9 +564,13 @@ void ProtocolGame::onRecvFirstMessage(NetworkMessage &msg) {
 		return;
 	}
 
-	if (clientVersion != CLIENT_VERSION) {
-		std::ostringstream ss;
-		ss << "Only clients with protocol " << CLIENT_VERSION_UPPER << "." << CLIENT_VERSION_LOWER << " allowed!";
+	if (!oldProtocol && clientVersion != CLIENT_VERSION) {
+		ss.str(std::string());
+		ss << "Only clients with protocol " << CLIENT_VERSION_UPPER << "." << CLIENT_VERSION_LOWER;
+		if (g_configManager().getBoolean(OLD_PROTOCOL)) {
+			ss << " or 11.00";
+		}
+		ss << " allowed!";
 		disconnectClient(ss.str());
 		return;
 	}
@@ -1089,6 +1129,10 @@ void ProtocolGame::parseHotkeyEquip(NetworkMessage &msg) {
 }
 
 void ProtocolGame::GetTileDescription(const Tile* tile, NetworkMessage &msg) {
+	if (oldProtocol) {
+		msg.add<uint16_t>(0x00); // Env effects
+	}
+
 	int32_t count;
 	Item* ground = tile->getGround();
 	if (ground) {
@@ -1433,8 +1477,7 @@ void ProtocolGame::parseSetOutfit(NetworkMessage &msg) {
 	}
 
 	if (msg.getBufferPosition() == startBufferPosition) {
-		uint8_t outfitType = 0;
-		outfitType = msg.getByte();
+		uint8_t outfitType = !oldProtocol ? msg.getByte() : 0;
 		Outfit_t newOutfit;
 		newOutfit.lookType = msg.get<uint16_t>();
 		newOutfit.lookHead = std::min<uint8_t>(132, msg.getByte());
@@ -1444,12 +1487,14 @@ void ProtocolGame::parseSetOutfit(NetworkMessage &msg) {
 		newOutfit.lookAddons = msg.getByte();
 		if (outfitType == 0) {
 			newOutfit.lookMount = msg.get<uint16_t>();
-			newOutfit.lookMountHead = std::min<uint8_t>(132, msg.getByte());
-			newOutfit.lookMountBody = std::min<uint8_t>(132, msg.getByte());
-			newOutfit.lookMountLegs = std::min<uint8_t>(132, msg.getByte());
-			newOutfit.lookMountFeet = std::min<uint8_t>(132, msg.getByte());
-			newOutfit.lookFamiliarsType = msg.get<uint16_t>();
-			uint8_t isMountRandomized = msg.getByte();
+			if (!oldProtocol) {
+				newOutfit.lookMountHead = std::min<uint8_t>(132, msg.getByte());
+				newOutfit.lookMountBody = std::min<uint8_t>(132, msg.getByte());
+				newOutfit.lookMountLegs = std::min<uint8_t>(132, msg.getByte());
+				newOutfit.lookMountFeet = std::min<uint8_t>(132, msg.getByte());
+				newOutfit.lookFamiliarsType = msg.get<uint16_t>();
+			}
+			uint8_t isMountRandomized = !oldProtocol ? msg.getByte() : 0;
 			g_game().playerChangeOutfit(player->getID(), newOutfit, isMountRandomized);
 		} else if (outfitType == 1) {
 			// This value probably has something to do with try outfit variable inside outfit window dialog
@@ -1564,6 +1609,10 @@ void ProtocolGame::parseLookInBattleList(NetworkMessage &msg) {
 }
 
 void ProtocolGame::parseQuickLoot(NetworkMessage &msg) {
+	if (oldProtocol) {
+		return;
+	}
+
 	Position pos = msg.getPosition();
 	uint16_t itemId = msg.get<uint16_t>();
 	uint8_t stackpos = msg.getByte();
@@ -1573,6 +1622,10 @@ void ProtocolGame::parseQuickLoot(NetworkMessage &msg) {
 }
 
 void ProtocolGame::parseLootContainer(NetworkMessage &msg) {
+	if (oldProtocol) {
+		return;
+	}
+
 	uint8_t action = msg.getByte();
 	if (action == 0) {
 		ObjectCategory_t category = (ObjectCategory_t)msg.getByte();
@@ -1593,6 +1646,10 @@ void ProtocolGame::parseLootContainer(NetworkMessage &msg) {
 }
 
 void ProtocolGame::parseQuickLootBlackWhitelist(NetworkMessage &msg) {
+	if (oldProtocol) {
+		return;
+	}
+
 	QuickLootFilter_t filter = (QuickLootFilter_t)msg.getByte();
 	std::vector<uint16_t> listedItems;
 
@@ -1688,7 +1745,7 @@ void ProtocolGame::parseLookInShop(NetworkMessage &msg) {
 void ProtocolGame::parsePlayerBuyOnShop(NetworkMessage &msg) {
 	uint16_t id = msg.get<uint16_t>();
 	uint8_t count = msg.getByte();
-	uint16_t amount = msg.get<uint16_t>();
+	uint16_t amount = oldProtocol ? static_cast<uint16_t>(msg.getByte()) : msg.get<uint16_t>();
 	bool ignoreCap = msg.getByte() != 0;
 	bool inBackpacks = msg.getByte() != 0;
 	addGameTaskTimed(DISPATCHER_TASK_EXPIRATION, &Game::playerBuyItem, player->getID(), id, count, amount, ignoreCap, inBackpacks);
@@ -1697,7 +1754,7 @@ void ProtocolGame::parsePlayerBuyOnShop(NetworkMessage &msg) {
 void ProtocolGame::parsePlayerSellOnShop(NetworkMessage &msg) {
 	uint16_t id = msg.get<uint16_t>();
 	uint8_t count = std::max(msg.getByte(), (uint8_t)1);
-	uint16_t amount = msg.get<uint16_t>();
+	uint16_t amount = oldProtocol ? static_cast<uint16_t>(msg.getByte()) : msg.get<uint16_t>();
 	bool ignoreEquipped = msg.getByte() != 0;
 
 	addGameTaskTimed(DISPATCHER_TASK_EXPIRATION, &Game::playerSellItem, player->getID(), id, count, amount, ignoreEquipped);
@@ -1754,6 +1811,9 @@ void ProtocolGame::parseWrapableItem(NetworkMessage &msg) {
 }
 
 void ProtocolGame::parseInspectionObject(NetworkMessage &msg) {
+	if (oldProtocol) {
+		return;
+	}
 	uint8_t inspectionType = msg.getByte();
 	if (inspectionType == INSPECT_NORMALOBJECT) {
 		Position pos = msg.getPosition();
@@ -1766,14 +1826,20 @@ void ProtocolGame::parseInspectionObject(NetworkMessage &msg) {
 }
 
 void ProtocolGame::sendSessionEndInformation(SessionEndInformations information) {
-	auto output = OutputMessagePool::getOutputMessage();
-	output->addByte(0x18);
-	output->addByte(information);
-	send(output);
+	if (!oldProtocol) {
+		auto output = OutputMessagePool::getOutputMessage();
+		output->addByte(0x18);
+		output->addByte(information);
+		send(output);
+	}
 	disconnect();
 }
 
 void ProtocolGame::sendItemInspection(uint16_t itemId, uint8_t itemCount, const Item* item, bool cyclopedia) {
+	if (oldProtocol) {
+		return;
+	}
+
 	NetworkMessage msg;
 	msg.addByte(0x76);
 	msg.addByte(0x00);
@@ -1802,6 +1868,10 @@ void ProtocolGame::sendItemInspection(uint16_t itemId, uint8_t itemCount, const 
 }
 
 void ProtocolGame::parseCyclopediaCharacterInfo(NetworkMessage &msg) {
+	if (oldProtocol) {
+		return;
+	}
+
 	uint32_t characterID;
 	CyclopediaCharacterInfoType_t characterInfoType;
 	characterID = msg.get<uint32_t>();
@@ -1818,6 +1888,10 @@ void ProtocolGame::parseCyclopediaCharacterInfo(NetworkMessage &msg) {
 }
 
 void ProtocolGame::parseHighscores(NetworkMessage &msg) {
+	if (oldProtocol) {
+		return;
+	}
+
 	HighscoreType_t type = static_cast<HighscoreType_t>(msg.getByte());
 	uint8_t category = msg.getByte();
 	uint32_t vocation = msg.get<uint32_t>();
@@ -1833,6 +1907,10 @@ void ProtocolGame::parseHighscores(NetworkMessage &msg) {
 }
 
 void ProtocolGame::parseTaskHuntingAction(NetworkMessage &msg) {
+	if (oldProtocol) {
+		return;
+	}
+
 	uint8_t slot = msg.getByte();
 	uint8_t action = msg.getByte();
 	bool upgrade = msg.getByte() != 0;
@@ -1846,6 +1924,10 @@ void ProtocolGame::parseTaskHuntingAction(NetworkMessage &msg) {
 }
 
 void ProtocolGame::sendHighscoresNoData() {
+	if (oldProtocol) {
+		return;
+	}
+
 	NetworkMessage msg;
 	msg.addByte(0xB1);
 	msg.addByte(0x01); // No data available
@@ -1853,6 +1935,10 @@ void ProtocolGame::sendHighscoresNoData() {
 }
 
 void ProtocolGame::sendHighscores(const std::vector<HighscoreCharacter> &characters, uint8_t categoryId, uint32_t vocationId, uint16_t page, uint16_t pages) {
+	if (oldProtocol) {
+		return;
+	}
+
 	NetworkMessage msg;
 	msg.addByte(0xB1);
 	msg.addByte(0x00); // No data available
@@ -1958,6 +2044,10 @@ void ProtocolGame::parseRuleViolationReport(NetworkMessage &msg) {
 }
 
 void ProtocolGame::parseBestiarysendRaces() {
+	if (oldProtocol) {
+		return;
+	}
+
 	NetworkMessage msg;
 	msg.addByte(0xd5);
 	msg.add<uint16_t>(BESTY_RACE_LAST);
@@ -1986,6 +2076,10 @@ void ProtocolGame::parseBestiarysendRaces() {
 }
 
 void ProtocolGame::sendBestiaryEntryChanged(uint16_t raceid) {
+	if (oldProtocol) {
+		return;
+	}
+
 	NetworkMessage msg;
 	msg.addByte(0xd9);
 	msg.add<uint16_t>(raceid);
@@ -1993,6 +2087,10 @@ void ProtocolGame::sendBestiaryEntryChanged(uint16_t raceid) {
 }
 
 void ProtocolGame::parseBestiarysendMonsterData(NetworkMessage &msg) {
+	if (oldProtocol) {
+		return;
+	}
+
 	uint16_t raceId = msg.get<uint16_t>();
 	std::string Class = "";
 	MonsterType* mtype = nullptr;
@@ -2124,8 +2222,9 @@ void ProtocolGame::addBestiaryTrackerList(NetworkMessage &msg) {
 }
 
 void ProtocolGame::sendTeamFinderList() {
-	if (!player)
+	if (!player || oldProtocol) {
 		return;
+	}
 
 	NetworkMessage msg;
 	msg.addByte(0x2D);
@@ -2189,8 +2288,9 @@ void ProtocolGame::sendTeamFinderList() {
 }
 
 void ProtocolGame::sendLeaderTeamFinder(bool reset) {
-	if (!player)
+	if (!player || oldProtocol) {
 		return;
+	}
 
 	TeamFinder* teamAssemble = nullptr;
 	std::map<uint32_t, TeamFinder*> teamFinder = g_game().getTeamFinderList();
@@ -2341,7 +2441,7 @@ void ProtocolGame::createLeaderTeamFinder(NetworkMessage &msg) {
 }
 
 void ProtocolGame::parsePartyAnalyzerAction(NetworkMessage &msg) const {
-	if (!player) {
+	if (!player || oldProtocol) {
 		return;
 	}
 
@@ -2368,8 +2468,9 @@ void ProtocolGame::parsePartyAnalyzerAction(NetworkMessage &msg) const {
 }
 
 void ProtocolGame::parseLeaderFinderWindow(NetworkMessage &msg) {
-	if (!player)
+	if (!player || oldProtocol) {
 		return;
+	}
 
 	uint8_t action = msg.getByte();
 	switch (action) {
@@ -2436,8 +2537,9 @@ void ProtocolGame::parseLeaderFinderWindow(NetworkMessage &msg) {
 }
 
 void ProtocolGame::parseMemberFinderWindow(NetworkMessage &msg) {
-	if (!player)
+	if (!player || oldProtocol) {
 		return;
+	}
 
 	uint8_t action = msg.getByte();
 	if (action == 0) {
@@ -2474,6 +2576,10 @@ void ProtocolGame::parseMemberFinderWindow(NetworkMessage &msg) {
 }
 
 void ProtocolGame::parseSendBuyCharmRune(NetworkMessage &msg) {
+	if (!player || oldProtocol) {
+		return;
+	}
+
 	charmRune_t runeID = static_cast<charmRune_t>(msg.getByte());
 	uint8_t action = msg.getByte();
 	uint16_t raceid = msg.get<uint16_t>();
@@ -2481,6 +2587,10 @@ void ProtocolGame::parseSendBuyCharmRune(NetworkMessage &msg) {
 }
 
 void ProtocolGame::refreshBestiaryTracker(std::list<MonsterType*> trackerList) {
+	if (!player || oldProtocol) {
+		return;
+	}
+
 	NetworkMessage msg;
 	msg.addByte(0xB9);
 	msg.addByte(trackerList.size());
@@ -2502,6 +2612,10 @@ void ProtocolGame::refreshBestiaryTracker(std::list<MonsterType*> trackerList) {
 }
 
 void ProtocolGame::BestiarysendCharms() {
+	if (!player || oldProtocol) {
+		return;
+	}
+
 	int32_t removeRuneCost = player->getLevel() * 100;
 	if (player->hasCharmExpansion()) {
 		removeRuneCost = (removeRuneCost * 75) / 100;
@@ -2553,6 +2667,10 @@ void ProtocolGame::BestiarysendCharms() {
 }
 
 void ProtocolGame::parseBestiarysendCreatures(NetworkMessage &msg) {
+	if (!player || oldProtocol) {
+		return;
+	}
+
 	std::ostringstream ss;
 	std::map<uint16_t, std::string> race = {};
 	std::string text = "";
