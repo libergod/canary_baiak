@@ -457,14 +457,24 @@ void ProtocolGame::onRecvFirstMessage(NetworkMessage &msg) {
 	}
 
 	OperatingSystem_t operatingSystem = static_cast<OperatingSystem_t>(msg.get<uint16_t>());
-	setChecksumMethod(CHECKSUM_METHOD_SEQUENCE);
-	enableCompression();
 
 	version = msg.get<uint16_t>(); // Protocol version
 
+	// Old protocol support
+	oldProtocol = g_configManager().getBoolean(OLD_PROTOCOL) && version <= 1100;
+
+	if (oldProtocol) {
+		setChecksumMethod(CHECKSUM_METHOD_ADLER32);
+	} else if (operatingSystem <= CLIENTOS_NEW_MAC) {
+		setChecksumMethod(CHECKSUM_METHOD_SEQUENCE);
+		enableCompression();
+	}
+
 	clientVersion = static_cast<int32_t>(msg.get<uint32_t>());
 
-	msg.getString(); // Client version (String)
+	if (!oldProtocol) {
+		msg.getString(); // Client version (String)
+	}
 
 	msg.skipBytes(3); // U16 dat revision, U8 game preview state
 
@@ -480,10 +490,12 @@ void ProtocolGame::onRecvFirstMessage(NetworkMessage &msg) {
 
 	msg.skipBytes(1); // gamemaster flag
 
+	std::ostringstream ss;
 	std::string sessionKey = msg.getString();
 	size_t pos = sessionKey.find('\n');
 	if (pos == std::string::npos) {
-		disconnectClient("You must enter your email.");
+		ss << "You must enter your " << (oldProtocol ? "username" : "email") << ".";
+		disconnectClient(ss.str());
 		return;
 	}
 
@@ -493,9 +505,11 @@ void ProtocolGame::onRecvFirstMessage(NetworkMessage &msg) {
 		msg.getString();
 	}
 
-	std::string email = sessionKey.substr(0, pos);
-	if (email.empty()) {
-		disconnectClient("You must enter your email.");
+	std::string accountIdentifier = sessionKey.substr(0, pos);
+	if (accountIdentifier.empty()) {
+		ss.str(std::string());
+		ss << "You must enter your " << (oldProtocol ? "username" : "email") << ".";
+		disconnectClient(ss.str());
 		return;
 	}
 
@@ -537,7 +551,7 @@ void ProtocolGame::onRecvFirstMessage(NetworkMessage &msg) {
 			banInfo.reason = "(none)";
 		}
 
-		std::ostringstream ss;
+		ss.str(std::string());
 		ss << "Your IP has been banned until " << formatDateShort(banInfo.expiresAt) << " by " << banInfo.bannedBy << ".\n\nReason specified:\n"
 		   << banInfo.reason;
 		disconnectClient(ss.str());
@@ -545,8 +559,10 @@ void ProtocolGame::onRecvFirstMessage(NetworkMessage &msg) {
 	}
 
 	uint32_t accountId;
-	if (!IOLoginData::gameWorldAuthentication(email, password, characterName, &accountId)) {
-		disconnectClient("Email or password is not correct.");
+	if (!IOLoginData::gameWorldAuthentication(accountIdentifier, password, characterName, &accountId, oldProtocol)) {
+		ss.str(std::string());
+		ss << (oldProtocol ? "Username" : "Email") << " or password is not correct.";
+		disconnectClient(ss.str());
 		return;
 	}
 
@@ -5622,6 +5638,23 @@ void ProtocolGame::sendTextWindow(uint32_t windowTextId, Item* item, uint16_t ma
 	writeToOutputBuffer(msg);
 }
 
+void ProtocolGame::sendTextWindow(uint32_t windowTextId, uint32_t itemId, const std::string &text) {
+	NetworkMessage msg;
+	msg.addByte(0x96);
+	msg.add<uint32_t>(windowTextId);
+	AddItem(msg, itemId, 1, 0);
+	msg.add<uint16_t>(text.size());
+	msg.addString(text);
+	msg.add<uint16_t>(0x00);
+
+	if (!oldProtocol) {
+		msg.addByte(0x00); // Show (Traded)
+	}
+
+	msg.add<uint16_t>(0x00);
+	writeToOutputBuffer(msg);
+}
+
 void ProtocolGame::sendHouseWindow(uint32_t windowTextId, const std::string &text) {
 	NetworkMessage msg;
 	msg.addByte(0x97);
@@ -6884,6 +6917,18 @@ void ProtocolGame::parseStashWithdraw(NetworkMessage &msg) {
 	}
 
 	player->updateUIExhausted();
+}
+
+void ProtocolGame::sendCreatureHelpers(uint32_t creatureId, uint16_t helpers) {
+	if (!oldProtocol) {
+		return;
+	}
+
+	NetworkMessage msg;
+	msg.addByte(0x94);
+	msg.add<uint32_t>(creatureId);
+	msg.add<uint16_t>(helpers);
+	writeToOutputBuffer(msg);
 }
 
 void ProtocolGame::sendDepotItems(const ItemsTierCountList &itemMap, uint16_t count) {
