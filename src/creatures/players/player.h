@@ -1756,6 +1756,12 @@ class Player final : public Creature, public Cylinder {
 			}
 		}
 
+		void sendCreatureHelpers(uint32_t creatureId, uint16_t helpers) {
+			if (client) {
+				client->sendCreatureHelpers(creatureId, helpers);
+			}
+		}
+
 		void setItemCustomPrice(uint16_t itemId, uint64_t price) {
 			itemPriceMap[itemId] = price;
 		}
