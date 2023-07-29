@@ -2831,17 +2831,19 @@ void ProtocolGame::parseMarketLeave() {
 }
 
 void ProtocolGame::parseMarketBrowse(NetworkMessage &msg) {
-	uint8_t browseId = msg.get<uint8_t>();
+	uint16_t browseId = oldProtocol ? msg.get<uint16_t>() : static_cast<uint16_t>(msg.getByte());
 
-	if (browseId == MARKETREQUEST_OWN_OFFERS) {
+	if ((oldProtocol && browseId == MARKETREQUEST_OWN_OFFERS_OLD) || (!oldProtocol && browseId == MARKETREQUEST_OWN_OFFERS)) {
 		addGameTask(&Game::playerBrowseMarketOwnOffers, player->getID());
-	} else if (browseId == MARKETREQUEST_OWN_HISTORY) {
+	} else if ((oldProtocol && browseId == MARKETREQUEST_OWN_HISTORY) || (!oldProtocol && browseId == MARKETREQUEST_OWN_HISTORY_OLD)) {
 		addGameTask(&Game::playerBrowseMarketOwnHistory, player->getID());
-	} else {
+	} else if (!oldProtocol) {
 		uint16_t itemId = msg.get<uint16_t>();
 		uint8_t tier = msg.get<uint8_t>();
 		player->sendMarketEnter(player->getLastDepotId());
 		addGameTask(&Game::playerBrowseMarket, player->getID(), itemId, tier);
+	} else {
+		addGameTask(&Game::playerBrowseMarket, player->getID(), browseId, 0);
 	}
 }
 
@@ -2849,11 +2851,11 @@ void ProtocolGame::parseMarketCreateOffer(NetworkMessage &msg) {
 	uint8_t type = msg.getByte();
 	uint16_t itemId = msg.get<uint16_t>();
 	uint8_t itemTier = 0;
-	if (Item::items[itemId].upgradeClassification > 0) {
+	if (!oldProtocol && Item::items[itemId].upgradeClassification > 0) {
 		itemTier = msg.getByte();
 	}
 	uint16_t amount = msg.get<uint16_t>();
-	uint64_t price = msg.get<uint64_t>();
+	uint64_t price = oldProtocol ? static_cast<uint64_t>(msg.get<uint32_t>()) : msg.get<uint64_t>();
 	bool anonymous = (msg.getByte() != 0);
 	if (amount > 0 && price > 0) {
 		addGameTask(&Game::playerCreateMarketOffer, player->getID(), type, itemId, amount, price, itemTier, anonymous);
@@ -2932,6 +2934,10 @@ void ProtocolGame::sendOpenPrivateChannel(const std::string &receiver) {
 }
 
 void ProtocolGame::sendExperienceTracker(int64_t rawExp, int64_t finalExp) {
+	if (!player || oldProtocol) {
+		return;
+	}
+
 	NetworkMessage msg;
 	msg.addByte(0xAF);
 	msg.add<int64_t>(rawExp);
@@ -2957,7 +2963,7 @@ void ProtocolGame::sendCreatureOutfit(const Creature* creature, const Outfit_t &
 	msg.addByte(0x8E);
 	msg.add<uint32_t>(creature->getID());
 	AddOutfit(msg, outfit);
-	if (outfit.lookMount != 0) {
+	if (!oldProtocol && outfit.lookMount != 0) {
 		msg.addByte(outfit.lookMountHead);
 		msg.addByte(outfit.lookMountBody);
 		msg.addByte(outfit.lookMountLegs);
@@ -2977,7 +2983,7 @@ void ProtocolGame::sendCreatureLight(const Creature* creature) {
 }
 
 void ProtocolGame::sendCreatureIcon(const Creature* creature) {
-	if (!creature) {
+	if (!creature || !player || oldProtocol) {
 		return;
 	}
 
@@ -3015,6 +3021,10 @@ void ProtocolGame::sendWorldLight(const LightInfo &lightInfo) {
 }
 
 void ProtocolGame::sendTibiaTime(int32_t time) {
+	if (!player || oldProtocol) {
+		return;
+	}
+
 	NetworkMessage msg;
 	msg.addByte(0xEF);
 	msg.addByte(time / 60);
@@ -3047,7 +3057,7 @@ void ProtocolGame::sendCreatureShield(const Creature* creature) {
 }
 
 void ProtocolGame::sendCreatureEmblem(const Creature* creature) {
-	if (!creature || !canSee(creature)) {
+	if (!creature || !canSee(creature) || oldProtocol) {
 		return;
 	}
 
@@ -3092,7 +3102,7 @@ void ProtocolGame::sendCreatureType(const Creature* creature, uint8_t creatureTy
 		creatureType = CREATURETYPE_SUMMON_PLAYER;
 	}
 	msg.addByte(creatureType); // type or any byte idk
-	if (creatureType == CREATURETYPE_SUMMON_PLAYER) {
+	if (!oldProtocol && creatureType == CREATURETYPE_SUMMON_PLAYER) {
 		const Creature* master = creature->getMaster();
 		if (master) {
 			msg.add<uint32_t>(master->getID());
@@ -3127,7 +3137,9 @@ void ProtocolGame::sendTutorial(uint8_t tutorialId) {
 void ProtocolGame::sendAddMarker(const Position &pos, uint8_t markType, const std::string &desc) {
 	NetworkMessage msg;
 	msg.addByte(0xDD);
-	msg.addByte(0x00); // unknow
+	if (!oldProtocol) {
+		msg.addByte(0x00); // unknow
+	}
 
 	msg.addPosition(pos);
 	msg.addByte(markType);
@@ -3136,6 +3148,10 @@ void ProtocolGame::sendAddMarker(const Position &pos, uint8_t markType, const st
 }
 
 void ProtocolGame::sendCyclopediaCharacterNoData(CyclopediaCharacterInfoType_t characterInfoType, uint8_t errorCode) {
+	if (!player || oldProtocol) {
+		return;
+	}
+
 	NetworkMessage msg;
 	msg.addByte(0xDA);
 	msg.addByte(static_cast<uint8_t>(characterInfoType));
@@ -3144,6 +3160,10 @@ void ProtocolGame::sendCyclopediaCharacterNoData(CyclopediaCharacterInfoType_t c
 }
 
 void ProtocolGame::sendCyclopediaCharacterBaseInformation() {
+	if (!player || oldProtocol) {
+		return;
+	}
+
 	NetworkMessage msg;
 	msg.addByte(0xDA);
 	msg.addByte(CYCLOPEDIA_CHARACTERINFO_BASEINFORMATION);
@@ -3159,6 +3179,10 @@ void ProtocolGame::sendCyclopediaCharacterBaseInformation() {
 }
 
 void ProtocolGame::sendCyclopediaCharacterGeneralStats() {
+	if (!player || oldProtocol) {
+		return;
+	}
+
 	NetworkMessage msg;
 	msg.addByte(0xDA);
 	msg.addByte(CYCLOPEDIA_CHARACTERINFO_GENERALSTATS);
@@ -3214,6 +3238,10 @@ void ProtocolGame::sendCyclopediaCharacterGeneralStats() {
 }
 
 void ProtocolGame::sendCyclopediaCharacterCombatStats() {
+	if (!player || oldProtocol) {
+		return;
+	}
+
 	NetworkMessage msg;
 	msg.addByte(0xDA);
 	msg.addByte(CYCLOPEDIA_CHARACTERINFO_COMBATSTATS);
@@ -3372,6 +3400,10 @@ void ProtocolGame::sendCyclopediaCharacterCombatStats() {
 }
 
 void ProtocolGame::sendCyclopediaCharacterRecentDeaths(uint16_t page, uint16_t pages, const std::vector<RecentDeathEntry> &entries) {
+	if (!player || oldProtocol) {
+		return;
+	}
+
 	NetworkMessage msg;
 	msg.addByte(0xDA);
 	msg.addByte(CYCLOPEDIA_CHARACTERINFO_RECENTDEATHS);
@@ -3387,6 +3419,10 @@ void ProtocolGame::sendCyclopediaCharacterRecentDeaths(uint16_t page, uint16_t p
 }
 
 void ProtocolGame::sendCyclopediaCharacterRecentPvPKills(uint16_t page, uint16_t pages, const std::vector<RecentPvPKillEntry> &entries) {
+	if (!player || oldProtocol) {
+		return;
+	}
+
 	NetworkMessage msg;
 	msg.addByte(0xDA);
 	msg.addByte(CYCLOPEDIA_CHARACTERINFO_RECENTPVPKILLS);
@@ -3403,6 +3439,10 @@ void ProtocolGame::sendCyclopediaCharacterRecentPvPKills(uint16_t page, uint16_t
 }
 
 void ProtocolGame::sendCyclopediaCharacterAchievements() {
+	if (!player || oldProtocol) {
+		return;
+	}
+
 	NetworkMessage msg;
 	msg.addByte(0xDA);
 	msg.addByte(CYCLOPEDIA_CHARACTERINFO_ACHIEVEMENTS);
@@ -3414,6 +3454,10 @@ void ProtocolGame::sendCyclopediaCharacterAchievements() {
 }
 
 void ProtocolGame::sendCyclopediaCharacterItemSummary() {
+	if (!player || oldProtocol) {
+		return;
+	}
+
 	NetworkMessage msg;
 	msg.addByte(0xDA);
 	msg.addByte(CYCLOPEDIA_CHARACTERINFO_ITEMSUMMARY);
@@ -3427,6 +3471,10 @@ void ProtocolGame::sendCyclopediaCharacterItemSummary() {
 }
 
 void ProtocolGame::sendCyclopediaCharacterOutfitsMounts() {
+	if (!player || oldProtocol) {
+		return;
+	}
+
 	NetworkMessage msg;
 	msg.addByte(0xDA);
 	msg.addByte(CYCLOPEDIA_CHARACTERINFO_OUTFITSMOUNTS);
@@ -3523,6 +3571,10 @@ void ProtocolGame::sendCyclopediaCharacterOutfitsMounts() {
 }
 
 void ProtocolGame::sendCyclopediaCharacterStoreSummary() {
+	if (!player || oldProtocol) {
+		return;
+	}
+
 	NetworkMessage msg;
 	msg.addByte(0xDA);
 	msg.addByte(CYCLOPEDIA_CHARACTERINFO_STORESUMMARY);
@@ -3542,6 +3594,10 @@ void ProtocolGame::sendCyclopediaCharacterStoreSummary() {
 }
 
 void ProtocolGame::sendCyclopediaCharacterInspection() {
+	if (!player || oldProtocol) {
+		return;
+	}
+
 	NetworkMessage msg;
 	msg.addByte(0xDA);
 	msg.addByte(CYCLOPEDIA_CHARACTERINFO_INSPECTION);
@@ -3608,6 +3664,10 @@ void ProtocolGame::sendCyclopediaCharacterInspection() {
 }
 
 void ProtocolGame::sendCyclopediaCharacterBadges() {
+	if (!player || oldProtocol) {
+		return;
+	}
+
 	NetworkMessage msg;
 	msg.addByte(0xDA);
 	msg.addByte(CYCLOPEDIA_CHARACTERINFO_BADGES);
@@ -3624,6 +3684,10 @@ void ProtocolGame::sendCyclopediaCharacterBadges() {
 }
 
 void ProtocolGame::sendCyclopediaCharacterTitles() {
+	if (!player || oldProtocol) {
+		return;
+	}
+
 	NetworkMessage msg;
 	msg.addByte(0xDA);
 	msg.addByte(CYCLOPEDIA_CHARACTERINFO_TITLES);
@@ -3638,7 +3702,9 @@ void ProtocolGame::sendReLoginWindow(uint8_t unfairFightReduction) {
 	msg.addByte(0x28);
 	msg.addByte(0x00);
 	msg.addByte(unfairFightReduction);
-	msg.addByte(0x00); // use death redemption (boolean)
+	if (!oldProtocol) {
+		msg.addByte(0x00); // use death redemption (boolean)
+	}
 	writeToOutputBuffer(msg);
 }
 
