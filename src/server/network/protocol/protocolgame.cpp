@@ -1352,11 +1352,19 @@ void ProtocolGame::parseOpenPrivateChannel(NetworkMessage &msg) {
 }
 
 void ProtocolGame::parseInventoryImbuements(NetworkMessage &msg) {
+	if (oldProtocol) {
+		return;
+	}
+
 	bool isTrackerOpen = msg.getByte(); // Window is opened or closed
 	addGameTask(&Game::playerRequestInventoryImbuements, player->getID(), isTrackerOpen);
 }
 
 void ProtocolGame::sendInventoryImbuements(const std::map<Slots_t, Item*> items) {
+	if (oldProtocol) {
+		return;
+	}
+
 	NetworkMessage msg;
 	msg.addByte(0x5D);
 
@@ -6972,8 +6980,8 @@ void ProtocolGame::openImbuementWindow(Item* item) {
 	NetworkMessage msg;
 	msg.addByte(0xEB);
 	msg.add<uint16_t>(item->getID());
-	if (item->getClassification() > 0) {
-		msg.addByte(item->getTier());
+	if (!oldProtocol && item->getClassification() > 0) {
+		msg.addByte(0);
 	}
 	msg.addByte(item->getImbuementSlot());
 
@@ -7050,8 +7058,9 @@ void ProtocolGame::AddWorldLight(NetworkMessage &msg, LightInfo lightInfo) {
 }
 
 void ProtocolGame::sendSpecialContainersAvailable() {
-	if (!player)
+	if (oldProtocol || !player) {
 		return;
+	}
 
 	NetworkMessage msg;
 	msg.addByte(0x2A);
@@ -7061,8 +7070,9 @@ void ProtocolGame::sendSpecialContainersAvailable() {
 }
 
 void ProtocolGame::updatePartyTrackerAnalyzer(const Party* party) {
-	if (!player || !party || !party->getLeader())
+	if (oldProtocol || !player || !party || !party->getLeader()) {
 		return;
+	}
 
 	NetworkMessage msg;
 	msg.addByte(0x2B);
@@ -7143,7 +7153,7 @@ void ProtocolGame::sendKillTrackerUpdate(Container* corpse, const std::string &n
 }
 
 void ProtocolGame::sendUpdateSupplyTracker(const Item* item) {
-	if (!player || !item) {
+	if (oldProtocol || !player || !item) {
 		return;
 	}
 
@@ -7155,6 +7165,10 @@ void ProtocolGame::sendUpdateSupplyTracker(const Item* item) {
 }
 
 void ProtocolGame::sendUpdateImpactTracker(CombatType_t type, uint32_t amount) {
+	if (!player || oldProtocol) {
+		return;
+	}
+
 	NetworkMessage msg;
 	msg.addByte(0xCC);
 	if (type == COMBAT_HEALING) {
@@ -7169,6 +7183,10 @@ void ProtocolGame::sendUpdateImpactTracker(CombatType_t type, uint32_t amount) {
 }
 
 void ProtocolGame::sendUpdateInputAnalyzer(CombatType_t type, uint32_t amount, const std::string &target) {
+	if (!player || oldProtocol) {
+		return;
+	}
+
 	NetworkMessage msg;
 	msg.addByte(0xCC);
 	msg.addByte(ANALYZER_DAMAGE_RECEIVED);
@@ -7179,6 +7197,10 @@ void ProtocolGame::sendUpdateInputAnalyzer(CombatType_t type, uint32_t amount, c
 }
 
 void ProtocolGame::sendTaskHuntingData(const TaskHuntingSlot* slot) {
+	if (!player || oldProtocol) {
+		return;
+	}
+
 	NetworkMessage msg;
 	msg.addByte(0xBB);
 	msg.addByte(static_cast<uint8_t>(slot->id));
@@ -7375,6 +7397,10 @@ void ProtocolGame::parseExtendedOpcode(NetworkMessage &msg) {
 }
 
 void ProtocolGame::sendItemsPrice() {
+	if (!player || oldProtocol) {
+		return;
+	}
+
 	NetworkMessage msg;
 	msg.addByte(0xCD);
 
@@ -7424,6 +7450,10 @@ void ProtocolGame::reloadCreature(const Creature* creature) {
 }
 
 void ProtocolGame::sendOpenStash() {
+	if (!player || oldProtocol) {
+		return;
+	}
+
 	NetworkMessage msg;
 	msg.addByte(0x29);
 	StashItemList list = player->getStashItems();
@@ -7437,6 +7467,10 @@ void ProtocolGame::sendOpenStash() {
 }
 
 void ProtocolGame::parseStashWithdraw(NetworkMessage &msg) {
+	if (oldProtocol) {
+		return;
+	}
+
 	if (!player->isSupplyStashMenuAvailable()) {
 		player->sendCancelMessage("You can't use supply stash right now.");
 		return;
@@ -7499,6 +7533,10 @@ void ProtocolGame::sendCreatureHelpers(uint32_t creatureId, uint16_t helpers) {
 }
 
 void ProtocolGame::sendDepotItems(const ItemsTierCountList &itemMap, uint16_t count) {
+	if (!player || oldProtocol) {
+		return;
+	}
+
 	NetworkMessage msg;
 	msg.addByte(0x94);
 
@@ -7517,12 +7555,20 @@ void ProtocolGame::sendDepotItems(const ItemsTierCountList &itemMap, uint16_t co
 }
 
 void ProtocolGame::sendCloseDepotSearch() {
+	if (!player || oldProtocol) {
+		return;
+	}
+
 	NetworkMessage msg;
 	msg.addByte(0x9A);
 	writeToOutputBuffer(msg);
 }
 
 void ProtocolGame::sendDepotSearchResultDetail(uint16_t itemId, uint8_t tier, uint32_t depotCount, const ItemVector &depotItems, uint32_t inboxCount, const ItemVector &inboxItems, uint32_t stashCount) {
+	if (!player || oldProtocol) {
+		return;
+	}
+
 	NetworkMessage msg;
 	msg.addByte(0x99);
 	msg.add<uint16_t>(itemId);
@@ -7552,14 +7598,26 @@ void ProtocolGame::sendDepotSearchResultDetail(uint16_t itemId, uint8_t tier, ui
 }
 
 void ProtocolGame::parseOpenDepotSearch() {
+	if (oldProtocol) {
+		return;
+	}
+
 	addGameTask(&Game::playerRequestDepotItems, player->getID());
 }
 
 void ProtocolGame::parseCloseDepotSearch() {
+	if (oldProtocol) {
+		return;
+	}
+
 	addGameTask(&Game::playerRequestCloseDepotSearch, player->getID());
 }
 
 void ProtocolGame::parseDepotSearchItemRequest(NetworkMessage &msg) {
+	if (oldProtocol) {
+		return;
+	}
+
 	uint16_t itemId = msg.get<uint16_t>();
 	uint8_t itemTier = 0;
 	if (Item::items[itemId].upgradeClassification > 0) {
@@ -7570,6 +7628,10 @@ void ProtocolGame::parseDepotSearchItemRequest(NetworkMessage &msg) {
 }
 
 void ProtocolGame::parseRetrieveDepotSearch(NetworkMessage &msg) {
+	if (oldProtocol) {
+		return;
+	}
+
 	uint16_t itemId = msg.get<uint16_t>();
 	uint8_t itemTier = 0;
 	if (Item::items[itemId].upgradeClassification > 0) {
@@ -7581,13 +7643,17 @@ void ProtocolGame::parseRetrieveDepotSearch(NetworkMessage &msg) {
 }
 
 void ProtocolGame::parseOpenParentContainer(NetworkMessage &msg) {
+	if (oldProtocol) {
+		return;
+	}
+
 	Position pos = msg.getPosition();
 
 	addGameTask(&Game::playerRequestOpenContainerFromDepotSearch, player->getID(), pos);
 }
 
 void ProtocolGame::sendUpdateCreature(const Creature* creature) {
-	if (!creature || !player) {
+	if (oldProtocol || !creature || !player) {
 		return;
 	}
 
@@ -7625,6 +7691,10 @@ void ProtocolGame::getForgeInfoMap(const Item* item, std::map<uint16_t, std::map
 }
 
 void ProtocolGame::sendForgeSkillStats(NetworkMessage &msg) const {
+	if (oldProtocol) {
+		return;
+	}
+
 	std::vector<Slots_t> slots { CONST_SLOT_LEFT, CONST_SLOT_ARMOR, CONST_SLOT_HEAD };
 	for (const auto &slot : slots) {
 		double_t skill = 0;
@@ -7648,6 +7718,10 @@ void ProtocolGame::sendForgeSkillStats(NetworkMessage &msg) const {
 }
 
 void ProtocolGame::sendBosstiaryData() {
+	if (oldProtocol) {
+		return;
+	}
+
 	NetworkMessage msg;
 	msg.addByte(0x61);
 
@@ -7707,6 +7781,10 @@ void ProtocolGame::parseSendBosstiary() {
 }
 
 void ProtocolGame::parseSendBosstiarySlots() {
+	if (oldProtocol) {
+		return;
+	}
+
 	sendBosstiaryData();
 
 	NetworkMessage msg;
@@ -7819,6 +7897,10 @@ void ProtocolGame::parseSendBosstiarySlots() {
 }
 
 void ProtocolGame::parseBosstiarySlot(NetworkMessage &msg) {
+	if (oldProtocol) {
+		return;
+	}
+
 	uint8_t slotBossId = msg.getByte();
 	uint32_t selectedBossId = msg.get<uint32_t>();
 
@@ -7826,7 +7908,7 @@ void ProtocolGame::parseBosstiarySlot(NetworkMessage &msg) {
 }
 
 void ProtocolGame::sendBossPodiumWindow(const Item* podium, const Position &position, uint16_t itemId, uint8_t stackPos) {
-	if (!podium) {
+	if (!podium || oldProtocol) {
 		SPDLOG_ERROR("[{}] item is nullptr", __FUNCTION__);
 		return;
 	}
@@ -7901,6 +7983,10 @@ void ProtocolGame::sendBossPodiumWindow(const Item* podium, const Position &posi
 }
 
 void ProtocolGame::parseSetBossPodium(NetworkMessage &msg) const {
+	if (oldProtocol) {
+		return;
+	}
+
 	uint32_t bossRaceId = msg.get<uint32_t>();
 	Position pos = msg.getPosition();
 	uint16_t itemId = msg.get<uint16_t>();
@@ -7913,6 +7999,10 @@ void ProtocolGame::parseSetBossPodium(NetworkMessage &msg) const {
 }
 
 void ProtocolGame::sendBosstiaryCooldownTimer() {
+	if (oldProtocol) {
+		return;
+	}
+
 	NetworkMessage msg;
 	msg.addByte(0xBD);
 
@@ -7935,6 +8025,10 @@ void ProtocolGame::sendBosstiaryCooldownTimer() {
 }
 
 void ProtocolGame::sendBosstiaryEntryChanged(uint32_t bossid) {
+	if (oldProtocol) {
+		return;
+	}
+
 	NetworkMessage msg;
 	msg.addByte(0xE6);
 	msg.add<uint32_t>(bossid);
