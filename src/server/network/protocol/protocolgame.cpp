@@ -6457,6 +6457,10 @@ void ProtocolGame::sendSpellCooldown(uint16_t spellId, uint32_t time) {
 }
 
 void ProtocolGame::sendSpellGroupCooldown(SpellGroup_t groupId, uint32_t time) {
+	if (oldProtocol) {
+		return;
+	}
+
 	NetworkMessage msg;
 	msg.addByte(0xA5);
 	msg.addByte(groupId);
@@ -6465,6 +6469,10 @@ void ProtocolGame::sendSpellGroupCooldown(SpellGroup_t groupId, uint32_t time) {
 }
 
 void ProtocolGame::sendUseItemCooldown(uint32_t time) {
+	if (!player || oldProtocol) {
+		return;
+	}
+
 	NetworkMessage msg;
 	msg.addByte(0xA6);
 	msg.add<uint32_t>(time);
@@ -6571,8 +6579,12 @@ void ProtocolGame::sendPreyData(const PreySlot* slot) {
 		return;
 	}
 
-	msg.add<uint32_t>(std::max<uint32_t>(static_cast<uint32_t>(((slot->freeRerollTimeStamp - OTSYS_TIME()) / 1000)), 0));
-	msg.addByte(static_cast<uint8_t>(slot->option));
+	if (oldProtocol) {
+		msg.add<uint16_t>(static_cast<uint16_t>(std::max<uint32_t>(std::max<uint32_t>(static_cast<uint32_t>(((slot->freeRerollTimeStamp - OTSYS_TIME()) / 1000)), 0), 0)));
+	} else {
+		msg.add<uint32_t>(std::max<uint32_t>(static_cast<uint32_t>(((slot->freeRerollTimeStamp - OTSYS_TIME()) / 1000)), 0));
+		msg.addByte(static_cast<uint8_t>(slot->option));
+	}
 
 	writeToOutputBuffer(msg);
 }
@@ -6585,19 +6597,24 @@ void ProtocolGame::sendPreyPrices() {
 	NetworkMessage msg;
 
 	msg.addByte(0xE9);
-
 	msg.add<uint32_t>(player->getPreyRerollPrice());
-	msg.addByte(static_cast<uint8_t>(g_configManager().getNumber(PREY_BONUS_REROLL_PRICE)));
-	msg.addByte(static_cast<uint8_t>(g_configManager().getNumber(PREY_SELECTION_LIST_PRICE)));
-	msg.add<uint32_t>(player->getTaskHuntingRerollPrice());
-	msg.add<uint32_t>(player->getTaskHuntingRerollPrice());
-	msg.addByte(static_cast<uint8_t>(g_configManager().getNumber(TASK_HUNTING_SELECTION_LIST_PRICE)));
-	msg.addByte(static_cast<uint8_t>(g_configManager().getNumber(TASK_HUNTING_BONUS_REROLL_PRICE)));
+	if (!oldProtocol) {
+		msg.addByte(static_cast<uint8_t>(g_configManager().getNumber(PREY_BONUS_REROLL_PRICE)));
+		msg.addByte(static_cast<uint8_t>(g_configManager().getNumber(PREY_SELECTION_LIST_PRICE)));
+		msg.add<uint32_t>(player->getTaskHuntingRerollPrice());
+		msg.add<uint32_t>(player->getTaskHuntingRerollPrice());
+		msg.addByte(static_cast<uint8_t>(g_configManager().getNumber(TASK_HUNTING_SELECTION_LIST_PRICE)));
+		msg.addByte(static_cast<uint8_t>(g_configManager().getNumber(TASK_HUNTING_BONUS_REROLL_PRICE)));
+	}
 
 	writeToOutputBuffer(msg);
 }
 
 void ProtocolGame::sendModalWindow(const ModalWindow &modalWindow) {
+	if (!player) {
+		return;
+	}
+
 	NetworkMessage msg;
 	msg.addByte(0xFA);
 
@@ -6636,22 +6653,21 @@ void ProtocolGame::AddCreature(NetworkMessage &msg, const Creature* creature, bo
 		msg.add<uint16_t>(0x61);
 		msg.add<uint32_t>(remove);
 		msg.add<uint32_t>(creature->getID());
-		if (creature->isHealthHidden()) {
+		if (!oldProtocol && creature->isHealthHidden()) {
 			msg.addByte(CREATURETYPE_HIDDEN);
 		} else {
 			msg.addByte(creatureType);
 		}
 
-		if (creatureType == CREATURETYPE_SUMMON_PLAYER) {
-			const Creature* master = creature->getMaster();
-			if (master) {
+		if (!oldProtocol && creatureType == CREATURETYPE_SUMMON_PLAYER) {
+			if (const Creature* master = creature->getMaster()) {
 				msg.add<uint32_t>(master->getID());
 			} else {
 				msg.add<uint32_t>(0x00);
 			}
 		}
 
-		if (creature->isHealthHidden()) {
+		if (!oldProtocol && creature->isHealthHidden()) {
 			msg.addString("");
 		} else {
 			msg.addString(creature->getName());
@@ -6677,7 +6693,7 @@ void ProtocolGame::AddCreature(NetworkMessage &msg, const Creature* creature, bo
 	if (!creature->isInGhostMode() && !creature->isInvisible()) {
 		const Outfit_t &outfit = creature->getCurrentOutfit();
 		AddOutfit(msg, outfit);
-		if (outfit.lookMount != 0) {
+		if (!oldProtocol && outfit.lookMount != 0) {
 			msg.addByte(outfit.lookMountHead);
 			msg.addByte(outfit.lookMountBody);
 			msg.addByte(outfit.lookMountLegs);
@@ -6697,51 +6713,54 @@ void ProtocolGame::AddCreature(NetworkMessage &msg, const Creature* creature, bo
 	CreatureIcon_t icon;
 	auto sendIcon = false;
 	auto useHazard = g_configManager().getBoolean(TOGGLE_HAZARDSYSTEM);
-	if (otherPlayer) {
-		icon = creature->getIcon();
-		sendIcon = icon != CREATUREICON_NONE;
-		bool hasHazard = otherPlayer->getHazardSystemPoints() > 0;
-
-		if (!hasHazard) {
-			msg.addByte(sendIcon); // Icons
-		}
-		if (sendIcon) {
-			msg.addByte(icon);
-			msg.addByte(1);
-			msg.add<uint16_t>(0);
-		} else if (useHazard && hasHazard) {
-			msg.addByte(0x01); // Has icon
-			msg.addByte(22); // Hazard icon
-			msg.addByte(0);
-			msg.add<uint16_t>(otherPlayer->getHazardSystemPoints());
-		}
-	} else {
-		if (auto monster = creature->getMonster();
-			monster) {
-			icon = monster->getIcon();
-			sendIcon = icon != CREATUREICON_NONE;
-			msg.addByte(sendIcon); // Send Icons true/false
-			if (sendIcon) {
-				// Icones with stack (Fiendishs e Influenceds)
-				if (monster->getForgeStack() > 0) {
-					msg.addByte(icon);
-					msg.addByte(1);
-					msg.add<uint16_t>(icon != 5 ? monster->getForgeStack() : 0); // Stack
-				} else {
-					// Icons without number on the side
-					msg.addByte(icon);
-					msg.addByte(1);
-					msg.add<uint16_t>(0);
-				}
-			}
-		} else {
+	if (!oldProtocol) {
+		if (otherPlayer) {
 			icon = creature->getIcon();
 			sendIcon = icon != CREATUREICON_NONE;
-			msg.addByte(sendIcon); // Send Icons true/false
+			bool hasHazard = otherPlayer->getHazardSystemPoints() > 0;
+
+			if (!hasHazard) {
+				msg.addByte(sendIcon); // Icons
+			}
+
 			if (sendIcon) {
 				msg.addByte(icon);
 				msg.addByte(1);
 				msg.add<uint16_t>(0);
+			} else if (useHazard && hasHazard) {
+				msg.addByte(0x01); // Has icon
+				msg.addByte(22); // Hazard icon
+				msg.addByte(0);
+				msg.add<uint16_t>(otherPlayer->getHazardSystemPoints());
+			}
+		} else {
+			if (auto monster = creature->getMonster();
+				monster) {
+				icon = monster->getIcon();
+				sendIcon = icon != CREATUREICON_NONE;
+				msg.addByte(sendIcon); // Send Icons true/false
+				if (sendIcon) {
+					// Icones with stack (Fiendishs e Influenceds)
+					if (monster->getForgeStack() > 0) {
+						msg.addByte(icon);
+						msg.addByte(1);
+						msg.add<uint16_t>(icon != 5 ? monster->getForgeStack() : 0); // Stack
+					} else {
+						// Icons without number on the side
+						msg.addByte(icon);
+						msg.addByte(1);
+						msg.add<uint16_t>(0);
+					}
+				}
+			} else {
+				icon = creature->getIcon();
+				sendIcon = icon != CREATUREICON_NONE;
+				msg.addByte(sendIcon); // Send Icons true/false
+				if (sendIcon) {
+					msg.addByte(icon);
+					msg.addByte(1);
+					msg.add<uint16_t>(0);
+				}
 			}
 		}
 	}
@@ -6753,43 +6772,49 @@ void ProtocolGame::AddCreature(NetworkMessage &msg, const Creature* creature, bo
 		msg.addByte(player->getGuildEmblem(otherPlayer));
 	}
 
-	if (creatureType == CREATURETYPE_MONSTER) {
-		const Creature* master = creature->getMaster();
-		if (master) {
-			const Player* masterPlayer = master->getPlayer();
-			if (masterPlayer) {
+	if (!oldProtocol && creatureType == CREATURETYPE_MONSTER) {
+		if (const Creature* master = creature->getMaster()) {
+			if (const Player* masterPlayer = master->getPlayer()) {
 				creatureType = CREATURETYPE_SUMMON_PLAYER;
 			}
 		}
 	}
 
-	if (creature->isHealthHidden()) {
+	if (!oldProtocol && creature->isHealthHidden()) {
 		msg.addByte(CREATURETYPE_HIDDEN);
 	} else {
 		msg.addByte(creatureType); // Type (for summons)
 	}
 
-	if (creatureType == CREATURETYPE_SUMMON_PLAYER) {
-		const Creature* master = creature->getMaster();
-		if (master) {
+	if (!oldProtocol && creatureType == CREATURETYPE_SUMMON_PLAYER) {
+		if (const Creature* master = creature->getMaster()) {
 			msg.add<uint32_t>(master->getID());
 		} else {
 			msg.add<uint32_t>(0x00);
 		}
 	}
 
-	if (creatureType == CREATURETYPE_PLAYER) {
-		const Player* otherCreature = creature->getPlayer();
-		if (otherCreature) {
+	if (!oldProtocol && creatureType == CREATURETYPE_PLAYER) {
+		if (const Player* otherCreature = creature->getPlayer()) {
 			msg.addByte(otherCreature->getVocation()->getClientId());
 		} else {
 			msg.addByte(0);
 		}
 	}
 
-	msg.addByte(creature->getSpeechBubble());
+	auto bubble = creature->getSpeechBubble();
+	msg.addByte(oldProtocol && bubble == SPEECHBUBBLE_HIRELING ? SPEECHBUBBLE_NONE : bubble);
 	msg.addByte(0xFF); // MARK_UNMARKED
-	msg.addByte(0x00); // inspection type
+	if (!oldProtocol) {
+		msg.addByte(0x00); // inspection type
+	} else {
+		if (otherPlayer) {
+			msg.add<uint16_t>(otherPlayer->getHelpers());
+		} else {
+			msg.add<uint16_t>(0x00);
+		}
+	}
+
 	msg.addByte(player->canWalkthroughEx(creature) ? 0x00 : 0x01);
 }
 
