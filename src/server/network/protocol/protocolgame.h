@@ -43,7 +43,7 @@ struct TextMessage {
 		struct
 		{
 				int64_t value = 0;
-				TextColor_t color;
+				TextColor_t color = TEXTCOLOR_NONE;
 		} primary, secondary;
 };
 

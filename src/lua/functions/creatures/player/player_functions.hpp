@@ -88,6 +88,12 @@ class PlayerFunctions final : LuaScriptInterface {
 			registerMethod(L, "Player", "removeExperience", PlayerFunctions::luaPlayerRemoveExperience);
 			registerMethod(L, "Player", "getLevel", PlayerFunctions::luaPlayerGetLevel);
 
+			registerMethod(L, "Player", "getMagicShieldCapacityFlat", PlayerFunctions::luaPlayerGetMagicShieldCapacityFlat);
+			registerMethod(L, "Player", "getMagicShieldCapacityPercent", PlayerFunctions::luaPlayerGetMagicShieldCapacityPercent);
+
+			registerMethod(L, "Player", "sendSpellCooldown", PlayerFunctions::luaPlayerSendSpellCooldown);
+			registerMethod(L, "Player", "sendSpellGroupCooldown", PlayerFunctions::luaPlayerSendSpellGroupCooldown);
+
 			registerMethod(L, "Player", "getRebirth", PlayerFunctions::luaPlayerGetRebirth); // rebirth
 			registerMethod(L, "Player", "doRebirth", PlayerFunctions::luaPlayerDoRebirth); // rebirth
 
@@ -418,6 +424,12 @@ class PlayerFunctions final : LuaScriptInterface {
 		static int luaPlayerAddExperience(lua_State* L);
 		static int luaPlayerRemoveExperience(lua_State* L);
 		static int luaPlayerGetLevel(lua_State* L);
+
+		static int luaPlayerGetMagicShieldCapacityFlat(lua_State* L);
+		static int luaPlayerGetMagicShieldCapacityPercent(lua_State* L);
+
+		static int luaPlayerSendSpellCooldown(lua_State* L);
+		static int luaPlayerSendSpellGroupCooldown(lua_State* L);
 
 		static int luaPlayerGetRebirth(lua_State* L); // rebirth
 		static int luaPlayerDoRebirth(lua_State* L); // rebirth

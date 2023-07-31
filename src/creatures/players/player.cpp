@@ -258,12 +258,12 @@ Item* Player::getInventoryItem(Slots_t slot) const {
 	return inventory[slot];
 }
 
-void Player::addConditionSuppressions(uint32_t addConditions) {
-	conditionSuppressions |= addConditions;
+void Player::addConditionSuppressions(const std::array<ConditionType_t, ConditionType_t::CONDITION_COUNT> &addConditions) {
+	conditionSuppressions = addConditions;
 }
 
-void Player::removeConditionSuppressions(uint32_t removeConditions) {
-	conditionSuppressions &= ~removeConditions;
+void Player::removeConditionSuppressions() {
+	conditionSuppressions = {};
 }
 
 Item* Player::getWeapon(Slots_t slot, bool ignoreAmmo) const {
@@ -2535,22 +2535,6 @@ BlockType_t Player::blockHit(Creature* attacker, CombatType_t combatType, int32_
 						}
 					}
 				}
-				if (attacker) {
-					const int16_t &reflectPercent = it.abilities->reflectPercent[combatTypeToIndex(combatType)];
-					if (reflectPercent != 0) {
-						CombatParams params;
-						params.combatType = combatType;
-						params.impactEffect = CONST_ME_MAGIC_BLUE;
-
-						CombatDamage reflectDamage;
-						reflectDamage.origin = ORIGIN_SPELL;
-						reflectDamage.primary.type = combatType;
-						auto safeConverted = toSafeNumber<int64_t>(__FUNCTION__, std::round(-damage * (reflectPercent / 100)));
-						reflectDamage.primary.value = safeConverted;
-
-						Combat::doCombatHealth(this, attacker, reflectDamage, params);
-					}
-				}
 			}
 
 			for (uint8_t slotid = 0; slotid < item->getImbuementSlot(); slotid++) {
@@ -3942,6 +3926,32 @@ std::vector<Item*> Player::getAllInventoryItems(bool ignoreEquiped /*= false*/, 
 	return itemVector;
 }
 
+std::vector<Item*> Player::getEquippedItems() const {
+	std::vector<Slots_t> valid_slots {
+		CONST_SLOT_HEAD,
+		CONST_SLOT_NECKLACE,
+		CONST_SLOT_BACKPACK,
+		CONST_SLOT_ARMOR,
+		CONST_SLOT_RIGHT,
+		CONST_SLOT_LEFT,
+		CONST_SLOT_LEGS,
+		CONST_SLOT_FEET,
+		CONST_SLOT_RING,
+	};
+
+	std::vector<Item*> valid_items;
+	for (const auto &slot : valid_slots) {
+		Item* item = inventory[slot];
+		if (!item) {
+			continue;
+		}
+
+		valid_items.push_back(item);
+	}
+
+	return valid_items;
+}
+
 std::map<uint32_t, uint32_t> &Player::getAllItemTypeCount(std::map<uint32_t, uint32_t> &countMap) const {
 	for (const auto item : getAllInventoryItems()) {
 		countMap[static_cast<uint32_t>(item->getID())] += Item::countByType(item, -1);
@@ -4369,6 +4379,15 @@ void Player::onAddCombatCondition(ConditionType_t type) {
 
 		case CONDITION_DRUNK:
 			sendTextMessage(MESSAGE_FAILURE, "You are drunk.");
+			break;
+
+		case CONDITION_LESSERHEX:
+
+		case CONDITION_INTENSEHEX:
+
+		case CONDITION_GREATERHEX:
+
+			sendTextMessage(MESSAGE_FAILURE, "You are hexed.");
 			break;
 
 		case CONDITION_ROOTED:
@@ -5223,6 +5242,157 @@ void Player::setTibiaCoins(int32_t v) {
 	coinBalance = v;
 }
 
+int32_t Player::getCleavePercent(bool useCharges) const {
+	int32_t result = cleavePercent;
+	for (const auto item : getEquippedItems()) {
+		const ItemType &it = Item::items[item->getID()];
+		if (!it.abilities) {
+			continue;
+		}
+
+		const int32_t &cleave_percent = it.abilities->cleavePercent;
+		if (cleave_percent != 0) {
+			result += cleave_percent;
+			uint16_t charges = item->getCharges();
+			if (useCharges && charges != 0) {
+				g_game().transformItem(item, item->getID(), charges - 1);
+			}
+		}
+	}
+
+	return result;
+}
+
+int32_t Player::getPerfectShotDamage(uint8_t range, bool useCharges) const {
+	int32_t result = 0;
+	auto it = perfectShot.find(range);
+	if (it != perfectShot.end()) {
+		result = it->second;
+	}
+
+	for (const auto item : getEquippedItems()) {
+		const ItemType &itemType = Item::items[item->getID()];
+		if (!itemType.abilities) {
+			continue;
+		}
+
+		if (itemType.abilities->perfectShotRange == range) {
+			result += itemType.abilities->perfectShotDamage;
+			uint16_t charges = item->getCharges();
+			if (useCharges && charges != 0) {
+				g_game().transformItem(item, item->getID(), charges - 1);
+			}
+		}
+	}
+
+	return result;
+}
+
+int32_t Player::getSpecializedMagicLevel(CombatType_t combat, bool useCharges) const {
+	int32_t result = specializedMagicLevel[combatTypeToIndex(combat)];
+	for (const auto item : getEquippedItems()) {
+		const ItemType &itemType = Item::items[item->getID()];
+		if (!itemType.abilities) {
+			continue;
+		}
+
+		int32_t specialized_magic_level = itemType.abilities->specializedMagicLevel[combatTypeToIndex(combat)];
+		if (specialized_magic_level > 0) {
+			result += specialized_magic_level;
+			uint16_t charges = item->getCharges();
+			if (useCharges && charges != 0) {
+				g_game().transformItem(item, item->getID(), charges - 1);
+			}
+		}
+	}
+
+	return result;
+}
+
+int32_t Player::getMagicShieldCapacityFlat(bool useCharges) const {
+	int32_t result = magicShieldCapacityFlat;
+	for (const auto item : getEquippedItems()) {
+		const ItemType &itemType = Item::items[item->getID()];
+		if (!itemType.abilities) {
+			continue;
+		}
+
+		int32_t magicCapacity = itemType.abilities->magicShieldCapacityFlat;
+		if (magicCapacity != 0) {
+			result += magicCapacity;
+			uint16_t charges = item->getCharges();
+			if (useCharges && charges != 0) {
+				g_game().transformItem(item, item->getID(), charges - 1);
+			}
+		}
+	}
+
+	return result;
+}
+
+int32_t Player::getMagicShieldCapacityPercent(bool useCharges) const {
+	int32_t result = magicShieldCapacityPercent;
+	for (const auto item : getEquippedItems()) {
+		const ItemType &itemType = Item::items[item->getID()];
+		if (!itemType.abilities) {
+			continue;
+		}
+
+		int32_t magicPercent = itemType.abilities->magicShieldCapacityPercent;
+		if (magicPercent != 0) {
+			result += magicPercent;
+			uint16_t charges = item->getCharges();
+			if (useCharges && charges != 0) {
+				g_game().transformItem(item, item->getID(), charges - 1);
+			}
+		}
+	}
+
+	return result;
+}
+
+int32_t Player::getReflectPercent(CombatType_t combat, bool useCharges) const {
+	int32_t result = reflectPercent[combatTypeToIndex(combat)];
+	for (const auto item : getEquippedItems()) {
+		const ItemType &itemType = Item::items[item->getID()];
+		if (!itemType.abilities) {
+			continue;
+		}
+
+		int32_t reflectPercent = itemType.abilities->reflectPercent[combatTypeToIndex(combat)];
+		if (reflectPercent != 0) {
+			result += reflectPercent;
+			uint16_t charges = item->getCharges();
+			if (useCharges && charges != 0) {
+				g_game().transformItem(item, item->getID(), charges - 1);
+			}
+		}
+	}
+
+	return result;
+}
+
+int32_t Player::getReflectFlat(CombatType_t combat, bool useCharges) const {
+	int32_t result = reflectFlat[combatTypeToIndex(combat)];
+	for (const auto item : getEquippedItems()) {
+		const ItemType &itemType = Item::items[item->getID()];
+		if (!itemType.abilities) {
+			continue;
+		}
+
+		int32_t reflectFlat = itemType.abilities->reflectFlat[combatTypeToIndex(combat)];
+		if (reflectFlat != 0) {
+			result += reflectFlat;
+			uint16_t charges = item->getCharges();
+			if (useCharges && charges != 0) {
+				g_game().transformItem(item, item->getID(), charges - 1);
+			}
+		}
+	}
+
+	return result;
+}
+
 void Player::setTibiaCoinsTournaments(int32_t v) {
 	coinBalanceTournaments = v;
 }
@@ -5924,6 +6094,16 @@ void Player::updateUIExhausted() {
 	lastUIInteraction = OTSYS_TIME();
 }
 
+void Player::setImmuneFear() {
+	m_fearCondition.first = CONDITION_FEARED;
+	m_fearCondition.second = OTSYS_TIME() + 10000;
+}
+
+bool Player::isImmuneFear() const {
+	uint64_t timenow = OTSYS_TIME();
+	return (m_fearCondition.first == CONDITION_FEARED) && (timenow <= m_fearCondition.second);
+}
+
 uint64_t Player::getItemCustomPrice(uint16_t itemId, bool buyPrice /* = false*/) const {
 	auto it = itemPriceMap.find(itemId);
 	if (it != itemPriceMap.end()) {
@@ -5988,6 +6168,10 @@ void Player::addItemImbuementStats(const Imbuement* imbuement) {
 }
 
 void Player::removeItemImbuementStats(const Imbuement* imbuement) {
+	if (!imbuement) {
+		return;
+	}
+
 	bool requestUpdate = false;
 
 	for (int64_t skill = SKILL_FIRST; skill <= SKILL_LAST; ++skill) {
