@@ -156,7 +156,7 @@ int CombatFunctions::luaCombatExecute(lua_State* L) {
 
 	combat->setInstantSpellName(variant.instantName);
 	combat->setRuneSpellName(variant.runeName);
-	bool result = false;
+	bool result = true;
 	switch (variant.type) {
 		case VARIANT_NUMBER: {
 			Creature* target = g_game().getCreatureByID(variant.number);
