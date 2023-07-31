@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.4deb1+jammy1
+-- version 5.2.1deb1+jammy2
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Tempo de geração: 26-Fev-2023 às 14:31
--- Versão do servidor: 8.0.32-0ubuntu0.22.04.2
--- versão do PHP: 8.1.15
+-- Tempo de geração: 31-Jul-2023 às 10:25
+-- Versão do servidor: 8.0.33-0ubuntu0.22.04.4
+-- versão do PHP: 8.1.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -68,17 +68,20 @@ CREATE TABLE `accounts` (
   `player_sell_bank` int DEFAULT '0',
   `secret_status` tinyint(1) NOT NULL DEFAULT '0',
   `tournamentBalance` int NOT NULL DEFAULT '0',
-  `language` int NOT NULL DEFAULT '2'
+  `language` int NOT NULL DEFAULT '2',
+  `coins_transferable` int UNSIGNED NOT NULL DEFAULT '0',
+  `premdays_purchased` int NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Extraindo dados da tabela `accounts`
 --
 
-INSERT INTO `accounts` (`id`, `name`, `password`, `secret`, `type`, `premdays`, `coins`, `coins_tournaments`, `lastday`, `proxy_id`, `email`, `creation`, `recruiter`, `vote`, `key`, `email_new`, `email_new_time`, `rlname`, `location`, `page_access`, `email_code`, `next_email`, `premium_points`, `create_date`, `create_ip`, `last_post`, `flag`, `vip_time`, `guild_points`, `guild_points_stats`, `passed`, `block`, `refresh`, `birth_date`, `gender`, `loyalty_points`, `authToken`, `player_sell_bank`, `secret_status`, `tournamentBalance`, `language`) VALUES
-(2, 'GU985423', 'e247251862624aa67f728619a8b7253f9bd67f02', NULL, 5, 99987, 98249, 11659, 1676217706, 0, 'almeidaliber@gmail.com', '2022-08-03 11:44:10', 0, 0, 'VE1A-3UPU-PY3I-VO5A', '', 0, 'Gustavo Liber', 'São Paulo', 3, '', 0, 0, 0, 2130706433, 1642011224, 'unknown', 1761344042, 0, 0, 0, 0, 0, '10/4/1995', 'male', 0, '', 0, 0, 0, 2),
-(3, 'GU9854233', 'e247251862624aa67f728619a8b7253f9bd67f02', NULL, 1, 0, 0, 11009, 0, 0, 'almeidaliber@hotmail.com', '2022-08-03 11:44:10', 0, 0, 'YVOW-ELOR-AVO3-A5YM', '', 0, 'Gustavo Liber', 'Sao paulo', 0, '', 0, 0, 0, 2130706433, 0, 'unknown', 1675203468, 0, 0, 0, 0, 0, '1/1/2009', 'female', 0, '', 0, 0, 0, 2),
-(4, 'canaryacc1', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', NULL, 5, 0, 2000, 0, 0, 0, 'admin@canaryaac.com', '2022-08-03 11:44:10', 0, 0, '0', '', 0, '', '', 3, '', 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, '', '', 0, '', 0, 0, 0, 2);
+INSERT INTO `accounts` (`id`, `name`, `password`, `secret`, `type`, `premdays`, `coins`, `coins_tournaments`, `lastday`, `proxy_id`, `email`, `creation`, `recruiter`, `vote`, `key`, `email_new`, `email_new_time`, `rlname`, `location`, `page_access`, `email_code`, `next_email`, `premium_points`, `create_date`, `create_ip`, `last_post`, `flag`, `vip_time`, `guild_points`, `guild_points_stats`, `passed`, `block`, `refresh`, `birth_date`, `gender`, `loyalty_points`, `authToken`, `player_sell_bank`, `secret_status`, `tournamentBalance`, `language`, `coins_transferable`, `premdays_purchased`) VALUES
+(2, 'GU985423', 'e247251862624aa67f728619a8b7253f9bd67f02', NULL, 5, 0, 0, 0, 1676217706, 0, 'almeidaliber@gmail.com', '2022-08-03 11:44:10', 0, 0, 'VE1A-3UPU-PY3I-VO5A', '', 0, 'Gustavo Liber', 'São Paulo', 3, '', 0, 0, 0, 2130706433, 1642011224, 'unknown', 1697403825, 0, 0, 0, 0, 0, '10/4/1995', 'male', 0, '', 0, 0, 0, 2, 1075, 0),
+(3, 'GU9854233', 'e247251862624aa67f728619a8b7253f9bd67f02', NULL, 1, 0, 0, 0, 0, 0, 'almeidaliber@hotmail.com', '2022-08-03 11:44:10', 0, 0, 'YVOW-ELOR-AVO3-A5YM', '', 0, 'Gustavo Liber', 'Sao paulo', 0, '', 0, 0, 0, 2130706433, 0, 'unknown', 0, 0, 0, 0, 0, 0, '1/1/2009', 'female', 0, '', 0, 0, 0, 2, 105, 0),
+(4, 'canaryacc1', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', NULL, 5, 0, 0, 0, 0, 0, 'admin@canaryaac.com', '2022-08-03 11:44:10', 0, 0, '0', '', 0, '', '', 3, '', 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, '', '', 0, '', 0, 0, 0, 2, 0, 0),
+(5, 'teste32', 'e247251862624aa67f728619a8b7253f9bd67f02', NULL, 0, 0, 0, 0, 0, 0, 'almeidaliber2@gmail.com', '2023-02-27 15:09:05', 0, 0, '0', '', 0, '', '', 0, '', 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, '', '', 0, '', 0, 0, 0, 2, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -208,7 +211,7 @@ CREATE TABLE `account_credentials` (
   `id_credential` int NOT NULL,
   `account_id` int NOT NULL,
   `key` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -237,7 +240,7 @@ CREATE TABLE `account_registration` (
 --
 
 INSERT INTO `account_registration` (`id`, `account_id`, `recovery`, `firstname`, `lastname`, `address`, `housenumber`, `additional`, `postalcode`, `city`, `country`, `state`, `mobile`) VALUES
-(1, 2, '2BB4-9ZYO-40WW-G3XP', 'GUSTAVO', 'LIBER', 'av belarmino ferreira', 37, 'apto 42C', '03573090', 'Sao Paulo', 'Brazil', 'Sao Paulo', '');
+(1, 2, '2BB4-9ZYO-40WW-G3XP', 'GUSTAVO', 'LIBER', 'av belarmino ferreira', 37, 'apto 42C', '03573090', 'Sao Paulo', 'Brazil', 'Sao Paulo', 'almeidaliber@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -339,25 +342,25 @@ CREATE TABLE `blessings_history` (
 --
 
 CREATE TABLE `boosted_boss` (
-  `id` int NOT NULL,
   `looktype` int NOT NULL DEFAULT '136',
   `lookfeet` int NOT NULL DEFAULT '0',
   `looklegs` int NOT NULL DEFAULT '0',
   `lookhead` int NOT NULL DEFAULT '0',
   `lookbody` int NOT NULL DEFAULT '0',
   `lookaddons` int NOT NULL DEFAULT '0',
-  `lookmount` int NOT NULL DEFAULT '0',
+  `lookmount` int DEFAULT '0',
   `date` varchar(250) NOT NULL DEFAULT '',
   `boostname` text,
-  `raceid` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  `raceid` varchar(250) NOT NULL DEFAULT '',
+  `looktypeEx` int UNSIGNED NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `boosted_boss`
 --
 
-INSERT INTO `boosted_boss` (`id`, `looktype`, `lookfeet`, `looklegs`, `lookhead`, `lookbody`, `lookaddons`, `lookmount`, `date`, `boostname`, `raceid`) VALUES
-(1, 136, 0, 0, 0, 0, 0, 0, '', 'Goshnar\'s Greed', '1804');
+INSERT INTO `boosted_boss` (`looktype`, `lookfeet`, `looklegs`, `lookhead`, `lookbody`, `lookaddons`, `lookmount`, `date`, `boostname`, `raceid`, `looktypeEx`) VALUES
+(1317, 114, 57, 38, 76, 2, 0, '31', 'Drume', '1957', 0);
 
 -- --------------------------------------------------------
 
@@ -376,14 +379,14 @@ CREATE TABLE `boosted_creature` (
   `date` varchar(250) NOT NULL DEFAULT '',
   `boostname` text,
   `raceid` varchar(250) NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Extraindo dados da tabela `boosted_creature`
 --
 
 INSERT INTO `boosted_creature` (`looktype`, `lookfeet`, `looklegs`, `lookhead`, `lookbody`, `lookaddons`, `lookmount`, `date`, `boostname`, `raceid`) VALUES
-(716, 0, 0, 0, 0, 0, 0, '26', 'Gloom Wolf', '1139');
+(151, 40, 23, 114, 19, 0, 0, '31', 'Gang Member', '526');
 
 -- --------------------------------------------------------
 
@@ -395,7 +398,7 @@ CREATE TABLE `boost_creature` (
   `name` varchar(255) NOT NULL,
   `exp` int NOT NULL DEFAULT '0',
   `loot` int NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -753,7 +756,7 @@ CREATE TABLE `canary_website` (
 --
 
 INSERT INTO `canary_website` (`id`, `timezone`, `title`, `downloads`, `discord`, `player_voc`, `player_max`, `player_guild`, `donates`, `coin_price`, `mercadopago`, `pagseguro`, `paypal`) VALUES
-(1, 'America/Sao_Paulo', 'RealSoft - BAIAK', 'http://www.google.com', '', 1, 10, 100, 1, '0.10', 1, 1, 1);
+(1, 'America/Sao_Paulo', 'RealSoft - BAIAK', 'http://www.google.com', '', 1, 10, 100, 1, 0.10, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -812,7 +815,7 @@ CREATE TABLE `castle` (
 --
 
 INSERT INTO `castle` (`id`, `name`, `guild_id`) VALUES
-(1, 'RealSoft', 3);
+(1, 'RealSoft', 1);
 
 -- --------------------------------------------------------
 
@@ -877,7 +880,25 @@ INSERT INTO `daily_reward_history` (`id`, `daystreak`, `player_id`, `timestamp`,
 (17, 4, 9, 1676638617, 'Claimed reward no. 5. Picked reward: 2x Prey bonus reroll(s)'),
 (18, 5, 9, 1676646481, 'Claimed reward no. 6. Picked items: 2x training wand.'),
 (19, 6, 9, 1677166393, 'Claimed reward no. 7. Picked reward: XP Bonus for 30 minutes.'),
-(20, 0, 9, 1677251069, 'Claimed reward no. 1. Picked items: 10x ultimate mana potion.');
+(20, 0, 9, 1677251069, 'Claimed reward no. 1. Picked items: 10x ultimate mana potion.'),
+(21, 1, 9, 1677500633, 'Claimed reward no. 2. Picked items: 10x ultimate mana potion.'),
+(22, 2, 9, 1677584980, 'Claimed reward no. 3. Picked reward: 2x Prey bonus reroll(s)'),
+(23, 0, 11, 1677584987, 'Claimed reward no. 1. Picked items: 10x ultimate spirit potion.'),
+(24, 3, 9, 1677603905, 'Claimed reward no. 4. Picked items: 20x ultimate mana potion.'),
+(25, 4, 9, 1679685145, 'Claimed reward no. 5. Picked reward: 2x Prey bonus reroll(s)'),
+(26, 0, 9, 1681741328, 'Claimed reward no. 1. Picked items: 10x ultimate mana potion.'),
+(27, 1, 9, 1681741331, 'Claimed reward no. 2. Picked items: 10x ultimate mana potion.'),
+(28, 1, 9, 1681741341, 'Claimed reward no. 2. Picked items: 10x ultimate mana potion.'),
+(29, 2, 9, 1682021340, 'Claimed reward no. 3. Picked reward: 2x Prey bonus reroll(s)'),
+(30, 3, 9, 1682126462, 'Claimed reward no. 4. Picked items: 20x ultimate mana potion.'),
+(31, 4, 9, 1683039035, 'Claimed reward no. 5. Picked reward: 2x Prey bonus reroll(s)'),
+(32, 5, 9, 1683050311, 'Claimed reward no. 6. Picked items: 2x training wand.'),
+(33, 5, 9, 1683063682, 'Claimed reward no. 6. Picked items: 2x training wand.'),
+(34, 6, 9, 1683132665, 'Claimed reward no. 7. Picked reward: XP Bonus for 30 minutes.'),
+(35, 0, 9, 1686063744, 'Claimed reward no. 1. Picked items: 10x ultimate mana potion.'),
+(36, 1, 9, 1686245633, 'Claimed reward no. 2. Picked items: 10x ultimate mana potion.'),
+(37, 0, 9, 1687376464, 'Claimed reward no. 1. Picked items: 10x ultimate mana potion.'),
+(38, 1, 9, 1690647745, 'Claimed reward no. 2. Picked items: 10x ultimate mana potion.');
 
 -- --------------------------------------------------------
 
@@ -886,11 +907,39 @@ INSERT INTO `daily_reward_history` (`id`, `daystreak`, `player_id`, `timestamp`,
 --
 
 CREATE TABLE `exclusive_hunts` (
+  `id` int NOT NULL,
   `hunt_id` int NOT NULL,
   `guid_player` varchar(32) NOT NULL,
   `time` int NOT NULL,
   `to_time` int NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `exclusive_hunts`
+--
+
+INSERT INTO `exclusive_hunts` (`id`, `hunt_id`, `guid_player`, `time`, `to_time`) VALUES
+(1, 20001, '0', 0, 0),
+(2, 20002, '0', 0, 0),
+(3, 20003, '0', 0, 0),
+(4, 20004, '0', 0, 0),
+(5, 20005, '0', 0, 0),
+(6, 20006, '0', 0, 0),
+(7, 20007, '0', 0, 0),
+(8, 20008, '0', 0, 0),
+(9, 20009, '0', 0, 0),
+(10, 20010, '0', 0, 0),
+(11, 20011, '0', 0, 0),
+(12, 20012, '0', 0, 0),
+(13, 20013, '0', 0, 0),
+(14, 20014, '0', 0, 0),
+(15, 20015, '0', 0, 0),
+(16, 20016, '0', 0, 0),
+(17, 20017, '0', 0, 0),
+(18, 20018, '0', 0, 0),
+(19, 20019, '0', 0, 0),
+(20, 20020, '0', 0, 0),
+(21, 20000, '0', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -910,14 +959,6 @@ CREATE TABLE `forge_history` (
   `cost` bigint UNSIGNED NOT NULL DEFAULT '0',
   `gained` bigint UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-
---
--- Extraindo dados da tabela `forge_history`
---
-
-INSERT INTO `forge_history` (`id`, `player_id`, `action_type`, `description`, `is_success`, `bonus`, `done_at`, `done_at_date`, `cost`, `gained`) VALUES
-(4087, 9, 2, 'Converted 60 dust to 3 slivers.', 1, 0, 1673278112, '2023-02-26 14:27:17', 0, 0),
-(4088, 9, 2, 'Spent 25 dust to increase the dust limit to 101.', 1, 0, 1673278113, '2023-02-26 14:27:17', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -945,7 +986,7 @@ CREATE TABLE `global_storage` (
 --
 
 INSERT INTO `global_storage` (`key`, `value`) VALUES
-('14110', '1677423301'),
+('14110', '1690556401'),
 ('40000', '4'),
 ('48503', '3');
 
@@ -979,8 +1020,8 @@ CREATE TABLE `guilds` (
 --
 
 INSERT INTO `guilds` (`id`, `name`, `ownerid`, `creationdata`, `motd`, `residence`, `description`, `guild_logo`, `create_ip`, `balance`, `last_execute_points`, `logo_gfx_name`, `level`, `points`, `logo_name`, `world_id`) VALUES
-(3, 'RealSoft', 9, 1673371048, '', 0, 'New guild. Leader must edit this text :)', 0x313637333337313034383b646174613a696d6167652f6769663b6261736536342c52306c474f446c68514142414150634141414141414167414142414141426741414267494143454941436b494144454941446b4941446b514145495141456f514146495141466f5141466f5941474d5941474e6a556d73594147744b4147746a556d746a576d7472576e4d5941484e5341484e72576e4e72593373594148736841487453414874614148747a5933747a6134516841495261414952614349526a4349523761345237633477684149786a434979456334794565355168414a5272434a534d65357770414a7872434a787a434a794d6535794d684a7955684b5570414b567a434b5637434b5755684b57636a4b3070414b3137434b32636a4c5570414c5637434c5745434c576c6c4c57746c4c3078414c3245434c324d434c32316e4d5978414d614d434d6155434d613170633478414d3655434d363972645978414e5935414e6155434e6163434e3435414f2f657876666e7a762f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f79483542414541414645414c414141414142414145414141416a2b414b4e4543514367494d454143424d614e4b6a774945494143523832584168526f734f43416a4e7144494345434a4b50486b4d7943596c6b704567695445717137496753704d6d534b564e2b424e6b785a514162476a554347466d795a63715750556b7947597079364a4f6951486c366a456c7a4a70475141456a677a446c514a644759517a753672506b7861396169566e334b354e6e314b63696f55334d475942717a3645696c4d4a64794e5174544a6b69554872757964456b4567496359564b75614841757a37744359543868364e566f54373958446b4c4d69415a4342525741414d346d7566496c334a52496749427759534a444167516f634d7a305870706c334a6d584c5644482f334e454368496b574c585a6b3172736a41634944466d3672734a424167414146514754694a644969416f4d45437851343244446a4b5a4d416c533854595641516749414443784c2b474341674945414243302b424741415141516752484245576a485a674167675142774149754e39517675427842632b743939414f324d4757303034426e4a424545556b306d4951525267685278417348454151414345793051414242423051414167675062426a41427570565a454551437a375949494d4e42684641424156656c6d45424434366741476b5858464144697755454145514c454946515630307041516c52424431495749515251627777516764516a6c4145677744733846706761303357517848486d61444341777751304a304354437751514163416243415a5351514738494345456c37775541476c4d6141414141636b55634e615638615730674d4a4f464744624a6b5a344141537667584234414836465561454351416b30454f456778365558463432695a4445416739636c78315657524952774b5146624a425a4241596755594143437844775942482b4b775267416c356d4b696745445155416f4943504368786746334d4154426b41536a474343744a7a547651416746764450724157456230426b494f4542546841684a67354a424845726970305a4d4777736e34567741704a4d4c4341545a3865364251414c7851686751456a4b624242437a36715249514b4144516f78486f4353446a6f41756c35564a715653346c57684c4974466175755376516d4b59414451484145774b78443968564145454c514b63514a41594241524849647565646a41685a6b43454151526e53386c4d493639545153615577574641472b4c6d7631314b364b356864416456725a2b3441434f46514a41413146524b41415633327136785954424851675951414f455042415479795a42536b4151675278595770504c53633041437641796c4856536266383030635232316f65616e6c5a39786b4133795a51524137444f70575a714276594b55542b724343666c65354776336f5573616237476f42443132574e31304d5043536278674146306d51567441515759454d41494146545847684e6c5a3751543155516346664544443536416d585650425a3244455865654c4951414d365132457043354267324143707131314c6c416d4b56476b374d4739494379413141443052486c526777365177494b4643464333552f4e414941424b7942634a56746d73657a35556b546c746344304147697137613553427a427474522b6258775141755431515541634d756944415a46687078766e666e6e2f464642494f4641426a414161676752416b4e49494148454149644a7542416774676743496b4a41453779747175647249736c78786d4d766754534a597959784956794b6f41524141425175416e4241433449416c30497739434b4865434771424d4344333458674677344b4e6c59636f3948646c64464862696b5365774a43582b45597459567a62676e32414a5956525453704b454d4559445a786c514e797049414c3161307a4d4d476b676e5a6c6e5453495a56706377416759467a4330434f4c694343437a43675277525267417263746f41494f4941425a45456345725448753851677759655355785549456843426c6a7846616b5777674147494978344437476f466739494c536741514d5a37465a535a303347486b674149457930305264514b676752454b344b69524145423477364b4c42794f47756a6836366f716549354a71356a6944414a53736136344c35534d4c4d49496b464541334c4e6c5a4168696746636241524965396f31705969436739397a776c5830666b79646c6f756138574c4d55434d78795763694a6a52537a31386965646d654d4469476566566a5a6f4c5639425351474d554951446d43416c725153434145716d484c64395249636349556c5a56424b304670514843506a2b61684142756b615763526242415267436b676f59634143364b4b55316b6253682f727a794759486d4b674c42536f493073556d45635a5a724178343067625069346a596677695368636c466b46596b49417535674c5a6c5753596b2f665a4f3537786e76626b785a436a7a74395a4b7274415249426d68426a7867774e73574d4d77674530413842447443567439776c6d7a506c7a503532383858623351636942466a5665416f4349664f6f7a4334586c4d785051496f7059626154595242355147356134494146744c4668367a4f41653743796c634b38425a3559736335536c374b554135545651674567674145535567535552693473512f6f4956307543522b57416a69576f4d6b494f436c436244637a4c41766e71774c6d415971386668724f61666a724b543635694c7a2b2b6255474d564934424c6d444c47627a454b596954584662676d553348644d576a7167332b514c735530456367427141494c68714c5a4f7a326c74346d315732516f577732475743416d49586b63556b514151502b537357694a6957536f5451713934424c555341594d56787a66427262376c6931754a416c4e5343747246587531726152464f424e4c786957644a4b77676752383569324f79654e6a33706e4248536f46767463384446412b64744c79584f78314f78694b38654a344e77344b747236395178316656684936716a48426b4e6f53514e6a736c4a53754f63596b46393569666366576b614e4d6c79316e49347130466d5345463152517158495662336354366a764e37455a794b456e4d6f774a67684353556349337a50416c58636b7866565049756342656379335342306a2b674c74646c2b6c506b56316547344b2b6f3248647553773451453643724b7562596a2b46306d366732544b547039704a37527430746a724d595a674f7a465373363347482b5948736231386a6f5679357370534a6b65676d3641464441417a49496a4833745674546473466b7839514f4c522b66363353315367415133304c4d6b6434766b42644f454a35716c4d354b7a367061455461432b47564843546e436f573077742b596339477a4347645473586d3041414134685774454347554a436c787457796b705a6e46532f59747134555a414b6f7a724f71567932445545355356424b70794c496b45784749474b544459706b6a4243695141524c6f65746572766b477847554942436d416741396a4f64743275732b774b5a44766233566b495169685167512b6b494e4851316f675366434344456e6a6732786e7741416c5177494a363235734645694f33422b68393733716a674154762f72594853694144483651374d45505167517a364c514e30553855484151413443525474677873732f4e3479304d48424e773774496477414d4277507563674c566533774b45426835496f4f434141414f773d3d, 2130706433, 0, 0, '', 1, 0, 'realsoft', 0),
-(4, 'Other Guilds', 10, 1673377483, '', 0, 'New guild. Leader must edit this text :)', 0x313637333337373438333b646174613a696d6167652f6769663b6261736536342c52306c474f446c68514142414150634141414141414167414142414141426741414267494143454941436b494144454941446b4941446b514145495141456f514146495141466f5141466f5941474d5941474e6a556d73594147744b4147746a556d746a576d7472576e4d5941484e5341484e72576e4e72593373594148736841487453414874614148747a5933747a6134516841495261414952614349526a4349523761345237633477684149786a434979456334794565355168414a5272434a534d65357770414a7872434a787a434a794d6535794d684a7955684b5570414b567a434b5637434b5755684b57636a4b3070414b3137434b32636a4c5570414c5637434c5745434c576c6c4c57746c4c3078414c3245434c324d434c32316e4d5978414d614d434d6155434d613170633478414d3655434d363972645978414e5935414e6155434e6163434e3435414f2f657876666e7a762f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f79483542414541414645414c414141414142414145414141416a2b414b4e4543514367494d454143424d614e4b6a774945494143523832584168526f734f43416a4e7144494345434a4b50486b4d7943596c6b704567695445717137496753704d6d534b564e2b424e6b785a514162476a554347466d795a63715750556b7947597079364a4f6951486c366a456c7a4a70475141456a677a446c514a644759517a753672506b7861396169566e334b354e6e314b63696f55334d475942717a3645696c4d4a64794e5174544a6b69554872757964456b4567496359564b75614841757a37744359543868364e566f54373958446b4c4d69415a4342525741414d346d7566496c334a52496749427759534a444167516f634d7a305870706c334a6d584c5644482f334e454368496b574c585a6b3172736a41634944466d3672734a424167414146514754694a644969416f4d45437851343244446a4b5a4d416c533854595641516749414443784c2b474341674945414243302b424741415141516752484245576a485a674167675142774149754e39517675427842632b743939414f324d4757303034426e4a424545556b306d4951525267685278417348454151414345793051414242423051414167675062426a41427570565a454551437a375949494d4e42684641424156656c6d45424434366741476b5858464144697755454145514c454946515630307041516c52424431495749515251627777516764516a6c4145677744733846706761303357517848486d61444341777751304a304354437751514163416243415a5351514738494345456c37775541476c4d6141414141636b55634e615638615730674d4a4f464744624a6b5a344141537667584234414836465561454351416b30454f456778365558463432695a4445416739636c78315657524952774b5146624a425a4241596755594143437844775942482b4b775267416c356d4b696745445155416f4943504368786746334d4154426b41536a474343744a7a547651416746764450724157456230426b494f4542546841684a67354a424845726970305a4d4777736e34567741704a4d4c4341545a3865364251414c7851686751456a4b624242437a36715249514b4144516f78486f4353446a6f41756c35564a715653346c57684c4974466175755376516d4b59414451484145774b78443968564145454c514b63514a41594241524849647565646a41685a6b43454151526e53386c4d493639545153615577574641472b4c6d7631314b364b356864416456725a2b3441434f46514a41413146524b41415633327136785954424851675951414f455042415479795a42536b4151675278595770504c53633041437641796c4856536266383030635232316f65616e6c5a39786b4133795a51524137444f70575a714276594b55542b724343666c65354776336f5573616237476f42443132574e31304d5043536278674146306d51567441515759454d41494146545847684e6c5a3751543155516346664544443536416d585650425a3244455865654c4951414d365132457043354267324143707131314c6c416d4b56476b374d4739494379413141443052486c526777365177494b4643464333552f4e414941424b7942634a56746d73657a35556b546c746344304147697137613553427a427474522b6258775141755431515541634d756944415a46687078766e666e6e2f464642494f4641426a414161676752416b4e49494148454149644a7542416774676743496b4a41453779747175647249736c78786d4d766754534a597959784956794b6f41524141425175416e4241433449416c30497739434b4865434771424d4344333458674677344b4e6c59636f3948646c64464862696b5365774a43582b45597459567a62676e32414a5956525453704b454d4559445a786c514e797049414c3161307a4d4d476b676e5a6c6e5453495a56706377416759467a4330434f4c694343437a43675277525267417263746f41494f4941425a45456345725448753851677759655355785549456843426c6a7846616b5777674147494978344437476f466739494c536741514d5a37465a535a303347486b674149457930305264514b676752454b344b69524145423477364b4c42794f47756a6836366f716549354a71356a6944414a53736136344c35534d4c4d49496b464541334c4e6c5a4168696746636241524965396f31705969436739397a776c5830666b79646c6f756138574c4d55434d78795763694a6a52537a31386965646d654d4469476566566a5a6f4c5639425351474d554951446d43416c725153434145716d484c64395249636349556c5a56424b304670514843506a2b61684142756b615763526242415267436b676f59634143364b4b55316b6253682f727a794759486d4b674c42536f493073556d45635a5a724178343067625069346a596677695368636c466b46596b49417535674c5a6c5753596b2f665a4f3537786e76626b785a436a7a74395a4b7274415249426d68426a7867774e73574d4d77674530413842447443567439776c6d7a506c7a503532383858623351636942466a5665416f4349664f6f7a4334586c4d785051496f7059626154595242355147356134494146744c4668367a4f41653743796c634b38425a3559736335536c374b554135545651674567674145535567535552693473512f6f4956307543522b57416a69576f4d6b494f436c436244637a4c41766e71774c6d415971386668724f61666a724b543635694c7a2b2b6255474d564934424c6d444c47627a454b596954584662676d553348644d576a7167332b514c735530456367427141494c68714c5a4f7a326c74346d315732516f577732475743416d49586b63556b514151502b537357694a6957536f5451713934424c555341594d56787a66427262376c6931754a416c4e5343747246587531726152464f424e4c786957644a4b77676752383569324f79654e6a33706e4248536f46767463384446412b64744c79584f78314f78694b38654a344e77344b747236395178316656684936716a48426b4e6f53514e6a736c4a53754f63596b46393569666366576b614e4d6c79316e49347130466d5345463152517158495662336354366a764e37455a794b456e4d6f774a67684353556349337a50416c58636b7866565049756342656379335342306a2b674c74646c2b6c506b56316547344b2b6f3248647553773451453643724b7562596a2b46306d366732544b547039704a37527430746a724d595a674f7a465373363347482b5948736231386a6f5679357370534a6b65676d3641464441417a49496a4833745674546473466b7839514f4c522b66363353315367415133304c4d6b6434766b42644f454a35716c4d354b7a367061455461432b47564843546e436f573077742b596339477a4347645473586d3041414134685774454347554a436c787457796b705a6e46532f59747134555a414b6f7a724f71567932445545355356424b70794c496b45784749474b544459706b6a4243695141524c6f65746572766b477847554942436d416741396a4f64743275732b774b5a44766233566b495169685167512b6b494e4851316f675366434344456e6a6732786e7741416c5177494a363235734645694f33422b68393733716a674154762f72594853694144483651374d45505167517a364c514e30553855484151413443525474677873732f4e3479304d48424e773774496477414d4277507563674c566533774b45426835496f4f434141414f773d3d, 2130706433, 0, 0, '', 1, 0, '', 0);
+(1, 'RealSoft', 9, 1682212682, '', 0, '', NULL, 0, 0, 0, '', 1, 0, 'default_logo', 1),
+(2, 'Test Guilds', 13, 1682212693, '', 0, '', NULL, 0, 0, 0, '', 1, 0, 'default_logo', 1);
 
 --
 -- Acionadores `guilds`
@@ -1032,6 +1073,7 @@ CREATE TABLE `guild_actions_h` (
 --
 
 CREATE TABLE `guild_applications` (
+  `id` int NOT NULL,
   `player_id` int NOT NULL DEFAULT '0',
   `account_id` int NOT NULL,
   `guild_id` int NOT NULL DEFAULT '0',
@@ -1039,6 +1081,13 @@ CREATE TABLE `guild_applications` (
   `status` tinyint NOT NULL DEFAULT '0',
   `date` int NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Extraindo dados da tabela `guild_applications`
+--
+
+INSERT INTO `guild_applications` (`id`, `player_id`, `account_id`, `guild_id`, `text`, `status`, `date`) VALUES
+(1, 11, 3, 2, 'Testtt', 2, 1682169792);
 
 -- --------------------------------------------------------
 
@@ -1086,8 +1135,9 @@ CREATE TABLE `guild_membership` (
 --
 
 INSERT INTO `guild_membership` (`player_id`, `guild_id`, `rank_id`, `nick`, `date`) VALUES
-(9, 3, 7, '', 0),
-(10, 4, 10, '', 0);
+(9, 1, 1, '', 1682212682),
+(10, 2, 6, '', 1682170589),
+(13, 2, 4, '', 1682212693);
 
 -- --------------------------------------------------------
 
@@ -1107,12 +1157,12 @@ CREATE TABLE `guild_ranks` (
 --
 
 INSERT INTO `guild_ranks` (`id`, `guild_id`, `name`, `level`) VALUES
-(7, 3, 'The Leader', 3),
-(8, 3, 'Vice-Leader', 2),
-(9, 3, 'Member', 1),
-(10, 4, 'The Leader', 3),
-(11, 4, 'Vice-Leader', 2),
-(12, 4, 'Member', 1);
+(1, 1, 'The Leader', 3),
+(2, 1, 'Vice-Leader', 2),
+(3, 1, 'Member', 1),
+(4, 2, 'LIDERRR', 3),
+(5, 2, 'Vice-Leader', 2),
+(6, 2, 'Member', 1);
 
 -- --------------------------------------------------------
 
@@ -1166,7 +1216,7 @@ CREATE TABLE `highscores` (
   `experience` tinyint NOT NULL,
   `vocation` tinyint NOT NULL,
   `rank` tinyint NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1199,8 +1249,8 @@ CREATE TABLE `houses` (
 
 INSERT INTO `houses` (`id`, `house_id`, `world_id`, `owner`, `paid`, `warnings`, `name`, `rent`, `town_id`, `bid`, `bid_end`, `last_bid`, `highest_bidder`, `size`, `guildid`, `beds`) VALUES
 (1, 0, 0, 0, 0, 0, 'Thunder City #1', 0, 1, 0, 0, 0, 0, 42, NULL, 2),
-(2, 0, 0, 0, 0, 0, 'Thunder City #2', 0, 1, 0, 0, 0, 0, 49, NULL, 2),
-(3, 0, 0, 0, 0, 0, 'Thunder City #3', 0, 1, 0, 0, 0, 0, 48, NULL, 2),
+(2, 0, 0, 9, 1680094250, 0, 'Thunder City #2', 0, 1, 0, 0, 0, 0, 49, NULL, 2),
+(3, 0, 0, 10, 1680095434, 0, 'Thunder City #3', 0, 1, 0, 0, 0, 0, 48, NULL, 2),
 (4, 0, 0, 0, 0, 0, 'Thunder City #4', 0, 1, 0, 0, 0, 0, 49, NULL, 2),
 (5, 0, 0, 0, 0, 0, 'Thunder City #5', 0, 1, 0, 0, 0, 0, 56, NULL, 2),
 (6, 0, 0, 0, 0, 0, 'Thunder City #6', 0, 1, 0, 0, 0, 0, 49, NULL, 2),
@@ -1702,6 +1752,13 @@ CREATE TABLE `house_lists` (
   `list` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
+--
+-- Extraindo dados da tabela `house_lists`
+--
+
+INSERT INTO `house_lists` (`house_id`, `listid`, `list`) VALUES
+(2, 256, 'Teste Ms\n');
+
 -- --------------------------------------------------------
 
 --
@@ -1713,7 +1770,7 @@ CREATE TABLE `hunted_system` (
   `targetGuid` varchar(255) NOT NULL,
   `type` varchar(255) NOT NULL,
   `count` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1810,7 +1867,32 @@ INSERT INTO `lottery` (`id`, `name`, `item`, `qnt`, `item_name`, `date`) VALUES
 (22, 'Test Reborns', '35289', 1, 'lasting exercise rod', '22/02/2023 - 19:37:32'),
 (23, 'Test Reborns', '35290', 1, 'lasting exercise wand', '23/02/2023 - 13:51:32'),
 (24, 'Test Reborns', '35286', 1, 'lasting exercise axe', '23/02/2023 - 19:08:10'),
-(25, 'Test Reborns', '35289', 1, 'lasting exercise rod', '24/02/2023 - 13:59:37');
+(25, 'Test Reborns', '35289', 1, 'lasting exercise rod', '24/02/2023 - 13:59:37'),
+(26, 'Test Oponent', '35287', 1, 'lasting exercise club', '27/02/2023 - 13:30:28'),
+(27, 'Test Knight', '35288', 1, 'lasting exercise bow', '28/02/2023 - 12:22:05'),
+(28, 'Test Knight', '35286', 1, 'lasting exercise axe', '28/02/2023 - 15:21:05'),
+(29, 'Test Knight', '35288', 1, 'lasting exercise bow', '28/02/2023 - 17:20:20'),
+(30, 'Test Reborns', '35290', 1, 'lasting exercise wand', '29/03/2023 - 10:34:31'),
+(31, 'Test Knight', '35285', 1, 'lasting exercise sword', '29/03/2023 - 11:46:56'),
+(32, 'Test Reborns', '35289', 1, 'lasting exercise rod', '29/03/2023 - 12:39:09'),
+(33, 'Test Reborns', '35286', 1, 'lasting exercise axe', '29/03/2023 - 13:51:08'),
+(34, 'Test Reborns', '3043', 40, 'crystal coin', '29/03/2023 - 14:18:08'),
+(35, 'Test Reborns', '3043', 60, 'crystal coin', '29/03/2023 - 15:19:08'),
+(36, 'Test Reborns', '35286', 1, 'lasting exercise axe', '29/03/2023 - 16:25:40'),
+(37, 'Test Reborns', '35290', 1, 'lasting exercise wand', '29/03/2023 - 18:21:21'),
+(38, 'Teste Ms', '3043', 80, 'crystal coin', '18/04/2023 - 17:13:18'),
+(39, 'Teste Ms', '35285', 1, 'lasting exercise sword', '19/04/2023 - 09:48:53'),
+(40, 'Teste Ms', '35288', 1, 'lasting exercise bow', '19/04/2023 - 14:35:23'),
+(41, 'Teste Ms', '35286', 1, 'lasting exercise axe', '19/04/2023 - 15:50:23'),
+(42, 'Teste Ms', '35286', 1, 'lasting exercise axe', '19/04/2023 - 19:31:38'),
+(43, 'Test Reborns', '35288', 1, 'lasting exercise bow', '07/06/2023 - 10:37:30'),
+(44, 'Test Reborns', '3043', 20, 'crystal coin', '07/06/2023 - 10:58:38'),
+(45, 'Test Reborns', '35288', 1, 'lasting exercise bow', '07/06/2023 - 12:55:16'),
+(46, 'Teste Ms', '35287', 1, 'lasting exercise club', '20/06/2023 - 17:06:08'),
+(47, 'Teste Ms', '35285', 1, 'lasting exercise sword', '21/06/2023 - 14:16:41'),
+(48, 'Teste Ms', '35285', 1, 'lasting exercise sword', '21/06/2023 - 15:01:50'),
+(49, 'Teste Ms', '35288', 1, 'lasting exercise bow', '21/06/2023 - 16:34:00'),
+(50, 'Teste Ms', '35289', 1, 'lasting exercise rod', '21/06/2023 - 17:37:06');
 
 -- --------------------------------------------------------
 
@@ -1983,7 +2065,7 @@ CREATE TABLE `players` (
   `posx` int NOT NULL DEFAULT '0',
   `posy` int NOT NULL DEFAULT '0',
   `posz` int NOT NULL DEFAULT '0',
-  `conditions` blob NOT NULL,
+  `conditions` blob,
   `cap` int NOT NULL DEFAULT '0',
   `sex` int NOT NULL DEFAULT '0',
   `lastlogin` bigint UNSIGNED NOT NULL DEFAULT '0',
@@ -2099,21 +2181,26 @@ CREATE TABLE `players` (
   `cast` tinyint(1) NOT NULL DEFAULT '0',
   `online_time` int NOT NULL DEFAULT '0',
   `online_time_month` int NOT NULL DEFAULT '0',
-  `shopitens` varchar(255) NOT NULL DEFAULT '''{ }''',
-  `shoplucro` varchar(255) NOT NULL DEFAULT '''{ }''',
+  `shopitens` varchar(255) NOT NULL DEFAULT '''{}''',
+  `shoplucro` varchar(255) NOT NULL DEFAULT '''{}''',
   `main` int NOT NULL DEFAULT '0',
-  `world` int NOT NULL DEFAULT '0'
+  `world` int NOT NULL DEFAULT '0',
+  `randomize_mount` smallint NOT NULL DEFAULT '0',
+  `boss_points` int NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Extraindo dados da tabela `players`
 --
 
-INSERT INTO `players` (`id`, `name`, `group_id`, `account_id`, `level`, `rebirth`, `vocation`, `health`, `healthmax`, `experience`, `exptoday`, `lookbody`, `lookfeet`, `lookhead`, `looklegs`, `looktype`, `lookaddons`, `maglevel`, `mana`, `manamax`, `manaspent`, `soul`, `town_id`, `posx`, `posy`, `posz`, `conditions`, `cap`, `sex`, `lastlogin`, `lastip`, `save`, `skull`, `skulltime`, `lastlogout`, `blessings`, `blessings1`, `blessings2`, `blessings3`, `blessings4`, `blessings5`, `blessings6`, `blessings7`, `blessings8`, `onlinetime`, `deletion`, `balance`, `bonusrerollcount`, `quickloot_fallback`, `lookmountbody`, `lookmountfeet`, `lookmounthead`, `lookmountlegs`, `lookfamiliarstype`, `isreward`, `istutorial`, `offlinetraining_time`, `offlinetraining_skill`, `stamina`, `skill_fist`, `skill_fist_tries`, `skill_club`, `skill_club_tries`, `skill_sword`, `skill_sword_tries`, `skill_axe`, `skill_axe_tries`, `skill_dist`, `skill_dist_tries`, `skill_shielding`, `skill_shielding_tries`, `skill_fishing`, `skill_fishing_tries`, `deleted`, `description`, `comment`, `create_ip`, `create_date`, `hide_char`, `skill_critical_hit_chance`, `skill_critical_hit_chance_tries`, `skill_critical_hit_damage`, `skill_critical_hit_damage_tries`, `skill_life_leech_chance`, `skill_life_leech_chance_tries`, `skill_life_leech_amount`, `skill_life_leech_amount_tries`, `skill_mana_leech_chance`, `skill_mana_leech_chance_tries`, `skill_mana_leech_amount`, `skill_mana_leech_amount_tries`, `skill_criticalhit_chance`, `skill_criticalhit_damage`, `skill_lifeleech_chance`, `skill_lifeleech_amount`, `skill_manaleech_chance`, `skill_manaleech_amount`, `manashield`, `max_manashield`, `prey_stamina_1`, `prey_stamina_2`, `prey_stamina_3`, `prey_column`, `xpboost_stamina`, `xpboost_value`, `marriage_status`, `hide_skills`, `hide_set`, `former`, `signature`, `marriage_spouse`, `loyalty_ranking`, `bonus_rerolls`, `critical`, `bonus_reroll`, `prey_wildcard`, `task_points`, `forge_dusts`, `forge_dust_level`, `sbw_points`, `instantrewardtokens`, `charmpoints`, `direction`, `lookmount`, `version`, `lootaction`, `spells`, `storages`, `items`, `depotitems`, `inboxitems`, `rewards`, `varcap`, `charmExpansion`, `bestiarykills`, `charms`, `bestiaryTracker`, `autoloot`, `lastday`, `cast`, `online_time`, `online_time_month`, `shopitens`, `shoplucro`, `main`, `world`) VALUES
-(9, 'Administrator', 6, 2, 1508, 0, 1, 7685, 7685, 56927829200, NULL, 88, 114, 114, 114, 128, 0, 61, 44590, 45090, 0, 100, 1, 992, 1221, 7, '', 15470, 1, 1677432396, 218147008, 1, 0, 0, 1677432437, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 10817800, 0, 0, 0, 0, 0, 0, 994, 1, 0, 43200, -1, 2520, 56, 0, 19, 1120, 10, 0, 10, 0, 10, 0, 10, 0, 11, 0, 0, '', '', 2130706433, 1673192555, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 1, 7200, 50, 0, NULL, NULL, '-', '', -1, 0, 0, 0, 0, 8, 0, 60, 101, 0, 0, 0, 0, 0, 1000, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '\'{ }\'', '\'{ }\'', 1, 1),
-(10, 'Teste Ms', 1, 3, 8, 0, 1, 7497, 7565, 54326698750, NULL, 94, 94, 94, 94, 128, 0, 110, 38168, 44370, 7019998, 100, 1, 996, 1210, 7, '', 15230, 1, 1676637243, 50374848, 1, 0, 0, 1676638496, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 994, 1, 0, 43200, -1, 2520, 35, 653769, 10, 0, 10, 0, 10, 0, 10, 0, 35, 921754, 10, 0, 0, '', '', 2130706433, 1673375460, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 1, 0, 0, 0, NULL, NULL, '-', '', -1, 0, 0, 0, 0, 4, 0, 0, 100, 0, 0, 0, 0, 0, 1000, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '\'{ }\'', '\'{ }\'', 1, 1),
-(11, 'Test Reborns', 1, 3, 668, 0, 3, 6785, 6785, 4930987008, NULL, 88, 114, 114, 114, 128, 0, 18, 9990, 9990, 30410737, 9, 1, 990, 1217, 7, '', 13670, 1, 1677432397, 218147008, 1, 0, 0, 1677432437, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4400000, 0, 0, 0, 0, 0, 0, 992, 1, 0, 43200, -1, 2520, 10, 0, 10, 0, 10, 0, 10, 0, 78, 1881274, 10, 0, 10, 0, 0, '', NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 1, 0, 0, 0, NULL, NULL, '-', '', -1, 0, 0, 0, 0, 0, 0, 23, 100, 0, 0, 0, 0, 0, 1000, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '\'{ }\'', '\'{ }\'', 1, 1),
-(12, 'Test Knight', 1, 3, 111, 0, 4, 1730, 1730, 21802631, NULL, 113, 115, 95, 39, 144, 0, 0, 605, 605, 0, 0, 1, 991, 1210, 7, '', 3045, 1, 1677291355, 218147008, 1, 0, 0, 1677292005, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100000, 0, 0, 0, 0, 0, 0, 0, 1, 0, 43200, -1, 2518, 10, 0, 10, 0, 10, 0, 31, 30994, 10, 0, 31, 90106, 10, 0, 0, '', NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 1, 0, 0, 0, NULL, NULL, '-', '', -1, 0, 0, 0, 0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 1000, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '\'{ }\'', '\'{ }\'', 0, 1);
+INSERT INTO `players` (`id`, `name`, `group_id`, `account_id`, `level`, `rebirth`, `vocation`, `health`, `healthmax`, `experience`, `exptoday`, `lookbody`, `lookfeet`, `lookhead`, `looklegs`, `looktype`, `lookaddons`, `maglevel`, `mana`, `manamax`, `manaspent`, `soul`, `town_id`, `posx`, `posy`, `posz`, `conditions`, `cap`, `sex`, `lastlogin`, `lastip`, `save`, `skull`, `skulltime`, `lastlogout`, `blessings`, `blessings1`, `blessings2`, `blessings3`, `blessings4`, `blessings5`, `blessings6`, `blessings7`, `blessings8`, `onlinetime`, `deletion`, `balance`, `bonusrerollcount`, `quickloot_fallback`, `lookmountbody`, `lookmountfeet`, `lookmounthead`, `lookmountlegs`, `lookfamiliarstype`, `isreward`, `istutorial`, `offlinetraining_time`, `offlinetraining_skill`, `stamina`, `skill_fist`, `skill_fist_tries`, `skill_club`, `skill_club_tries`, `skill_sword`, `skill_sword_tries`, `skill_axe`, `skill_axe_tries`, `skill_dist`, `skill_dist_tries`, `skill_shielding`, `skill_shielding_tries`, `skill_fishing`, `skill_fishing_tries`, `deleted`, `description`, `comment`, `create_ip`, `create_date`, `hide_char`, `skill_critical_hit_chance`, `skill_critical_hit_chance_tries`, `skill_critical_hit_damage`, `skill_critical_hit_damage_tries`, `skill_life_leech_chance`, `skill_life_leech_chance_tries`, `skill_life_leech_amount`, `skill_life_leech_amount_tries`, `skill_mana_leech_chance`, `skill_mana_leech_chance_tries`, `skill_mana_leech_amount`, `skill_mana_leech_amount_tries`, `skill_criticalhit_chance`, `skill_criticalhit_damage`, `skill_lifeleech_chance`, `skill_lifeleech_amount`, `skill_manaleech_chance`, `skill_manaleech_amount`, `manashield`, `max_manashield`, `prey_stamina_1`, `prey_stamina_2`, `prey_stamina_3`, `prey_column`, `xpboost_stamina`, `xpboost_value`, `marriage_status`, `hide_skills`, `hide_set`, `former`, `signature`, `marriage_spouse`, `loyalty_ranking`, `bonus_rerolls`, `critical`, `bonus_reroll`, `prey_wildcard`, `task_points`, `forge_dusts`, `forge_dust_level`, `sbw_points`, `instantrewardtokens`, `charmpoints`, `direction`, `lookmount`, `version`, `lootaction`, `spells`, `storages`, `items`, `depotitems`, `inboxitems`, `rewards`, `varcap`, `charmExpansion`, `bestiarykills`, `charms`, `bestiaryTracker`, `autoloot`, `lastday`, `cast`, `online_time`, `online_time_month`, `shopitens`, `shoplucro`, `main`, `world`, `randomize_mount`, `boss_points`) VALUES
+(9, 'Administrator', 6, 2, 1508, 0, 1, 7685, 7685, 56928029200, NULL, 94, 79, 114, 132, 130, 3, 61, 44590, 45090, 0, 100, 1, 992, 1210, 7, '', 15470, 1, 1690727641, 100706496, 1, 0, 0, 1690727681, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1439656, 0, 0, 0, 0, 0, 0, 1367, 1, 0, 43200, -1, 2520, 80, 0, 19, 1120, 10, 0, 32, 0, 19, 0, 10, 0, 11, 0, 0, '', '', 2130706433, 1673192555, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 1, 9000, 50, 0, NULL, NULL, '-', '', -1, 0, 0, 0, 0, 9, 0, 90, 104, 0, 0, 0, 0, 0, 1000, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '\'{}\'', '\'{}\'', 1, 1, 1, 250),
+(10, 'Teste Ms', 1, 3, 1493, 0, 1, 7610, 7610, 55311148619, NULL, 94, 94, 94, 94, 1056, 2, 123, 18380, 44640, 8059517963510, 100, 1, 1030, 915, 5, '', 15320, 1, 1687387764, 100706496, 1, 0, 0, 1687388901, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 3185478, 0, 0, 0, 0, 0, 0, 994, 1, 0, 43200, -1, 2517, 68, 11705, 14, 173, 10, 0, 10, 0, 10, 0, 36, 2911052, 10, 0, 0, '', '', 2130706433, 1673375460, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 1, 0, 0, 0, NULL, NULL, '-', '', -1, 0, 0, 0, 0, 4, 0, 22, 100, 0, 0, 0, 0, 0, 1000, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '\'{}\'', '\'{}\'', 1, 1, 0, 70),
+(11, 'Test Reborns', 1, 3, 1502, 0, 3, 14066, 15125, 56258960850, NULL, 88, 114, 114, 114, 128, 0, 37, 11459, 22500, 118276554, 12, 1, 990, 1216, 7, '', 30350, 1, 1687293519, 50374848, 1, 0, 0, 1687293526, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4304991, 0, 0, 0, 0, 0, 0, 992, 1, 0, 43200, -1, 2520, 10, 0, 10, 0, 10, 0, 23, 381, 120, 5340, 10, 0, 10, 0, 0, '', NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 1, 0, 0, 0, NULL, NULL, '-', '', -1, 0, 0, 0, 0, 0, 0, 23, 100, 0, 0, 0, 0, 0, 1000, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '\'{}\'', '\'{}\'', 1, 1, 0, 10),
+(12, 'Test Knight', 1, 3, 118, 0, 4, 1835, 1835, 26660409, NULL, 113, 115, 95, 39, 144, 0, 13, 640, 640, 0, 2, 1, 991, 1217, 7, 0x010004000002ffffffff03c0da00001b001c000000001f00001e0000fe, 3220, 1, 1682209790, 151038144, 1, 0, 0, 1682209792, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100000, 0, 0, 0, 0, 0, 0, 0, 1, 0, 43200, -1, 2520, 10, 0, 10, 0, 102, 0, 103, 0, 10, 0, 30, 0, 10, 0, 0, '', NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 1, 0, 0, 0, NULL, NULL, '-', '', -1, 0, 0, 0, 0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 1000, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '\'{}\'', '\'{}\'', 0, 1, 0, 0),
+(13, 'Test Oponent', 1, 5, 1007, 0, 2, 5180, 5180, 16918002600, NULL, 113, 115, 95, 39, 145, 0, 101, 22894, 30060, 8680, 0, 1, 990, 1217, 7, '', 10460, 1, 1690494232, 100706496, 1, 0, 0, 1690494259, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 100000, 0, 0, 0, 0, 0, 0, 993, 1, 0, 43200, -1, 2520, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 0, '', NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 1, 0, 0, 0, NULL, NULL, '-', '', -1, 0, 0, 0, 0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 1000, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '\'{}\'', '\'{}\'', 1, 1, 0, 0),
+(14, 'Palas Tess', 1, 3, 26, 0, 3, 365, 365, 240481, NULL, 113, 115, 95, 39, 150, 0, 25, 360, 360, 437000, 0, 1, 982, 1208, 8, '', 830, 0, 1686859801, 50374848, 1, 0, 0, 1686859927, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 43200, -1, 2520, 10, 0, 10, 0, 10, 0, 10, 0, 44, 383, 30, 289, 10, 0, 0, '', NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 1, 0, 0, 0, NULL, NULL, '-', '', -1, 0, 0, 0, 0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 1000, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '\'{}\'', '\'{}\'', 0, 1, 0, 0),
+(15, 'Test Druid', 1, 3, 1600, 0, 2, 8141, 8145, 68012505800, NULL, 113, 115, 95, 39, 145, 0, 115, 43916, 47850, 82400, 1, 1, 991, 1207, 7, '', 16390, 1, 1686246044, 50374848, 1, 0, 0, 1686246560, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1100000, 0, 0, 0, 0, 0, 0, 993, 1, 0, 43200, -1, 2520, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0, 15, 582, 10, 0, 0, '', NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 1, 0, 0, 0, NULL, NULL, '-', '', -1, 0, 0, 0, 0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 1000, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '\'{}\'', '\'{}\'', 0, 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -2130,7 +2217,6 @@ CREATE TABLE `players_online` (
 --
 
 INSERT INTO `players_online` (`player_id`) VALUES
-(11),
 (9);
 
 -- --------------------------------------------------------
@@ -2157,6 +2243,31 @@ CREATE TABLE `player_binary_items` (
   `type` int NOT NULL,
   `items` longblob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `player_bosstiary`
+--
+
+CREATE TABLE `player_bosstiary` (
+  `player_id` int NOT NULL,
+  `bossIdSlotOne` int NOT NULL DEFAULT '0',
+  `bossIdSlotTwo` int NOT NULL DEFAULT '0',
+  `removeTimes` int NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Extraindo dados da tabela `player_bosstiary`
+--
+
+INSERT INTO `player_bosstiary` (`player_id`, `bossIdSlotOne`, `bossIdSlotTwo`, `removeTimes`) VALUES
+(15, 0, 0, 1),
+(14, 0, 0, 1),
+(11, 0, 0, 1),
+(10, 0, 0, 1),
+(13, 0, 0, 1),
+(9, 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -2204,10 +2315,13 @@ INSERT INTO `player_charms` (`player_guid`, `charm_points`, `charm_expansion`, `
 (4, '0', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '0', '0', ''),
 (2, '0', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '0', '0', ''),
 (8, '0', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '0', '0', ''),
-(9, '0', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '0', '0', ''),
-(10, '0', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '0', '0', ''),
+(9, '30', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '0', '0', ''),
+(10, '0', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '0', '0', 0x1a00),
 (11, '0', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '0', '0', ''),
-(12, '0', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '0', '0', '');
+(12, '0', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '0', '0', ''),
+(13, '0', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '0', '0', ''),
+(14, '0', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '0', '0', ''),
+(15, '0', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '0', '0', '');
 
 -- --------------------------------------------------------
 
@@ -2276,7 +2390,18 @@ INSERT INTO `player_deaths` (`id`, `player_id`, `time`, `level`, `killed_by`, `i
 (41, 11, 1677431052, 668, 'a demon', 0, 'Morgaroth', 0, 0, 0),
 (42, 11, 1677431767, 668, 'Morgaroth', 0, 'Morgaroth', 0, 0, 0),
 (43, 11, 1677431932, 668, 'Morgaroth', 0, 'Morgaroth', 0, 0, 0),
-(44, 11, 1677432064, 668, 'Morgaroth', 0, 'Morgaroth', 0, 0, 0);
+(44, 11, 1677432064, 668, 'Morgaroth', 0, 'Morgaroth', 0, 0, 0),
+(45, 12, 1677585421, 114, 'a dragon', 0, 'a dragon', 0, 0, 0),
+(46, 10, 1681848837, 1007, 'a bony sea devil', 0, 'a Hazardous Phantom', 0, 0, 0),
+(47, 10, 1681869031, 1007, 'a infernal demon', 0, 'a infernal demon', 0, 0, 0),
+(48, 10, 1681869355, 1007, 'a infernal demon', 0, 'a infernal demon', 0, 0, 0),
+(49, 10, 1681870126, 1009, 'a infernal demon', 0, 'a infernal demon', 0, 0, 0),
+(50, 10, 1681870172, 1009, 'a infernal demon', 0, 'a infernal demon', 0, 0, 0),
+(51, 10, 1682087476, 1015, 'Grand Master Oberon', 0, 'Grand Master Oberon', 0, 0, 0),
+(52, 10, 1682705996, 32, 'a dragon', 0, 'a dragon', 0, 0, 0),
+(53, 10, 1686230196, 141, 'a dragon lord', 0, 'a dragon lord', 0, 0, 0),
+(54, 10, 1686230273, 340, 'a demon', 0, 'a demon', 0, 0, 0),
+(55, 10, 1687288961, 1500, 'Rupture', 0, 'Rupture', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -2292,6 +2417,44 @@ CREATE TABLE `player_depotitems` (
   `count` int NOT NULL DEFAULT '0',
   `attributes` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Extraindo dados da tabela `player_depotitems`
+--
+
+INSERT INTO `player_depotitems` (`player_id`, `sid`, `pid`, `itemtype`, `count`, `attributes`) VALUES
+(9, 101, 1, 3504, 1, 0x01c873829f87010000182300323530782053757072656d65204865616c746820506f74696f6e207061636b6167652e),
+(9, 102, 1, 25905, 500, 0x01f05ada9e8701000016f401),
+(9, 103, 1, 35287, 14400, 0x011340da9e87010000164038),
+(9, 104, 1, 3170, 10, 0x01f07eda9e870100000f0a),
+(9, 105, 1, 23398, 1, 0x01c931da9e8701000012e803000000000000073900556e7772617020697420696e20796f7572206f776e20686f75736520746f206372656174652061203c6465636f726174696f6e206b69743e2e2701002901000000000000000800756e777261706964021965000000000000),
+(9, 106, 2, 3504, 1, 0x01640ecb9e87010000182300323530782053757072656d65204865616c746820506f74696f6e207061636b6167652e),
+(9, 107, 4, 5907, 1, ''),
+(9, 108, 4, 12320, 1, ''),
+(9, 109, 4, 12304, 1, ''),
+(9, 110, 4, 12318, 1, ''),
+(9, 111, 4, 34109, 1, ''),
+(9, 112, 4, 27451, 1, ''),
+(9, 113, 4, 40591, 1, ''),
+(9, 114, 4, 40592, 1, ''),
+(9, 115, 4, 40593, 1, ''),
+(9, 116, 4, 40590, 1, ''),
+(9, 117, 4, 40595, 1, ''),
+(9, 118, 4, 40589, 1, ''),
+(9, 119, 4, 40588, 1, ''),
+(9, 120, 4, 40594, 1, ''),
+(9, 121, 4, 35286, 14400, 0x164038),
+(9, 122, 4, 30396, 1, ''),
+(9, 123, 4, 3306, 1, ''),
+(9, 124, 4, 2865, 1, 0x240026000000c0),
+(9, 125, 4, 2867, 1, 0x2400),
+(9, 126, 4, 3420, 1, ''),
+(9, 127, 4, 34096, 1, ''),
+(9, 128, 4, 3320, 1, ''),
+(9, 129, 4, 34093, 1, ''),
+(9, 130, 4, 30396, 1, ''),
+(9, 131, 4, 30396, 1, 0x2901000000000000000300353030021840190100000000),
+(9, 132, 125, 22723, 1, 0x0f01);
 
 -- --------------------------------------------------------
 
@@ -2316,15 +2479,22 @@ CREATE TABLE `player_depotlockeritems` (
 
 CREATE TABLE `player_display` (
   `id` int NOT NULL,
-  `player_id` int NOT NULL DEFAULT '0',
-  `account` int NOT NULL DEFAULT '0',
-  `outfit` int NOT NULL DEFAULT '0',
-  `inventory` int NOT NULL DEFAULT '0',
-  `health_mana` int NOT NULL DEFAULT '0',
-  `skills` int NOT NULL DEFAULT '0',
-  `bonus` int NOT NULL DEFAULT '0',
+  `player_id` int DEFAULT '0',
+  `account` int DEFAULT '0',
+  `outfit` int DEFAULT '0',
+  `inventory` int DEFAULT '0',
+  `health_mana` int DEFAULT '0',
+  `skills` int DEFAULT '0',
+  `bonus` int DEFAULT '0',
   `comment` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Extraindo dados da tabela `player_display`
+--
+
+INSERT INTO `player_display` (`id`, `player_id`, `account`, `outfit`, `inventory`, `health_mana`, `skills`, `bonus`, `comment`) VALUES
+(4, 9, 0, 0, 0, 0, 0, 0, '');
 
 -- --------------------------------------------------------
 
@@ -2338,7 +2508,7 @@ CREATE TABLE `player_exp_restore` (
   `expBefore` bigint NOT NULL,
   `expAfter` bigint NOT NULL,
   `canRestore` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Extraindo dados da tabela `player_exp_restore`
@@ -2346,7 +2516,12 @@ CREATE TABLE `player_exp_restore` (
 
 INSERT INTO `player_exp_restore` (`id`, `id_player`, `expBefore`, `expAfter`, `canRestore`) VALUES
 (1, 9, -1, -1, -1),
-(2, 11, -1, -1, -1);
+(2, 11, -1, -1, -1),
+(3, 10, 56051989385, 55311148619, 1),
+(4, 13, -1, -1, -1),
+(5, 12, -1, -1, -1),
+(6, 14, -1, -1, -1),
+(7, 15, -1, -1, -1);
 
 -- --------------------------------------------------------
 
@@ -2383,6 +2558,13 @@ CREATE TABLE `player_hirelings` (
   `looktype` int NOT NULL DEFAULT '136'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
+--
+-- Extraindo dados da tabela `player_hirelings`
+--
+
+INSERT INTO `player_hirelings` (`id`, `player_id`, `name`, `active`, `sex`, `posx`, `posy`, `posz`, `lookbody`, `lookfeet`, `lookhead`, `looklegs`, `looktype`) VALUES
+(1, 9, 'Server Master', 1, 1, 996, 1223, 7, 34, 116, 97, 3, 128);
+
 -- --------------------------------------------------------
 
 --
@@ -2403,13 +2585,8 @@ CREATE TABLE `player_inboxitems` (
 --
 
 INSERT INTO `player_inboxitems` (`player_id`, `sid`, `pid`, `itemtype`, `count`, `attributes`) VALUES
-(9, 101, 0, 5909, 1, 0x0f01),
-(9, 102, 0, 5909, 1, 0x0f01),
-(9, 103, 0, 5911, 1, 0x0f01),
-(9, 104, 0, 5909, 1, 0x0f01),
-(9, 105, 0, 5911, 1, 0x0f01),
-(9, 106, 0, 5911, 1, 0x0f01),
-(9, 107, 0, 5911, 1, 0x0f01);
+(9, 101, 0, 9170, 1, ''),
+(10, 101, 0, 28718, 1, '');
 
 -- --------------------------------------------------------
 
@@ -2431,205 +2608,342 @@ CREATE TABLE `player_items` (
 --
 
 INSERT INTO `player_items` (`player_id`, `pid`, `sid`, `itemtype`, `count`, `attributes`) VALUES
-(10, 1, 101, 5903, 1, ''),
-(10, 2, 102, 3572, 1, ''),
-(10, 3, 103, 2853, 1, 0x24022600000080),
-(10, 4, 104, 34095, 1, ''),
-(10, 5, 105, 3059, 1, ''),
-(10, 6, 106, 34090, 1, ''),
-(10, 7, 107, 3362, 1, ''),
-(10, 8, 108, 3079, 1, ''),
-(10, 10, 109, 2920, 1, ''),
-(10, 11, 110, 23396, 1, 0x2400),
-(10, 103, 111, 35288, 14400, 0x164038),
-(10, 103, 112, 3420, 1, ''),
-(10, 103, 113, 3043, 100, 0x0f64),
-(10, 103, 114, 3420, 1, ''),
-(10, 103, 115, 35287, 14400, 0x164038),
-(10, 103, 116, 284, 22, 0x0f16),
-(10, 103, 117, 19249, 1, ''),
-(10, 103, 118, 2854, 1, 0x2400),
-(10, 110, 119, 23398, 1, 0x076900596f7520626f756768742074686973206974656d20696e207468652053746f72652e0a556e7772617020697420696e20796f7572206f776e20686f75736520746f206372656174652061203c726f6c6c65642d757020746f75726e616d656e74206361727065743e2e2501000000000000000800756e77726170696402ea7a000000000000),
-(10, 110, 120, 3203, 30, 0x0f1e),
-(10, 118, 121, 35288, 14400, 0x164038),
-(10, 118, 122, 35287, 14400, 0x164038),
-(10, 118, 123, 2855, 1, ''),
-(10, 118, 124, 35285, 14400, 0x164038),
-(10, 118, 125, 35285, 14400, 0x164038),
-(10, 118, 126, 35290, 12927, 0x167f32),
-(10, 118, 127, 35288, 14400, 0x164038),
-(10, 118, 128, 284, 29, 0x0f1d),
-(10, 118, 129, 23373, 73, 0x0f49),
-(10, 118, 130, 23373, 100, 0x0f64),
-(10, 118, 131, 23373, 100, 0x0f64),
-(10, 118, 132, 23373, 100, 0x0f64),
-(10, 118, 133, 23373, 100, 0x0f64),
-(10, 118, 134, 23373, 100, 0x0f64),
-(10, 118, 135, 8778, 1, ''),
-(10, 118, 136, 285, 10, 0x0f0a),
-(10, 118, 137, 2854, 1, 0x2400),
-(10, 118, 138, 5710, 1, ''),
-(10, 118, 139, 3003, 1, ''),
-(10, 123, 140, 3388, 1, ''),
-(10, 123, 141, 3388, 1, ''),
-(10, 123, 142, 35289, 14400, 0x164038),
-(10, 123, 143, 35287, 14400, 0x164038),
-(10, 123, 144, 35285, 14400, 0x164038),
-(10, 137, 145, 3388, 1, ''),
-(10, 137, 146, 3420, 1, ''),
-(10, 137, 147, 23373, 100, 0x0f64),
-(10, 137, 148, 23373, 100, 0x0f64),
-(10, 137, 149, 3161, 99, 0x0f63),
-(10, 137, 150, 9058, 1, 0x0f01),
-(10, 137, 151, 8778, 1, ''),
-(10, 137, 152, 8778, 1, ''),
-(10, 137, 153, 8778, 1, ''),
-(10, 137, 154, 8778, 1, ''),
-(10, 137, 155, 284, 5, 0x0f05),
-(10, 137, 156, 3155, 70, 0x0f46),
-(10, 137, 157, 3155, 100, 0x0f64),
-(10, 137, 158, 3155, 100, 0x0f64),
-(10, 137, 159, 3155, 100, 0x0f64),
-(10, 137, 160, 3155, 100, 0x0f64),
-(10, 137, 161, 3155, 100, 0x0f64),
-(10, 137, 162, 3155, 100, 0x0f64),
-(10, 137, 163, 23373, 100, 0x0f64),
-(10, 137, 164, 3003, 1, ''),
-(12, 3, 101, 2853, 1, 0x2600000080),
+(12, 3, 101, 2853, 1, 0x24012600000080),
 (12, 6, 102, 7773, 1, ''),
 (12, 7, 103, 3372, 1, ''),
-(12, 11, 104, 23396, 1, ''),
-(9, 1, 101, 7992, 1, ''),
-(9, 2, 102, 3057, 1, 0x160100),
-(9, 3, 103, 2854, 1, 0x24002600000080),
-(9, 6, 104, 34085, 1, 0x2501000000000000000300353030021840190100000000),
-(9, 7, 105, 3389, 1, ''),
-(9, 8, 106, 6530, 1, ''),
-(9, 11, 107, 23396, 1, 0x2400),
-(9, 103, 108, 9020, 1, ''),
-(9, 103, 109, 22724, 100, 0x0f64),
-(9, 103, 110, 16277, 1, ''),
-(9, 103, 111, 12305, 1, ''),
-(9, 103, 112, 12305, 1, ''),
-(9, 103, 113, 34090, 1, ''),
-(9, 103, 114, 9019, 1, 0x10badb3600),
-(9, 103, 115, 9019, 1, 0x1033ea3600),
-(9, 103, 116, 9019, 1, 0x1090e53600),
-(9, 103, 117, 9019, 1, 0x1014d53600),
-(9, 103, 118, 284, 2, 0x0f02),
-(9, 103, 119, 238, 100, 0x0f64),
-(9, 103, 120, 12305, 1, ''),
-(9, 103, 121, 9020, 1, ''),
-(9, 103, 122, 3033, 2, 0x0f02),
-(9, 103, 123, 3032, 8, 0x0f08),
-(9, 103, 124, 3731, 3, 0x0f03),
-(9, 103, 125, 5954, 1, 0x0f01),
-(9, 103, 126, 7643, 3, 0x0f03),
-(9, 103, 127, 2854, 1, 0x2400),
-(9, 107, 128, 23398, 1, 0x076100596f7520626f756768742074686973206974656d20696e207468652053746f72652e0a556e7772617020697420696e20796f7572206f776e20686f75736520746f206372656174652061203c6a6f757374696e67206561676c6520626162793e2e2501000000000000000800756e77726170696402e67a000000000000),
-(9, 107, 129, 3203, 20, 0x0f14),
-(9, 107, 130, 3504, 1, 0x181f003235307820416e696d61746520446561642052756e65207061636b6167652e),
-(9, 107, 131, 28554, 246, 0x16f600),
-(9, 107, 132, 23373, 64, 0x0f40),
-(9, 127, 133, 3163, 99, 0x0f63),
-(9, 127, 134, 9020, 1, ''),
-(9, 127, 135, 9020, 1, ''),
-(9, 127, 136, 9170, 1, ''),
-(9, 127, 137, 22724, 100, 0x0f64),
-(9, 127, 138, 2854, 1, 0x2402),
-(9, 127, 139, 3161, 100, 0x0f64),
-(9, 127, 140, 3160, 100, 0x0f64),
-(9, 127, 141, 3155, 1, 0x0f01),
-(9, 127, 142, 7992, 1, ''),
-(9, 127, 143, 7992, 1, ''),
-(9, 127, 144, 3155, 100, 0x0f64),
-(9, 127, 145, 3155, 100, 0x0f64),
-(9, 127, 146, 3155, 100, 0x0f64),
-(9, 127, 147, 3155, 100, 0x0f64),
-(9, 127, 148, 37109, 3, 0x0f03),
-(9, 127, 149, 12305, 1, ''),
-(9, 127, 150, 8778, 1, ''),
-(9, 127, 151, 16252, 1, ''),
-(9, 127, 152, 9693, 5, 0x0f05),
-(9, 130, 153, 3203, 50, 0x0f32),
-(9, 130, 154, 3203, 100, 0x0f64),
-(9, 130, 155, 3203, 100, 0x0f64),
-(9, 138, 156, 3043, 70, 0x0f46),
-(9, 138, 157, 9058, 51, 0x0f33),
-(9, 138, 158, 21554, 1, ''),
-(9, 138, 159, 21554, 1, ''),
-(9, 138, 160, 21554, 1, ''),
-(9, 138, 161, 3483, 1, ''),
-(9, 138, 162, 3163, 24, 0x0f18),
-(9, 138, 163, 3170, 39, 0x0f27),
-(9, 138, 164, 2854, 1, ''),
-(9, 164, 165, 2854, 1, 0x2400),
-(9, 165, 166, 3590, 1, 0x0f01),
-(9, 165, 167, 2854, 1, 0x2400),
-(9, 165, 168, 8778, 1, ''),
-(9, 165, 169, 8778, 1, ''),
-(9, 165, 170, 8778, 1, ''),
-(9, 165, 171, 8778, 1, ''),
-(9, 165, 172, 8778, 1, ''),
-(9, 165, 173, 8778, 1, ''),
-(9, 165, 174, 284, 1, 0x0f01),
-(9, 165, 175, 12305, 1, ''),
-(9, 165, 176, 9177, 1, ''),
-(9, 165, 177, 919, 1, ''),
-(9, 165, 178, 9170, 1, ''),
-(9, 165, 179, 3180, 100, 0x0f64),
-(9, 165, 180, 3165, 100, 0x0f64),
-(9, 165, 181, 3192, 100, 0x0f64),
-(9, 165, 182, 3160, 100, 0x0f64),
-(9, 165, 183, 3161, 100, 0x0f64),
-(9, 167, 184, 7643, 2, 0x0f02),
-(9, 167, 185, 8778, 1, ''),
-(9, 167, 186, 37317, 1, 0x0f01),
-(9, 167, 187, 16127, 100, 0x0f64),
-(9, 167, 188, 16126, 100, 0x0f64),
-(9, 167, 189, 16125, 100, 0x0f64),
-(9, 167, 190, 16123, 100, 0x0f64),
-(9, 167, 191, 16122, 100, 0x0f64),
-(9, 167, 192, 16124, 100, 0x0f64),
-(9, 167, 193, 19249, 1, ''),
-(9, 167, 194, 12509, 1, ''),
-(9, 167, 195, 3725, 76, 0x0f4c),
-(9, 167, 196, 3366, 1, ''),
-(9, 167, 197, 238, 3, 0x0f03),
-(9, 167, 198, 7642, 5, 0x0f05),
-(9, 167, 199, 3308, 1, ''),
-(9, 167, 200, 3456, 1, ''),
-(9, 167, 201, 3003, 1, ''),
-(9, 167, 202, 3457, 1, ''),
-(9, 167, 203, 23373, 98, 0x0f62),
+(12, 11, 104, 23396, 1, 0x2400),
+(12, 101, 105, 3031, 94, 0x0f5e),
+(12, 101, 106, 3577, 2, 0x0f02),
+(12, 101, 107, 9657, 1, 0x0f01),
+(12, 101, 108, 3031, 100, 0x0f64),
+(12, 101, 109, 35285, 14400, 0x164038),
+(12, 101, 110, 35288, 14400, 0x164038),
+(12, 101, 111, 35286, 14400, 0x164038),
+(12, 101, 112, 35288, 14400, 0x164038),
+(12, 104, 113, 35289, 14161, 0x165137046400),
+(12, 104, 114, 35285, 11710, 0x16be2d046400),
+(12, 104, 115, 35287, 14400, 0x164038046400),
+(12, 104, 116, 35286, 13676, 0x166c35046400),
+(15, 1, 101, 7992, 1, ''),
+(15, 2, 102, 3572, 1, ''),
+(15, 3, 103, 2854, 1, 0x24012600000080),
+(15, 4, 104, 7991, 1, ''),
+(15, 5, 105, 3059, 1, ''),
+(15, 6, 106, 3066, 1, ''),
+(15, 7, 107, 3362, 1, ''),
+(15, 8, 108, 3552, 1, ''),
+(15, 10, 109, 2920, 1, ''),
+(15, 11, 110, 23396, 1, ''),
+(15, 103, 111, 3731, 4, 0x0f04),
+(15, 103, 112, 238, 3, 0x0f03),
+(15, 103, 113, 3031, 68, 0x0f44),
+(15, 103, 114, 3031, 100, 0x0f64),
+(15, 103, 115, 3035, 8, 0x0f08),
+(15, 103, 116, 3450, 7, 0x0f07),
+(15, 103, 117, 7378, 3, 0x0f03),
+(15, 103, 118, 2842, 1, ''),
+(15, 103, 119, 3732, 1, 0x0f01),
+(15, 103, 120, 3031, 100, 0x0f64),
+(15, 103, 121, 5877, 1, 0x0f01),
+(15, 103, 122, 11457, 1, 0x0f01),
+(15, 103, 123, 3409, 1, ''),
+(15, 103, 124, 3031, 100, 0x0f64),
+(15, 103, 125, 3583, 3, 0x0f03),
+(15, 103, 126, 9170, 1, ''),
+(15, 103, 127, 2854, 1, ''),
+(15, 103, 128, 268, 9, 0x0f09),
+(15, 103, 129, 5710, 1, ''),
+(15, 103, 130, 3003, 1, ''),
+(15, 127, 131, 285, 1, 0x0f01),
+(15, 127, 132, 3030, 3, 0x0f03),
+(15, 127, 133, 9057, 5, 0x0f05),
+(15, 127, 134, 3032, 5, 0x0f05),
+(15, 127, 135, 7368, 8, 0x0f08),
+(15, 127, 136, 7642, 1, 0x0f01),
+(15, 127, 137, 7643, 1, 0x0f01),
+(15, 127, 138, 3031, 3, 0x0f03),
+(15, 127, 139, 3003, 1, ''),
+(14, 1, 101, 3374, 1, ''),
+(14, 2, 102, 3572, 1, ''),
+(14, 3, 103, 2854, 1, 0x24002600000080),
+(14, 4, 104, 3571, 1, ''),
+(14, 5, 105, 3425, 1, ''),
+(14, 6, 106, 3277, 5, 0x0f05),
+(14, 7, 107, 8095, 1, ''),
+(14, 8, 108, 3552, 1, ''),
+(14, 10, 109, 2920, 1, ''),
+(14, 11, 110, 23396, 1, 0x2400),
+(14, 103, 111, 3492, 2, 0x0f02),
+(14, 103, 112, 3577, 1, 0x0f01),
+(14, 103, 113, 3582, 1, 0x0f01),
+(14, 103, 114, 9692, 1, 0x0f01),
+(14, 103, 115, 3031, 18, 0x0f12),
+(14, 103, 116, 3350, 1, ''),
+(14, 103, 117, 266, 10, 0x0f0a),
+(14, 103, 118, 5710, 1, ''),
+(14, 103, 119, 3003, 1, ''),
+(14, 110, 120, 35289, 13928, 0x01daeec9aa87010000166836),
 (11, 1, 101, 3374, 1, ''),
-(11, 3, 102, 2854, 1, 0x24012600000080),
-(11, 4, 103, 3571, 1, ''),
-(11, 6, 104, 3277, 1, 0x0f01),
-(11, 7, 105, 8095, 1, ''),
-(11, 8, 106, 3552, 1, ''),
-(11, 11, 107, 23396, 1, ''),
-(11, 102, 108, 3057, 1, 0x160100),
-(11, 102, 109, 21554, 1, ''),
-(11, 102, 110, 35288, 11408, 0x16902c),
-(11, 102, 111, 3294, 1, ''),
-(11, 102, 112, 7367, 1, 0x0f01),
-(11, 102, 113, 35289, 11669, 0x16952d),
-(11, 102, 114, 3170, 21, 0x0f15),
-(11, 102, 115, 3163, 5, 0x0f05),
-(11, 102, 116, 3031, 78, 0x0f4e),
-(11, 102, 117, 34089, 1, ''),
-(11, 102, 118, 285, 1, 0x0f01),
-(11, 102, 119, 3035, 11, 0x0f0b),
-(11, 102, 120, 2920, 1, ''),
-(11, 102, 121, 3425, 1, ''),
-(11, 102, 122, 2854, 1, ''),
-(11, 102, 123, 3447, 50, 0x0f32),
-(11, 102, 124, 266, 9, 0x0f09),
-(11, 102, 125, 5710, 1, ''),
-(11, 102, 126, 3003, 1, ''),
-(11, 122, 127, 3031, 3, 0x0f03),
-(11, 122, 128, 3003, 1, '');
+(11, 2, 102, 3057, 1, 0x160100),
+(11, 3, 103, 2854, 1, 0x24002600000080),
+(11, 4, 104, 3571, 1, ''),
+(11, 6, 105, 3277, 1, 0x0f01),
+(11, 7, 106, 8095, 1, ''),
+(11, 8, 107, 3552, 1, ''),
+(11, 11, 108, 23396, 1, 0x2400),
+(11, 103, 109, 35290, 14400, 0x164038),
+(11, 103, 110, 35286, 14396, 0x163c38),
+(11, 103, 111, 35289, 14379, 0x162b38),
+(11, 103, 112, 35290, 14400, 0x164038),
+(11, 103, 113, 21554, 1, ''),
+(11, 103, 114, 35288, 11408, 0x16902c),
+(11, 103, 115, 3294, 1, ''),
+(11, 103, 116, 7367, 1, 0x0f01),
+(11, 103, 117, 35289, 11669, 0x16952d),
+(11, 103, 118, 3170, 21, 0x0f15),
+(11, 103, 119, 3163, 5, 0x0f05),
+(11, 103, 120, 34089, 1, ''),
+(11, 103, 121, 285, 1, 0x0f01),
+(11, 103, 122, 2920, 1, ''),
+(11, 103, 123, 3425, 1, ''),
+(11, 103, 124, 2854, 1, 0x2401),
+(11, 103, 125, 3447, 50, 0x0f32),
+(11, 103, 126, 266, 9, 0x0f09),
+(11, 103, 127, 5710, 1, ''),
+(11, 103, 128, 3003, 1, ''),
+(11, 108, 129, 35289, 14400, 0x01aaddc6aa87010000164038),
+(11, 124, 130, 3031, 100, 0x0f64),
+(11, 124, 131, 3031, 100, 0x0f64),
+(11, 124, 132, 3048, 20, 0x161400),
+(11, 124, 133, 6499, 2, 0x0f02),
+(11, 124, 134, 3031, 100, 0x0f64),
+(11, 124, 135, 3155, 99, 0x0f63),
+(11, 124, 136, 7642, 7, 0x0f07),
+(11, 124, 137, 7643, 5, 0x0f05),
+(11, 124, 138, 3031, 100, 0x0f64),
+(11, 124, 139, 3035, 19, 0x0f13),
+(11, 124, 140, 35288, 14400, 0x164038),
+(11, 124, 141, 3043, 20, 0x0f14),
+(11, 124, 142, 35288, 14400, 0x164038),
+(11, 124, 143, 3031, 100, 0x0f64),
+(11, 124, 144, 238, 15, 0x0f0f),
+(11, 124, 145, 238, 100, 0x0f64),
+(11, 124, 146, 27451, 1, ''),
+(11, 124, 147, 35286, 14400, 0x164038),
+(11, 124, 148, 23374, 8, 0x0f08),
+(11, 124, 149, 3003, 1, ''),
+(10, 1, 101, 39151, 1, ''),
+(10, 2, 102, 3572, 1, ''),
+(10, 3, 103, 2853, 1, 0x24002600000080),
+(10, 4, 104, 34095, 1, ''),
+(10, 5, 105, 39152, 1, ''),
+(10, 6, 106, 34090, 1, 0x280a),
+(10, 7, 107, 34092, 1, ''),
+(10, 8, 108, 3079, 1, ''),
+(10, 9, 109, 39185, 1, ''),
+(10, 10, 110, 2920, 1, ''),
+(10, 11, 111, 23396, 1, 0x2400),
+(10, 103, 112, 7643, 31, 0x0f1f),
+(10, 103, 113, 23518, 2, 0x0f02),
+(10, 103, 114, 23535, 2, 0x0f02),
+(10, 103, 115, 23520, 1, 0x0f01),
+(10, 103, 116, 23533, 1, ''),
+(10, 103, 117, 23529, 1, ''),
+(10, 103, 118, 23531, 1, ''),
+(10, 103, 119, 2854, 1, 0x2400),
+(10, 111, 120, 3362, 1, ''),
+(10, 111, 121, 5903, 1, ''),
+(10, 111, 122, 23721, 1, 0x240126000000c0),
+(10, 111, 123, 35290, 10796, 0x162c2a046400),
+(10, 119, 124, 7440, 9, 0x0f09),
+(10, 119, 125, 7443, 14, 0x0f0e),
+(10, 119, 126, 32773, 2, 0x0f02),
+(10, 119, 127, 32703, 3, 0x0f03),
+(10, 119, 128, 32589, 1, ''),
+(10, 119, 129, 32770, 2, 0x0f02),
+(10, 119, 130, 32774, 2, 0x0f02),
+(10, 119, 131, 32626, 2, 0x0f02),
+(10, 119, 132, 32594, 1, 0x0f01),
+(10, 119, 133, 3035, 84, 0x0f54),
+(10, 119, 134, 19249, 1, ''),
+(10, 119, 135, 35288, 14400, 0x164038),
+(10, 119, 136, 34096, 1, ''),
+(10, 119, 137, 3043, 100, 0x0f64),
+(10, 119, 138, 9170, 1, ''),
+(10, 119, 139, 35287, 14400, 0x164038),
+(10, 119, 140, 8778, 1, ''),
+(10, 119, 141, 2854, 1, 0x2402),
+(10, 119, 142, 5710, 1, ''),
+(10, 119, 143, 3003, 1, ''),
+(10, 122, 144, 3035, 68, 0x0f44),
+(10, 122, 145, 23529, 1, ''),
+(10, 122, 146, 3554, 1, ''),
+(10, 122, 147, 23519, 1, 0x0f01),
+(10, 122, 148, 3037, 1, 0x0f01),
+(10, 122, 149, 23545, 1, 0x0f01),
+(10, 122, 150, 3041, 1, 0x0f01),
+(10, 122, 151, 3038, 1, 0x0f01),
+(10, 122, 152, 828, 1, ''),
+(10, 122, 153, 7427, 1, ''),
+(10, 122, 154, 6553, 1, ''),
+(10, 122, 155, 23511, 1, 0x0f01),
+(10, 122, 156, 16120, 1, 0x0f01),
+(10, 122, 157, 3028, 11, 0x0f0b),
+(10, 122, 158, 825, 1, ''),
+(10, 122, 159, 23531, 1, ''),
+(10, 122, 160, 23477, 1, ''),
+(10, 122, 161, 9057, 10, 0x0f0a),
+(10, 122, 162, 23509, 5, 0x0f05),
+(10, 122, 163, 23510, 5, 0x0f05),
+(10, 122, 164, 3039, 1, 0x0f01),
+(10, 122, 165, 281, 1, 0x0f01),
+(10, 122, 166, 23531, 1, ''),
+(10, 122, 167, 23533, 1, ''),
+(10, 122, 168, 2848, 1, ''),
+(10, 122, 169, 3030, 4, 0x0f04),
+(10, 122, 170, 3032, 1, 0x0f01),
+(10, 122, 171, 6499, 1, 0x0f01),
+(10, 122, 172, 5954, 1, 0x0f01),
+(10, 122, 173, 7642, 2, 0x0f02),
+(10, 122, 174, 2842, 1, ''),
+(10, 122, 175, 2903, 0, 0x0f00),
+(10, 122, 176, 3051, 1, ''),
+(10, 122, 177, 3450, 12, 0x0f0c),
+(10, 122, 178, 2842, 1, ''),
+(10, 122, 179, 2903, 0, 0x0f00),
+(10, 122, 180, 3029, 4, 0x0f04),
+(10, 122, 181, 7378, 2, 0x0f02),
+(10, 122, 182, 3732, 6, 0x0f06),
+(10, 122, 183, 3583, 4, 0x0f04),
+(10, 122, 184, 3043, 12, 0x0f0c),
+(10, 122, 185, 3043, 100, 0x0f64),
+(10, 122, 186, 3043, 100, 0x0f64),
+(10, 122, 187, 3043, 100, 0x0f64),
+(10, 141, 188, 32591, 1, ''),
+(10, 141, 189, 35289, 14400, 0x164038),
+(10, 141, 190, 35288, 14400, 0x164038),
+(10, 141, 191, 23374, 6, 0x0f06),
+(10, 141, 192, 3161, 97, 0x0f61),
+(10, 141, 193, 3161, 100, 0x0f64),
+(10, 141, 194, 3161, 100, 0x0f64),
+(10, 141, 195, 3161, 100, 0x0f64),
+(10, 141, 196, 3163, 16, 0x0f10),
+(10, 141, 197, 22721, 10, 0x0f0a),
+(10, 141, 198, 3149, 86, 0x0f56),
+(10, 141, 199, 21554, 1, ''),
+(10, 141, 200, 3161, 100, 0x0f64),
+(10, 141, 201, 3155, 68, 0x0f44),
+(10, 141, 202, 3155, 100, 0x0f64),
+(10, 141, 203, 23373, 35, 0x0f23),
+(10, 141, 204, 3003, 1, ''),
+(13, 1, 101, 7992, 1, ''),
+(13, 2, 102, 3572, 1, ''),
+(13, 3, 103, 2854, 1, 0x24002600000080),
+(13, 4, 104, 7991, 1, ''),
+(13, 5, 105, 3059, 1, ''),
+(13, 6, 106, 3066, 1, ''),
+(13, 7, 107, 3362, 1, ''),
+(13, 8, 108, 3552, 1, ''),
+(13, 10, 109, 2920, 1, ''),
+(13, 11, 110, 23396, 1, 0x2400),
+(13, 103, 111, 35287, 14400, 0x164038),
+(13, 103, 112, 9170, 1, ''),
+(13, 103, 113, 2854, 1, ''),
+(13, 103, 114, 268, 10, 0x0f0a),
+(13, 103, 115, 5710, 1, ''),
+(13, 103, 116, 3003, 1, ''),
+(13, 110, 117, 35284, 1270, 0x16f604046400),
+(13, 113, 118, 3031, 3, 0x0f03),
+(13, 113, 119, 3003, 1, ''),
+(9, 1, 101, 3365, 1, ''),
+(9, 3, 102, 16099, 1, 0x2400),
+(9, 4, 103, 3360, 1, ''),
+(9, 7, 104, 3364, 1, ''),
+(9, 8, 105, 3555, 1, ''),
+(9, 11, 106, 23396, 1, 0x2400),
+(9, 102, 107, 39235, 1, ''),
+(9, 102, 108, 34084, 1, 0x1cb0040000280a),
+(9, 102, 109, 3365, 1, ''),
+(9, 102, 110, 3555, 1, ''),
+(9, 102, 111, 16129, 2, 0x0f02),
+(9, 102, 112, 16119, 10, 0x0f0a),
+(9, 102, 113, 16102, 1, 0x0f01),
+(9, 102, 114, 16113, 750, 0x16ee02),
+(9, 102, 115, 7643, 100, 0x0f64),
+(9, 102, 116, 32591, 1, ''),
+(9, 102, 117, 22058, 1, 0x10005c2605),
+(9, 102, 118, 22721, 1, 0x0f01),
+(9, 102, 119, 23685, 1, ''),
+(9, 102, 120, 23684, 1, ''),
+(9, 102, 121, 23538, 1, ''),
+(9, 102, 122, 2854, 1, 0x2400),
+(9, 106, 123, 23373, 20, 0x0f14),
+(9, 106, 124, 35284, 1996, 0x16cc07046400),
+(9, 106, 125, 23721, 1, 0x240026000000c0),
+(9, 122, 126, 16129, 2, 0x0f02),
+(9, 122, 127, 16121, 7, 0x0f07),
+(9, 122, 128, 16102, 1, 0x0f01),
+(9, 122, 129, 16108, 750, 0x16ee02),
+(9, 122, 130, 39157, 1, ''),
+(9, 122, 131, 39160, 1, ''),
+(9, 122, 132, 39158, 1, ''),
+(9, 122, 133, 39161, 1, ''),
+(9, 122, 134, 39235, 1, ''),
+(9, 122, 135, 39166, 1, ''),
+(9, 122, 136, 39164, 1, ''),
+(9, 122, 137, 39162, 1, ''),
+(9, 122, 138, 39163, 1, ''),
+(9, 122, 139, 39156, 1, ''),
+(9, 122, 140, 39155, 1, ''),
+(9, 122, 141, 39167, 1, ''),
+(9, 122, 142, 39165, 1, ''),
+(9, 122, 143, 32623, 1, 0x0f01),
+(9, 122, 144, 30060, 1, 0x0f01),
+(9, 125, 145, 16162, 1, ''),
+(9, 125, 146, 16175, 1, ''),
+(9, 125, 147, 16160, 1, ''),
+(9, 125, 148, 16164, 1, ''),
+(9, 125, 149, 16136, 1, 0x0f01),
+(9, 125, 150, 5912, 1, 0x0f01),
+(9, 125, 151, 5910, 1, 0x0f01),
+(9, 125, 152, 16140, 2, 0x0f02),
+(9, 125, 153, 5909, 3, 0x0f03),
+(9, 125, 154, 16139, 1, 0x0f01),
+(9, 125, 155, 16142, 9, 0x0f09),
+(9, 125, 156, 239, 3, 0x0f03),
+(9, 125, 157, 16103, 9, 0x0f09),
+(9, 125, 158, 3324, 1, ''),
+(9, 125, 159, 3308, 1, ''),
+(9, 125, 160, 8094, 1, ''),
+(9, 125, 161, 32703, 1, 0x0f01),
+(9, 125, 162, 32227, 4, 0x0f04),
+(9, 125, 163, 3410, 1, ''),
+(9, 125, 164, 10317, 1, 0x0f01),
+(9, 125, 165, 22052, 1, 0x0f01),
+(9, 125, 166, 677, 2, 0x0f02),
+(9, 125, 167, 237, 4, 0x0f04),
+(9, 125, 168, 3055, 1, ''),
+(9, 125, 169, 3098, 1, ''),
+(9, 125, 170, 27462, 1, 0x0f01),
+(9, 125, 171, 22057, 1, 0x0f01),
+(9, 125, 172, 236, 1, 0x0f01),
+(9, 125, 173, 22085, 1, ''),
+(9, 125, 174, 3055, 1, ''),
+(9, 125, 175, 268, 8, 0x0f08),
+(9, 125, 176, 8017, 2, 0x0f02),
+(9, 125, 177, 676, 1, 0x0f01),
+(9, 125, 178, 3010, 2, 0x0f02),
+(9, 125, 179, 27463, 6, 0x0f06),
+(9, 125, 180, 3420, 1, ''),
+(9, 125, 181, 3034, 1, 0x0f01),
+(9, 125, 182, 37317, 67, 0x0f43),
+(9, 125, 183, 3170, 10, 0x0153f9a4a0870100000f0a),
+(9, 125, 184, 23398, 1, 0x073b00556e7772617020697420696e20796f7572206f776e20686f75736520746f206372656174652061203c706f6469756d206f66207669676f75723e2e2901000000000000000800756e777261706964023397000000000000),
+(9, 125, 185, 3170, 8, 0x01823a6097880100000f08),
+(9, 125, 186, 28545, 50, 0x163200),
+(9, 125, 187, 23375, 100, 0x01de2a50a0870100000f64),
+(9, 125, 188, 23375, 50, 0x01de2a50a0870100000f32),
+(9, 125, 189, 23375, 100, 0x01de2a50a0870100000f64);
 
 -- --------------------------------------------------------
 
@@ -2667,10 +2981,13 @@ INSERT INTO `player_misc` (`player_id`, `info`) VALUES
 (4, 0x7b7d),
 (3, 0x7b7d),
 (2, 0x7b7d),
-(10, 0x7b7d),
 (12, 0x7b7d),
-(9, 0x7b7d),
-(11, 0x7b7d);
+(15, 0x7b7d),
+(14, 0x7b7d),
+(11, 0x7b7d),
+(10, 0x7b7d),
+(13, 0x7b7d),
+(9, 0x7b7d);
 
 -- --------------------------------------------------------
 
@@ -2719,18 +3036,27 @@ INSERT INTO `player_prey` (`player_id`, `slot`, `state`, `raceid`, `option`, `bo
 (2, 0, 3, '0', 0, 2, 6, '28', '0', 1675855990677, 0xb802fb03f505c802ea0541006d0220010f01),
 (2, 1, 3, '0', 0, 0, 9, '37', '0', 1675855990679, 0xad073a0086070f029201b5013200dc001501),
 (2, 2, 0, '0', 0, 3, 2, '16', '0', 1675855990681, ''),
-(10, 0, 3, '0', 0, 1, 5, '25', '0', 1673447514762, 0xd608780111004d01000249017604d8052600),
-(10, 1, 3, '0', 0, 0, 8, '34', '0', 1673447514764, 0xce05df02d60344019103c2066f036a003500),
-(10, 2, 0, '0', 0, 3, 10, '40', '0', 1673447514765, ''),
 (12, 0, 3, '0', 0, 0, 4, '22', '0', 1677343274081, 0x1004760088074600f004d700be068a072c00),
 (12, 1, 3, '0', 0, 2, 9, '37', '0', 1677343274083, 0x0903c40676065e0002026f0648000d024f00),
 (12, 2, 0, '0', 0, 1, 9, '37', '0', 1677343274085, ''),
-(9, 0, 4, '0', 0, 2, 6, '28', '0', 1674845121496, 0x0e071404d2043600190767023d08e1058701),
-(9, 1, 3, '0', 0, 0, 10, '40', '0', 1673265708000, 0xce034f006d0097031d070e0270020501b906),
-(9, 2, 0, '0', 0, 2, 6, '28', '0', 1673265708002, ''),
+(15, 0, 3, '0', 0, 1, 5, '25', '0', 1686257530338, 0xee00380096036a02d8000f0712001e006a00),
+(15, 1, 3, '0', 0, 0, 4, '22', '0', 1686257530341, 0xd508be022c023600c7017401cf02e8077900),
+(15, 2, 0, '0', 0, 2, 9, '37', '0', 1686257530343, ''),
+(14, 0, 3, '0', 0, 2, 8, '34', '0', 1682219027299, 0xd9024a01210024017203730455045e042a00),
+(14, 1, 3, '0', 0, 1, 3, '19', '0', 1682219027300, 0x3208fa003d001c002f006900730366022206),
+(14, 2, 0, '0', 0, 3, 2, '16', '0', 1682219027302, ''),
 (11, 0, 3, '0', 0, 1, 8, '34', '0', 1676710503959, 0x73006c0048076900050097032c00f5033200),
 (11, 1, 3, '0', 0, 3, 10, '40', '0', 1676710503961, 0x1e076405b501ee002a056005bc025202b602),
-(11, 2, 0, '0', 0, 0, 3, '19', '0', 1676710503962, '');
+(11, 2, 0, '0', 0, 0, 3, '19', '0', 1676710503962, ''),
+(10, 0, 3, '0', 0, 1, 5, '25', '0', 1673447514762, 0xd608780111004d01000249017604d8052600),
+(10, 1, 3, '0', 0, 0, 8, '34', '0', 1673447514764, 0xce05df02d60344019103c2066f036a003500),
+(10, 2, 0, '0', 0, 3, 10, '40', '0', 1673447514765, ''),
+(13, 0, 3, '0', 0, 1, 5, '25', '0', 1677582665146, 0xac079d0722061002df0567021a001b076500),
+(13, 1, 3, '0', 0, 3, 4, '22', '0', 1677582665148, 0x76007504ce051d07d3001b0455040e018b07),
+(13, 2, 0, '0', 0, 2, 2, '16', '0', 1677582665149, ''),
+(9, 0, 4, '0', 0, 3, 10, '40', '0', 1685916496383, 0x6f0247002103c804c1039307f1041c046a00),
+(9, 1, 4, '0', 0, 2, 10, '40', '0', 1685916494060, 0xdc020d064d04d3089b073500b50779038106),
+(9, 2, 0, '0', 0, 0, 8, '34', '0', 1681811329588, '');
 
 -- --------------------------------------------------------
 
@@ -2790,6 +3116,185 @@ CREATE TABLE `player_rewards` (
   `attributes` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
+--
+-- Extraindo dados da tabela `player_rewards`
+--
+
+INSERT INTO `player_rewards` (`player_id`, `sid`, `pid`, `itemtype`, `count`, `attributes`) VALUES
+(10, 101, 0, 19202, 1, 0x1280cf7bda88010000),
+(10, 102, 0, 19202, 1, 0x12b97eadda88010000),
+(10, 103, 0, 19202, 1, 0x12c85dc5da88010000),
+(10, 104, 0, 19202, 1, 0x127439e0da88010000),
+(10, 105, 0, 19202, 1, 0x1218b7e4da88010000),
+(10, 106, 0, 19202, 1, 0x12cf44e5da88010000),
+(10, 107, 0, 19202, 1, 0x12b18e0ddb88010000),
+(10, 108, 0, 19202, 1, 0x120f0f0edb88010000),
+(10, 109, 0, 19202, 1, 0x12d0670edb88010000),
+(10, 110, 0, 19202, 1, 0x12eeb90edb88010000),
+(10, 111, 0, 19202, 1, 0x1260639ede88010000),
+(10, 112, 0, 19202, 1, 0x12989fc6de88010000),
+(10, 113, 0, 19202, 1, 0x1249c6dedf88010000),
+(10, 114, 0, 19202, 1, 0x12fa76f8df88010000),
+(10, 115, 0, 19202, 1, 0x12de5616e088010000),
+(10, 116, 0, 19202, 1, 0x12122d1ee088010000),
+(10, 117, 101, 23533, 1, ''),
+(10, 118, 101, 3554, 1, ''),
+(10, 119, 101, 8073, 1, ''),
+(10, 120, 101, 3038, 1, 0x0f01),
+(10, 121, 101, 7642, 3, 0x0f03),
+(10, 122, 101, 16120, 1, 0x0f01),
+(10, 123, 101, 238, 3, 0x0f03),
+(10, 124, 101, 16121, 1, 0x0f01),
+(10, 125, 101, 3030, 5, 0x0f05),
+(10, 126, 101, 3033, 4, 0x0f04),
+(10, 127, 101, 9057, 2, 0x0f02),
+(10, 128, 101, 23510, 1, 0x0f01),
+(10, 129, 101, 23509, 1, 0x0f01),
+(10, 130, 102, 22087, 1, ''),
+(10, 131, 102, 22053, 2, 0x0f02),
+(10, 132, 102, 22054, 2, 0x0f02),
+(10, 133, 102, 3081, 5, 0x160500),
+(10, 134, 102, 3039, 1, 0x0f01),
+(10, 135, 102, 7452, 1, ''),
+(10, 136, 102, 239, 2, 0x0f02),
+(10, 137, 102, 676, 2, 0x0f02),
+(10, 138, 102, 16126, 1, 0x0f01),
+(10, 139, 102, 7432, 1, ''),
+(10, 140, 103, 7452, 1, ''),
+(10, 141, 103, 22056, 1, 0x0f01),
+(10, 142, 103, 22057, 1, 0x0f01),
+(10, 143, 103, 5902, 1, 0x0f01),
+(10, 144, 103, 239, 4, 0x0f04),
+(10, 145, 103, 5896, 2, 0x0f02),
+(10, 146, 103, 7432, 1, ''),
+(10, 147, 103, 3027, 2, 0x0f02),
+(10, 148, 103, 22194, 2, 0x0f02),
+(10, 149, 103, 3582, 1, 0x0f01),
+(10, 150, 103, 675, 2, 0x0f02),
+(10, 151, 104, 7394, 1, ''),
+(10, 152, 104, 3741, 1, 0x0f01),
+(10, 153, 104, 10317, 1, 0x0f01),
+(10, 154, 104, 5897, 2, 0x0f02),
+(10, 155, 104, 3053, 1, ''),
+(10, 156, 104, 3055, 1, ''),
+(10, 157, 104, 7439, 2, 0x0f02),
+(10, 158, 104, 3081, 5, 0x160500),
+(10, 159, 104, 3027, 3, 0x0f03),
+(10, 160, 104, 675, 1, 0x0f01),
+(10, 161, 104, 22193, 4, 0x0f04),
+(10, 162, 105, 3049, 1, ''),
+(10, 163, 105, 27463, 1, 0x0f01),
+(10, 164, 105, 3070, 1, ''),
+(10, 165, 105, 7368, 5, 0x0f05),
+(10, 166, 105, 27462, 1, 0x0f01),
+(10, 167, 105, 3027, 2, 0x0f02),
+(10, 168, 105, 7642, 1, 0x0f01),
+(10, 169, 105, 238, 2, 0x0f02),
+(10, 170, 105, 677, 2, 0x0f02),
+(10, 171, 106, 3741, 1, 0x0f01),
+(10, 172, 106, 22055, 8, 0x0f08),
+(10, 173, 106, 3098, 1, ''),
+(10, 174, 106, 22051, 9, 0x0f09),
+(10, 175, 106, 3055, 1, ''),
+(10, 176, 106, 8017, 5, 0x0f05),
+(10, 177, 106, 238, 2, 0x0f02),
+(10, 178, 106, 3725, 3, 0x0f03),
+(10, 179, 106, 678, 9, 0x0f09),
+(10, 180, 106, 22193, 5, 0x0f05),
+(10, 181, 107, 3063, 1, ''),
+(10, 182, 107, 31340, 1, 0x0f01),
+(10, 183, 107, 24392, 1, 0x0f01),
+(10, 184, 107, 31559, 3, 0x0f03),
+(10, 185, 108, 10313, 1, 0x0f01),
+(10, 186, 108, 3041, 1, 0x0f01),
+(10, 187, 108, 16119, 1, 0x0f01),
+(10, 188, 108, 9694, 2, 0x0f02),
+(10, 189, 109, 34258, 1, ''),
+(10, 190, 109, 7386, 1, ''),
+(10, 191, 109, 34101, 1, 0x0f01),
+(10, 192, 109, 822, 1, ''),
+(10, 193, 109, 24391, 1, 0x0f01),
+(10, 194, 109, 9651, 2, 0x0f02),
+(10, 195, 110, 22083, 1, 0x0f01),
+(10, 196, 110, 7422, 1, ''),
+(10, 197, 110, 34100, 1, 0x0f01),
+(10, 198, 110, 33944, 1, 0x0f01),
+(10, 199, 110, 33943, 1, 0x0f01),
+(10, 200, 111, 7439, 8, 0x0f08),
+(10, 201, 111, 32772, 1, 0x0f01),
+(10, 202, 111, 23375, 6, 0x0f06),
+(10, 203, 111, 32769, 1, 0x0f01),
+(10, 204, 111, 32771, 1, 0x0f01),
+(10, 205, 112, 32594, 1, 0x0f01),
+(10, 206, 112, 32593, 1, 0x0f01),
+(10, 207, 112, 32774, 1, 0x0f01),
+(10, 208, 112, 32770, 1, 0x0f01),
+(10, 209, 112, 32589, 1, ''),
+(10, 210, 112, 32773, 1, 0x0f01),
+(10, 211, 112, 7443, 3, 0x0f03),
+(10, 212, 112, 7440, 7, 0x0f07),
+(10, 213, 112, 23374, 5, 0x0f05),
+(10, 214, 112, 7439, 2, 0x0f02),
+(10, 215, 112, 32772, 1, 0x0f01),
+(10, 216, 112, 23375, 4, 0x0f04),
+(10, 217, 112, 23373, 6, 0x0f06),
+(10, 218, 112, 32769, 1, 0x0f01),
+(10, 219, 112, 32771, 2, 0x0f02),
+(10, 220, 112, 3043, 1, 0x0f01),
+(10, 221, 113, 32589, 1, ''),
+(10, 222, 113, 7439, 3, 0x0f03),
+(10, 223, 113, 32772, 1, 0x0f01),
+(10, 224, 113, 23375, 1, 0x0f01),
+(10, 225, 113, 32769, 2, 0x0f02),
+(10, 226, 113, 32771, 1, 0x0f01),
+(10, 227, 114, 32591, 1, ''),
+(10, 228, 114, 32770, 1, 0x0f01),
+(10, 229, 114, 32589, 1, ''),
+(10, 230, 114, 32773, 1, 0x0f01),
+(10, 231, 114, 7443, 3, 0x0f03),
+(10, 232, 114, 7440, 9, 0x0f09),
+(10, 233, 114, 23374, 5, 0x0f05),
+(10, 234, 114, 7439, 10, 0x0f0a),
+(10, 235, 114, 32772, 1, 0x0f01),
+(10, 236, 114, 23375, 3, 0x0f03),
+(10, 237, 114, 23373, 2, 0x0f02),
+(10, 238, 114, 32769, 1, 0x0f01),
+(10, 239, 114, 32771, 1, 0x0f01),
+(10, 240, 114, 3043, 1, 0x0f01),
+(10, 241, 115, 32625, 1, 0x0f01),
+(10, 242, 115, 32593, 1, 0x0f01),
+(10, 243, 115, 32774, 1, 0x0f01),
+(10, 244, 115, 32591, 1, ''),
+(10, 245, 115, 32770, 1, 0x0f01),
+(10, 246, 115, 32589, 1, ''),
+(10, 247, 115, 32703, 1, 0x0f01),
+(10, 248, 115, 32773, 1, 0x0f01),
+(10, 249, 115, 7443, 6, 0x0f06),
+(10, 250, 115, 7440, 1, 0x0f01),
+(10, 251, 115, 23374, 1, 0x0f01),
+(10, 252, 115, 7439, 3, 0x0f03),
+(10, 253, 115, 32772, 1, 0x0f01),
+(10, 254, 115, 23375, 1, 0x0f01),
+(10, 255, 115, 23373, 6, 0x0f06),
+(10, 256, 115, 32769, 1, 0x0f01),
+(10, 257, 115, 32771, 1, 0x0f01),
+(10, 258, 115, 3043, 2, 0x0f02),
+(10, 259, 116, 32593, 1, 0x0f01),
+(10, 260, 116, 32770, 1, 0x0f01),
+(10, 261, 116, 32589, 1, ''),
+(10, 262, 116, 32703, 2, 0x0f02),
+(10, 263, 116, 32773, 1, 0x0f01),
+(10, 264, 116, 7443, 5, 0x0f05),
+(10, 265, 116, 7440, 9, 0x0f09),
+(10, 266, 116, 23374, 1, 0x0f01),
+(10, 267, 116, 7439, 6, 0x0f06),
+(10, 268, 116, 32772, 1, 0x0f01),
+(10, 269, 116, 23375, 1, 0x0f01),
+(10, 270, 116, 23373, 2, 0x0f02),
+(10, 271, 116, 32769, 1, 0x0f01),
+(10, 272, 116, 32771, 1, 0x0f01),
+(10, 273, 116, 3043, 2, 0x0f02);
+
 -- --------------------------------------------------------
 
 --
@@ -2813,6 +3318,27 @@ CREATE TABLE `player_stash` (
   `item_count` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
+--
+-- Extraindo dados da tabela `player_stash`
+--
+
+INSERT INTO `player_stash` (`player_id`, `item_id`, `item_count`) VALUES
+(9, 284, 1),
+(9, 676, 2),
+(9, 3039, 4),
+(9, 6499, 4),
+(9, 10311, 50),
+(9, 11444, 60),
+(9, 16125, 1),
+(9, 22728, 90),
+(9, 23373, 29),
+(9, 23375, 500),
+(9, 40530, 1),
+(9, 40531, 1),
+(9, 40532, 2),
+(9, 40534, 1),
+(9, 40535, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -2830,48 +3356,43 @@ CREATE TABLE `player_storage` (
 --
 
 INSERT INTO `player_storage` (`player_id`, `key`, `value`) VALUES
-(9, 0, 1675042241),
-(9, 2500, 0),
-(9, 6000, 1677175594),
-(9, 7212, 1677363433),
-(9, 7213, 1677363440),
-(9, 8589, 1),
-(9, 10000, 3420),
-(9, 10001, 3043),
-(9, 10002, 3366),
-(9, 10003, 3388),
-(9, 10004, 3035),
-(9, 10107, 1674674079),
-(9, 10108, 97),
-(9, 10109, -2),
 (9, 12149, 0),
 (9, 12330, 1),
 (9, 12332, 13),
 (9, 12333, 3),
 (9, 12450, 6),
-(9, 13412, 1677250501),
-(9, 13413, 1677423301),
-(9, 13414, 2),
-(9, 14897, 1),
-(9, 14898, 0),
-(9, 14899, 1677340501),
+(9, 13412, 1690556401),
+(9, 13413, 1690556401),
+(9, 13414, 7),
+(9, 14320, 1),
+(9, 14321, 1687360349),
+(9, 14322, 1),
+(9, 14323, 1687360933),
+(9, 14324, 1),
+(9, 14325, 1687356254),
+(9, 14326, 1),
+(9, 14327, 1),
+(9, 14328, 1),
+(9, 14329, 1687364605),
+(9, 14330, 1),
+(9, 14331, 1687362353),
+(9, 14332, 1),
+(9, 14897, 2),
+(9, 14898, 1),
+(9, 14899, 1690646401),
 (9, 14903, 0),
-(9, 15000, 1000),
 (9, 17101, 0),
-(9, 20000, 30),
-(9, 20001, 9077),
+(9, 20000, 47),
+(9, 20001, 5010),
 (9, 20002, 1),
-(9, 20067, 9),
-(9, 30000, 1676647718),
+(9, 20067, 3),
+(9, 20295, 2),
+(9, 20298, 2),
 (9, 30023, 1),
-(9, 30025, 1),
-(9, 30026, 1676494497),
 (9, 30029, 0),
-(9, 30051, 1677370395),
 (9, 30057, 1),
 (9, 30058, 1),
-(9, 32943, 1),
-(9, 38412, 7),
+(9, 38412, 1),
 (9, 42701, 29),
 (9, 42703, 3),
 (9, 42704, 4),
@@ -2893,13 +3414,39 @@ INSERT INTO `player_storage` (`player_id`, `key`, `value`) VALUES
 (9, 42724, 2),
 (9, 42725, 1),
 (9, 42729, 12),
-(9, 44958, 1675175823),
+(9, 44951, 1687367927),
+(9, 44952, 1687371271),
+(9, 44953, 1687371613),
+(9, 44954, 1687369582),
+(9, 44955, 1687371544),
+(9, 44956, 1),
+(9, 44957, 1),
+(9, 44958, 1687374211),
+(9, 44959, 1687374231),
+(9, 44960, 1687374241),
+(9, 44961, 1687374247),
 (9, 45751, 1),
 (9, 45752, 16),
-(9, 46001, 1),
-(9, 46002, 1),
-(9, 48900, 100),
-(9, 48901, 100),
+(9, 46309, 1),
+(9, 46402, 1),
+(9, 46403, 1),
+(9, 46404, 1),
+(9, 47005, 1687377052),
+(9, 47007, 1687376992),
+(9, 47009, 1687377077),
+(9, 47015, 1687459287),
+(9, 47016, 1),
+(9, 47018, 1687447568),
+(9, 47019, 1),
+(9, 47020, 1),
+(9, 47402, 1),
+(9, 47403, 1),
+(9, 47512, 1),
+(9, 47514, 1),
+(9, 47601, 1),
+(9, 48900, 0),
+(9, 48901, 0),
+(9, 50043, 1),
 (9, 50080, 1),
 (9, 50081, 10),
 (9, 50082, 2),
@@ -2942,7 +3489,7 @@ INSERT INTO `player_storage` (`player_id`, `key`, `value`) VALUES
 (9, 50492, 1),
 (9, 50494, 1),
 (9, 50496, 1),
-(9, 50498, 1),
+(9, 50498, 1687386657),
 (9, 50501, 1),
 (9, 50506, 1),
 (9, 50530, 61),
@@ -2971,9 +3518,15 @@ INSERT INTO `player_storage` (`player_id`, `key`, `value`) VALUES
 (9, 50699, 2),
 (9, 50700, 2),
 (9, 50701, 2),
+(9, 50702, 1),
+(9, 50703, 0),
+(9, 50704, 1),
+(9, 50705, 6),
+(9, 50707, 1687448274),
+(9, 50708, 1687273900),
+(9, 50709, 1687282153),
 (9, 50850, 1),
 (9, 50852, 3000),
-(9, 51052, 0),
 (9, 51060, 1),
 (9, 51061, 18),
 (9, 51110, 25),
@@ -3087,15 +3640,9 @@ INSERT INTO `player_storage` (`player_id`, `key`, `value`) VALUES
 (9, 51596, 1),
 (9, 51597, 1),
 (9, 51598, 1),
-(9, 51700, 3),
-(9, 51701, 3),
-(9, 51702, 1),
-(9, 51703, 11),
-(9, 51704, 11),
-(9, 51705, 11),
-(9, 51706, 11),
 (9, 51712, 1),
 (9, 52146, 2),
+(9, 55047, 1),
 (9, 55136, 1),
 (9, 55137, 1),
 (9, 55145, 21),
@@ -3107,182 +3654,245 @@ INSERT INTO `player_storage` (`player_id`, `key`, `value`) VALUES
 (9, 55230, 1),
 (9, 55233, 1),
 (9, 56395, 2),
-(9, 74645, 1677196831),
 (9, 74861, 0),
-(9, 75148, 1676253443),
-(9, 77124, 1677364488),
-(9, 81056, 2),
+(9, 81056, 0),
 (9, 81057, 1),
-(9, 91143, 1),
-(9, 91146, 1),
-(9, 97814, 40),
 (9, 100157, 1),
+(9, 112550, 0),
+(9, 300299, 1),
+(9, 300303, 1),
 (9, 515206, 1),
 (9, 515207, 2),
 (9, 515208, 3),
 (9, 515209, 3),
 (9, 891642, 0),
-(9, 971235, 1),
-(9, 998899, 1),
-(9, 10001001, 9240579),
-(9, 10001002, 8716291),
-(9, 10001003, 9306115),
-(9, 10001004, 8781827),
-(9, 10001005, 9633795),
-(9, 10001006, 9371651),
-(9, 10001007, 9699331),
-(9, 10001008, 9437187),
-(9, 10001009, 9764867),
-(9, 10001010, 9502723),
-(9, 10001011, 9830403),
-(9, 10001012, 9568259),
-(9, 10001013, 10158083),
-(9, 10001014, 9895939),
-(9, 10001015, 10223619),
-(9, 10001016, 9961475),
-(9, 10001017, 10289155),
-(9, 10001018, 10027011),
-(9, 10001019, 10354691),
-(9, 10001020, 10092547),
-(9, 10001021, 16515075),
-(9, 10001022, 16449539),
-(9, 10001023, 17694723),
-(9, 10001024, 17891331),
-(9, 10001025, 17629187),
-(9, 10001026, 17563651),
-(9, 10001027, 18874371),
-(9, 10001028, 18939907),
-(9, 10001029, 21233667),
-(9, 10001030, 21299203),
-(9, 10001031, 22020099),
-(9, 10001032, 21954563),
-(9, 10001033, 23986179),
-(9, 10001034, 24051715),
-(9, 10001035, 18284547),
-(9, 10001036, 18219011),
-(9, 10001037, 8912899),
-(9, 10001038, 8388611),
-(9, 10001039, 8978435),
-(9, 10001040, 8454147),
-(9, 10001041, 9109507),
-(9, 10001042, 8585219),
-(9, 10001043, 9175043),
-(9, 10001044, 8650755),
-(9, 10001045, 8519681),
-(9, 10001046, 9043969),
-(9, 10002011, 193),
-(9, 61305017, 2),
-(9, 61305021, 1),
-(9, 61305022, 5),
-(9, 61305026, 28),
-(9, 61305028, 1),
-(9, 61305034, 2),
-(9, 61305035, 130),
-(9, 61305038, 2),
-(9, 61305049, 12),
-(9, 61305078, 1),
-(9, 61305079, 1),
-(9, 61305118, 1),
-(9, 61305251, 3),
-(9, 61305255, 3),
-(9, 61305268, 3),
-(9, 61305281, 2),
-(9, 61305282, 1),
-(9, 61305284, 3),
-(9, 61305285, 1),
-(9, 61305286, 1),
-(9, 61305294, 3),
-(9, 61305296, 5),
-(9, 61305298, 3),
-(9, 61305314, 4),
-(9, 61305321, 1),
-(9, 61305439, 2),
-(9, 61305465, 8),
-(9, 61305502, 7),
-(9, 61305516, 8),
-(9, 61305523, 5),
-(9, 61306105, 1),
-(9, 61306196, 27),
-(9, 61308333, 2),
-(9, 61308334, 1),
-(9, 61308335, 2),
-(9, 61308336, 2),
-(9, 61308337, 1),
-(9, 61308339, 2),
-(9, 61308340, 6),
-(10, 0, 0),
+(9, 10002011, 84),
+(9, 61305035, 3),
+(9, 61305510, 3),
+(9, 61305881, 243),
+(9, 61305882, 39),
+(9, 61305884, 21),
+(9, 61305885, 30),
+(9, 61305887, 1),
+(9, 61305888, 51),
+(9, 61305891, 267),
+(9, 61305892, 5),
+(9, 61305893, 1),
+(9, 61305897, 12),
+(9, 61306140, 1),
+(9, 61306142, 12),
+(9, 61306143, 12),
+(9, 61306144, 30),
+(9, 61306218, 2),
+(9, 61306219, 2),
+(9, 61306225, 5),
+(9, 61306227, 1),
+(9, 61306290, 1),
+(9, 61306368, 1),
+(9, 61306549, 27),
+(9, 61306558, 1),
+(9, 61306559, 1),
+(9, 61306560, 1),
+(9, 61306561, 1),
+(9, 61306562, 1),
+(9, 61306862, 1),
+(9, 61306864, 6),
+(9, 61306865, 6),
+(9, 61306868, 4),
+(9, 61306872, 1),
+(9, 61306881, 6),
+(9, 61306890, 1),
+(9, 61306891, 2),
+(9, 61306892, 1),
+(9, 61306981, 1),
+(9, 61306982, 1),
+(9, 61306983, 1),
+(9, 61306984, 1),
+(9, 61307006, 1),
+(9, 61307055, 1),
+(9, 61307060, 1),
+(9, 61307114, 1),
+(9, 61307238, 1),
+(9, 61307250, 3),
+(10, 6000, 1686230251),
 (10, 8589, 1),
 (10, 10107, 1674674063),
 (10, 10108, 97),
 (10, 10109, 2),
 (10, 12149, 0),
 (10, 13412, 1675176900),
-(10, 13413, 1676559300),
-(10, 13414, 2),
+(10, 13413, 1687359601),
+(10, 13414, 6),
+(10, 14320, 1),
+(10, 14321, 1687360349),
+(10, 14322, 1),
+(10, 14323, 1687360933),
+(10, 14324, 1),
+(10, 14325, 1687356254),
+(10, 14326, 1),
+(10, 14327, 1),
+(10, 14328, 1),
+(10, 14329, 1687364605),
+(10, 14330, 1),
+(10, 14331, 1687362353),
+(10, 14332, 1),
 (10, 14897, 5),
 (10, 14898, 0),
 (10, 14899, 1675266900),
 (10, 14903, 0),
+(10, 15000, 1000),
 (10, 17101, 0),
-(10, 20000, 47),
-(10, 20001, 3266),
-(10, 20067, 148),
-(10, 30000, 1674494031),
+(10, 20000, 35),
+(10, 20001, 6457),
+(10, 20067, 525),
+(10, 20295, 2),
+(10, 20296, 2),
+(10, 20298, 2),
+(10, 30000, 1682707993),
+(10, 30020, 1),
 (10, 30023, 1),
-(10, 30026, 1674559877),
+(10, 30026, 1682028459),
 (10, 30029, 0),
-(10, 30051, 1676320528),
+(10, 30051, 1682216203),
 (10, 30057, 1),
 (10, 30058, 1),
-(10, 38412, 146),
-(10, 44958, 1675083810),
+(10, 38412, 523),
+(10, 44951, 1687367959),
+(10, 44952, 1687371293),
+(10, 44953, 1687371626),
+(10, 44954, 1687369523),
+(10, 44955, 1687371583),
+(10, 44958, 1687374261),
+(10, 44959, 1687374288),
+(10, 44960, 1687374317),
+(10, 44961, 1687374338),
 (10, 46001, 1),
 (10, 46002, 1),
+(10, 47015, 1687459287),
+(10, 47016, 1),
+(10, 47018, 1687447568),
+(10, 47019, 1),
 (10, 48900, 0),
 (10, 48901, 0),
+(10, 50702, 0),
+(10, 50703, 0),
+(10, 50704, 0),
+(10, 50705, 4),
+(10, 50707, 1687269834),
+(10, 50708, 1687273900),
+(10, 50709, 1687282153),
+(10, 51052, 0),
 (10, 74123, 20),
 (10, 74861, 0),
-(10, 75148, 1676253095),
+(10, 75148, 1677510415),
+(10, 77124, 1681857298),
 (10, 81056, 0),
 (10, 81057, 1),
 (10, 91143, 1),
+(10, 300294, 1),
+(10, 300299, 1),
+(10, 300303, 1),
 (10, 891642, 0),
 (10, 998899, 1),
+(10, 10001001, 21233667),
+(10, 10001002, 21299203),
+(10, 10001003, 69271554),
+(10, 10001004, 69206018),
+(10, 10001005, 44761089),
+(10, 10001006, 44826625),
+(10, 10001007, 41680898),
+(10, 10001008, 41746434),
+(10, 10001009, 97648641),
+(10, 10001010, 97583105),
+(10, 10001011, 87752706),
+(10, 10001012, 87687170),
+(10, 10001013, 60882945),
+(10, 10001014, 61014017),
+(10, 10001015, 103284738),
+(10, 10001016, 103219202),
 (10, 10003001, 65142784),
-(10, 61305022, 7),
-(10, 61305026, 8),
-(10, 61305035, 9),
-(10, 61305251, 3),
+(10, 61305022, 39),
+(10, 61305026, 60),
+(10, 61305034, 27),
+(10, 61305035, 43),
+(10, 61305037, 1),
+(10, 61305039, 36),
+(10, 61305073, 21),
+(10, 61305121, 57),
+(10, 61305251, 39),
+(10, 61305290, 4),
 (10, 61305296, 3),
-(10, 61308333, 1),
-(10, 61308335, 2),
-(10, 61308336, 1),
+(10, 61305317, 39),
+(10, 61305385, 18),
+(10, 61305389, 3),
+(10, 61305391, 12),
+(10, 61305459, 5),
+(10, 61305465, 72),
+(10, 61305570, 6),
+(10, 61305882, 18),
+(10, 61305884, 6),
+(10, 61305885, 6),
+(10, 61305887, 1),
+(10, 61305888, 18),
+(10, 61305892, 3),
+(10, 61305893, 1),
+(10, 61305897, 3),
+(10, 61306142, 18),
+(10, 61306143, 21),
+(10, 61306144, 30),
+(10, 61306218, 2),
+(10, 61306219, 2),
+(10, 61306225, 5),
+(10, 61306549, 42),
+(10, 61306558, 1),
+(10, 61306559, 1),
+(10, 61306560, 1),
+(10, 61306561, 1),
+(10, 61306562, 1),
+(10, 61306646, 3),
+(10, 61306647, 3),
+(10, 61306868, 3),
+(10, 61306881, 3),
+(10, 61306938, 9),
+(10, 61306981, 1),
+(10, 61306982, 1),
+(10, 61306983, 1),
+(10, 61306984, 1),
+(10, 61307055, 1),
+(10, 61307250, 2),
+(10, 61308333, 2),
+(10, 61308335, 3),
+(10, 61308336, 2),
 (10, 61308340, 1),
+(11, 0, 1),
 (11, 6000, 1677189007),
 (11, 7212, 1677272135),
 (11, 7213, 1677426409),
-(11, 13413, 1677423301),
-(11, 13414, 2),
+(11, 13412, 1677509701),
+(11, 13413, 1687273201),
+(11, 13414, 6),
+(11, 14897, 1),
 (11, 14898, 0),
+(11, 14899, 1677599701),
 (11, 14903, 0),
 (11, 15000, 1000),
 (11, 17101, 0),
-(11, 20000, 23),
-(11, 20001, 2249),
-(11, 20067, 2),
-(11, 30000, 1677278041),
+(11, 20000, 3),
+(11, 20001, 3407),
+(11, 20067, 104),
+(11, 30000, 1685912831),
 (11, 30023, 1),
 (11, 30029, 0),
-(11, 30051, 1677370389),
+(11, 30051, 1682197369),
 (11, 30057, 1),
 (11, 30058, 1),
-(11, 38412, 0),
+(11, 38412, 102),
 (11, 44958, 1677192885),
 (11, 48900, 100),
 (11, 48901, 100),
 (11, 81056, 0),
 (11, 81057, 1),
-(11, 97814, 16),
+(11, 97814, 26),
 (11, 891642, 0),
 (11, 10001001, 40566787),
 (11, 10001002, 28246019),
@@ -3291,20 +3901,25 @@ INSERT INTO `player_storage` (`player_id`, `key`, `value`) VALUES
 (11, 10001005, 21299203),
 (11, 10003001, 65011712),
 (11, 61305022, 54),
-(11, 61305026, 50),
-(11, 61305035, 1),
-(11, 61305251, 40),
+(11, 61305026, 74),
+(11, 61305034, 9),
+(11, 61305035, 28),
+(11, 61305251, 55),
+(11, 61305459, 1),
 (12, 0, 1),
-(12, 13413, 1677250501),
-(12, 13414, 2),
+(12, 6000, 1677585456),
+(12, 13413, 1682175601),
+(12, 13414, 4),
 (12, 14898, 0),
-(12, 14903, 1),
+(12, 14903, 0),
 (12, 15000, 50),
 (12, 17101, 0),
-(12, 20000, 53),
-(12, 20001, 71),
+(12, 20000, 50),
+(12, 20001, 835),
+(12, 30000, 1677526844),
 (12, 30023, 1),
 (12, 30029, 0),
+(12, 30051, 1677525824),
 (12, 30057, 1),
 (12, 30058, 1),
 (12, 48900, 0),
@@ -3312,7 +3927,571 @@ INSERT INTO `player_storage` (`player_id`, `key`, `value`) VALUES
 (12, 81056, 0),
 (12, 81057, 1),
 (12, 891642, 0),
-(12, 61305026, 1);
+(12, 61305022, 30),
+(12, 61305026, 6),
+(12, 61305034, 1),
+(12, 61305251, 3),
+(12, 61305385, 1),
+(13, 0, 1),
+(13, 13413, 1690470001),
+(13, 13414, 7),
+(13, 14898, 0),
+(13, 15000, 1000),
+(13, 17101, 0),
+(13, 20000, 37),
+(13, 20001, 390),
+(13, 30000, 1677525173),
+(13, 30023, 1),
+(13, 30029, 0),
+(13, 30051, 1682216194),
+(13, 30057, 1),
+(13, 30058, 1),
+(13, 35551, 1682287447),
+(13, 48900, 0),
+(13, 48901, 0),
+(13, 81056, 0),
+(13, 81057, 1),
+(13, 112550, 0),
+(13, 891642, 0),
+(13, 3327712, 1),
+(13, 10001001, 21233667),
+(13, 10001002, 21299203),
+(13, 10003001, 65077248),
+(14, 0, 1),
+(14, 12330, 1),
+(14, 12332, 13),
+(14, 12333, 3),
+(14, 12450, 6),
+(14, 13413, 1686668400),
+(14, 13414, 6),
+(14, 14898, 0),
+(14, 14903, 0),
+(14, 17101, 0),
+(14, 20000, 5),
+(14, 20001, 165),
+(14, 20002, 1),
+(14, 30000, 1682707249),
+(14, 30023, 1),
+(14, 30029, 0),
+(14, 30051, 1682197917),
+(14, 30057, 1),
+(14, 30058, 1),
+(14, 42701, 29),
+(14, 42703, 3),
+(14, 42704, 4),
+(14, 42705, 1),
+(14, 42706, 1),
+(14, 42707, 1),
+(14, 42708, 3),
+(14, 42709, 2),
+(14, 42710, 2),
+(14, 42711, 1),
+(14, 42712, 1),
+(14, 42713, 1),
+(14, 42715, 1),
+(14, 42716, 1),
+(14, 42717, 5),
+(14, 42718, 2),
+(14, 42720, 2),
+(14, 42721, 3),
+(14, 42724, 2),
+(14, 42725, 1),
+(14, 42729, 12),
+(14, 44956, 1),
+(14, 44957, 1),
+(14, 45751, 1),
+(14, 45752, 16),
+(14, 46309, 1),
+(14, 46402, 1),
+(14, 46403, 1),
+(14, 46404, 1),
+(14, 47402, 1),
+(14, 47403, 1),
+(14, 47512, 1),
+(14, 47514, 1),
+(14, 47601, 1),
+(14, 48900, 0),
+(14, 48901, 0),
+(14, 50043, 1),
+(14, 50080, 1),
+(14, 50081, 10),
+(14, 50082, 2),
+(14, 50083, 2),
+(14, 50090, 10),
+(14, 50091, 2),
+(14, 50092, 2),
+(14, 50115, 10),
+(14, 50116, 3),
+(14, 50117, 2),
+(14, 50118, 2),
+(14, 50139, 10),
+(14, 50141, 10),
+(14, 50143, 30),
+(14, 50200, 7),
+(14, 50203, 1),
+(14, 50210, 1),
+(14, 50225, 1),
+(14, 50226, 1),
+(14, 50230, 1),
+(14, 50231, 1),
+(14, 50240, 1),
+(14, 50245, 1),
+(14, 50250, 1),
+(14, 50251, 1),
+(14, 50252, 1),
+(14, 50255, 1),
+(14, 50256, 1),
+(14, 50257, 1),
+(14, 50258, 1),
+(14, 50470, 1),
+(14, 50471, 1),
+(14, 50472, 1),
+(14, 50473, 1),
+(14, 50474, 1),
+(14, 50475, 1),
+(14, 50486, 1),
+(14, 50488, 1),
+(14, 50490, 1),
+(14, 50492, 1),
+(14, 50494, 1),
+(14, 50496, 1),
+(14, 50498, 1),
+(14, 50501, 1),
+(14, 50506, 1),
+(14, 50530, 61),
+(14, 50541, 2),
+(14, 50600, 2),
+(14, 50601, 5),
+(14, 50602, 3),
+(14, 50603, 3),
+(14, 50604, 3),
+(14, 50605, 2),
+(14, 50606, 1),
+(14, 50620, 2),
+(14, 50630, 1),
+(14, 50631, 2),
+(14, 50632, 2),
+(14, 50633, 2),
+(14, 50634, 3),
+(14, 50640, 1),
+(14, 50641, 3),
+(14, 50642, 3),
+(14, 50643, 3),
+(14, 50660, 23),
+(14, 50662, 5),
+(14, 50663, 2),
+(14, 50672, 1440),
+(14, 50699, 2),
+(14, 50700, 2),
+(14, 50701, 2),
+(14, 50850, 1),
+(14, 50852, 3000),
+(14, 51060, 1),
+(14, 51061, 18),
+(14, 51110, 25),
+(14, 51111, 7),
+(14, 51112, 3),
+(14, 51113, 6),
+(14, 51114, 3),
+(14, 51115, 3),
+(14, 51116, 3),
+(14, 51117, 1),
+(14, 51120, 1),
+(14, 51121, 1),
+(14, 51123, 1),
+(14, 51124, 1),
+(14, 51125, 1),
+(14, 51140, 1),
+(14, 51141, 3),
+(14, 51142, 3),
+(14, 51143, 3),
+(14, 51160, 12),
+(14, 51161, 3),
+(14, 51162, 5),
+(14, 51163, 3),
+(14, 51164, 2),
+(14, 51165, 6),
+(14, 51166, 8),
+(14, 51167, 3),
+(14, 51168, 4),
+(14, 51169, 2),
+(14, 51170, 2),
+(14, 51171, 2),
+(14, 51172, 6),
+(14, 51210, 51),
+(14, 51211, 6),
+(14, 51212, 8),
+(14, 51213, 6),
+(14, 51214, 6),
+(14, 51215, 8),
+(14, 51216, 5),
+(14, 51217, 5),
+(14, 51218, 4),
+(14, 51219, 2),
+(14, 51220, 1),
+(14, 51221, 1),
+(14, 51222, 1),
+(14, 51223, 1),
+(14, 51224, 1),
+(14, 51225, 1),
+(14, 51228, 1),
+(14, 51229, 1),
+(14, 51231, 1),
+(14, 51232, 1),
+(14, 51234, 1),
+(14, 51235, 1),
+(14, 51236, 1),
+(14, 51237, 1),
+(14, 51238, 1),
+(14, 51239, 1),
+(14, 51242, 1),
+(14, 51243, 1),
+(14, 51244, 1),
+(14, 51247, 1),
+(14, 51248, 1),
+(14, 51262, 3),
+(14, 51263, 5),
+(14, 51264, 3),
+(14, 51266, 3),
+(14, 51267, 1),
+(14, 51268, 1),
+(14, 51269, 1),
+(14, 51300, 29),
+(14, 51301, 3),
+(14, 51302, 3),
+(14, 51303, 3),
+(14, 51304, 3),
+(14, 51305, 3),
+(14, 51306, 4),
+(14, 51307, 6),
+(14, 51308, 2),
+(14, 51309, 2),
+(14, 51310, 1),
+(14, 51340, 1),
+(14, 51341, 2),
+(14, 51342, 2),
+(14, 51343, 12),
+(14, 51394, 8),
+(14, 51396, 4),
+(14, 51397, 2),
+(14, 51398, 1),
+(14, 51450, 1),
+(14, 51453, 1),
+(14, 51480, 1),
+(14, 51486, 1),
+(14, 51540, 3),
+(14, 51541, 3),
+(14, 51542, 2),
+(14, 51543, 1),
+(14, 51544, 3),
+(14, 51545, 5),
+(14, 51546, 1),
+(14, 51547, 1),
+(14, 51548, 2),
+(14, 51549, 1),
+(14, 51550, 4),
+(14, 51590, 1),
+(14, 51591, 1),
+(14, 51592, 1),
+(14, 51593, 1),
+(14, 51594, 1),
+(14, 51595, 1),
+(14, 51596, 1),
+(14, 51597, 1),
+(14, 51598, 1),
+(14, 51712, 1),
+(14, 52146, 2),
+(14, 55047, 1),
+(14, 55136, 1),
+(14, 55137, 1),
+(14, 55145, 21),
+(14, 55146, 2),
+(14, 55148, 6),
+(14, 55154, 1),
+(14, 55226, 1),
+(14, 55227, 1),
+(14, 55230, 1),
+(14, 55233, 1),
+(14, 56395, 2),
+(14, 81056, 0),
+(14, 81057, 1),
+(14, 100157, 1),
+(14, 515206, 1),
+(14, 515207, 2),
+(14, 515208, 3),
+(14, 515209, 3),
+(14, 61305026, 6),
+(15, 0, 1),
+(15, 12330, 1),
+(15, 12332, 13),
+(15, 12333, 3),
+(15, 12450, 6),
+(15, 13413, 1686236401),
+(15, 13414, 6),
+(15, 14898, 0),
+(15, 15000, 1000),
+(15, 17101, 0),
+(15, 20000, 1),
+(15, 20001, 118),
+(15, 20002, 1),
+(15, 20067, 2),
+(15, 30023, 1),
+(15, 30029, 0),
+(15, 30057, 1),
+(15, 30058, 1),
+(15, 38412, 0),
+(15, 42701, 29),
+(15, 42703, 3),
+(15, 42704, 4),
+(15, 42705, 1),
+(15, 42706, 1),
+(15, 42707, 1),
+(15, 42708, 3),
+(15, 42709, 2),
+(15, 42710, 2),
+(15, 42711, 1),
+(15, 42712, 1),
+(15, 42713, 1),
+(15, 42715, 1),
+(15, 42716, 1),
+(15, 42717, 5),
+(15, 42718, 2),
+(15, 42720, 2),
+(15, 42721, 3),
+(15, 42724, 2),
+(15, 42725, 1),
+(15, 42729, 12),
+(15, 44956, 1),
+(15, 44957, 1),
+(15, 45751, 1),
+(15, 45752, 16),
+(15, 46309, 1),
+(15, 46402, 1),
+(15, 46403, 1),
+(15, 46404, 1),
+(15, 47402, 1),
+(15, 47403, 1),
+(15, 47512, 1),
+(15, 47514, 1),
+(15, 47601, 1),
+(15, 48900, 0),
+(15, 48901, 0),
+(15, 50043, 1),
+(15, 50080, 1),
+(15, 50081, 10),
+(15, 50082, 2),
+(15, 50083, 2),
+(15, 50090, 10),
+(15, 50091, 2),
+(15, 50092, 2),
+(15, 50115, 10),
+(15, 50116, 3),
+(15, 50117, 2),
+(15, 50118, 2),
+(15, 50139, 10),
+(15, 50141, 10),
+(15, 50143, 30),
+(15, 50200, 7),
+(15, 50203, 1),
+(15, 50210, 1),
+(15, 50225, 1),
+(15, 50226, 1),
+(15, 50230, 1),
+(15, 50231, 1),
+(15, 50240, 1),
+(15, 50245, 1),
+(15, 50250, 1),
+(15, 50251, 1),
+(15, 50252, 1),
+(15, 50255, 1),
+(15, 50256, 1),
+(15, 50257, 1),
+(15, 50258, 1),
+(15, 50470, 1),
+(15, 50471, 1),
+(15, 50472, 1),
+(15, 50473, 1),
+(15, 50474, 1),
+(15, 50475, 1),
+(15, 50486, 1),
+(15, 50488, 1),
+(15, 50490, 1),
+(15, 50492, 1),
+(15, 50494, 1),
+(15, 50496, 1),
+(15, 50498, 1),
+(15, 50501, 1),
+(15, 50506, 1),
+(15, 50530, 61),
+(15, 50541, 2),
+(15, 50600, 2),
+(15, 50601, 5),
+(15, 50602, 3),
+(15, 50603, 3),
+(15, 50604, 3),
+(15, 50605, 2),
+(15, 50606, 1),
+(15, 50620, 2),
+(15, 50630, 1),
+(15, 50631, 2),
+(15, 50632, 2),
+(15, 50633, 2),
+(15, 50634, 3),
+(15, 50640, 1),
+(15, 50641, 3),
+(15, 50642, 3),
+(15, 50643, 3),
+(15, 50660, 23),
+(15, 50662, 5),
+(15, 50663, 2),
+(15, 50672, 1440),
+(15, 50699, 2),
+(15, 50700, 2),
+(15, 50701, 2),
+(15, 50850, 1),
+(15, 50852, 3000),
+(15, 51060, 1),
+(15, 51061, 18),
+(15, 51110, 25),
+(15, 51111, 7),
+(15, 51112, 3),
+(15, 51113, 6),
+(15, 51114, 3),
+(15, 51115, 3),
+(15, 51116, 3),
+(15, 51117, 1),
+(15, 51120, 1),
+(15, 51121, 1),
+(15, 51123, 1),
+(15, 51124, 1),
+(15, 51125, 1),
+(15, 51140, 1),
+(15, 51141, 3),
+(15, 51142, 3),
+(15, 51143, 3),
+(15, 51160, 12),
+(15, 51161, 3),
+(15, 51162, 5),
+(15, 51163, 3),
+(15, 51164, 2),
+(15, 51165, 6),
+(15, 51166, 8),
+(15, 51167, 3),
+(15, 51168, 4),
+(15, 51169, 2),
+(15, 51170, 2),
+(15, 51171, 2),
+(15, 51172, 6),
+(15, 51210, 51),
+(15, 51211, 6),
+(15, 51212, 8),
+(15, 51213, 6),
+(15, 51214, 6),
+(15, 51215, 8),
+(15, 51216, 5),
+(15, 51217, 5),
+(15, 51218, 4),
+(15, 51219, 2),
+(15, 51220, 1),
+(15, 51221, 1),
+(15, 51222, 1),
+(15, 51223, 1),
+(15, 51224, 1),
+(15, 51225, 1),
+(15, 51228, 1),
+(15, 51229, 1),
+(15, 51231, 1),
+(15, 51232, 1),
+(15, 51234, 1),
+(15, 51235, 1),
+(15, 51236, 1),
+(15, 51237, 1),
+(15, 51238, 1),
+(15, 51239, 1),
+(15, 51242, 1),
+(15, 51243, 1),
+(15, 51244, 1),
+(15, 51247, 1),
+(15, 51248, 1),
+(15, 51262, 3),
+(15, 51263, 5),
+(15, 51264, 3),
+(15, 51266, 3),
+(15, 51267, 1),
+(15, 51268, 1),
+(15, 51269, 1),
+(15, 51300, 29),
+(15, 51301, 3),
+(15, 51302, 3),
+(15, 51303, 3),
+(15, 51304, 3),
+(15, 51305, 3),
+(15, 51306, 4),
+(15, 51307, 6),
+(15, 51308, 2),
+(15, 51309, 2),
+(15, 51310, 1),
+(15, 51340, 1),
+(15, 51341, 2),
+(15, 51342, 2),
+(15, 51343, 12),
+(15, 51394, 8),
+(15, 51396, 4),
+(15, 51397, 2),
+(15, 51398, 1),
+(15, 51450, 1),
+(15, 51453, 1),
+(15, 51480, 1),
+(15, 51486, 1),
+(15, 51540, 3),
+(15, 51541, 3),
+(15, 51542, 2),
+(15, 51543, 1),
+(15, 51544, 3),
+(15, 51545, 5),
+(15, 51546, 1),
+(15, 51547, 1),
+(15, 51548, 2),
+(15, 51549, 1),
+(15, 51550, 4),
+(15, 51590, 1),
+(15, 51591, 1),
+(15, 51592, 1),
+(15, 51593, 1),
+(15, 51594, 1),
+(15, 51595, 1),
+(15, 51596, 1),
+(15, 51597, 1),
+(15, 51598, 1),
+(15, 51712, 1),
+(15, 52146, 2),
+(15, 55047, 1),
+(15, 55136, 1),
+(15, 55137, 1),
+(15, 55145, 21),
+(15, 55146, 2),
+(15, 55148, 6),
+(15, 55154, 1),
+(15, 55226, 1),
+(15, 55227, 1),
+(15, 55230, 1),
+(15, 55233, 1),
+(15, 56395, 2),
+(15, 81056, 0),
+(15, 81057, 1),
+(15, 100157, 1),
+(15, 515206, 1),
+(15, 515207, 2),
+(15, 515208, 3),
+(15, 515209, 3),
+(15, 10001001, 21233667),
+(15, 10001002, 21299203),
+(15, 10003001, 65077248),
+(15, 61305026, 42),
+(15, 61305034, 3),
+(15, 61305035, 3),
+(15, 61305039, 3),
+(15, 61305251, 18);
 
 -- --------------------------------------------------------
 
@@ -3347,18 +4526,38 @@ INSERT INTO `player_taskhunt` (`player_id`, `slot`, `state`, `raceid`, `upgrade`
 (2, 0, 2, '0', 0, 1, '0', 0, 1675855990681, 0x1a009c074d01ee00880703007e033e01ba02),
 (2, 1, 2, '0', 0, 1, '0', 0, 1675855990682, 0x390050001304ad0464034e017604f4071500),
 (2, 2, 0, '0', 0, 1, '0', 0, 1675855990683, ''),
-(10, 0, 2, '0', 0, 1, '0', 0, 1673447514765, 0x2e02fa002b08db00410021063200ff001c00),
-(10, 1, 2, '0', 0, 1, '0', 0, 1673447514767, 0xe302e9021f011c01420120070a037900f701),
-(10, 2, 0, '0', 0, 1, '0', 0, 1673447514769, ''),
 (12, 0, 2, '0', 0, 1, '0', 0, 1677343274085, 0xe2052f02030240001d007303e00046018901),
 (12, 1, 2, '0', 0, 1, '0', 0, 1677343274087, 0x76069002950328005e007b007c047000a305),
 (12, 2, 0, '0', 0, 1, '0', 0, 1677343274089, ''),
-(9, 0, 2, '0', 0, 1, '0', 0, 1673265708002, 0x940308077a03680012047c04df020e041c00),
-(9, 1, 2, '0', 0, 1, '0', 0, 1673265708005, 0x1c01750005008801c9061d009f057b04d702),
-(9, 2, 0, '0', 0, 1, '0', 0, 1673265708007, ''),
+(15, 0, 2, '0', 0, 1, '0', 0, 1686257530343, 0x840606025e033d0110004401e9021b042c00),
+(15, 1, 2, '0', 0, 1, '0', 0, 1686257530345, 0x8607fc002e057603420290036c0233021100),
+(15, 2, 2, '0', 0, 1, '0', 0, 1686257530347, 0x7a000d0196031b00b502ec004d00fc01ba06),
+(14, 0, 2, '0', 0, 1, '0', 0, 1682219027302, 0x4d011303d302580744028901fc000d011500),
+(14, 1, 2, '0', 0, 1, '0', 0, 1682219027303, 0xe305b502e2057a06e005e100000113007702),
+(14, 2, 2, '0', 0, 1, '0', 0, 1682219027305, 0xf9050c06710314008201d6001e0703011000),
 (11, 0, 2, '0', 0, 1, '0', 0, 1676710503962, 0x4801b5019207e0001d04d5034b0136000f02),
 (11, 1, 2, '0', 0, 1, '0', 0, 1676710503964, 0x0700880712034602db021c0014008106d603),
-(11, 2, 0, '0', 0, 1, '0', 0, 1676710503966, '');
+(11, 2, 0, '0', 0, 1, '0', 0, 1676710503966, ''),
+(10, 0, 2, '0', 0, 1, '0', 0, 1673447514765, 0x2e02fa002b08db00410021063200ff001c00),
+(10, 1, 2, '0', 0, 1, '0', 0, 1673447514767, 0xe302e9021f011c01420120070a037900f701),
+(10, 2, 0, '0', 0, 1, '0', 0, 1673447514769, ''),
+(13, 0, 2, '0', 0, 1, '0', 0, 1677582665149, 0xdb0009007b0454060600da0044020501ae04),
+(13, 1, 2, '0', 0, 1, '0', 0, 1677582665151, 0x4e007503e9022d020d029c07e100c0022b00),
+(13, 2, 0, '0', 0, 1, '0', 0, 1677582665153, ''),
+(9, 0, 2, '0', 0, 1, '0', 0, 1681811329588, 0x780248014602e80565066e06bc02be063d08),
+(9, 1, 2, '0', 0, 1, '0', 0, 1681811329588, 0xff00f00645022808c801ac07f7005506c106),
+(9, 2, 0, '0', 0, 1, '0', 0, 1681811329589, '');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `player_wheeldata`
+--
+
+CREATE TABLE `player_wheeldata` (
+  `player_id` int NOT NULL,
+  `slot` blob NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -3394,6 +4593,23 @@ CREATE TABLE `quickloot_containers` (
   `cid` int UNSIGNED NOT NULL,
   `sid` int UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `roulette_plays`
+--
+
+CREATE TABLE `roulette_plays` (
+  `id` int UNSIGNED NOT NULL,
+  `player_id` int NOT NULL,
+  `uuid` varchar(255) NOT NULL,
+  `reward_id` int NOT NULL,
+  `reward_count` int NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0 = rolling | 1 = pending | 2 = delivered',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -3458,11 +4674,11 @@ CREATE TABLE `server_config` (
 --
 
 INSERT INTO `server_config` (`config`, `value`, `timestamp`) VALUES
-('db_version', '0', '2023-02-13 14:07:03'),
+('db_version', '5', '2023-04-17 03:54:16'),
 ('double', 'desactived', '2023-02-13 14:07:03'),
-('motd_hash', '7fddc3e9cdb48371cfa308f527a97a292705e325', '2023-02-13 14:07:03'),
-('motd_num', '4', '2023-02-13 14:07:03'),
-('players_record', '2', '2023-02-13 14:07:03');
+('motd_hash', '7fddc3e9cdb48371cfa308f527a97a292705e325', '2023-05-31 16:24:02'),
+('motd_num', '6', '2023-05-31 16:24:02'),
+('players_record', '3', '2023-02-27 15:11:05');
 
 -- --------------------------------------------------------
 
@@ -3474,14 +4690,15 @@ CREATE TABLE `snake_game` (
   `id` int NOT NULL,
   `guid` int NOT NULL,
   `points` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Extraindo dados da tabela `snake_game`
 --
 
 INSERT INTO `snake_game` (`id`, `guid`, `points`) VALUES
-(1, 9, 40);
+(1, 9, 6),
+(2, 11, 26);
 
 -- --------------------------------------------------------
 
@@ -3574,7 +4791,250 @@ INSERT INTO `store_history` (`id`, `account_id`, `mode`, `description`, `coin_ty
 (53, 3, 0, '[Online Time] Tournament Coins', 2, 10, 1677352422, 0),
 (54, 2, 0, '[Online Time] Tournament Coins', 2, 10, 1677356081, 0),
 (55, 2, 0, '[BOMBERMAN] - Winner', 2, 100, 1677370374, 0),
-(56, 2, 0, '[Online Time] Tournament Coins', 2, 10, 1677374151, 0);
+(56, 2, 0, '[Online Time] Tournament Coins', 2, 10, 1677374151, 0),
+(57, 2, 0, '30 Days of VIP Time', 0, -250, 1677436164, 0),
+(58, 2, 0, '7 Days of VIP Time', 2, -250, 1677436411, 0),
+(59, 2, 0, '7 Days of VIP Time', 2, -250, 1677436528, 0),
+(60, 2, 0, '7 Days of VIP Time', 2, -250, 1677436634, 0),
+(61, 2, 0, '7 Days of VIP Time', 2, -250, 1677436701, 0),
+(62, 2, 0, '7 Days of VIP Time', 2, -250, 1677436748, 0),
+(63, 2, 0, '7 Days of VIP Time', 2, -250, 1677436763, 0),
+(64, 2, 0, 'Great Health Cask', 0, -22, 1677438756, 0),
+(65, 3, 0, 'Great Health Cask', 2, -88, 1677438779, 0),
+(66, 2, 0, 'Hireling Apprentice (Server Master)', 0, -150, 1677443340, 0),
+(67, 2, 0, 'Lasting Exercise Axe', 0, -250, 1677456043, 0),
+(68, 2, 0, 'Alicorn Headguard', 0, -1100, 1677501844, 0),
+(69, 2, 0, 'Lasting Exercise Bow', 0, -250, 1677501910, 0),
+(70, 2, 0, 'Bag You Desire', 0, -800, 1677502189, 0),
+(71, 2, 0, 'Bag You Desire', 0, -800, 1677502199, 0),
+(72, 2, 0, 'Cobra Boots', 0, -75, 1677502217, 0),
+(73, 2, 0, 'Great Health Keg', 0, -103, 1677502228, 0),
+(74, 2, 0, 'Alchemistic Cupboard', 2, -50, 1677502331, 0),
+(75, 2, 0, 'Alchemistic Cabinet', 2, -100, 1677502520, 0),
+(76, 2, 0, 'Frozen Rune', 0, -75, 1677502544, 0),
+(77, 2, 0, 'Mana Rune', 0, -75, 1677502940, 0),
+(78, 3, 0, 'Lasting Exercise Wand', 2, -1000, 1677511714, 0),
+(79, 3, 0, 'Lasting Exercise Axe', 2, -1000, 1677518665, 0),
+(80, 3, 0, 'Lasting Exercise Club', 2, -1000, 1677518672, 0),
+(81, 3, 0, 'Lasting Exercise Sword', 2, -1000, 1677518677, 0),
+(82, 3, 0, 'Lasting Exercise Rod', 2, -1000, 1677518686, 0),
+(83, 3, 0, '[Online Time] Tournament Coins', 2, 10, 1677590159, 0),
+(84, 2, 0, '[Online Time] Tournament Coins', 2, 10, 1677590159, 0),
+(85, 2, 0, '[Online Time] Tournament Coins', 2, 10, 1677593819, 0),
+(86, 2, 0, '[Online Time] Tournament Coins', 2, 10, 1677600965, 0),
+(87, 3, 0, '[Online Time] Tournament Coins', 2, 10, 1677600965, 0),
+(88, 2, 0, '[Online Time] Tournament Coins', 2, 10, 1677604625, 0),
+(89, 3, 0, '[Online Time] Tournament Coins', 2, 10, 1677604625, 0),
+(90, 2, 0, '[Online Time] Tournament Coins', 2, 10, 1677608285, 0),
+(91, 3, 0, '[Online Time] Tournament Coins', 2, 10, 1677608285, 0),
+(92, 3, 0, '[Online Time] Tournament Coins', 2, 10, 1677612920, 0),
+(93, 2, 0, '[Online Time] Tournament Coins', 2, 10, 1677613040, 0),
+(94, 3, 0, '[Online Time] Tournament Coins', 2, 10, 1677616580, 0),
+(95, 2, 0, '[Online Time] Tournament Coins', 2, 10, 1677616700, 0),
+(96, 3, 0, '[Online Time] Tournament Coins', 2, 10, 1677620240, 0),
+(97, 2, 0, '[Online Time] Tournament Coins', 2, 10, 1677620360, 0),
+(98, 2, 0, '[Online Time] Tournament Coins', 2, 10, 1677679548, 0),
+(99, 2, 0, '[Online Time] Tournament Coins', 2, 10, 1677711367, 0),
+(100, 2, 0, '[Online Time] Tournament Coins', 2, 10, 1677800644, 0),
+(101, 2, 0, '[Online Time] Tournament Coins', 2, 10, 1677853753, 0),
+(102, 2, 0, '[Online Time] Tournament Coins', 2, 10, 1679674866, 0),
+(103, 2, 0, '[Online Time] Tournament Coins', 2, 10, 1679683391, 0),
+(104, 2, 0, '[Online Time] Tournament Coins', 2, 10, 1679687050, 0),
+(105, 2, 0, '[Online Time] Tournament Coins', 2, 10, 1679924053, 0),
+(106, 2, 0, '[Online Time] Tournament Coins', 2, 10, 1679934208, 0),
+(107, 2, 0, '[Online Time] Tournament Coins', 2, 10, 1679949069, 0),
+(108, 2, 0, '[Online Time] Tournament Coins', 2, 10, 1679954853, 0),
+(109, 2, 0, '[Online Time] Tournament Coins', 2, 10, 1679958513, 0),
+(110, 2, 0, '[Online Time] Tournament Coins', 2, 10, 1680111008, 0),
+(111, 3, 0, '[Online Time] Tournament Coins', 2, 10, 1680111008, 0),
+(112, 2, 0, '[Online Time] Tournament Coins', 2, 10, 1680114668, 0),
+(113, 3, 0, '[Online Time] Tournament Coins', 2, 10, 1680115808, 0),
+(114, 2, 0, '[Online Time] Tournament Coins', 2, 10, 1680124881, 0),
+(115, 3, 0, '[Online Time] Tournament Coins', 2, 10, 1680125121, 0),
+(116, 2, 0, '[Online Time] Tournament Coins', 2, 10, 1681748758, 0),
+(117, 2, 0, '[Online Time] Tournament Coins', 2, 10, 1681752418, 0),
+(118, 3, 0, 'Bag You Desire', 2, -2200, 1681849309, 0),
+(119, 2, 0, '[Online Time] Tournament Coins', 2, 10, 1681851678, 0),
+(120, 2, 0, '180 Days of VIP Time', 0, -1500, 1681851825, 0),
+(121, 2, 0, 'Bag You Desire', 2, -2200, 1681851853, 0),
+(122, 2, 0, 'Bag You Desire', 0, -800, 1681851861, 0),
+(123, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1681855449, 0),
+(124, 2, 0, 'Gold Pouch', 2, -1800, 1681857107, 0),
+(125, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1681862837, 0),
+(126, 3, 0, 'Gold Pouch', 2, -1800, 1681869800, 0),
+(127, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1681914330, 0),
+(128, 2, 0, 'Hireling Trader', 0, -250, 1681922201, 0),
+(129, 3, 0, '[Online Time] Tournament Coins', 2, 10, 1681927283, 0),
+(130, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1681927403, 0),
+(131, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1681931063, 0),
+(132, 3, 0, '[Online Time] Tournament Coins', 2, 10, 1681931664, 0),
+(133, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1681934723, 0),
+(134, 2, 0, 'Lasting Exercise Axe', 2, -1000, 1681934870, 0),
+(135, 3, 0, 'Demon Exercise Dummy', 2, -1800, 1681935016, 0),
+(136, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1681947038, 0),
+(137, 3, 0, '[Online Time] Tournament Coins', 2, 10, 1681947098, 0),
+(138, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1681951263, 0),
+(139, 3, 0, '[Online Time] Tournament Coins', 2, 10, 1681951503, 0),
+(140, 3, 0, '[Online Time] Tournament Coins', 2, 10, 1681961373, 0),
+(141, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1681961373, 0),
+(142, 3, 0, 'Bag You Desire', 2, -2200, 1681963505, 0),
+(143, 3, 0, 'Falcon Bow', 2, -425, 1681963510, 0),
+(144, 2, 0, 'Cobra Axe', 2, -375, 1681993674, 0),
+(145, 2, 0, 'Bag You Desire', 0, -800, 1681994785, 0),
+(146, 2, 0, 'Axe of Destruction', 2, -350, 1681994823, 0),
+(147, 2, 0, 'Falcon Bow', 2, -425, 1681994883, 0),
+(148, 2, 0, 'Bag You Desire', 2, -2200, 1681994900, 0),
+(149, 2, 0, 'Supreme Health Potion', 2, -452, 1681996320, 0),
+(150, 2, 0, 'Alchemistic Bookstand', 2, -100, 1681996567, 0),
+(151, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1681996899, 0),
+(152, 2, 0, 'Great Health Cask', 2, -88, 1681997312, 0),
+(153, 2, 0, 'Lasting Exercise Club', 2, -1000, 1681997316, 0),
+(154, 2, 0, 'Great Health Keg', 2, -412, 1681997323, 0),
+(155, 2, 0, 'Frozen Rune', 2, -300, 1681997332, 0),
+(156, 2, 0, 'Daily Reward Shrine', 2, -300, 1681997342, 0),
+(157, 2, 0, 'Temple Teleport', 2, -30, 1681997353, 0),
+(158, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1682000559, 0),
+(159, 2, 0, 'Supreme Health Potion', 0, -113, 1682008339, 0),
+(160, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1682009637, 0),
+(161, 2, 0, 'Supreme Health Potion', 2, -452, 1682010485, 0),
+(162, 2, 0, 'Supreme Health Potion', 2, -452, 1682010590, 0),
+(163, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1682014126, 0),
+(164, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1682017786, 0),
+(165, 3, 0, 'Alchemistic Bookstand', 2, -100, 1682017787, 0),
+(166, 2, 0, 'Supreme Health Potion', 2, -452, 1682021626, 0),
+(167, 2, 0, 'Supreme Health Potion', 2, -452, 1682021821, 0),
+(168, 2, 0, 'Blade Of Destruction', 2, -350, 1682023036, 0),
+(169, 2, 0, 'Axe of Destruction', 2, -350, 1682023157, 0),
+(170, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1682024985, 0),
+(171, 3, 0, 'Alchemistic Bookstand', 2, -100, 1682027244, 0),
+(172, 2, 0, 'Frozen Rune', 2, -300, 1682027379, 0),
+(173, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1682029859, 0),
+(174, 3, 0, '[Online Time] Tournament Coins', 2, 10, 1682030698, 0),
+(175, 3, 0, 'Alchemistic Bookstand', 2, -100, 1682032374, 0),
+(176, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1682097992, 0),
+(177, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1682125257, 0),
+(178, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1682132830, 0),
+(179, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1682189885, 0),
+(180, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1682193545, 0),
+(181, 3, 0, 'Lasting Exercise Rod', 2, -1000, 1682197342, 0),
+(182, 3, 0, 'Lasting Exercise Rod', 2, -1000, 1682197372, 0),
+(183, 3, 0, 'Lasting Exercise Rod', 2, -1000, 1682197573, 0),
+(184, 3, 0, 'XP Boost', 0, -30, 1682215290, 0),
+(185, 5, 0, '[Guild Bank] - Tournament Coins', 2, 100, 1682215447, 0),
+(186, 3, 0, '[Guild Bank] - Tournament Coins', 2, 100, 1682215447, 0),
+(187, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1682368959, 0),
+(188, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1682373310, 0),
+(189, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1682376970, 0),
+(190, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1682382008, 0),
+(191, 2, 0, 'Alicorn Quiver', 2, -2650, 1682620996, 0),
+(192, 2, 0, 'Soulbleeder', 2, -2500, 1682621006, 0),
+(193, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1682629335, 0),
+(194, 3, 0, '[Online Time] Tournament Coins', 2, 10, 1682629336, 0),
+(195, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1682632996, 0),
+(196, 3, 0, '[Online Time] Tournament Coins', 2, 10, 1682645549, 0),
+(197, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1682693851, 0),
+(198, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1683054559, 0),
+(199, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1683120327, 0),
+(200, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1683130233, 0),
+(201, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1683133892, 0),
+(202, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1683137552, 0),
+(203, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1685583477, 0),
+(204, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1685587137, 0),
+(205, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1685732711, 0),
+(206, 3, 0, '[Online Time] Tournament Coins', 2, 10, 1685732890, 0),
+(207, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1685736370, 0),
+(208, 3, 0, '[Online Time] Tournament Coins', 2, 10, 1685737150, 0),
+(209, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1685741150, 0),
+(210, 3, 0, '[Online Time] Tournament Coins', 2, 10, 1685741449, 0),
+(211, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1685898500, 0),
+(212, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1685905876, 0),
+(213, 3, 0, '[Online Time] Tournament Coins', 2, 10, 1685905877, 0),
+(214, 3, 0, '[Online Time] Tournament Coins', 2, 10, 1685914316, 0),
+(215, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1685914316, 0),
+(216, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1685917976, 0),
+(217, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1685921636, 0),
+(218, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1685974045, 0),
+(219, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1685981016, 0),
+(220, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1685984675, 0),
+(221, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1685988335, 0),
+(222, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1685991995, 0),
+(223, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1685995655, 0),
+(224, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1685999315, 0),
+(225, 2, 0, '[Online Time] Tournament Coins', 2, 20, 1686002975, 0),
+(226, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1686067363, 0),
+(227, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1686071022, 0),
+(228, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1686074682, 0),
+(229, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1686079756, 0),
+(230, 2, 0, 'Bag You Desire', 0, -800, 1686141869, 0),
+(231, 2, 0, 'Bag You Desire', 0, -800, 1686141874, 0),
+(232, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1686154396, 0),
+(233, 3, 0, '[Online Time] Transferable Coins', 1, 10, 1686154397, 0),
+(234, 2, 0, 'Frozen Rune', 0, -75, 1686166846, 0),
+(235, 2, 0, 'Mana Rune', 0, -75, 1686166849, 0),
+(236, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1686174457, 0),
+(237, 3, 0, '[Online Time] Transferable Coins', 1, 10, 1686240877, 0),
+(238, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1686240877, 0),
+(239, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1686244537, 0),
+(240, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1686249699, 0),
+(241, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1686253360, 0),
+(242, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1686257019, 0),
+(243, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1686320256, 0),
+(244, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1686326466, 0),
+(245, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1686338666, 0),
+(246, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1686342326, 0),
+(247, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1686345986, 0),
+(248, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1686879725, 0),
+(249, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1686923794, 0),
+(250, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1686927454, 0),
+(251, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1686935622, 0),
+(252, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1686942818, 0),
+(253, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1687093029, 0),
+(254, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1687096689, 0),
+(255, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1687100349, 0),
+(256, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1687104074, 0),
+(257, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1687107734, 0),
+(258, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1687111394, 0),
+(259, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1687115054, 0),
+(260, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1687118714, 0),
+(261, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1687122374, 0),
+(262, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1687126034, 0),
+(263, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1687129694, 0),
+(264, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1687133354, 0),
+(265, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1687190766, 0),
+(266, 2, 0, 'Mana Rune', 0, -75, 1687197581, 0),
+(267, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1687197625, 0),
+(268, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1687205571, 0),
+(269, 3, 0, '[Online Time] Transferable Coins', 1, 10, 1687205631, 0),
+(270, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1687209231, 0),
+(271, 3, 0, '[Online Time] Transferable Coins', 1, 10, 1687213621, 0),
+(272, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1687213861, 0),
+(273, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1687217521, 0),
+(274, 3, 0, '[Online Time] Transferable Coins', 1, 10, 1687219921, 0),
+(275, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1687221181, 0),
+(276, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1687224841, 0),
+(277, 3, 0, '[Online Time] Transferable Coins', 1, 10, 1687310583, 0),
+(278, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1687310583, 0),
+(279, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1687352408, 0),
+(280, 3, 0, 'Arcanomancer Regalia', 0, -1100, 1687360856, 0),
+(281, 3, 0, 'Arcanomancer Sigil', 0, -1100, 1687360862, 0),
+(282, 3, 0, 'Arcanomancer Folio', 0, -1100, 1687360870, 0),
+(283, 3, 0, 'Soulshanks', 0, -950, 1687360931, 0),
+(284, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1687371770, 0),
+(285, 3, 0, '[Online Time] Transferable Coins', 1, 10, 1687372551, 0),
+(286, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1687381566, 0),
+(287, 3, 0, '[Online Time] Transferable Coins', 1, 10, 1687381626, 0),
+(288, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1690483003, 0),
+(289, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1690486663, 0),
+(290, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1690490323, 0),
+(291, 3, 0, 'Administrator transfered you this amount.', 0, 25, 1690546522, 0),
+(292, 2, 0, 'You transfered this amount to Teste Ms', 0, -25, 1690546522, 0),
+(293, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1690551530, 0),
+(294, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1690555190, 0),
+(295, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1690571078, 0),
+(296, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1690574738, 0),
+(297, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1690578398, 0),
+(298, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1690582058, 0),
+(299, 2, 0, '[Online Time] Transferable Coins', 1, 20, 1690725920, 0);
 
 -- --------------------------------------------------------
 
@@ -3687,9 +5147,9 @@ INSERT INTO `tile_store` (`house_id`, `data`) VALUES
 (1, 0xe803cb040701000000e00200),
 (1, 0xe903cb040701000000e10200),
 (2, 0xdf03cb040701000000e00200),
-(2, 0xe203c6040701000000412000),
+(2, 0xe203c6040701000000422000),
 (2, 0xe003cb040701000000e10200),
-(3, 0xd903c6040701000000412000),
+(3, 0xd903c6040701000000422000),
 (3, 0xda03cb040701000000e00200),
 (3, 0xdb03cb040701000000e10200),
 (4, 0xcd03cb040701000000e00200),
@@ -4778,16 +6238,24 @@ INSERT INTO `tile_store` (`house_id`, `data`) VALUES
 (268, 0xcc0147050501000000e60200),
 (268, 0xc10148050501000000e70200),
 (268, 0xcc0148050501000000e70200),
+(268, 0xcd0149050601000000b71400),
 (268, 0xc3014e0505010000008c1500),
 (268, 0xc3014e0506010000008c1500),
 (268, 0xca014e0505010000008c1500),
 (268, 0xca014e0506010000008c1500),
+(268, 0xc20152050601000000b61400),
+(268, 0xc30152050601000000b61400),
+(268, 0xc60150050601000000b61400),
 (268, 0xc701500506010000008c1500),
+(268, 0xc80150050601000000b61400),
+(268, 0xcb0152050601000000b61400),
+(268, 0xcc0152050601000000b61400),
 (269, 0xc4015b0505010000008a1500),
 (269, 0xc4015b0506010000008a1500),
 (269, 0xc7015a0506010000008c1500),
 (269, 0xc9015b0505010000008a1500),
 (269, 0xc9015b0506010000008a1500),
+(269, 0xcd015a050401000000b71400),
 (269, 0xc10160050501000000e60200),
 (269, 0xc10161050501000000e70200),
 (269, 0xcc0160050501000000e60200),
@@ -4796,6 +6264,9 @@ INSERT INTO `tile_store` (`house_id`, `data`) VALUES
 (269, 0xc10165050501000000e70200),
 (269, 0xcc0164050501000000e60200),
 (269, 0xcc0165050501000000e70200),
+(269, 0xc50168050601000000b61400),
+(269, 0xc70168050601000000b61400),
+(269, 0xc90168050601000000b61400),
 (270, 0xc7016f0506010000008c1500),
 (270, 0xc20172050401000000e60200),
 (270, 0xc20173050401000000e70200),
@@ -4803,6 +6274,17 @@ INSERT INTO `tile_store` (`house_id`, `data`) VALUES
 (270, 0xc50170050401000000e90200),
 (270, 0xc80170050401000000e80200),
 (270, 0xc90170050401000000e90200),
+(270, 0xc60177050401000000b61400),
+(270, 0xc60177050501000000b61400),
+(270, 0xc50177050601000000b61400),
+(270, 0xc80177050401000000b61400),
+(270, 0xc80177050501000000b61400),
+(270, 0xc90177050601000000b61400),
+(270, 0xcc0174050401000000b71400),
+(270, 0xcc0174050501000000b71400),
+(270, 0xcc0174050601000000b71400),
+(271, 0xd5016f050401000000b61400),
+(271, 0xd7016f050401000000b61400),
 (271, 0xd6016f0506010000008c1500),
 (271, 0xd10172050401000000e60200),
 (271, 0xd10173050401000000e70200),
@@ -4810,13 +6292,38 @@ INSERT INTO `tile_store` (`house_id`, `data`) VALUES
 (271, 0xd40170050401000000e90200),
 (271, 0xd70170050401000000e80200),
 (271, 0xd80170050401000000e90200),
+(271, 0xd00174050401000000b71400),
+(271, 0xd50177050401000000b61400),
+(271, 0xd70177050401000000b61400),
+(271, 0xd50177050501000000b61400),
+(271, 0xd70177050501000000b61400),
+(271, 0xd40177050601000000b61400),
+(271, 0xdb0174050401000000b71400),
+(271, 0xdb0174050501000000b71400),
+(271, 0xd80177050601000000b61400),
+(271, 0xdb0174050601000000b71400),
+(272, 0xe4016f050401000000b61400),
+(272, 0xe6016f050401000000b61400),
+(272, 0xe4016f050501000000b61400),
+(272, 0xe6016f050501000000b61400),
 (272, 0xe5016f0506010000008c1500),
+(272, 0xdf0174050401000000b71400),
+(272, 0xdf0174050501000000b71400),
 (272, 0xe00172050401000000e60200),
 (272, 0xe00173050401000000e70200),
 (272, 0xe20170050401000000e80200),
 (272, 0xe30170050401000000e90200),
 (272, 0xe60170050401000000e80200),
 (272, 0xe70170050401000000e90200),
+(272, 0xe30177050601000000b61400),
+(272, 0xe40177050401000000b61400),
+(272, 0xe60177050401000000b61400),
+(272, 0xe40177050501000000b61400),
+(272, 0xe60177050501000000b61400),
+(272, 0xe70177050601000000b61400),
+(272, 0xea0174050401000000b71400),
+(272, 0xea0174050501000000b71400),
+(272, 0xea0174050601000000b71400),
 (273, 0xf0016f050501000000e80200),
 (273, 0xf1016f050501000000e90200),
 (273, 0xf3016f050501000000e80200),
@@ -4828,15 +6335,27 @@ INSERT INTO `tile_store` (`house_id`, `data`) VALUES
 (273, 0xed0174050501000000e70200),
 (273, 0xfa0173050501000000e60200),
 (273, 0xfa0174050501000000e70200),
+(273, 0xfb0174050601000000b71400),
+(273, 0xf1017a050601000000b61400),
+(273, 0xf7017a050601000000b61400),
 (274, 0xf701630506010000008a1500),
+(274, 0xfc0168050601000000b61400),
 (274, 0x000260050601000000e60200),
 (274, 0x000261050601000000e70200),
+(274, 0x010262050601000000b71400),
+(274, 0x010264050601000000b71400),
 (275, 0xf701560506010000008a1500),
+(275, 0xfc015b050601000000b61400),
 (275, 0x000253050601000000e60200),
 (275, 0x000254050601000000e70200),
+(275, 0x010255050601000000b71400),
+(275, 0x010257050601000000b71400),
 (276, 0xf701450506010000008a1500),
+(276, 0xfc014a050601000000b61400),
 (276, 0x000242050601000000e60200),
 (276, 0x000243050601000000e70200),
+(276, 0x010244050601000000b71400),
+(276, 0x010246050601000000b71400),
 (277, 0xe9012d050601000000e60200),
 (277, 0xe9012e050601000000e70200),
 (277, 0xea012c050601000000e80200),
@@ -4853,77 +6372,143 @@ INSERT INTO `tile_store` (`house_id`, `data`) VALUES
 (277, 0xfb012c050601000000e90200),
 (277, 0xfc012d050601000000e60200),
 (277, 0xfc012e050601000000e70200),
+(277, 0xeb0138050601000000b61400),
+(277, 0xee0138050601000000b61400),
 (277, 0xf301320506010000008c1500),
+(277, 0xfd0130050601000000b71400),
 (277, 0xf001350505010000008a1500),
 (277, 0xf001350506010000008a1500),
 (277, 0xf601350505010000008a1500),
 (277, 0xf601350506010000008a1500),
+(277, 0xfd0134050601000000b71400),
 (277, 0xf301390506010000008c1500),
+(277, 0xf80138050601000000b61400),
+(277, 0xfb0138050601000000b61400),
 (278, 0xdc0129050501000000e80200),
 (278, 0xdd0129050501000000e90200),
 (278, 0xde0129050501000000e80200),
 (278, 0xdf0129050501000000e90200),
 (278, 0xdc012c0506010000008c1500),
+(278, 0xe3012f050601000000b71400),
+(278, 0xd90131050601000000b61400),
+(278, 0xdb0131050601000000b61400),
 (278, 0xdc01310506010000008c1500),
+(278, 0xdd0131050601000000b61400),
+(278, 0xdf0131050601000000b61400),
 (279, 0xcc0123050501000000e80200),
+(279, 0xcd0122050501000000b61400),
 (279, 0xcd0123050501000000e90200),
+(279, 0xcf0122050501000000b61400),
 (279, 0xcf0123050501000000e80200),
+(279, 0xc90127050501000000b71400),
 (279, 0xce012c0505010000008c1500),
 (279, 0xce012f0506010000008a1500),
 (279, 0xd00123050501000000e90200),
+(279, 0xd30127050501000000b71400),
+(279, 0xd30127050601000000b71400),
+(279, 0xca0130050501000000b71400),
+(279, 0xcb0131050601000000b61400),
+(279, 0xcd0131050501000000b61400),
 (279, 0xcc01310506010000008c1500),
+(279, 0xd00131050501000000b61400),
+(279, 0xd20130050501000000b71400),
+(279, 0xd00131050601000000b61400),
+(279, 0xd20130050601000000b71400),
+(280, 0xb3013b050401000000b71400),
+(280, 0xb3013b050501000000b71400),
 (280, 0xb60138050401000000e80200),
 (280, 0xb70138050401000000e90200),
 (280, 0xb4013a050501000000e60200),
 (280, 0xb4013b050501000000e70200),
 (280, 0xb60138050501000000e80200),
 (280, 0xb70138050501000000e90200),
+(280, 0xb3013c050401000000b71400),
+(280, 0xb3013d050401000000b71400),
+(280, 0xb3013e050401000000b71400),
+(280, 0xb3013d050501000000b71400),
+(280, 0xb3013f050501000000b71400),
 (280, 0xb4013c050401000000e60200),
 (280, 0xb4013d050401000000e70200),
 (280, 0xb4013e050501000000e60200),
 (280, 0xb4013f050501000000e70200),
+(280, 0xbf013c050401000000b71400),
 (280, 0xbf013d0504010000008a1500),
+(280, 0xbf013e050401000000b71400),
 (280, 0xbf013d0505010000008a1500),
+(280, 0xcb013b050601000000b71400),
 (280, 0xc0013d0506010000008a1500),
 (280, 0xcb013d0506010000008a1500),
+(280, 0xcb013f050601000000b71400),
 (280, 0xb60141050401000000e80200),
 (280, 0xb70141050401000000e90200),
 (280, 0xb60141050501000000e80200),
 (280, 0xb70141050501000000e90200),
 (281, 0xe701450506010000008a1500),
+(281, 0xec014a050601000000b61400),
 (281, 0xf00142050601000000e60200),
 (281, 0xf00143050601000000e70200),
+(281, 0xf10144050601000000b71400),
+(281, 0xf10146050601000000b71400),
+(282, 0xe70155050601000000b71400),
 (282, 0xe701560506010000008a1500),
+(282, 0xe70157050601000000b71400),
+(282, 0xec015b050601000000b61400),
 (282, 0xf00153050601000000e60200),
 (282, 0xf00154050601000000e70200),
+(282, 0xf10157050601000000b71400),
+(283, 0xe70162050601000000b71400),
 (283, 0xe701630506010000008a1500),
+(283, 0xe70164050601000000b71400),
+(283, 0xec0168050601000000b61400),
 (283, 0xf00160050601000000e60200),
 (283, 0xf00161050601000000e70200),
+(283, 0xf10162050601000000b71400),
+(283, 0xf10164050601000000b71400),
 (284, 0xce017c0506010000008c1500),
 (284, 0xd2017f050601000000e60200),
+(284, 0xcd0186050601000000b61400),
 (284, 0xce01860506010000008c1500),
+(284, 0xcf0186050601000000b61400),
 (284, 0xd20180050601000000e70200),
+(284, 0xd30181050601000000b71400),
+(285, 0xdd017c050601000000b61400),
 (285, 0xde017c0506010000008c1500),
+(285, 0xdf017c050601000000b61400),
 (285, 0xe2017f050601000000e60200),
+(285, 0xdd0186050601000000b61400),
 (285, 0xde01860506010000008c1500),
+(285, 0xdf0186050601000000b61400),
 (285, 0xe20180050601000000e70200),
+(285, 0xe30181050601000000b71400),
 (286, 0xb50145050701000000e60200),
 (286, 0xb50146050701000000e70200),
+(286, 0xbb0147050701000000b71400),
 (286, 0xbb01480507010000008a1500),
+(286, 0xbb0149050701000000b71400),
+(287, 0xc10147050701000000b71400),
 (287, 0xc70145050701000000e60200),
 (287, 0xc70146050701000000e70200),
 (287, 0xc101480507010000008a1500),
+(287, 0xc10149050701000000b71400),
 (288, 0xb5013b050701000000e60200),
 (288, 0xb5013c050701000000e70200),
+(288, 0xbb013d050701000000b71400),
 (288, 0xbb013e0507010000008a1500),
+(288, 0xbb013f050701000000b71400),
 (289, 0xc7013b050701000000e60200),
+(289, 0xc1013d050701000000b71400),
 (289, 0xc1013e0507010000008a1500),
+(289, 0xc1013f050701000000b71400),
 (289, 0xc7013c050701000000e70200),
 (290, 0xd701400507010000008a1500),
+(290, 0xd90142050701000000b61400),
 (290, 0xda01420507010000008c1500),
+(290, 0xdb0142050701000000b61400),
 (290, 0xdd01400507010000008a1500),
 (290, 0xd30147050701000000e60200),
 (290, 0xd40147050701000000e60200),
+(290, 0xd70146050701000000b71400),
+(290, 0xd70147050701000000b71400),
 (290, 0xd30148050701000000e70200),
 (290, 0xd40148050701000000e70200),
 (290, 0xe00147050701000000e60200),
@@ -4935,12 +6520,17 @@ INSERT INTO `tile_store` (`house_id`, `data`) VALUES
 (291, 0xd70136050701000000e80200),
 (291, 0xd80136050701000000e90200),
 (291, 0xd601390507010000008c1500),
+(291, 0xdc0138050701000000b71400),
 (291, 0xdc01390507010000008a1500),
+(291, 0xdc013a050701000000b71400),
 (292, 0xd3012d050701000000e60200),
 (292, 0xd3012e050701000000e70200),
+(292, 0xdc012f050701000000b71400),
 (292, 0xd30132050701000000e60200),
 (292, 0xd30133050701000000e70200),
 (292, 0xdc01300507010000008a1500),
+(292, 0xdc0131050701000000b71400),
+(293, 0xe60149050701000000b71400),
 (293, 0xe6014a0507010000008a1500),
 (293, 0xf20143050701000000e60200),
 (293, 0xf50143050701000000e60200),
@@ -4952,11 +6542,14 @@ INSERT INTO `tile_store` (`house_id`, `data`) VALUES
 (293, 0xf5014f050701000000e60200),
 (293, 0xf20150050701000000e70200),
 (293, 0xf50150050701000000e70200),
+(294, 0xe7015c050701000000b71400),
 (294, 0xe7015d0507010000008a1500),
 (295, 0xe70163050801000000e60200),
+(295, 0xe70164050701000000b71400),
 (295, 0xe701650507010000008a1500),
 (295, 0xe70164050801000000e70200),
 (296, 0xe7016b050801000000e60200),
+(296, 0xe7016c050701000000b71400),
 (296, 0xe7016d0507010000008a1500),
 (296, 0xe7016c050801000000e70200),
 (297, 0xcb016c0507010000008a1500),
@@ -5018,14 +6611,14 @@ CREATE TABLE `tmpwoe` (
   `breaker` int NOT NULL,
   `time` int NOT NULL,
   `indexer` int NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 --
 -- Extraindo dados da tabela `tmpwoe`
 --
 
 INSERT INTO `tmpwoe` (`started`, `guild`, `breaker`, `time`, `indexer`) VALUES
-(1677422666, 3, 268435465, 1674773198, 1);
+(1690502118, 1, 268435465, 1685665344, 1);
 
 -- --------------------------------------------------------
 
@@ -5040,6 +6633,20 @@ CREATE TABLE `towns` (
   `posy` int NOT NULL DEFAULT '0',
   `posz` int NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Extraindo dados da tabela `towns`
+--
+
+INSERT INTO `towns` (`id`, `name`, `posx`, `posy`, `posz`) VALUES
+(1, 'Real City', 991, 1210, 7),
+(2, 'Jah\'Island', 725, 1388, 7),
+(3, 'Kravhzi', 980, 1413, 8),
+(4, 'Al\'Nahf', 1071, 1296, 7),
+(5, 'Bkrianz', 1238, 1307, 3),
+(6, 'Iceland', 815, 1089, 7),
+(7, 'Woodzbrock', 1312, 1011, 6),
+(8, 'Premia Island', 474, 1364, 7);
 
 -- --------------------------------------------------------
 
@@ -5095,7 +6702,7 @@ CREATE TABLE `woe` (
   `guild` int NOT NULL,
   `breaker` int NOT NULL,
   `time` int NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 --
 -- Extraindo dados da tabela `woe`
@@ -5109,7 +6716,14 @@ INSERT INTO `woe` (`id`, `started`, `guild`, `breaker`, `time`) VALUES
 (5, 1673384175, 3, 268435465, 1673384265),
 (6, 1674772015, 4, 268435466, 1674772383),
 (7, 1674773149, 4, 268435466, 1674773198),
-(8, 1676246145, 3, 268435465, 1674773198);
+(8, 1676246145, 3, 268435465, 1674773198),
+(9, 1677507374, 4, 268435466, 1677507705),
+(10, 1681862117, 3, 268435465, 1681862387),
+(11, 1681948539, 3, 268435465, 1681862387),
+(12, 1685663762, 1, 268435465, 1685665344),
+(13, 1687218961, 1, 268435465, 1685665344),
+(14, 1690415767, 1, 268435465, 1685665344),
+(15, 1690502118, 1, 268435465, 1685665344);
 
 -- --------------------------------------------------------
 
@@ -5527,8 +7141,7 @@ CREATE TABLE `z_shop_payment` (
 ALTER TABLE `accounts`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `name` (`name`),
-  ADD UNIQUE KEY `name_2` (`name`),
-  ADD UNIQUE KEY `name_3` (`name`);
+  ADD UNIQUE KEY `name_2` (`name`);
 
 --
 -- Índices para tabela `accounts_storage`
@@ -5601,6 +7214,12 @@ ALTER TABLE `atr_wikki_subcategory`
 --
 ALTER TABLE `blessings_history`
   ADD KEY `blessings_history_ibfk_1` (`player_id`);
+
+--
+-- Índices para tabela `boosted_boss`
+--
+ALTER TABLE `boosted_boss`
+  ADD PRIMARY KEY (`date`);
 
 --
 -- Índices para tabela `boosted_creature`
@@ -5750,6 +7369,12 @@ ALTER TABLE `daily_reward_history`
   ADD KEY `player_id` (`player_id`);
 
 --
+-- Índices para tabela `exclusive_hunts`
+--
+ALTER TABLE `exclusive_hunts`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `forge_history`
 --
 ALTER TABLE `forge_history`
@@ -5790,6 +7415,12 @@ ALTER TABLE `guild_actions_h`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices para tabela `guild_applications`
+--
+ALTER TABLE `guild_applications`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `guild_events`
 --
 ALTER TABLE `guild_events`
@@ -5815,7 +7446,8 @@ ALTER TABLE `guild_membership`
 --
 ALTER TABLE `guild_ranks`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `guild_id` (`guild_id`);
+  ADD KEY `guild_id` (`guild_id`),
+  ADD KEY `level` (`level`);
 
 --
 -- Índices para tabela `guild_transfer_h`
@@ -6020,6 +7652,12 @@ ALTER TABLE `player_storage`
   ADD PRIMARY KEY (`player_id`,`key`);
 
 --
+-- Índices para tabela `player_wheeldata`
+--
+ALTER TABLE `player_wheeldata`
+  ADD KEY `player_id` (`player_id`);
+
+--
 -- Índices para tabela `prey_slots`
 --
 ALTER TABLE `prey_slots`
@@ -6030,6 +7668,14 @@ ALTER TABLE `prey_slots`
 --
 ALTER TABLE `quickloot_containers`
   ADD KEY `fk_quickloot_containers_player_id` (`player_id`);
+
+--
+-- Índices para tabela `roulette_plays`
+--
+ALTER TABLE `roulette_plays`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `uuid` (`uuid`),
+  ADD KEY `player_id` (`player_id`);
 
 --
 -- Índices para tabela `sellchar`
@@ -6173,7 +7819,7 @@ ALTER TABLE `z_shop_payment`
 -- AUTO_INCREMENT de tabela `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `account_authentication`
@@ -6347,19 +7993,25 @@ ALTER TABLE `coins_transactions`
 -- AUTO_INCREMENT de tabela `daily_reward_history`
 --
 ALTER TABLE `daily_reward_history`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+
+--
+-- AUTO_INCREMENT de tabela `exclusive_hunts`
+--
+ALTER TABLE `exclusive_hunts`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de tabela `forge_history`
 --
 ALTER TABLE `forge_history`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4089;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5166;
 
 --
 -- AUTO_INCREMENT de tabela `guilds`
 --
 ALTER TABLE `guilds`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `guildwar_kills`
@@ -6374,6 +8026,12 @@ ALTER TABLE `guild_actions_h`
   MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de tabela `guild_applications`
+--
+ALTER TABLE `guild_applications`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de tabela `guild_events`
 --
 ALTER TABLE `guild_events`
@@ -6383,7 +8041,7 @@ ALTER TABLE `guild_events`
 -- AUTO_INCREMENT de tabela `guild_ranks`
 --
 ALTER TABLE `guild_ranks`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `guild_transfer_h`
@@ -6395,7 +8053,7 @@ ALTER TABLE `guild_transfer_h`
 -- AUTO_INCREMENT de tabela `guild_wars`
 --
 ALTER TABLE `guild_wars`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `houses`
@@ -6407,19 +8065,19 @@ ALTER TABLE `houses`
 -- AUTO_INCREMENT de tabela `lottery`
 --
 ALTER TABLE `lottery`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT de tabela `market_history`
 --
 ALTER TABLE `market_history`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `market_offers`
 --
 ALTER TABLE `market_offers`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `newsticker`
@@ -6431,7 +8089,7 @@ ALTER TABLE `newsticker`
 -- AUTO_INCREMENT de tabela `players`
 --
 ALTER TABLE `players`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de tabela `player_badges`
@@ -6443,19 +8101,19 @@ ALTER TABLE `player_badges`
 -- AUTO_INCREMENT de tabela `player_deaths`
 --
 ALTER TABLE `player_deaths`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT de tabela `player_display`
 --
 ALTER TABLE `player_display`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `player_exp_restore`
 --
 ALTER TABLE `player_exp_restore`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `player_former_names`
@@ -6467,7 +8125,13 @@ ALTER TABLE `player_former_names`
 -- AUTO_INCREMENT de tabela `player_hirelings`
 --
 ALTER TABLE `player_hirelings`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de tabela `roulette_plays`
+--
+ALTER TABLE `roulette_plays`
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `sellchar`
@@ -6479,7 +8143,7 @@ ALTER TABLE `sellchar`
 -- AUTO_INCREMENT de tabela `snake_game`
 --
 ALTER TABLE `snake_game`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `snowballwar`
@@ -6491,7 +8155,7 @@ ALTER TABLE `snowballwar`
 -- AUTO_INCREMENT de tabela `store_history`
 --
 ALTER TABLE `store_history`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=300;
 
 --
 -- AUTO_INCREMENT de tabela `tickets`
@@ -6509,13 +8173,13 @@ ALTER TABLE `tickets_reply`
 -- AUTO_INCREMENT de tabela `towns`
 --
 ALTER TABLE `towns`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de tabela `woe`
 --
 ALTER TABLE `woe`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de tabela `z_forum`
@@ -6780,6 +8444,12 @@ ALTER TABLE `player_storage`
   ADD CONSTRAINT `player_storage_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
 
 --
+-- Limitadores para a tabela `player_wheeldata`
+--
+ALTER TABLE `player_wheeldata`
+  ADD CONSTRAINT `player_wheeldata_players_fk` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
+
+--
 -- Limitadores para a tabela `prey_slots`
 --
 ALTER TABLE `prey_slots`
@@ -6790,6 +8460,12 @@ ALTER TABLE `prey_slots`
 --
 ALTER TABLE `quickloot_containers`
   ADD CONSTRAINT `fk_quickloot_containers_player_id` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`);
+
+--
+-- Limitadores para a tabela `roulette_plays`
+--
+ALTER TABLE `roulette_plays`
+  ADD CONSTRAINT `roulette_plays_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE;
 
 --
 -- Limitadores para a tabela `sellchar`
