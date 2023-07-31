@@ -85,7 +85,7 @@ function Monster:onDropLoot(corpse)
 					Spdlog.warn(string.format("[1][Monster:onDropLoot] - Could not add loot item to boosted monster: %s, from corpse id: %d.", self:getName(), corpse:getId()))
 				end
 			end
-			if self:hazard() and player ~= nil then
+			if self:hazard() and player then
 				local chanceTo = math.random(1, 100)
 				if chanceTo <= (2 * player:getHazardSystemPoints() * configManager.getNumber(configKeys.HAZARDSYSTEM_LOOT_BONUS_MULTIPLIER)) then
 					local podItem = corpse:createLootItem(monsterLoot[i], charmBonus, preyChanceBoost)
@@ -101,7 +101,7 @@ function Monster:onDropLoot(corpse)
 			end
 		end
 
-		if participants then
+		if #participants > 0 and player then
 			local preyLootPercent = player:getPreyLootPercentage(mType:raceId())
 			for i = 1, #participants do
 				local participant = participants[i]
