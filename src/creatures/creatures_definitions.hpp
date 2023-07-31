@@ -746,8 +746,9 @@ enum CombatType_t : int64_t {
 	COMBAT_ICEDAMAGE = 1 << 9,
 	COMBAT_HOLYDAMAGE = 1 << 10,
 	COMBAT_DEATHDAMAGE = 1 << 11,
+	COMBAT_NEUTRALDAMAGE = 1 << 12,
 
-	COMBAT_COUNT = 12
+	COMBAT_COUNT = 13
 };
 
 enum PlayerAsyncOngoingTaskFlags : uint64_t {
