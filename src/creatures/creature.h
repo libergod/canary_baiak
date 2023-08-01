@@ -379,7 +379,7 @@ public:
 		virtual void drainHealth(Creature* attacker, int64_t damage);
 		virtual void drainMana(Creature* attacker, int64_t manaLoss);
 
-	virtual bool challengeCreature(Creature*) {
+	virtual bool challengeCreature(Creature*, int targetChangeCooldown) {
 		return false;
 	}
 
