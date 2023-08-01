@@ -1,6 +1,6 @@
 local internalNpcName = "Vascalir"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = { }
+local npcConfig = {}
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName
@@ -336,7 +336,7 @@ mission3:addChildKeyword({"no"}, StdModule.say,
 
 -- Mission 3: Complain not finished
 keywordHandler:addKeyword({"yes"}, nil,
-{ },
+{},
 function(player) return player:getStorageValue(Storage.TheRookieGuard.Mission03) == 1 and player:getStorageValue(Storage.TheRookieGuard.RatKills) < 5 end,
 function(player)
 	local ratKills = player:getStorageValue(Storage.TheRookieGuard.RatKills)

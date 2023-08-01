@@ -1,6 +1,6 @@
 local internalNpcName = "Gnomally"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = { }
+local npcConfig = {}
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName
@@ -70,8 +70,8 @@ npcType.onCloseChannel = function(npc, creature)
 	npcHandler:onCloseChannel(npc, creature)
 end
 
-local topic = { }
-local renown = { }
+local topic = {}
+local renown = {}
 
 local config = {
 	['supply'] = {itemid = 15698, token = {type = 'minor', id = 16128, count = 2}},

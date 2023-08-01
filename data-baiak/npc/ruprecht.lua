@@ -1,6 +1,6 @@
 local internalNpcName = "Ruprecht"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = { }
+local npcConfig = {}
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName
@@ -50,7 +50,7 @@ npcType.onCloseChannel = function(npc, creature)
 	npcHandler:onCloseChannel(npc, creature)
 end
 
-local storeTable = { }
+local storeTable = {}
 local itemsTable = {
 	["gingerbreadman"] = {itemId = 6500, count = 1},
 	["christmas cookie tray"] = {itemId = 20310, count = 1},

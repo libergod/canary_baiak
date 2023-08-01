@@ -1,6 +1,6 @@
 local internalNpcName = "Gnome Trooper"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = { }
+local npcConfig = {}
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName
@@ -34,7 +34,7 @@ local response = {
 }
 
 if not DELIVERED_PARCELS then
-	DELIVERED_PARCELS = { }
+	DELIVERED_PARCELS = {}
 end
 npcType.onAppear = function(npc, creature)
 	npcHandler:onAppear(npc, creature)
@@ -74,7 +74,7 @@ local function creatureSayCallback(npc, creature, type, message)
 	local status = player:getStorageValue(SPIKE_LOWER_PARCEL_MAIN)
 
 	if not DELIVERED_PARCELS[player:getGuid()] then
-		DELIVERED_PARCELS[player:getGuid()] = { }
+		DELIVERED_PARCELS[player:getGuid()] = {}
 	end
 
 	if MsgContains(message, 'something') and not isInArray({-1, 4}, status) then

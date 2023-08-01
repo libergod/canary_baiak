@@ -1,6 +1,6 @@
 local internalNpcName = "Yana"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = { }
+local npcConfig = {}
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName
@@ -136,8 +136,8 @@ local products = {
 	}
 }
 
-local answerType = { }
-local answerLevel = { }
+local answerType = {}
+local answerLevel = {}
 
 local keywordHandler = KeywordHandler:new()
 local npcHandler = NpcHandler:new(keywordHandler)

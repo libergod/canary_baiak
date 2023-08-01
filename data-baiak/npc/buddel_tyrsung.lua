@@ -1,6 +1,6 @@
 local internalNpcName = "Buddel"
 local npcType = Game.createNpcType("Buddel (Tyrsung)")
-local npcConfig = { }
+local npcConfig = {}
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName

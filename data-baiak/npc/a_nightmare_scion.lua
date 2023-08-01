@@ -1,6 +1,6 @@
 local internalNpcName = "A Nightmare Scion"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = { }
+local npcConfig = {}
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName
@@ -21,7 +21,7 @@ npcConfig.flags = {
 local keywordHandler = KeywordHandler:new()
 local npcHandler = NpcHandler:new(keywordHandler)
 if not UNDERCOVER_CONTACTED then
-	UNDERCOVER_CONTACTED = { }
+	UNDERCOVER_CONTACTED = {}
 end
 
 npcType.onThink = function(npc, interval)
@@ -58,7 +58,7 @@ local function greetCallback(npc, creature)
 	end
 
 	if not UNDERCOVER_CONTACTED[player:getGuid()] then
-		UNDERCOVER_CONTACTED[player:getGuid()] = { }
+		UNDERCOVER_CONTACTED[player:getGuid()] = {}
 	end
 
 	if table.contains(UNDERCOVER_CONTACTED[player:getGuid()], npc:getId()) then

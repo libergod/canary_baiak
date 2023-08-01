@@ -1,6 +1,6 @@
 local internalNpcName = "Hemor, the guard"
 local npcType = Game.createNpcType("Heavenly Messenger")
-local npcConfig = { }
+local npcConfig = {}
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName

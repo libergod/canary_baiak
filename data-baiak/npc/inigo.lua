@@ -1,6 +1,6 @@
 local internalNpcName = "Inigo"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = { }
+local npcConfig = {}
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName
@@ -646,7 +646,7 @@ local function creatureSayCallback(npc, creature, type, message)
 			end
 		end
 		local container = player:getSlotItem(CONST_SLOT_BACKPACK)
-		local toBeDeleted = { }
+		local toBeDeleted = {}
 		local allowedIds = {
 			2853, 2920, 3003, 3031
 		}

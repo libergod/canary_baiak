@@ -64,8 +64,65 @@ local function creatureSayCallback(npc, creature, type, message)
 		return false
 	end
 
+	if MsgContains(message, "addon") or MsgContains(message, "outfit") or MsgContains(message, "hat") then
+		local addonProgress = player:getStorageValue(Storage.OutfitQuest.Citizen.AddonHat)
+		if addonProgress < 1 then
+			npcHandler:say("Pretty, isn't it? My friend Amber taught me how to make it, but I could help you with one if you like. What do you say?", npc, creature)
+			npcHandler:setTopic(playerId, 1)
+		elseif addonProgress == 1 then
+			npcHandler:say("Oh, you're back already? Did you bring a legion helmet, 100 chicken feathers and 50 honeycombs?", npc, creature)
+			npcHandler:setTopic(playerId, 2)
+		elseif addonProgress == 2 then
+			npcHandler:say('Pretty hat, isn\'t it?', npc, creature)
+		end
+		return true
+	end
+
+	if npcHandler:getTopic(playerId) == 1 then
+		if MsgContains(message, 'yes') then
+			player:setStorageValue(Storage.OutfitQuest.Ref, math.max(0, player:getStorageValue(Storage.OutfitQuest.Ref)) + 1)
+			player:setStorageValue(Storage.OutfitQuest.Citizen.AddonHat, 1)
+			player:setStorageValue(Storage.OutfitQuest.Citizen.MissionHat, 1)
+			npcHandler:say('Okay, here we go, listen closely! I need a few things... a basic hat of course, maybe a legion helmet would do. Then about 100 chicken feathers... and 50 honeycombs as glue. That\'s it, come back to me once you gathered it!', npc, creature)
+		else
+			npcHandler:say('Aw, I guess you don\'t like feather hats. No big deal.', npc, creature)
+		end
+		npcHandler:setTopic(playerId, 0)
+
+	elseif npcHandler:getTopic(playerId) == 2 then
+		if MsgContains(message, 'yes') then
+			if player:getItemCount(3374) < 1 then
+				npcHandler:say('Sorry, but I can\'t see a legion helmet.', npc, creature)
+			elseif player:getItemCount(5890) < 100 then
+				npcHandler:say('Sorry, but you don\'t enough chicken feathers.', npc, creature)
+			elseif player:getItemCount(5902) < 50 then
+				npcHandler:say('Sorry, but you don\'t have enough honeycombs.', npc, creature)
+			else
+				npcHandler:say('Great job! That must have taken a lot of work. Okay, you put it like this... then glue like this... here!', npc, creature)
+				player:getPosition():sendMagicEffect(CONST_ME_MAGIC_BLUE)
+
+				player:removeItem(3374, 1)
+				player:removeItem(5902, 50)
+				player:removeItem(5890, 100)
+
+				player:addOutfitAddon(136, 2)
+				player:addOutfitAddon(128, 2)
+
+				player:setStorageValue(Storage.OutfitQuest.Ref, math.min(0, player:getStorageValue(Storage.OutfitQuest.Ref) - 1))
+				player:setStorageValue(Storage.OutfitQuest.Citizen.MissionHat, 0)
+				player:setStorageValue(Storage.OutfitQuest.Citizen.AddonHat, 2)
+			end
+		else
+			npcHandler:say('Maybe another time.', npc, creature)
+		end
+		npcHandler:setTopic(playerId, 0)
+	end
+
 	return true
 end
+
+keywordHandler:addKeyword({'job'}, StdModule.say, {npcHandler = npcHandler, text = 'I am a jeweler. Maybe you want to have a look at my wonderful offers.'})
+keywordHandler:addKeyword({'name'}, StdModule.say, {npcHandler = npcHandler, text = 'I am Hanna.'})
 
 npcHandler:setMessage(MESSAGE_GREET, 'Oh, please come in, |PLAYERNAME|. What do you need? Have a look at my wonderful {offers} in gems and jewellery.')
 npcHandler:setMessage(MESSAGE_FAREWELL, 'Good bye.')
@@ -89,12 +146,14 @@ npcConfig.shop = {
 	{ itemName = "cyan crystal fragment", clientId = 16125, sell = 800 },
 	{ itemName = "dragon figurine", clientId = 30053, sell = 45000 },
 	{ itemName = "gemmed figurine", clientId = 24392, sell = 3500 },
+	{ itemName = "giant amethyst", clientId = 30061, sell = 60000 },
 	{ itemName = "giant emerald", clientId = 30060, sell = 90000 },
 	{ itemName = "giant ruby", clientId = 30059, sell = 70000 },
 	{ itemName = "giant sapphire", clientId = 30061, sell = 50000 },
 	{ itemName = "giant shimmering pearl", clientId = 281, sell = 3000 }, -- green
 	{ itemName = "giant shimmering pearl", clientId = 282, sell = 3000 }, -- brown
 	{ itemName = "giant topaz", clientId = 32623, sell = 80000 },
+	{ itemName = "gold ingot", clientId = 9058, sell = 5000 },
 	{ itemName = "gold nugget", clientId = 3040, sell = 850 },
 	{ itemName = "golden amulet", clientId = 3013, buy = 6600 },
 	{ itemName = "golden goblet", clientId = 5805, buy = 5000 },

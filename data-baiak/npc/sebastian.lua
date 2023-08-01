@@ -1,6 +1,6 @@
 local internalNpcName = "Sebastian"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = { }
+local npcConfig = {}
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName
@@ -102,6 +102,7 @@ local function addTravelKeyword(keyword, cost, destination)
 end
 
 addTravelKeyword('liberty bay', 50, Position(32316, 32702, 7))
+addTravelKeyword('nargor', 50, Position(32025, 32812, 7))
 
 -- Basic
 keywordHandler:addKeyword({'passage'}, StdModule.say,

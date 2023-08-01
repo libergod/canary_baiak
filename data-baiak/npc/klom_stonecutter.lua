@@ -1,6 +1,6 @@
 local internalNpcName = "Klom Stonecutter"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = { }
+local npcConfig = {}
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName
@@ -59,7 +59,7 @@ npcConfig.voices = {
 	{text = 'Preparation is paramount.'},
 }
 
-local count = { }
+local count = {}
 
 local function greetCallback(npc, creature)
 	local player = Player(creature)

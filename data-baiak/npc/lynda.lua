@@ -1,6 +1,6 @@
 local internalNpcName = "Lynda"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = { }
+local npcConfig = {}
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName
@@ -242,16 +242,16 @@ end
 local node1 = keywordHandler:addKeyword({'marry'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'Would you like to get married? Make sure you have a wedding ring and the wedding outfit box with you.'})
 node1:addChildKeyword({'no'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, moveup = 1, text = 'That\'s fine.'})
 local node2 = node1:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'And who would you like to marry?'})
-node2:addChildKeyword({'[%w]'}, tryEngage, { })
+node2:addChildKeyword({'[%w]'}, tryEngage, {})
 
 local node3 = keywordHandler:addKeyword({'celebration'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'Is your soulmate and friends here with you for the celebration?'})
 node3:addChildKeyword({'no'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, moveup = 1, text = 'Then go bring them here!'})
-local node4 = node3:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'Good, let\'s {begin} then!'}) --, confirmWedding, { })
-node4:addChildKeyword({'begin'}, confirmWedding, { })
+local node4 = node3:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'Good, let\'s {begin} then!'}) --, confirmWedding, {})
+node4:addChildKeyword({'begin'}, confirmWedding, {})
 
-keywordHandler:addKeyword({'remove'}, confirmRemoveEngage, { })
+keywordHandler:addKeyword({'remove'}, confirmRemoveEngage, {})
 
-keywordHandler:addKeyword({'divorce'}, confirmDivorce, { })
+keywordHandler:addKeyword({'divorce'}, confirmDivorce, {})
 
 npcHandler:setMessage(MESSAGE_GREET, "Welcome in the name of the gods, pilgrim |PLAYERNAME|!")
 npcHandler:setMessage(MESSAGE_FAREWELL, "Be careful on your journeys.")

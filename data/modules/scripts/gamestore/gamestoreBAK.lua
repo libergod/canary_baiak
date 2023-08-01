@@ -6,7 +6,7 @@ OFFER_TYPE_ALLBLESSINGS
 ]]
 
 -- Parser
-dofile('data/modules/scripts/gamestore/init.lua')
+dofile(CORE_DIRECTORY .. '/modules/scripts/gamestore/init.lua')
 -- Config
 
 HomeBanners = {
@@ -4675,7 +4675,7 @@ for k, category in ipairs(GameStore.Categories) do
 				offer.type = GameStore.OfferTypes.OFFER_TYPE_NONE
 			end
 			if not offer.coinType then
-				offer.coinType = GameStore.CointType.Coin
+				offer.coinType = GameStore.CoinType.Coin
 			end
 		end
 	end

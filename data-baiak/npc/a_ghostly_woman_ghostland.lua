@@ -1,6 +1,6 @@
 local internalNpcName = "A Ghostly Woman"
 local npcType = Game.createNpcType("A Ghostly Woman (Ghostland)")
-local npcConfig = { }
+local npcConfig = {}
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName

@@ -1,6 +1,6 @@
 local internalNpcName = "The Oracle"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = { }
+local npcConfig = {}
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName
@@ -45,8 +45,8 @@ npcType.onCloseChannel = function(npc, creature)
 	npcHandler:onCloseChannel(npc, creature)
 end
 
-local vocation = { }
-local town = { }
+local vocation = {}
+local town = {}
 local config = {
 	towns = {
 		["venore"] = TOWNS_LIST.VENORE,

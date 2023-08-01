@@ -1,6 +1,6 @@
 local internalNpcName = "Awarness Of The Emperor"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = { }
+local npcConfig = {}
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName

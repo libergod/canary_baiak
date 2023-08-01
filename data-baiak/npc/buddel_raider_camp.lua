@@ -1,6 +1,6 @@
 local internalNpcName = "Buddel"
 local npcType = Game.createNpcType("Buddel (Raider Camp)")
-local npcConfig = { }
+local npcConfig = {}
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName

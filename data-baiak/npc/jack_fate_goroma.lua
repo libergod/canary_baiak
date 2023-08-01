@@ -1,6 +1,6 @@
 local internalNpcName = "Jack Fate"
 local npcType = Game.createNpcType("Jack Fate (Goroma)")
-local npcConfig = { }
+local npcConfig = {}
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName

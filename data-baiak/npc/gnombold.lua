@@ -1,6 +1,6 @@
 local internalNpcName = "Gnombold"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = { }
+local npcConfig = {}
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName
@@ -26,7 +26,7 @@ npcConfig.flags = {
 local keywordHandler = KeywordHandler:new()
 local npcHandler = NpcHandler:new(keywordHandler)
 
-local talkState = { }
+local talkState = {}
 local levels = {50, 79}
 npcType.onAppear = function(npc, creature)
 	npcHandler:onAppear(npc, creature)

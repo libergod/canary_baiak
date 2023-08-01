@@ -1,6 +1,6 @@
 local internalNpcName = "Eruaran"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = { }
+local npcConfig = {}
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName
@@ -52,9 +52,9 @@ end
 
 local storage = Storage.DreamOutfit
 
-local action = { }
-local weapon = { }
-local weapon_sub = { }
+local action = {}
+local weapon = {}
+local weapon_sub = {}
 
 -- Messages
 local newAddon = 'Here you are, enjoy your brand new addon!'
@@ -412,11 +412,11 @@ end
 
 keywordHandler:addKeyword({'outfit'}, StdModule.say, {npcHandler = npcHandler, text = 'What addon you are looking? I need for first addon: {dream warden mask} and for second {dream warden claw}.'})
 local node1 = keywordHandler:addKeyword({'dream warden mask'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'To achieve the first dream addon you need to give me 1 dream warden mask. Do you have them with you?'})
-node1:addChildKeyword({'yes'}, dreamFirst, { })
+node1:addChildKeyword({'yes'}, dreamFirst, {})
 node1:addChildKeyword({'no'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'Alright then. Come back when you got all neccessary items.', reset = true})
 
 local node2 = keywordHandler:addKeyword({'dream warden claw'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'To achieve the second dream addon you need to give me 1 dream warden claw. Do you have them with you?'})
-node2:addChildKeyword({'yes'}, dreamSecond, { })
+node2:addChildKeyword({'yes'}, dreamSecond, {})
 node2:addChildKeyword({'no'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'Alright then. Come back when you got all neccessary items.', reset = true})
 
 -- Greeting message

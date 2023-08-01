@@ -1,6 +1,6 @@
 local internalNpcName = "Santa Claus"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = { }
+local npcConfig = {}
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName
@@ -25,7 +25,7 @@ npcConfig.flags = {
  local keywordHandler = KeywordHandler:new()
 local npcHandler = NpcHandler:new(keywordHandler)
 
-local talkState = { }
+local talkState = {}
 npcType.onAppear = function(npc, creature)
 	 npcHandler:onAppear(npc, creature)
 end
@@ -81,7 +81,7 @@ local veryRareItems = {
 }
 
 local function getReward()
-	 local rewardTable = { }
+	 local rewardTable = {}
 	 local random = math.random(100)
 	 if (random <= 90) then
 		  rewardTable = normalItems

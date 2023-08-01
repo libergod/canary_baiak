@@ -44,6 +44,7 @@ int64_t uniform_random(int64_t minNumber, int64_t maxNumber);
 int64_t normal_random(int64_t minNumber, int64_t maxNumber);
 bool boolean_random(double probability = 0.5);
 
+BedItemPart_t getBedPart(const std::string_view string);
 Direction getDirection(const std::string &string);
 Position getNextPosition(Direction direction, Position pos);
 Direction getDirectionTo(const Position &from, const Position &to);

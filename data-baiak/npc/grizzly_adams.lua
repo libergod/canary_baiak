@@ -1,6 +1,6 @@
 local internalNpcName = "Grizzly Adams"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = { }
+local npcConfig = {}
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName
@@ -146,8 +146,8 @@ local function greetCallback(npc, creature)
 	end
 	return true
 end
-local choose = { }
-local cancel = { }
+local choose = {}
+local cancel = {}
 local KillCounter = Storage.Quest.U8_5.KillingInTheNameOf.MonsterKillCount.KillCount
 local messageYes = {
 	[1] = "Happy hunting, friend! When you have finished hunting, return here.",
@@ -475,8 +475,6 @@ local function creatureSayCallback(npc, creature, type, message)
 							end
 
 							local pointsToReceive = reward.value[1] * ratePoints
-							
-							
 							if player:getStorageValue(POINTSSTORAGE) >= 40 and player:getLevel() < 50 or
 								player:getStorageValue(POINTSSTORAGE) >= 70 and player:getLevel() < 80 or
 								player:getStorageValue(POINTSSTORAGE) >= 100 and player:getLevel() < 130 then

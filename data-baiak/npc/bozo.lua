@@ -1,6 +1,6 @@
 local internalNpcName = "Bozo"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = { }
+local npcConfig = {}
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName
@@ -602,7 +602,7 @@ local jesterOutfit = {
 	}
 }
 
-local value = { }
+local value = {}
 
 local function greetCallback(npc, creature)
 	local playerId = creature:getId()

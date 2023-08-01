@@ -2,7 +2,7 @@ local toggleRashidStorage = false
 
 local internalNpcName = "Rashid of Island"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = { }
+local npcConfig = {}
 
 npcConfig.name = "Rashid"
 npcConfig.description = "Rashid"

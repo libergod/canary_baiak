@@ -1,6 +1,6 @@
 local internalNpcName = "A Sleeping Dragon"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = { }
+local npcConfig = {}
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName

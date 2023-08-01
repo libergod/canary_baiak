@@ -1,6 +1,6 @@
 local internalNpcName = "Cledwyn"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = { }
+local npcConfig = {}
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName
@@ -96,7 +96,7 @@ npcType.onCloseChannel = function(npc, creature)
 	npcHandler:onCloseChannel(npc, creature)
 end
 
-local charge = { }
+local charge = {}
 
 local chargeItem = {
 	['pendulet'] = {noChargeID = 29429, ChargeID = 30344},

@@ -1,6 +1,6 @@
 local internalNpcName = "Budrik"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = { }
+local npcConfig = {}
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName
@@ -73,7 +73,7 @@ local function creatureSayCallback(npc, creature, type, message)
 			else
 				npcHandler:say("We presume the hideout of The Horned Fox is somewhere in the south-west near the coast, good luck finding my mining helmet!", npc, creature)
 			end
-		elseif player:getStorageValue(Storage.toOutfoxAFoxQuest) == 2 and player:getLevel() <= 40 and player:getStorageValue(Storage.KillingInTheNameOf.BudrikMinos) < 0 then
+		elseif player:getStorageValue(Storage.ToOutfoxAFoxQuest) == 2 and player:getLevel() <= 40 and player:getStorageValue(Storage.KillingInTheNameOf.BudrikMinos) < 0 then
 			npcHandler:say({
 				"I am so angry I could spit grit! That damn {Horned Fox} and his attacks! Let's show those bull-heads that they have messed with the wrong people....",
 				"I want you to kill 5000 minotaurs - no matter where - for me and all the dwarfs of Kazordoon! Are you willing to do that?"}, npc, creature)

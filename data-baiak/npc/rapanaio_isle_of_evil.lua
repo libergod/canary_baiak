@@ -1,6 +1,6 @@
 local internalNpcName = "Rapanaio"
 local npcType = Game.createNpcType("Rapanaio (Isle of Evil)")
-local npcConfig = { }
+local npcConfig = {}
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName

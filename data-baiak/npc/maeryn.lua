@@ -1,6 +1,6 @@
 local internalNpcName = "Maeryn"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = { }
+local npcConfig = {}
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName
@@ -69,7 +69,7 @@ local vocations = {
 	}
 }
 
-local knightChoice = { }
+local knightChoice = {}
 
 local function greetCallback(npc, creature)
 	local playerId = creature:getId()

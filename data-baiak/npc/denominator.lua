@@ -1,6 +1,6 @@
 local internalNpcName = "Denominator"
 local npcType = Game.createNpcType(internalNpcName)
-local npcConfig = { }
+local npcConfig = {}
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName
@@ -45,7 +45,7 @@ npcType.onCloseChannel = function(npc, creature)
 	npcHandler:onCloseChannel(npc, creature)
 end
 
-local playerLastResp = { }
+local playerLastResp = {}
 local function greetCallback(npc, creature)
 	local playerId = creature:getId()
 
