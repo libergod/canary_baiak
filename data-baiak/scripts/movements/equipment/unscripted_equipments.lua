@@ -1,5 +1,725 @@
 local items = {
 	{
+		-- sanguine galoshes
+		itemid = 43887,
+		type = "equip",
+		slot = "feet",
+		level = 500,
+		vocation = {
+			{"Druid", true, true},
+			{"Elder Druid"}
+		}
+	},
+	{
+		-- sanguine galoshes
+		itemid = 43887,
+		type = "deequip",
+		slot = "feet",
+		level = 500,
+		vocation = {
+			{"Druid", true, true},
+			{"Elder Druid"}
+		}
+	},
+	{
+		-- grand sanguine rod
+		itemid = 43886,
+		type = "equip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Druid", true, true},
+			{"Elder Druid"}
+		}
+	},
+	{
+		-- grand sanguine rod
+		itemid = 43886,
+		type = "deequip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Druid", true, true},
+			{"Elder Druid"}
+		}
+	},
+	{
+		-- sanguine rod
+		itemid = 43885,
+		type = "equip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Druid", true, true},
+			{"Elder Druid"}
+		}
+	},
+	{
+		-- sanguine rod
+		itemid = 43885,
+		type = "deequip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Druid", true, true},
+			{"Elder Druid"}
+		}
+	},
+	{
+		-- sanguine boots
+		itemid = 43884,
+		type = "equip",
+		slot = "feet",
+		level = 500,
+		vocation = {
+			{"Sorcerer", true, true},
+			{"Master Sorcerer"}
+		}
+	},
+	{
+		-- sanguine boots
+		itemid = 43884,
+		type = "deequip",
+		slot = "feet",
+		level = 500,
+		vocation = {
+			{"Sorcerer", true, true},
+			{"Master Sorcerer"}
+		}
+	},
+	{
+		-- grand sanguine coil
+		itemid = 43883,
+		type = "equip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Sorcerer", true, true},
+			{"Master Sorcerer"}
+		}
+	},
+	{
+		-- grand sanguine coil
+		itemid = 43883,
+		type = "deequip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Sorcerer", true, true},
+			{"Master Sorcerer"}
+		}
+	},
+	{
+		-- sanguine coil
+		itemid = 43882,
+		type = "equip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Sorcerer", true, true},
+			{"Master Sorcerer"}
+		}
+	},
+	{
+		-- sanguine coil
+		itemid = 43882,
+		type = "deequip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Sorcerer", true, true},
+			{"Master Sorcerer"}
+		}
+	},
+	{
+		-- sanguine Greaves
+		itemid = 43881,
+		type = "equip",
+		slot = "legs",
+		level = 500,
+		vocation = {
+			{"Paladin", true, true},
+			{"Royal Paladin"}
+		}
+	},
+	{
+		-- sanguine Greaves
+		itemid = 43881,
+		type = "deequip",
+		slot = "legs",
+		level = 500,
+		vocation = {
+			{"Paladin", true, true},
+			{"Royal Paladin"}
+		}
+	},
+	{
+		-- grand sanguine crossbow
+		itemid = 43880,
+		type = "equip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Paladin", true, true},
+			{"Royal Paladin"}
+		}
+	},
+	{
+		-- grand sanguine crossbow
+		itemid = 43880,
+		type = "deequip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Paladin", true, true},
+			{"Royal Paladin"}
+		}
+	},
+	{
+		-- sanguine crossbow
+		itemid = 43879,
+		type = "equip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Paladin", true, true},
+			{"Royal Paladin"}
+		}
+	},
+	{
+		-- sanguine crossbow
+		itemid = 43879,
+		type = "deequip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Paladin", true, true},
+			{"Royal Paladin"}
+		}
+	},
+	{
+		-- grand sanguine bow
+		itemid = 43878,
+		type = "equip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Paladin", true, true},
+			{"Royal Paladin"}
+		}
+	},
+	{
+		-- grand sanguine bow
+		itemid = 43878,
+		type = "deequip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Paladin", true, true},
+			{"Royal Paladin"}
+		}
+	},
+	{
+		-- sanguine bow
+		itemid = 43877,
+		type = "equip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Paladin", true, true},
+			{"Royal Paladin"}
+		}
+	},
+	{
+		-- sanguine bow
+		itemid = 43877,
+		type = "deequip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Paladin", true, true},
+			{"Royal Paladin"}
+		}
+	},
+	{
+		-- sanguine legs
+		itemid = 43876,
+		type = "equip",
+		slot = "legs",
+		level = 500,
+		vocation = {
+			{"Knight", true},
+			{"Elite Knight"}
+		}
+	},
+	{
+		-- sanguine legs
+		itemid = 43876,
+		type = "deequip",
+		slot = "legs",
+		level = 500,
+		vocation = {
+			{"Knight", true},
+			{"Elite Knight"}
+		}
+	},
+	{
+		-- grand sanguine battleaxe
+		itemid = 43875,
+		type = "equip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Knight", true},
+			{"Elite Knight"}
+		}
+	},
+	{
+		-- grand sanguine battleaxe
+		itemid = 43875,
+		type = "deequip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Knight", true},
+			{"Elite Knight"}
+		}
+	},
+	{
+		-- sanguine battleaxe
+		itemid = 43874,
+		type = "equip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Knight", true},
+			{"Elite Knight"}
+		}
+	},
+	{
+		-- sanguine battleaxe
+		itemid = 43874,
+		type = "deequip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Knight", true},
+			{"Elite Knight"}
+		}
+	},
+	{
+		-- grand sanguine bludgeon
+		itemid = 43873,
+		type = "equip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Knight", true},
+			{"Elite Knight"}
+		}
+	},
+	{
+		-- grand sanguine bludgeon
+		itemid = 43873,
+		type = "deequip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Knight", true},
+			{"Elite Knight"}
+		}
+	},
+	{
+		-- sanguine bludgeon
+		itemid = 43872,
+		type = "equip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Knight", true},
+			{"Elite Knight"}
+		}
+	},
+	{
+		-- sanguine bludgeon
+		itemid = 43872,
+		type = "deequip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Knight", true},
+			{"Elite Knight"}
+		}
+	},
+	{
+		-- grand sanguine razor
+		itemid = 43871,
+		type = "equip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Knight", true},
+			{"Elite Knight"}
+		}
+	},
+	{
+		-- grand sanguine razor
+		itemid = 43871,
+		type = "deequip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Knight", true},
+			{"Elite Knight"}
+		}
+	},
+	{
+		-- sanguine razor
+		itemid = 43870,
+		type = "equip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Knight", true},
+			{"Elite Knight"}
+		}
+	},
+	{
+		-- sanguine razor
+		itemid = 43870,
+		type = "deequip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Knight", true},
+			{"Elite Knight"}
+		}
+	},
+	{
+		-- grand sanguine hatchet
+		itemid = 43869,
+		type = "equip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Knight", true},
+			{"Elite Knight"}
+		}
+	},
+	{
+		-- grand sanguine hatchet
+		itemid = 43869,
+		type = "deequip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Knight", true},
+			{"Elite Knight"}
+		}
+	},
+	{
+		-- sanguine hatchet
+		itemid = 43868,
+		type = "equip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Knight", true},
+			{"Elite Knight"}
+		}
+	},
+	{
+		-- sanguine hatchet
+		itemid = 43868,
+		type = "deequip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Knight", true},
+			{"Elite Knight"}
+		}
+	},
+	{
+		-- grand sanguine cudgel
+		itemid = 43867,
+		type = "equip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Knight", true},
+			{"Elite Knight"}
+		}
+	},
+	{
+		-- grand sanguine cudgel
+		itemid = 43867,
+		type = "deequip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Knight", true},
+			{"Elite Knight"}
+		}
+	},
+	{
+		-- sanguine cudgel
+		itemid = 43866,
+		type = "equip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Knight", true},
+			{"Elite Knight"}
+		}
+	},
+	{
+		-- sanguine cudgel
+		itemid = 43866,
+		type = "deequip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Knight", true},
+			{"Elite Knight"}
+		}
+	},
+	{
+		-- grand sanguine blade
+		itemid = 43865,
+		type = "equip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Knight", true},
+			{"Elite Knight"}
+		}
+	},
+	{
+		-- grand sanguine blade
+		itemid = 43865,
+		type = "deequip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Knight", true},
+			{"Elite Knight"}
+		}
+	},
+	{
+		-- sanguine blade
+		itemid = 43864,
+		type = "equip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Knight", true},
+			{"Elite Knight"}
+		}
+	},
+	{
+		-- sanguine blade
+		itemid = 43864,
+		type = "deequip",
+		slot = "hand",
+		level = 600,
+		vocation = {
+			{"Knight", true},
+			{"Elite Knight"}
+		}
+	},
+	{
+		-- mutant bone kilt
+		itemid = 40595,
+		type = "equip",
+		slot = "legs",
+		level = 300,
+		vocation = {
+			{"Druid", true},
+			{"Elder Druid"}
+		}
+	},
+	{
+		-- mutant bone kilt
+		itemid = 40595,
+		type = "deequip",
+		slot = "legs",
+		level = 300
+	},
+	{
+		-- alchemist's notepad
+		itemid = 40594,
+		type = "equip",
+		slot = "shield",
+		level = 250,
+		vocation = {
+			{"Sorcerer", true},
+			{"Master Sorcerer"}
+		}
+	},
+	{
+		-- alchemist's notepad
+		itemid = 40594,
+		type = "deequip",
+		slot = "shield",
+		level = 250
+	},
+	{
+		-- mutant bone boots
+		itemid = 40593,
+		type = "equip",
+		slot = "feet",
+		level = 250,
+		vocation = {
+			{"Druid", true},
+			{"Elder Druid"}
+		}
+	},
+	{
+		-- mutant bone boots
+		itemid = 40593,
+		type = "deequip",
+		slot = "feet",
+		level = 250
+	},
+	{
+		-- alchemist's boots
+		itemid = 40592,
+		type = "equip",
+		slot = "feet",
+		level = 250,
+		vocation = {
+			{"Sorcerer", true},
+			{"Master Sorcerer"}
+		}
+	},
+	{
+		-- alchemist's boots
+		itemid = 40592,
+		type = "deequip",
+		slot = "feet",
+		level = 250
+	},
+	{
+		-- mutated skin armor
+		itemid = 40591,
+		type = "equip",
+		slot = "armor",
+		level = 270,
+		vocation = {
+			{"Paladin", true},
+			{"Royal Paladin"}
+		}
+	},
+	{
+		-- mutated skin armor
+		itemid = 40591,
+		type = "deequip",
+		slot = "armor",
+		level = 270
+	},
+	{
+		-- Mutated Skin Legs
+		itemid = 40590,
+		type = "equip",
+		slot = "legs",
+		level = 270,
+		vocation = {
+			{"Paladin", true},
+			{"Royal Paladin"}
+		}
+	},
+	{
+		-- Mutated Skin Legs
+		itemid = 40590,
+		type = "deequip",
+		slot = "legs",
+		level = 270
+	},	
+	{
+		-- Stitched Mutant Hide Legs
+		itemid = 40589,
+		type = "equip",
+		slot = "legs",
+		level = 270,
+		vocation = {
+			{"Knight", true},
+			{"Elite Knight"}
+		}
+	},
+	{
+		-- Stitched Mutant Hide Legs
+		itemid = 40589,
+		type = "deequip",
+		slot = "legs",
+		level = 270
+	},
+	{
+		-- Antler-Horn Helmet
+		itemid = 40588,
+		type = "equip",
+		slot = "head",
+		level = 250,
+		vocation = {
+			{"Knight", true},
+			{"Elite Knight"}
+		}
+	},
+	{
+		-- Antler-Horn Helmet
+		itemid = 40588,
+		type = "deequip",
+		slot = "head",
+		level = 250
+	},
+	{
+		-- broken iks cuirass
+		itemid = 40533,
+		type = "equip",
+		slot = "armor"
+	},
+	{
+		-- broken iks cuirass
+		itemid = 40533,
+		type = "deequip",
+		slot = "armor"
+	},
+	{
+		-- broken iks faulds
+		itemid = 40531,
+		type = "equip",
+		slot = "legs"
+	},
+	{
+		-- broken iks faulds
+		itemid = 40531,
+		type = "deequip",
+		slot = "legs"
+	},
+	{
+		-- broken iks sandals
+		itemid = 40534,
+		type = "equip",
+		slot = "feet"
+	},
+	{
+		-- broken iks sandals
+		itemid = 40534,
+		type = "deequip",
+		slot = "feet"
+	},
+	{
+		-- broken macuahuitl
+		itemid = 40530,
+		type = "equip",
+		slot = "hand"
+	},
+	{
+		-- broken macuahuitl
+		itemid = 40530,
+		type = "deequip",
+		slot = "hand"
+	},
+	{
 		-- 25 years backpack
 		itemid = 39693,
 		type = "equip",
@@ -145,12 +865,7 @@ local items = {
 		-- charged arcanomancer sigil
 		itemid = 39184,
 		type = "deequip",
-		slot = "ring",
-		level = 400,
-		vocation = {
-			{"Sorcerer", true},
-			{"Master Sorcerer"}
-		}
+		slot = "ring"
 	},
 	{
 		-- charged arcanomancer sigil
@@ -2000,14 +2715,14 @@ local items = {
 		level = 230
 	},
 	{
-		-- ring of souls
+		-- enchanted ring of souls
 		itemid = 32621,
 		type = "equip",
 		slot = "ring",
 		level = 200
 	},
 	{
-		-- ring of souls
+		-- enchanted ring of souls
 		itemid = 32621,
 		type = "deequip",
 		slot = "ring",
@@ -2115,6 +2830,18 @@ local items = {
 		slot = "armor"
 	},
 	{
+		-- Traditional Gamsbart Hat
+		itemid = 32100,
+		type = "equip",
+		slot = "head"
+	},
+	{
+		-- Traditional Gamsbart Hat
+		itemid = 32100,
+		type = "deequip",
+		slot = "head"
+	},
+	{
 		-- traditional shirt
 		itemid = 32099,
 		type = "equip",
@@ -2233,14 +2960,14 @@ local items = {
 		level = 220,
 	},
 	{
-		-- blister ring
+		-- enchanted blister ring
 		itemid = 31616,
 		type = "equip",
 		slot = "ring",
 		level = 220,
 	},
 	{
-		-- blister ring
+		-- enchanted blister ring
 		itemid = 31616,
 		type = "deequip",
 		slot = "ring",
@@ -2388,14 +3115,14 @@ local items = {
 		level = 230,
 	},
 	{
-		-- blister ring
+		-- enchanted blister ring
 		itemid = 31557,
 		type = "equip",
 		slot = "ring",
 		level = 220,
 	},
 	{
-		-- blister ring
+		-- enchanted blister ring
 		itemid = 31557,
 		type = "deequip",
 		slot = "ring",
@@ -3152,7 +3879,12 @@ local items = {
 		-- living vine bow
 		itemid = 29417,
 		type = "deequip",
-		slot = "hand"
+		slot = "hand",
+		level = 220,
+		vocation = {
+			{"Paladin", true},
+			{"Royal Paladin"}
+		}
 	},
 	{
 		-- golden axe
@@ -7167,8 +7899,46 @@ local items = {
 		slot = "necklace"
 	},
 	{
-		-- enchanted werewolf helmet
+		-- enchanted werewolf helmet - sword
+		itemid = 22132,
+		type = "equip",
+		slot = "necklace",
+		level = 100,
+		vocation = {
+			{"Knight", true},
+			{"Elite Knight"}
+		}
+	},
+	{
+		-- enchanted werewolf helmet - sword
+		itemid = 22132,
+		type = "deequip",
+		slot = "necklace",
+		level = 100
+	},
+	{
+		-- enchanted werewolf helmet - ml
 		itemid = 22130,
+		type = "equip",
+		slot = "head",
+		level = 100,
+		vocation = {
+			{"Sorcerer", true},
+			{"Druid", true, true},
+			{"Master Sorcerer"},
+			{"Elder Druid"}
+		}
+	},
+	{
+		-- enchanted werewolf helmet - ml
+		itemid = 22130,
+		type = "deequip",
+		slot = "head",
+		level = 100
+	},
+	{
+		-- enchanted werewolf helmet - distance
+		itemid = 22129,
 		type = "equip",
 		slot = "head",
 		level = 100,
@@ -7178,15 +7948,15 @@ local items = {
 		}
 	},
 	{
-		-- enchanted werewolf helmet
-		itemid = 22130,
+		-- enchanted werewolf helmet - distance
+		itemid = 22129,
 		type = "deequip",
 		slot = "head",
 		level = 100
 	},
 	{
-		-- enchanted werewolf helmet
-		itemid = 22129,
+		-- enchanted werewolf helmet - club
+		itemid = 22128,
 		type = "equip",
 		slot = "head",
 		level = 100,
@@ -7196,43 +7966,25 @@ local items = {
 		}
 	},
 	{
-		-- enchanted werewolf helmet
-		itemid = 22129,
-		type = "deequip",
-		slot = "head",
-		level = 100
-	},
-	{
-		-- enchanted werewolf helmet
-		itemid = 22128,
-		type = "equip",
-		slot = "head",
-		level = 100,
-		vocation = {
-			{"Druid", true},
-			{"Elder Druid"}
-		}
-	},
-	{
-		-- enchanted werewolf helmet
+		-- enchanted werewolf helmet - club
 		itemid = 22128,
 		type = "deequip",
 		slot = "head",
 		level = 100
 	},
 	{
-		-- enchanted werewolf helmet
+		-- enchanted werewolf helmet - axe
 		itemid = 22127,
 		type = "equip",
 		slot = "head",
 		level = 100,
 		vocation = {
-			{"Sorcerer", true},
-			{"Master Sorcerer"}
+			{"Knight", true},
+			{"Elite Knight"}
 		}
 	},
 	{
-		-- enchanted werewolf helmet
+		-- enchanted werewolf helmet - axe
 		itemid = 22127,
 		type = "deequip",
 		slot = "head",
@@ -8179,7 +8931,7 @@ local items = {
 		itemid = 20074,
 		type = "equip",
 		slot = "hand",
-		level = 120,
+        level = 120,
 		vocation = {
 			{"Knight", true},
 			{"Elite Knight"}
@@ -8248,7 +9000,7 @@ local items = {
 		itemid = 20070,
 		type = "equip",
 		slot = "hand",
-		level = 75,
+        level = 75,
 		vocation = {
 			{"Knight", true},
 			{"Elite Knight"}
@@ -8737,10 +9489,7 @@ local items = {
 		-- mean knight sword
 		itemid = 17109,
 		type = "deequip",
-		slot = "hand",
-		vocation = {
-			{"None", true}
-		}
+		slot = "hand"
 	},
 	{
 		-- prismatic ring
@@ -12477,7 +13226,6 @@ local items = {
 		type = "deequip",
 		slot = "necklace"
 	},
-	
 	{
 		-- viper star
 		itemid = 7366,
@@ -12533,7 +13281,7 @@ local items = {
 		slot = "ring"
 	},
 	{
-		-- shapeshifter ring
+		-- Throwing Cake
 		itemid = 904,
 		type = "deequip",
 		slot = "ring"
@@ -13706,38 +14454,38 @@ local items = {
 		slot = "legs"
 	},
 	{
-		-- suspicious signet ring
+		-- family signet ring
 		itemid = 406,
 		type = "equip",
 		slot = "ring"
 	},
 	{
-		-- suspicious signet ring
+		-- family signet ring
 		itemid = 406,
 		type = "deequip",
 		slot = "ring"
 	},
 	{
-		-- family signet ring
+		-- suspicious signet ring
 		itemid = 349,
 		type = "equip",
 		slot = "ring"
 	},
 	{
-		-- family signet ring
+		-- suspicious signet ring
 		itemid = 349,
 		type = "deequip",
 		slot = "ring"
 	},
 	{
 		-- mining helmet
-		itemid = 139,
+		itemid = 875,
 		type = "equip",
 		slot = "head"
 	},
 	{
 		-- mining helmet
-		itemid = 139,
+		itemid = 875,
 		type = "deequip",
 		slot = "head"
 	},
@@ -18473,198 +19221,6 @@ local items = {
 		type = "deequip",
 		slot = "hand",
 		level = 26
-	},
-	{
-		-- Antler-Horn Helmet
-		itemid = 40588,
-		type = "equip",
-		slot = "head",
-		level = 250,
-		vocation = {
-			{"Knight", true},
-			{"Elite Knight"}
-		}
-	},
-	{
-		-- broken macuahuitl
-		itemid = 40530,
-		type = "equip",
-		slot = "hand"
-	},
-	{
-		-- broken macuahuitl
-		itemid = 40530,
-		type = "deequip",
-		slot = "hand"
-	},
-	{
-		-- Antler-Horn Helmet
-		itemid = 40588,
-		type = "deequip",
-		slot = "head",
-		level = 250
-	},
-	{
-		-- broken iks cuirass
-		itemid = 40533,
-		type = "equip",
-		slot = "armor"
-	},
-	{
-		-- broken iks cuirass
-		itemid = 40533,
-		type = "deequip",
-		slot = "armor"
-	},
-	{
-		-- broken iks faulds
-		itemid = 40531,
-		type = "equip",
-		slot = "legs"
-	},
-	{
-		-- broken iks faulds
-		itemid = 40531,
-		type = "deequip",
-		slot = "legs"
-	},
-	{
-		-- broken iks sandals
-		itemid = 40534,
-		type = "equip",
-		slot = "feet"
-	},
-	{
-		-- broken iks sandals
-		itemid = 40534,
-		type = "deequip",
-		slot = "feet"
-	},
-        {
-		-- Mutated Skin Legs
-		itemid = 40590,
-		type = "equip",
-		slot = "legs",
-		level = 270,
-		vocation = {
-			{"Paladin", true},
-			{"Royal Paladin"}
-		}
-	},
-	{
-		-- Mutated Skin Legs
-		itemid = 40590,
-		type = "deequip",
-		slot = "legs",
-		level = 270
-	},
-        {
-		-- Stitched Mutant Hide Legs
-		itemid = 40589,
-		type = "equip",
-		slot = "legs",
-		level = 270,
-		vocation = {
-			{"Knight", true},
-			{"Elite Knight"}
-		}
-	},
-	{
-		-- Stitched Mutant Hide Legs
-		itemid = 40589,
-		type = "deequip",
-		slot = "legs",
-		level = 270
-	},
-        {
-		-- mutant bone kilt
-		itemid = 40595,
-		type = "equip",
-		slot = "legs",
-		level = 300,
-		vocation = {
-			{"Druid", true},
-			{"Elder Druid"}
-		}
-	},
-	{
-		-- mutant bone kilt
-		itemid = 40595,
-		type = "deequip",
-		slot = "legs",
-		level = 300
-	},
-        {
-		-- mutated skin armor
-		itemid = 40591,
-		type = "equip",
-		slot = "armor",
-		level = 270,
-		vocation = {
-			{"Paladin", true},
-			{"Royal Paladin"}
-		}
-	},
-	{
-		-- mutated skin armor
-		itemid = 40591,
-		type = "deequip",
-		slot = "armor",
-		level = 270
-	},
-    {
-		-- alchemist's notepad
-		itemid = 40594,
-		type = "equip",
-		slot = "shield",
-        level = 250,
-		vocation = {
-			{"Sorcerer", true},
-			{"Master Sorcerer"}
-		}
-	},
-	{
-		-- alchemist's notepad
-		itemid = 40594,
-		type = "deequip",
-		slot = "shield",
-        level = 250
-	},
-    {
-		-- mutant bone boots
-		itemid = 40593,
-		type = "equip",
-		slot = "feet",
-		level = 250,
-		vocation = {
-			{"Druid", true},
-			{"Elder Druid"}
-		}
-	},
-	{
-		-- mutant bone boots
-		itemid = 40593,
-		type = "deequip",
-		slot = "feet",
-		level = 250
-	},
-	{
-		-- alchemist's boots
-		itemid = 40592,
-		type = "equip",
-		slot = "feet",
-		level = 250,
-		vocation = {
-			{"Sorcerer", true},
-			{"Master Sorcerer"}
-		}
-	},
-	{
-		-- alchemist's boots
-		itemid = 40592,
-		type = "deequip",
-		slot = "feet",
-		level = 250
 	},
 	{
 		-- gold ring
