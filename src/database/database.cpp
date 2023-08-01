@@ -19,31 +19,27 @@ Database::~Database() {
 }
 
 bool Database::connect() {
+	return connect(&g_configManager().getString(MYSQL_HOST), &g_configManager().getString(MYSQL_USER), &g_configManager().getString(MYSQL_PASS), &g_configManager().getString(MYSQL_DB), g_configManager().getNumber(SQL_PORT), &g_configManager().getString(MYSQL_SOCK));
+}
+
+bool Database::connect(const std::string* host, const std::string* user, const std::string* password, const std::string* database, uint32_t port, const std::string* sock) {
 	// connection handle initialization
 	handle = mysql_init(nullptr);
 	if (!handle) {
-		SPDLOG_ERROR("Failed to initialize MySQL connection handle");
+		SPDLOG_ERROR("Failed to initialize MySQL connection handle.");
 		return false;
+	}
+
+	if (host->empty() || user->empty() || password->empty() || database->empty() || port <= 0) {
+		SPDLOG_WARN("MySQL host, user, password, database or port not provided");
 	}
 
 	// automatic reconnect
 	bool reconnect = true;
 	mysql_options(handle, MYSQL_OPT_RECONNECT, &reconnect);
 
-	// check if all required parameters have been provided
-	const std::string host = g_configManager().getString(MYSQL_HOST);
-	const std::string user = g_configManager().getString(MYSQL_USER);
-	const std::string password = g_configManager().getString(MYSQL_PASS);
-	const std::string database = g_configManager().getString(MYSQL_DB);
-	const int port = g_configManager().getNumber(SQL_PORT);
-	const std::string socket = g_configManager().getString(MYSQL_SOCK);
-
-	if (host.empty() || user.empty() || password.empty() || database.empty() || port <= 0) {
-		SPDLOG_WARN("MySQL host, user, password, database or port not provided");
-	}
-
 	// connects to database
-	if (!mysql_real_connect(handle, host.c_str(), user.c_str(), password.c_str(), database.c_str(), port, socket.c_str(), 0)) {
+	if (!mysql_real_connect(handle, host->c_str(), user->c_str(), password->c_str(), database->c_str(), port, sock->c_str(), 0)) {
 		SPDLOG_ERROR("MySQL Error Message: {}", mysql_error(handle));
 		return false;
 	}
@@ -59,9 +55,7 @@ bool Database::beginTransaction() {
 	if (!executeQuery("BEGIN")) {
 		return false;
 	}
-
-	std::scoped_lock lock { databaseLock };
-
+	databaseLock.lock();
 	return true;
 }
 
@@ -71,12 +65,13 @@ bool Database::rollback() {
 		return false;
 	}
 
-	std::scoped_lock lock { databaseLock };
-
 	if (mysql_rollback(handle) != 0) {
 		SPDLOG_ERROR("Message: {}", mysql_error(handle));
+		databaseLock.unlock();
 		return false;
 	}
+
+	databaseLock.unlock();
 	return true;
 }
 
@@ -85,12 +80,31 @@ bool Database::commit() {
 		SPDLOG_ERROR("Database not initialized!");
 		return false;
 	}
-
-	std::scoped_lock lock { databaseLock };
 	if (mysql_commit(handle) != 0) {
 		SPDLOG_ERROR("Message: {}", mysql_error(handle));
+		databaseLock.unlock();
 		return false;
 	}
+
+	databaseLock.unlock();
+	return true;
+}
+
+bool Database::retryQuery(const std::string_view &query, int retries) {
+	while (retries > 0 && mysql_query(handle, query.data()) != 0) {
+		SPDLOG_ERROR("Query: {}", query.substr(0, 256));
+		SPDLOG_ERROR("MySQL error [{}]: {}", mysql_errno(handle), mysql_error(handle));
+		if (!isRecoverableError(mysql_errno(handle))) {
+			return false;
+		}
+		std::this_thread::sleep_for(std::chrono::seconds(1));
+		retries--;
+	}
+	if (retries == 0) {
+		SPDLOG_ERROR("Query {} failed after {} retries.", query, 10);
+		return false;
+	}
+
 	return true;
 }
 
@@ -102,26 +116,9 @@ bool Database::executeQuery(const std::string_view &query) {
 
 	std::scoped_lock lock { databaseLock };
 
-	bool success = true;
-	int retry = 10;
-	while (retry > 0 && mysql_query(handle, query.data()) != 0) {
-		SPDLOG_ERROR("Query: {}", query.substr(0, 256));
-		SPDLOG_ERROR("MySQL error [{}]: {}", mysql_errno(handle), mysql_error(handle));
-		if (!isRecoverableError(mysql_errno(handle))) {
-			success = false;
-			break;
-		}
-		std::this_thread::sleep_for(std::chrono::seconds(1));
-		retry--;
-	}
+	bool success = retryQuery(query, 10);
 
-	if (retry == 0) {
-		SPDLOG_ERROR("Query {} failed after {} retries.", query, 10);
-		success = false;
-	}
-
-	auto m_res = std::unique_ptr<MYSQL_RES, decltype(&mysql_free_result)>(mysql_store_result(handle), &mysql_free_result);
-
+	mysql_free_result(mysql_store_result(handle));
 	return success;
 }
 
@@ -161,13 +158,12 @@ std::string Database::escapeString(const std::string &s) const {
 	auto length = static_cast<uint32_t>(len);
 	std::string escaped = escapeBlob(s.c_str(), length);
 	if (escaped.empty()) {
-		SPDLOG_ERROR("Error escaping string");
+		SPDLOG_WARN("Error escaping string");
 	}
 	return escaped;
 }
 
 std::string Database::escapeBlob(const char* s, uint32_t length) const {
-
 	size_t maxLength = (length * 2) + 1;
 
 	std::string escaped;
@@ -190,11 +186,10 @@ DBResult::DBResult(MYSQL_RES* res) {
 
 	int num_fields = mysql_num_fields(handle);
 
-	MYSQL_FIELD* fields = mysql_fetch_fields(handle);
+	const MYSQL_FIELD* fields = mysql_fetch_fields(handle);
 	for (size_t i = 0; i < num_fields; i++) {
 		listNames[fields[i].name] = i;
 	}
-
 	row = mysql_fetch_row(handle);
 }
 
@@ -208,11 +203,9 @@ std::string DBResult::getString(const std::string &s) const {
 		SPDLOG_ERROR("Column '{}' does not exist in result set", s);
 		return std::string();
 	}
-
 	if (row[it->second] == nullptr) {
 		return std::string();
 	}
-
 	return std::string(row[it->second]);
 }
 

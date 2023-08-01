@@ -51,18 +51,22 @@ void IOMapSerialize::loadHouseItems(Map* map) {
 	SPDLOG_INFO("Loaded house items in {} seconds", (OTSYS_TIME() - start) / (1000.));
 }
 
+bool IOMapSerialize::SaveHouseItemsGuard() {
+	bool success = DBTransaction::executeWithinTransaction([]() {
+		saveHouseItems();
+	});
+
+	if (!success) {
+		SPDLOG_ERROR("[{}] Error occurred saving houses", __FUNCTION__);
+	}
+
+	return success;
+}
+
 bool IOMapSerialize::saveHouseItems() {
 	int64_t start = OTSYS_TIME();
 	Database &db = Database::getInstance();
 	std::ostringstream query;
-
-	// Start the transaction
-	DBTransaction transaction1;
-	if (!transaction1.start()) {
-		return false;
-	}
-
-	DBTransactionGuard guard(transaction1);
 
 	// clear old tile data
 	if (!db.executeQuery("DELETE FROM `tile_store`")) {
@@ -92,7 +96,6 @@ bool IOMapSerialize::saveHouseItems() {
 	if (!stmt.execute()) {
 		return false;
 	}
-
 
 	SPDLOG_INFO("Saved house items in {} seconds", (OTSYS_TIME() - start) / (1000.));
 	return true;
@@ -278,15 +281,20 @@ bool IOMapSerialize::loadHouseInfo() {
 	return true;
 }
 
-bool IOMapSerialize::saveHouseInfo() {
-	Database &db = Database::getInstance();
+bool IOMapSerialize::SaveHouseInfoGuard() {
+	bool success = DBTransaction::executeWithinTransaction([]() {
+		saveHouseInfo();
+	});
 
-	DBTransaction transaction2;
-	if (!transaction2.start()) {
-		return false;
+	if (!success) {
+		SPDLOG_ERROR("[{}] Error occurred saving houses info", __FUNCTION__);
 	}
 
-	DBTransactionGuard guard(transaction2);
+	return success;
+}
+
+bool IOMapSerialize::saveHouseInfo() {
+	Database &db = Database::getInstance();
 
 	if (!db.executeQuery("DELETE FROM `house_lists`")) {
 		return false;

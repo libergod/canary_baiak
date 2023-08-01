@@ -830,6 +830,18 @@ bool IOLoginData::saveItems(const Player* player, const ItemBlockList &itemList,
 	return query_insert.execute();
 }
 
+bool IOLoginData::savePlayerGuard(Player* player) {
+	bool success = DBTransaction::executeWithinTransaction([player]() {
+		savePlayer(player);
+	});
+
+	if (!success) {
+		SPDLOG_ERROR("[{}] Error occurred saving player", __FUNCTION__);
+	}
+
+	return success;
+}
+
 bool IOLoginData::savePlayer(Player* player) {
 	if (player->getHealth() <= 0) {
 		player->changeHealth(1);
@@ -981,13 +993,6 @@ bool IOLoginData::savePlayer(Player* player) {
 			  << " = " << static_cast<uint32_t>(player->getBlessingCount(i)) << ((i == 8) ? ' ' : ',');
 	}
 	query << " WHERE `id` = " << player->getGUID();
-
-	DBTransaction transaction;
-	if (!transaction.start()) {
-		return false;
-	}
-
-	DBTransactionGuard guard(transaction);
 
 	if (!db.executeQuery(query.str())) {
 		return false;
