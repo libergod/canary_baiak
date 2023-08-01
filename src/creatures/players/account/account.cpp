@@ -405,10 +405,7 @@ error_t Account::RegisterCoinsTransaction(CoinTransactionType type, uint32_t coi
 		} else {
 			query << "`email` = " << db_->escapeString(accountIdentifier_) << " , ";
 		}
-
-		query << "`type` = " << account_type_ << " , "
-			  << "`password` = " << db_->escapeString(password_) << " , "
-			  << "`premdays` = " << premium_remaining_days_ << " , "
+			 query << "`premdays` = " << premium_remaining_days_ << " , "
 			  << "`lastday` = " << premium_last_day_;
 
 		if (id_ != 0) {
