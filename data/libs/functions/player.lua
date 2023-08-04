@@ -384,7 +384,7 @@ function Player.sendWeatherEffect(self, groundEffect, fallEffect, thunderEffect)
     end
 end
 
-function Player:CreateFamiliarSpell()
+function Player:CreateFamiliarSpell(spellId)
 	local playerPosition = self:getPosition()
 	if not self:isPremium() then
 		playerPosition:sendMagicEffect(CONST_ME_POFF)
@@ -418,13 +418,13 @@ function Player:CreateFamiliarSpell()
 		return false
 	end
 
-	myFamiliar:setOutfit({lookType = self:getFamiliarLooktype()})
+	myFamiliar:setOutfit({ lookType = self:getFamiliarLooktype() })
 	myFamiliar:registerEvent("FamiliarDeath")
 	myFamiliar:changeSpeed(math.max(self:getSpeed() - myFamiliar:getBaseSpeed(), 0))
 	playerPosition:sendMagicEffect(CONST_ME_MAGIC_BLUE)
 	myFamiliar:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
 	-- Divide by 2 to get half the time (the default total time is 30 / 2 = 15)
-	local summonDuration = configManager.getNumber(configKeys.FAMILIAR_TIME) / 2
+	local summonDuration = math.floor(configManager.getNumber(configKeys.FAMILIAR_TIME) / 2)
 	self:setStorageValue(Global.Storage.FamiliarSummon, os.time() + summonDuration * 60)
 	addEvent(RemoveFamiliar, summonDuration * 60 * 1000, myFamiliar:getId(), self:getId())
 	for sendMessage = 1, #FAMILIAR_TIMER do
@@ -442,6 +442,14 @@ function Player:CreateFamiliarSpell()
 			)
 		)
 	end
+	
+	local condition = Condition(CONDITION_SPELLCOOLDOWN, CONDITIONID_DEFAULT, spellId)
+	local cooldown = configManager.getNumber(configKeys.FAMILIAR_TIME) * 60 * 1000
+	if self:isVip() then
+		cooldown = cooldown - configManager.getNumber(configKeys.VIP_FAMILIAR_TIME_COOLDOWN_REDUCTION)
+	end
+	condition:setTicks((cooldown) / configManager.getFloat(configKeys.RATE_SPELL_COOLDOWN))
+	self:addCondition(condition)
 	return true
 end
 
@@ -465,17 +473,17 @@ end
 -- ALTER TABLE `accounts` ADD `vip_time` BIGINT(20) NOT NULL DEFAULT 0;
 
 -- player:getVipTime()
-function Player.getVipTime(self)
-	local resultId = db.storeQuery("SELECT `vip_time` FROM `accounts` WHERE `id` = '".. self:getAccountId() .."';")
-	local time = resultId ~= false and result.getNumber(resultId, "vip_time") or 0
-	result.free(resultId)
-	return time
-end
+--function Player.getVipTime(self)
+--	local resultId = db.storeQuery("SELECT `vip_time` FROM `accounts` WHERE `id` = '".. self:getAccountId() .."';")
+--	local time = resultId ~= false and result.getNumber(resultId, "vip_time") or 0
+--	result.free(resultId)
+--	return time
+--end
 
 -- player:isVip()
-function Player.isVip(self)
-	return self:getVipTime() > os.time() and true or false
-end
+--function Player.isVip(self)
+--	return self:getVipTime() > os.time() and true or false
+--end
 
 function Player.getVipTimeInDays(self)
 	
@@ -495,31 +503,31 @@ function Player.getVipTimeInDays(self)
 end
 
 -- player:addVipDays(days)
-function Player.addVipDays(self, days)
-	return(self:isVip() and tonumber((days * 86400))) and db.query("UPDATE `accounts` SET `vip_time` = '".. (self:getVipTime() + (days * 86400)) .."' WHERE `id` ='".. self:getAccountId() .."' LIMIT 1 ;") or db.query("UPDATE `accounts` SET `vip_time` = '".. (os.time() + (days * 86400)) .."' WHERE `id` ='".. self:getAccountId() .."' LIMIT 1 ;")
-end
+--function Player.addVipDays(self, days)
+--	return(self:isVip() and tonumber((days * 86400))) and db.query("UPDATE `accounts` SET `vip_time` = '".. (self:getVipTime() + (days * 86400)) .."' WHERE `id` ='".. self:getAccountId() .."' LIMIT 1 ;") or db.query("UPDATE `accounts` SET `vip_time` = '".. (os.time() + (days * 86400)) .."' WHERE `id` ='".. self:getAccountId() .."' LIMIT 1 ;")
+--end
 
 -- player:removeVipDays(days)
-function Player.removeVipDays(self, days)
-	return(self:isVip() and tonumber((days * 86400))) and db.query("UPDATE `accounts` SET `vip_time` = '".. (self:getVipTime() - (days * 86400)) .."' WHERE `id` ='".. self:getAccountId() .."' LIMIT 1 ;") or db.query("UPDATE `accounts` SET `vip_time` = '".. (os.time() - (days * 86400)) .."' WHERE `id` ='".. self:getAccountId() .."' LIMIT 1 ;")
-end
+--function Player.removeVipDays(self, days)
+--	return(self:isVip() and tonumber((days * 86400))) and db.query("UPDATE `accounts` SET `vip_time` = '".. (self:getVipTime() - (days * 86400)) .."' WHERE `id` ='".. self:getAccountId() .."' LIMIT 1 ;") or db.query("UPDATE `accounts` SET `vip_time` = '".. (os.time() - (days * 86400)) .."' WHERE `id` ='".. self:getAccountId() .."' LIMIT 1 ;")
+--end
 
 -- player:setVipDays(days)
-function Player.setVipDays(self, days)
-	return db.query("UPDATE `accounts` SET `vip_time` = '".. (os.time() - (days * 86400)) .."' WHERE `id` ='".. self:getAccountId() .."' LIMIT 1 ;")
-end
+--function Player.setVipDays(self, days)
+--	return db.query("UPDATE `accounts` SET `vip_time` = '".. (os.time() - (days * 86400)) .."' WHERE `id` ='".. self:getAccountId() .."' LIMIT 1 ;")
+--end
 
 -- player:removeVip()
-function Player.removeVip(self)
-	db.query("UPDATE `accounts` SET `vip_time` = '0' WHERE `id` ='".. self:getAccountId() .."' LIMIT 1 ;")
-end
+--function Player.removeVip(self)
+--	db.query("UPDATE `accounts` SET `vip_time` = '0' WHERE `id` ='".. self:getAccountId() .."' LIMIT 1 ;")
+--end
 
 -- player:checkVipLogin()
-function Player.checkVipLogin(self)
-	if self:getVipTime() > 0 and not self:isVip() then
-		return self:removeVip() and self:teleportTo(self:getTown():getTemplePosition())
-	end
-end
+--function Player.checkVipLogin(self)
+--	if self:getVipTime() > 0 and not self:isVip() then
+--		return self:removeVip() and self:teleportTo(self:getTown():getTemplePosition())
+--	end
+--end
 
 -- FIM VIP BY ACCOUNT GUSTAVO LIBER 15/09/2022
 

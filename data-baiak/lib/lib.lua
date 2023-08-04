@@ -79,7 +79,7 @@ dofile(DATA_DIRECTORY.. '/lib/custom/custom.lua')
 dofile(DATA_DIRECTORY.. '/lib/custom/tournamentsCoin.lua')
 
 -- VIP Account
-dofile(DATA_DIRECTORY.. '/lib/custom/vipAccount.lua')
+--dofile(DATA_DIRECTORY.. '/lib/custom/vipAccount.lua')
 
 --Hireling
 dofile(DATA_DIRECTORY.. "/lib/hireling_lib.lua")
@@ -99,3 +99,6 @@ dofile(DATA_DIRECTORY.. '/lib/custom/exaustion_lib.lua')
 
 -- Clss LIB
 --dofile(DATA_DIRECTORY.. '/lib/core/class.lua')
+
+-- Vip System library
+dofile(DATA_DIRECTORY .. '/lib/vip/vip_system.lua')

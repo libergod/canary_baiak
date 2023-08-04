@@ -166,6 +166,9 @@ std::string Player::getDescription(int32_t lookDistance) const {
 		if (loyaltyTitle.length() != 0) {
 			s << " You are a " << loyaltyTitle << ".";
 		}
+		if (isVip()) {
+			s << " You are VIP.";
+		}
 	} else {
 		s << name;
 		if (!group->access) {
@@ -173,11 +176,13 @@ std::string Player::getDescription(int32_t lookDistance) const {
 		}
 		s << '.';
 
+		std::string pronoun;
 		if (sex == PLAYERSEX_FEMALE) {
-			s << " She";
+			pronoun = " She";
 		} else {
-			s << " He";
+			pronoun = " He";
 		}
+		s << pronoun;
 
 		if (group->access) {
 			s << " is " << group->name << '.';
@@ -193,6 +198,10 @@ std::string Player::getDescription(int32_t lookDistance) const {
 			} else {
 				s << " He is a " << loyaltyTitle << ".";
 			}
+		}
+
+		if (isVip()) {
+			s << pronoun << " is VIP.";
 		}
 	}
 
@@ -2086,7 +2095,8 @@ void Player::onThink(uint32_t interval) {
 	triggerMomentum();
 
 	auto playerTile = getTile();
-	if (playerTile && !playerTile->hasFlag(TILESTATE_NOLOGOUT) && !isAccessPlayer() && !isExerciseTraining()) {
+	const bool vipStaysOnline = isVip() && g_configManager().getBoolean(VIP_STAY_ONLINE);
+	if (playerTile && !playerTile->hasFlag(TILESTATE_NOLOGOUT) && !isAccessPlayer() && !isExerciseTraining() && !vipStaysOnline) {
 		idleTime += interval;
 		const int32_t kickAfterMinutes = g_configManager().getNumber(KICK_AFTER_MINUTES);
 		if (idleTime > (kickAfterMinutes * 60000) + 60000) {
@@ -2250,6 +2260,12 @@ void Player::addExperience(Creature* target, uint64_t exp, bool sendText /* = fa
 
 	if (sendText) {
 		std::string expString = std::to_string(exp) + (exp != 1 ? " experience points." : " experience point.");
+		if (isVip()) {
+			uint8_t expPercent = g_configManager().getNumber(VIP_BONUS_EXP);
+			if (expPercent > 0) {
+				expString = expString + fmt::format(" (VIP bonus {}%)", expPercent > 100 ? 100 : expPercent);
+			}
+		}
 
 		TextMessage message(MESSAGE_EXPERIENCE, "You gained " + expString + (handleHazardExperience ? " (Hazard)" : ""));
 		message.position = position;

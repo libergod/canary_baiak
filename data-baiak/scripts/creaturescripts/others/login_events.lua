@@ -2,6 +2,7 @@ local loginEvents = CreatureEvent("LoginEvents")
 function loginEvents.onLogin(player)
 
 	local events = {
+		"VipLogin",
 		"stepsWeakSpot",
 		--Custom BAIAK
 		"superUpCreature",

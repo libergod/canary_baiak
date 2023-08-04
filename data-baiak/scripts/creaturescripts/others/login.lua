@@ -22,8 +22,8 @@ local playerLogin = CreatureEvent("PlayerLogin")
 
 function playerLogin.onLogin(player)
 	local items = {
-		{3003, 1},
-		{3031, 3}
+		{ 3003, 1 },
+		{ 3031, 3 }
 	}
 	if player:getLastLoginSaved() == 0 then
 		player:sendOutfitWindow()
@@ -34,7 +34,7 @@ function playerLogin.onLogin(player)
 			end
 		end
 		player:addItem(2920, 1, true, 1, CONST_SLOT_AMMO)
-		db.query('UPDATE `players` SET `istutorial` = 0 where `id`='..player:getGuid())
+		db.query('UPDATE `players` SET `istutorial` = 0 where `id`=' .. player:getGuid())
 		-- Open channels
 		player:openChannel(3) -- World chat
 		player:openChannel(7) -- Help chat
@@ -107,11 +107,6 @@ function playerLogin.onLogin(player)
 		player:setStorageValue(Storage.PremiumAccount, 1)
 		player:say("[ONLINE]", TALKTYPE_MONSTER_SAY)
 		player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
-	end
-	
-	if player:isVip() then
-		player:say("[VIP]", TALKTYPE_MONSTER_SAY)
-		player:getPosition():sendMagicEffect(73)
 	end
 	
 	-- Create SHOP file for users

@@ -590,6 +590,16 @@ class Player final : public Creature, public Cylinder {
 		bool isPremium() const;
 		void setPremiumDays(int32_t v);
 
+		int32_t getVipDays() const {
+			return premiumDays;
+		}
+		bool isVip() const {
+			if (!g_configManager().getBoolean(VIP_SYSTEM_ENABLED)) {
+				return false;
+			}
+			return premiumDays > 0;
+		}
+
 		void setTibiaCoins(int32_t v);
 		void setTibiaCoinsTournaments(int32_t v);
 		void setTransferableTibiaCoins(int32_t v);
@@ -2438,6 +2448,14 @@ class Player final : public Creature, public Cylinder {
 		}
 		std::map<uint16_t, uint16_t> getActiveConcoctions() const {
 			return activeConcoctions;
+		}
+
+		bool checkAutoLoot() const {
+			const bool autoLoot = g_configManager().getBoolean(AUTOLOOT) && getStorageValue(STORAGEVALUE_AUTO_LOOT) != 0;
+			if (g_configManager().getBoolean(VIP_SYSTEM_ENABLED) && g_configManager().getBoolean(VIP_AUTOLOOT_VIP_ONLY)) {
+				return autoLoot && isVip();
+			}
+			return autoLoot;
 		}
 
 		// Get specific inventory item from itemid

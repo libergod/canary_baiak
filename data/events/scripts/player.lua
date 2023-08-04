@@ -42,23 +42,25 @@ local storeItemID = {
 local blockTeleportTrashing = true
 
 local titles = {
-	{storageID = 14960, title = " Scout"},
-	{storageID = 14961, title = " Sentinel"},
-	{storageID = 14962, title = " Steward"},
-	{storageID = 14963, title = " Warden"},
-	{storageID = 14964, title = " Squire"},
-	{storageID = 14965, title = " Warrior"},
-	{storageID = 14966, title = " Keeper"},
-	{storageID = 14967, title = " Guardian"},
-	{storageID = 14968, title = " Sage"},
-	{storageID = 14969, title = " Tutor"},
-	{storageID = 14970, title = " Senior Tutor"},
-	{storageID = 14971, title = " King"},
+	{ storageID = 14960, title = " Scout" },
+	{ storageID = 14961, title = " Sentinel" },
+	{ storageID = 14962, title = " Steward" },
+	{ storageID = 14963, title = " Warden" },
+	{ storageID = 14964, title = " Squire" },
+	{ storageID = 14965, title = " Warrior" },
+	{ storageID = 14966, title = " Keeper" },
+	{ storageID = 14967, title = " Guardian" },
+	{ storageID = 14968, title = " Sage" },
+	{ storageID = 14969, title = " Tutor" },
+	{ storageID = 14970, title = " Senior Tutor" },
+	{ storageID = 14971, title = " King" },
 }
 
 local function getTitle(uid)
 	local player = Player(uid)
-	if not player then return false end
+	if not player then
+		return false
+	end
 
 	for i = #titles, 1, -1 do
 		if player:getStorageValue(titles[i].storageID) == 1 then
@@ -80,21 +82,21 @@ function Player:onBrowseField(position)
 end
 
 local function getHours(seconds)
-	return math.floor((seconds/60)/60)
+	return math.floor((seconds / 60) / 60)
 end
 
 local function getMinutes(seconds)
-	return math.floor(seconds/60)
+	return math.floor(seconds / 60)
 end
 
 local function getSeconds(seconds)
-	return seconds%60
+	return seconds % 60
 end
 
 local function getTime(seconds)
 	local hours, minutes = getHours(seconds), getMinutes(seconds)
 	if (minutes > 59) then
-		minutes = minutes-hours*60
+		minutes = minutes-hours * 60
 	end
 
 	if (minutes < 10) then
@@ -107,7 +109,7 @@ end
 local function getTimeinWords(secs)
 	local hours, minutes, seconds = getHours(secs), getMinutes(secs), getSeconds(secs)
 	if (minutes > 59) then
-		minutes = minutes-hours*60
+		minutes = minutes-hours * 60
 	end
 
 	local timeStr = ''
@@ -122,12 +124,6 @@ local function getTimeinWords(secs)
 end
 
 function Player:onLook(thing, position, distance)
-	for k, functionCallback in pairs(EventCallback) do
-		if type(functionCallback) == "function" and k:sub(1, #("onLook")) == "onLook" then
-			functionCallback(self, thing, position, distance)
-		end
-	end
-	
 	local description = "You see "
 	if thing:isItem() then
 		if thing.actionid == 5640 then
@@ -135,9 +131,9 @@ function Player:onLook(thing, position, distance)
 		elseif thing.actionid == 5641 then
 			description = description .. "a banana palm."
 		elseif thing.itemid >= ITEM_HEALTH_CASK_START and thing.itemid <= ITEM_HEALTH_CASK_END
-		or thing.itemid >= ITEM_MANA_CASK_START and thing.itemid <= ITEM_MANA_CASK_END
-		or thing.itemid >= ITEM_SPIRIT_CASK_START and thing.itemid <= ITEM_SPIRIT_CASK_END
-		or thing.itemid >= ITEM_KEG_START and thing.itemid <= ITEM_KEG_END then
+			or thing.itemid >= ITEM_MANA_CASK_START and thing.itemid <= ITEM_MANA_CASK_END
+			or thing.itemid >= ITEM_SPIRIT_CASK_START and thing.itemid <= ITEM_SPIRIT_CASK_END
+			or thing.itemid >= ITEM_KEG_START and thing.itemid <= ITEM_KEG_END then
 			description = description .. thing:getDescription(distance)
 			local charges = thing:getCharges()
 			if charges then
@@ -150,10 +146,10 @@ function Player:onLook(thing, position, distance)
 		description = description .. thing:getDescription(distance)
 		if thing:isMonster() then
 			local master = thing:getMaster()
-			if master and table.contains({'sorcerer familiar','knight familiar','druid familiar','paladin familiar'},
-																						thing:getName():lower()) then
-				description = description..' (Master: ' .. master:getName() .. '). \z
-				It will disappear in ' .. getTimeinWords(master:getStorageValue(Global.Storage.FamiliarSummon) - os.time())
+			if master and table.contains({ 'sorcerer familiar', 'knight familiar', 'druid familiar', 'paladin familiar' },
+				thing:getName():lower()) then
+				description = string.format('%s (Master: %s). \z It will disappear in %s',
+					description, master:getName(), getTimeinWords(master:getStorageValue(Global.Storage.FamiliarSummon) - os.time()))
 			end
 		end
 	end
@@ -196,8 +192,8 @@ function Player:onLook(thing, position, distance)
 		end
 
 		description = string.format(
-		"%s\nPosition: %d, %d, %d",
-		description, position.x, position.y, position.z
+			"%s\nPosition: %d, %d, %d",
+			description, position.x, position.y, position.z
 		)
 
 		if thing:isCreature() then
@@ -363,7 +359,9 @@ function Player:onMoveItem(item, count, fromPosition, toPosition, fromCylinder, 
 			return false
 		else
 			exhaust[pid] = true
-			addEvent(function() exhaust[pid] = false end, 2000, pid)
+			addEvent(function()
+				exhaust[pid] = false
+			end, 2000, pid)
 			return true
 		end
 	end
@@ -424,7 +422,7 @@ function Player:onMoveItem(item, count, fromPosition, toPosition, fromCylinder, 
 		-- The player also shouldn't be able to insert items into the boss corpse
 		local tileCorpse = Tile(container:getPosition())
 		for index, value in ipairs(tileCorpse:getItems() or { }) do
-			if value:getAttribute(ITEM_ATTRIBUTE_CORPSEOWNER) == 2^31 - 1 and value:getName() == container:getName() then
+			if value:getAttribute(ITEM_ATTRIBUTE_CORPSEOWNER) == 2 ^ 31 - 1 and value:getName() == container:getName() then
 				self:sendCancelMessage(RETURNVALUE_NOTPOSSIBLE)
 				return false
 			end
@@ -432,7 +430,7 @@ function Player:onMoveItem(item, count, fromPosition, toPosition, fromCylinder, 
 	end
 
 	-- Do not let the player move the boss corpse.
-	if item:getAttribute(ITEM_ATTRIBUTE_CORPSEOWNER) == 2^31 - 1 then
+	if item:getAttribute(ITEM_ATTRIBUTE_CORPSEOWNER) == 2 ^ 31 - 1 then
 		self:sendCancelMessage(RETURNVALUE_NOTPOSSIBLE)
 		return false
 	end
@@ -842,6 +840,14 @@ function Player:onGainExperience(target, exp, rawExp)
 		end
 	end
 
+	if configManager.getBoolean(configKeys.VIP_SYSTEM_ENABLED) then
+		local vipBonusExp = configManager.getNumber(configKeys.VIP_BONUS_EXP)
+		if (vipBonusExp > 0 and self:isVip()) then
+			vipBonusExp = (vipBonusExp > 100 and 100) or vipBonusExp
+			exp = exp * (1 + (vipBonusExp / 100))
+		end
+	end
+	
 	local lowLevelBonuxExp = self:getFinalLowLevelBonus()
 	local baseRate = self:getFinalBaseRateExperience()
 	local finalExperience
@@ -906,7 +912,10 @@ function Player:onGainSkillTries(skill, tries)
 	if SCHEDULE_SKILL_RATE ~= 100 then
 		skillOrMagicRate = math.max(0, (skillOrMagicRate * SCHEDULE_SKILL_RATE) / 100)
 	end
-
+	
+	local vipBoost = configManager.getNumber(configKeys.VIP_BONUS_SKILL)
+	skillOrMagicRate = skillOrMagicRate + (skillOrMagicRate * (vipBoost / 100))
+	
 	return tries / 100 * (skillOrMagicRate * 100)
 end
 

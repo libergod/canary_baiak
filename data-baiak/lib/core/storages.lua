@@ -3051,7 +3051,12 @@ Storage = {
 			TimeLeft = 64038,
 			LastActivatedAt = 64039,
 		},
-	}
+	},
+	VipSystem = {
+		IsVip = 150001,
+		OnlineCoinsGain = 150002,
+		OnlineTokensGain = 150003,
+	},
 }
 
 GlobalStorage = {
