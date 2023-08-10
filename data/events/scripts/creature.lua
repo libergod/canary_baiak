@@ -22,45 +22,6 @@ local function addStamina(name)
     end
 end
 
-function Creature:onChangeOutfit(outfit)
-	for k, functionCallback in pairs(EventCallback) do
-		if type(functionCallback) == "function" and k:sub(1, #("onChangeOutfit")) == "onChangeOutfit" then
-			functionCallback(self, outfit)
-		end
-	end
-	if self:isPlayer() then
-		local familiarLookType = self:getFamiliarLooktype()
-		if familiarLookType ~= 0 then
-			for _, summon in pairs(self:getSummons()) do
-				if summon:getType():familiar() then
-						if summon:getOutfit().lookType ~= familiarLookType then
-							summon:setOutfit({lookType = familiarLookType})
-						end
-					break
-				end
-			end
-		end
-	end
-	return true
-end
-
-function Creature:onHear(speaker, words, type)
-	for k, functionCallback in pairs(EventCallback) do
-		if type(functionCallback) == "function" and k:sub(1, #("onHear")) == "onHear" then
-			functionCallback(self, speaker, words, type)
-		end
-	end
-end
-
-function Creature:onAreaCombat(tile, isAggressive)
-	for k, functionCallback in pairs(EventCallback) do
-		if type(functionCallback) == "function" and k:sub(1, #("onAreaCombat")) == "onAreaCombat" then
-			functionCallback(self, tile, isAggressive)
-		end
-	end
-	return true
-end
-
 local function removeCombatProtection(cid)
 	local player = Player(cid)
 	if not player then
@@ -165,6 +126,23 @@ function Creature:onTargetCombat(target)
 	end
 
 	self:addEventStamina(target)
+	return true
+end
+
+function Creature:onChangeOutfit(outfit)
+	if self:isPlayer() then
+		local familiarLookType = self:getFamiliarLooktype()
+		if familiarLookType ~= 0 then
+			for _, summon in pairs(self:getSummons()) do
+				if summon:getType():familiar() then
+						if summon:getOutfit().lookType ~= familiarLookType then
+							summon:setOutfit({lookType = familiarLookType})
+						end
+					break
+				end
+			end
+		end
+	end
 	return true
 end
 

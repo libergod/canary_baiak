@@ -15,6 +15,8 @@
 #include "game/game.h"
 #include "game/scheduling/tasks.h"
 #include "lua/creature/events.h"
+#include "lua/callbacks/event_callback.hpp"
+#include "lua/callbacks/events_callbacks.hpp"
 
 int32_t Monster::despawnRange;
 int32_t Monster::despawnRadius;
@@ -2021,6 +2023,7 @@ void Monster::dropLoot(Container* corpse, Creature*) {
 			}
 		}
 		g_events().eventMonsterOnDropLoot(this, corpse);
+		g_callbacks().executeCallback(EventCallback_t::MonsterOnDropLoot, &EventCallback::monsterOnDropLoot, this, corpse);
 	}
 }
 
