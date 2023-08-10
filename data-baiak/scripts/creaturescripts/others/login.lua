@@ -143,11 +143,11 @@ function playerLogin.onLogin(player)
 	local defaultTown = "Thunder City" -- default town where player is teleported if his home town is in premium area
 	local freeTowns = {"Jamila Island", "Akravi", "Al Arar", "Bhark", "Wintermere", "Shadow Wood"} -- towns in free account area
 
-	if isPremium(player) == false and isInArray(freeTowns, player:getTown():getName()) == false then
+	if isPremium(player) == false and table.contains(freeTowns, player:getTown():getName()) == false then
 		local town = player:getTown()
 		local sex = player:getSex()
 		local home = getHouseByPlayerGUID(getPlayerGUID(player))
-		town = isInArray(freeTowns, town:getName()) and town or Town(defaultTown)
+		town = table.contains(freeTowns, town:getName()) and town or Town(defaultTown)
 		player:teleportTo(town:getTemplePosition())
 		player:setTown(town)
 		player:sendTextMessage(MESSAGE_FAILURE, "Your premium time has expired.")

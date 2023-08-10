@@ -3,13 +3,13 @@ combat:setParameter(COMBAT_PARAM_TYPE, COMBAT_ENERGYDAMAGE)
 combat:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_PURPLEENERGY)
 
 combat:setArea(createCombatArea({
-{0, 0, 1, 1, 1, 0, 0},
-{0, 1, 1, 1, 1, 1, 0},
-{1, 1, 1, 1, 1, 1, 1},
-{1, 1, 1, 3, 1, 1, 1},
-{1, 1, 1, 1, 1, 1, 1},
-{0, 1, 1, 1, 1, 1, 0},
-{0, 0, 1, 1, 1, 0, 0}
+	{0, 0, 1, 1, 1, 0, 0},
+	{0, 1, 1, 1, 1, 1, 0},
+	{1, 1, 1, 1, 1, 1, 1},
+	{1, 1, 1, 3, 1, 1, 1},
+	{1, 1, 1, 1, 1, 1, 1},
+	{0, 1, 1, 1, 1, 1, 0},
+	{0, 0, 1, 1, 1, 0, 0}
 }))
 
 function spellCallback(param)
@@ -24,14 +24,14 @@ function spellCallback(param)
 end
 
 function onTargetTile(cid, pos)
-	local param = { }
+	local param = {}
 	param.cid = cid
 	param.pos = pos
 	param.count = 0
 	spellCallback(param)
 end
 
-setCombatCallback(combat, CALLBACK_PARAM_TARGETTILE, "onTargetTile")
+combat:setCallback(CALLBACK_PARAM_TARGETTILE, "onTargetTile")
 
 local spell = Spell("instant")
 

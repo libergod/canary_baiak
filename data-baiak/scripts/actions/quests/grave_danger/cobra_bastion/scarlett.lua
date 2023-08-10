@@ -98,7 +98,7 @@ end
 local graveScarlettAid = Action();
 function graveScarlettAid.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	if item.actionid == 40003 then
-		if isInArray(transformTo, item.itemid) then
+		if not table.contains(config.demonOakIds, target.itemid) then
 			local pilar = transformTo[item.itemid]
 			if pilar then
 				item:transform(pilar)
