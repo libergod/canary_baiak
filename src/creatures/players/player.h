@@ -2475,6 +2475,8 @@ class Player final : public Creature, public Cylinder {
 		std::unique_ptr<PlayerWheel> &wheel();
 		const std::unique_ptr<PlayerWheel> &wheel() const;
 
+		void sendLootMessage(const std::string &message) const;
+
 	private:
 		static uint32_t playerFirstID;
 		static uint32_t playerLastID;

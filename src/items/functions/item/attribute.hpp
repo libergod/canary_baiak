@@ -57,6 +57,7 @@ public:
 			case ItemAttribute_t::ARTICLE:
 			case ItemAttribute_t::PLURALNAME:
 			case ItemAttribute_t::SPECIAL:
+			case ItemAttribute_t::LOOTMESSAGE_SUFFIX:
 				return true;
 			default:
 				return false;
