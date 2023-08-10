@@ -14,6 +14,9 @@ dofile(DATA_DIRECTORY.. '/lib/quests/quest.lua')
 -- Forge Library
 dofile(DATA_DIRECTORY.. '/lib/custom/forge_lib.lua')
 
+-- Towns
+dofile(DATA_DIRECTORY.. '/lib/tables/town.lua')
+
 -- CUSTOM BAIAK
 -- Dodge e Critical
 dofile(DATA_DIRECTORY.. '/lib/custom/dodgeCritical.lua')

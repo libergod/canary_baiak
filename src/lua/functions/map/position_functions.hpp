@@ -32,6 +32,8 @@ class PositionFunctions final : LuaScriptInterface {
 
 			registerMethod(L, "Position", "sendSingleSoundEffect", PositionFunctions::luaPositionSendSingleSoundEffect);
 			registerMethod(L, "Position", "sendDoubleSoundEffect", PositionFunctions::luaPositionSendDoubleSoundEffect);
+
+			registerMethod(L, "Position", "toString", PositionFunctions::luaPositionToString);
 		}
 
 	private:
@@ -52,6 +54,8 @@ class PositionFunctions final : LuaScriptInterface {
 
 		static int luaPositionSendSingleSoundEffect(lua_State* L);
 		static int luaPositionSendDoubleSoundEffect(lua_State* L);
+
+		static int luaPositionToString(lua_State* L);
 };
 
 #endif
