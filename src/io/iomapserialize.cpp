@@ -51,9 +51,9 @@ void IOMapSerialize::loadHouseItems(Map* map) {
 	SPDLOG_INFO("Loaded house items in {} seconds", (OTSYS_TIME() - start) / (1000.));
 }
 
-bool IOMapSerialize::SaveHouseItemsGuard() {
+bool IOMapSerialize::saveHouseItems() {
 	bool success = DBTransaction::executeWithinTransaction([]() {
-		saveHouseItems();
+		return SaveHouseItemsGuard();
 	});
 
 	if (!success) {
@@ -63,7 +63,7 @@ bool IOMapSerialize::SaveHouseItemsGuard() {
 	return success;
 }
 
-bool IOMapSerialize::saveHouseItems() {
+bool IOMapSerialize::SaveHouseItemsGuard() {
 	int64_t start = OTSYS_TIME();
 	Database &db = Database::getInstance();
 	std::ostringstream query;
@@ -286,9 +286,9 @@ bool IOMapSerialize::loadHouseInfo() {
 	return true;
 }
 
-bool IOMapSerialize::SaveHouseInfoGuard() {
+bool IOMapSerialize::saveHouseInfo() {
 	bool success = DBTransaction::executeWithinTransaction([]() {
-		saveHouseInfo();
+		return SaveHouseInfoGuard();
 	});
 
 	if (!success) {
@@ -298,7 +298,7 @@ bool IOMapSerialize::SaveHouseInfoGuard() {
 	return success;
 }
 
-bool IOMapSerialize::saveHouseInfo() {
+bool IOMapSerialize::SaveHouseInfoGuard() {
 	Database &db = Database::getInstance();
 
 	if (!db.executeQuery("DELETE FROM `house_lists`")) {

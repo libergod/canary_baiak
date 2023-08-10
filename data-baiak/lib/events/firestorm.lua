@@ -179,8 +179,8 @@ function FSE:CheckControl()
 			else
 				for _, player in pairs(players) do
 					player:addItem(FSE.rewards[1], FSE.rewards[2])
-					player:addTournamentsCoins(300)
-					db.query(string.format("INSERT INTO `store_history`(`account_id`, `mode`, `description`, `coin_type`, `coin_amount`, `time`) VALUES (%s, %s, %s, %s, %s, %s)", player:getAccountId(), "0", db.escapeString("[FireStorm Event] - Winner"), "2", "300", os.time()))
+					player:addTransferableCoins(300)
+					db.query(string.format("INSERT INTO `store_history`(`account_id`, `mode`, `description`, `coin_type`, `coin_amount`, `time`) VALUES (%s, %s, %s, %s, %s, %s)", player:getAccountId(), "0", db.escapeString("[FireStorm Event] - Winner"), "0", "300", os.time()))
 				end
 				FSE:Stoped(players, FSE.msg.prefix .. string.format(FSE.msg.eventFinish, getWinNames(players)))
 				-- FINISHED EVENT
