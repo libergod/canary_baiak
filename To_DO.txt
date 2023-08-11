@@ -81,6 +81,8 @@ OTHERS:
 - Implementar zombie - 
 - Ajustar tp saida do snowballevent - (1553,852,7) - 
 
+- Ajustar coordenadas do zelosDeath.lua on Death - 
+
 - Colocar trainer no Castle - OK
 - Arrumar portas do Castle - OK
 
