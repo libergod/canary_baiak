@@ -2594,7 +2594,7 @@ ReturnValue Game::collectRewardChestItems(Player* player, uint32_t maxMoveItems 
 			if (limitMove) {
 				lootedItemsMessage = fmt::format("You can only collect {} items at a time. {} of {} objects were picked up.", maxMoveItems, movedRewardItems, rewardCount);
 				player->sendTextMessage(MESSAGE_EVENT_ADVANCE, lootedItemsMessage);
-				return RETURNVALUE_NOTPOSSIBLE;
+				return RETURNVALUE_NOERROR;
 			}
 
 			ObjectCategory_t category = getObjectCategory(item);
@@ -2607,7 +2607,7 @@ ReturnValue Game::collectRewardChestItems(Player* player, uint32_t maxMoveItems 
 			player->sendTextMessage(MESSAGE_EVENT_ADVANCE, lootedItemsMessage);
 
 			if (movedRewardItems == 0) {
-			return RETURNVALUE_NOTENOUGHROOM;
+				return RETURNVALUE_NOTPOSSIBLE;
 			}
 
 			return RETURNVALUE_NOERROR;

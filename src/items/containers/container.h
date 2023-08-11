@@ -164,10 +164,6 @@ class Container : public Item, public Cylinder {
 		void startDecaying() override;
 		void stopDecaying() override;
 
-		bool isAnyKindOfRewardChest() const;
-		bool isAnyKindOfRewardContainer() const;
-		bool isBrowseFieldAndHoldsRewardChest() const;
-		bool isInsideContainerWithId(const uint16_t id) const;
 		void removeItem(Thing* thing, bool sendUpdateToClient = false);
 
 	protected:
