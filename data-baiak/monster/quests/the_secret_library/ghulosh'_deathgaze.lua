@@ -69,7 +69,8 @@ monster.loot = {
 }
 
 monster.attacks = {
-	{name ="melee", interval = 2000, chance = 100, minDamage = -100, maxDamage = -400},
+	{name ="melee", interval = 2000, chance = 100, minDamage = 0, maxDamage = -200},
+	{name = "combat", interval = 2000, chance = 25, type = COMBAT_DEATHDAMAGE, lenght = 7, spread = 1, minDamage = -1200, maxDamage = -1800, target = false},	-- -_death_beam(1200-1800)
 	{name ="ghurloshDeathGazeHur", interval = 2000, chance = 90, minDamage = -150, maxDamage = -450, target = false}
 }
 

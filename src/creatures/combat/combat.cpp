@@ -1311,7 +1311,7 @@ void Combat::doCombatDispel(Creature* caster, const Position &position, const Ar
 }
 
 void Combat::doCombatDispel(Creature* caster, Creature* target, const CombatParams &params) {
-	bool canCombat = !params.aggressive || (caster != target && Combat::canDoCombat(caster, target) == RETURNVALUE_NOERROR);
+	bool canCombat = !params.aggressive || (caster != target && Combat::canDoCombat(caster, target, params.aggressive) == RETURNVALUE_NOERROR);
 	if ((caster && target)
 		&& (caster == target || canCombat)
 		&& (params.impactEffect != CONST_ME_NONE)) {

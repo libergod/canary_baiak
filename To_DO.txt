@@ -82,6 +82,7 @@ OTHERS:
 - Ajustar tp saida do snowballevent - (1553,852,7) - 
 
 - Ajustar coordenadas do zelosDeath.lua on Death - 
+- Ajustar coordenadas no creaturescript quests/feaster_of_souls/pale_worm_death.lua - 
 
 - Colocar trainer no Castle - OK
 - Arrumar portas do Castle - OK
