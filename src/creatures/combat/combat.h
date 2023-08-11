@@ -283,7 +283,7 @@ class Combat {
 		static ConditionType_t DamageToConditionType(CombatType_t type);
 		static ReturnValue canTargetCreature(Player* attacker, Creature* target);
 		static ReturnValue canDoCombat(Creature* caster, Tile* tile, bool aggressive);
-		static ReturnValue canDoCombat(Creature* attacker, Creature* target);
+		static ReturnValue canDoCombat(Creature* attacker, Creature* target, bool aggressive);
 		static void postCombatEffects(Creature* caster, const Position &origin, const Position &pos, const CombatParams &params);
 
 		static void addDistanceEffect(Creature* caster, const Position &fromPos, const Position &toPos, uint16_t effect);
@@ -330,7 +330,7 @@ class Combat {
 
 	private:
 		static void doChainEffect(const Position &origin, const Position &pos, uint8_t effect);
-		static void pickChainTargets(Creature* caster, std::vector<Creature*> &targets, std::set<uint32_t> &targetSet, std::set<uint32_t> &visited, const CombatParams &params, uint8_t chainDistance, uint8_t maxTargets, bool backtracking);
+		static void pickChainTargets(Creature* caster, std::vector<Creature*> &targets, std::set<uint32_t> &targetSet, std::set<uint32_t> &visited, const CombatParams &params, uint8_t chainDistance, uint8_t maxTargets, bool backtracking, bool aggressive);
 
 		static void doCombatDefault(Creature* caster, Creature* target, const CombatParams &params);
 
@@ -361,7 +361,7 @@ class Combat {
 
 		CombatDamage getCombatDamage(Creature* creature, Creature* target) const;
 
-		bool doCombatChain(Creature* caster, Creature* target) const;
+		bool doCombatChain(Creature* caster, Creature* target, bool aggressive) const;
 
 		// configureable
 		CombatParams params;
