@@ -1768,7 +1768,7 @@ bool Player::openShopWindow(Npc* npc) {
 	npc->addShopPlayer(this);
 
 	sendShop(npc);
-	std::map<uint16_t, uint16_t> inventoryMap;
+	phmap::btree_map<uint16_t, uint16_t> inventoryMap;
 	sendSaleItemList(getAllSaleItemIdAndCount(inventoryMap));
 	return true;
 }
@@ -3917,14 +3917,14 @@ std::vector<Item*> Player::getEquippedItems() const {
 	return valid_items;
 }
 
-std::map<uint32_t, uint32_t> &Player::getAllItemTypeCount(std::map<uint32_t, uint32_t> &countMap) const {
+phmap::btree_map<uint32_t, uint32_t> &Player::getAllItemTypeCount(phmap::btree_map<uint32_t, uint32_t> &countMap) const {
 	for (const auto item : getAllInventoryItems()) {
 		countMap[static_cast<uint32_t>(item->getID())] += Item::countByType(item, -1);
 	}
 	return countMap;
 }
 
-std::map<uint16_t, uint16_t> &Player::getAllSaleItemIdAndCount(std::map<uint16_t, uint16_t> &countMap) const {
+phmap::btree_map<uint16_t, uint16_t> &Player::getAllSaleItemIdAndCount(phmap::btree_map<uint16_t, uint16_t> &countMap) const {
 	for (const auto item : getAllInventoryItems(false, true)) {
 
 		if (!item->hasImbuements()) {
@@ -3935,7 +3935,7 @@ std::map<uint16_t, uint16_t> &Player::getAllSaleItemIdAndCount(std::map<uint16_t
 	return countMap;
 }
 
-void Player::getAllItemTypeCountAndSubtype(std::map<uint32_t, uint32_t> &countMap) const {
+void Player::getAllItemTypeCountAndSubtype(phmap::btree_map<uint32_t, uint32_t> &countMap) const {
 	for (const auto item : getAllInventoryItems()) {
 		uint16_t itemId = item->getID();
 		if (Item::items[itemId].isFluidContainer()) {
@@ -6077,7 +6077,7 @@ uint64_t Player::getItemCustomPrice(uint16_t itemId, bool buyPrice /* = false*/)
 		return it->second;
 	}
 
-	std::map<uint16_t, uint64_t> itemMap { { itemId, 1 } };
+	phmap::btree_map<uint16_t, uint64_t> itemMap { { itemId, 1 } };
 	return g_game().getItemMarketPrice(itemMap, buyPrice);
 }
 
@@ -6469,7 +6469,7 @@ void Player::requestDepotItems() {
 
 			uint8_t itemTier = Item::items[(*it)->getID()].upgradeClassification > 0 ? (*it)->getTier() + 1 : 0;
 			if (itemMap_it == itemMap.end()) {
-				std::map<uint8_t, uint32_t> itemTierMap;
+				phmap::btree_map<uint8_t, uint32_t> itemTierMap;
 				itemTierMap[itemTier] = Item::countByType((*it), -1);
 				itemMap[(*it)->getID()] = itemTierMap;
 				count++;
@@ -6491,7 +6491,7 @@ void Player::requestDepotItems() {
 		}
 
 		if (itemMap_it == itemMap.end()) {
-			std::map<uint8_t, uint32_t> itemTierMap;
+			phmap::btree_map<uint8_t, uint32_t> itemTierMap;
 			itemTierMap[0] = itemCount;
 			itemMap[itemId] = itemTierMap;
 			count++;
@@ -6757,7 +6757,7 @@ bool Player::canAutoWalk(const Position &toPosition, const std::function<void()>
 	return false;
 }
 
-std::pair<std::vector<Item*>, std::map<uint16_t, std::map<uint8_t, uint32_t>>> Player::requestLockerItems(
+std::pair<std::vector<Item *>, phmap::btree_map<uint16_t, phmap::btree_map<uint8_t, uint32_t>>> Player::requestLockerItems(
 	DepotLocker* depotLocker,
 	bool sendToClient /* = false*/,
 	uint8_t tier /* = 0*/
@@ -6767,7 +6767,7 @@ std::pair<std::vector<Item*>, std::map<uint16_t, std::map<uint8_t, uint32_t>>> P
 		return {};
 	}
 
-	std::map<uint16_t, std::map<uint8_t, uint32_t>> lockerItems;
+	phmap::btree_map<uint16_t, phmap::btree_map<uint8_t, uint32_t>> lockerItems;
 	std::vector<Item*> itemVector;
 	std::vector<Container*> containers { depotLocker };
 
