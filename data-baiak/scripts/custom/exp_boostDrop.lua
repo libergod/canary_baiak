@@ -167,6 +167,7 @@ function expCheck.onSay(player, words)
     return false
 end
 
+expCheck:groupType("normal")
 expCheck:separator(" ")
 expCheck:register()
 ---------------------------------------------------------------------------------------
