@@ -721,13 +721,20 @@ Npc* Game::getNpcByID(uint32_t id) {
 	return it->second;
 }
 
-Player* Game::getPlayerByID(uint32_t id) {
+Player* Game::getPlayerByID(uint32_t id, bool loadTmp /* = false */) {
 	auto playerMap = players.find(id);
 	if (playerMap != players.end()) {
 		return playerMap->second;
 	}
 
-	return nullptr;
+	if (!loadTmp) {
+		return nullptr;
+	}
+	Player* tmpPlayer(nullptr);
+	if (!IOLoginData::loadPlayerById(tmpPlayer, id)) {
+		return nullptr;
+	}
+	return tmpPlayer;
 }
 
 Creature* Game::getCreatureByName(const std::string &s) {
@@ -770,14 +777,23 @@ Npc* Game::getNpcByName(const std::string &s) {
 	return nullptr;
 }
 
-Player* Game::getPlayerByName(const std::string &s) {
+Player* Game::getPlayerByName(const std::string &s, bool loadTmp /* = false */) {
 	if (s.empty()) {
 		return nullptr;
 	}
 
 	auto it = mappedPlayerNames.find(asLowerCaseString(s));
 	if (it == mappedPlayerNames.end()) {
-		return nullptr;
+		if (!loadTmp) {
+			return nullptr;
+		}
+		Player* tmpPlayer = new Player(nullptr);
+		if (!IOLoginData::loadPlayerByName(tmpPlayer, s)) {
+			delete tmpPlayer;
+			return nullptr;
+		}
+		tmpPlayer->setOnline(false);
+		return tmpPlayer;
 	}
 	return it->second;
 }
@@ -9131,9 +9147,24 @@ void Game::removeMonster(Monster* monster) {
 	monsters.erase(monster->getID());
 }
 
-Guild* Game::getGuild(uint32_t id) const {
+Guild* Game::getGuild(uint32_t id, bool allowOffline /* = flase */) const {
 	auto it = guilds.find(id);
 	if (it == guilds.end()) {
+		if (allowOffline) {
+			return IOGuild::loadGuild(id);
+		}
+		return nullptr;
+	}
+	return it->second;
+}
+
+Guild* Game::getGuildByName(const std::string &name, bool allowOffline /* = flase */) const {
+	auto id = IOGuild::getGuildIdByName(name);
+	auto it = guilds.find(id);
+	if (it == guilds.end()) {
+		if (allowOffline) {
+			return IOGuild::loadGuild(id);
+		}
 		return nullptr;
 	}
 	return it->second;
