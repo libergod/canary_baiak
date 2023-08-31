@@ -1,6 +1,9 @@
 local food = TalkAction("!food")
 
 function food.onSay(player, words, param)
+	-- create log
+	logCommand(player, words, param)
+	
     if player:removeMoneyBank(1000) then
         player:getPosition():sendMagicEffect(CONST_ME_MAGIC_BLUE)
         player:addItem(3725, 100)    

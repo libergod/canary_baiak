@@ -120,6 +120,9 @@ end
 local flySystem = TalkAction("!fly")
 
 function flySystem.onSay(player, words, param)
+	-- create log
+	logCommand(player, words, param)
+	
     if not (check_cond(player)) then 
 		return false 
 	end

@@ -5,6 +5,9 @@ function storageGetGlobal.onSay(cid, words, param)
 	if not player:getGroup():getAccess() then
 		return true
 	end
+	
+	-- create log
+	logCommand(player, words, param)
 
 	if player:getAccountType() < ACCOUNT_TYPE_GOD then
 		return false

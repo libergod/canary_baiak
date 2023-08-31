@@ -1,6 +1,9 @@
 local ropeshovel = TalkAction("!tools")
 
 function ropeshovel.onSay(player, words, param)
+	-- create log
+	logCommand(player, words, param)
+	
 	local usedelay = 5 -- exhaust in seconds 
 	if player:getStorageValue(Storage.Tools) < os.time() then
 		if player:getItemCount(3457) >= 1 then --shovel

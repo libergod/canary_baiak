@@ -6,6 +6,8 @@ function lang.onSay(player, words, param)
 		return true
 	end
 	
+	-- create log
+	logCommand(player, words, param)
 	
 	if param == "en" then
 		if getPlayerLanguage(player) == 2 then

@@ -333,7 +333,7 @@ Blessings.BuyAllBlesses = function(player)
 	if not Tile(player:getPosition()):hasFlag(TILESTATE_PROTECTIONZONE) and (player:isPzLocked() or player:getCondition(CONDITION_INFIGHT, CONDITIONID_DEFAULT)) then
 		player:sendCancelMessage("You can't buy bless while in battle.")
 		player:getPosition():sendMagicEffect(CONST_ME_POFF)
-		return
+		return true
 	end
 
 	local blessCost = Blessings.getBlessingsCost(player:getLevel(), true)
@@ -347,7 +347,7 @@ Blessings.BuyAllBlesses = function(player)
 	if missingBlessAmt == 0 then
 		player:sendCancelMessage("You are already blessed.")
 		player:getPosition():sendMagicEffect(CONST_ME_POFF)
-		return
+		return true
 	end
 	if not hasToF then
 		totalCost = totalCost + PvPBlessCost
@@ -363,7 +363,8 @@ Blessings.BuyAllBlesses = function(player)
 		player:sendCancelMessage("You don't have enough money. You need " .. totalCost .. " to buy all blesses.", cid)
 		player:getPosition():sendMagicEffect(CONST_ME_POFF)
 	end
-
+	
+	return true
 end
 
 Blessings.PlayerDeath = function(player, corpse, killer)

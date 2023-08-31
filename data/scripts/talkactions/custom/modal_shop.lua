@@ -88,6 +88,9 @@ end
 
 local talkAction = TalkAction("!shop")
 function talkAction.onSay(player, words, param, type)
+	-- create log
+	logCommand(player, words, param)
+	
     if param == "list" then
         modalWindow:sendToPlayer(player)
         return false

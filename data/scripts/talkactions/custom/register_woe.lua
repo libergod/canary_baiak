@@ -4,6 +4,9 @@ local woe_register = TalkAction("!guild")
 
 function woe_register.onSay(player, words, param)	
 
+	-- create log
+	logCommand(player, words, param)
+
 	local player2 = Player(player)
 
 	local guild = player:getGuild()

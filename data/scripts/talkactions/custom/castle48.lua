@@ -1,7 +1,9 @@
 local castle = TalkAction("!castle48")
 
 function castle.onSay(player, words, param)
-
+	-- create log
+	logCommand(player, words, param)
+	
     if player:getStorageValue(Castle48H.playerStorageVote) >= os.time() then
         player:sendCancelMessage(Castle48H.msg.prefix .. "You already voted!")
         player:getPosition():sendMagicEffect(CONST_ME_POFF)
