@@ -157,6 +157,19 @@ cd vcpkg
 ./bootstrap-vcpkg.sh
 cd ..
 
+TO UPDATE VCPKG:
+
+cd D:/vcpkg
+git pull
+.\vcpkg upgrade
+.\vcpkg upgrade --no-dry-run
+.\bootstrap-vcpkg.bat
+.\vcpkg install --triplet x64-windows asio pugixml spdlog curl jsoncpp protobuf parallel-hashmap magic-enum mio luajit libmariadb mpir abseil argon2 eventpp bext-di
+
+
+LINUX:
+./vcpkg install --triplet x64-linux asio pugixml spdlog curl jsoncpp protobuf parallel-hashmap magic-enum mio luajit libmariadb abseil argon2 eventpp bext-di
+
 git clone --depth 1 https://github.com/opentibiabr/canary.git
 cd canary
 mkdir build && cd build
