@@ -368,7 +368,6 @@ tasks.json
 
 ## CUSTOM
 # Files
-config.lua
 config_canary.lua
 client_assertions.txt
 # Extensions
